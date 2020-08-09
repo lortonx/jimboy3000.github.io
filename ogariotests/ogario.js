@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.145 bots
+// v2.146 bots
 
 
 //window.testobjects = {};
@@ -4878,6 +4878,8 @@ function thelegendmodproject() {
 				'<a id= "ModReward" class="fa fa-gift " data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Reward day" onclick="LMrewardDay();return false;"></a>');
                 //'<a id= "LegendClanDiscord" href="https://discord.gg/CbMkY77" target="_blank" class="fa fa-globe" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Legend clan Discord"></a></div>');
 
+			//<input type="number" id="captchaSpeed" value="1.0" step="0.05" placeholder="Captcha delay (sec)" min="0" max="5" spellcheck="false" style="display:inline-block;">
+			//<span id="captchaErrors" style="display:inline-block;">Errors: <span id="captchaErrors1">0</span></span>
             $(".left-container").append(`<div id="quick-bots" class="agario-panel agario-side-panel"><h2 id="botsInfo"></h2>									
 					<h5 id="botsAuthor" class="main-color">Party bots</h5>
 					<div id="botClient" style="margin-left:15px; margin-right:15px; font-family: Tahoma; color: rgb(255, 255, 255); z-index: 9999; border-radius: 5px; min-height: 16px; min-width: 200px; background-color: rgba(2, 0, 0, 0.4);">
@@ -4891,8 +4893,8 @@ function thelegendmodproject() {
 					<br>
 					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false" style="display:inline-block;">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="199" spellcheck="false">
-					<input type="number" id="captchaSpeed" value="1.0" step="0.05" placeholder="Captcha delay (sec)" min="0" max="5" spellcheck="false" style="display:inline-block;">
-					<span id="captchaErrors" style="display:inline-block;">Errors: <span id="captchaErrors1">0</span></span>
+					
+					
 					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
 					<br>
 					<button id="connectBots" class="btn btn-success">Connect</button>
@@ -9386,6 +9388,7 @@ function thelegendmodproject() {
                         //window.RequestedTokens=1000;
                         //this code is to inform me when a new loop process starts again
                         console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' bots started again')
+						/*
 						$('#captchaErrors1').text(parseInt($('#captchaErrors1').text())+1)
                         legendmod.sendTokenForBots();
                         if ($('#captchaSpeed').val()) {
@@ -9394,8 +9397,10 @@ function thelegendmodproject() {
                             window.tempol = 0.5;
 							$('#captchaSpeed').val(window.tempol)
                         }
+						*/
                     }
-                }, 10000 + window.tempol * 1000);
+                //}, 10000 + window.tempol * 1000);
+				}, 10000);
             } else {
                 //setTimeout(function() {	
                 window.sendFirstTimeTokenBots = false
@@ -9423,16 +9428,15 @@ function thelegendmodproject() {
             //self.sendMessage(view);			
         },
         sendTokenForBots() {
-            //var self = this
-            //this.playerNick = nick;    
-            legendmod.botscaptcha = true;
+
+            /*legendmod.botscaptcha = true;
             window.sendTimeOutTokenBots = false;
             if ($('#captchaSpeed').val()) {
                 window.tempol = $('#captchaSpeed').val();
             }
-			setTimeout(function() {
+			setTimeout(function() {*/
 				if (this.integrity && window.capthaWindow) window.capthaWindow.ProcessParentMessage('doCaptcha');
-			}, 500);			
+			//}, 500);			
 			
             /*this.integrity && window.agarCaptcha.requestCaptchaV3("play", function(token) {
 
@@ -9442,44 +9446,6 @@ function thelegendmodproject() {
                 }, window.tempol * 1000);
                 //window.core.sendNick(nick, token)
             })*/
-			
-			
-			
-			
-            /*            if (!grecaptcha.onceLoad || grecaptcha.v2mode) {
-                            //first time need recaptcha v2
-                            requestCaptchaV3();
-                            grecaptcha.onceLoad = true;
-                            //grecaptcha.reset();				
-                            grecaptcha.execute(0, {
-                                'action': 'play'
-                            }).then(function() {
-            					
-            					//window.tempo2 = grecaptcha.getResponse()
-            					//setTimeout(function() {
-                                //legendmod.sendSpawn2(window.tempo2);
-            					//}, window.tempol*1000);
-            					
-            					grecaptcha.reset();
-                            });
-                        } else {
-                            //next times need recaptcha v3
-            				
-            				grecaptcha.ready(function() {
-            				legendmod.botscaptcha=true;
-                            grecaptcha.execute(0, {
-                                'action': 'play'
-                            }).then(function() {
-            					
-            					//window.tempo2 = grecaptcha.getResponse()
-            					//setTimeout(function() {
-                                //legendmod.sendSpawn2(window.tempo2);
-            					//}, window.tempol*1000);
-            					
-                            });
-            			})
-                        }	
-            */
         },
         sendNick2(nick) {
             this.playerNick = nick,
@@ -14086,8 +14052,8 @@ function setGUIEvents() {
     if (storedbotsRemoteIP == null || storedbotsRemoteIP == "") {
         storedbotsRemoteIP = "ws://localhost:1337";
     }
-    var captchaSpeed = localStorage.getItem("captchaSpeed");
-    $('#captchaSpeed').val(captchaSpeed)
+    //var captchaSpeed = localStorage.getItem("captchaSpeed");
+    //$('#captchaSpeed').val(captchaSpeed)
     window.bots.remoteIP = storedbotsRemoteIP
     window.SERVER_HOST = storedbotsRemoteIP;
     $('#botsRemoteIP').val(storedbotsRemoteIP)
@@ -14104,9 +14070,9 @@ function setGUIEvents() {
     }
     window.bots.amount = storedbotsamount;
     $('#botsAmount').val(storedbotsamount)
-    document.getElementById('captchaSpeed').addEventListener('change', function() {
-        localStorage.setItem('captchaSpeed', $('#captchaSpeed').val())
-    })
+    //document.getElementById('captchaSpeed').addEventListener('change', function() {
+        //localStorage.setItem('captchaSpeed', $('#captchaSpeed').val())
+    //})
     document.getElementById('botsRemoteIP').addEventListener('change', function() {
         window.bots.remoteIP = this.value
         localStorage.setItem('localstoredBotsRemoteIP', window.bots.remoteIP)
