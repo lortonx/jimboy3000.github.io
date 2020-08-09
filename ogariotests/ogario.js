@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.159 bots
+// v2.160 bots
 
 
 //window.testobjects = {};
@@ -561,7 +561,7 @@ window.connectionBots = {
         toastr.info("<b>[" + Premadeletter123 + "]:</b> In case of captcha, change IP by <b>rebooting rooter</b> or use <b>VPN</b>");
 		setTimeout(function() { //
         legendmod.sendTokenForBots();
-		}, 2000); //
+		}, 4000); //
 		
         if (!window.sendFirstTimeTokenBots) {
             window.sendFirstTimeTokenBots = true
@@ -9411,8 +9411,8 @@ function thelegendmodproject() {
                 window.tempol = $('#captchaSpeed').val();
             }
 			setTimeout(function() {*/
-			for (i<0;i<window.captchaOpenedWindow;i++){
-				if (this.integrity && window.capthaWindow[i]) window.capthaWindow[i].ProcessParentMessage('doCaptcha');
+			for (var i=0;i<window.captchaOpenedWindow;i++){
+				if (legendmod.integrity && window.capthaWindow[i]) window.capthaWindow[i].ProcessParentMessage('doCaptcha');
 			}
 			//}, 500);			
 			
