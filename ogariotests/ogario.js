@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.178 bots
+// v2.179 bots
 
 
 //window.testobjects = {};
@@ -508,7 +508,7 @@ window.buffers = {
         return writer.dataView.buffer
     },
 	//
-    ghostInstance(x, y) {
+    ghostInstances(x, y) {
         const writer = new Writer(9)
         writer.writeUint8(7)
         writer.writeInt32(x)
