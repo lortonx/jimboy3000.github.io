@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.161 bots
+// v2.162 bots
 
 
 //window.testobjects = {};
@@ -4859,9 +4859,9 @@ function thelegendmodproject() {
 				'<a id= "ModReward" class="fa fa-gift " data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Reward day" onclick="LMrewardDay();return false;"></a>');
                 //'<a id= "LegendClanDiscord" href="https://discord.gg/CbMkY77" target="_blank" class="fa fa-globe" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Legend clan Discord"></a></div>');
 
-			//<input type="number" id="captchaSpeed" value="1.0" step="0.05" placeholder="Captcha delay (sec)" min="0" max="5" spellcheck="false" style="display:inline-block;">
+			//<input type="number" id="captchaSpeed" value="1" step="1" placeholder="CPU cores" min=1 max=${CPUamount} spellcheck="false" style="display:inline-block;">
 			//<span id="captchaErrors" style="display:inline-block;">Errors: <span id="captchaErrors1">0</span></span>
-			var CPUamount=window.navigator.hardwareConcurrency-1;
+			//var CPUamount=window.navigator.hardwareConcurrency-1;
             $(".left-container").append(`<div id="quick-bots" class="agario-panel agario-side-panel"><h2 id="botsInfo"></h2>									
 					<h5 id="botsAuthor" class="main-color">Party bots</h5>
 					<div id="botClient" style="margin-left:15px; margin-right:15px; font-family: Tahoma; color: rgb(255, 255, 255); z-index: 9999; border-radius: 5px; min-height: 16px; min-width: 200px; background-color: rgba(2, 0, 0, 0.4);">
@@ -4875,7 +4875,7 @@ function thelegendmodproject() {
 					<br>
 					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false" style="display:inline-block;">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="199" spellcheck="false">
-					<input type="number" id="captchaSpeed" value="1" step="1" placeholder="CPU cores" min=1 max=${CPUamount} spellcheck="false" style="display:inline-block;">
+
 					
 					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
 					<br>
@@ -14030,14 +14030,15 @@ function setGUIEvents() {
     if (storedbotsRemoteIP == null || storedbotsRemoteIP == "") {
         storedbotsRemoteIP = "ws://localhost:1337";
     }
-    var captchaSpeed = localStorage.getItem("captchaSpeed2");
+	window.captchaOpenedWindow=1;
+    /*var captchaSpeed = localStorage.getItem("captchaSpeed2");
 	if (captchaSpeed == null || captchaSpeed == "null" || captchaSpeed == ""){ 
 		window.captchaOpenedWindow = 1
 	}
 	else{	
 		window.captchaOpenedWindow = parseInt(captchaSpeed);
 		$('#captchaSpeed').val(window.captchaOpenedWindow)
-	}   
+	}*/  
     window.bots.remoteIP = storedbotsRemoteIP
     window.SERVER_HOST = storedbotsRemoteIP;
     $('#botsRemoteIP').val(storedbotsRemoteIP)
@@ -14054,10 +14055,10 @@ function setGUIEvents() {
     }
     window.bots.amount = storedbotsamount;
     $('#botsAmount').val(storedbotsamount)
-    document.getElementById('captchaSpeed').addEventListener('change', function() {
+    /*document.getElementById('captchaSpeed').addEventListener('change', function() {
 		window.captchaOpenedWindow = $('#captchaSpeed').val()
         localStorage.setItem('captchaSpeed2', $('#captchaSpeed').val())
-    })	
+    })*/
     document.getElementById('botsRemoteIP').addEventListener('change', function() {
         window.bots.remoteIP = this.value
         localStorage.setItem('localstoredBotsRemoteIP', window.bots.remoteIP)
