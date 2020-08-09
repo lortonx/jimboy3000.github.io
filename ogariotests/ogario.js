@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.176 bots
+// v2.177 bots
 
 
 //window.testobjects = {};
@@ -639,7 +639,7 @@ window.connectionBots = {
 				window.capthaWindow[i]=null
 			}
 		}
-		toastr.warning("<b>[" + Premadeletter123 + "]:</b> WebSocket error observed:" + event)
+		toastr.warning("<b>[" + Premadeletter123 + "]:</b> WebSocket closed")
     }
 }
 window.gameBots = {
