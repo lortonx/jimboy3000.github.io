@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.169 bots
+// v2.170 bots
 
 
 //window.testobjects = {};
@@ -514,6 +514,16 @@ window.buffers = {
         return writer.dataView.buffer
     }
 }
+window.addEventListener('beforeunload', function (e) { 
+	for (i=0;i<window.captchaOpenedWindow;i++){
+		if (window.capthaWindow[i]){
+			window.capthaWindow[i].close()
+			window.capthaWindow[i]=null
+		}
+	}
+//e.preventDefault();
+//e.returnValue = ''; 
+}); 
 window.connectionBots = {
     ws: null,
     connect() {
@@ -623,7 +633,7 @@ window.connectionBots = {
         document.getElementById('connectBots').style.color = 'white'
         window.userBots.startedBots = false
         window.bots.ai = false	
-		for (i<0;i<window.captchaOpenedWindow;i++){
+		for (i=0;i<window.captchaOpenedWindow;i++){
 			if (window.capthaWindow[i]){
 				window.capthaWindow[i].close()
 				window.capthaWindow[i]=null
@@ -9415,7 +9425,13 @@ function thelegendmodproject() {
             }
 			setTimeout(function() {*/
 			for (var i=0;i<window.captchaOpenedWindow;i++){
-				if (legendmod.integrity && window.capthaWindow[i]) window.capthaWindow[i].ProcessParentMessage('doCaptcha');
+				if (legendmod.integrity && window.capthaWindow[i] && !window.capthaWindow[i].closed){
+					window.capthaWindow[i].ProcessParentMessage('doCaptcha');
+				}
+				else if(legendmod.integrity && window.capthaWindow[i] && window.capthaWindow[i].closed){
+					window.capthaWindow[i] = window.open("https://agar.io/captcha");
+				}
+				
 			}
 			//}, 500);			
 			
