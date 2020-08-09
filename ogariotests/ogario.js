@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.141
+// v2.144 bots
 
 
 //window.testobjects = {};
@@ -537,6 +537,26 @@ window.connectionBots = {
         document.getElementById('connectBots').innerText = 'Connect'
         document.getElementById('connectBots').style.color = 'white'
         window.RequestedTokens = 100000;
+		
+		window.capthaWindow = window.open("https://agar.io/captcha");
+		if (!window.capthaWindowOpened){
+			window.capthaWindowOpened = true;			
+			window.addEventListener("message", function(event){
+				//if (event.data.includes('captcha-')){
+					//event.data.replace('captcha-','');		
+					legendmod.sendSpawn2(event.data);
+				}
+				/*else if (event.data.includes('sendTimeOutTokenBots-')){
+					event.data.replace('sendTimeOutTokenBots-','');
+					if (event.data=="true") window.sendTimeOutTokenBots = true;
+				}
+				else if (event.data.includes('cookieCaptchaOK-')){
+					event.data.replace('cookieCaptchaOK-','');
+					if (event.data=="true") window.cookieCaptchaOK = true;
+				}*/				
+			});		
+		}
+		
         toastr.info("<b>[" + Premadeletter123 + "]:</b> In case of captcha, change IP by <b>rebooting rooter</b> or use <b>VPN</b>");
         legendmod.sendTokenForBots();
         if (!window.sendFirstTimeTokenBots) {
@@ -626,7 +646,8 @@ window.connectionBots = {
         $('#handleCaptchaBots').prop('checked', false)
         $('#solveCaptchaBots').prop('checked', false)
         $('#pushCaptchaBots').prop('checked', false)
-
+		
+		if (window.capthaWindow) window.capthaWindow.close()
     }
 }
 window.gameBots = {
@@ -9409,13 +9430,22 @@ function thelegendmodproject() {
             if ($('#captchaSpeed').val()) {
                 window.tempol = $('#captchaSpeed').val();
             }
-            this.integrity && window.agarCaptcha.requestCaptchaV3("play", function(token) {
-                //sendSpawn(token)
+			setTimeout(function() {
+				if (this.integrity && window.capthaWindow) window.capthaWindow.ProcessParentMessage('doCaptcha');
+			}, 500);			
+			
+            /*this.integrity && window.agarCaptcha.requestCaptchaV3("play", function(token) {
+
+				if(window.capthaWindow) window.capthaWindow.ProcessParentMessage('doCaptcha');
                 setTimeout(function() {
                     legendmod.sendSpawn2(token);
                 }, window.tempol * 1000);
                 //window.core.sendNick(nick, token)
-            })
+            })*/
+			
+			
+			
+			
             /*            if (!grecaptcha.onceLoad || grecaptcha.v2mode) {
                             //first time need recaptcha v2
                             requestCaptchaV3();
