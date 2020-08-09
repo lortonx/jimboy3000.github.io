@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.146 bots
+// v2.147 bots
 
 
 //window.testobjects = {};
@@ -532,7 +532,6 @@ window.connectionBots = {
         document.getElementById('userStatus').innerText = 'Connected'
         //document.getElementById('connect').disabled = true
         document.getElementById('startBots').disabled = false
-        document.getElementById('captchaBots').disabled = false
         document.getElementById('stopBots').disabled = false
         document.getElementById('connectBots').innerText = 'Connect'
         document.getElementById('connectBots').style.color = 'white'
@@ -558,7 +557,10 @@ window.connectionBots = {
 		}
 		
         toastr.info("<b>[" + Premadeletter123 + "]:</b> In case of captcha, change IP by <b>rebooting rooter</b> or use <b>VPN</b>");
+		setTimeout(function() { //
         legendmod.sendTokenForBots();
+		}, 2000); //
+		
         if (!window.sendFirstTimeTokenBots) {
             window.sendFirstTimeTokenBots = true
             window.sendTimeOutTokenBots = false;
@@ -570,8 +572,6 @@ window.connectionBots = {
         switch (dataView.getUint8(0)) {
             case 0:
                 document.getElementById('startBots').disabled = true
-                document.getElementById('captchaBots').disabled = false
-                //document.getElementById('captchaBots').style.display = 'none'
                 document.getElementById('stopBots').disabled = false
                 document.getElementById('startBots').style.display = 'none'
                 document.getElementById('stopBots').style.display = 'inline'
@@ -586,7 +586,6 @@ window.connectionBots = {
                 document.getElementById('botsAI').style.color = '#DA0A00'
                 document.getElementById('botsAI').innerText = 'Disabled'
                 document.getElementById('startBots').disabled = false
-                document.getElementById('captchaBots').disabled = true
                 document.getElementById('stopBots').disabled = true
                 document.getElementById('startBots').style.display = 'inline'
                 document.getElementById('stopBots').style.display = 'none'
@@ -595,30 +594,13 @@ window.connectionBots = {
                 window.bots.ai = false
                 break
             case 3:
-                //toastr.info('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
-                window.botscaptcha = true;
-                if (!legendmod.play && window.LatestBotsVersion && $('#handleCaptchaBots').is(':checked')) {
-                    toastr.info('<b>[' + Premadeletter123 + ']:</b> Solve the captcha for your bots')
-					if (window.captchawidget && grecaptcha){
-						grecaptcha.reset(window.captchawidget);
-						//window.captchawidget=null;
-					}					
-					window.agarCaptcha.requestCaptcha()
-                    //window.master.recaptchaRequested()
-                } else {
-                    toastr.info('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
-                }
+                toastr.info('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
                 break
             case 4:
                 $('#botCount').html(`${dataView.getUint8(1)}/${dataView.getUint8(2)}/${window.bots.amount}`)
                 break
             case 5:
                 $('#slots').html(dataView.getUint8(1) + "/200")
-                break
-            case 10:
-                toastr.info('<b>[' + Premadeletter123 + ']:</b> This version of Smart bots support Captcha Solver');
-                window.LatestBotsVersion = true;
-                $('#handleCaptchaBotsArea').show();
                 break
             case 10:
                 toastr.info('<b>[' + Premadeletter123 + ']:</b> Server or bots is on closing state');
@@ -632,21 +614,13 @@ window.connectionBots = {
         document.getElementById('botsAI').innerText = 'Disabled'
         //document.getElementById('connect').disabled = false
         document.getElementById('startBots').disabled = true
-        document.getElementById('captchaBots').disabled = true
         document.getElementById('stopBots').disabled = true
         document.getElementById('startBots').style.display = 'inline'
         document.getElementById('stopBots').style.display = 'none'
         document.getElementById('connectBots').innerText = 'Connect'
         document.getElementById('connectBots').style.color = 'white'
         window.userBots.startedBots = false
-        window.bots.ai = false
-        window.LatestBotsVersion = null;
-        $('#handleCaptchaBotsArea').hide();
-        $('#handleCaptchaBotsAreaSettings').hide();
-        $('#handleCaptchaBots').prop('checked', false)
-        $('#solveCaptchaBots').prop('checked', false)
-        $('#pushCaptchaBots').prop('checked', false)
-		
+        window.bots.ai = false		
 		if (window.capthaWindow) window.capthaWindow.close()
     }
 }
@@ -4900,14 +4874,8 @@ function thelegendmodproject() {
 					<button id="connectBots" class="btn btn-success">Connect</button>
 					<br>
 					<button id="startBots" class="btn btn-primary btn" disabled>Start Bots</button>
-					<button id="captchaBots" class="btn btn-primary btn"  style="display:none;" disabled>Request 1000 captcha tokens</button>
-					<button id="stopBots" class="btn btn-danger">Stop Bots</button>
-					<div><span id="handleCaptchaBotsArea" style="display: none"><input type="checkbox" id="handleCaptchaBots"></input> <b>Handle bots with captcha</b>
-					<br>
-					<div id="handleCaptchaBotsAreaSettings" style="display: none"><input type="checkbox" id="solveCaptchaBots" disabled></input> <b>Solve captcha when loosing</b>
-					<br>
-					<input type="checkbox" id="pushCaptchaBots" disabled></input> <b>Push more bots</b>					
-					</span></div></div>					
+					
+					<button id="stopBots" class="btn btn-danger">Stop Bots</button>				
 					<br><u><a href="https://github.com/jimboy3100/jimboy3100.github.io/tree/master/ExampleScripts/agario-bots2" target="_blank">Installation</a></u>	
 					<u><a href="https://www.youtube.com/watch?v=rQMhxwIytro&feature=youtu.be" target="_blank">Tutorial video for PC node.js</a></u>	
 					<u><a href="https://repl.it/@legendmod/party-bots" target="_blank">Repl.it VPS</a></u>	
@@ -14087,12 +14055,7 @@ function setGUIEvents() {
         localStorage.setItem('localStoredBotsAmount', window.bots.amount)
     })
     document.getElementById('connectBots').addEventListener('click', () => {
-        if ($('#pushCaptchaBots').is(':checked')) {
-            window.connectionBots.send(window.buffers.captchabots((window.bots.amount).toString()))
-            //toastr.info('<b>[SERVER]:</b> Bot pushed')
-        } else {
             if (!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
-        }
     })
     document.getElementById('startBots').addEventListener('click', () => {
         if (legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots) {
@@ -14102,9 +14065,6 @@ function setGUIEvents() {
                         //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
                         window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
                         //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.botsSpawncode[window.botsSpawncodeNum], window.bots.amount))
-                        if (window.LatestBotsVersion) {
-                            $('#handleCaptchaBotsAreaSettings').show();
-                        }
                     } else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots name, amount and user login are required before starting the bots')
                 } else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots Max amount is 199')
             } else {
@@ -14112,49 +14072,8 @@ function setGUIEvents() {
             }
         }
     })
-    document.getElementById('captchaBots').addEventListener('click', () => {
-        toastr.info("<b>[" + Premadeletter123 + "]:</b> In case of captcha, change IP by <b>rebooting rooter</b> or use <b>VPN</b>");
-        window.RequestedTokens = 100000;
-        legendmod.sendTokenForBots();
-        //legendmod.sendTimeOutTokenForBots();
-    })
     document.getElementById('stopBots').addEventListener('click', () => {
         if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
-    })
-    $('#handleCaptchaBots').click(function() {
-        if (this.checked) {
-            window.connectionBots.send(new Uint8Array([11]).buffer)
-            $('#solveCaptchaBots').removeAttr("disabled")
-            $('#pushCaptchaBots').removeAttr("disabled")
-        } else {
-            window.connectionBots.send(new Uint8Array([12]).buffer)
-            $('#solveCaptchaBots').prop('checked', false)
-            $('#pushCaptchaBots').prop('checked', false)
-            $('#solveCaptchaBots').attr("disabled", true);
-            $('#pushCaptchaBots').attr("disabled", true);
-            document.getElementById('connectBots').innerText = 'Connect'
-            document.getElementById('connectBots').style.color = 'white'
-
-        }
-    })
-    $('#solveCaptchaBots').click(function() {
-        if (this.checked) {
-            window.connectionBots.send(new Uint8Array([13]).buffer)
-        } else {
-            window.connectionBots.send(new Uint8Array([14]).buffer)
-        }
-    })
-    $('#pushCaptchaBots').click(function() {
-        if (this.checked) {
-            document.getElementById('connectBots').innerText = 'Push a captcha bot'
-            document.getElementById('connectBots').style.color = 'yellow'
-            window.connectionBots.send(new Uint8Array([15]).buffer)
-        } else {
-            window.connectionBots.send(new Uint8Array([16]).buffer)
-            document.getElementById('connectBots').innerText = 'Connect'
-            document.getElementById('connectBots').style.color = 'white'
-
-        }
     })
 }
 
