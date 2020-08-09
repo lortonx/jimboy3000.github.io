@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.147 bots
+// v2.148 bots
 
 
 //window.testobjects = {};
@@ -10,6 +10,7 @@ var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
 window.clanTagLc = "U1VC";
 appendLMhiFbPs()
 window.externalScriptMassBar= []
+window.capthaWindow= []
 
 function changeregion() {
     if ($('#region').val() == "Private") {
@@ -536,8 +537,9 @@ window.connectionBots = {
         document.getElementById('connectBots').innerText = 'Connect'
         document.getElementById('connectBots').style.color = 'white'
         window.RequestedTokens = 100000;
-		
-		window.capthaWindow = window.open("https://agar.io/captcha");
+		for (i<0;i<window.captchaOpenedWindow;i++){
+			window.capthaWindow[i] = window.open("https://agar.io/captcha");
+		}
 		if (!window.capthaWindowOpened){
 			window.capthaWindowOpened = true;			
 			window.addEventListener("message", function(event){
@@ -620,8 +622,10 @@ window.connectionBots = {
         document.getElementById('connectBots').innerText = 'Connect'
         document.getElementById('connectBots').style.color = 'white'
         window.userBots.startedBots = false
-        window.bots.ai = false		
-		if (window.capthaWindow) window.capthaWindow.close()
+        window.bots.ai = false	
+		for (i<0;i<window.captchaOpenedWindow;i++){
+			if (window.capthaWindow[i]) window.capthaWindow[i].close()
+		}
     }
 }
 window.gameBots = {
@@ -9403,7 +9407,9 @@ function thelegendmodproject() {
                 window.tempol = $('#captchaSpeed').val();
             }
 			setTimeout(function() {*/
-				if (this.integrity && window.capthaWindow) window.capthaWindow.ProcessParentMessage('doCaptcha');
+			for (i<0;i<window.captchaOpenedWindow;i++){
+				if (this.integrity && window.capthaWindow[i]) window.capthaWindow[i].ProcessParentMessage('doCaptcha');
+			}
 			//}, 500);			
 			
             /*this.integrity && window.agarCaptcha.requestCaptchaV3("play", function(token) {
