@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.160 bots
+// v2.161 bots
 
 
 //window.testobjects = {};
@@ -4875,7 +4875,7 @@ function thelegendmodproject() {
 					<br>
 					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false" style="display:inline-block;">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="199" spellcheck="false">
-					<input type="number" id="captchaSpeed" value="1.0" step="1" placeholder="CPU cores" min=1 max=${CPUamount} spellcheck="false" style="display:inline-block;">
+					<input type="number" id="captchaSpeed" value="1" step="1" placeholder="CPU cores" min=1 max=${CPUamount} spellcheck="false" style="display:inline-block;">
 					
 					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
 					<br>
