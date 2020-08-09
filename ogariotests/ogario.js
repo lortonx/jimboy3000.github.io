@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.144 bots
+// v2.145 bots
 
 
 //window.testobjects = {};
@@ -545,7 +545,7 @@ window.connectionBots = {
 				//if (event.data.includes('captcha-')){
 					//event.data.replace('captcha-','');		
 					legendmod.sendSpawn2(event.data);
-				}
+				//}
 				/*else if (event.data.includes('sendTimeOutTokenBots-')){
 					event.data.replace('sendTimeOutTokenBots-','');
 					if (event.data=="true") window.sendTimeOutTokenBots = true;
