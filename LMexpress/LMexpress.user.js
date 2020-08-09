@@ -3,7 +3,7 @@
 // @namespace    Legend Express Agario Mod
 // @version      1.7
 // @description  Agario Mod - Legend,Ogario,Kitty,Old Skins,Animated Skins,Language Packs,Manual User Scripts,Chat,60++ Macros/Hotkeys(Tricksplit,Doublesplit,Quick Feeding,Popsplit,Auto Coins,Freeze Cell Macro,Auto respawn)
-// @homepage     https://legendmod.ml
+// @homepage     https://www.legendmod.ml
 // @author       Jimboy3100
 // @license      MIT
 // @icon         https://legendmod.ml/banners/CropedImage128.gif
@@ -13,7 +13,13 @@
 // @updateURL    https://legendmod.ml/LMexpress/LMexpress.user.js
 // @run-at       document-start
 // @grant        GM_xmlhttpRequest
+// @connect      hslo.io
+// @connect	 agartool.io
+// @connect	 imasters.org.ru
+// @connect	 cdn.ogario.ovh
+// @connect      deltav4.glitch.me
 // @connect      jimboy3000.github.io
+// @connect      legendmod.ml
 // @grant        GM_registerMenuCommand
 
 // ==/UserScript==
@@ -22,7 +28,7 @@
 /*MIT License*/
 
 GM_registerMenuCommand('Legend Mod Website', function() {
-    window.open("https://legendmod.ml");
+    window.open("http://legendmod.ml");
 }, 'r');
 GM_registerMenuCommand('LM Library', function() {
     window.open("https://github.com/jimboy3100/jimboy3100.github.io/");
@@ -31,10 +37,26 @@ GM_registerMenuCommand('Donate for Legend Mod', function() {
     window.open("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CM3GDVCW6PBF6");
 }, 'r');
 
+function getVersion() {
+    try
+    {
+        var request = new XMLHttpRequest();
+        request.open('GET', 'https://legendmod.ml/VERSION.txt', false);
+        request.send(null);
+
+        if (request.status === 200)
+            return request.responseText.replace(/^\s+|\s+$/g, '');
+    } catch (e) {}
+
+    return (new Date()).getTime();
+}
+
+var version = getVersion();
+
 // Check location
 if (location.host === "agar.io" && location.pathname === "/") {
-var url = window.location.href;
-localStorage.setItem("url", url);
+    var url = window.location.href;
+    localStorage.setItem("url", url);
     location.href = "https://agar.io/legendmod" + location.hash;
     return;
 }
@@ -44,26 +66,87 @@ function inject(page) {
     var page = page.replace("</body>", "<script>init('" + modVersion + "');</script>" + "</body>");
     return page;
 }
-//window.stop();
 document.documentElement.innerHTML = "";
+var LMdetails;
+var mode = location.pathname.slice(1);
+var modwebsite;
+switch (mode) {
+    case 'normal':
+        modwebsite = 'https://agar.io';
+        Htmlscript(modwebsite);
+        break;
+    case 'hslo':
+        modwebsite = 'https://hslo.io/install.user.js';
+        Userscript(modwebsite);
+        break;
+    case 'agartool':
+        modwebsite = 'https://www.agartool.io/agartool.user.js';
+        Userscript(modwebsite);
+        break;
+    case 'vanilla':
+        modwebsite = 'http://imasters.org.ru/agar/js/vanilla.user.js';
+        Userscript(modwebsite);
+        break;		
+    case 'ogario':
+        modwebsite = 'https://cdn.ogario.ovh/v4/beta/ogario.v4.user.js';
+        Userscript(modwebsite);
+        break;		
+    case 'delta':
+        modwebsite = 'https://deltav4.glitch.me/v4/index.html';
+        Htmlscript(modwebsite);
+        break;
+    case 'neo': 
+        modwebsite = 'https://legendmod.ml/LMexpress/LMexpress.html?' + version;
+        Htmlscript(modwebsite);
+		setTimeout(function() {		
+			modwebsite = 'https://legendmod.ml/ExampleScripts/Neoprivate.js';
+			Userscript(modwebsite);
+		}, 5000);
+	break;	
+    case 'mobile': 
+        modwebsite = 'https://legendmod.ml/LMexpress/LMexpress.html';
+        Htmlscript(modwebsite);
+		setTimeout(function() {		
+			modwebsite = 'https://legendmod.ml/ExampleScripts/gamepad.user.js';
+			Userscript(modwebsite);
+		}, 5000);
+	break;		
+    case 'captcha':
+        modwebsite = 'https://legendmod.ml/ogario/captcha.html'
+        Htmlscript(modwebsite);
+        break;	
+    case 'legendmod': default:
+        modwebsite = 'https://jimboy3000.github.io/LMexpress/LMexpress.html'
+        Htmlscript(modwebsite);
+        break;
+}
 
-var LMdetails = GM_xmlhttpRequest({
-    method: "GET",
-    url: "https://jimboy3000.github.io/LMexpress/LMexpress.html",
-	synchronous: false,
-    onload: function(legend) {
-        var doc = inject(legend.responseText);
-        document.open();
-        //var script = document.createElement('script');
-		//document.appendChild(doc);
-       document.write(doc);
-        setTimeout(function() {
-            window.history.pushState(null, null, "/");
-        }, 2000);
+function Htmlscript(modwebsite) {
+    LMdetails = GM_xmlhttpRequest({
+        method: "GET",
+        url: modwebsite,
+        synchronous: false,
+        onload: function(legend) {
+            var doc = inject(legend.responseText);
+            document.open();
+            document.write(doc);
+            setTimeout(function() {
+                window.history.pushState(null, null, "/");
+            }, 2000);
+            document.close();
+        }
+    });
+}
 
-        document.close();
-    }
-});
+function Userscript(modwebsite) {
+    LMdetails = GM_xmlhttpRequest({
+        method: "GET",
+        url: modwebsite,
+        onload: function(e) {
+            new Function(['GM_info, GM_xmlhttpRequest'], e.responseText)(GM_info, GM_xmlhttpRequest);
+        }
+    });
+}
 
 if (location.host == "play.google.com") {
     window.close();
@@ -78,4 +161,3 @@ function getParameterByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
-
