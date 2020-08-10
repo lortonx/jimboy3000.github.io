@@ -1,8 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.184
-
+// v2.185
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -531,6 +530,13 @@ window.addEventListener('beforeunload', function (e) {
 //e.preventDefault();
 //e.returnValue = ''; 
 }); 
+function createCaptchaIframe(i){	
+		window.capthaWindow[i] = document.createElement("iframe");
+		window.capthaWindow[i].setAttribute("src", "https://agar.io/captcha");
+		window.capthaWindow[i].style.width = "0px";
+		window.capthaWindow[i].style.height = "0px";
+		document.body.appendChild(window.capthaWindow[i]);	
+}	
 window.connectionBots = {
     ws: null,
     connect() {
@@ -555,8 +561,9 @@ window.connectionBots = {
         document.getElementById('connectBots').style.color = 'white'
         window.RequestedTokens = 100000;
 		for (var i=0;i<window.captchaOpenedWindow;i++){
-			window.capthaWindow[i] = window.open("https://agar.io/captcha");
+			createCaptchaIframe(i);
 		}
+		
 		if (!window.capthaWindowOpened){
 			window.capthaWindowOpened = true;			
 			window.addEventListener("message", function(event){
@@ -9436,7 +9443,8 @@ function thelegendmodproject() {
 					window.capthaWindow[i].ProcessParentMessage('doCaptcha');
 				}
 				else if(legendmod.integrity && window.capthaWindow[i] && window.capthaWindow[i].closed){
-					window.capthaWindow[i] = window.open("https://agar.io/captcha");
+					createCaptchaIframe(i)
+					//window.capthaWindow[i] = window.open("https://agar.io/captcha");
 				}
 				
 			}
