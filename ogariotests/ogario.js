@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.198
+// v2.199
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8669,44 +8669,19 @@ function thelegendmodproject() {
                         style.drawImage(iconSpecialSkinEffectsHero1, this.x - 0.1 * y, this.y - 1.35 * y, y / 1, y / 1);						
                     } 
 					else if (this.SpecialEffect == "Key" || this.SpecialEffect2 == "Key") {
-                        //style.drawImage(iconSpecialSkinEffectsKey, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);						
-                        style.drawImage(iconSpecialSkinEffectsKey, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
-                        if (!window.xx1) window.xx1 = 0.1
-                        if (!window.xx2) window.xx2 = 1.35
-                        if (!window.xx3) window.xx3 = 1
-                        if (!window.xx4) window.xx4 = 1
+                        style.drawImage(iconSpecialSkinEffectsKey, this.x + 0.4 * y, this.y - 1.15 * y, y / 2, y / 2);						
                     } 
 					else if (this.SpecialEffect == "MetalOfHonor" || this.SpecialEffect2 == "MetalOfHonor") {
-                        //style.drawImage(iconSpecialSkinEffectsMetalOfHonor, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);						
-                        style.drawImage(iconSpecialSkinEffectsMetalOfHonor, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
-                        if (!window.xx1) window.xx1 = 0.95
-                        if (!window.xx2) window.xx2 = 5.3/4
-                        if (!window.xx3) window.xx3 = 0.5
-                        if (!window.xx4) window.xx4 = 4
+                        style.drawImage(iconSpecialSkinEffectsMetalOfHonor, this.x - 0.25 * y, this.y + 0.8 * y, y / 2, y / 2);						
                     } 
 					else if (this.SpecialEffect == "PeaceMaker" || this.SpecialEffect2 == "PeaceMaker") {
-                        //style.drawImage(iconSpecialSkinEffectsPeaceMaker, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);						
-                        style.drawImage(iconSpecialSkinEffectsPeaceMaker, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
-                        if (!window.xx1) window.xx1 = 0.95
-                        if (!window.xx2) window.xx2 = 5.3/4
-                        if (!window.xx3) window.xx3 = 0.5
-                        if (!window.xx4) window.xx4 = 4
+                        style.drawImage(iconSpecialSkinEffectsPeaceMaker, this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 2);						
                     } 
 					else if (this.SpecialEffect == "Survivor" || this.SpecialEffect2 == "Survivor") {
-                        //style.drawImage(iconSpecialSkinEffectsSurvivor, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);						
-                        style.drawImage(iconSpecialSkinEffectsSurvivor, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
-                        if (!window.xx1) window.xx1 = 0.95
-                        if (!window.xx2) window.xx2 = 5.3/4
-                        if (!window.xx3) window.xx3 = 0.5
-                        if (!window.xx4) window.xx4 = 4
+                        style.drawImage(iconSpecialSkinEffectsSurvivor, this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 1.5);						
                     } 
 					else if (this.SpecialEffect == "Tiger" || this.SpecialEffect2 == "Tiger") {
-                        //style.drawImage(iconSpecialSkinEffectsTiger, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);						
-                        style.drawImage(iconSpecialSkinEffectsTiger, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
-                        if (!window.xx1) window.xx1 = 0.95
-                        if (!window.xx2) window.xx2 = 5.3/4
-                        if (!window.xx3) window.xx3 = 0.5
-                        if (!window.xx4) window.xx4 = 4
+                        style.drawImage(iconSpecialSkinEffectsTiger, this.x - 1.1 * y, this.y - 1.3 * y, y / 1.5, y / 1.5);						
                     } 					
 					
                     if (this.targetNick.includes("The Dying Light" || this.SpecialEffect == "RedArrow" || this.SpecialEffect2 == "RedArrow")) {
