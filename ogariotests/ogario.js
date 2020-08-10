@@ -5049,7 +5049,7 @@ function thelegendmodproject() {
 				if (!window.iframereplitCreated){
 					window.iframereplitCreated=true						
 				$("#instant").html('<iframe frameborder="0px" width="120px" height="40" src="https://repl.it/@legendmod/party-bots-CleverBots?lite=true"></iframe>')
-				toastr.info('<b>[' + Premadeletter123 + ']:</b> ' + 'If <font color="green">GREEN</font> button appears, click it!');
+				toastr.info('<b>[' + Premadeletter123 + ']:</b> ' + 'If <font color="green"><b>GREEN</b></font> button appears, click it!');
 				if (legendmod.gameMode!="party"){
 					$("#create-party-btn-2").click()
 				}
