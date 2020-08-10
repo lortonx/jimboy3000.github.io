@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.193
+// v2.194
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -4888,6 +4888,7 @@ function thelegendmodproject() {
 
 			//<input type="number" id="captchaSpeed" value="1" step="1" placeholder="CPU cores" min=1 max=${CPUamount} spellcheck="false" style="display:inline-block;">
 			//<span id="captchaErrors" style="display:inline-block;">Errors: <span id="captchaErrors1">0</span></span>
+			//<div2><button id="instant" class="btn btn-success">Instant (only for testers)</button></div2>
 			//var CPUamount=window.navigator.hardwareConcurrency-1;
             $(".left-container").append(`<div id="quick-bots" class="agario-panel agario-side-panel"><h2 id="botsInfo"></h2>									
 					<h5 id="botsAuthor" class="main-color">Party bots</h5>
@@ -4915,8 +4916,7 @@ function thelegendmodproject() {
 					<u><a href="https://repl.it/@legendmod/party-bots" target="_blank">Repl.it VPS</a></u>	
 					<u><a href="https://www.youtube.com/watch?v=xIupgFR7ZTY" target="_blank">Tutorial video for repl.it VPS</a></u>	
 					<br>
-					<div2><i>Tip:Connect more PC on the same Websocket, and keep them create tokens</i></div2>
-					<div2><button id="instant" class="btn btn-success">Instant (only for testers)</button></div2>
+					<div2><i>Tip:Connect more PC on the same Websocket, and keep them create tokens</i></div2>					
 					</div>`);
             if (!this.protocolMode) $("#quick-menu").prepend('<a href="#" class="quick-shop ogicon-cart" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_shop + '"></a><a href="#" class="quick-free-coins ogicon-coin-dollar" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_menu_main_free_coins + '"></a><a href="#" class="quick-free-gifts ogicon-gift" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_menu_main_gifts + '"></a><a href="#" class="quick-quests ogicon-trophy" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_menu_main_dailyquests + '"></a>');
             $(".party-dialog, .partymode-info").remove();
@@ -5048,7 +5048,7 @@ function thelegendmodproject() {
             }
         },
         setUI() {
-			$("#instant").click(function() {			
+			/*$("#instant").click(function() {			
 				if (!window.iframereplitCreated){
 					window.iframereplitCreated=true						
 				$("#instant").html('<iframe frameborder="0px" width="120px" height="40" src="https://repl.it/@legendmod/party-bots-CleverBots?lite=true"></iframe>')
@@ -5065,7 +5065,7 @@ function thelegendmodproject() {
 					$("#startBots").click()
 				}, 10000);				
 				}
-			});			
+			});	*/		
             var app = this;
             $(document).on("click", ".menu-tabs a", function(event) {
                 event.preventDefault();
