@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.183 bots
+// v2.184
 
 
 //window.testobjects = {};
@@ -4891,7 +4891,7 @@ function thelegendmodproject() {
 					<span id="aiTextBots">Bots AI: <b id="botsAI">Disabled</b></span>
 					<br>
 					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false" style="display:inline-block;">
-					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="199" spellcheck="false">
+					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="190" spellcheck="false">
 
 					
 					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
@@ -14098,9 +14098,9 @@ function setGUIEvents() {
         window.bots.nameLM = this.value
         localStorage.setItem('localStoredBotsName', window.bots.nameLM)
     })
-    document.getElementById('botsAmount').addEventListener('change', function() {
-        window.bots.amount = Number(this.value)
+    document.getElementById('botsAmount').addEventListener('change', function() {      
         localStorage.setItem('localStoredBotsAmount', window.bots.amount)
+		window.bots.amount = Number(this.value)		
     })
     document.getElementById('connectBots').addEventListener('click', () => {
             if (!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
@@ -14108,18 +14108,17 @@ function setGUIEvents() {
     document.getElementById('startBots').addEventListener('click', () => {
         if (legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots) {
             if (legendmod.gameMode == ":party" || $("#nick").val().includes('℄') && $("#clantag").val() == window.atob(window.clanTagLc) || window.AdminRights == 1 || window.IamNeo == true) {
-                if (window.bots.amount <= 199) {
+                if (window.bots.amount && window.bots.amount <= 190) {
+					if (window.bots.amount + legendmod.leaderboard.length>190) window.bots.amount = 190 - legendmod.leaderboard.length;
                     //if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') {
-					if (window.bots.amount) {	
                         //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
                         window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
 						
 						if (legendmod.gameMode != ":party") window.connectionBots.send(window.buffers.sendMode(window.unescape(window.encodeURIComponent(ogarcopythelb.nick))))						
-                        //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.botsSpawncode[window.botsSpawncodeNum], window.bots.amount))
-                    } 
+                        //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.botsSpawncode[window.botsSpawncodeNum], window.bots.amount))                     
 					else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots amount required before starting the bots')
                 } 
-				else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots Max amount is 199')
+				else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots Max amount is 190')
             } 
 			else {
                 toastr.info('<b>[' + Premadeletter123 + ']:</b> Party bots only available for Party mode')
