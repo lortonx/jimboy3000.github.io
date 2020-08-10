@@ -1,7 +1,8 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.179 bots
+// v2.180 bots
+
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -514,6 +515,14 @@ window.buffers = {
         writer.writeInt32(y)
         return writer.dataView.buffer
     },	
+    mapOffset(x, y) {
+        const writer = new Writer(9)
+        writer.writeUint8(8)
+        writer.writeInt32(x)
+        writer.writeInt32(y)
+        return writer.dataView.buffer
+    },		
+	
 	//
     captchabots(x) {
         const writer = new Writer(4 + x.length)
@@ -9567,7 +9576,10 @@ function thelegendmodproject() {
                 window.userBots.mouseY = this.cursorY - window.userBots.offsetY;
                 window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))
 				//
-				if (legendmod.gameMode!=":party") window.connectionBots.send(window.buffers.ghostInstances(application.getghostX(), application.getghostY()))
+				if (legendmod.gameMode!=":party"){
+					window.connectionBots.send(window.buffers.ghostInstances(application.getghostX(), application.getghostY()))
+					window.connectionBots.send(window.buffers.mapOffset(legendmod.mapOffsetX, legendmod.mapOffsetY))
+				}
 				//	
             }
         },
