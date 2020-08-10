@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.190
+// v2.191
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -5049,6 +5049,7 @@ function thelegendmodproject() {
 				if (!window.iframereplitCreated){
 					window.iframereplitCreated=true						
 				$("#instant").html('<iframe frameborder="0px" width="120px" height="40" src="https://repl.it/@legendmod/party-bots-CleverBots?lite=true"></iframe>')
+				toastr.info('<b>[' + Premadeletter123 + ']:</b> ' + 'If <font color="green">GREEN</font> button appears, click it!');
 				if (legendmod.gameMode!="party"){
 					$("#create-party-btn-2").click()
 				}
