@@ -3,7 +3,6 @@
 // This is part of the Legend mod project
 // v2.179 bots
 
-
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
 var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
