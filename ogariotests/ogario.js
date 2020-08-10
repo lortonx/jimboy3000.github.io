@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.199
+// v2.200
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8657,7 +8657,7 @@ function thelegendmodproject() {
                         style.drawImage(iconSpecialSkinEffectsBabyBoss, this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);						
                     } 	
 					else if (this.SpecialEffect == "BabyBoss1" || this.SpecialEffect2 == "BabyBoss1") {
-                        style.drawImage(cimgSpecialSkinEffectsBabyBoss1, this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);					
+                        style.drawImage(iconSpecialSkinEffectsBabyBoss1, this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);					
                     } 
 					else if (this.SpecialEffect == "Gladiator" || this.SpecialEffect2 == "Gladiator") {
                         style.drawImage(iconSpecialSkinEffectsGladiator, this.x - 0.85 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);						
