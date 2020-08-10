@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.189
+// v2.190
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -1051,7 +1051,7 @@ var displayText = {
         showMapBorders: 'Granice mapy',
         showGhostCells: 'Duchy kulek (fps drop)',
         showGhostCellsInfo: 'Ghost cells info (confusing)',
-        showPartyBots: 'Party bots',
+        //showPartyBots: 'Party bots',
         rotateMap: 'Rotate Map',
         showMiniMap: 'Pokaż minimapę',
         showMiniMapGrid: 'Pokaż siatkę minimapy',
@@ -1493,7 +1493,7 @@ var displayText = {
         showMapBorders: 'Show map borders',
         showGhostCells: 'Ghost cells (fps drop)',
         showGhostCellsInfo: 'Ghost cells info (confusing)',
-        showPartyBots: 'Party bots',
+        //showPartyBots: 'Party bots',
         rotateMap: 'Rotate Map',
         showMiniMap: 'Show minimap',
         showMiniMapGrid: 'Show minimap grid',
@@ -2636,7 +2636,7 @@ var defaultmapsettings = {
     showMapBorders: true,
     showGhostCells: false,
     showGhostCellsInfo: false,
-    showPartyBots: false,
+    //showPartyBots: false,
     showMiniMap: true,
     rotateMap: true,
     showMiniMapGrid: false,
@@ -3984,13 +3984,11 @@ function thelegendmodproject() {
         },
         displayPartyBots() {
             setTimeout(function() {
-                if (defaultmapsettings.showPartyBots) {
-                    //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Party bots displayed');
+                //if (defaultmapsettings.showPartyBots) {                   
                     $(".quick.quick-bots.ogicon-trophy").show();
-                } else {
-                    //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Party bots NOT displayed');
+                /*} else {
                     $(".quick.quick-bots.ogicon-trophy").hide();
-                }
+                }*/
             }, 50);
         },
         setBlockPopups() {
@@ -4551,9 +4549,9 @@ function thelegendmodproject() {
                     case 'tweenMaxEffect':
                         this.setTweenMaxEffect();
                         break;
-                    case 'showPartyBots':
+                    /*case 'showPartyBots':
                         this.displayPartyBots();
-                        break;
+                        break;*/
                     case 'showStats':
                         this.displayStats();
                         $('#stats-hud').show();
@@ -4914,8 +4912,8 @@ function thelegendmodproject() {
 					<u><a href="https://repl.it/@legendmod/party-bots" target="_blank">Repl.it VPS</a></u>	
 					<u><a href="https://www.youtube.com/watch?v=xIupgFR7ZTY" target="_blank">Tutorial video for repl.it VPS</a></u>	
 					<br>
-					<div2>Tip: <i>Connect more PC on the same Websocket, and keep them create tokens</i></div2>
-					<div2><button id="instant" class="btn btn-success" data-itr="page_join_party">Instant</button></div2>
+					<div2><i>Tip:Connect more PC on the same Websocket, and keep them create tokens</i></div2>
+					<div2><button id="instant" class="btn btn-success">Instant</button></div2>
 					</div>`);
             if (!this.protocolMode) $("#quick-menu").prepend('<a href="#" class="quick-shop ogicon-cart" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_shop + '"></a><a href="#" class="quick-free-coins ogicon-coin-dollar" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_menu_main_free_coins + '"></a><a href="#" class="quick-free-gifts ogicon-gift" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_menu_main_gifts + '"></a><a href="#" class="quick-quests ogicon-trophy" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_menu_main_dailyquests + '"></a>');
             $(".party-dialog, .partymode-info").remove();
@@ -4950,8 +4948,9 @@ function thelegendmodproject() {
             this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChatTranslation", "coloredNicks", "hidecountry", "universalChat"], "chatGroup");
             this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup");
 //            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "reverseTrick", "showPartyBots"], "helpersGroup"); //Sonia2
-            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
-            this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
+            //this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
+            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo"], "helpersGroup"); //Sonia2
+			this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
             //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
             this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
             this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "gameOverStats", "showTime"], "statsGroup");
@@ -5046,6 +5045,23 @@ function thelegendmodproject() {
             }
         },
         setUI() {
+			$("#instant").click(function() {			
+				if (!window.iframereplitCreated){
+					window.iframereplitCreated=true						
+				$("#instant").html('<iframe frameborder="0px" width="120px" height="40" src="https://repl.it/@legendmod/party-bots-CleverBots?lite=true"></iframe>')
+				if (legendmod.gameMode!="party"){
+					$("#create-party-btn-2").click()
+				}
+				setTimeout(function() {					
+					$("#botsRemoteIP").val("wss://party-bots-CleverBots--legendmod.repl.co")
+					window.SERVER_HOST="wss://party-bots-CleverBots--legendmod.repl.co"
+					$("#connectBots").click()
+				}, 8000);	
+				setTimeout(function() {
+					$("#startBots").click()
+				}, 10000);				
+				}
+			});			
             var app = this;
             $(document).on("click", ".menu-tabs a", function(event) {
                 event.preventDefault();
