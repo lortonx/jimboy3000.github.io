@@ -14102,7 +14102,7 @@ function setGUIEvents() {
         localStorage.setItem('localStoredBotsAmount', window.bots.amount)
 		window.bots.amount = Number(this.value)		
     })
-    document.getElementById('connectBots').addEventListener('click', () => {
+    document.getElementById('connectBots').addEventListener('click', () => {			
             if (!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
     })
     document.getElementById('startBots').addEventListener('click', () => {
@@ -14115,10 +14115,9 @@ function setGUIEvents() {
                         window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
 						
 						if (legendmod.gameMode != ":party") window.connectionBots.send(window.buffers.sendMode(window.unescape(window.encodeURIComponent(ogarcopythelb.nick))))						
-                        //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.botsSpawncode[window.botsSpawncodeNum], window.bots.amount))                     
-					else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots amount required before starting the bots')
+                        //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.botsSpawncode[window.botsSpawncodeNum], window.bots.amount))                     					
                 } 
-				else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots Max amount is 190')
+				else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots amount required (max 190)')
             } 
 			else {
                 toastr.info('<b>[' + Premadeletter123 + ']:</b> Party bots only available for Party mode')
