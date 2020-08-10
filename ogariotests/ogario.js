@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.192
+// v2.193
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -536,6 +536,9 @@ function createCaptchaIframe(i){
 		window.capthaWindow[i].style.width = "0px";
 		window.capthaWindow[i].style.height = "0px";
 		document.body.appendChild(window.capthaWindow[i]);	*/
+		if (window.LMVersion=="1.7"){
+			toastr.info('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + '	Your version is outdated for bts. Download ' + ' <font color="yellow"><b>v1.8</b></font>. <br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+		}
 		window.capthaWindow[i] = window.open("https://agar.io/captcha");
 }	
 window.connectionBots = {
