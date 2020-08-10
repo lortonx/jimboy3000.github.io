@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.182 bots
+// v2.183 bots
 
 
 //window.testobjects = {};
@@ -11660,8 +11660,10 @@ Game name     : ${i.displayName}<br/>
                             //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);                                
                                 window.lastusednameforskin = y;
                                 //core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image, null);
-                                application.customSkinsMap[y] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image;
-                                application.loadSkin(application.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image);                            
+								if (!application.customSkinsMap[y] || LM.gameMode != ":party"){
+									application.customSkinsMap[y] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image;
+									application.loadSkin(application.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image);  
+								}
                         }
                     }
                 }
@@ -14105,7 +14107,7 @@ function setGUIEvents() {
     })
     document.getElementById('startBots').addEventListener('click', () => {
         if (legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots) {
-            if (legendmod.gameMode == ":party" || window.AdminRights == 1 || window.IamNeo == true) {
+            if (legendmod.gameMode == ":party" || $("#nick").val().includes('℄') && $("#clantag").val() == window.atob(window.clanTagLc) || window.AdminRights == 1 || window.IamNeo == true) {
                 if (window.bots.amount <= 199) {
                     //if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') {
 					if (window.bots.amount) {	
