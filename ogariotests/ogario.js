@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.185
+// v2.186
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -531,11 +531,12 @@ window.addEventListener('beforeunload', function (e) {
 //e.returnValue = ''; 
 }); 
 function createCaptchaIframe(i){	
-		window.capthaWindow[i] = document.createElement("iframe");
+		/*window.capthaWindow[i] = document.createElement("iframe");
 		window.capthaWindow[i].setAttribute("src", "https://agar.io/captcha");
 		window.capthaWindow[i].style.width = "0px";
 		window.capthaWindow[i].style.height = "0px";
-		document.body.appendChild(window.capthaWindow[i]);	
+		document.body.appendChild(window.capthaWindow[i]);	*/
+		window.capthaWindow[i] = window.open("https://agar.io/captcha");
 }	
 window.connectionBots = {
     ws: null,
@@ -9444,7 +9445,6 @@ function thelegendmodproject() {
 				}
 				else if(legendmod.integrity && window.capthaWindow[i] && window.capthaWindow[i].closed){
 					createCaptchaIframe(i)
-					//window.capthaWindow[i] = window.open("https://agar.io/captcha");
 				}
 				
 			}
