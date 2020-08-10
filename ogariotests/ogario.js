@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.182 bots
+// v2.177 bots
 
 
 //window.testobjects = {};
@@ -507,23 +507,6 @@ window.buffers = {
         writer.writeInt32(y)
         return writer.dataView.buffer
     },
-	//
-    ghostInstances(x, y) {
-        const writer = new Writer(9)
-        writer.writeUint8(7)
-        writer.writeInt32(x)
-        writer.writeInt32(y)
-        return writer.dataView.buffer
-    },	
-    mapOffset(x, y) {
-        const writer = new Writer(9)
-        writer.writeUint8(8)
-        writer.writeInt32(x)
-        writer.writeInt32(y)
-        return writer.dataView.buffer
-    },		
-	
-	//
     captchabots(x) {
         const writer = new Writer(4 + x.length)
         writer.writeUint8(8)
@@ -9572,23 +9555,10 @@ function thelegendmodproject() {
                 this.sendMessage(view);
             }
             if (window.userBots.startedBots && window.userBots.isAlive) {
-				if (legendmod.gameMode==":party"){
-					window.userBots.mouseX = this.cursorX - window.userBots.offsetX;
-					window.userBots.mouseY = this.cursorY - window.userBots.offsetY;
-					window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))
-				}
-				if (legendmod.gameMode!=":party"){
-					window.userBots.mouseX = this.cursorX - legendmod.mapOffsetX;
-					window.userBots.mouseY = this.cursorY - legendmod.mapOffsetY;
-					window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))
-					
-					window.connectionBots.send(window.buffers.ghostInstances(application.getghostX(), application.getghostY()))
-					window.connectionBots.send(window.buffers.mapOffset(legendmod.mapOffsetX, legendmod.mapOffsetY))
-
-				}
-			}
-				//	
-            
+                window.userBots.mouseX = this.cursorX - window.userBots.offsetX;
+                window.userBots.mouseY = this.cursorY - window.userBots.offsetY;
+                window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))
+            }
         },
         /*            sendAccessToken(t, e, i) {
                         if (!this['accessTokenSent']) {
