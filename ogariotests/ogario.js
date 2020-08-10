@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.181 bots
+// v2.182 bots
 
 
 //window.testobjects = {};
@@ -14092,6 +14092,7 @@ function setGUIEvents() {
         window.SERVER_HOST = window.bots.remoteIP
     })
     document.getElementById('botsNameLM').addEventListener('change', function() {
+		 document.getElementById('botsNameLM').value = document.getElementById('botsNameLM').value.replace(/[^\x20-\x7E]/g, '');
         window.bots.nameLM = this.value
         localStorage.setItem('localStoredBotsName', window.bots.nameLM)
     })
@@ -14110,6 +14111,7 @@ function setGUIEvents() {
 					if (window.bots.amount) {	
                         //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
                         window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
+						
 						if (legendmod.gameMode != ":party") window.connectionBots.send(window.buffers.sendMode(window.unescape(window.encodeURIComponent(ogarcopythelb.nick))))						
                         //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.botsSpawncode[window.botsSpawncodeNum], window.bots.amount))
                     } 
