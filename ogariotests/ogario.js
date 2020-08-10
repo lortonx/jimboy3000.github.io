@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.180 bots
+// v2.181 bots
 
 
 //window.testobjects = {};
@@ -9572,16 +9572,23 @@ function thelegendmodproject() {
                 this.sendMessage(view);
             }
             if (window.userBots.startedBots && window.userBots.isAlive) {
-                window.userBots.mouseX = this.cursorX - window.userBots.offsetX;
-                window.userBots.mouseY = this.cursorY - window.userBots.offsetY;
-                window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))
-				//
+				if (legendmod.gameMode==":party"){
+					window.userBots.mouseX = this.cursorX - window.userBots.offsetX;
+					window.userBots.mouseY = this.cursorY - window.userBots.offsetY;
+					window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))
+				}
 				if (legendmod.gameMode!=":party"){
+					window.userBots.mouseX = this.cursorX + legendmod.mapOffsetX;
+					window.userBots.mouseY = this.cursorY + legendmod.mapOffsetY;
+					window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))
+					
 					window.connectionBots.send(window.buffers.ghostInstances(application.getghostX(), application.getghostY()))
 					window.connectionBots.send(window.buffers.mapOffset(legendmod.mapOffsetX, legendmod.mapOffsetY))
+
 				}
+			}
 				//	
-            }
+            
         },
         /*            sendAccessToken(t, e, i) {
                         if (!this['accessTokenSent']) {
