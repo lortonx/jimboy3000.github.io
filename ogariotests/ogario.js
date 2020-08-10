@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.195
+// v2.196
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8653,9 +8653,9 @@ function thelegendmodproject() {
 					
 					
 					
-					else if (this.SpecialEffect == "BabyBoss" || this.SpecialEffect2 == "BabyBoss") {
+					else if (this.SpecialEffect == "BabyBoss" || this.SpecialEffect2 == "BabyBoss") { 
                         //style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);						
-                        style.drawImage(cimgSpecialSkinEffectsBabyBoss, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
+                        style.drawImage(iconSpecialSkinEffectsBabyBoss, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
                         if (!window.xx1) window.xx1 = 0.95
                         if (!window.xx2) window.xx2 = 5.3/4
                         if (!window.xx3) window.xx3 = 0.5
@@ -8663,7 +8663,7 @@ function thelegendmodproject() {
                     } 	
 					else if (this.SpecialEffect == "BabyBoss1" || this.SpecialEffect2 == "BabyBoss1") {
                         //style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);						
-                        style.drawImage(cimgSpecialSkinEffectsBabyBoss1, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
+                        style.drawImage(iconSpecialSkinEffectsBabyBoss1, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
                         if (!window.xx1) window.xx1 = 0.95
                         if (!window.xx2) window.xx2 = 5.3/4
                         if (!window.xx3) window.xx3 = 0.5
@@ -8671,7 +8671,7 @@ function thelegendmodproject() {
                     } 
 					else if (this.SpecialEffect == "Gladiator" || this.SpecialEffect2 == "Gladiator") {
                         //style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);						
-                        style.drawImage(cimgSpecialSkinEffectsGladiator, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
+                        style.drawImage(iconSpecialSkinEffectsGladiator, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
                         if (!window.xx1) window.xx1 = 0.95
                         if (!window.xx2) window.xx2 = 5.3/4
                         if (!window.xx3) window.xx3 = 0.5
@@ -8679,7 +8679,7 @@ function thelegendmodproject() {
                     } 
 					else if (this.SpecialEffect == "Hero" || this.SpecialEffect2 == "Hero") {
                         //style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);						
-                        style.drawImage(cimgSpecialSkinEffectsHero, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
+                        style.drawImage(iconSpecialSkinEffectsHero, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
                         if (!window.xx1) window.xx1 = 0.95
                         if (!window.xx2) window.xx2 = 5.3/4
                         if (!window.xx3) window.xx3 = 0.5
@@ -8687,7 +8687,7 @@ function thelegendmodproject() {
                     } 
 					else if (this.SpecialEffect == "Hero1" || this.SpecialEffect2 == "Hero1") {
                         //style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);						
-                        style.drawImage(cimgSpecialSkinEffectsHero1, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
+                        style.drawImage(iconSpecialSkinEffectsHero1, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
                         if (!window.xx1) window.xx1 = 0.95
                         if (!window.xx2) window.xx2 = 5.3/4
                         if (!window.xx3) window.xx3 = 0.5
@@ -8695,7 +8695,7 @@ function thelegendmodproject() {
                     } 
 					else if (this.SpecialEffect == "Key" || this.SpecialEffect2 == "Key") {
                         //style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);						
-                        style.drawImage(cimgSpecialSkinEffectsLegendKey, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
+                        style.drawImage(iconSpecialSkinEffectsLegendKey, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
                         if (!window.xx1) window.xx1 = 0.95
                         if (!window.xx2) window.xx2 = 5.3/4
                         if (!window.xx3) window.xx3 = 0.5
@@ -8703,7 +8703,7 @@ function thelegendmodproject() {
                     } 
 					else if (this.SpecialEffect == "MetalOfHonor" || this.SpecialEffect2 == "MetalOfHonor") {
                         //style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);						
-                        style.drawImage(cimgSpecialSkinEffectsMetalOfHonor, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
+                        style.drawImage(iconSpecialSkinEffectsMetalOfHonor, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
                         if (!window.xx1) window.xx1 = 0.95
                         if (!window.xx2) window.xx2 = 5.3/4
                         if (!window.xx3) window.xx3 = 0.5
@@ -8711,7 +8711,7 @@ function thelegendmodproject() {
                     } 
 					else if (this.SpecialEffect == "PeaceMaker" || this.SpecialEffect2 == "PeaceMaker") {
                         //style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);						
-                        style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
+                        style.drawImage(iconSpecialSkinEffectsLegendHeroes, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
                         if (!window.xx1) window.xx1 = 0.95
                         if (!window.xx2) window.xx2 = 5.3/4
                         if (!window.xx3) window.xx3 = 0.5
@@ -8719,7 +8719,7 @@ function thelegendmodproject() {
                     } 
 					else if (this.SpecialEffect == "Survivor" || this.SpecialEffect2 == "Survivor") {
                         //style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);						
-                        style.drawImage(cimgSpecialSkinEffectsSurvivor, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
+                        style.drawImage(iconSpecialSkinEffectsSurvivor, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
                         if (!window.xx1) window.xx1 = 0.95
                         if (!window.xx2) window.xx2 = 5.3/4
                         if (!window.xx3) window.xx3 = 0.5
@@ -8727,7 +8727,7 @@ function thelegendmodproject() {
                     } 
 					else if (this.SpecialEffect == "Tiger" || this.SpecialEffect2 == "Tiger") {
                         //style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);						
-                        style.drawImage(cimgSpecialSkinEffectsLegendTiger, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
+                        style.drawImage(iconSpecialSkinEffectsLegendTiger, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
                         if (!window.xx1) window.xx1 = 0.95
                         if (!window.xx2) window.xx2 = 5.3/4
                         if (!window.xx3) window.xx3 = 0.5
