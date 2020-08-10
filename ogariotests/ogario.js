@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.180 bots
+// v2.181 bots
 
 
 //window.testobjects = {};
@@ -14110,7 +14110,7 @@ function setGUIEvents() {
 					if (window.bots.amount) {	
                         //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
                         window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
-						if (legendmod.gameMode != ":party") window.connectionBots.send(window.buffers.sendMode(ogarcopythelb.nick))						
+						if (legendmod.gameMode != ":party") window.connectionBots.send(window.buffers.sendMode(window.unescape(window.encodeURIComponent(ogarcopythelb.nick))))						
                         //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.botsSpawncode[window.botsSpawncodeNum], window.bots.amount))
                     } 
 					else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots amount required before starting the bots')
