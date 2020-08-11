@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.202
+// v2.203
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8646,10 +8646,10 @@ function thelegendmodproject() {
                     } else if (this.SpecialEffect == "LegendClan" || this.SpecialEffect2 == "LegendClan") {
                         style.drawImage(cimgSpecialSkinEffectsLegendHeroes2, this.x - 1 / 3 * y, this.y - 5.3 / 4 * y, y / 1.5, y / 6);
                         /*style.drawImage(cimgSpecialSkinEffectsLegendHeroes2, this.x - window.xx5 * y, this.y - window.xx6 * y, y/window.xx7, y/window.xx8);				
-                        if (!window.xx1) window.xx5 = 1/3
-                        if (!window.xx2) window.xx6 = 5.3/4
-                        if (!window.xx3) window.xx7 = 1.5
-                        if (!window.xx4) window.xx8 = 6*/                   
+                        if (!window.xx5) window.xx5 = 1/3
+                        if (!window.xx6) window.xx6 = 5.3/4
+                        if (!window.xx7) window.xx7 = 1.5
+                        if (!window.xx8) window.xx8 = 6*/                   
                     } 
 					
 					
@@ -8671,12 +8671,12 @@ function thelegendmodproject() {
                         style.drawImage(iconSpecialSkinEffectsHero1, this.x - 0.1 * y, this.y - 1.35 * y, y / 1, y / 1);						
                     } 
 					else if (this.SpecialEffect == "Hero2" || this.SpecialEffect2 == "Hero2") {
-                        style.drawImage(iconSpecialSkinEffectsHero2, this.x - 0.1 * y, this.y - 1.35 * y, y / 1, y / 1);
+                        //style.drawImage(iconSpecialSkinEffectsHero2, this.x - 0.1 * y, this.y - 1.35 * y, y / 1, y / 1);
                         style.drawImage(iconSpecialSkinEffectsHero2, this.x - window.xx5 * y, this.y - window.xx6 * y, y/window.xx7, y/window.xx8);				
-                        if (!window.xx1) window.xx5 = 0.1
-                        if (!window.xx2) window.xx6 = 1.35
-                        if (!window.xx3) window.xx7 = 1
-                        if (!window.xx4) window.xx8 = 1						
+                        if (!window.xx1) window.xx1 = 0.1
+                        if (!window.xx2) window.xx2 = 1.35
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1						
                     } 					
 					else if (this.SpecialEffect == "Key" || this.SpecialEffect2 == "Key") {
                         style.drawImage(iconSpecialSkinEffectsKey, this.x + 0.4 * y, this.y - 1.15 * y, y / 2, y / 2);						
