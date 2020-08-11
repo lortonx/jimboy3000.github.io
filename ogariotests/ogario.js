@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.222
+// v2.223
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8517,7 +8517,11 @@ function thelegendmodproject() {
 				for (var i=0;i<application.chatHistory-1;i++){
 					if (application.chatHistory[i].nick==this.nick && (Date.now() - application.chatHistory[i].time < 5000)){
 						massCanvas.setTxt(application.chatHistory[i].message);
+						massCanvas.setFontSize(this.massSize);
+						massCanvas.setScale(this.scale)												
 						var data = massCanvas.drawTxt();
+						var width = ~~(data.width / this.scale);
+						var height = ~~(data.height / this.scale)							
 						try {
 							context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
 						} catch (e) {}					
