@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.230
+// v2.231
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -1002,6 +1002,7 @@ var displayText = {
         noNames: 'Wyłącz nazwy',
         noColors: 'Wyłącz kolory',
         showMass: 'Pokaż masę',
+		showChat: 'Show chat on cells',
         oneColoredSpectator: 'Multibox less render cells',
         multiBoxShadow: 'Player 1 & 2',
         multiKeepMoving: 'Inactive keep moving',
@@ -1444,6 +1445,7 @@ var displayText = {
         noNames: 'No names',
         noColors: 'No colors',
         showMass: 'Show mass',
+		showChat: 'Show chat on cells',
         oneColoredSpectator: 'MultiBox less render cells',
         multiBoxShadow: 'Player 1 & 2',
         multiKeepMoving: 'Inactive keep moving',
@@ -2636,6 +2638,7 @@ var defaultmapsettings = {
     hideMyName: false,
     hideTeammatesNames: false,
     showMass: true,
+	showChat: true,
     oneColoredSpectator: false,
     multiBoxShadow: false,
     multiKeepMoving: true,
@@ -4971,7 +4974,7 @@ function thelegendmodproject() {
             this.addOptions(["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup");
             this.addOptions(["noColors", "myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow", 'cellContours', "animatedRainbowColor"], "transparencyGroup");
             this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
-            this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChatTranslation", "coloredNicks", "hidecountry", "universalChat"], "chatGroup");
+            this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChat", "showChatTranslation", "coloredNicks", "hidecountry", "universalChat"], "chatGroup");
             this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup");
 //            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "reverseTrick", "showPartyBots"], "helpersGroup"); //Sonia2
             //this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
@@ -8864,7 +8867,7 @@ function thelegendmodproject() {
                     }*/
                     return defaultmapsettings.transparentViruses && (style.globalAlpha *= defaultSettings.virusAlpha, s = true), defaultmapsettings.virColors && LM.play ? (style.fillStyle = application.setVirusColor(y), style.strokeStyle = application.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = defaultSettings.virusStrokeSize, defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
                         defaultSettings.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), defaultmapsettings.showMass && (this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
-                        this.setMass(this.size), this.drawMass(style), this.drawChat(style), (window.ExternalScripts && !window.legendmod5.optimizedMass && this.drawMerge(style))), void style.restore();
+                        this.setMass(this.size), this.drawMass(style), (defaultmapsettings.showChat && this.drawChat(style)), (window.ExternalScripts && !window.legendmod5.optimizedMass && this.drawMerge(style))), void style.restore();
                 }
             } 
 			else {
@@ -8900,7 +8903,9 @@ function thelegendmodproject() {
                         if (window.ExternalScripts && !window.legendmod5.optimizedMass) {
                             this.drawMerge(style);
                         }
+						if (defaultmapsettings.showChat){
 						this.drawChat(style);
+						}
                     }
                     style.restore();
                     return;
@@ -9111,7 +9116,9 @@ function thelegendmodproject() {
                             if (window.ExternalScripts && !window.legendmod5.optimizedMass) {
                                 this.drawMerge(style);
                             }
-							this.drawChat(style);
+							if (defaultmapsettings.showChat){
+								this.drawChat(style);
+							}
                         }
                     }
                     style.restore();
