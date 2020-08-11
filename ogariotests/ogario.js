@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.220
+// v2.221
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8435,17 +8435,6 @@ function thelegendmodproject() {
             try {
                 ctx.drawImage(nickImg, ~~this.x - ~~(w / 2), ~~this.y - this.margin, w, h);
             } catch (e) {}
-			//
-			var textureY = this.margin === 0 ? ~~(this.y + height * 2) : ~~this.y - 4 * this.margin;
-			for (var i=0;i<application.chatHistory-1;i++){
-				if (application.chatHistory[i].nick==this.nick && (Date.now() - application.chatHistory[i].time < 5000)){
-					nickCanvas.setTxt(application.chatHistory[i].message);
-                    try {
-                        context.drawImage(data, ~~(this.x - w / 2), textureY, w, h);
-                     } catch (e) {}					
-				}
-			}
-			//
         };
         this.drawMerge = function(context) {
             if (this.mergeCanvas && !(this.size <= 40)) {
@@ -8494,13 +8483,10 @@ function thelegendmodproject() {
                                 context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
                             } catch (e) {}
                         }
-
                     }
 
                 }
                 ///
-
-
                 //window.counterCell++;
             }
         };
@@ -8526,6 +8512,17 @@ function thelegendmodproject() {
                         context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
                     } catch (e) {}
                 }
+			//
+				var textureY = this.margin === 0 ? ~~(this.y + height * 2) : ~~this.y - 4 * this.margin;
+				for (var i=0;i<application.chatHistory-1;i++){
+					if (application.chatHistory[i].nick==this.nick && (Date.now() - application.chatHistory[i].time < 5000)){
+						massCanvas.setTxt(application.chatHistory[i].message);
+						try {
+							context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
+						} catch (e) {}					
+					}
+				}
+			//				
             }
         };
         this.createStrokeVirusPath = function(shadowXpos, shadowYpos, zeroSizeMax, pixelSizeTargetMax = 6) {
