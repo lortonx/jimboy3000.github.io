@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.207
+// v2.208
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8665,10 +8665,10 @@ function thelegendmodproject() {
                     } 	 
 					else if (this.SpecialEffect == "Gladiator" || this.SpecialEffect2 == "Gladiator") {
 						var d = new Date();
-						var n = d.getMilliseconds();
+						var n = d.getSeconds();
 						var e;
-						if (n<500){ e = n / 500}
-						else { e = 1- (n /500)}
+						if (n<30){ e = n / 30}
+						else { e = 1- (n /30)}
 						
 						style.filter = 'contrast(1.4) sepia(' + e + ')';
                         style.drawImage(iconSpecialSkinEffectsGladiator, this.x - 0.85 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);						
