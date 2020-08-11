@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.220
+// v2.219
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8511,10 +8511,7 @@ function thelegendmodproject() {
             }
         };
         this.createStrokeVirusPath = function(shadowXpos, shadowYpos, zeroSizeMax, pixelSizeTargetMax = 6) {
-            //
-			zeroSizeMax=0;
-			//
-			const nAngelsOfVirus = ~~(45 * zeroSizeMax / 98);
+            const nAngelsOfVirus = ~~(45 * zeroSizeMax / 98);
             const GROUPSIZE = this.pi2 / nAngelsOfVirus;
             const degreeStep = GROUPSIZE / 2;
             const ctxfx = new Path2D;
