@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.236
+// v2.237
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8494,7 +8494,7 @@ function thelegendmodproject() {
 									}
 								}
 								else{
-									if (temp > (Date.now() - application.commandHistory[i].time)){
+									if (temp > (Date.now() - application.commandHistory[i].time) || !temp){
 										customTxt = application.commandHistory[i].message	
 									}
 								}
