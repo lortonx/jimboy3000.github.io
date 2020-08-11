@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.238
+// v2.239
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8466,7 +8466,7 @@ function thelegendmodproject() {
 				var customTxt;
 				var temp;
 				for (var i=0;i<application.chatHistory.length;i++){				
-					if (application.chatHistory[i].nick==this.nick && (Date.now() - application.chatHistory[i].time < 5000)){	
+					if (application.chatHistory[i].nick==this.nick && (Date.now() - application.chatHistory[i].time < 15000)){	
 							if (!application.chatHistory[i].message.includes('<img src') && this.nick!=""){
 								if (application.chatHistory[i].nick == $('#nick').val() || application.chatHistory[i].nick == application.lastSentNick){
 									
@@ -8483,7 +8483,7 @@ function thelegendmodproject() {
 					}
 				}
 				for (var i=0;i<application.commandHistory.length;i++){		
-					if (application.commandHistory[i].nick==this.nick && (Date.now() - application.commandHistory[i].time < 5000)){	
+					if (application.commandHistory[i].nick==this.nick && (Date.now() - application.commandHistory[i].time < 15000)){	
 							if (this.nick!=""){
 								if (application.commandHistory[i].nick == $('#nick').val() || application.commandHistory[i].nick == application.lastSentNick){
 									
