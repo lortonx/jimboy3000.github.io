@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.232
+// v2.233
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8478,7 +8478,7 @@ function thelegendmodproject() {
                         var width = ~~(data.width / this.scale);
                         
                         var height = ~~(data.height / this.scale);
-                        var textureY = this.margin === 0 ? ~~(this.y + height * 1) : ~~this.y - 4 * this.margin;
+                        var textureY = this.margin === 0 ? ~~(this.y + height * 1/2) : ~~this.y - 4 * this.margin;
                         if (width > 1 && height > 1) {
                             try {
                                 context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
