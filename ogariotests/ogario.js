@@ -1,8 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.219
-
+// v2.220
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -531,7 +530,7 @@ window.addEventListener('beforeunload', function (e) {
 //e.preventDefault();
 //e.returnValue = ''; 
 }); 
-function createCaptchaIframe(i){	
+function createCaptchaWindow(i){	
 		/*window.capthaWindow[i] = document.createElement("iframe");
 		window.capthaWindow[i].setAttribute("src", "https://agar.io/captcha");
 		window.capthaWindow[i].style.width = "0px";
@@ -566,7 +565,7 @@ window.connectionBots = {
         document.getElementById('connectBots').style.color = 'white'
         window.RequestedTokens = 100000;
 		for (var i=0;i<window.captchaOpenedWindow;i++){
-			createCaptchaIframe(i);
+			createCaptchaWindow(i);
 		}
 		
 		if (!window.capthaWindowOpened){
@@ -8512,7 +8511,10 @@ function thelegendmodproject() {
             }
         };
         this.createStrokeVirusPath = function(shadowXpos, shadowYpos, zeroSizeMax, pixelSizeTargetMax = 6) {
-            const nAngelsOfVirus = ~~(45 * zeroSizeMax / 98);
+            //
+			zeroSizeMax=0;
+			//
+			const nAngelsOfVirus = ~~(45 * zeroSizeMax / 98);
             const GROUPSIZE = this.pi2 / nAngelsOfVirus;
             const degreeStep = GROUPSIZE / 2;
             const ctxfx = new Path2D;
@@ -9551,7 +9553,7 @@ function thelegendmodproject() {
 					window.capthaWindow[i].ProcessParentMessage('doCaptcha');
 				}
 				else if(legendmod.integrity && window.capthaWindow[i] && window.capthaWindow[i].closed){
-					createCaptchaIframe(i)
+					createCaptchaWindow(i)
 				}
 				
 			}
