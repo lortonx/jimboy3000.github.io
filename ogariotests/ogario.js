@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.223
+// v2.224
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8092,6 +8092,7 @@ function thelegendmodproject() {
         this.kMass = 0;
         this.massCanvas = null;
         this.mergeCanvas = null;
+		this.chatCanvas = null;
         this.massTxt = '';
         this.margin = 0;
         this.scale = 1;
@@ -8115,6 +8116,7 @@ function thelegendmodproject() {
         this.redrawNick = true;
         this.redrawMass = true;
         this.redrawMerge = true;
+		this.redrawChat = true;
         this.optimizedNames = false;
         this.optimizedMass = false;
         this.strokeNick = false;
@@ -8328,6 +8330,11 @@ function thelegendmodproject() {
                 this.mergeCanvas = new irenderfromagario();
                 return false;
             }
+            if (!this.chatCanvas) {
+                this.chatCanvas = new irenderfromagario();
+                return false;
+            }			
+			
             this.mass = ~~(mass * mass / 100);
             this.redrawMass = true;
             if (this.isVirus) {
@@ -8436,6 +8443,35 @@ function thelegendmodproject() {
                 ctx.drawImage(nickImg, ~~this.x - ~~(w / 2), ~~this.y - this.margin, w, h);
             } catch (e) {}
         };
+        this.drawChat = function(context) {
+            if (this.chatCanvas && !(this.size <= 40)) {
+                var chatCanvas = this.chatCanvas;
+                chatCanvas.setDrawing(defaultSettings.massColor, defaultSettings.massFontFamily, defaultSettings.massFontWeight, this.strokeMass, this.massStrokeSize, defaultSettings.massStrokeColor);
+                chatCanvas.setFontSize(this.massSize);
+                chatCanvas.setScale(this.scale);
+				var customTxt;
+				for (var i=0;i<application.chatHistory-1;i++){
+					if (application.chatHistory[i].nick==this.nick && (Date.now() - application.chatHistory[i].time < 5000)){						
+							customTxt = application.chatHistory[i].message		
+					}
+				}				
+                    if (customTxt) {
+                        if (this.redrawChat) {
+                            chatCanvas.setTxt(customTxt);                          
+                        }
+                        var data = chatCanvas.drawTxt(customTxt);
+                        var width = ~~(data.width / this.scale);
+                        
+                        var height = ~~(data.height / this.scale);
+                        var textureY = this.margin === 0 ? ~~(this.y + height * 2) : ~~this.y - 4 * this.margin;
+                        if (width > 1 && height > 1) {
+                            try {
+                                context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
+                            } catch (e) {}
+                        }
+                    }
+            }
+        };		
         this.drawMerge = function(context) {
             if (this.mergeCanvas && !(this.size <= 40)) {
                 var mergeCanvas = this.mergeCanvas;
@@ -8511,23 +8547,7 @@ function thelegendmodproject() {
                     try {
                         context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
                     } catch (e) {}
-                }
-			//
-				var textureY = this.margin === 0 ? ~~(this.y + height * 2) : ~~this.y - 4 * this.margin;
-				for (var i=0;i<application.chatHistory-1;i++){
-					if (application.chatHistory[i].nick==this.nick && (Date.now() - application.chatHistory[i].time < 5000)){
-						massCanvas.setTxt(application.chatHistory[i].message);
-						massCanvas.setFontSize(this.massSize);
-						massCanvas.setScale(this.scale)												
-						var data = massCanvas.drawTxt();
-						var width = ~~(data.width / this.scale);
-						var height = ~~(data.height / this.scale)							
-						try {
-							context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
-						} catch (e) {}					
-					}
-				}
-			//				
+                }			
             }
         };
         this.createStrokeVirusPath = function(shadowXpos, shadowYpos, zeroSizeMax, pixelSizeTargetMax = 6) {
@@ -8842,7 +8862,7 @@ function thelegendmodproject() {
                     }*/
                     return defaultmapsettings.transparentViruses && (style.globalAlpha *= defaultSettings.virusAlpha, s = true), defaultmapsettings.virColors && LM.play ? (style.fillStyle = application.setVirusColor(y), style.strokeStyle = application.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = defaultSettings.virusStrokeSize, defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
                         defaultSettings.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), defaultmapsettings.showMass && (this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
-                        this.setMass(this.size), this.drawMass(style), (window.ExternalScripts && !window.legendmod5.optimizedMass && this.drawMerge(style))), void style.restore();
+                        this.setMass(this.size), this.drawMass(style), (window.ExternalScripts && !window.legendmod5.optimizedMass && this.drawMerge(style) && this.drawChat(style))), void style.restore();
                 }
             } 
 			else {
@@ -8878,6 +8898,7 @@ function thelegendmodproject() {
                         if (window.ExternalScripts && !window.legendmod5.optimizedMass) {
                             this.drawMerge(style);
                         }
+						this.drawChat(style);
                     }
                     style.restore();
                     return;
@@ -9088,6 +9109,7 @@ function thelegendmodproject() {
                             if (window.ExternalScripts && !window.legendmod5.optimizedMass) {
                                 this.drawMerge(style);
                             }
+							this.drawChat(style);
                         }
                     }
                     style.restore();
