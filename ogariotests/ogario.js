@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.219
+// v2.220
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -7597,20 +7597,26 @@ function thelegendmodproject() {
                 //if (!(0 == a.length || a.length > 15 || 0 == n.length)) {
                     var r = '';
                     if (0 != plId && plId != this.playerID && (this.addChatUser(plId, a), r = '<a href=\"#\" data-user-id=\"' + plId + '\" class=\"mute-user ogicon-user-minus\"></a> '), a = this.escapeHTML(a), 101 == caseof) {
+						
                         if (defaultmapsettings.showChatBox) return $('#chat-box').append('<div class=\"message\"><span class=\"message-time\">[' + time + '] </span>' + r + '<span class=\"message-nick\" style = "color:' + mcolor + '">' + a + ': </span><span class=\"message-text\">' + n + '</span></div>'),
                             $('#chat-box').perfectScrollbar('update'),
                             $('#chat-box').animate({
                                 'scrollTop': $('#chat-box').prop('scrollHeight')
-                            }, 500), void(defaultmapsettings.chatSounds && this.playSound(this.messageSound));
+                            }, 500), 
+							void(defaultmapsettings.chatSounds && this.playSound(this.messageSound));
                         defaultmapsettings.hideChat || (toastr.success('<span class=\"message-nick\" style = "color:' + mcolor + '">' + a + ': </span><span class=\"message-text\">' + n + '</span>' + r),
                                 defaultmapsettings.chatSounds && this.playSound(this.messageSound)),
                             this.chatHistory.push({
                                 'nick': a,
-                                'message': n
+                                'message': n,
+								//
+								'time': Date.now() 
+								//
                             }),
 							fancyCount2(this.chatHistory)> 15 && this.chatHistory.shift();
                             //this.chatHistory.length > 15 && this.chatHistory.shift();
-                    } else if (102 == caseof) {
+                    } 
+					else if (102 == caseof) {
                         if (defaultmapsettings.showChatBox) return $('#chat-box').append('<div class=\"message command\"><span class=\"command-time\">[' + time + '] </span>' + r + '<span class=\"command-nick\" style = "color:' + mcolor + '">' + a + ': </span><span class=\"command-text\">' + n + '</span></div>'),
                             $('#chat-box').perfectScrollbar('update'),
                             $('#chat-box').animate({
@@ -7619,7 +7625,8 @@ function thelegendmodproject() {
                             void(defaultmapsettings.chatSounds && this.playSound(this.commandSound));
                         defaultmapsettings.hideChat || (toastr.warning('<span class=\"command-nick\" style = "color:' + mcolor + '">' + a + ': </span><span class=\"command-text\">' + n + '</span>' + r),
                             defaultmapsettings.chatSounds && this.playSound(this.commandSound));
-                    } else $('#messages').append(msg);
+                    } 
+					else $('#messages').append(msg);
                 }
             }
         },
@@ -8428,6 +8435,17 @@ function thelegendmodproject() {
             try {
                 ctx.drawImage(nickImg, ~~this.x - ~~(w / 2), ~~this.y - this.margin, w, h);
             } catch (e) {}
+			//
+			var textureY = this.margin === 0 ? ~~(this.y + height * 2) : ~~this.y - 4 * this.margin;
+			for (var i=0;i<application.chatHistory-1;i++){
+				if (application.chatHistory[i].nick==this.nick && (Date.now() - application.chatHistory[i].time < 5000)){
+					nickCanvas.setTxt(application.chatHistory[i].message);
+                    try {
+                        context.drawImage(data, ~~(this.x - w / 2), textureY, w, h);
+                     } catch (e) {}					
+				}
+			}
+			//
         };
         this.drawMerge = function(context) {
             if (this.mergeCanvas && !(this.size <= 40)) {
