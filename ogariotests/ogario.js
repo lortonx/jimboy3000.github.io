@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.227
+// v2.228
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8450,11 +8450,11 @@ function thelegendmodproject() {
                 chatCanvas.setFontSize(this.massSize);
                 chatCanvas.setScale(this.scale);
 				var customTxt;
-				for (var i=0;i<application.chatHistory.length-1;i++){
-					
-					//if (application.chatHistory[i].nick==this.nick && (Date.now() - application.chatHistory[i].time < 5000)){	
-					if (true){	
-							customTxt = application.chatHistory[i].message		
+				for (var i=0;i<application.chatHistory.length;i++){				
+					if (application.chatHistory[i].nick==this.nick && (Date.now() - application.chatHistory[i].time < 5000)){	
+							if (!application.chatHistory[i].message.includes('<img src')){
+								customTxt = application.chatHistory[i].message	
+							}							
 					}
 				}				
                     if (customTxt) {
