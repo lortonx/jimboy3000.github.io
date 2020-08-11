@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.214
+// v2.215
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8683,7 +8683,10 @@ function thelegendmodproject() {
 						var n = d.getSeconds();		
 						var e;
 						if (n<30){ e = n / 30}
-						else { e = (n /30) - 1}													
+						else { 
+							n = 30 - n
+							e = n / 30
+						}													
 						style.save();
 						style.globalAlpha = e
                         style.drawImage(iconSpecialSkinEffectsHero1, this.x - 0.1 * y, this.y - 1.35 * y, y / 1, y / 1);	
