@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.231
+// v2.232
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -1003,6 +1003,7 @@ var displayText = {
         noColors: 'Wyłącz kolory',
         showMass: 'Pokaż masę',
 		showChat: 'Show chat on cells',
+		showChatMyOwn: 'Show chat on my cells',
         oneColoredSpectator: 'Multibox less render cells',
         multiBoxShadow: 'Player 1 & 2',
         multiKeepMoving: 'Inactive keep moving',
@@ -1446,6 +1447,7 @@ var displayText = {
         noColors: 'No colors',
         showMass: 'Show mass',
 		showChat: 'Show chat on cells',
+		showChatMyOwn: 'Show chat on my cells',
         oneColoredSpectator: 'MultiBox less render cells',
         multiBoxShadow: 'Player 1 & 2',
         multiKeepMoving: 'Inactive keep moving',
@@ -2639,6 +2641,7 @@ var defaultmapsettings = {
     hideTeammatesNames: false,
     showMass: true,
 	showChat: true,
+	showChatMyOwn: false,
     oneColoredSpectator: false,
     multiBoxShadow: false,
     multiKeepMoving: true,
@@ -4974,7 +4977,7 @@ function thelegendmodproject() {
             this.addOptions(["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup");
             this.addOptions(["noColors", "myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow", 'cellContours', "animatedRainbowColor"], "transparencyGroup");
             this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
-            this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChat", "showChatTranslation", "coloredNicks", "hidecountry", "universalChat"], "chatGroup");
+            this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChat", "showChatMyOwn", "showChatTranslation", "coloredNicks", "hidecountry", "universalChat"], "chatGroup");
             this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup");
 //            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "reverseTrick", "showPartyBots"], "helpersGroup"); //Sonia2
             //this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
@@ -8456,7 +8459,14 @@ function thelegendmodproject() {
 				for (var i=0;i<application.chatHistory.length;i++){				
 					if (application.chatHistory[i].nick==this.nick && (Date.now() - application.chatHistory[i].time < 5000)){	
 							if (!application.chatHistory[i].message.includes('<img src') && this.nick!=""){
-								customTxt = application.chatHistory[i].message	
+								if (application.chatHistory[i].nick == $('#nick').val() || application.chatHistory[i].nick == application.lastSentNick){
+									if (defaultmapsettings.showChatMyOwn){
+										customTxt = application.chatHistory[i].message	
+									}
+								}
+								else{
+									customTxt = application.chatHistory[i].message	
+								}
 							}							
 					}
 				}				
