@@ -8680,9 +8680,15 @@ function thelegendmodproject() {
                     } 
 					else if (this.SpecialEffect == "Hero1" || this.SpecialEffect2 == "Hero1") {	
 						var d = new Date();
-						var n = d.getSeconds();					
-						style.globalAlpha = n/60					
-                        style.drawImage(iconSpecialSkinEffectsHero1, this.x - 0.1 * y, this.y - 1.35 * y, y / 1, y / 1);						
+						var n = d.getSeconds();		
+						var e;
+						if (n<30){ e = n / 30}
+						else { e = (n /30) - 1}							
+						style.globalAlpha = e
+						style.save();
+                        style.drawImage(iconSpecialSkinEffectsHero1, this.x - 0.1 * y, this.y - 1.35 * y, y / 1, y / 1);	
+						style.restore();
+						
                     } 
 					else if (this.SpecialEffect == "Hero2" || this.SpecialEffect2 == "Hero2") {
                         style.drawImage(iconSpecialSkinEffectsHero2, this.x -0.3 * y, this.y - 1.48 * y, y / 2, y / 2);		
