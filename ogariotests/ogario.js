@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.233
+// v2.234
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -7619,8 +7619,7 @@ function thelegendmodproject() {
 								'time': Date.now() 
 								//
                             }),
-							fancyCount2(this.chatHistory)> 15 && this.chatHistory.shift();
-                            //this.chatHistory.length > 15 && this.chatHistory.shift();
+							this.chatHistory.length> 15 && this.chatHistory.shift();                           
                     } 
 					else if (102 == caseof) {
                         if (defaultmapsettings.showChatBox) return $('#chat-box').append('<div class=\"message command\"><span class=\"command-time\">[' + time + '] </span>' + r + '<span class=\"command-nick\" style = "color:' + mcolor + '">' + a + ': </span><span class=\"command-text\">' + n + '</span></div>'),
@@ -7630,7 +7629,15 @@ function thelegendmodproject() {
                             }, 500),
                             void(defaultmapsettings.chatSounds && this.playSound(this.commandSound));
                         defaultmapsettings.hideChat || (toastr.warning('<span class=\"command-nick\" style = "color:' + mcolor + '">' + a + ': </span><span class=\"command-text\">' + n + '</span>' + r),
-                            defaultmapsettings.chatSounds && this.playSound(this.commandSound));
+                            defaultmapsettings.chatSounds && this.playSound(this.commandSound)),
+                            this.commandHistory.push({
+                                'nick': a,
+                                'message': n,
+								//
+								'time': Date.now() 
+								//
+                            }),
+							this.commandHistory.length> 15 && this.commandHistory.shift(); 							
                     } 
 					else $('#messages').append(msg);
                 }
@@ -8456,19 +8463,40 @@ function thelegendmodproject() {
                 chatCanvas.setFontSize(this.massSize/2);
                 chatCanvas.setScale(this.scale);
 				var customTxt;
+				var temp;
 				for (var i=0;i<application.chatHistory.length;i++){				
 					if (application.chatHistory[i].nick==this.nick && (Date.now() - application.chatHistory[i].time < 5000)){	
 							if (!application.chatHistory[i].message.includes('<img src') && this.nick!=""){
 								if (application.chatHistory[i].nick == $('#nick').val() || application.chatHistory[i].nick == application.lastSentNick){
+									
 									if (defaultmapsettings.showChatMyOwn){
+										temp = Date.now() - application.chatHistory[i].time
 										customTxt = application.chatHistory[i].message	
 									}
 								}
 								else{
+									temp = Date.now() - application.chatHistory[i].time
 									customTxt = application.chatHistory[i].message	
 								}
 							}							
 					}
+					if (application.commandHistory[i].nick==this.nick && (Date.now() - application.commandHistory[i].time < 5000)){	
+							if (this.nick!=""){
+								if (application.commandHistory[i].nick == $('#nick').val() || application.commandHistory[i].nick == application.lastSentNick){
+									
+									if (defaultmapsettings.showChatMyOwn){
+										if (temp > (Date.now() - application.commandHistory[i].time)){
+											customTxt = application.commandHistory[i].message	
+										}
+									}
+								}
+								else{
+									if (temp > (Date.now() - application.commandHistory[i].time)){
+										customTxt = application.commandHistory[i].message	
+									}
+								}
+							}							
+					}					
 				}				
                     if (customTxt) {
                         if (this.redrawChat) {
