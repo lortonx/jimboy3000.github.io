@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.215
+// v2.216
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8684,7 +8684,7 @@ function thelegendmodproject() {
 						var e;
 						if (n<30){ e = n / 30}
 						else { 
-							n = 30 - n
+							n = 60 - n
 							e = n / 30
 						}													
 						style.save();
