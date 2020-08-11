@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.229
+// v2.230
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8447,7 +8447,7 @@ function thelegendmodproject() {
             if (this.chatCanvas && !(this.size <= 40)) {
                 var chatCanvas = this.chatCanvas;
                 chatCanvas.setDrawing(defaultSettings.massColor, defaultSettings.massFontFamily, defaultSettings.massFontWeight, this.strokeMass, this.massStrokeSize, defaultSettings.massStrokeColor);
-                chatCanvas.setFontSize(this.massSize/4);
+                chatCanvas.setFontSize(this.massSize/2);
                 chatCanvas.setScale(this.scale);
 				var customTxt;
 				for (var i=0;i<application.chatHistory.length;i++){				
@@ -8465,7 +8465,7 @@ function thelegendmodproject() {
                         var width = ~~(data.width / this.scale);
                         
                         var height = ~~(data.height / this.scale);
-                        var textureY = this.margin === 0 ? ~~(this.y + height * 2) : ~~this.y - 4 * this.margin;
+                        var textureY = this.margin === 0 ? ~~(this.y + height * 1) : ~~this.y - 4 * this.margin;
                         if (width > 1 && height > 1) {
                             try {
                                 context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
