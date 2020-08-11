@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.237
+// v2.238
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8488,7 +8488,7 @@ function thelegendmodproject() {
 								if (application.commandHistory[i].nick == $('#nick').val() || application.commandHistory[i].nick == application.lastSentNick){
 									
 									if (defaultmapsettings.showChatMyOwn){
-										if (temp > (Date.now() - application.commandHistory[i].time)){
+										if (temp > (Date.now() - application.commandHistory[i].time) || !temp){
 											customTxt = application.commandHistory[i].message	
 										}
 									}
