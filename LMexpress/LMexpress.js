@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.099f by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.00 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "00"; // the version 1.1-> 1.11
+var semimodVersion = "01"; // the version 1.1-> 1.11
 
 
 loadericon();
@@ -53,7 +53,7 @@ var previousMode = localStorage.getItem("gamemode");
 var checkonlyonce = localStorage.getItem("checkonlyonce");
 var checkonlytenth = localStorage.getItem("checkonlytenth");
 var checkonlyeleventh = localStorage.getItem("checkonlyeleventh");
-var checkonlyrewardday = localStorage.getItem("checkonlyrewardday");
+var checkonlyrewardday1 = localStorage.getItem("checkonlyrewardday1");
 var defaultMusicUrl = "https://www.youtube.com/watch?v=ZJXPONv41jw";
 var musicPlayer;
 
@@ -322,10 +322,10 @@ function loadersettings() {
        // }					
 		}
 		
-		else if(checkonlyrewardday != "true"){
-			//LMrewardDay();
-			checkonlyrewardday = "true";
-			localStorage.setItem("checkonlyrewardday", checkonlyrewardday);					
+		else if(checkonlyrewardday1 != "true"){
+			LMrewardDay();
+			checkonlyrewardday1 = "true";
+			localStorage.setItem("checkonlyrewardday1", checkonlyrewardday1);					
 		}
         else if (checkonlyeleventh!= "true") {
 			//VideoSkinsPromo();		
