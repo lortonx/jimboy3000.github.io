@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.224
+// v2.225
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8451,7 +8451,9 @@ function thelegendmodproject() {
                 chatCanvas.setScale(this.scale);
 				var customTxt;
 				for (var i=0;i<application.chatHistory-1;i++){
-					if (application.chatHistory[i].nick==this.nick && (Date.now() - application.chatHistory[i].time < 5000)){						
+					
+					//if (application.chatHistory[i].nick==this.nick && (Date.now() - application.chatHistory[i].time < 5000)){	
+					if (true){	
 							customTxt = application.chatHistory[i].message		
 					}
 				}				
