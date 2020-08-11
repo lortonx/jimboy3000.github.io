@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.235
+// v2.236
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3435,6 +3435,7 @@ function thelegendmodproject() {
         teamPlayers: [],
         parties: [],
         chatHistory: [],
+		commandHistory: [],
         chatUsers: {},
         chatMutedUsers: {},
         chatMutedUserIDs: [],
