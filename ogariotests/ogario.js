@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.239
+// v2.240
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8489,12 +8489,14 @@ function thelegendmodproject() {
 									
 									if (defaultmapsettings.showChatMyOwn){
 										if (temp > (Date.now() - application.commandHistory[i].time) || !temp){
+											temp = Date.now() - application.commandHistory[i].time
 											customTxt = application.commandHistory[i].message	
 										}
 									}
 								}
 								else{
 									if (temp > (Date.now() - application.commandHistory[i].time) || !temp){
+										temp = Date.now() - application.commandHistory[i].time
 										customTxt = application.commandHistory[i].message	
 									}
 								}
@@ -8506,10 +8508,13 @@ function thelegendmodproject() {
                             chatCanvas.setTxt(customTxt);                          
                         }
                         var data = chatCanvas.drawTxt(customTxt);
-                        var width = ~~(data.width / this.scale);
-                        
-                        var height = ~~(data.height / this.scale);
+                        var width = ~~(data.width / this.scale);			
+                        var height = ~~(data.height / this.scale);				
                         var textureY = this.margin === 0 ? ~~(this.y + height * 1/2) : ~~this.y - 4 * this.margin;
+						
+						if (temp<2000){
+							chatCanvas.globalAlpha = temp/2000
+						}
                         if (width > 1 && height > 1) {
                             try {
                                 context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
