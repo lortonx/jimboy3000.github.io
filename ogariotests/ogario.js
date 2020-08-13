@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.242
+// v2.243
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12186,10 +12186,15 @@ Game name     : ${i.displayName}<br/>
                 x += n.x / playersLength;
                 y += n.y / playersLength;
             }
-            if (!window.multiboxPlayerEnabled) {
+			if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1].viewYY && spects[window.multiboxPlayerEnabled-1].player){
+				this.viewX = spects[window.multiboxPlayerEnabled-1].viewXX	
+				this.viewY = spects[window.multiboxPlayerEnabled-1].viewYY	
+			}			
+            else {
                 this.viewX = x;
                 this.viewY = y;
             }
+			
             this.viewXTrue = x;
             this.viewYTrue = y;
             this.playerSize = size;
