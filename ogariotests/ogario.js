@@ -12187,8 +12187,8 @@ Game name     : ${i.displayName}<br/>
                 y += n.y / playersLength;
             }
 			if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1].viewYY && spects[window.multiboxPlayerEnabled-1].player){
-				this.viewX = spects[window.multiboxPlayerEnabled-1].viewXX	
-				this.viewY = spects[window.multiboxPlayerEnabled-1].viewYY	
+				this.viewX = spects[window.multiboxPlayerEnabled-1].viewX	
+				this.viewY = spects[window.multiboxPlayerEnabled-1].viewY	
 			}			
             else {
                 this.viewX = x;
