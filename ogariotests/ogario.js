@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.247 multibox test
+// v2.242
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3939,31 +3939,25 @@ function thelegendmodproject() {
         },
         multiboxswap() {
             this.hideMenu()
-			
-            if (spects.length && !legendmod.multiBoxPlayerExists) {
-                window.fullSpectator = false
-                LM.flushSpecsData()
-                //addBox()
-                //toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + "Multibox cannot start because Spectators have been enabled");
-            }	
-			
             if (!spects.length) {
                 //if (!legendmod.multiBoxPlayerExists){					
                 addBox()
             } 
-			else if(window.multiBoxPlayerStarted && !legendmod.multiBoxPlayerExists){
-				spects[window.multiboxPlayerEnabledSaved-1].sendNick($("#nick").val())
-			}
 			else if (!window.multiboxPlayerEnabledSaved) {
                 if (!legendmod.play) {
                     play()
                 }
                 window.multiboxPlayerEnabledSaved = window.multiboxPlayerEnabled
-                window.multiboxPlayerEnabled = null		
-            } 
-			else {
+                window.multiboxPlayerEnabled = null
+            } else {
                 window.multiboxPlayerEnabled = window.multiboxPlayerEnabledSaved
-                //window.multiboxPlayerEnabledSaved = null
+                window.multiboxPlayerEnabledSaved = null
+            }
+            if (spects.length && !legendmod.multiBoxPlayerExists) {
+                window.fullSpectator = false
+                LM.flushSpecsData()
+                addBox()
+                //toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + "Multibox cannot start because Spectators have been enabled");
             }
         },
         multiboxFollowMouse() {
@@ -10070,9 +10064,6 @@ function thelegendmodproject() {
                     if (!window.multiboxPlayerEnabled) {
                         this.viewX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(x) : x;
                     }
-					else{
-						 this.viewX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(spects[window.multiboxPlayerEnabled-1].viewXX) : spects[window.multiboxPlayerEnabled-1].viewXX;
-					}
                     this.viewXTrue = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(x) : x;
 
                     s += 4;
@@ -10080,9 +10071,6 @@ function thelegendmodproject() {
                     if (!window.multiboxPlayerEnabled) {
                         this.viewY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(y) : y;
                     }
-					else{
-						 this.viewY = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateY(spects[window.multiboxPlayerEnabled-1].viewYY) : spects[window.multiboxPlayerEnabled-1].viewYY;
-					}					
                     this.viewYTrue = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(y) : y;
                     s += 4;
                     this.scale = data.getFloat32(s, true);
@@ -11808,8 +11796,6 @@ Game name     : ${i.displayName}<br/>
                 })
                 window.spects = [];
             }
-			window.multiBoxPlayerStarted=null
-			
         },
         setMapOffset(left, top, right, bottom) {
             //if (right - left > 14000 && bottom - top > 14000) {
@@ -12152,13 +12138,11 @@ Game name     : ${i.displayName}<br/>
                 } else {
                     if (!window.multiboxPlayerEnabled) {
                         application.multiboxswap()
-                    } 
-					else {
+                    } else {
                         if (!window.multiboxPlayerEnabledSaved) {
                             window.multiboxPlayerEnabledSaved = window.multiboxPlayerEnabled
                             window.multiboxPlayerEnabled = null
-                        } 
-						else {
+                        } else {
                             window.multiboxPlayerEnabled = window.multiboxPlayerEnabledSaved
                             window.multiboxPlayerEnabledSaved = null
                         }
