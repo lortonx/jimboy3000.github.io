@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.246 multibox test
+// v2.247 multibox test
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10070,6 +10070,9 @@ function thelegendmodproject() {
                     if (!window.multiboxPlayerEnabled) {
                         this.viewX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(x) : x;
                     }
+					else{
+						 this.viewX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(spects[window.multiboxPlayerEnabled-1].viewXX) : spects[window.multiboxPlayerEnabled-1].viewXX;
+					}
                     this.viewXTrue = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(x) : x;
 
                     s += 4;
@@ -10077,6 +10080,9 @@ function thelegendmodproject() {
                     if (!window.multiboxPlayerEnabled) {
                         this.viewY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(y) : y;
                     }
+					else{
+						 this.viewY = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateY(spects[window.multiboxPlayerEnabled-1].viewYY) : spects[window.multiboxPlayerEnabled-1].viewYY;
+					}					
                     this.viewYTrue = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(y) : y;
                     s += 4;
                     this.scale = data.getFloat32(s, true);
