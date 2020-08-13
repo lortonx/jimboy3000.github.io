@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.245 multibox test
+// v2.246 multibox test
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3939,11 +3939,19 @@ function thelegendmodproject() {
         },
         multiboxswap() {
             this.hideMenu()
+			
+            if (spects.length && !legendmod.multiBoxPlayerExists) {
+                window.fullSpectator = false
+                LM.flushSpecsData()
+                //addBox()
+                //toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + "Multibox cannot start because Spectators have been enabled");
+            }	
+			
             if (!spects.length) {
                 //if (!legendmod.multiBoxPlayerExists){					
                 addBox()
             } 
-			else if(window.multiBoxPlayerStarted && !window.multiboxPlayerEnabled){
+			else if(window.multiBoxPlayerStarted && !legendmod.multiBoxPlayerExists){
 				spects[window.multiboxPlayerEnabledSaved-1].sendNick($("#nick").val())
 			}
 			else if (!window.multiboxPlayerEnabledSaved) {
@@ -3951,23 +3959,11 @@ function thelegendmodproject() {
                     play()
                 }
                 window.multiboxPlayerEnabledSaved = window.multiboxPlayerEnabled
-                window.multiboxPlayerEnabled = null
-				
-				
+                window.multiboxPlayerEnabled = null		
             } 
-			/*else if (!window.multiboxPlayerEnabled) {
-				
-			}*/
-			
 			else {
                 window.multiboxPlayerEnabled = window.multiboxPlayerEnabledSaved
                 //window.multiboxPlayerEnabledSaved = null
-            }
-            if (spects.length && !legendmod.multiBoxPlayerExists) {
-                window.fullSpectator = false
-                LM.flushSpecsData()
-                addBox()
-                //toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + "Multibox cannot start because Spectators have been enabled");
             }
         },
         multiboxFollowMouse() {
