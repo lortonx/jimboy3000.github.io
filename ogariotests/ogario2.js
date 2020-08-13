@@ -1,8 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.086
-
+// v2.242
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10,6 +9,7 @@ var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
 window.clanTagLc = "U1VC";
 appendLMhiFbPs()
 window.externalScriptMassBar= []
+window.capthaWindow= []
 
 function changeregion() {
     if ($('#region').val() == "Private") {
@@ -492,6 +492,13 @@ window.buffers = {
         writer.writeUint8(botsAmount)
         return writer.dataView.buffer
     },
+    sendMode(nick) {
+        const writer = new Writer(3 + nick.length)
+        writer.writeUint8(7)
+		writer.writeUint8(1)
+        writer.writeString(nick)
+        return writer.dataView.buffer
+    },	
     captchatoken(x) {
         const writer = new Writer(2 + x.length)
         //const writer = new Writer(x.length)
@@ -513,6 +520,27 @@ window.buffers = {
         return writer.dataView.buffer
     }
 }
+window.addEventListener('beforeunload', function (e) { 
+	for (i=0;i<window.captchaOpenedWindow;i++){
+		if (window.capthaWindow[i]){
+			window.capthaWindow[i].close()
+			window.capthaWindow[i]=null
+		}
+	}
+//e.preventDefault();
+//e.returnValue = ''; 
+}); 
+function createCaptchaWindow(i){	
+		/*window.capthaWindow[i] = document.createElement("iframe");
+		window.capthaWindow[i].setAttribute("src", "https://agar.io/captcha");
+		window.capthaWindow[i].style.width = "0px";
+		window.capthaWindow[i].style.height = "0px";
+		document.body.appendChild(window.capthaWindow[i]);	*/
+		if (window.LMVersion=="1.7"){
+			toastr.info('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + '	Your version is outdated for bts. Download ' + ' <font color="yellow"><b>v1.8</b></font>. <br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+		}
+		window.capthaWindow[i] = window.open("https://agar.io/captcha");
+}	
 window.connectionBots = {
     ws: null,
     connect() {
@@ -532,13 +560,37 @@ window.connectionBots = {
         document.getElementById('userStatus').innerText = 'Connected'
         //document.getElementById('connect').disabled = true
         document.getElementById('startBots').disabled = false
-        document.getElementById('captchaBots').disabled = false
         document.getElementById('stopBots').disabled = false
         document.getElementById('connectBots').innerText = 'Connect'
         document.getElementById('connectBots').style.color = 'white'
         window.RequestedTokens = 100000;
-        toastr.info("<b>[" + Premadeletter123 + "]:</b> " + window.RequestedTokens + " captcha tokens requested, some lag from proccessing will be created. <br><b>If captcha tokens stop, create again tokens</b>");
+		for (var i=0;i<window.captchaOpenedWindow;i++){
+			createCaptchaWindow(i);
+		}
+		
+		if (!window.capthaWindowOpened){
+			window.capthaWindowOpened = true;			
+			window.addEventListener("message", function(event){
+				//if (event.data.includes('captcha-')){
+					//event.data.replace('captcha-','');		
+					legendmod.sendSpawn2(event.data);
+				//}
+				/*else if (event.data.includes('sendTimeOutTokenBots-')){
+					event.data.replace('sendTimeOutTokenBots-','');
+					if (event.data=="true") window.sendTimeOutTokenBots = true;
+				}
+				else if (event.data.includes('cookieCaptchaOK-')){
+					event.data.replace('cookieCaptchaOK-','');
+					if (event.data=="true") window.cookieCaptchaOK = true;
+				}*/				
+			});		
+		}
+		
+        toastr.info("<b>[" + Premadeletter123 + "]:</b> In case of captcha, change IP by <b>rebooting rooter</b> or use <b>VPN</b>");
+		setTimeout(function() { //
         legendmod.sendTokenForBots();
+		}, 4000); //
+		
         if (!window.sendFirstTimeTokenBots) {
             window.sendFirstTimeTokenBots = true
             window.sendTimeOutTokenBots = false;
@@ -550,8 +602,6 @@ window.connectionBots = {
         switch (dataView.getUint8(0)) {
             case 0:
                 document.getElementById('startBots').disabled = true
-                document.getElementById('captchaBots').disabled = false
-                //document.getElementById('captchaBots').style.display = 'none'
                 document.getElementById('stopBots').disabled = false
                 document.getElementById('startBots').style.display = 'none'
                 document.getElementById('stopBots').style.display = 'inline'
@@ -566,7 +616,6 @@ window.connectionBots = {
                 document.getElementById('botsAI').style.color = '#DA0A00'
                 document.getElementById('botsAI').innerText = 'Disabled'
                 document.getElementById('startBots').disabled = false
-                document.getElementById('captchaBots').disabled = true
                 document.getElementById('stopBots').disabled = true
                 document.getElementById('startBots').style.display = 'inline'
                 document.getElementById('stopBots').style.display = 'none'
@@ -575,19 +624,7 @@ window.connectionBots = {
                 window.bots.ai = false
                 break
             case 3:
-                //toastr.info('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
-                window.botscaptcha = true;
-                if (!legendmod.play && window.LatestBotsVersion && $('#handleCaptchaBots').is(':checked')) {
-                    toastr.info('<b>[' + Premadeletter123 + ']:</b> Solve the captcha for your bots')
-					if (window.captchawidget && grecaptcha){
-						grecaptcha.reset(window.captchawidget);
-						//window.captchawidget=null;
-					}					
-					window.agarCaptcha.requestCaptcha()
-                    //window.master.recaptchaRequested()
-                } else {
-                    toastr.info('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
-                }
+                toastr.info('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
                 break
             case 4:
                 $('#botCount').html(`${dataView.getUint8(1)}/${dataView.getUint8(2)}/${window.bots.amount}`)
@@ -596,37 +633,31 @@ window.connectionBots = {
                 $('#slots').html(dataView.getUint8(1) + "/200")
                 break
             case 10:
-                toastr.info('<b>[' + Premadeletter123 + ']:</b> This version of Smart bots support Captcha Solver');
-                window.LatestBotsVersion = true;
-                $('#handleCaptchaBotsArea').show();
-                break
-            case 10:
                 toastr.info('<b>[' + Premadeletter123 + ']:</b> Server or bots is on closing state');
                 break
         }
     },
-    onclose() {
+    onclose(event) {
         document.getElementById('userStatus').style.color = '#DA0A00'
         document.getElementById('userStatus').innerText = 'Disconnected'
         document.getElementById('botsAI').style.color = '#DA0A00'
         document.getElementById('botsAI').innerText = 'Disabled'
         //document.getElementById('connect').disabled = false
         document.getElementById('startBots').disabled = true
-        document.getElementById('captchaBots').disabled = true
         document.getElementById('stopBots').disabled = true
         document.getElementById('startBots').style.display = 'inline'
         document.getElementById('stopBots').style.display = 'none'
         document.getElementById('connectBots').innerText = 'Connect'
         document.getElementById('connectBots').style.color = 'white'
         window.userBots.startedBots = false
-        window.bots.ai = false
-        window.LatestBotsVersion = null;
-        $('#handleCaptchaBotsArea').hide();
-        $('#handleCaptchaBotsAreaSettings').hide();
-        $('#handleCaptchaBots').prop('checked', false)
-        $('#solveCaptchaBots').prop('checked', false)
-        $('#pushCaptchaBots').prop('checked', false)
-
+        window.bots.ai = false	
+		for (i=0;i<window.captchaOpenedWindow;i++){
+			if (window.capthaWindow[i]){
+				window.capthaWindow[i].close()
+				window.capthaWindow[i]=null
+			}
+		}
+		toastr.warning("<b>[" + Premadeletter123 + "]:</b> WebSocket closed")
     }
 }
 window.gameBots = {
@@ -661,7 +692,8 @@ var customLMID = Math.floor(Math.random() * 100000);
 
 window.videoSkinPlayerflag = {};
 window.videoSkinPlayerflag2 = {};
-//window.videoSkinPlayerflag=true;
+window.videoSkinPlayerflag3 = {};
+window.timerVideoSkinsInterval = [];
 window.videoSkinPlayer = {};
 
 
@@ -669,12 +701,12 @@ window.videoSkinPlayer = {};
 function checkVideos(a, b) {
     checkVideos1(a);
     //setTimeout(function() {
-    if (window.videoSkinPlayer[a].readyState == 4) {
+    if (window.videoSkinPlayer[a] && window.videoSkinPlayer[a].readyState == 4) {
         if (!window.videoSkinPlayer[a].playing) {
             window.videoSkinPlayer[a].play();
-            setTimeout(function() {
+            //setTimeout(function() {
                 checkVideos2(a, b);
-            }, 2000);
+            //}, 2000);
         };
 
     }
@@ -683,20 +715,34 @@ function checkVideos(a, b) {
 }
 
 function checkVideos2(a, b) {
-    //console.log("b is: "+ b);
-    for (i = 0; i < application.top5.length - 1; i++) {
+	//console.log(b)
+    for (var i = 0; i < application.top5.length; i++) {
         //if (i.nick == b) {
             //application.setTarget(i.id);
-
-            if ($("#nick").val() != b) {
-                if (legendmod5.videoSkinsMusic == true) {
+            if (ogarcopythelb.nick != b && application.top5[i].nick.replace(/\s{2,}/g,' ') == b.replace(/\s{2,}/g,' ')) {
+                if (legendmod5.videoSkinsMusic2 == true) {
                     window.videoSkinPlayerflag2[b] = false;
-                    if (application.calculateMapSector(application.top5[i].x, application.top5[i].y) == application.currentSector && application.currentSector == "C3") {
-                        //console.log("volume 0, stage 0");
-                        window.videoSkinPlayer[a].volume = 1;
+                    //if (application.calculateMapSector(application.top5[i].x, application.top5[i].y) == application.currentSector && application.currentSector == "C3") {
+					if (checkIfPlayerIsInView(b)){
+					//console.log("volume 0, stage 0");						
+						var temple=null;
+						console.log("a",b,a)						
+						if (defaultmapsettings.videoOthersSkinSoundLevelproportion && application.top5[i].mass){
+							//console.log("b",application.top5[i].mass)
+							if (application.top5[i].mass>=10000){
+							window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel;
+							}					
+							else if (application.top5[i].mass<10000){ 
+							window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel *  Math.pow(application.top5[i].mass, 1/2)*0.01;							
+							}
+							temple=true
+						}
+						else if (!temple){
+							window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel;
+						}
                         window.videoSkinPlayerflag2[b] = true;
                     } 
-					else {
+					else{
                         //console.log("volume 0, stage 1");
                         window.videoSkinPlayer[a].volume = 0;
                     }
@@ -708,14 +754,51 @@ function checkVideos2(a, b) {
         //}
 
     }
-	if ($("#nick").val() != b) {
+	if (ogarcopythelb.nick != b) {
     //if ($("#nick").val() != b || application.customSkinsMap[$("#nick").val()] != a ) {
         checkvideoSkinPlayerflag2(a, b);
     }
+	else if (ogarcopythelb.nick){
+		if (ogarcopythelb.skinURL == a && window.videoSkinPlayer[a]) {
+			window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel;
+		}	
+		else{
+			window.videoSkinPlayer[a].volume = 0;
+		}		
+	}
+	//
+	if (window.videoSkinPlayer[a]){
+		if (!window.videoSkinPlayerflag3[a]){
+			window.videoSkinPlayerflag3[a] = true;
+			window.timerVideoSkinsInterval[a] = setInterval(function() {
+					checkVideos2(a, b);
+				}, 1000);	
+		}			
+	}
+	else{
+		window.videoSkinPlayerflag[a] = null
+		window.videoSkinPlayerflag2[b] = null
+		window.videoSkinPlayerflag3[b] = null
+		clearInterval(window.timerVideoSkinsInterval[a]);
+		window.timerVideoSkinsInterval[a]=null
+	}
+	//
+}
+function checkIfPlayerIsInView(b){
+	//for (var i=0;i<legendmod.cells.length;i++){
+		//if (legendmod.cells[i].nick!="") console.log(legendmod.cells[i].nick)	
+	//}	
+	for (var i=0;i<legendmod.cells.length;i++){
+		if (b!="" && legendmod.cells[i].nick == b){
+			return true		
+		}
+	}
+	return false
 }
 
-function checkvideoSkinPlayerflag2(a, b) {
 
+
+function checkvideoSkinPlayerflag2(a, b) {	
     if (!window.videoSkinPlayerflag2[b]) {
         //console.log("volume 0, stage 3");
         window.videoSkinPlayer[a].volume = 0;
@@ -729,6 +812,7 @@ function checkVideos1(a) {
         window.videoSkinPlayer[a] = document.createElement("video"); // create a video element
         window.videoSkinPlayer[a].crossOrigin = 'anonymous';
         window.videoSkinPlayer[a].src = a;
+		window.videoSkinPlayer[a].volume = 0;
         window.videoSkinPlayerflag[a] = true;
     }
 };
@@ -737,9 +821,9 @@ function checkVideos3(o) {
     if (o.readyState > 0) {
         var minutes = parseInt(o.duration / 60, 10);
         var seconds = o.duration % 60;
-        if (minutes > 5) {
-            //toastr.warning("<b>[SERVER]:</b> " + "Avoid using video skins bigger than 6 minutes");
-            toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter124);
+        if (o.videoWidth>1080 || minutes > 4) {            
+			toastr.error("<b>[" + Premadeletter123 + "]:</b> " + "Please use smaller videos than <font color='blue'><b>5 minutes</b></font>, <font color='blue'><b>low quality</b></font> and width until <font color='blue'><b>1080</b></font>, next time");
+            //toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter124);
         }
     }
 }
@@ -918,6 +1002,8 @@ var displayText = {
         noNames: 'Wyłącz nazwy',
         noColors: 'Wyłącz kolory',
         showMass: 'Pokaż masę',
+		showChat: 'Show chat on cells',
+		showChatMyOwn: 'Show chat on my cells',
         oneColoredSpectator: 'Multibox less render cells',
         multiBoxShadow: 'Player 1 & 2',
         multiKeepMoving: 'Inactive keep moving',
@@ -932,7 +1018,8 @@ var displayText = {
         suckAnimation: 'Cell Eat [Sucking] Animation',
         virusGlow: 'Virus Glow',
         borderGlow: 'Border Glow',
-        zoomSpeedValue2: 'Szybkość zoomu',
+        zoomSpeedValue2: 'Szybkość zoomu',		
+		videoSkinSoundLevel: 'Video skin sound level',		
         leaderboardlimit: 'Leaderboard Players',
         teamboardlimit: 'Team Players',
         quickResp: 'Szybkie odrodzenie (klawisz)',
@@ -956,7 +1043,9 @@ var displayText = {
         universalChat: 'Universal chat',
         customSkins: 'Własne skiny',
         videoSkins: 'Video skins (.mp4 .webm .ogv)',
-        videoSkinsMusic: 'Sound from other\'s Video skins when both C3',
+		videoDestorted: 'Video destorted to fit cells',
+        videoSkinsMusic2: 'Sound from other\'s Video skins when visible',
+		videoOthersSkinSoundLevelproportion: 'Other\'s VS sound level proportional to their mass',
         myTransparentSkin: 'Mój przezroczysty skin',
         myCustomColor: 'Mój własny kolor',
         transparentCells: 'Przezroczyste kulki',
@@ -967,7 +1056,7 @@ var displayText = {
         showMapBorders: 'Granice mapy',
         showGhostCells: 'Duchy kulek (fps drop)',
         showGhostCellsInfo: 'Ghost cells info (confusing)',
-        showPartyBots: 'Party bots',
+        //showPartyBots: 'Party bots',
         rotateMap: 'Rotate Map',
         showMiniMap: 'Pokaż minimapę',
         showMiniMapGrid: 'Pokaż siatkę minimapy',
@@ -1095,7 +1184,8 @@ var displayText = {
         'hk-changeTarget': 'Zmień cel',
         'hk-privateMiniMap': 'Pokaż cel na minimapie',
         'hk-showQuest': 'Pokaż/ukryj zadanie',
-        'hk-showSpectator': 'Show/hide Full Spectator',
+        'hk-showSpectator': 'Show/hide Full Spectator (Premium)',
+		'hk-showIngameSpectator': 'Show/hide Ingame Spectator (Premium)',
         commands: 'Komendy',
         comm1: 'Feeduj!',
         comm2: 'Dziel się!',
@@ -1356,6 +1446,8 @@ var displayText = {
         noNames: 'No names',
         noColors: 'No colors',
         showMass: 'Show mass',
+		showChat: 'Show chat on cells',
+		showChatMyOwn: 'Show chat on my cells',
         oneColoredSpectator: 'MultiBox less render cells',
         multiBoxShadow: 'Player 1 & 2',
         multiKeepMoving: 'Inactive keep moving',
@@ -1371,6 +1463,7 @@ var displayText = {
         virusGlow: 'Virus Glow',
         borderGlow: 'Border Glow',
         zoomSpeedValue2: 'Zoom speed',
+		videoSkinSoundLevel: 'Video skin sound level',
         leaderboardlimit: 'Leaderboard Players',
         teamboardlimit: 'Team Players',
         quickResp: 'Quick respawn (hotkey)',
@@ -1394,7 +1487,9 @@ var displayText = {
         universalChat: 'Universal chat',
         customSkins: 'Custom skins',
         videoSkins: 'Video skins (.mp4 .webm .ogv)',
-        videoSkinsMusic: 'Sound from other\'s Video skins when both C3',
+		videoDestorted: 'Video destorted to fit cells',
+        videoSkinsMusic2: 'Sound from other\'s Video skins when visible',
+		videoOthersSkinSoundLevelproportion: 'Other\'s VS sound level proportional to their mass',		
         myTransparentSkin: 'My transparent skin',
         myCustomColor: 'My custom color',
         transparentCells: 'Transparent cells',
@@ -1405,7 +1500,7 @@ var displayText = {
         showMapBorders: 'Show map borders',
         showGhostCells: 'Ghost cells (fps drop)',
         showGhostCellsInfo: 'Ghost cells info (confusing)',
-        showPartyBots: 'Party bots',
+        //showPartyBots: 'Party bots',
         rotateMap: 'Rotate Map',
         showMiniMap: 'Show minimap',
         showMiniMapGrid: 'Show minimap grid',
@@ -1534,7 +1629,8 @@ var displayText = {
         'hk-changeTarget': 'Change target',
         'hk-privateMiniMap': 'Show target on the minimap',
         'hk-showQuest': 'Show/hide quest',
-        'hk-showSpectator': 'Show/hide Full Spectator',
+        'hk-showSpectator': 'Show/hide Full Spectator (Premium)',
+		'hk-showIngameSpectator': 'Show/hide Ingame Spectator (Premium)',
         commands: 'Commands',
         comm1: 'Feed me!',
         comm2: 'Split into me!',
@@ -2457,6 +2553,29 @@ iconSpecialSkinEffectsEinstein.src = 'https://legendmod.ml/banners/iconSpecialSk
 iconSpecialSkinEffectsDeadTable = new Image;
 iconSpecialSkinEffectsDeadTable.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsDeadTable.png';
 
+
+iconSpecialSkinEffectsBabyBoss = new Image;
+iconSpecialSkinEffectsBabyBoss.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsBabyBoss.png';
+iconSpecialSkinEffectsBabyBoss1 = new Image;
+iconSpecialSkinEffectsBabyBoss1.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsBabyBoss1.png';
+iconSpecialSkinEffectsGladiator = new Image;
+iconSpecialSkinEffectsGladiator.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsGladiator.png';
+iconSpecialSkinEffectsHero = new Image;
+iconSpecialSkinEffectsHero.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsHero.png';
+iconSpecialSkinEffectsHero1 = new Image;
+iconSpecialSkinEffectsHero1.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsHero1.png';
+iconSpecialSkinEffectsHero2 = new Image;
+iconSpecialSkinEffectsHero2.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsHero2.png';
+iconSpecialSkinEffectsKey = new Image;
+iconSpecialSkinEffectsKey.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsKey.png';
+iconSpecialSkinEffectsMetalOfHonor = new Image;
+iconSpecialSkinEffectsMetalOfHonor.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsMetalOfHonor.png';
+iconSpecialSkinEffectsPeaceMaker = new Image;
+iconSpecialSkinEffectsPeaceMaker.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsPeaceMaker.png';
+iconSpecialSkinEffectsSurvivor = new Image;
+iconSpecialSkinEffectsSurvivor.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSurvivor.png';
+iconSpecialSkinEffectsTiger = new Image;
+iconSpecialSkinEffectsTiger.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsTiger.png';
 if (dyinglight1load == "yes") {
     cimgDyingLight = new Image;
     cimgDyingLight.src = defaultSettings.commanderImageDyingLight;
@@ -2521,6 +2640,8 @@ var defaultmapsettings = {
     hideMyName: false,
     hideTeammatesNames: false,
     showMass: true,
+	showChat: true,
+	showChatMyOwn: false,
     oneColoredSpectator: false,
     multiBoxShadow: false,
     multiKeepMoving: true,
@@ -2534,7 +2655,9 @@ var defaultmapsettings = {
     universalChat: true,
     customSkins: true,
     videoSkins: true,
-    videoSkinsMusic: false,
+	videoDestorted: false,
+    videoSkinsMusic2: true,
+	videoOthersSkinSoundLevelproportion: true,
     myTransparentSkin: false,
     myCustomColor: true,
     transparentCells: false,
@@ -2545,7 +2668,7 @@ var defaultmapsettings = {
     showMapBorders: true,
     showGhostCells: false,
     showGhostCellsInfo: false,
-    showPartyBots: false,
+    //showPartyBots: false,
     showMiniMap: true,
     rotateMap: true,
     showMiniMapGrid: false,
@@ -2631,6 +2754,7 @@ var defaultmapsettings = {
     ////
     //'zoomSpeedValue: .87,
     zoomSpeedValue2: -0.13,
+	videoSkinSoundLevel: 1,
     leaderboardlimit: 20,
     teamboardlimit: 20,
     messageSound: 'https://legendmod.ml/sounds/notification_01.mp3',
@@ -3311,6 +3435,7 @@ function thelegendmodproject() {
         teamPlayers: [],
         parties: [],
         chatHistory: [],
+		commandHistory: [],
         chatUsers: {},
         chatMutedUsers: {},
         chatMutedUserIDs: [],
@@ -3686,11 +3811,22 @@ function thelegendmodproject() {
             if (window.fullSpectator) {
                 window.fullSpectator = false;
                 LM.flushSpecsData();
-            } else if (!window.fullSpectator) {
-                window.fullSpectator = true;
-                LM.addSpect();
+            } 
+			else if (!window.fullSpectator) {
+					window.fullSpectator = true;
+					LM.addSpect();				
             }
         },
+        setShowIngameSpectator() {
+            if (window.ingameSpectator) {
+                window.ingameSpectator = false;
+                LM.flushSpecsData();
+            } 
+			else if (!window.fullSpectator) {
+					window.ingameSpectator = true;
+					LM.addSpect();
+            }
+        },		
         setQuest() {
             if (this.showQuest && ':ffa' === this.gameMode) {
                 $('#quest-hud').show();
@@ -3848,7 +3984,6 @@ function thelegendmodproject() {
                 application.flushSkinsMap();
                 //animateSkinsStop();
 				window.preSetanimateSkincheck=6000;
-				
             }
         },
         setUniversalChat() {
@@ -3882,13 +4017,11 @@ function thelegendmodproject() {
         },
         displayPartyBots() {
             setTimeout(function() {
-                if (defaultmapsettings.showPartyBots) {
-                    //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Party bots displayed');
+                //if (defaultmapsettings.showPartyBots) {                   
                     $(".quick.quick-bots.ogicon-trophy").show();
-                } else {
-                    //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Party bots NOT displayed');
+                /*} else {
                     $(".quick.quick-bots.ogicon-trophy").hide();
-                }
+                }*/
             }, 50);
         },
         setBlockPopups() {
@@ -4449,9 +4582,9 @@ function thelegendmodproject() {
                     case 'tweenMaxEffect':
                         this.setTweenMaxEffect();
                         break;
-                    case 'showPartyBots':
+                    /*case 'showPartyBots':
                         this.displayPartyBots();
-                        break;
+                        break;*/
                     case 'showStats':
                         this.displayStats();
                         $('#stats-hud').show();
@@ -4574,9 +4707,10 @@ function thelegendmodproject() {
                     //console.log("stage 1 images/videos: " + t);
                     var app = this;
                     o = new Video();
-                    o.src = t;
-                    // o = new Image();
                     o.crossOrigin = 'anonymous';
+					o.src = t;
+                    // o = new Image();
+                    
 					//o.style.borderRadius = "25px";
                     setTimeout(function() {
                         //newo.onload = function() {
@@ -4588,15 +4722,17 @@ function thelegendmodproject() {
                 }
             } else {
                 checktypeImgVid = new Image();
+				
                 //console.log("stage 1 images");
 
                 if ($('#' + e).empty().addClass('default'), t && 0 != t.length) {
                     //console.log("stage 1 images/videos: " + t);
                     var app = this,
                         o = checktypeImgVid;
+					o.crossOrigin = 'anonymous',	
                     o.src = t;
                     // o = new Image();
-                    o.crossOrigin = 'anonymous',
+                    
                         o.onload = function() {
                             app.changeSkinPreview(o, e);
                         };
@@ -4780,37 +4916,37 @@ function thelegendmodproject() {
 				'<a id= "ModReward" class="fa fa-gift " data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Reward day" onclick="LMrewardDay();return false;"></a>');
                 //'<a id= "LegendClanDiscord" href="https://discord.gg/CbMkY77" target="_blank" class="fa fa-globe" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Legend clan Discord"></a></div>');
 
+			//<input type="number" id="captchaSpeed" value="1" step="1" placeholder="CPU cores" min=1 max=${CPUamount} spellcheck="false" style="display:inline-block;">
+			//<span id="captchaErrors" style="display:inline-block;">Errors: <span id="captchaErrors1">0</span></span>
+			//<div2><button id="instant" class="btn btn-success">Instant (only for testers)</button></div2>
+			//var CPUamount=window.navigator.hardwareConcurrency-1;
             $(".left-container").append(`<div id="quick-bots" class="agario-panel agario-side-panel"><h2 id="botsInfo"></h2>									
 					<h5 id="botsAuthor" class="main-color">Party bots</h5>
 					<div id="botClient" style="margin-left:15px; margin-right:15px; font-family: Tahoma; color: rgb(255, 255, 255); z-index: 9999; border-radius: 5px; min-height: 16px; min-width: 200px; background-color: rgba(2, 0, 0, 0.4);">
 					<div><b>Bot Count</b>: <span id="botCount" class="label label-info pull-right">Waiting</span></div>
 					<b><div><b>ServerSlots</b>: <span id="slots" class="label label-info pull-right">Waiting</span></div>
 					<b><div><b>Captcha tokens</b>: <span id="captchatokens" class="label label-info pull-right">0</span></div>
-					</b></div>					
+					</b></div>	
 					<span id="statusTextBots">Status: <b id="userStatus">Disconnected</b></span>
-					<br>
 					<span id="aiTextBots">Bots AI: <b id="botsAI">Disabled</b></span>
 					<br>
 					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false" style="display:inline-block;">
-					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="199" spellcheck="false">
-					<input type="number" id="captchaSpeed" value="1.0" step="0.05" placeholder="Captcha delay (sec)" min="0" max="5" spellcheck="false" style="display:inline-block;">
+					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="190" spellcheck="false">
+
+					
 					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
 					<br>
 					<button id="connectBots" class="btn btn-success">Connect</button>
 					<br>
 					<button id="startBots" class="btn btn-primary btn" disabled>Start Bots</button>
-					<button id="captchaBots" class="btn btn-primary btn"  style="display:none;" disabled>Request 1000 captcha tokens</button>
-					<button id="stopBots" class="btn btn-danger">Stop Bots</button>
-					<div><span id="handleCaptchaBotsArea" style="display: none"><input type="checkbox" id="handleCaptchaBots"></input> <b>Handle bots with captcha</b>
-					<br>
-					<div id="handleCaptchaBotsAreaSettings" style="display: none"><input type="checkbox" id="solveCaptchaBots" disabled></input> <b>Solve captcha when loosing</b>
-					<br>
-					<input type="checkbox" id="pushCaptchaBots" disabled></input> <b>Push more bots</b>					
-					</span></div></div>					
+					
+					<button id="stopBots" class="btn btn-danger">Stop Bots</button>				
 					<br><u><a href="https://github.com/jimboy3100/jimboy3100.github.io/tree/master/ExampleScripts/agario-bots2" target="_blank">Installation</a></u>	
 					<u><a href="https://www.youtube.com/watch?v=rQMhxwIytro&feature=youtu.be" target="_blank">Tutorial video for PC node.js</a></u>	
 					<u><a href="https://repl.it/@legendmod/party-bots" target="_blank">Repl.it VPS</a></u>	
 					<u><a href="https://www.youtube.com/watch?v=xIupgFR7ZTY" target="_blank">Tutorial video for repl.it VPS</a></u>	
+					<br>
+					<div2><i>Tip:Connect more PC on the same Websocket, and keep them create tokens</i></div2>					
 					</div>`);
             if (!this.protocolMode) $("#quick-menu").prepend('<a href="#" class="quick-shop ogicon-cart" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_shop + '"></a><a href="#" class="quick-free-coins ogicon-coin-dollar" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_menu_main_free_coins + '"></a><a href="#" class="quick-free-gifts ogicon-gift" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_menu_main_gifts + '"></a><a href="#" class="quick-quests ogicon-trophy" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_menu_main_dailyquests + '"></a>');
             $(".party-dialog, .partymode-info").remove();
@@ -4838,15 +4974,16 @@ function thelegendmodproject() {
             this.addOptions(["quickResp", "autoResp", "spawnSpecialEffects"], "respGroup");
             this.addOptions(["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup");
             this.addOptions(["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound", "potionsDrinker"], "massGroup");
-            this.addOptions(["noSkins", "customSkins", "vanillaSkins", "jellyPhisycs", "videoSkins", "videoSkinsMusic"], "skinsGroup");
+            this.addOptions(["noSkins", "customSkins", "vanillaSkins", "jellyPhisycs", "videoSkins", "videoDestorted", "videoSkinsMusic2", "videoOthersSkinSoundLevelproportion"], "skinsGroup");
             this.addOptions(["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup");
             this.addOptions(["noColors", "myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow", 'cellContours', "animatedRainbowColor"], "transparencyGroup");
             this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
-            this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChatTranslation", "coloredNicks", "hidecountry", "universalChat"], "chatGroup");
+            this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChat", "showChatMyOwn", "showChatTranslation", "coloredNicks", "hidecountry", "universalChat"], "chatGroup");
             this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup");
 //            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "reverseTrick", "showPartyBots"], "helpersGroup"); //Sonia2
-            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
-            this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
+            //this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
+            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo"], "helpersGroup"); //Sonia2
+			this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
             //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
             this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
             this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "gameOverStats", "showTime"], "statsGroup");
@@ -4871,6 +5008,7 @@ function thelegendmodproject() {
             this.addSliderBox(".animationGroup", "animation", 5, 200, 1);
 			
             this.addSliderBox(".zoomGroup", "zoomSpeedValue2", -0.90, 0.90, 0.01);
+			this.addSliderBox(".skinsGroup", "videoSkinSoundLevel", 0, 1, 0.01);
             this.addSliderBox(".boardGroup", "leaderboardlimit", 10, 30, 5);
             this.addSliderBox(".boardGroup", "teamboardlimit", 5, 40, 5);
 
@@ -4940,6 +5078,24 @@ function thelegendmodproject() {
             }
         },
         setUI() {
+			/*$("#instant").click(function() {			
+				if (!window.iframereplitCreated){
+					window.iframereplitCreated=true						
+				$("#instant").html('<iframe frameborder="0px" width="120px" height="40" src="https://repl.it/@legendmod/party-bots-CleverBots?lite=true"></iframe>')
+				toastr.info('<b>[' + Premadeletter123 + ']:</b> ' + 'If <font color="green"><b>GREEN</b></font> button appears, click it!');
+				if (legendmod.gameMode!="party"){
+					$("#create-party-btn-2").click()
+				}
+				setTimeout(function() {					
+					$("#botsRemoteIP").val("wss://party-bots-CleverBots--legendmod.repl.co")
+					window.SERVER_HOST="wss://party-bots-CleverBots--legendmod.repl.co"
+					$("#connectBots").click()
+				}, 8000);	
+				setTimeout(function() {
+					$("#startBots").click()
+				}, 10000);				
+				}
+			});	*/		
             var app = this;
             $(document).on("click", ".menu-tabs a", function(event) {
                 event.preventDefault();
@@ -5697,14 +5853,16 @@ function thelegendmodproject() {
         loadSkin(img, url, animated) {
             var app = this;
             //console.log ("img:" + img + "url:" + url);
+			if (!url.includes("4.0") && !url.includes("4.1") && !url.includes("4.2") && !url.includes("4.3")){
             if (url && url.includes && (url.includes(".mp4") || url.includes(".webm") || url.includes(".ogv"))) {
                 img[url] = new Video();
                 //console.log("stage 2 videos");
             } else {
                 img[url] = new Image();
             }
-            img[url].crossOrigin = 'Anonymous';
-            img[url].onload = function() {
+			
+            img[url].crossOrigin = 'anonymous';
+            img[url].onload = function() {																	
                     if (this.complete &&
                         this.width &&
                         this.height &&
@@ -5752,6 +5910,7 @@ function thelegendmodproject() {
                                 app.cacheSkin4(app.customSkinsCache))								
                         );*/
                     }
+					
                 },
                 img[url].onerror = function() {
                     //console.log("error loading image: "+ url);
@@ -5763,8 +5922,17 @@ function thelegendmodproject() {
                         return url;
 
                     }
+                    else if (url && url.includes("https://legendmod.ml/vanillaskins/")) {
+                        url = "https://legendmod.ml/nextvanillaskins/" + url.split('/').pop(); //if CORS policy on miniclip images, use other source
+                        //console.log("new destination is: " + url);
+                        application.customSkinsMap[window.lastusednameforskin] = url;
+                        application.loadSkin(img, url);
+                        return url;
+
+                    }					
                 };
             img[url].src = url;
+			}
         },
         checkgraphics() {
             if (defaultSettings.graphics == "high") {
@@ -6433,7 +6601,14 @@ function thelegendmodproject() {
                 console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Ogario socket open:', application.publicIP);
                 var buf = app.createView(3);
                 buf.setUint8(0, 0);
-                buf.setUint16(1, 404, true);
+				//console.log("socket",this.socket.url)
+				//console.log("window.wsinjected",window.wsinjected)
+				if (!window.wsinjected){ //if delta socket injected
+					buf.setUint16(1, 401, true);
+				}
+				else{
+					buf.setUint16(1, 404, true);
+				}                
                 app.sendBuffer(buf);
                 app.sendPartyData();
             }
@@ -7429,20 +7604,25 @@ function thelegendmodproject() {
                 //if (!(0 == a.length || a.length > 15 || 0 == n.length)) {
                     var r = '';
                     if (0 != plId && plId != this.playerID && (this.addChatUser(plId, a), r = '<a href=\"#\" data-user-id=\"' + plId + '\" class=\"mute-user ogicon-user-minus\"></a> '), a = this.escapeHTML(a), 101 == caseof) {
+						
                         if (defaultmapsettings.showChatBox) return $('#chat-box').append('<div class=\"message\"><span class=\"message-time\">[' + time + '] </span>' + r + '<span class=\"message-nick\" style = "color:' + mcolor + '">' + a + ': </span><span class=\"message-text\">' + n + '</span></div>'),
                             $('#chat-box').perfectScrollbar('update'),
                             $('#chat-box').animate({
                                 'scrollTop': $('#chat-box').prop('scrollHeight')
-                            }, 500), void(defaultmapsettings.chatSounds && this.playSound(this.messageSound));
+                            }, 500), 
+							void(defaultmapsettings.chatSounds && this.playSound(this.messageSound));
                         defaultmapsettings.hideChat || (toastr.success('<span class=\"message-nick\" style = "color:' + mcolor + '">' + a + ': </span><span class=\"message-text\">' + n + '</span>' + r),
                                 defaultmapsettings.chatSounds && this.playSound(this.messageSound)),
                             this.chatHistory.push({
                                 'nick': a,
-                                'message': n
+                                'message': n,
+								//
+								'time': Date.now() 
+								//
                             }),
-							fancyCount2(this.chatHistory)> 15 && this.chatHistory.shift();
-                            //this.chatHistory.length > 15 && this.chatHistory.shift();
-                    } else if (102 == caseof) {
+							this.chatHistory.length> 15 && this.chatHistory.shift();                           
+                    } 
+					else if (102 == caseof) {
                         if (defaultmapsettings.showChatBox) return $('#chat-box').append('<div class=\"message command\"><span class=\"command-time\">[' + time + '] </span>' + r + '<span class=\"command-nick\" style = "color:' + mcolor + '">' + a + ': </span><span class=\"command-text\">' + n + '</span></div>'),
                             $('#chat-box').perfectScrollbar('update'),
                             $('#chat-box').animate({
@@ -7450,8 +7630,17 @@ function thelegendmodproject() {
                             }, 500),
                             void(defaultmapsettings.chatSounds && this.playSound(this.commandSound));
                         defaultmapsettings.hideChat || (toastr.warning('<span class=\"command-nick\" style = "color:' + mcolor + '">' + a + ': </span><span class=\"command-text\">' + n + '</span>' + r),
-                            defaultmapsettings.chatSounds && this.playSound(this.commandSound));
-                    } else $('#messages').append(msg);
+                            defaultmapsettings.chatSounds && this.playSound(this.commandSound)),
+                            this.commandHistory.push({
+                                'nick': a,
+                                'message': n,
+								//
+								'time': Date.now() 
+								//
+                            }),
+							this.commandHistory.length> 15 && this.commandHistory.shift(); 							
+                    } 
+					else $('#messages').append(msg);
                 }
             }
         },
@@ -7537,17 +7726,18 @@ function thelegendmodproject() {
                 window.fullSpectator = false
                 LM.flushSpecsData()
             } else {
-                window.fullSpectator = true
-                LM.addSpect()
+					window.fullSpectator = true
+					LM.addSpect()
             }
         },
         setIngameSpectator() {
             if (window.ingameSpectator) {
                 window.ingameSpectator = false
                 LM.flushSpecsData()
-            } else {
-                window.ingameSpectator = true
-                LM.addSpect()
+            } 
+			else {
+					window.ingameSpectator = true
+					LM.addSpect()				
             }
         },
         setTargeting() {
@@ -7916,6 +8106,7 @@ function thelegendmodproject() {
         this.kMass = 0;
         this.massCanvas = null;
         this.mergeCanvas = null;
+		this.chatCanvas = null;
         this.massTxt = '';
         this.margin = 0;
         this.scale = 1;
@@ -7939,6 +8130,7 @@ function thelegendmodproject() {
         this.redrawNick = true;
         this.redrawMass = true;
         this.redrawMerge = true;
+		this.redrawChat = true;
         this.optimizedNames = false;
         this.optimizedMass = false;
         this.strokeNick = false;
@@ -8152,6 +8344,11 @@ function thelegendmodproject() {
                 this.mergeCanvas = new irenderfromagario();
                 return false;
             }
+            if (!this.chatCanvas) {
+                this.chatCanvas = new irenderfromagario();
+                return false;
+            }			
+			
             this.mass = ~~(mass * mass / 100);
             this.redrawMass = true;
             if (this.isVirus) {
@@ -8260,6 +8457,77 @@ function thelegendmodproject() {
                 ctx.drawImage(nickImg, ~~this.x - ~~(w / 2), ~~this.y - this.margin, w, h);
             } catch (e) {}
         };
+        this.drawChat = function(context) {
+            if (this.chatCanvas && !(this.size <= 40)) {
+                var chatCanvas = this.chatCanvas;
+                chatCanvas.setDrawing(defaultSettings.massColor, defaultSettings.massFontFamily, defaultSettings.massFontWeight, this.strokeMass, this.massStrokeSize, defaultSettings.massStrokeColor);
+                chatCanvas.setFontSize(this.massSize/2);
+                chatCanvas.setScale(this.scale);
+				var customTxt;
+				var temp;
+				for (var i=0;i<application.chatHistory.length;i++){				
+					if (application.chatHistory[i].nick==this.nick && (Date.now() - application.chatHistory[i].time < 15000)){	
+							if (!application.chatHistory[i].message.includes('<img src') && this.nick!=""){
+								if (application.chatHistory[i].nick == $('#nick').val() || application.chatHistory[i].nick == application.lastSentNick){
+									
+									if (defaultmapsettings.showChatMyOwn){
+										temp = Date.now() - application.chatHistory[i].time
+										customTxt = application.chatHistory[i].message	
+									}
+								}
+								else{
+									temp = Date.now() - application.chatHistory[i].time
+									customTxt = application.chatHistory[i].message	
+								}
+							}							
+					}
+				}
+				for (var i=0;i<application.commandHistory.length;i++){		
+					if (application.commandHistory[i].nick==this.nick && (Date.now() - application.commandHistory[i].time < 15000)){	
+							if (this.nick!=""){
+								if (application.commandHistory[i].nick == $('#nick').val() || application.commandHistory[i].nick == application.lastSentNick){
+									
+									if (defaultmapsettings.showChatMyOwn){
+										if (temp > (Date.now() - application.commandHistory[i].time) || !temp){
+											temp = Date.now() - application.commandHistory[i].time
+											customTxt = application.commandHistory[i].message	
+										}
+									}
+								}
+								else{
+									if (temp > (Date.now() - application.commandHistory[i].time) || !temp){
+										temp = Date.now() - application.commandHistory[i].time
+										customTxt = application.commandHistory[i].message	
+									}
+								}
+							}							
+					}					
+				}				
+                    if (customTxt) {
+                        if (this.redrawChat) {
+                            chatCanvas.setTxt(customTxt);                          
+                        }
+                        var data = chatCanvas.drawTxt(customTxt);
+                        var width = ~~(data.width / this.scale);			
+                        var height = ~~(data.height / this.scale);				
+                        var textureY = this.margin === 0 ? ~~(this.y + height * 1/2) : ~~this.y - 4 * this.margin;
+						
+						if (temp<2000){
+							context.globalAlpha = temp/2000							
+						}
+						else if (temp>13000){
+							temp = 15000 - temp
+							context.globalAlpha = temp/2000	
+						}
+							
+                        if (width > 1 && height > 1) {
+                            try {
+                                context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
+                            } catch (e) {}
+                        }
+                    }
+            }
+        };		
         this.drawMerge = function(context) {
             if (this.mergeCanvas && !(this.size <= 40)) {
                 var mergeCanvas = this.mergeCanvas;
@@ -8307,13 +8575,10 @@ function thelegendmodproject() {
                                 context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
                             } catch (e) {}
                         }
-
                     }
 
                 }
                 ///
-
-
                 //window.counterCell++;
             }
         };
@@ -8338,7 +8603,7 @@ function thelegendmodproject() {
                     try {
                         context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
                     } catch (e) {}
-                }
+                }			
             }
         };
         this.createStrokeVirusPath = function(shadowXpos, shadowYpos, zeroSizeMax, pixelSizeTargetMax = 6) {
@@ -8468,6 +8733,7 @@ function thelegendmodproject() {
                         //style.drawImage(cimgSpecialSkinEffectsYoutube, this.x - 1/2 * y, this.y - 3/2 * y, y, y); 
                     } else if (this.SpecialEffect == "LegendHeroes" || this.SpecialEffect2 == "LegendHeroes") {
                         style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);
+						
                         /*style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
                         if (!window.xx1) window.xx1 = 0.95
                         if (!window.xx2) window.xx2 = 5.3/4
@@ -8476,16 +8742,75 @@ function thelegendmodproject() {
                     } else if (this.SpecialEffect == "LegendClan" || this.SpecialEffect2 == "LegendClan") {
                         style.drawImage(cimgSpecialSkinEffectsLegendHeroes2, this.x - 1 / 3 * y, this.y - 5.3 / 4 * y, y / 1.5, y / 6);
                         /*style.drawImage(cimgSpecialSkinEffectsLegendHeroes2, this.x - window.xx5 * y, this.y - window.xx6 * y, y/window.xx7, y/window.xx8);				
-                        if (!window.xx1) window.xx5 = 1/3
-                        if (!window.xx2) window.xx6 = 5.3/4
-                        if (!window.xx3) window.xx7 = 1.5
-                        if (!window.xx4) window.xx8 = 6*/
-                    }
-                    if (this.targetNick.includes("The Dying Light" || this.SpecialEffect == "RedArrow" || this.SpecialEffect2 == "RedArrow")) {
-                        try {
+                        if (!window.xx5) window.xx5 = 1/3
+                        if (!window.xx6) window.xx6 = 5.3/4
+                        if (!window.xx7) window.xx7 = 1.5
+                        if (!window.xx8) window.xx8 = 6*/                   
+                    } 
+					
+					
+					
+					
+					else if (this.SpecialEffect == "BabyBoss" || this.SpecialEffect2 == "BabyBoss") { 
+						if (this.mass<3000){
+							style.drawImage(iconSpecialSkinEffectsBabyBoss, this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);			
+						}
+						else {
+							style.drawImage(iconSpecialSkinEffectsBabyBoss1, this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);
+						}
+                    } 	 
+					else if (this.SpecialEffect == "Gladiator" || this.SpecialEffect2 == "Gladiator") {
+						var d = new Date();
+						var n = d.getSeconds();
+						/*
+						var e;
+						if (n<30){ e = n / 30}
+						else { e = (n /30) - 1}						
+						style.filter = 'contrast(1.4) sepia(' + e + ')';
+						*/
+						style.filter = 'hue-rotate(-' + n/60 + 'turn)';
+                        style.drawImage(iconSpecialSkinEffectsGladiator, this.x - 0.85 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);						
+                    } 
+					else if (this.SpecialEffect == "Hero" || this.SpecialEffect2 == "Hero") {
+                        style.drawImage(iconSpecialSkinEffectsHero, this.x - 0.35 * y, this.y - 1.35 * y, y / 1.5, y / 1.5);						
+                    } 
+					else if (this.SpecialEffect == "Hero1" || this.SpecialEffect2 == "Hero1") {	
+						var d = new Date();
+						var n = d.getSeconds();		
+						var e;
+						if (n<30){ e = n / 30}
+						else { 
+							n = 60 - n
+							e = n / 30
+						}													
+						style.save();
+						style.globalAlpha = e
+                        style.drawImage(iconSpecialSkinEffectsHero1, this.x - 0.1 * y, this.y - 1.35 * y, y / 1, y / 1);	
+						style.restore();
+						
+                    } 
+					else if (this.SpecialEffect == "Hero2" || this.SpecialEffect2 == "Hero2") {
+                        style.drawImage(iconSpecialSkinEffectsHero2, this.x -0.3 * y, this.y - 1.48 * y, y / 2, y / 2);		
+					}						
+					else if (this.SpecialEffect == "Key" || this.SpecialEffect2 == "Key") {
+                        style.drawImage(iconSpecialSkinEffectsKey, this.x + 0.4 * y, this.y - 1.15 * y, y / 2, y / 2);						
+                    } 
+					else if (this.SpecialEffect == "MetalOfHonor" || this.SpecialEffect2 == "MetalOfHonor") {
+                        style.drawImage(iconSpecialSkinEffectsMetalOfHonor, this.x - 0.25 * y, this.y + 0.8 * y, y / 2, y / 2);						
+                    } 
+					else if (this.SpecialEffect == "PeaceMaker" || this.SpecialEffect2 == "PeaceMaker") {
+                        style.drawImage(iconSpecialSkinEffectsPeaceMaker, this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 2);						
+                    } 
+					else if (this.SpecialEffect == "Survivor" || this.SpecialEffect2 == "Survivor") {
+                        style.drawImage(iconSpecialSkinEffectsSurvivor, this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 1.5);						
+                    } 
+					else if (this.SpecialEffect == "Tiger" || this.SpecialEffect2 == "Tiger") {
+                        style.drawImage(iconSpecialSkinEffectsTiger, this.x - 1.1 * y, this.y - 1.3 * y, y / 1.5, y / 1.5);						
+                    } 										
+                    else if (this.targetNick.includes("The Dying Light") || this.SpecialEffect == "RedArrow" || this.SpecialEffect2 == "RedArrow") {
                             style.drawImage(cimg5, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
-                        } catch (e) {}
-                    } else if (this.SpecialEffect == "WhiteArrow" || this.SpecialEffect2 == "WhiteArrow") {
+                    }
+					else if (this.SpecialEffect == "WhiteArrow" || this.SpecialEffect2 == "WhiteArrow") {
                         //style.drawImage(cimg2, this.x - y * 2, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
 
                         var today = new Date();
@@ -8593,7 +8918,7 @@ function thelegendmodproject() {
                     }*/
                     return defaultmapsettings.transparentViruses && (style.globalAlpha *= defaultSettings.virusAlpha, s = true), defaultmapsettings.virColors && LM.play ? (style.fillStyle = application.setVirusColor(y), style.strokeStyle = application.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = defaultSettings.virusStrokeSize, defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
                         defaultSettings.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), defaultmapsettings.showMass && (this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
-                        this.setMass(this.size), this.drawMass(style), (window.ExternalScripts && !window.legendmod5.optimizedMass && this.drawMerge(style))), void style.restore();
+                        this.setMass(this.size), this.drawMass(style), (defaultmapsettings.showChat && this.drawChat(style)), (window.ExternalScripts && !window.legendmod5.optimizedMass && this.drawMerge(style))), void style.restore();
                 }
             } 
 			else {
@@ -8629,6 +8954,9 @@ function thelegendmodproject() {
                         if (window.ExternalScripts && !window.legendmod5.optimizedMass) {
                             this.drawMerge(style);
                         }
+						if (defaultmapsettings.showChat){
+						this.drawChat(style);
+						}
                     }
                     style.restore();
                     return;
@@ -8785,10 +9113,28 @@ function thelegendmodproject() {
                                 try {
 
 									//style.arc(this.x - y, this.y - y, 2 * y, 0, this.pi2, true);
-									//style.clip();									
+									style.save();
+									style.clip();	
+
 									//style.drawImage(window.videoSkinPlayer[node2.src], 0, 0,2*y,2*y);	
-							
-                                    style.drawImage(window.videoSkinPlayer[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y);
+									//style.drawImage(window.videoSkinPlayer[node2.src], this.x - y, this.y - y, 2 * y, 2 * y);
+									if (defaultmapsettings.videoDestorted){
+										var temp = window.videoSkinPlayer[node2.src].videoWidth / window.videoSkinPlayer[node2.src].videoHeight;
+										style.drawImage(window.videoSkinPlayer[node2.src], this.x - y, this.y - y * temp, 2 * y, 2 * y * temp);	
+									}
+									else{
+										style.drawImage(window.videoSkinPlayer[node2.src], this.x - y, this.y - y, 2 * y, 2 * y);
+									}
+									style.restore();
+                                    //style.drawImage(window.videoSkinPlayer[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y);
+									
+									
+									
+                          /*(o.l.context.drawImage(o.l.video, 0, 0, o.l.video.videoWidth,
+                                            o.l.video.videoHeight,
+                                            -((512 * (o.l.video.videoWidth / o.l.video.videoHeight) - 512) / 2), 0,
+                                            512 * (o.l.video.videoWidth / o.l.video.videoHeight), 512),
+                                        t[0] = o.l.canvas)*/
 									
                                 } catch (e) {}
                             }
@@ -8821,6 +9167,9 @@ function thelegendmodproject() {
                             if (window.ExternalScripts && !window.legendmod5.optimizedMass) {
                                 this.drawMerge(style);
                             }
+							if (defaultmapsettings.showChat){
+								this.drawChat(style);
+							}
                         }
                     }
                     style.restore();
@@ -9250,14 +9599,20 @@ function thelegendmodproject() {
                         //window.RequestedTokens=1000;
                         //this code is to inform me when a new loop process starts again
                         console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' bots started again')
+						legendmod.sendTokenForBots();
+						/*
+						$('#captchaErrors1').text(parseInt($('#captchaErrors1').text())+1)
                         legendmod.sendTokenForBots();
                         if ($('#captchaSpeed').val()) {
                             window.tempol = $('#captchaSpeed').val();
                         } else {
                             window.tempol = 0.5;
+							$('#captchaSpeed').val(window.tempol)
                         }
+						*/
                     }
-                }, 10000 + window.tempol * 1000);
+                //}, 10000 + window.tempol * 1000);
+				}, 10000);
             } else {
                 //setTimeout(function() {	
                 window.sendFirstTimeTokenBots = false
@@ -9285,54 +9640,32 @@ function thelegendmodproject() {
             //self.sendMessage(view);			
         },
         sendTokenForBots() {
-            //var self = this
-            //this.playerNick = nick;    
-            legendmod.botscaptcha = true;
+
+            /*legendmod.botscaptcha = true;
             window.sendTimeOutTokenBots = false;
             if ($('#captchaSpeed').val()) {
                 window.tempol = $('#captchaSpeed').val();
             }
-            this.integrity && window.agarCaptcha.requestCaptchaV3("play", function(token) {
-                //sendSpawn(token)
+			setTimeout(function() {*/
+			for (var i=0;i<window.captchaOpenedWindow;i++){
+				if (legendmod.integrity && window.capthaWindow[i] && !window.capthaWindow[i].closed){
+					window.capthaWindow[i].ProcessParentMessage('doCaptcha');
+				}
+				else if(legendmod.integrity && window.capthaWindow[i] && window.capthaWindow[i].closed){
+					createCaptchaWindow(i)
+				}
+				
+			}
+			//}, 500);			
+			
+            /*this.integrity && window.agarCaptcha.requestCaptchaV3("play", function(token) {
+
+				if(window.capthaWindow) window.capthaWindow.ProcessParentMessage('doCaptcha');
                 setTimeout(function() {
                     legendmod.sendSpawn2(token);
                 }, window.tempol * 1000);
                 //window.core.sendNick(nick, token)
-            })
-            /*            if (!grecaptcha.onceLoad || grecaptcha.v2mode) {
-                            //first time need recaptcha v2
-                            requestCaptchaV3();
-                            grecaptcha.onceLoad = true;
-                            //grecaptcha.reset();				
-                            grecaptcha.execute(0, {
-                                'action': 'play'
-                            }).then(function() {
-            					
-            					//window.tempo2 = grecaptcha.getResponse()
-            					//setTimeout(function() {
-                                //legendmod.sendSpawn2(window.tempo2);
-            					//}, window.tempol*1000);
-            					
-            					grecaptcha.reset();
-                            });
-                        } else {
-                            //next times need recaptcha v3
-            				
-            				grecaptcha.ready(function() {
-            				legendmod.botscaptcha=true;
-                            grecaptcha.execute(0, {
-                                'action': 'play'
-                            }).then(function() {
-            					
-            					//window.tempo2 = grecaptcha.getResponse()
-            					//setTimeout(function() {
-                                //legendmod.sendSpawn2(window.tempo2);
-            					//}, window.tempol*1000);
-            					
-                            });
-            			})
-                        }	
-            */
+            })*/
         },
         sendNick2(nick) {
             this.playerNick = nick,
@@ -11173,7 +11506,7 @@ function thelegendmodproject() {
         getImg(url, name, callback) {
             const app = this;
             var img = new Image();
-            img.crossOrigin = `Anonymous`;
+            img.crossOrigin = 'anonymous';
             img.setAttribute("alt", name);
             img.onload = function() {
                 if (this.complete && this.width && this.height) {
@@ -11543,8 +11876,10 @@ Game name     : ${i.displayName}<br/>
                             //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);                                
                                 window.lastusednameforskin = y;
                                 //core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image, null);
-                                application.customSkinsMap[y] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image;
-                                application.loadSkin(application.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image);                            
+								if (!application.customSkinsMap[y] || LM.gameMode != ":party"){
+									application.customSkinsMap[y] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image;
+									application.loadSkin(application.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image);  
+								}
                         }
                     }
                 }
@@ -11772,7 +12107,7 @@ Game name     : ${i.displayName}<br/>
                 }
                 if (extendedFlags & 2) {
                     cellUpdateCells.isFriend = isFriend;
-                    console.log('FB friend cell in view', isFriend)
+                    //console.log('FB friend cell in view', isFriend)
                 }
             }
 
@@ -13925,6 +14260,7 @@ Game name     : ${i.displayName}<br/>
 
     window.canvasElem = document.querySelector("canvas");
     window.canvasElem.addEventListener('contextmenu', openContextMenu, false);
+	document.getElementById("botsRemoteIP").addEventListener('contextmenu', openContextMenu2, false);
     PreLcCelebration();
     consoleNotice();
     $("#overlays").css("z-index", "100")
@@ -13939,8 +14275,15 @@ function setGUIEvents() {
     if (storedbotsRemoteIP == null || storedbotsRemoteIP == "") {
         storedbotsRemoteIP = "ws://localhost:1337";
     }
-    var captchaSpeed = localStorage.getItem("captchaSpeed");
-    $('#captchaSpeed').val(captchaSpeed)
+	window.captchaOpenedWindow=1;
+    /*var captchaSpeed = localStorage.getItem("captchaSpeed2");
+	if (captchaSpeed == null || captchaSpeed == "null" || captchaSpeed == ""){ 
+		window.captchaOpenedWindow = 1
+	}
+	else{	
+		window.captchaOpenedWindow = parseInt(captchaSpeed);
+		$('#captchaSpeed').val(window.captchaOpenedWindow)
+	}*/  
     window.bots.remoteIP = storedbotsRemoteIP
     window.SERVER_HOST = storedbotsRemoteIP;
     $('#botsRemoteIP').val(storedbotsRemoteIP)
@@ -13957,91 +14300,48 @@ function setGUIEvents() {
     }
     window.bots.amount = storedbotsamount;
     $('#botsAmount').val(storedbotsamount)
-    document.getElementById('captchaSpeed').addEventListener('change', function() {
-        localStorage.setItem('captchaSpeed', $('#captchaSpeed').val())
-    })
+    /*document.getElementById('captchaSpeed').addEventListener('change', function() {
+		window.captchaOpenedWindow = $('#captchaSpeed').val()
+        localStorage.setItem('captchaSpeed2', $('#captchaSpeed').val())
+    })*/
     document.getElementById('botsRemoteIP').addEventListener('change', function() {
         window.bots.remoteIP = this.value
         localStorage.setItem('localstoredBotsRemoteIP', window.bots.remoteIP)
         window.SERVER_HOST = window.bots.remoteIP
     })
     document.getElementById('botsNameLM').addEventListener('change', function() {
+		 document.getElementById('botsNameLM').value = document.getElementById('botsNameLM').value.replace(/[^\x20-\x7E]/g, '');
         window.bots.nameLM = this.value
         localStorage.setItem('localStoredBotsName', window.bots.nameLM)
     })
-    document.getElementById('botsAmount').addEventListener('change', function() {
-        window.bots.amount = Number(this.value)
+    document.getElementById('botsAmount').addEventListener('change', function() {      
         localStorage.setItem('localStoredBotsAmount', window.bots.amount)
+		window.bots.amount = Number(this.value)		
     })
-    document.getElementById('connectBots').addEventListener('click', () => {
-        if ($('#pushCaptchaBots').is(':checked')) {
-            window.connectionBots.send(window.buffers.captchabots((window.bots.amount).toString()))
-            //toastr.info('<b>[SERVER]:</b> Bot pushed')
-        } else {
+    document.getElementById('connectBots').addEventListener('click', () => {			
             if (!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
-        }
     })
     document.getElementById('startBots').addEventListener('click', () => {
         if (legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots) {
-            if (legendmod.gameMode == ":party" || window.AdminRights == 1 || window.IamNeo == true) {
-                if (window.bots.amount <= 199) {
-                    if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') {
+            if (legendmod.gameMode == ":party" || $("#nick").val().includes('℄') && $("#clantag").val() == window.atob(window.clanTagLc) || window.AdminRights == 1 || window.IamNeo == true) {
+                if (window.bots.amount && window.bots.amount <= 190) {
+					if (window.bots.amount + legendmod.leaderboard.length>190) window.bots.amount = 190 - legendmod.leaderboard.length;
+                    //if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') {
                         //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
                         window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
-                        //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.botsSpawncode[window.botsSpawncodeNum], window.bots.amount))
-                        if (window.LatestBotsVersion) {
-                            $('#handleCaptchaBotsAreaSettings').show();
-                        }
-                    } else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots name, amount and user login are required before starting the bots')
-                } else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots Max amount is 199')
-            } else {
+						
+						if (legendmod.gameMode != ":party") window.connectionBots.send(window.buffers.sendMode(window.unescape(window.encodeURIComponent(ogarcopythelb.nick))))						
+                        //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.botsSpawncode[window.botsSpawncodeNum], window.bots.amount))                     					
+                } 
+				else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots amount required (max 190)')
+            } 
+			else {
                 toastr.info('<b>[' + Premadeletter123 + ']:</b> Party bots only available for Party mode')
             }
         }
     })
-    document.getElementById('captchaBots').addEventListener('click', () => {
-        toastr.info('<b>[' + Premadeletter123 + ']:</b> 100000 captcha tokens requested, some lag from proccessing will be created. <br><b>If captcha tokens stop, create again tokens</b>');
-        window.RequestedTokens = 100000;
-        legendmod.sendTokenForBots();
-        //legendmod.sendTimeOutTokenForBots();
-    })
     document.getElementById('stopBots').addEventListener('click', () => {
         if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
-    })
-    $('#handleCaptchaBots').click(function() {
-        if (this.checked) {
-            window.connectionBots.send(new Uint8Array([11]).buffer)
-            $('#solveCaptchaBots').removeAttr("disabled")
-            $('#pushCaptchaBots').removeAttr("disabled")
-        } else {
-            window.connectionBots.send(new Uint8Array([12]).buffer)
-            $('#solveCaptchaBots').prop('checked', false)
-            $('#pushCaptchaBots').prop('checked', false)
-            $('#solveCaptchaBots').attr("disabled", true);
-            $('#pushCaptchaBots').attr("disabled", true);
-            document.getElementById('connectBots').innerText = 'Connect'
-            document.getElementById('connectBots').style.color = 'white'
-
-        }
-    })
-    $('#solveCaptchaBots').click(function() {
-        if (this.checked) {
-            window.connectionBots.send(new Uint8Array([13]).buffer)
-        } else {
-            window.connectionBots.send(new Uint8Array([14]).buffer)
-        }
-    })
-    $('#pushCaptchaBots').click(function() {
-        if (this.checked) {
-            document.getElementById('connectBots').innerText = 'Push a captcha bot'
-            document.getElementById('connectBots').style.color = 'yellow'
-            window.connectionBots.send(new Uint8Array([15]).buffer)
-        } else {
-            window.connectionBots.send(new Uint8Array([16]).buffer)
-            document.getElementById('connectBots').innerText = 'Connect'
-            document.getElementById('connectBots').style.color = 'white'
-
-        }
     })
 }
 
@@ -14147,7 +14447,22 @@ const menuLeft = new ContextMenu({
         },
     ]
 });
-
+const menuLeft2 = new ContextMenu({
+    'theme': 'default', // or 'blue'
+    'items': [{
+            'icon': 'download',
+            'name': 'Open',
+            action: () => {
+                leftClickOpen()
+            }
+        }
+    ]
+});
+function leftClickOpen() {
+	var temp11 = document.getElementById("botsRemoteIP").value
+	var temp12 = "https://repl.it/@" + temp11.split('--')[1].split('.repl.co')[0] + "/" + temp11.split('wss://')[1].split('--')[0]
+	window.open(temp12 , '_blank');
+}
 function leftClickAttack() {
     var temp = legendmod.cursorX + legendmod.mapOffsetX
     var temp2 = legendmod.cursorY + legendmod.mapOffsetY
@@ -14183,44 +14498,51 @@ function openContextMenu(evt) {
         window.canvasElem.addEventListener('click', hideContextMenu, false);
     }
 }
-
+function openContextMenu2(evt) {
+    if (document.getElementById("botsRemoteIP").value.includes('.repl.co')) {
+        evt.preventDefault();
+        const time = menuLeft2.isOpen() ? 100 : 0;
+        menuLeft2.hide();
+        setTimeout(() => {
+            menuLeft2.show(evt.pageX, evt.pageY)
+        }, time);
+        document.getElementById("botsRemoteIP").addEventListener('click', hideContextMenu2, false);
+    }
+}
 function hideContextMenu(evt) {
     menuLeft.hide();
     window.canvasElem.removeEventListener('click', hideContextMenu);
 }
-
+function hideContextMenu2(evt) {
+    menuLeft2.hide();
+    document.getElementById("botsRemoteIP").removeEventListener('click', hideContextMenu2);
+}
 //Animated Skins
 function animateSkincheck() {
+    //for (i = 0; i < 10; i++) {
+	//SpecialEffectPlayers[	
+	for (i = 0; i < 1; i++) {	
         for (animatedi = 0; animatedi < legendmod.leaderboard.length; animatedi++) {
-			
-			//animatedkey = null
-			//for (animatedkey in animatedskins) {
-			animatedkey=legendmod.leaderboard[animatedi].nick
-			if (animatedskins[animatedkey] && animatedskins[animatedkey].frames){	
-					console.log(animatedkey,animatedskins[animatedkey].id,legendmod.leaderboard[animatedi].nick)
+            for (animatedkey in animatedskins) {
+                if (animatedkey == legendmod.leaderboard[animatedi].nick) {
+					if (animatedskins[animatedkey] && animatedskins[animatedkey].frames){
                     e = animatedskins[animatedkey].frames.length - 1;
 					window.anual = 0;
-					window.anual2 = 0;
-					for (animateda = 0; animateda <= animatedskins[animatedkey].frames.length - 1; animateda++) {
-						 bi = animateda;
-						 verifiednames = animatedkey;
-						 window.anual2 = window.anual2 + animatedskins[verifiednames].frames[bi].delay * 1000;						 
-					}
-					window.anual2a  = window.anualTop / window.anual2 
                     for (animateda = 0; animateda <= animatedskins[animatedkey].frames.length - 1; animateda++) {
                         b = animateda;
                         verifiednames = animatedkey;
                         window.anual = window.anual + animatedskins[verifiednames].frames[b].delay * 1000;
                         d = animatedi;
-                        animateSkin(b, verifiednames, d, e);
-						//if (window.anualTop < window.anual)	window.anualTop = window.anual							
-						}
-					
-                
-            }	
-				
+                        animateSkin(b, verifiednames, d, e, i);
+						if (window.anualTop < window.anual)	window.anualTop = window.anual	
+						
+                    }
+					}
+                }
+            }
         }
-	window.anualTop = window.anual	
+    }
+	//if (window.preSetanimateSkincheck > window.anualTop + 1000 ) window.preSetanimateSkincheck = window.anualTop + 1000
 	window.preSetanimateSkincheck = window.anualTop
 	if (defaultmapsettings.vanillaSkins) {
 		setTimeout(function() {		
@@ -14229,25 +14551,30 @@ function animateSkincheck() {
 	}
 }
 
-function animateSkin(b, verifiednames1, d, e) {
-	window.anual3 = window.anual
-	if (window.anual2a && window.anual2a>0.1) window.anual3 = window.anual * window.anual2a
-	
+function animateSkin(b, verifiednames, d, e, i) {
     setTimeout(function() {
-        application.cacheCustomSkin(verifiednames1, animatedskins[verifiednames1].color, "https://i.imgur.com/" + animatedskins[verifiednames1].frames[b].id + ".png");
-    }, window.anual3);
+        //if (verifiednames==legendmod.leaderboard[d].nick){
+        application.cacheCustomSkin(verifiednames, animatedskins[verifiednames].color, "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");
+        //if (b == e) {
+            //if (i == 9) {
+			//if (i == 0) {	
+                //window.anual = 0;
+                //if (animatedserverchanged == false) {}
+            //}
+        //}
+    }, window.anual);
 }
 
 function animateSkinsStop() {
     //clearInterval(defaultmapsettings.animateSkinsStart);
 }
 
-function animateCustomSkin(nick2, id){
+function animateCustomSkin(nick, id){
 	
 	Object.keys(animatedskins).forEach(function(key) {
             if (animatedskins[key] && animatedskins[key].id == id) {
                 //console.log(key, animatedskins[key]);
-				animatedskins[nick2] = animatedskins[key];
+				animatedskins[nick] = animatedskins[key];
 				//animatedskins[key] = null
 				//console.log (animatedskins[key])
             }  
@@ -14413,10 +14740,8 @@ function Socket3updateTeamPlayerSpfc(Socket3data) {
     var message = Socket3data.x;
     //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Player ', h, 'uses Special Effect ', message);
     if (h && message){ 
-		console.log('a',h, message)
 		SpecialEffectPlayers[h] = message;
 		animateCustomSkin(h, message)
-
 	}
 }	
 
