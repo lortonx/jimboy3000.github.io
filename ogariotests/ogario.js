@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.242
+// v2.243 multibox test
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3949,9 +3949,14 @@ function thelegendmodproject() {
                 }
                 window.multiboxPlayerEnabledSaved = window.multiboxPlayerEnabled
                 window.multiboxPlayerEnabled = null
-            } else {
+            } 
+			/*else if (!window.multiboxPlayerEnabled) {
+				
+			}*/
+			
+			else {
                 window.multiboxPlayerEnabled = window.multiboxPlayerEnabledSaved
-                window.multiboxPlayerEnabledSaved = null
+                //window.multiboxPlayerEnabledSaved = null
             }
             if (spects.length && !legendmod.multiBoxPlayerExists) {
                 window.fullSpectator = false
@@ -11796,6 +11801,8 @@ Game name     : ${i.displayName}<br/>
                 })
                 window.spects = [];
             }
+			window.multiBoxPlayerStarted=null
+			
         },
         setMapOffset(left, top, right, bottom) {
             //if (right - left > 14000 && bottom - top > 14000) {
@@ -12138,11 +12145,13 @@ Game name     : ${i.displayName}<br/>
                 } else {
                     if (!window.multiboxPlayerEnabled) {
                         application.multiboxswap()
-                    } else {
+                    } 
+					else {
                         if (!window.multiboxPlayerEnabledSaved) {
                             window.multiboxPlayerEnabledSaved = window.multiboxPlayerEnabled
                             window.multiboxPlayerEnabled = null
-                        } else {
+                        } 
+						else {
                             window.multiboxPlayerEnabled = window.multiboxPlayerEnabledSaved
                             window.multiboxPlayerEnabledSaved = null
                         }
