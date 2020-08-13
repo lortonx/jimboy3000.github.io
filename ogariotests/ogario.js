@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.244
+// v2.245
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10071,10 +10071,10 @@ function thelegendmodproject() {
 
                     s += 4;
                     var y = data.getFloat32(s, true);
-                    if (window.multiboxPlayerEnabled) {
+                    if (!window.multiboxPlayerEnabled) {
                         this.viewY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(y) : y;
                     }
-					else if (!window.multiboxPlayerEnabled) {
+					else if (window.multiboxPlayerEnabled) {
 						this.viewY = spects[window.multiboxPlayerEnabled-1].viewY
 					}					
                     this.viewYTrue = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(y) : y;
