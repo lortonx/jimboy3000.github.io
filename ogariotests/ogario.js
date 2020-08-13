@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.244
+// v2.243
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10064,6 +10064,9 @@ function thelegendmodproject() {
                     if (!window.multiboxPlayerEnabled) {
                         this.viewX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(x) : x;
                     }
+					else if (!window.multiboxPlayerEnabled) {
+						this.viewX = spects[window.multiboxPlayerEnabled-1].viewX
+					}
                     this.viewXTrue = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(x) : x;
 
                     s += 4;
@@ -10071,6 +10074,9 @@ function thelegendmodproject() {
                     if (!window.multiboxPlayerEnabled) {
                         this.viewY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(y) : y;
                     }
+					else if (!window.multiboxPlayerEnabled) {
+						this.viewY = spects[window.multiboxPlayerEnabled-1].viewY
+					}					
                     this.viewYTrue = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(y) : y;
                     s += 4;
                     this.scale = data.getFloat32(s, true);
@@ -12186,11 +12192,7 @@ Game name     : ${i.displayName}<br/>
                 x += n.x / playersLength;
                 y += n.y / playersLength;
             }
-			if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1].viewYY && spects[window.multiboxPlayerEnabled-1].player){
-				this.viewX = spects[window.multiboxPlayerEnabled-1].viewX	
-				this.viewY = spects[window.multiboxPlayerEnabled-1].viewY	
-			}			
-            else {
+            if (!window.multiboxPlayerEnabled) {
                 this.viewX = x;
                 this.viewY = y;
             }
