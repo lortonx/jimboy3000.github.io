@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.246
+// v2.248
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3959,6 +3959,11 @@ function thelegendmodproject() {
                 addBox()
                 //toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + "Multibox cannot start because Spectators have been enabled");
             }
+            else if (spects.length && !window.multiboxPlayerEnabledSaved && !window.multiboxPlayerEnabled) { //handle error
+                LM.flushSpecsData()
+                addBox()               
+            }			
+			
         },
         multiboxFollowMouse() {
             if (!window.multiboxFollowMouse) {
