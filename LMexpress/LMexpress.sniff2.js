@@ -1,5 +1,5 @@
 //Legend mod Sniff2 by jimboy3100
-//v2.8b
+//v2.8c
 /*
 (function() {
     var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
@@ -541,7 +541,7 @@ function erasescripter(){
                   ready:     false,
                   current:   0,
                   timestamp: 0,
-                  id:        'Just Watch Pro',
+                  id:        'Just_Watch_Pro',
                   color:     '000000',
 				frames:    [
 					{id: '8wnf4ad', delay: '0.05'},
