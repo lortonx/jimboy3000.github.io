@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.254
+// v2.256
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -1007,6 +1007,7 @@ var displayText = {
         oneColoredSpectator: 'Multibox less render cells',
         multiBoxShadow: 'Player 1 & 2',
         multiKeepMoving: 'Inactive keep moving',
+		middleMultiView: 'View on middle of both',
         skipStats: 'Pomiń statystyki po śmierci',
         showQuest: 'Pokaż zadanie (quest)',
         autoZoom: 'Auto zoom',
@@ -1451,6 +1452,7 @@ var displayText = {
         oneColoredSpectator: 'MultiBox less render cells',
         multiBoxShadow: 'Player 1 & 2',
         multiKeepMoving: 'Inactive keep moving',
+		middleMultiView: 'View on middle of both',
         skipStats: 'Skip stats after death',
         showQuest: 'Show quest',
         autoZoom: 'Auto zoom',
@@ -2645,6 +2647,7 @@ var defaultmapsettings = {
     oneColoredSpectator: false,
     multiBoxShadow: false,
     multiKeepMoving: true,
+	middleMultiView: false,
     optimizedMass: true,
     shortMass: true,
     cellContours: false,
@@ -4992,7 +4995,7 @@ function thelegendmodproject() {
             //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
             this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
             this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "gameOverStats", "showTime"], "statsGroup");
-            this.addOptions(["oneColoredSpectator", "multiBoxShadow", "multiKeepMoving"], "multiBox");
+            this.addOptions(["oneColoredSpectator", "multiBoxShadow", "multiKeepMoving", "middleMultiView"], "multiBox");			
             this.addOptions([], "macroGroup");
             this.addOptions([], "profiles");
             if (!this.protocolMode) {
@@ -10066,16 +10069,24 @@ function thelegendmodproject() {
                 case 17:
                     window.testobjectsOpcode17 = data;
                     var x = data.getFloat32(s, true);
-                    if (!window.multiboxPlayerEnabled) {
+
+					if (defaultmapsettings.middleMultiView && legendmod.multiBoxPlayerExists){
+						//
+					}	
+                    else if (!window.multiboxPlayerEnabled) {
                         this.viewX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(x) : x;
-                    }
+                    }					
                     this.viewXTrue = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(x) : x;
 
                     s += 4;
                     var y = data.getFloat32(s, true);
-                    if (!window.multiboxPlayerEnabled) {
+
+					if (defaultmapsettings.middleMultiView && legendmod.multiBoxPlayerExists){
+						//
+					}						
+                    else if (!window.multiboxPlayerEnabled) {
                         this.viewY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(y) : y;
-                    }					
+                    }							
                     this.viewYTrue = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(y) : y;
                     s += 4;
                     this.scale = data.getFloat32(s, true);
@@ -12195,7 +12206,9 @@ Game name     : ${i.displayName}<br/>
                 this.viewX = x;
                 this.viewY = y;
             }
-			
+			else if (defaultmapsettings.middleMultiView && legendmod.multiBoxPlayerExists){
+				//
+			}
             this.viewXTrue = x;
             this.viewYTrue = y;
             this.playerSize = size;
