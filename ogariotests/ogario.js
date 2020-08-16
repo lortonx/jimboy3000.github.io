@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.258
+// v2.259
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8988,11 +8988,34 @@ function thelegendmodproject() {
                 }
             }
             //if (dyinglight1load != "yes" || this.targetNick.includes("The Dying Light") || this.isFood) {
+            /*if (defaultmapsettings.cellContours) {
+                style.lineWidth = 20; ///
+                style.strokeStyle = this.color; ///
+                style.stroke(); ///
+            } */
             if (defaultmapsettings.cellContours) {
                 style.lineWidth = 20; ///
                 style.strokeStyle = this.color; ///
                 style.stroke(); ///
-            } 
+            } 		
+			else if (this.isPlayerCell && LM.playerCellsMulti && LM.play && window.multiboxPlayerEnabled){	
+				for (var i = 0; i < LM.playerCellsMulti.length; i++){
+					if (LM.playerCellsMulti[i].id == this.id){
+						style.lineWidth = 20; ///
+						style.strokeStyle = this.color; ///
+						style.stroke(); //
+					}
+				}
+			}
+			else if (this.isPlayerCellMulti && LM.play && LM.playerCells && legendmod.multiBoxPlayerExists && !window.multiboxPlayerEnabled){	
+				for (var i = 0; i < LM.playerCells.length; i++){
+					if (LM.playerCells[i].id == this.id){
+						style.lineWidth = 20; ///
+						style.strokeStyle = this.color; ///
+						style.stroke(); //
+					}
+				}
+			}			
 			else {
                 style.fillStyle = color;
                 style.fill();
