@@ -323,7 +323,7 @@ function loadersettings() {
 		}
 		
 		else if(checkonlyrewardday1 != "true"){
-			LMrewardDay();
+			//LMrewardDay();
 			checkonlyrewardday1 = "true";
 			localStorage.setItem("checkonlyrewardday1", checkonlyrewardday1);					
 		}
