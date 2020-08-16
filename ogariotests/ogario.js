@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.248
+// v2.249
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -27,10 +27,10 @@ function changeregion() {
 
 function deleteGamemode() {
     var privateModOptions = [{
-        text: 'Antarctic',
+        text: 'Arctida',
         value: 6
     }, {
-        text: 'Selffeed',
+        text: 'Dagestan',
         value: 7
     }, {
         text: 'FPS Test',
@@ -74,11 +74,11 @@ function deleteGamemode() {
             }
         } else {}
         if ($('#gamemode').val() == 6) {
-            core.connect('wss://delta-server.glitch.me');
+            core.connect('wss://imsolo.pro:2109/');
             legendmod.gameMode = ":ffa";
             //application.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 7) {
-            core.connect('wss://delta-selffeed.glitch.me');
+            core.connect('wss://imsolo.pro:2108/');
             legendmod.gameMode = ":ffa";
             //application.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 12) {
