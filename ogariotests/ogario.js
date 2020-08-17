@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.268
+// v2.269
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8994,7 +8994,7 @@ function thelegendmodproject() {
                 style.stroke(); ///
             } */
 
-			if (window.multiboxPlayerEnabled && this.isPlayerCellMulti && this.spectator && this.spectator && LM.play){				
+			if (window.multiboxPlayerEnabled && this.isPlayerCellMulti && this.spectator && LM.play){				
 						style.lineWidth = 20; ///
 						style.strokeStyle = this.color; ///
 						style.stroke(); //
@@ -9009,6 +9009,11 @@ function thelegendmodproject() {
 						style.strokeStyle = this.color; ///
 						style.stroke(); //
 			}
+			else if (legendmod.multiBoxPlayerExists && this.spectator && !this.isPlayerCellMulti && this.nick! = "" && this.nick != ogarcopythelb.nick && LM.play){	
+						style.lineWidth = 20; ///
+						style.strokeStyle = this.color; ///
+						style.stroke(); //
+			}			
             if (defaultmapsettings.cellContours) {
                 style.lineWidth = 20; ///
                 style.strokeStyle = this.color; ///
