@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.281
+// v2.282
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -11783,7 +11783,7 @@ Game name     : ${i.displayName}<br/>
 			//
 			if (LM.multiBoxPlayerExists){
 				for (var temp = 0; temp < this.leaderboard.length; temp++) {
-					if (this.leaderboard[temp].nick == profiles[application.selectedOldProfile].nick && this.leaderboard[temp].nick != ""){
+					if (this.leaderboard[temp].nick == profiles[application.selectedOldProfile].nick && profiles[application.selectedOldProfile].nick != profiles[application.selectedProfile].nick && this.leaderboard[temp].nick != ""){
 						this.playerPositionMulti = temp;
 					}
 				}
@@ -11791,7 +11791,7 @@ Game name     : ${i.displayName}<br/>
 			var tempPositionText=null
 			var tempPositionText2=null
 			if (this.playerPositionMulti && this.playerPositionMulti > defaultmapsettings.leaderboardlimit){	
-				tempPositionText = '<span class=\"me\">' + this.playerPositionMulti + '. ' + application.escapeHTML(this.leaderboard[this.playerPositionMulti].nick) + '</span>';
+				tempPositionText = '<span class=\"me\">' + (this.playerPositionMulti+1) + '. ' + application.escapeHTML(this.leaderboard[this.playerPositionMulti].nick) + '</span>';
 			}
 			//			
             if (this.playerPosition > defaultmapsettings.leaderboardlimit) {
@@ -11800,15 +11800,15 @@ Game name     : ${i.displayName}<br/>
             }
 			if (!tempPositionText) teamText += tempPositionText2	
 			else if (tempPositionText){
-				if (this.playerPositionMulti && this.playerPositionMulti>this.playerPosition){
-					teamText += tempPositionText	
-					teamText += tempPositionText2
-				}
-				else if (this.playerPositionMulti && this.playerPositionMulti<this.playerPosition){
+				if (this.playerPositionMulti && (this.playerPositionMulti+1)>this.playerPosition){
 					teamText += tempPositionText2	
 					teamText += tempPositionText
+				}
+				else if (this.playerPositionMulti && (this.playerPositionMulti+1)<this.playerPosition){
+					teamText += tempPositionText	
+					teamText += tempPositionText2
 				}	
-				else if (this.playerPositionMulti && this.playerPositionMulti==this.playerPosition){ //bug
+				else if (this.playerPositionMulti && (this.playerPositionMulti+1)==this.playerPosition){ //bug
 						teamText += tempPositionText2
 				}				
 			}
