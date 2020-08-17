@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.265
+// v2.266
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -11723,18 +11723,18 @@ Game name     : ${i.displayName}<br/>
             let teamText = '';
 			
 				//
-			if(LM.multiBoxPlayerExists && (multiboxPlayerEnabledSaved || multiboxPlayerEnabled)){
+			if(LM.multiBoxPlayerExists && (window.multiboxPlayerEnabled || window.multiboxPlayerEnabledSaved)){
 				if (window.multiboxPlayerEnabled){
 					for (var i=0; i<spects[window.multiboxPlayerEnabled-1].leaderboard.length; i++){
 						if (spects[window.multiboxPlayerEnabled-1].leaderboard[i].id == "isPlayer"){		
-								this.leaderboard[i].id === 'isPlayer'	
+								this.leaderboard[i].id = 'isPlayer'	
 							}
 						}
 					}                      
 				else if (window.multiboxPlayerEnabledSaved){
 					for (var i=0; i<spects[window.multiboxPlayerEnabledSaved-1].leaderboard.length; i++){
 						if (spects[window.multiboxPlayerEnabledSaved-1].leaderboard[i].id == "isPlayer"){	
-							this.leaderboard[i].id === 'isPlayer'	
+							this.leaderboard[i].id = 'isPlayer'	
 						}
 					}
 				}                      
