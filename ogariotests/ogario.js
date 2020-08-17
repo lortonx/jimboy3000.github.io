@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.276
+// v2.277
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -11767,7 +11767,7 @@ Game name     : ${i.displayName}<br/>
                 if (this.leaderboard[temp].id === 'isPlayer') {
                     html = '<span class=\"me\">';
                 }
-				else if (LM.multiBoxPlayerExists && (window.multiboxPlayerEnabled || window.multiboxPlayerEnabledSaved) && this.leaderboard[temp].nick == profiles[application.selectedOldProfile].nick && this.leaderboard[temp].nick != ""){
+				else if (LM.multiBoxPlayerExists && this.leaderboard[temp].nick == profiles[application.selectedOldProfile].nick && this.leaderboard[temp].nick != ""){
 					this.playerPositionMulti = temp;
 					html = '<span class=\"me\">';
 				}
@@ -11787,7 +11787,7 @@ Game name     : ${i.displayName}<br/>
             }
 			//
 			if (this.playerPositionMulti && this.playerPositionMulti > defaultmapsettings.leaderboardlimit){				
-				teamText += '<span class=\"me\">' + this.playerPositionMulti + '. ' + application.escapeHTML(this.playerPositionNickMulti) + '</span>';
+				teamText += '<span class=\"me\">' + this.playerPositionMulti + '. ' + application.escapeHTML(this.leaderboard[this.playerPositionMulti].nick) + '</span>';
 			}
 			//
 			
