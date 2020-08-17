@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.273
+// v2.274
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9301,6 +9301,7 @@ function thelegendmodproject() {
         playerColor: null,
         playerNick: '',
         playerPosition: 0,
+		//playerPositionMulti: null,
         leaderboard: [],
         biggerSTEDCellsCache: [], //Sonia
         biggerSTECellsCache: [],
@@ -11733,18 +11734,27 @@ Game name     : ${i.displayName}<br/>
             let teamText = '';
 			
 				//
+			this.playerPositionMulti = "";
 			if(LM.multiBoxPlayerExists && (window.multiboxPlayerEnabled || window.multiboxPlayerEnabledSaved)){
 				if (window.multiboxPlayerEnabled){
 					for (var i=0; i<spects[window.multiboxPlayerEnabled-1].leaderboard.length; i++){
 						if (spects[window.multiboxPlayerEnabled-1].leaderboard[i].id == "isPlayer"){		
-								if (this.leaderboard[i]) this.leaderboard[i].id = 'isPlayer'	
+								if (this.leaderboard[i]){ 
+									this.leaderboard[i].id = 'isPlayer'
+									this.playerPositionNickMulti  = this.leaderboard[i].nick
+									this.playerPositionMulti = i
+								}								
 							}
 						}
 					}                      
 				else if (window.multiboxPlayerEnabledSaved){
 					for (var i=0; i<spects[window.multiboxPlayerEnabledSaved-1].leaderboard.length; i++){
 						if (spects[window.multiboxPlayerEnabledSaved-1].leaderboard[i].id == "isPlayer"){	
-							if (this.leaderboard[i]) this.leaderboard[i].id = 'isPlayer'	
+							if (this.leaderboard[i]){
+								this.leaderboard[i].id = 'isPlayer'	
+								this.playerPositionNickMulti  = this.leaderboard[i].nick
+								this.playerPositionMulti = i
+							}
 						}
 					}
 				}                      
@@ -11769,6 +11779,11 @@ Game name     : ${i.displayName}<br/>
                 teamText += '<span class=\"me\">' + this.playerPosition + '. ' + application.escapeHTML(this.playerNick) + '</span>';
                 //defaultmapsettings['showLbData'];
             }
+			//
+			if (this.playerPositionMulti && this.playerPositionMulti > defaultmapsettings.leaderboardlimit){
+				teamText += '<span class=\"me\">' + this.playerPositionMulti + '. ' + application.escapeHTML(this.playerPositionNickMulti) + '</span>';
+			}
+			//
             if (legendmod.gameMode != ":battleroyale") {
                 teamText += '<span class="me">' + Premadeletter130 + ': ' + this.leaderboard.length + '</span>';
                 if (defaultmapsettings.FBTracking && legendmod.friends && legendmod.friends > 0) {
