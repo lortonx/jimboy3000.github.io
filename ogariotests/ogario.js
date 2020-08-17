@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.277
+// v2.278
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -11734,7 +11734,7 @@ Game name     : ${i.displayName}<br/>
             let teamText = '';
 			
 				//
-			this.playerPositionMulti = null;
+			window.playerPositionMulti = null;
 			/*if(LM.multiBoxPlayerExists && (window.multiboxPlayerEnabled || window.multiboxPlayerEnabledSaved)){
 				
 				if (window.multiboxPlayerEnabled){
@@ -11768,7 +11768,8 @@ Game name     : ${i.displayName}<br/>
                     html = '<span class=\"me\">';
                 }
 				else if (LM.multiBoxPlayerExists && this.leaderboard[temp].nick == profiles[application.selectedOldProfile].nick && this.leaderboard[temp].nick != ""){
-					this.playerPositionMulti = temp;
+					window.playerPositionMulti = temp;
+					console.loh
 					html = '<span class=\"me\">';
 				}
 				else {
@@ -11786,8 +11787,8 @@ Game name     : ${i.displayName}<br/>
                 //defaultmapsettings['showLbData'];
             }
 			//
-			if (this.playerPositionMulti && this.playerPositionMulti > defaultmapsettings.leaderboardlimit){				
-				teamText += '<span class=\"me\">' + this.playerPositionMulti + '. ' + application.escapeHTML(this.leaderboard[this.playerPositionMulti].nick) + '</span>';
+			if (window.playerPositionMulti && window.playerPositionMulti > defaultmapsettings.leaderboardlimit){				
+				teamText += '<span class=\"me\">' + window.playerPositionMulti + '. ' + application.escapeHTML(this.leaderboard[window.playerPositionMulti].nick) + '</span>';
 			}
 			//
 			
