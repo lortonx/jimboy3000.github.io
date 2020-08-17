@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.282
+// v2.283
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -11798,7 +11798,9 @@ Game name     : ${i.displayName}<br/>
                 tempPositionText2 = '<span class=\"me\">' + this.playerPosition + '. ' + application.escapeHTML(this.playerNick) + '</span>';
                 //defaultmapsettings['showLbData'];
             }
-			if (!tempPositionText) teamText += tempPositionText2	
+			if (!tempPositionText){
+				if (tempPositionText2) teamText += tempPositionText2	
+			}
 			else if (tempPositionText){
 				if (this.playerPositionMulti && (this.playerPositionMulti+1)>this.playerPosition){
 					teamText += tempPositionText2	
