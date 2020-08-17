@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.280
+// v2.281
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -11808,7 +11808,7 @@ Game name     : ${i.displayName}<br/>
 					teamText += tempPositionText2	
 					teamText += tempPositionText
 				}	
-				else if (this.playerPositionMulti && this.playerPositionMulti=this.playerPosition){ //bug
+				else if (this.playerPositionMulti && this.playerPositionMulti==this.playerPosition){ //bug
 						teamText += tempPositionText2
 				}				
 			}
