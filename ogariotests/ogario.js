@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.278
+// v2.279
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -11734,7 +11734,7 @@ Game name     : ${i.displayName}<br/>
             let teamText = '';
 			
 				//
-			window.playerPositionMulti = null;
+			this.playerPositionMulti = null;
 			/*if(LM.multiBoxPlayerExists && (window.multiboxPlayerEnabled || window.multiboxPlayerEnabledSaved)){
 				
 				if (window.multiboxPlayerEnabled){
@@ -11767,9 +11767,7 @@ Game name     : ${i.displayName}<br/>
                 if (this.leaderboard[temp].id === 'isPlayer') {
                     html = '<span class=\"me\">';
                 }
-				else if (LM.multiBoxPlayerExists && this.leaderboard[temp].nick == profiles[application.selectedOldProfile].nick && this.leaderboard[temp].nick != ""){
-					window.playerPositionMulti = temp;
-					console.loh
+				else if (LM.multiBoxPlayerExists && this.leaderboard[temp].nick == profiles[application.selectedOldProfile].nick && this.leaderboard[temp].nick != ""){					
 					html = '<span class=\"me\">';
 				}
 				else {
@@ -11787,8 +11785,15 @@ Game name     : ${i.displayName}<br/>
                 //defaultmapsettings['showLbData'];
             }
 			//
-			if (window.playerPositionMulti && window.playerPositionMulti > defaultmapsettings.leaderboardlimit){				
-				teamText += '<span class=\"me\">' + window.playerPositionMulti + '. ' + application.escapeHTML(this.leaderboard[window.playerPositionMulti].nick) + '</span>';
+			if (LM.multiBoxPlayerExists){
+				for (var temp = 0; temp < this.leaderboard.length; temp++) {
+					if (this.leaderboard[temp].nick == profiles[application.selectedOldProfile].nick && this.leaderboard[temp].nick != ""){
+						this.playerPositionMulti = temp;
+					}
+				}
+			}			
+			if (this.playerPositionMulti && this.playerPositionMulti > defaultmapsettings.leaderboardlimit){	
+				teamText += '<span class=\"me\">' + this.playerPositionMulti + '. ' + application.escapeHTML(this.leaderboard[this.playerPositionMulti].nick) + '</span>';
 			}
 			//
 			
