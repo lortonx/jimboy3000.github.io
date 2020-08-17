@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.279
+// v2.280
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -11780,10 +11780,6 @@ Game name     : ${i.displayName}<br/>
                 }
                 teamText += html + (temp + 1) + '. ' + application.escapeHTML(this.leaderboard[temp].nick) + '</span>';
             }
-            if (this.playerPosition > defaultmapsettings.leaderboardlimit) {
-                teamText += '<span class=\"me\">' + this.playerPosition + '. ' + application.escapeHTML(this.playerNick) + '</span>';
-                //defaultmapsettings['showLbData'];
-            }
 			//
 			if (LM.multiBoxPlayerExists){
 				for (var temp = 0; temp < this.leaderboard.length; temp++) {
@@ -11791,11 +11787,32 @@ Game name     : ${i.displayName}<br/>
 						this.playerPositionMulti = temp;
 					}
 				}
-			}			
+			}	
+			var tempPositionText=null
+			var tempPositionText2=null
 			if (this.playerPositionMulti && this.playerPositionMulti > defaultmapsettings.leaderboardlimit){	
-				teamText += '<span class=\"me\">' + this.playerPositionMulti + '. ' + application.escapeHTML(this.leaderboard[this.playerPositionMulti].nick) + '</span>';
+				tempPositionText = '<span class=\"me\">' + this.playerPositionMulti + '. ' + application.escapeHTML(this.leaderboard[this.playerPositionMulti].nick) + '</span>';
 			}
-			//
+			//			
+            if (this.playerPosition > defaultmapsettings.leaderboardlimit) {
+                tempPositionText2 = '<span class=\"me\">' + this.playerPosition + '. ' + application.escapeHTML(this.playerNick) + '</span>';
+                //defaultmapsettings['showLbData'];
+            }
+			if (!tempPositionText) teamText += tempPositionText2	
+			else if (tempPositionText){
+				if (this.playerPositionMulti && this.playerPositionMulti>this.playerPosition){
+					teamText += tempPositionText	
+					teamText += tempPositionText2
+				}
+				else if (this.playerPositionMulti && this.playerPositionMulti<this.playerPosition){
+					teamText += tempPositionText2	
+					teamText += tempPositionText
+				}	
+				else if (this.playerPositionMulti && this.playerPositionMulti=this.playerPosition){ //bug
+						teamText += tempPositionText2
+				}				
+			}
+			
 			
             if (legendmod.gameMode != ":battleroyale") {
                 teamText += '<span class="me">' + Premadeletter130 + ': ' + this.leaderboard.length + '</span>';
