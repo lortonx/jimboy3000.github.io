@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.288
+// v2.290
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -827,7 +827,8 @@ function checkIfPlayerIsInView(b){
 		//if (legendmod.cells[i].nick!="") console.log(legendmod.cells[i].nick)	
 	//}	
 	for (var i=0;i<legendmod.cells.length;i++){
-		if (b!="" && legendmod.cells[i].nick == b){
+		
+		if (b!="" && legendmod.cells[i].nick == b && !legendmod.cells[i].isPlayerCell){
 			return true		
 		}
 	}
