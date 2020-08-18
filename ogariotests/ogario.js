@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.295
+// v2.296
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -822,13 +822,9 @@ function checkVideos2(a, b) {
 	}
 	//
 }
-function checkIfPlayerIsInView(b, a){
-	//for (var i=0;i<legendmod.cells.length;i++){
-		//if (legendmod.cells[i].nick!="") console.log(legendmod.cells[i].nick)	
-	//}	
-	for (var i=0;i<legendmod.cells.length;i++){
-		
-	if (b!="" && legendmod.cells[i].nick == b && !legendmod.cells[i].isPlayerCell && (!a ||(a && !legendmod.cells[i].spectator)) ){
+function checkIfPlayerIsInView(b, a){	
+	for (var i=0;i<legendmod.cells.length;i++){		
+		if (b!="" && legendmod.cells[i].nick == b && !legendmod.cells[i].isPlayerCell && (!a ||(a && legendmod.cells[i].spectator)) ){
 			return true		
 		}
 	}
