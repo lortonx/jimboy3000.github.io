@@ -1,7 +1,7 @@
 /**************
  * Legend express v1.00 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "01"; // the version 1.1-> 1.11
+var semimodVersion = "02"; // the version 1.1-> 1.11
 
 
 loadericon();
@@ -5860,7 +5860,10 @@ function joinSIPonstart() {
         if (searchSip != null) {
             if (realmode != null && region != null) {
                 $('#gamemode').val(realmode);
-                $("#region").val(region);
+                if ($('#region').val() == "Private") {
+					deleteGamemode();
+				}
+				
             }
             if (getParameterByName("sip", url).replace("live-arena-", "").replace(".agar.io", "") != $("#server-token").val()) {
                 joinSIPonstart1();
