@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.294
+// v2.295
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -764,7 +764,7 @@ function checkVideos2(a, b) {
 					if (checkIfPlayerIsInView(b, null)){
 					//console.log("volume 0, stage 0");						
 						var temple=null;
-						console.log("a",b,a)						
+						//console.log("a",b,a)						
 						if (defaultmapsettings.videoOthersSkinSoundLevelproportion && application.top5[i].mass){
 							//console.log("b",application.top5[i].mass)
 							if (application.top5[i].mass>=10000){
