@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.00 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.01 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "02"; // the version 1.1-> 1.11
 
@@ -5860,7 +5860,7 @@ function joinSIPonstart() {
         if (searchSip != null) {
             if (realmode != null && region != null) {
                 $('#gamemode').val(realmode);
-                if ($('#region').val() == "Private") {
+                if (region == "Private") {
 					deleteGamemode();
 				}
 				
