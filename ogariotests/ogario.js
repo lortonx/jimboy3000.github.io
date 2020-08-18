@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.287
+// v2.288
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13,7 +13,7 @@ window.capthaWindow= []
 
 function changeregion() {
     if ($('#region').val() == "Private") {
-        deleteGamemode(temp);
+        deleteGamemode(true);
     } else {
         if (window.gamemodeBackup) {
             $('#gamemode').empty();
