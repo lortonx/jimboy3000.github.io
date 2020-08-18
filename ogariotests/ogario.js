@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.292
+// v2.293
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -1492,7 +1492,7 @@ var displayText = {
         oneColoredSpectator: 'MultiBox less render cells',
         multiBoxShadow: 'Player 1 & 2',
         multiKeepMoving: 'Inactive keep moving',
-		middleMultiView: 'View on middle of both',
+		middleMultiView: 'View on middle of both (disables when close)',
 		middleMultiViewWhenClose: 'View on middle of both (when close)',
         skipStats: 'Skip stats after death',
         showQuest: 'Show quest',
