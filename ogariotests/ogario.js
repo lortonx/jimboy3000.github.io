@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.285
+// v2.287
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13,7 +13,7 @@ window.capthaWindow= []
 
 function changeregion() {
     if ($('#region').val() == "Private") {
-        deleteGamemode();
+        deleteGamemode(temp);
     } else {
         if (window.gamemodeBackup) {
             $('#gamemode').empty();
@@ -25,7 +25,7 @@ function changeregion() {
     }
 }
 
-function deleteGamemode() {
+function deleteGamemode(temp) {
     var privateModOptions = [{
         text: 'Arctida',
         value: 6
@@ -149,7 +149,9 @@ function deleteGamemode() {
             //application.connect('wss://private1:443')
         }
     });
-    $('#gamemode option[value=6]').prop('selected', 'selected').change();
+	if (temp==true){
+		$('#gamemode option[value=6]').prop('selected', 'selected').change();
+	}
 }
 
 
