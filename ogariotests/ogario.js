@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.293
+// v2.294
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -761,7 +761,7 @@ function checkVideos2(a, b) {
                 if (legendmod5.videoSkinsMusic2 == true) {
                     window.videoSkinPlayerflag2[b] = false;
                     //if (application.calculateMapSector(application.top5[i].x, application.top5[i].y) == application.currentSector && application.currentSector == "C3") {
-					if (checkIfPlayerIsInView(b)){
+					if (checkIfPlayerIsInView(b, null)){
 					//console.log("volume 0, stage 0");						
 						var temple=null;
 						console.log("a",b,a)						
@@ -822,13 +822,13 @@ function checkVideos2(a, b) {
 	}
 	//
 }
-function checkIfPlayerIsInView(b){
+function checkIfPlayerIsInView(b, a){
 	//for (var i=0;i<legendmod.cells.length;i++){
 		//if (legendmod.cells[i].nick!="") console.log(legendmod.cells[i].nick)	
 	//}	
 	for (var i=0;i<legendmod.cells.length;i++){
 		
-		if (b!="" && legendmod.cells[i].nick == b && !legendmod.cells[i].isPlayerCell){
+	if (b!="" && legendmod.cells[i].nick == b && !legendmod.cells[i].isPlayerCell && (!a ||(a && !legendmod.cells[i].spectator)) ){
 			return true		
 		}
 	}
@@ -10139,7 +10139,7 @@ function thelegendmodproject() {
                     window.testobjectsOpcode17 = data;
                     var x = data.getFloat32(s, true);
 
-					if ((defaultmapsettings.middleMultiView || window.defaultmapsettings.middleMultiViewFlag) && legendmod.multiBoxPlayerExists){
+					if ((defaultmapsettings.middleMultiView || window.middleMultiViewFlag) && legendmod.multiBoxPlayerExists){
 						//
 					}	
                     else if (!window.multiboxPlayerEnabled) {
@@ -10150,7 +10150,7 @@ function thelegendmodproject() {
                     s += 4;
                     var y = data.getFloat32(s, true);
 
-					if ((defaultmapsettings.middleMultiView || window.defaultmapsettings.middleMultiViewFlag) && legendmod.multiBoxPlayerExists){
+					if ((defaultmapsettings.middleMultiView || window.middleMultiViewFlag) && legendmod.multiBoxPlayerExists){
 						//
 					}						
                     else if (!window.multiboxPlayerEnabled) {
@@ -12338,7 +12338,7 @@ Game name     : ${i.displayName}<br/>
                 y += n.y / playersLength;
             }
 
-			if ((defaultmapsettings.middleMultiView || window.defaultmapsettings.middleMultiViewFlag) && legendmod.multiBoxPlayerExists){
+			if ((defaultmapsettings.middleMultiView || window.middleMultiViewFlag) && legendmod.multiBoxPlayerExists){
 				//
 			}
             else if (!window.multiboxPlayerEnabled) {
