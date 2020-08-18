@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.296
+// v2.297
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -2685,7 +2685,7 @@ var defaultmapsettings = {
     multiBoxShadow: false,
     multiKeepMoving: true,
 	middleMultiView: false,
-	middleMultiViewWhenClose: false,
+	middleMultiViewWhenClose: true,
     optimizedMass: true,
     shortMass: true,
     cellContours: false,
