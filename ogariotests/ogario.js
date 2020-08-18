@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.290
+// v2.291
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -1046,7 +1046,8 @@ var displayText = {
         oneColoredSpectator: 'Multibox less render cells',
         multiBoxShadow: 'Player 1 & 2',
         multiKeepMoving: 'Inactive keep moving',
-		middleMultiView: 'View on middle of both',
+		middleMultiView: 'View on middle of both (disables when close)',
+		middleMultiViewWhenClose: 'View on middle of both (when close)',
         skipStats: 'Pomiń statystyki po śmierci',
         showQuest: 'Pokaż zadanie (quest)',
         autoZoom: 'Auto zoom',
@@ -1492,6 +1493,7 @@ var displayText = {
         multiBoxShadow: 'Player 1 & 2',
         multiKeepMoving: 'Inactive keep moving',
 		middleMultiView: 'View on middle of both',
+		middleMultiViewWhenClose: 'View on middle of both (when close)',
         skipStats: 'Skip stats after death',
         showQuest: 'Show quest',
         autoZoom: 'Auto zoom',
@@ -2687,6 +2689,7 @@ var defaultmapsettings = {
     multiBoxShadow: false,
     multiKeepMoving: true,
 	middleMultiView: false,
+	middleMultiViewWhenClose: false,
     optimizedMass: true,
     shortMass: true,
     cellContours: false,
@@ -5034,7 +5037,7 @@ function thelegendmodproject() {
             //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
             this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
             this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "gameOverStats", "showTime"], "statsGroup");
-            this.addOptions(["oneColoredSpectator", "multiBoxShadow", "multiKeepMoving", "middleMultiView"], "multiBox");			
+            this.addOptions(["oneColoredSpectator", "multiBoxShadow", "multiKeepMoving", "middleMultiViewWhenClose", "middleMultiView"], "multiBox");			
             this.addOptions([], "macroGroup");
             this.addOptions([], "profiles");
             if (!this.protocolMode) {
@@ -10136,7 +10139,7 @@ function thelegendmodproject() {
                     window.testobjectsOpcode17 = data;
                     var x = data.getFloat32(s, true);
 
-					if (defaultmapsettings.middleMultiView && legendmod.multiBoxPlayerExists){
+					if ((defaultmapsettings.middleMultiView || window.defaultmapsettings.middleMultiViewFlag) && legendmod.multiBoxPlayerExists){
 						//
 					}	
                     else if (!window.multiboxPlayerEnabled) {
@@ -10147,7 +10150,7 @@ function thelegendmodproject() {
                     s += 4;
                     var y = data.getFloat32(s, true);
 
-					if (defaultmapsettings.middleMultiView && legendmod.multiBoxPlayerExists){
+					if ((defaultmapsettings.middleMultiView || window.defaultmapsettings.middleMultiViewFlag) && legendmod.multiBoxPlayerExists){
 						//
 					}						
                     else if (!window.multiboxPlayerEnabled) {
@@ -12335,7 +12338,7 @@ Game name     : ${i.displayName}<br/>
                 y += n.y / playersLength;
             }
 
-			if (defaultmapsettings.middleMultiView && legendmod.multiBoxPlayerExists){
+			if ((defaultmapsettings.middleMultiView || window.defaultmapsettings.middleMultiViewFlag) && legendmod.multiBoxPlayerExists){
 				//
 			}
             else if (!window.multiboxPlayerEnabled) {
