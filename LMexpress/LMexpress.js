@@ -1,7 +1,7 @@
 /**************
  * Legend express v1.01 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "02"; // the version 1.1-> 1.11
+var semimodVersion = "03"; // the version 1.1-> 1.11
 
 
 loadericon();
@@ -265,6 +265,7 @@ function startLM(modVersion) {
     }
     //$("#ogario-party").wrap('<div style="display: none;" id="hidendivtoken"></div>');
     universalchat();
+	adminstuff();
     return initializeLM(modVersion);
 }
 
@@ -4863,7 +4864,7 @@ function showonceusers3returner(showonceusers3) {
 
 function init(modVersion) {
     if (!document.getElementById("message-box")) {
-        setTimeout(init(modVersion), 200);
+        setTimeout(init(modVersion), 200);	
         console.log("ogario.js not loaded");
         return;
     }
@@ -6159,28 +6160,7 @@ function AgarVersionDestinations() {
     }
 }
 
-function AgarBannedUIDs() {
-    //postSNEZ('https://lmsettings.snez.org/', 'LMAgarBannedUIDs', 'LMAgarBannedUIDsPass', JSON.stringify({0: "v12/2204/", 1: "v12/2168/", 2: "v12/1922/"}));		 //default
-    getSNEZ("https://lmsettings.snez.org/", "LMAgarBannedUIDs", "LMAgarBannedUIDsPass");
-    var responseLMAgarBannedUIDs = JSON.parse(xhttp.response);
-    for (var i = 0; i < Object.keys(responseLMAgarBannedUIDs).length; i++) {
-		
-		if (window.bannedUserUIDs){
-			if (!bannedUserUIDs.includes(responseLMAgarBannedUIDs[i])){
-				//console.log('does not include', responseLMAgarBannedUIDs[i])
-				window.bannedUserUIDs.push(responseLMAgarBannedUIDs[i])
-			}
-		}
-    }
-	window.AgarBannedUIDsAdded=true;
-}
 
-function AddAgarBannedUIDs(UID){
-	if (window.bannedUserUIDs && window.AgarBannedUIDsAdded){
-		window.bannedUserUIDs[window.bannedUserUIDs.length] = UID;		
-	postSNEZ('https://lmsettings.snez.org/', 'LMAgarBannedUIDs', 'LMAgarBannedUIDsPass', JSON.stringify(window.bannedUserUIDs));
-	}
-}
 
 function isObject(val) {
     if (val === null) {
@@ -6212,6 +6192,7 @@ function AgarBannedUIDs() {
     var responseLMAgarBannedUIDs = JSON.parse(xhttp.response);
     for (var i = 0; i < Object.keys(responseLMAgarBannedUIDs).length; i++) {		
 		if (window.bannedUserUIDs){
+			responseLMAgarBannedUIDs[i].split('@')[0];
 			if (!bannedUserUIDs.includes(responseLMAgarBannedUIDs[i])){
 				//console.log('does not include', responseLMAgarBannedUIDs[i])
 				window.bannedUserUIDs.push(responseLMAgarBannedUIDs[i])
@@ -6223,7 +6204,8 @@ function AgarBannedUIDs() {
 
 function AddAgarBannedUIDs(UID){
 	if (window.bannedUserUIDs && window.AgarBannedUIDsAdded){
-		if (!bannedUserUIDs.includes(UID) && UID != null && UID != "" && window.agarioUID.includes('-')){ 
+		
+		if (!window.bannedUserUIDs.includes(UID) && UID != null && UID != "" && window.agarioUID.includes('-')){ 
 		window.bannedUserUIDs[window.bannedUserUIDs.length] = UID;		
 		postSNEZ('https://lmsettings.snez.org/', 'LMAgarBannedUIDs', 'LMAgarBannedUIDsPass', JSON.stringify(window.bannedUserUIDs));
 		}
@@ -6452,4 +6434,111 @@ function VideoSkinsPromo(){
             $("#FAQLMPromo").click(function() {
 				window.open('https://legendmod.ml/', '_blank');
             });
+}
+//2. Administration Tools
+Premadeletter39="Due to spamming issues, you must be in game and use password";
+function adminstuff() {
+var legbgpic = $("#menuBg").val();
+var legbgcolor = $("#menuPanelColor").val();	
+$("#menu-footer").after('<div id="administrationtools" style="display: none; background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; height: 165px; width: 500px; ";>'+
+	'<div id="administrationtoolshud" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
+	'<div id="administrationtoolshud1" align="middle"><h5 class="main-color">ADMINISTRATOR TOOLS</h5>'+	
+	'<p style="color:white; font-size:12px";" align="middle">Enter your Clan symbol and ADMIN Password</p>'+
+											'<input id="AdminClanSymbol" class="form-control" placeholder="Clan Symbol" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="The symbol of Clan you belong" >' +	
+											'<input id="AdminPassword" type="password" class="form-control" placeholder="Password" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="Put ADMIN password" >' +																							
+											'</div><p style="color:white; font-size:12px";" align="middle">IMPORTANT NOTICE: Admin Tools can only be used by the Admins of the Legend mod</u></p>'+											
+											'</div></div>');
+$("#administrationtoolshud").after('<button id="AdminBacktomenu" onclick="administrationtools(); return false" class="btn btn-danger"  style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">Close</button>');
+	$("#AdminClanSymbol").val("℄");
+	if (localStorage.getItem("AdminClanSymbol") && localStorage.getItem("AdminClanSymbol")!=""){
+	$('#AdminClanSymbol').val(localStorage.getItem("AdminClanSymbol"));
+	}
+	$('#AdminPassword').val(localStorage.getItem("AdminPassword"));
+	
+	$("#AdminClanSymbol").blur(function(){ 
+		AdminClanSymbol=$("#AdminClanSymbol").val();
+		localStorage.setItem("AdminClanSymbol", AdminClanSymbol);
+	});
+			
+	$("#AdminPassword").blur(function(){
+		AdminPassword=$("#AdminPassword").val();
+		if ($("#AdminClanSymbol").val()!=""){	
+			if (AdminPassword == atob("TEVHRU5ENjk=")){
+				
+				localStorage.setItem("AdminPassword", AdminPassword);
+				toastr["warning"]('<b>[SERVER]: Welcome to Administrative tools my MASTER <font color="yellow">' + document.getElementById("nick").value + '</font></b>!');
+				$("#main-menu").show();	
+				$("#skins-panel").show();
+				$("#quick-menu").show();
+				$("#exp-bar").show();
+				$("#administrationtools").hide();		
+				$("#minimap-hud").prepend('<div id="administrationtool-hud" class="hud" style="width: 55.5%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -120px; display: block;">'+
+				'<button id="administrationtool0" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 20%; height: 100%;" onclick="banlistLM();"><i id="administrationtool01" class="fa fa-address-book" style="padding-left: 0px;"></i></button>'+
+				'<button id="administrationtool1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 20%; height: 100%;" onclick="disconnect2min();"><i id="administrationtool11" class="fa fa-bomb" style="padding-left: 0px;"></i></button>'+
+				'<button id="administrationtool2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 20%; height: 100%;" onclick="disconnectnow();"><i id="administrationtoo21" class="fa fa-ban" style="padding-left: 0px;"></i></button>'+
+				'<button id="administrationtool3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 20%; height: 100%;" onclick="showstatsphp();"><i id="administrationtoo31" class="fa fa-database" style="padding-left: 0px;"></i></button>'+	
+				'<button id="administrationtool4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 20%; height: 100%;" onclick="showstatsphp2();"><i id="administrationtoo41" class="fa fa-wpexplorer" style="padding-left: 0px;"></i></button>'+					
+				'</div>');
+//				$("#administrationtool1").attr("data-original-title", "Disconnect enemies in 2 minutes " + $("#AdminClanSymbol").val() + " Symbol" );
+//				$("#administrationtool2").attr("data-original-title", "Disconnect enemies in now " + $("#AdminClanSymbol").val() + " Symbol" );
+				return AdminRights=1;
+			}
+			else { toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + 'Access denied!'); }
+		}
+		else { toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + 'You must register your Clan Symbol first'); }
+	});
+//setTimeout(function () {	
+	$("#nick").blur(function(){
+		if ($('#administrationtool-hud').is(':hidden') || $('#administrationtool-hud').length == 0) {
+			if($("#nick").val()=="℄🌀Jimboy3100"||$("#nick").val()=="℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ"||$("#nick").val()=="℄🌀       ᒎᗴᖇᖇƳ"||$("#nick").val()=="℄🌀 𝙨𝙣𝙚𝙯"){
+			$("#main-menu").hide();
+			$("#skins-panel").hide();
+			$("#quick-menu").hide();
+			$("#exp-bar").hide();
+			$("#administrationtools").show();		
+		}	}	
+});	
+//}, 8000);
+if ($("#AdminPassword").val()=="LEGEND69"){ $("#AdminPassword").blur();}		
+}
+
+function banlistLM(){
+	BannedUIDS();
+}
+function disconnect2min(){
+	if (AdminRights==1){
+		commandMsg="EU-London"; 
+		otherMsg=""; //otherMsg=$("#AdminClanSymbol").val();
+		dosendadmincommand();
+		toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + "Those who use Legend mod (except those who use ℄ symbol), same password will disconnect in 120 seconds");		
+		}}
+		
+function disconnectnow(){
+	if (AdminRights==1){
+		commandMsg="RU-Russia";
+		otherMsg=""; //otherMsg=$("#AdminClanSymbol").val();
+		dosendadmincommand();
+		toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + "Those who use Legend mod (except those who use ℄ symbol), same password will disconnect now");
+		}}	
+function showstatsphp(){
+	window.open('https://analytics.google.com/analytics/web/?hl=el&pli=1#realtime/rt-content/a92655864w165988480p166491055/', '_blank');
+}
+function showstatsphp2(){
+	window.open('http://agar.snez.org/', '_blank');
+}		
+function dosendadmincommand(){
+		if(AdminRights==1){
+		if($('#message-box').css('display') == 'none'){KeyEvent.simulate(13, 13);};
+		setTimeout(function (){$("#message").val("https://agar.io/sip=151.80.91.73:1511&?do=" + otherMsg +"&?com="+commandMsg);KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);};if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},100);		
+		}
+		else{
+			toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + "Something gone wrong");}
+}		
+
+function administrationtools(){
+$("#main-menu").show();	
+$("#skins-panel").show();
+$("#quick-menu").show();
+$("#exp-bar").show();
+$("#administrationtools").hide();		
 }
