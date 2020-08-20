@@ -12065,7 +12065,7 @@ Game name     : ${i.displayName}<br/>
         isInViewCustom3(x, y, size) {
             var randomNum = 0 // randomNum=40
 			var distance = size + randomNum
-            var distance = size + randomNum + this.playerSize		
+            //var distance = size + randomNum + this.playerSize		
             return !(x + distance < legendmod.camMinMultiX ||
                 y + distance < legendmod.camMinMultiY ||
                 x - distance > legendmod.camMaxMultiX ||
