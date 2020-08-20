@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.298
+// v2.297
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12064,7 +12064,7 @@ Game name     : ${i.displayName}<br/>
         },
         isInViewCustom3(x, y, size) {
             var randomNum = 0 // randomNum=40
-			//var distance = size + randomNum
+			var distance = size + randomNum
             var distance = size + randomNum + this.playerSize		
             return !(x + distance < legendmod.camMinMultiX ||
                 y + distance < legendmod.camMinMultiY ||
