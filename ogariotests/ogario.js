@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.297
+// v2.298
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -6724,7 +6724,7 @@ function thelegendmodproject() {
             }
             window.SLGsocket.onmessage = function(e) {
                 //console.log(e)
-                app.handleSLGMessage(e);
+                application.handleSLGMessage(e);
             }
             window.SLGsocket.onclose = function(e) {
                 console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' SLG socket close');
@@ -12064,7 +12064,8 @@ Game name     : ${i.displayName}<br/>
         },
         isInViewCustom3(x, y, size) {
             var randomNum = 0 // randomNum=40
-            var distance = size + randomNum
+			//var distance = size + randomNum
+            var distance = size + randomNum + this.playerSize		
             return !(x + distance < legendmod.camMinMultiX ||
                 y + distance < legendmod.camMinMultiY ||
                 x - distance > legendmod.camMaxMultiX ||
@@ -12618,7 +12619,7 @@ Game name     : ${i.displayName}<br/>
     window.sendAction = function(action) {
         LM.sendAction(action);
     };
-    var drawRender = {
+    window.drawRender = {
             canvas: null,
             ctx: null,
             canvasWidth: 0,
@@ -13867,8 +13868,8 @@ Game name     : ${i.displayName}<br/>
                 window.requestAnimationFrame(drawRender.render);
             }
 
-        },
-        hotkeysSetup = {
+        }
+        var hotkeysSetup = {
             lastPressedKey: '',
             lastKeyId: '',
             defaultMessageKey: 'ENTER',
