@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.300
+// v2.301
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -2472,7 +2472,7 @@ var defaultSettings = {
     ////
     color: "#fff",
     //commanderImage : "https://i.imgur.com/wQKUDB3.png",
-    customServerImage1: "https://legendmod.ml/banners/IconCustomServer1.png",
+    //customServerImage1: "https://legendmod.ml/banners/IconCustomServer1.png",
     commanderImage: "https://legendmod.ml/banners/drawCommander.png",
     commanderImage1: "https://legendmod.ml/banners/drawCommander1.png",
     commanderImage2: "https://legendmod.ml/banners/drawCommander2.png",
@@ -12733,11 +12733,13 @@ Game name     : ${i.displayName}<br/>
                         if (defaultSettings.customBackground) {
                             legendmod.customMidPic = new Image;
                             legendmod.customMidPic.src = defaultSettings.customBackground;
-                        } else {
+                        } 
+						/*else {
                             legendmod.customMidPic = new Image;
                             legendmod.customMidPic.src = defaultSettings.customServerImage1;
-                        }
-                    } else if (legendmod.customMidPic && defaultSettings.customBackground && legendmod.customMidPic.src != defaultSettings.customBackground) {
+                        }*/
+                    } 
+					else if (legendmod.customMidPic && defaultSettings.customBackground && legendmod.customMidPic.src != defaultSettings.customBackground) {
                         legendmod.customMidPic = new Image;
                         legendmod.customMidPic.src = defaultSettings.customBackground;
                     }
