@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.301
+// v2.302
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12728,7 +12728,7 @@ Game name     : ${i.displayName}<br/>
                 if (defaultmapsettings.showBgSectors) {
                     this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
                 }
-                if (!legendmod.integrity || defaultSettings.customBackground) {
+                if (defaultSettings.customBackground && defaultSettings.customBackground!="") {
                     if (!legendmod.customMidPic) {
                         if (defaultSettings.customBackground) {
                             legendmod.customMidPic = new Image;
@@ -12767,7 +12767,8 @@ Game name     : ${i.displayName}<br/>
                             legendmod.mapMaxY - legendmod.mapMinY
                         );
                         this.ctx.globalAlpha = this.prevctxglobalAlpha
-                    } else {
+                    } 
+					else {
                         this.prevctxglobalAlpha = this.ctx.globalAlpha;
                         this.ctx.globalAlpha = defaultSettings.backgroundAlpha
                         var ofx = ((legendmod.mapMaxX - legendmod.mapMinX) / 5) * 2.2
@@ -12782,8 +12783,6 @@ Game name     : ${i.displayName}<br/>
                         this.ctx.globalAlpha = this.prevctxglobalAlpha
                     }
                 }
-
-
                 if (LM.gameMode === ':battleroyale') {
                     this.drawBattleArea(this.ctx);
                 }
