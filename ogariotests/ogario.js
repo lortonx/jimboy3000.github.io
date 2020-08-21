@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.297
+// v2.298
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -767,11 +767,11 @@ function checkVideos2(a, b) {
 						//console.log("a",b,a)						
 						if (defaultmapsettings.videoOthersSkinSoundLevelproportion && application.top5[i].mass){
 							//console.log("b",application.top5[i].mass)
-							if (application.top5[i].mass>=10000){
+							if (application.top5[i].mass>=24000){
 							window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel;
 							}					
-							else if (application.top5[i].mass<10000){ 
-							window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel *  Math.pow(application.top5[i].mass, 1/2)*0.01;							
+							else if (application.top5[i].mass<24000){ 
+							window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel *  Math.pow(application.top5[i].mass / 2.4, 1/2)*0.01;							
 							}
 							temple=true
 						}
