@@ -1,11 +1,11 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.298
+// v2.299
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
-var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
+//var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
 window.clanTagLc = "U1VC";
 appendLMhiFbPs()
 window.externalScriptMassBar= []
@@ -50,7 +50,7 @@ function deleteGamemode(temp) {
     }, {	
         text: 'IamSolo-2111',
         value: 18
-    }, {	
+    } /*, {	
         text: 'FFA',
         value: 8
     }, {
@@ -65,7 +65,8 @@ function deleteGamemode(temp) {
     }, {
         text: 'Party mode',
         value: 13
-    }];
+    }*/
+	];
     if (!window.gamemodeBackup) {
         window.gamemodeBackup = $("#gamemode").html();
     }
@@ -115,7 +116,8 @@ function deleteGamemode(temp) {
 		else if ($('#gamemode').val() == 17) {
             core.connect('wss://imsolo.pro:2110/');
             legendmod.gameMode = ":ffa";
-        }		
+        }	
+		/*		
 		else if ($('#gamemode').val() == 18) {
             core.connect('wss://imsolo.pro:2111/');
             legendmod.gameMode = ":ffa";
@@ -148,6 +150,7 @@ function deleteGamemode(temp) {
             legendmod.gameMode = ":party";
             //application.connect('wss://private1:443')
         }
+		*/
     });
 	if (temp==true){
 		$('#gamemode option[value=6]').prop('selected', 'selected').change();
