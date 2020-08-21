@@ -1,7 +1,7 @@
 /**************
  * Legend express v1.01 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "03"; // the version 1.1-> 1.11
+var semimodVersion = "04"; // the version 1.1-> 1.11
 
 
 loadericon();
@@ -6390,7 +6390,10 @@ function changeFrameWorkStart() {
 	}
 	if (defaultmapsettings.unlockedFPS) {
 		$('#FrameWorkOption').val(defaultmapsettings.unlockedFPS);
-	}		
+	}
+	else if (defaultmapsettings.unlockedFPS==false) {
+		$('#FrameWorkOption').val("false");
+	}
 }
 
 function LMrewardDay(){
