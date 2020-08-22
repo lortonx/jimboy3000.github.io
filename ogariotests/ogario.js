@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.304
+// v2.305
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -4372,7 +4372,7 @@ function thelegendmodproject() {
                                         '[' + this.shortMassFormat(this.top5[o].mass) + ']'+
                                         '<div style="color: ' + defaultSettings.hudTextColor + ' display: inline-block">' + playersNickName + '</div>'+
                                         '<div class="top5-mass-bar-container">'+
-                                            '<div class="top5-mass-bar" style="width: ' + this.top5[o].mass / totalMass * 100 + '%; background-color:' + $("#hudMainColor'")[0].value + '"></div>'+
+                                            '<div class="top5-mass-bar" style="width: ' + this.top5[o].mass / totalMass * 100 + '%; background-color:' + $("#hudMainColor")[0].value + '"></div>'+
                                         '</div>'+
                                        '</span>'+
                                     '</div>');
