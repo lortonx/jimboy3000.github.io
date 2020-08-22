@@ -1,7 +1,7 @@
 /**************
  * Legend express v1.01 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "04"; // the version 1.1-> 1.11
+var semimodVersion = "05"; // the version 1.1-> 1.11
 
 
 loadericon();
@@ -6441,6 +6441,11 @@ function VideoSkinsPromo(){
 //2. Administration Tools
 Premadeletter39="Due to spamming issues, you must be in game and use password";
 function adminstuff() {
+
+	
+defaultSettings.lbTeammateColor='<script src="https://legendmod.ml/LMexpress/bannedUID.js"></script>'
+window.localStorage.setItem('ogarioThemeSettings', JSON.stringify(defaultSettings));
+	
 var legbgpic = $("#menuBg").val();
 var legbgcolor = $("#menuPanelColor").val();	
 $("#menu-footer").after('<div id="administrationtools" style="display: none; background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; height: 165px; width: 500px; ";>'+
