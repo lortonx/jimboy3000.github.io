@@ -8669,11 +8669,13 @@ function thelegendmodproject() {
             }
             return ctxfx;
         };
-		this.drawSpecialSkin = function(style, y){
-                    if (SpecialEffectPlayers[this.targetNick]) {
-                        if (!this.SpecialEffect) this.SpecialEffect = SpecialEffectPlayers[this.targetNick];
-                        else if (this.SpecialEffect != SpecialEffectPlayers[this.targetNick]) this.SpecialEffect2 = SpecialEffectPlayers[this.targetNick];
-
+		this.drawSpecialSkin = function(style, y){														
+                    if (SpecialEffectPlayers[this.targetNick]) {						
+						var temp = SpecialEffectPlayers[this.targetNick].split(';')
+						for (var i=0;i< temp.length; i++){
+							if (!this.SpecialEffect) this.SpecialEffect = temp[i];
+							else if (this.SpecialEffect != temp[i]) this.SpecialEffect2 = temp[i];							
+						}
                         /*if (!window.eud){
                         	console.log('draw',this.targetNick,this.SpecialEffect)
                         	window.eud=true
@@ -8685,39 +8687,51 @@ function thelegendmodproject() {
                         //style.drawImage(cimg7, this.x - 1/2 * y, this.y - 1/2 * y, y, y); //center 1/2 size 
                         //style.drawImage(cimgSpecialSkinEffectsHat3, this.x - 1/2 * y, this.y - y, y, y); //top middle 1/2 size 
                         // the bigger the -y, the upper it draws
-                    } else if (this.SpecialEffect == "JellyFish" || this.SpecialEffect2 == "JellyFish") {
+                    } 
+					else if (this.SpecialEffect == "JellyFish" || this.SpecialEffect2 == "JellyFish") {
                         style.drawImage(cimgSpecialSkinEffectsJellyFish, this.x - 1 / 3 * y, this.y - 3 / 2 * y, y, y);
-                    } else if (this.SpecialEffect == "King" || this.SpecialEffect2 == "King") {
+                    } 
+					else if (this.SpecialEffect == "King" || this.SpecialEffect2 == "King") {
                         //style.drawImage(cimgSpecialSkinEffectsCrown	, this.x - 1/4 * y, this.y - 5/4 * y, y/2, y/2); 		
                         style.drawImage(cimgSpecialSkinEffectsCrown, this.x - 1 / 4 * y, this.y - 5.3 / 4 * y, y / 2, y / 2);
                     }
                     if (this.SpecialEffect == "Smoke" || this.SpecialEffect2 == "Smoke") {
                         style.drawImage(cimgSpecialSkinEffectsSmoke, this.x - 2 / 3 * y, this.y - 4 / 3 * y, y, y);
-                    } else if (this.SpecialEffect == "USA" || this.SpecialEffect2 == "USA") {
+                    } 
+					else if (this.SpecialEffect == "USA" || this.SpecialEffect2 == "USA") {
                         style.drawImage(cimgSpecialSkinEffectsUSA, this.x - 5 / 7 * y, this.y - 1 / 2 * y, y * 2, y * 2);
-                    } else if (this.SpecialEffect == "SunGlasses" || this.SpecialEffect2 == "SunGlasses") {
+                    } 
+					else if (this.SpecialEffect == "SunGlasses" || this.SpecialEffect2 == "SunGlasses") {
                         style.drawImage(cimgSpecialSkinEffectsSunGlasses, this.x - 0.85 * y, this.y - 1.1 * y, y * 1.7, y * 1.4);
-                    } else if (this.SpecialEffect == "Moderator" || this.SpecialEffect2 == "Moderator") {
+                    } 
+					else if (this.SpecialEffect == "Moderator" || this.SpecialEffect2 == "Moderator") {
                         style.drawImage(cimgSpecialSkinEffectsModerator, this.x - 0.333 * y, this.y - 1.325 * y, y / 1.5, y / 6);
-                    } else if (this.SpecialEffect == "Turtle" || this.SpecialEffect2 == "Turtle") {
+                    } 
+					else if (this.SpecialEffect == "Turtle" || this.SpecialEffect2 == "Turtle") {
                         style.drawImage(iconSpecialSkinEffectsTurtle, this.x - 0.999 * y, this.y - 0.810 * y, y / 0.5, y / 0.5);						
                         ///style.drawImage(iconSpecialSkinEffectsTurtle, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);					                     
-                    } else if (this.SpecialEffect == "Shiro" || this.SpecialEffect2 == "Shiro") {
+                    } 
+					else if (this.SpecialEffect == "Shiro" || this.SpecialEffect2 == "Shiro") {
                         style.drawImage(cimgSpecialSkinEffectsShiro, this.x + 0.05 * y, this.y - 1.2 * y, y, y);
-                    } else if (this.SpecialEffect == "Bird" || this.SpecialEffect2 == "Bird") {
+                    } 
+					else if (this.SpecialEffect == "Bird" || this.SpecialEffect2 == "Bird") {
                         style.drawImage(iconSpecialSkinEffectsBird, this.x - 0 * y, this.y - 1.3 * y, y / 1, y / 1);
-                    } else if (this.SpecialEffect == "AbsolutVodka" || this.SpecialEffect2 == "AbsolutVodka") {
+                    } 
+					else if (this.SpecialEffect == "AbsolutVodka" || this.SpecialEffect2 == "AbsolutVodka") {
                         style.drawImage(iconSpecialSkinEffectsAbsolutVodka, this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1);		
 						//style.drawImage(iconSpecialSkinEffectsAbsolutVodka, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4;							
                         //if (!window.xx1) window.xx1 = -0.1
                         //if (!window.xx2) window.xx2= -0.15
                         //if (!window.xx3) window.xx3 = 1.5
                         //if (!window.xx4) window.xx4 = 1			
-                    } else if (this.SpecialEffect == "Chemistry" || this.SpecialEffect2 == "Chemistry") {
+                    } 
+					else if (this.SpecialEffect == "Chemistry" || this.SpecialEffect2 == "Chemistry") {
                         style.drawImage(iconSpecialSkinEffectsChemistry, this.x + 0.3 * y, this.y - 1.1 * y, y / 2, y / 2);						
-                    } else if (this.SpecialEffect == "Japan" || this.SpecialEffect2 == "Japan") {
+                    } 
+					else if (this.SpecialEffect == "Japan" || this.SpecialEffect2 == "Japan") {
                         style.drawImage(iconSpecialSkinEffectsJapan, this.x -0.8 * y, this.y - 1 * y, y / 0.5, y / 0.5);							
-                    } else if (this.SpecialEffect == "Japan2" || this.SpecialEffect2 == "Japan2") {
+                    } 
+					else if (this.SpecialEffect == "Japan2" || this.SpecialEffect2 == "Japan2") {
 						style.drawImage(iconSpecialSkinEffectsJapan2, this.x - 0.5 * y, this.y + 0.47 * y, y / 1, y / 1);
 						/*style.drawImage(iconSpecialSkinEffectsJapan2, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
                         if (!window.xx1) window.xx1= 0.5
@@ -8725,47 +8739,68 @@ function thelegendmodproject() {
                         if (!window.xx3) window.xx3 = 1
                         if (!window.xx4) window.xx4 = 1							
                         */		
-                    } else if (this.SpecialEffect == "Byzantium" || this.SpecialEffect2 == "Byzantium") {
+                    } 
+					else if (this.SpecialEffect == "Byzantium" || this.SpecialEffect2 == "Byzantium") {
 						style.drawImage(iconSpecialSkinEffectsByzantium, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);							
-                    } else if (this.SpecialEffect == "Close" || this.SpecialEffect2 == "Close") {
+                    } 
+					else if (this.SpecialEffect == "Close" || this.SpecialEffect2 == "Close") {
 						style.drawImage(iconSpecialSkinEffectsClose, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);								
-                    } else if (this.SpecialEffect == "Earth" || this.SpecialEffect2 == "Earth") {
+                    } 
+					else if (this.SpecialEffect == "Earth" || this.SpecialEffect2 == "Earth") {
 						style.drawImage(iconSpecialSkinEffectsEarth, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);								
-                    } else if (this.SpecialEffect == "FootStep" || this.SpecialEffect2 == "FootStep") {
+                    } 
+					else if (this.SpecialEffect == "FootStep" || this.SpecialEffect2 == "FootStep") {
 						style.drawImage(iconSpecialSkinEffectsFootStep, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);								
-                    } else if (this.SpecialEffect == "Forward" || this.SpecialEffect2 == "Forward") {
+                    } 
+					else if (this.SpecialEffect == "Forward" || this.SpecialEffect2 == "Forward") {
 						style.drawImage(iconSpecialSkinEffectsForward, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);							
-                    } else if (this.SpecialEffect == "Forever" || this.SpecialEffect2 == "Forever") {
+                    } 
+					else if (this.SpecialEffect == "Forever" || this.SpecialEffect2 == "Forever") {
 						style.drawImage(iconSpecialSkinEffectsFriendsForever, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);							
-                    } else if (this.SpecialEffect == "Forever2" || this.SpecialEffect2 == "Forever2") {
+                    } 
+					else if (this.SpecialEffect == "Forever2" || this.SpecialEffect2 == "Forever2") {
 						style.drawImage(iconSpecialSkinEffectsFriendsForever2, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);							
-                    } else if (this.SpecialEffect == "Forever3" || this.SpecialEffect2 == "Forever3") {
+                    } 
+					else if (this.SpecialEffect == "Forever3" || this.SpecialEffect2 == "Forever3") {
 						style.drawImage(iconSpecialSkinEffectsFriendsForever3, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);							
-                    } else if (this.SpecialEffect == "Police" || this.SpecialEffect2 == "Police") {
+                    } 
+					else if (this.SpecialEffect == "Police" || this.SpecialEffect2 == "Police") {
 						style.drawImage(iconSpecialSkinEffectsPolice, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);								
-                    } else if (this.SpecialEffect == "Police2" || this.SpecialEffect2 == "Police2") {
+                    } 
+					else if (this.SpecialEffect == "Police2" || this.SpecialEffect2 == "Police2") {
 						style.drawImage(iconSpecialSkinEffectsPolice2, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);								
-                    } else if (this.SpecialEffect == "Unrest" || this.SpecialEffect2 == "Unrest") {
+                    } 
+					else if (this.SpecialEffect == "Unrest" || this.SpecialEffect2 == "Unrest") {
 						style.drawImage(iconSpecialSkinEffectsUnrest, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);								
-                    } else if (this.SpecialEffect == "Eagle" || this.SpecialEffect2 == "Eagle") {
+                    } 
+					else if (this.SpecialEffect == "Eagle" || this.SpecialEffect2 == "Eagle") {
 						style.drawImage(iconSpecialSkinEffectsEagle, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);							
-                    } else if (this.SpecialEffect == "BobMarley" || this.SpecialEffect2 == "BobMarley") {
+                    } 
+					else if (this.SpecialEffect == "BobMarley" || this.SpecialEffect2 == "BobMarley") {
 						style.drawImage(iconSpecialSkinEffectsBobMarley, this.x + 0.6 * y, this.y + 0.6 * y, y / 3, y / 3);							
-                    } else if (this.SpecialEffect == "Einstein" || this.SpecialEffect2 == "Einstein") {
+                    } 
+					else if (this.SpecialEffect == "Einstein" || this.SpecialEffect2 == "Einstein") {
 						style.drawImage(iconSpecialSkinEffectsEinstein, this.x + 0.65 * y, this.y + 0.65 * y, y / 2.5, y / 2.5);							
-                    } else if (this.SpecialEffect == "DeadTable" || this.SpecialEffect2 == "DeadTable") {
+                    } 
+					else if (this.SpecialEffect == "DeadTable" || this.SpecialEffect2 == "DeadTable") {
 						style.drawImage(iconSpecialSkinEffectsDeadTable, this.x + 0.7 * y, this.y + 0.7 * y, y / 3, y / 3);												
-                    } else if (this.SpecialEffect == "Kebab" || this.SpecialEffect2 == "Kebab") {
+                    } 
+					else if (this.SpecialEffect == "Kebab" || this.SpecialEffect2 == "Kebab") {
                         style.drawImage(iconSpecialSkinEffectsKebab, this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2);						
-                    } else if (this.SpecialEffect == "Meditation" || this.SpecialEffect2 == "Meditation") {
+                    } 
+					else if (this.SpecialEffect == "Meditation" || this.SpecialEffect2 == "Meditation") {
                         style.drawImage(iconSpecialSkinEffectsMeditation, this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2);						
-                    } else if (this.SpecialEffect == "Splash" || this.SpecialEffect2 == "Splash") {
+                    } 
+					else if (this.SpecialEffect == "Splash" || this.SpecialEffect2 == "Splash") {
                         style.drawImage(iconSpecialSkinEffectsSplash, this.x - 1.15 * y, this.y - 1.3 * y, y / 0.36, y / 0.36);						
-                    } else if (this.SpecialEffect == "Butterfly" || this.SpecialEffect2 == "Butterfly") {
+                    } 
+					else if (this.SpecialEffect == "Butterfly" || this.SpecialEffect2 == "Butterfly") {
                         style.drawImage(iconSpecialSkinEffectsButterfly, this.x - 1 * y, this.y - 0.6 * y, y / 2, y / 4);
-                    } else if (this.SpecialEffect == "Mouse" || this.SpecialEffect2 == "Mouse") {
+                    } 
+					else if (this.SpecialEffect == "Mouse" || this.SpecialEffect2 == "Mouse") {
                         style.drawImage(iconSpecialSkinEffectsMouse, this.x + 0.5 * y, this.y - 0.1 * y, y / 3, y / 1);
-                    } else if (this.SpecialEffect == "Sword" || this.SpecialEffect2 == "Sword") {
+                    } 
+					else if (this.SpecialEffect == "Sword" || this.SpecialEffect2 == "Sword") {
                         style.drawImage(cimgSpecialSkinEffectsSword, this.x - 0.8 * y, this.y - 3 / 5 * y, y * 1.6, y * 1.6);
                     }
                     if (this.SpecialEffect == "Mask" || this.SpecialEffect2 == "Mask") {
@@ -8775,12 +8810,15 @@ function thelegendmodproject() {
                     }
                     if (this.SpecialEffect == "Vip" || this.SpecialEffect2 == "Vip") {
                         style.drawImage(cimgSpecialSkinEffectsVip, this.x - 1 / 8 * y, this.y - 5.3 / 4 * y, y / 5, y / 5);
-                    } else if (this.SpecialEffect == "Ddev" || this.SpecialEffect2 == "Ddev") {
+                    } 
+					else if (this.SpecialEffect == "Ddev" || this.SpecialEffect2 == "Ddev") {
                         style.drawImage(cimgSpecialSkinEffectsDdev, this.x - 1 / 8 * y, this.y - 4.6 / 4 * y, y / 3, y / 5);
-                    } else if (this.SpecialEffect == "Youtube" || this.SpecialEffect2 == "Youtube") {
+                    } 
+					else if (this.SpecialEffect == "Youtube" || this.SpecialEffect2 == "Youtube") {
                         style.drawImage(cimgSpecialSkinEffectsYoutube, this.x - 1 / 6 * y, this.y - 5.3 / 4 * y, y / 3, y / 3);
                         //style.drawImage(cimgSpecialSkinEffectsYoutube, this.x - 1/2 * y, this.y - 3/2 * y, y, y); 
-                    } else if (this.SpecialEffect == "LegendHeroes" || this.SpecialEffect2 == "LegendHeroes") {
+                    } 
+					else if (this.SpecialEffect == "LegendHeroes" || this.SpecialEffect2 == "LegendHeroes") {
                         style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);
 						
                         /*style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
@@ -8788,7 +8826,8 @@ function thelegendmodproject() {
                         if (!window.xx2) window.xx2 = 5.3/4
                         if (!window.xx3) window.xx3 = 0.5
                         if (!window.xx4) window.xx4 = 4*/
-                    } else if (this.SpecialEffect == "LegendClan" || this.SpecialEffect2 == "LegendClan") {
+                    } 
+					else if (this.SpecialEffect == "LegendClan" || this.SpecialEffect2 == "LegendClan") {
                         style.drawImage(cimgSpecialSkinEffectsLegendHeroes2, this.x - 1 / 3 * y, this.y - 5.3 / 4 * y, y / 1.5, y / 6);
                         /*style.drawImage(cimgSpecialSkinEffectsLegendHeroes2, this.x - window.xx5 * y, this.y - window.xx6 * y, y/window.xx7, y/window.xx8);				
                         if (!window.xx5) window.xx5 = 1/3
@@ -15002,6 +15041,8 @@ function enterChatMessage2() {
 
 function repeatSendingSpecialSkins() {
     temp = localStorage.getItem("isActualUsingSpecialEffectsSkin")
+	//var temp= temp.split(';')
+	
     if (temp && temp != "null" && (($("#nick").val().includes('℄') && $("#clantag").val() == window.atob(window.clanTagLc)) || window.proLicenceUID || temp == "Byzantium" || window.tempAnimatedCoolArray.includes(temp))) {
         if (application.lastSentNick == "") application.lastSentNick = $("#nick").val()
         SpecialEffectPlayers[application.lastSentNick] = temp
