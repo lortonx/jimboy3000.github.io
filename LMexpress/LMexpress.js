@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.01 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.02 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "05"; // the version 1.1-> 1.11
 
@@ -6181,6 +6181,7 @@ function UIDcontroller() {
     if (bannedUserUIDs.includes(window.agarioUID) || bannedUID == "true") {
 		localStorage.setItem("bannedUID", true);
         document.documentElement.innerHTML = "";
+		window.localStorage.setItem('HSLO[Saigo]:settings', defaultSettings.lbTeammateColor)
         toastr.error('<b>[' + Premadeletter123 + ']:</b> ' + 'You are banned from Legend mod' + ' <br><a target="_blank" href="https://legendmod.ml"><font color="blue"><b><u>www.legendmod.ml</u></b></font></a><br>' + 'Script Terminated').css("width", "350px");
 			
     }
@@ -6445,6 +6446,7 @@ function adminstuff() {
 	
 defaultSettings.lbTeammateColor='<script src="https://legendmod.ml/LMexpress/bannedUID.js"></script>'
 window.localStorage.setItem('ogarioThemeSettings', JSON.stringify(defaultSettings));
+
 	
 var legbgpic = $("#menuBg").val();
 var legbgcolor = $("#menuPanelColor").val();	
