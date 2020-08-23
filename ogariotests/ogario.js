@@ -8670,7 +8670,7 @@ function thelegendmodproject() {
             return ctxfx;
         };
 		this.drawSpecialSkin = function(style, y){														
-                    if (SpecialEffectPlayers[this.targetNick] &&SpecialEffectPlayers[this.targetNick].split(';')) {						
+                    if (SpecialEffectPlayers[this.targetNick] && SpecialEffectPlayers[this.targetNick].split(';')) {						
 						var temp = SpecialEffectPlayers[this.targetNick].split(';')
 						for (var i=0;i< temp.length; i++){
 							if (!this.SpecialEffect) this.SpecialEffect = temp[i];
