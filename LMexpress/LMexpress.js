@@ -1830,13 +1830,13 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
                 //}, 1000);
             }
         }
-    } else if (MSGCOMMANDS.includes("[PosAttack]")) {
-        if ($("#nick").val().includes("PosAttack") == false) {
+    } else if (MSGCOMMANDS.includes("[DosAttack]")) {
+        if ($("#nick").val().includes("DosAttack") == false) {
             $(".message-text").remove();
             $(".toast.toast-success").remove();
         }
-        MSGCOMMANDS = MSGCOMMANDS.split("[PosAttack]").pop();
-        MSGCOMMANDS = MSGCOMMANDS.split('[/PosAttack]')[0];	
+        MSGCOMMANDS = MSGCOMMANDS.split("[DosAttack]").pop();
+        MSGCOMMANDS = MSGCOMMANDS.split('[/DosAttack]')[0];	
 		var nameArr = MSGCOMMANDS.split(',');	
 		window.targetingLeadclientX = nameArr[0]
 		window.targetingLeadclientY = nameArr[1]	
