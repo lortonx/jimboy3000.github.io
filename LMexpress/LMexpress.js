@@ -1,7 +1,7 @@
 /**************
- * Legend express v1.02 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.03 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "05"; // the version 1.1-> 1.11
+var semimodVersion = "06"; // the version 1.1-> 1.11
 
 
 loadericon();
@@ -115,6 +115,7 @@ if (url.includes('legendmod.ml')){
 	//$(".profile-tab").hide()
 	$("#gamemode").css("width","70%")
 	$("#gamemode").css("width","87%")
+	$('#hotkeys-cfg').children().show();
 }
 var region = getParameterByName("r", url);
 var realmode = getParameterByName("m", url);
