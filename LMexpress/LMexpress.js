@@ -108,6 +108,14 @@ var TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
 
 var timesopened = localStorage.getItem("timesopened");
 var url = localStorage.getItem("url");
+if (url.includes('legendmod.ml')){
+	$("#region").val("Private").change()
+	$("#region").hide()
+	$(".row").hide()
+	//$(".profile-tab").hide()
+	$("#gamemode").css("width","70%")
+	$("#gamemode").css("width","87%")
+}
 var region = getParameterByName("r", url);
 var realmode = getParameterByName("m", url);
 var searchStr = getParameterByName("search", url);
