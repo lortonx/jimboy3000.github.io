@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.03 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.04 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "06"; // the version 1.1-> 1.11
 
@@ -117,10 +117,12 @@ if (url.includes('legendmod.ml')){
 	$(".quick.quick-bots.ogicon-trophy").hide()
 	$(".agario-panel.radio-panel").hide()
 	$(".agario-panel.ogario-yt-panel").hide()
-	//$(".profile-tab").hide()
+	$(".profile-tab").hide()
+	$(".menu-tabs").children().css("width","20%")
 	$("#gamemode").css("width","70%")
 	$("#gamemode").css("width","87%")
 	$('#hotkeys-cfg').children().show();
+	
 	
 }
 var region = getParameterByName("r", url);
