@@ -112,10 +112,12 @@ if (url.includes('legendmod.ml')){
 	$("#region").val("Private").change()
 	$("#region").hide()
 	$(".row").hide()
+	$("#ogario-party").hide()
 	//$(".profile-tab").hide()
 	$("#gamemode").css("width","70%")
 	$("#gamemode").css("width","87%")
 	$('#hotkeys-cfg').children().show();
+	
 }
 var region = getParameterByName("r", url);
 var realmode = getParameterByName("m", url);
