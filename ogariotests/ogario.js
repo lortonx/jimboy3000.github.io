@@ -4950,7 +4950,7 @@ function thelegendmodproject() {
             $("#statsContinue").attr("id", "statsContinue2");
             $("#mainPanel").empty().remove();
             $(".center-container").addClass("ogario-menu");
-            $(".center-container").append('<div id="menu-footer" class="menu-main-color">' + textLanguage.visit + ' <a href="http://legendmod.ml" target="_blank">legendmod.ml</a> | ' + this.version + ' <a href="https://goo.gl/nRREoR" class="release ogicon-info" target="_blank"></a></div>');
+            $(".center-container").append('<div id="menu-footer" class="menu-main-color"> <a href="http://legendmod.ml" target="_blank">legendmod.ml</a> | ' + this.version + ' <a href="http://legendmod.ml" class="release ogicon-info" target="_blank"></a></div>');
             $("#leftPanel, #rightPanel").addClass("ogario-menu").removeAttr("id");
             $(".agario-profile-panel, .agario-panel-freecoins, .agario-panel-gifting, .agario-shop-panel, #dailyquests-panel").appendTo($("#profile")).removeClass("agario-side-panel");
             $(".agario-profile-panel").after('<div id="block-warn">' + textLanguage.blockWarn + '<br><a href="#" id="unblock-popups">' + textLanguage.unblockPopups + "</a></div>");
