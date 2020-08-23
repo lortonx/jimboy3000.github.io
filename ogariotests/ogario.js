@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.305
+// v2.306
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -76,6 +76,7 @@ function deleteGamemode(temp) {
     });
     $('#gamemode').change(function() {
         if ($('#region').val() == "Private") {
+			/*
             var now = new Date();
             var now2 = now.getUTCHours();
             if (now2 < 18 && now2 > 5) { //06:00-18:00 UTC closed 07:00-19:00 Germany time
@@ -83,11 +84,13 @@ function deleteGamemode(temp) {
                     document.getElementById("gamemode").options[i].disabled = true;
                     document.getElementById("gamemode").options[i].title = "OPEN 18:00-6:00 UTC";
                 }
-            } else { //06:00-18:00 UTC closed 07:00-19:00 Germany time
+            } 
+			else { //06:00-18:00 UTC closed 07:00-19:00 Germany time
                 for (var i = 2; i < 7; i++) {
                     //document.getElementById("gamemode").options[i].disabled = false;					
                 }
             }
+			*/
         } else {}
         if ($('#gamemode').val() == 6) {
             core.connect('wss://imsolo.pro:2109/');
