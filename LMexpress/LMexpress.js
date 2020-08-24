@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.09 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.10 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "06"; // the version 1.1-> 1.11
 
@@ -117,11 +117,15 @@ if (url.includes('legendmod.ml')){
 	modVersion="1.8"
 	init(modVersion)
 	$(".btn.btn-warning.btn-spectate.btn-needs-server").children()[0].className = "ogicon-eye"
+    setTimeout(function() {
+        legendmod.gameMode=":party"
+    }, 5000);	
     $("#gamemode").change(function() {
         setTimeout(function() {
             legendmod.gameMode=":party"
         }, 1500);
     });	
+	
 	$(".btn.btn-warning.btn-login-play.btn-needs-server").hide()
 	$(".btn.btn-play-guest.btn-success.btn-needs-server").css("width","100%")
 	$(".btn.btn-play-guest.btn-success.btn-needs-server").text("Play")
