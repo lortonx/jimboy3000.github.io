@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.08 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.09 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "06"; // the version 1.1-> 1.11
 
@@ -120,7 +120,7 @@ if (url.includes('legendmod.ml')){
     $("#gamemode").change(function() {
         setTimeout(function() {
             legendmod.gameMode=":party"
-        }, 150);
+        }, 1500);
     });	
 	$(".btn.btn-warning.btn-login-play.btn-needs-server").hide()
 	$(".btn.btn-play-guest.btn-success.btn-needs-server").css("width","100%")
