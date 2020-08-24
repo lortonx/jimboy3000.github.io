@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.307
+// v2.306
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -28,25 +28,28 @@ function changeregion() {
 function deleteGamemode(temp) {
     var privateModOptions = [{
         text: 'Arctida',
-        value: ":party"
+        value: 6
     }, {
         text: 'Dagestan',
-        value: ":party"
+        value: 7
     }, {		
+        text: 'FPS Test',
+        value: 12
+    }, {
         text: 'IamSolo-2104',
-        value: ":party"
+        value: 14
     }, {	
         text: 'IamSolo-2105',
-        value: ":party"
+        value: 15
     }, {	
         text: 'IamSolo-2107',
-        value: ":party"
+        value: 16
     }, {	
         text: 'IamSolo-2110',
-        value: ":party"
+        value: 17
     }, {	
         text: 'IamSolo-2111',
-        value: ":party"
+        value: 18
     } /*, {	
         text: 'FFA',
         value: 8
@@ -72,8 +75,8 @@ function deleteGamemode(temp) {
         $('#gamemode').append(new Option(el.text, el.value));
     });
     $('#gamemode').change(function() {
-       /* if ($('#region').val() == "Private") {
-			
+        if ($('#region').val() == "Private") {
+			/*
             var now = new Date();
             var now2 = now.getUTCHours();
             if (now2 < 18 && now2 > 5) { //06:00-18:00 UTC closed 07:00-19:00 Germany time
@@ -87,28 +90,36 @@ function deleteGamemode(temp) {
                     //document.getElementById("gamemode").options[i].disabled = false;					
                 }
             }
-			
-        } else {}*/
-        if ($("select[id='gamemode'] option:selected").text() == "Arctida") {
-            core.connect('wss://imsolo.pro:2109/');          
-        } else if ($("select[id='gamemode'] option:selected").text() == "Dagestan") {
+			*/
+        } else {}
+        if ($('#gamemode').val() == 6) {
+            core.connect('wss://imsolo.pro:2109/');
+            legendmod.gameMode = ":ffa";
+            //application.connect('wss://private1:443')
+        } else if ($('#gamemode').val() == 7) {
             core.connect('wss://imsolo.pro:2108/');
+            legendmod.gameMode = ":ffa";
+            //application.connect('wss://private1:443')
+        } else if ($('#gamemode').val() == 12) {
+            core.connect('wss://d-srv.glitch.me');
+            legendmod.gameMode = ":ffa";
         } 
-		else if ($("select[id='gamemode'] option:selected").text() == "IamSolo-2104") {
+		else if ($('#gamemode').val() == 14) {
             core.connect('wss://imsolo.pro:2104/');
+            legendmod.gameMode = ":ffa";
         }
-		else if ($("select[id='gamemode'] option:selected").text() == "IamSolo-2105") {
+		else if ($('#gamemode').val() == 15) {
             core.connect('wss://imsolo.pro:2105/');
+            legendmod.gameMode = ":ffa";
         }	
-		else if ($("select[id='gamemode'] option:selected").text() == "IamSolo-2107") {
+		else if ($('#gamemode').val() == 16) {
             core.connect('wss://imsolo.pro:2107/');
+            legendmod.gameMode = ":ffa";
         }
-		else if ($("select[id='gamemode'] option:selected").text() == "IamSolo-2100") {
+		else if ($('#gamemode').val() == 17) {
             core.connect('wss://imsolo.pro:2110/');
+            legendmod.gameMode = ":ffa";
         }	
-		else if ($("select[id='gamemode'] option:selected").text() == "IamSolo-2111") {
-            core.connect('wss://imsolo.pro:2110/');
-        }			
 		/*		
 		else if ($('#gamemode').val() == 18) {
             core.connect('wss://imsolo.pro:2111/');
