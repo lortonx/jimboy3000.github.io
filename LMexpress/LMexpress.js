@@ -123,7 +123,7 @@ if (url.includes('legendmod.ml')){
     $("#gamemode").change(function() {
         setTimeout(function() {
             legendmod.gameMode=":party"
-        }, 1500);
+        }, 2000);
     });	
 	
 	$(".btn.btn-warning.btn-login-play.btn-needs-server").hide()
@@ -1858,13 +1858,13 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
         window.targetingLeadY = parseFloat(window.targetingLeadclientY) - legendmod.mapOffsetY
 		legendmod.drawCommander2 = true;
 		toastr.warning("<b>" + MSGNICK + ":</b> Attack " + application.calculateMapSector(window.targetingLeadX, window.targetingLeadY, true)).css("width", "210px");	
-    } else if (MSGCOMMANDS.includes("[PosFight]")) {
-        if ($("#nick").val().includes("PosFight") == false) {
+    } else if (MSGCOMMANDS.includes("[DosFight]")) {
+        if ($("#nick").val().includes("DosFight") == false) {
             $(".message-text").remove();
             $(".toast.toast-success").remove();		
         }
-        MSGCOMMANDS = MSGCOMMANDS.split("[PosFight]").pop();
-        MSGCOMMANDS = MSGCOMMANDS.split('[/PosFight]')[0];	
+        MSGCOMMANDS = MSGCOMMANDS.split("[DosFight]").pop();
+        MSGCOMMANDS = MSGCOMMANDS.split('[/DosFight]')[0];	
 		var nameArr = MSGCOMMANDS.split(',');	
 		window.targetingLeadclientX = nameArr[0]
 		window.targetingLeadclientY = nameArr[1]	
@@ -1872,13 +1872,13 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
         window.targetingLeadY = parseFloat(window.targetingLeadclientY)	- legendmod.mapOffsetY
 		legendmod.drawCommander2 = true;
 		toastr.warning("<b>" + MSGNICK + ":</b> Fight " + application.calculateMapSector(window.targetingLeadX, window.targetingLeadY, true)).css("width", "210px");
-    } else if (MSGCOMMANDS.includes("[PosRun]")) {
-        if ($("#nick").val().includes("PosRun") == false) {
+    } else if (MSGCOMMANDS.includes("[DosRun]")) {
+        if ($("#nick").val().includes("DosRun") == false) {
             $(".message-text").remove();
             $(".toast.toast-success").remove();	
         }
-        MSGCOMMANDS = MSGCOMMANDS.split("[PosRun]").pop();
-        MSGCOMMANDS = MSGCOMMANDS.split('[/PosRun]')[0];	
+        MSGCOMMANDS = MSGCOMMANDS.split("[DosRun]").pop();
+        MSGCOMMANDS = MSGCOMMANDS.split('[/DosRun]')[0];	
 		var nameArr = MSGCOMMANDS.split(',');	
 		window.targetingLeadclientX = nameArr[0]
 		window.targetingLeadclientY = nameArr[1]	
