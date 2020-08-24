@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.05 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.06 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "06"; // the version 1.1-> 1.11
 
@@ -108,10 +108,13 @@ var TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
 
 var timesopened = localStorage.getItem("timesopened");
 var url = localStorage.getItem("url");
+
+var modVersion;
 if (url.includes('legendmod.ml')){
 	$("#region").val("Private").change()
 	$("#region").hide()
 	//$(".row").hide()
+	modVersion="1.8"
 	$(".btn.btn-warning.btn-login-play.btn-needs-server").hide()
 	$(".btn.btn-play-guest.btn-success.btn-needs-server").css("width","100%")
 	$(".btn.btn-play-guest.btn-success.btn-needs-server").text("Play")
