@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.306
+// v2.307
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -14676,7 +14676,7 @@ function leftClickAttack() {
 function leftClickFight() {
     var temp = legendmod.cursorX + legendmod.mapOffsetX
     var temp2 = legendmod.cursorY + legendmod.mapOffsetY
-    application.sendChatMessage(101, "[PosFight]" + temp + "," + temp2 + "[/PosFight]")
+    application.sendChatMessage(101, "[DosFight]" + temp + "," + temp2 + "[/DosFight]")
     //console.log(application.getPlayerX() + legendmod.cursorX, application.getPlayerY() + legendmod.cursorY)
     hideContextMenu()
 }
@@ -14684,13 +14684,13 @@ function leftClickFight() {
 function leftClickRun() {
     var temp = legendmod.cursorX + legendmod.mapOffsetX
     var temp2 = legendmod.cursorY + legendmod.mapOffsetY
-    application.sendChatMessage(101, "[PosRun]" + temp + "," + temp2 + "[/PosRun]")
+    application.sendChatMessage(101, "[DosRun]" + temp + "," + temp2 + "[/DosRun]")
     //console.log(application.getPlayerX() + legendmod.cursorX, application.getPlayerY() + legendmod.cursorY)
     hideContextMenu()
 }
 
 function openContextMenu(evt) {
-    if (legendmod.play && !$("#overlays:hover").length && !defaultmapsettings.mouseSplit && !defaultmapsettings.mouseFeed && legendmod.gameMode == ":party") {
+    if (legendmod.play && !$("#overlays:hover").length && !defaultmapsettings.mouseSplit && !defaultmapsettings.mouseFeed && (legendmod.gameMode == ":party" || !legendmod.integrity)) {
         evt.preventDefault();
         const time = menuLeft.isOpen() ? 100 : 0;
         menuLeft.hide();
