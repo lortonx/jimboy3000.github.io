@@ -115,6 +115,7 @@ if (url.includes('legendmod.ml')){
 	$("#region").hide()
 	//$(".row").hide()
 	modVersion="1.8"
+	init(modVersion)
 	$(".btn.btn-warning.btn-login-play.btn-needs-server").hide()
 	$(".btn.btn-play-guest.btn-success.btn-needs-server").css("width","100%")
 	$(".btn.btn-play-guest.btn-success.btn-needs-server").text("Play")
