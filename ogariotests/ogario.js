@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.307
+// v2.309
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8519,7 +8519,9 @@ function thelegendmodproject() {
 				var temp;
 				for (var i=0;i<application.chatHistory.length;i++){				
 					if (application.chatHistory[i].nick==this.nick && (Date.now() - application.chatHistory[i].time < 15000)){	
-							if (!application.chatHistory[i].message.includes('<img src') && this.nick!=""){
+							if (!application.chatHistory[i].message.includes('<img src') && !application.chatHistory[i].message.includes('DosAttack') && 
+							!application.chatHistory[i].message.includes('DosFight') && !application.chatHistory[i].message.includes('DosRun') && 
+							!application.chatHistory[i].message.includes('https://agar.io/sip=151.80.91.73:1511') && this.nick!=""){
 								if (application.chatHistory[i].nick == $('#nick').val() || application.chatHistory[i].nick == application.lastSentNick){
 									
 									if (defaultmapsettings.showChatMyOwn){
