@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.311
+// v2.312
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12214,10 +12214,11 @@ Game name     : ${i.displayName}<br/>
                 //y = this.getY(y);	
                 //FOR COLOR
 				//if (!isVirus && !isFood && name != "" && this.gameMode != ":teams") {
-                if (!isVirus && !isFood && name != "" && this.gameMode != ":teams" && this.gameMode != ":party") { //28/6/2020
+                if (!isVirus && !isFood && name != "" && this.gameMode != ":teams" && this.gameMode != ":party" && this.gameMode != ":teams") { //28/6/2020
                     if (LM.cellcolors[name]) {
                         color = LM.cellcolors[name]
-                    } else {
+                    } 
+					else {
                         application.teamPlayers.forEach((found) => {
                             if (found.nick == name && found.nick != profiles[application.selectedProfile].nick) {
                                 color = found.color
@@ -12239,7 +12240,8 @@ Game name     : ${i.displayName}<br/>
                     //if (color && !LM.playerCellsMulti.length) {
                     //cellUpdateCells.color = color;
                     //}					
-                } else {
+                } 
+				else {
                     cellUpdateCells = new ogarbasicassembly(id, x, y, size, color, isFood, isVirus, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
                     cellUpdateCells.time = this.time;
                     cellUpdateCells.spectator = false;
