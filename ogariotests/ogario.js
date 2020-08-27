@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.325
+// v2.326
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -32,9 +32,6 @@ function deleteGamemode(temp) {
     }, {
         text: 'Dagestan',
         value: 7
-    }, {		
-        text: 'FPS Test',
-        value: 12
     }, {	
         text: 'Instant Merging',
         value: 16
@@ -86,6 +83,9 @@ function deleteGamemode(temp) {
     }, {	
         text: 'IamSolo-2111',
         value: 18
+    }, {		
+        text: 'FPS Test',
+        value: 12
     }
 	
 	/*, {	
