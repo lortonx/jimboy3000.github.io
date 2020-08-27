@@ -1,8 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.324
-
+// v2.325
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -39,12 +38,6 @@ function deleteGamemode(temp) {
     }, {	
         text: 'Instant Merging',
         value: 16
-    }, {	
-        text: 'IamSolo-2110',
-        value: 17
-    }, {	
-        text: 'IamSolo-2111',
-        value: 18
     }, {		
         text: 'Party MegaSplit',
         value: 19		
@@ -87,6 +80,12 @@ function deleteGamemode(temp) {
     }, {	
         text: 'IamSolo-2105',
         value: 15
+    }, {	
+        text: 'IamSolo-2110',
+        value: 17
+    }, {	
+        text: 'IamSolo-2111',
+        value: 18
     }
 	
 	/*, {	
