@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.316
+// v2.317
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12185,7 +12185,7 @@ Game name     : ${i.displayName}<br/>
                 }
                 if (8 & flags) {
                     name = window.decodeURIComponent(escape(encode()));
-					console.log('name '+name+ 'skin '+skin);
+					//console.log('name '+name+ 'skin '+skin);
                     if (legendmod && legendmod.gameMode && legendmod.gameMode != ":teams") {
                         this.vanillaskins(name, skin);
                     }
