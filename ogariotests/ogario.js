@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.321
+// v2.322
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10292,11 +10292,13 @@ function thelegendmodproject() {
 					var count = data.getUint32(s, true);
 					for (i = 0; i < count; ++i) {
 						var isMe = !!data.getUint32(s, true);
-						if (isMe) isMe = 'isPlayer'
-							let nick = window.decodeURIComponent(window.escape(encode())); //data.getStringUTF8();
-							this.leaderboard.push({
-							id: isMe,
-							nick: nick
+						if (isMe){ 
+							isMe = 'isPlayer'
+						}
+						let nick = window.decodeURIComponent(window.escape(encode())); //data.getStringUTF8();
+						this.leaderboard.push({
+						id: isMe,
+						nick: nick
 						});
 					}
 					this.handleLeaderboard();					
