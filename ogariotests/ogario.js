@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.328
+// v2.329
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10492,7 +10492,7 @@ function thelegendmodproject() {
                 if (mod) name = "[MOD] " + name;	
 				//var wait = Math.max(3000, 1000 + message.length * 150);
 				var time = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
-                this.displayChatMessage(time, 101, 1000, name + ": " + message); //this.displayChatMessage(time, caseof, plId, msg);
+                application.displayChatMessage(time, 101, 1000, name + ": " + message); //this.displayChatMessage(time, caseof, plId, msg);
 				
 				/*
 				var view = this.createView(2 + 2 * message.length);
