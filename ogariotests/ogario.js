@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.342
+// v2.343
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10515,17 +10515,9 @@ function thelegendmodproject() {
 					name = name.split('}')[1]
 				}
 				
-				if (message != "WWW.IMSOLO.PRO "){
+				if (message != "WWW.IMSOLO.PRO " && name != profiles[application.selectedProfile].nick){
 					application.displayChatMessage(time, caseof, 1000, name + ": " + message); //this.displayChatMessage(time, caseof, plId, msg);
-				}
-				/*
-				var view = application.createView(2 + 2 * message.length);
-                view.setUint8(0, 99);
-				view.setUint8(1, 0);
-				for (var length = 0; length < message.length; length++) view.setUint16(2 + 2 * length, message.charCodeAt(length), true);
-                legendmod.sendMessage(view)			
-                	*/
-				
+				}				
 				break;
                 case 102:
                     var msg = new buffer.Buffer(data.buffer.slice(1));
