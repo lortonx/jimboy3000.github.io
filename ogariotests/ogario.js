@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.327
+// v2.328
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10477,7 +10477,7 @@ function thelegendmodproject() {
                     break;
 				case 99: //chat for specific private servers
 					window.testobjectsOpcode99 = data;
-					var flags = data.getUint8(s++);
+					var flag = data.getUint8(s++);
 					var color2 = this.rgb2Hex(data.getUint8(s++), data.getUint8(s++), data.getUint8(s++));
 
 					var name = window.decodeURIComponent(window.escape(encode())); //data.getStringUTF8();
@@ -10494,15 +10494,13 @@ function thelegendmodproject() {
 				var time = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
                 this.displayChatMessage(time, 101, 1000, name + ": " + message); //this.displayChatMessage(time, caseof, plId, msg);
 				
-				/*chat.messages.push({
-                    server: server,
-                    admin: admin,
-                    mod: mod,
-                    color: color,
-                    name: name,
-                    message: message,
-                    time: syncUpdStamp
-                });	*/
+				/*
+				var view = this.createView(2 + 2 * message.length);
+                view.setUint8(0, 99);
+				view.setUint8(1, 0);
+				for (var length = 0; length < message.length; length++) view.setUint16(2 + 2 * length, message.charCodeAt(length), true);
+                this.sendBuffer(view)				
+                	*/
 				
 				break;
                 case 102:
