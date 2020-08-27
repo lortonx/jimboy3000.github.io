@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.329
+// v2.331
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10481,8 +10481,9 @@ function thelegendmodproject() {
 					var color2 = this.rgb2Hex(data.getUint8(s++), data.getUint8(s++), data.getUint8(s++));
 
 					var name = window.decodeURIComponent(window.escape(encode())); //data.getStringUTF8();
-					var message = window.decodeURIComponent(window.escape(encode()));  //data.getStringUTF8();	
 					
+					var message = window.decodeURIComponent(window.escape(encode()));  //data.getStringUTF8();	
+					console.log(name,message);
 					var server = !!(flags & 128),
                     admin = !!(flags & 64),
                     mod = !!(flag & 32);
@@ -10492,7 +10493,11 @@ function thelegendmodproject() {
                 if (mod) name = "[MOD] " + name;	
 				//var wait = Math.max(3000, 1000 + message.length * 150);
 				var time = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
-                application.displayChatMessage(time, 101, 1000, name + ": " + message); //this.displayChatMessage(time, caseof, plId, msg);
+				var caseof = 101
+				if (server || admin || mod){
+					caseof = 102
+				}
+                application.displayChatMessage(time, caseof, 1000, name + ": " + message); //this.displayChatMessage(time, caseof, plId, msg);
 				
 				/*
 				var view = this.createView(2 + 2 * message.length);
