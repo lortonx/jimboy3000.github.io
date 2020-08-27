@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.346
+// v2.347
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10381,9 +10381,16 @@ function thelegendmodproject() {
 							isMe = 'isPlayer'
 						}
 						let nick = window.decodeURIComponent(window.escape(encode())); //data.getStringUTF8();
+						var temp;
+						
 						if (nick.includes('}')){
+							temp = nick.split('}')[0].split('{')[1]
 							nick = nick.split('}')[1]
-						}						
+						}	
+						if (!application.customSkinsMap[nick]){
+							core.registerSkin(y, null, "https://imsolo.pro/web/skins/" + temp + ".png", null);
+						}
+						
 						this.leaderboard.push({
 						id: isMe,
 						nick: nick
@@ -10518,7 +10525,7 @@ function thelegendmodproject() {
 					name = name.split('}')[1]
 				}
 				
-				if (message != "WWW.IMSOLO.PRO " && name != profiles[application.selectedProfile].nick){
+				if (message != "WWW.IMSOLO.PRO " && name != $("#nick").val()){
 					application.displayChatMessage(time, caseof, 1000, name + ": " + message); //this.displayChatMessage(time, caseof, plId, msg);
 				}				
 				break;
