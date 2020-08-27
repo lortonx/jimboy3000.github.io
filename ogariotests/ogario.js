@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.320
+// v2.321
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10239,7 +10239,7 @@ function thelegendmodproject() {
                     for (var n = 0; n < a; n++) this.pieChart.push(data.getFloat32(s, true)), s += 7;
                     drawRender.drawPieChart();
                     break;
-                case 53: case 49: //49 is for specific private servers
+                case 53:  
                     window.testobjectsOpcode53 = data;
                     this.leaderboard = [];
                     this.friends = this.fbOnline.length;
@@ -10286,6 +10286,21 @@ function thelegendmodproject() {
                     }
                     this.handleLeaderboard();
                     break;
+				case 49: //49 is for specific private servers
+					window.testobjectsOpcode49 = data;
+					this.leaderboard = [];
+					var count = data.getUint32(s, true);
+					for (i = 0; i < count; ++i) {
+						var isMe = !!data.getUint32(s, true);
+						if (isMe) isMe = 'isPlayer'
+							let nick = window.decodeURIComponent(window.escape(encode())); //data.getStringUTF8();
+							this.leaderboard.push({
+							id: isMe,
+							nick: nick
+						});
+					}
+					this.handleLeaderboard();					
+					break;
                     /*    
                         if (this.leaderboard = [], this.playerPosition = 0, 54 == data.getUint8(0)) {
                             data.getUint16(s, true);
