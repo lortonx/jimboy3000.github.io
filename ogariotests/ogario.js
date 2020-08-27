@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.345
+// v2.346
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10381,6 +10381,9 @@ function thelegendmodproject() {
 							isMe = 'isPlayer'
 						}
 						let nick = window.decodeURIComponent(window.escape(encode())); //data.getStringUTF8();
+						if (nick.includes('}')){
+							nick = nick.split('}')[1]
+						}						
 						this.leaderboard.push({
 						id: isMe,
 						nick: nick
