@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.322
+// v2.323
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10290,8 +10290,10 @@ function thelegendmodproject() {
 					window.testobjectsOpcode49 = data;
 					this.leaderboard = [];
 					var count = data.getUint32(s, true);
+					s += 4;
 					for (i = 0; i < count; ++i) {
 						var isMe = !!data.getUint32(s, true);
+						s += 4;
 						if (isMe){ 
 							isMe = 'isPlayer'
 						}
