@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.326
+// v2.327
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10354,7 +10354,7 @@ function thelegendmodproject() {
                     }
                     this.handleLeaderboard();
                     break;
-				case 49: //49 is for specific private servers
+				case 49: //leaderboard for specific private servers
 					window.testobjectsOpcode49 = data;
 					this.leaderboard = [];
 					var count = data.getUint32(s, true);
@@ -10475,6 +10475,36 @@ function thelegendmodproject() {
                     }
                     //}
                     break;
+				case 99: //chat for specific private servers
+					window.testobjectsOpcode99 = data;
+					var flags = data.getUint8(s++);
+					var color2 = this.rgb2Hex(data.getUint8(s++), data.getUint8(s++), data.getUint8(s++));
+
+					var name = window.decodeURIComponent(window.escape(encode())); //data.getStringUTF8();
+					var message = window.decodeURIComponent(window.escape(encode()));  //data.getStringUTF8();	
+					
+					var server = !!(flags & 128),
+                    admin = !!(flags & 64),
+                    mod = !!(flag & 32);
+              
+				if (server && name !== "SERVER") name = "[SERVER] " + name;
+                if (admin) name = "[ADMIN] " + name;
+                if (mod) name = "[MOD] " + name;	
+				//var wait = Math.max(3000, 1000 + message.length * 150);
+				var time = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
+                this.displayChatMessage(time, 101, 1000, name + ": " + message); //this.displayChatMessage(time, caseof, plId, msg);
+				
+				/*chat.messages.push({
+                    server: server,
+                    admin: admin,
+                    mod: mod,
+                    color: color,
+                    name: name,
+                    message: message,
+                    time: syncUpdStamp
+                });	*/
+				
+				break;
                 case 102:
                     var msg = new buffer.Buffer(data.buffer.slice(1));
                     this.onMobileData(msg);
