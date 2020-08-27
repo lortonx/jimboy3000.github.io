@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.339
+// v2.340
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10494,8 +10494,6 @@ function thelegendmodproject() {
 					var name = window.decodeURIComponent(window.escape(encode())); //data.getStringUTF8();
 					
 					var message = window.decodeURIComponent(window.escape(encode()));  //data.getStringUTF8();	
-					console.log(name);
-					console.log(message);
 					var server = !!(flags & 128),
                     admin = !!(flags & 64),
                     mod = !!(flag & 32);
@@ -10510,8 +10508,7 @@ function thelegendmodproject() {
 					caseof = 102
 				}
 				if (name.includes('}')){
-					console.log(name)
-					name.split('}')[1]
+					name = name.split('}')[1]
 				}
 				
 				if (message != "WWW.IMSOLO.PRO "){
