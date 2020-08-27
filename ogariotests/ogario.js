@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.348
+// v2.349
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12329,6 +12329,9 @@ Game name     : ${i.displayName}<br/>
                 if (8 & flags) {
                     name = window.decodeURIComponent(escape(encode()));
 					//console.log('name '+name+ 'skin '+skin);
+					if (LM.ws.includes("imsolo.pro") && nick.includes('}')){
+						name = name.split('}')[1]
+					}
                     if (legendmod && legendmod.gameMode && legendmod.gameMode != ":teams") {
                         this.vanillaskins(name, skin);
                     }
