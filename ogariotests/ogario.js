@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.318
+// v2.319
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10239,7 +10239,7 @@ function thelegendmodproject() {
                     for (var n = 0; n < a; n++) this.pieChart.push(data.getFloat32(s, true)), s += 7;
                     drawRender.drawPieChart();
                     break;
-                case 53: //Yahnych
+                case 53: 49: //49 is for specific private servers
                     window.testobjectsOpcode53 = data;
                     this.leaderboard = [];
                     this.friends = this.fbOnline.length;
