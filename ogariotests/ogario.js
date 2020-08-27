@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.349
+// v2.350
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10513,6 +10513,7 @@ function thelegendmodproject() {
                     mod = !!(flag & 32);
               
 				if (server && name !== "SERVER") name = "[SERVER] " + name;
+				if (name == "SERVER") name = "[SERVER]"
                 if (admin) name = "[ADMIN] " + name;
                 if (mod) name = "[MOD] " + name;	
 				//var wait = Math.max(3000, 1000 + message.length * 150);
