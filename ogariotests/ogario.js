@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.317
+// v2.318
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9517,12 +9517,14 @@ function thelegendmodproject() {
             var view = this.createView(5);
             view.setUint8(0, 254);
             if (!window.gameBots.protocolVersion) window.gameBots.protocolVersion = master.protocolVersion;
-            view.setUint32(1, this.protocolVersion, true);
+            if (!LM.ws.includes("imsolo.pro")) view.setUint32(1, this.protocolVersion, true); //
+			else view.setUint32(1, 6, true); //
             this.sendMessage(view);
             view = this.createView(5);
             view.setUint8(0, 255);
             if (!window.gameBots.clientVersion) window.gameBots.clientVersion = this.clientVersion
-            view.setUint32(1, this.clientVersion, true);
+			if (!LM.ws.includes("imsolo.pro")) view.setUint32(1, this.clientVersion, true); //
+            else view.setUint32(1, 1, true); //
             this.sendMessage(view);
             this.connectionOpened = true;
         },
