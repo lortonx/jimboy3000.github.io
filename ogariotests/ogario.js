@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.341
+// v2.342
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -4530,8 +4530,10 @@ function thelegendmodproject() {
 					var view = application.createView(2 + 2 * value.length);
 					view.setUint8(0, 99);
 					view.setUint8(1, 0);
-					for (var length = 0; length < value.length; length++) view.setUint16(2 + 2 * length, value.charCodeAt(length), true);
-					LM.sendMessage(view)						
+					var length = 0
+					for (; length <= value.length+1; length++) view.setUint16(2+ length, value.charCodeAt(length), true);
+					view.setUint8(length, 0);
+					legendmod.sendMessage(view)				
 				} 
 				//
 				
