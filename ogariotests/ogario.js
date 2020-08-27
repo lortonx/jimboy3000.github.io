@@ -1,8 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.344
-
+// v2.345
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -4528,7 +4527,7 @@ function thelegendmodproject() {
 
 				//
 				if (LM.ws.includes("imsolo.pro")){
-					var view = application.createView(3 + 2 * value.length);
+					var view = application.createView(4 + 2 * value.length);
 					view.setUint8(0, 99);
 					view.setUint8(1, 0);
 					var length = 0
@@ -9181,7 +9180,7 @@ function thelegendmodproject() {
 						style.strokeStyle = this.color; ///
 						style.stroke(); //
 			}
-			else if (!window.multiboxPlayerEnabled && this.spectator && !this.isPlayerCellMulti && this.nick != "" && this.nick == profiles[application.selectedProfile].nick && LM.play){	
+			else if (!window.multiboxPlayerEnabled && this.spectator && !this.isPlayerCellMulti && this.nick != "" && this.nick == profiles[this.selectedProfile].nick && LM.play){	
 						style.lineWidth = 20; ///
 						style.strokeStyle = this.color; ///
 						style.stroke(); //
