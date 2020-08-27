@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.313
+// v2.314
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12180,7 +12180,7 @@ Game name     : ${i.displayName}<br/>
 
                 if (4 & flags) {
                     skin = encode();
-                    //						console.log('skin '+g);
+                    						console.log('skin '+g);
 
                 }
                 if (8 & flags) {
