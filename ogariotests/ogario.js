@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.340
+// v2.341
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -4524,6 +4524,17 @@ function thelegendmodproject() {
             if (messageBox.is(':visible')) {
                 const value = message.val();
                 if (value.length) {
+
+				//
+				if (LM.ws.includes("imsolo.pro")){
+					var view = application.createView(2 + 2 * value.length);
+					view.setUint8(0, 99);
+					view.setUint8(1, 0);
+					for (var length = 0; length < value.length; length++) view.setUint16(2 + 2 * length, value.charCodeAt(length), true);
+					LM.sendMessage(view)						
+				} 
+				//
+				
                     this.sendChatMessage(101, value);
                     if (ogario.play) {
                         message.blur();
@@ -4535,15 +4546,6 @@ function thelegendmodproject() {
                     messageBox.hide();
                 }
                 message.val('');
-				//
-				if (LM.ws.includes("imsolo.pro")){
-					var view = application.createView(2 + 2 * value.length);
-					view.setUint8(0, 99);
-					view.setUint8(1, 0);
-					for (var length = 0; length < value.length; length++) view.setUint16(2 + 2 * length, value.charCodeAt(length), true);
-					legendmod.sendMessage(view)						
-				} 
-				//
             } 
 			else {
                 messageBox.show();
