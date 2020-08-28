@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.11 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.12 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "07"; // the version 1.1-> 1.11
 
@@ -464,7 +464,7 @@ function adres(info, thismode, thisregion) {
     if ($("#gamemode").val() != ":party") {
         setTimeout(function() {
             currentIP = "live-arena-" + $("#server-token").val() + ".agar.io";
-			if (legendmod.ws.includes("imsolo.pro")){ currentIP = $("#server-token").val();}
+			if (!legendmod.integrity){ currentIP = $("#server-token").val();}
                 if (realmode != ":party") {
                     if (!thismode) {
                         realmode = $("#gamemode").val();
@@ -523,7 +523,7 @@ function urlIpWhenOpened() {
 
     setTimeout(function() {
             currentIP = "live-arena-" + $("#server-token").val() + ".agar.io";
-			if (legendmod.ws.includes("imsolo.pro")){ currentIP = $("#server-token").val();}
+			if (!legendmod.integrity){ currentIP = $("#server-token").val();}
             if (searchSip != null) {
                 if (region == null) {
                     history.pushState(stateObj, "page 2", "?sip=" + searchSip);
@@ -6089,8 +6089,8 @@ function joinSERVERfindinfo() {
 							
 							if (MaxRegion!= 0 && MaxRegion!= null && MaxMode!= 0 && MaxMode!= null){
 								
-                            if (!legendmod.ws.includes("imsolo.pro")){ history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MaxRegion + "&?m=" + MaxMode);}
-							else if (legendmod.ws.includes("imsolo.pro")){ history.pushState(stateObj, "page 2", "?sip=" + currentIP);}
+                            if (legendmod.integrity){ history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MaxRegion + "&?m=" + MaxMode);}
+							else if (!legendmod.integrity){ history.pushState(stateObj, "page 2", "?sip=" + currentIP);}
 							}
                             ModeRegionregion();
                         }, 1500);
