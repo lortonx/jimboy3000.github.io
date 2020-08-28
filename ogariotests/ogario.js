@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.374
+// v2.375
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -72,16 +72,16 @@ function deleteGamemode(temp) {
         text: '2vs2vs2',
         value: 30	
     }, {
-        text: 'IamSolo-2104',
+        text: 'Beta Party #1',
         value: 14
     }, {	
-        text: 'IamSolo-2105',
+        text: 'Beta Party #2',
         value: 15
-    }, {	
-        text: 'IamSolo-2110',
+    }, {		
+        text: 'Beta Party v2 #1',
         value: 17
-    }, {	
-        text: 'IamSolo-2111',
+    }, {		
+        text: 'Beta Party v2 #2',
         value: 18
     }, {		
         text: 'FPS Test',
@@ -11250,13 +11250,13 @@ function thelegendmodproject() {
                     this.handleSubmessage(data);
                     break;
 
-                    //2020 jimboy3100 specific private servers
-                case 16:
+                    
+                case 16: //2020 jimboy3100 specific private servers
                     //this.updateCells(new LMbuffer(data['buffer']), s);
                     this.updateCells(new window.buffer.Buffer(data.buffer), s);
                     //this.countPps()
                     break;
-                case 64:
+                case 64: //2020 jimboy3100 specific private servers
                     //var message = new LMbuffer(data['buffer'])						
                     var message = new window.buffer.Buffer(data.buffer)
                     this.viewMinX = message.readDoubleLE(s);
@@ -11266,12 +11266,14 @@ function thelegendmodproject() {
                     this.viewMaxX = message.readDoubleLE(s);
                     s += 8;
                     this.viewMaxY = message.readDoubleLE(s);
+					
                     this.setMapOffset(this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY);
 
                     if (~~(this.viewMaxX - this.viewMinX) === LM.mapSize && ~~(this.viewMaxY - this.viewMinY) === LM.mapSize) {
                         window.userBots.offsetX = (this.viewMinX + this.viewMaxX) / 2
                         window.userBots.offsetY = (this.viewMinY + this.viewMaxY) / 2
                     }
+					
                     break;
                     //2020 jimboy3100
 
