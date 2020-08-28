@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.372
+// v2.373
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -7696,8 +7696,23 @@ function thelegendmodproject() {
             return command.replace('%currentSector%', this.currentSector);
         },
         sendCommand(command) {
+			console.log(command)
             var prepareCommand = this.prepareCommand(chatCommand['comm' + command]);
             this.sendChatMessage(102, prepareCommand);
+			
+			//
+			/*
+				if (LM.ws.includes("imsolo.pro") && $("#clantag").val() == ""){
+					var view = application.createView(4 + 2 * value.length);
+					view.setUint8(0, 99);
+					view.setUint8(1, 0);
+					var length = 0
+					for (; length <= value.length+1; length++) view.setUint16(2+ length, value.charCodeAt(length), true);
+					view.setUint8(length, 0);
+					legendmod.sendMessage(view)				
+				}	
+		*/				
+			//
         },
         addChatUser(id, name) {
             this.chatUsers[id] = name;
