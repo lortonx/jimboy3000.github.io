@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.368
+// v2.369
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -1297,6 +1297,9 @@ var displayText = {
         'hk-showQuest': 'Pokaż/ukryj zadanie',
         'hk-showSpectator': 'Show/hide Full Spectator (Premium)',
 		'hk-showIngameSpectator': 'Show/hide Ingame Spectator (Premium)',
+		'hk-doubleBotSplit': 'Bots double split (IMSOLO.PRO)',
+		'hk-splitBot16': 'Bots split 16 (IMSOLO.PRO)',
+		
         commands: 'Komendy',
         comm1: 'Feeduj!',
         comm2: 'Dziel się!',
@@ -1744,6 +1747,9 @@ var displayText = {
         'hk-showQuest': 'Show/hide quest',
         'hk-showSpectator': 'Show/hide Full Spectator (Premium)',
 		'hk-showIngameSpectator': 'Show/hide Ingame Spectator (Premium)',
+		'hk-doubleBotSplit': 'Bots double split (IMSOLO.PRO)',
+		'hk-splitBot16': 'Bots split 16 (IMSOLO.PRO)',
+
         commands: 'Commands',
         comm1: 'Feed me!',
         comm2: 'Split into me!',
