@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.360
+// v2.361
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10391,9 +10391,11 @@ function thelegendmodproject() {
 						if (!application.customSkinsMap[nick] && temp){
 							core.registerSkin(nick, null, "https://dkyriak.github.io/imsolo/" + temp + ".png", null);
 							window.TempNick2 = nick + "\'s imsolo.pro bot"
+							window.TempVanskinTemp = temp
 							setTimeout(function() {
-								core.registerSkin(window.TempNick2, null, "https://dkyriak.github.io/imsolo/" + temp + ".png", null);
+								core.registerSkin(window.TempNick2, null, "https://dkyriak.github.io/imsolo/" + window.TempVanskinTemp + ".png", null);
 								window.TempNick2 = null
+								window.TempVanskinTemp = null
 							}, 1000);
 							
 							//core.registerSkin(nick, null, "https://imsolo.pro/web/skins/" + temp + ".png", null);
