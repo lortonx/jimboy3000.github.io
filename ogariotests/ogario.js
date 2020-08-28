@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.369
+// v2.370
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -66,7 +66,7 @@ function deleteGamemode(temp) {
         text: '1vs1 EXP #3',
         value: 28	
     }, {		
-        text: '2vs2 #1',
+        text: '2vs2',
         value: 29	
     }, {		
         text: '2vs2vs2',
