@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.353
+// v2.354
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10306,6 +10306,7 @@ function thelegendmodproject() {
                     this.playerCellIDs.push(data.getUint32(s, true));
                     if (!this.play) {
                         this.play = true;
+						this.isSpectateEnabled = false
                         application.hideMenu();
                         this.playerColor = null;
                         application.onPlayerSpawn();
