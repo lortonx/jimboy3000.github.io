@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.366
+// v2.367
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3718,7 +3718,7 @@ function thelegendmodproject() {
             }
         },
 	
-        Botsfeed() {
+        Botsplit() {
             if (window.core && window.core.Botsplit) window.core.Botsplit();
         },
         Boteject() {
