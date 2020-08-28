@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.375
+// v2.376
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -5047,7 +5047,7 @@ function thelegendmodproject() {
             $("#nick").before('<input id="clantag" class="form-control" placeholder="Tag, e.g  \Lc" maxlength="10"><div class="input-group nick"></div>');
             $("#nick").appendTo($(".nick"));
             $(".nick").append('<span class="input-group-btn"><button id="stream-mode" class="btn active ogicon-eye"></button></span>');
-            $(".nick").after('<div class="input-group skin"><input id="skin" class="form-control" placeholder="Manual direct skin URL" maxlength="150"><input type="hidden" id="color" value="' + ogarcopythelb.color + '" maxlength="7" /><span class="input-group-addon"><i></i></span><span class="input-group-btn"><button id="hide-url" class="btn active ogicon-eye"></button></span></div>');
+            $(".nick").after('<div class="input-group skin"><input id="skin" class="form-control" placeholder="Manual direct skin URL" maxlength="150"><input type="hidden" id="color" value="' + ogarcopythelb.color + '" maxlength="7" /><span class="input-group-addon"><i></i></span><span class="input-group-btn"><button id="hide-url" class="btn active ogicon-eye" style="display: none"></button></span></div>');
             $('#stream-mode').before('<button id="opennamechars" class="btn btn-info" style="background-color: transparent;" onclick="opennamechars();return false;"><i class="fa fa-language"></i></button>');
             $('#opennamechars').tooltip({
                 title: "Design Nickname Font",
@@ -5746,10 +5746,12 @@ function thelegendmodproject() {
         setStreamMode() {
             if (defaultmapsettings.streamMode) {
                 $("#stream-mode").addClass("ogicon-eye-blocked");
-                $("#clantag, #nick, #party-token").addClass("stream-mode");
+                //$("#clantag, #nick, #party-token").addClass("stream-mode");
+				$("#clantag, #nick, #skin").foggy();				
             } else {
                 $("#stream-mode").removeClass("ogicon-eye-blocked");
-                $("#clantag, #nick, #party-token").removeClass("stream-mode");
+                //$("#clantag, #nick, #party-token").removeClass("stream-mode");
+				$("#clantag, #nick, #skin").foggy(false);
             }
         },
         setHideSkinUrl() {
