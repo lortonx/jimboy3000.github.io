@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.370
+// v2.371
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10575,7 +10575,9 @@ function thelegendmodproject() {
 				if (name.includes('}')){
 					name = name.split('}')[1]
 				}
-				
+				if (message.includes("E = split bots")){
+					message = "For bot commands look at Hotkeys"
+				}
 				if (message != "WWW.IMSOLO.PRO " && message != "WWW.IMSOLO.PRO" && name != $("#nick").val() && $("#clantag").val() == ""){
 					application.displayChatMessage(time, caseof, 1000, name + ": " + message); //this.displayChatMessage(time, caseof, plId, msg);
 				}				
