@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.354
+// v2.356
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -4526,7 +4526,7 @@ function thelegendmodproject() {
                 if (value.length) {
 
 				//
-				if (LM.ws.includes("imsolo.pro")){
+				if (LM.ws.includes("imsolo.pro") && $("#clantag").val() == ""){
 					var view = application.createView(4 + 2 * value.length);
 					view.setUint8(0, 99);
 					view.setUint8(1, 0);
@@ -10388,9 +10388,10 @@ function thelegendmodproject() {
 							temp = nick.split('}')[0].split('{')[1]
 							nick = nick.split('}')[1]
 						}	
-						/*if (!application.customSkinsMap[nick] && temp){
-							core.registerSkin(nick, null, "https://imsolo.pro/web/skins/" + temp + ".png", null);
-						}*/
+						if (!application.customSkinsMap[nick] && temp){
+							core.registerSkin(nick, null, "https://dkyriak.github.io/imsolo/" + temp + ".png", null);
+							//core.registerSkin(nick, null, "https://imsolo.pro/web/skins/" + temp + ".png", null);
+						}
 						
 						this.leaderboard.push({
 						id: isMe,
@@ -10527,7 +10528,7 @@ function thelegendmodproject() {
 					name = name.split('}')[1]
 				}
 				
-				if (message != "WWW.IMSOLO.PRO " && name != $("#nick").val()){
+				if (message != "WWW.IMSOLO.PRO " && name != $("#nick").val() && $("#clantag").val() == ""){
 					application.displayChatMessage(time, caseof, 1000, name + ": " + message); //this.displayChatMessage(time, caseof, plId, msg);
 				}				
 				break;
