@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.371
+// v2.372
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -4147,7 +4147,7 @@ function thelegendmodproject() {
             }
         },
         setUniversalChat() {
-            if (defaultmapsettings.universalChat && $("#ao2t-hud").length) {
+            if (defaultmapsettings.universalChat && $("#ao2t-hud").length && legendmod && legendmod.ws && !legendmod.ws.includes("imsolo.pro")) {
                 $("#ao2t-hud").show();
             } else {
                 $("#ao2t-hud").hide();
