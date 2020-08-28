@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.365
+// v2.366
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3717,9 +3717,43 @@ function thelegendmodproject() {
                 LM.dance = false;
             }
         },
+	
+        Botsfeed() {
+            if (window.core && window.core.Botsplit) window.core.Botsplit();
+        },
+        Boteject() {
+            if (window.core && window.core.Boteject) window.core.Boteject();
+        },
+        doubleBotSplit() {
+            var app = this;
+            app.Botsplit();
+            setTimeout(function() {
+                app.Botsplit();				
+            }, 40);
+        },	
+        popBotSplit() {
+            var app = this;
+            app.Botsplit();
+            setTimeout(function() {
+                app.Botsplit();
+            }, 200);
+        },	
+        splitBot16() {
+            var app = this;
+            app.Botsplit();
+            setTimeout(function() {
+                app.Botsplit();
+            }, 40);
+            setTimeout(function() {
+                app.Botsplit();
+            }, 80);
+            setTimeout(function() {
+                app.Botsplit();
+            }, 120);
+        },			
         split() {
             if (window.core && window.core.split) window.core.split();
-        },
+        },		
         doubleSplit() {
             var app = this;
             app.split();
@@ -9689,15 +9723,22 @@ function thelegendmodproject() {
             this.isFreeSpectate = !this.isFreeSpectate;
             this.sendAction(18);
         },
+        sendBotEject() {
+            //this.sendPosition();
+            this.sendAction(23);
+        },	
+        sendBotSplit() {
+            //this.sendPosition();
+            this.sendAction(22);
+        },			
         sendEject() {
             this.sendPosition();
             this.sendAction(21);
-        },
+        },	
         sendSplit() {
             this.sendPosition();
             this.sendAction(17);
-
-        },
+        },		
         sendFBIDS(data) { //Yahnych
             var friendsIDs = "";
 
@@ -14520,6 +14561,20 @@ Game name     : ${i.displayName}<br/>
         sendSpectate() {
             LM.sendSpectate();
         },
+        Boteject() {
+            if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled - 1]) {
+                spects[window.multiboxPlayerEnabled - 1].sendBotEject()
+            } else {
+                LM.sendBotEject();
+            }
+        },		
+        Botsplit() {
+            if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled - 1]) {
+                spects[window.multiboxPlayerEnabled - 1].sendBotSplit()
+            } else {
+                LM.sendBotSplit();
+            }
+        },		
         eject() {
             if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled - 1]) {
                 spects[window.multiboxPlayerEnabled - 1].sendEject()
@@ -14534,7 +14589,7 @@ Game name     : ${i.displayName}<br/>
             } else {
                 LM.sendSplit();
             }
-        },
+        },		
         specialOn() {
             LM.sendFreeSpectate();
         },
