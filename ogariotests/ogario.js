@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.379
+// v2.380
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -862,8 +862,8 @@ function checkVideos2(a, b) {
                     } 
 					else{
                         //console.log("volume 0, stage 1");
-						if (window.videoSkinPlayer[a].volume>=0.1) window.videoSkinPlayer[a].volume = window.videoSkinPlayer[a].volume - 0.1
-						else window.videoSkinPlayer[a].volume = 0;
+						//if (window.videoSkinPlayer[a].volume>=0.1) window.videoSkinPlayer[a].volume = window.videoSkinPlayer[a].volume - 0.1
+						//else window.videoSkinPlayer[a].volume = 0;
                         //window.videoSkinPlayer[a].volume = 0;
                     }
                 } 
@@ -905,6 +905,17 @@ function checkVideos2(a, b) {
 	}
 	//
 }
+
+function checkvideoSkinPlayerflag2(a, b) {	
+    if (!window.videoSkinPlayerflag2[b]) {
+        //console.log("volume 0, stage 3");
+		if (window.videoSkinPlayer[a].volume>=0.2) window.videoSkinPlayer[a].volume = window.videoSkinPlayer[a].volume - 0.1
+		if (window.videoSkinPlayer[a].volume>=0.02) window.videoSkinPlayer[a].volume = window.videoSkinPlayer[a].volume - 0.02
+		else window.videoSkinPlayer[a].volume = 0;		
+        //window.videoSkinPlayer[a].volume = 0;
+    }
+}
+
 function checkIfPlayerIsInView(b, a){	
 	for (var i=0;i<legendmod.cells.length;i++){		
 		if (b!="" && legendmod.cells[i].nick == b && !legendmod.cells[i].isPlayerCell && (!a ||(a && legendmod.cells[i].spectator)) ){
@@ -914,14 +925,6 @@ function checkIfPlayerIsInView(b, a){
 	return false
 }
 
-
-
-function checkvideoSkinPlayerflag2(a, b) {	
-    if (!window.videoSkinPlayerflag2[b]) {
-        //console.log("volume 0, stage 3");
-        window.videoSkinPlayer[a].volume = 0;
-    }
-}
 
 function checkVideos1(a) {
 
