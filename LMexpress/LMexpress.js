@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.13 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.14 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "08"; // the version 1.1-> 1.11
 
@@ -1140,7 +1140,7 @@ function fakeSkinReport(nick){
 		application.sendPlayerJoin()
 //}
 
-		setTimeout(function() {
+		//setTimeout(function() {
 			ogarcopythelb.skinURL=ogarcopythelb.skinURLBefore
 			ogarcopythelb.nick=ogarcopythelb.nickBefore
 			ogario.playerColor=ogarcopythelb.playerColorBefore
@@ -1149,7 +1149,7 @@ function fakeSkinReport(nick){
 			ogarcopythelb.nickBefore=null
 			ogarcopythelb.playerColorBefore=null
 			ogarcopythelb.playBefore=null
-		}, 100);
+		//}, 100);
 	}
 }
 function prevnamereturner() {
