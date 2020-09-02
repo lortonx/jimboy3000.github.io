@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.398
+// v2.399
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12,6 +12,7 @@ window.externalScriptMassBar= []
 window.capthaWindow= []
 
 window.RecordedProtocol = []
+window.RecordedProtocolArenas = []
 window.catholicCalculator = 0;
 
 
@@ -6670,9 +6671,11 @@ function thelegendmodproject() {
             }
         },
         recreateWS(token) {
-            if (!token) return null;
+            if (!token) return null;			
             this.tokenNeedToBtoa = false
             var text = null;
+			
+			window.playRecorded=null;
 			if (token.includes("replay")) {	
 				$('#region').val("Private")				
 				master.setRegion("Private");
@@ -10325,6 +10328,7 @@ function thelegendmodproject() {
             //this.pingTimer();		
 			if (!window.playRecorded){
 				window.RecordedProtocol[window.catholicCalculator] = data
+				//window.RecordedProtocolArenas[legendmod.ws] = window.RecordedProtocol[window.catholicCalculator] 
 				window.catholicCalculator++
 			}
 			/*			
