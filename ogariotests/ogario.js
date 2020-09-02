@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.387
+// v2.388
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9602,6 +9602,20 @@ function thelegendmodproject() {
         pressedKeys: {},
         dance: false,
         connect(t) {
+			/*
+			if (t=="replay"){
+			window.playRecorded=true			
+			for (var i=0;i<window.RecordedProtocol.length-1;i++){
+				window.playrecord = 0
+				setTimeout(function() {						
+					legendmod.handleMessage(window.RecordedProtocol[window.playrecord])
+					console.log(window.playrecord)
+					window.playrecord++
+				}, 40*i);
+			}	
+			}
+			*/
+			
             console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Connecting to game server:', t);
             var app = this;
             setTimeout(function() {
@@ -10301,10 +10315,19 @@ function thelegendmodproject() {
 				*/
         },
         handleMessage(data) {
-            //this.pingTimer();			
-			window.RecordedProtocol[window.catholicCalculator] = data
-			window.catholicCalculator++
-			
+            //this.pingTimer();		
+			if (!window.playRecorded){
+				window.RecordedProtocol[window.catholicCalculator] = data
+				window.catholicCalculator++
+			}
+			/*			
+			for (window.playrecord=0;window.playrecord<window.RecordedProtocol.length-1;window.playrecord++){
+				setTimeout(function() {	
+					legendmod.handleMessage(window.RecordedProtocol[window.playrecord])
+					console.log(window.playrecord)
+				}, 40*window.playrecord);
+			}			
+*/	
             var encode = function() {
                 for (var text = '';;) {
                     var i = data.getUint8(s++);
