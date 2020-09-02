@@ -1,8 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.394
-
+// v2.395
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -6675,13 +6674,21 @@ function thelegendmodproject() {
             this.tokenNeedToBtoa = false
             var text = null;
 			if (token.includes("replay")) {	
-				$('#region').val("Private")
+				$('#region').val("Private")				
 				master.setRegion("Private");
-				text ="wss://imsolo.pro.replay:2000"
+				//text ="wss://imsolo.pro.replay:2000"
+				core.connect("wss://imsolo.pro.replay:2000")
+				var specialReplay
+				if (token.includes("replay:")) {	
+					specialReplay= token.split(':')[1]
+				}
+				
 				setTimeout(function() {					
 					console.log("replay")
-					playReplayLM()
-				}, 500);	
+					playReplayLM(specialReplay)
+					
+				}, 500);
+				return null
 			}
             else if (/^[a-zA-Z0-9=+\/]{12,}$/.test(token)) {
                 //var atobToken = atob(token);
@@ -15574,8 +15581,11 @@ snezSocket.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopyt
 
 */
 
-function playReplayLM(){
-	window.playRecorded=true			
+function playReplayLM(temp){
+	window.playRecorded=true	
+	if (temp){
+		
+	}
 	for (var i=0;i<window.RecordedProtocol.length-1;i++){
 		window.playrecord = 0
 		setTimeout(function() {						
