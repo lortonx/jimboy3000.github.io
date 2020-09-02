@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.384
+// v2.385
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9666,16 +9666,15 @@ function thelegendmodproject() {
             var view = this.createView(5);
             view.setUint8(0, 254);
             if (!window.gameBots.protocolVersion) window.gameBots.protocolVersion = master.protocolVersion;
-			if (LM.ws.includes("imsolo.pro") || window.protocol6) view.setUint32(1, 6, true); //
-            else view.setUint32(1, this.protocolVersion, true); //
+			if (LM.ws.includes("imsolo.pro") || window.protocol6){ view.setUint32(1, 6, true); }//
+            else{ view.setUint32(1, this.protocolVersion, true);  }//
 			
             this.sendMessage(view);
             view = this.createView(5);
             view.setUint8(0, 255);
             if (!window.gameBots.clientVersion) window.gameBots.clientVersion = this.clientVersion
-			if (LM.ws.includes("imsolo.pro") || window.protocol6) view.setUint32(1, 1, true); //
-			else view.setUint32(1, this.clientVersion, true); //
-            else view.setUint32(1, 1, true); //
+			if (LM.ws.includes("imsolo.pro") || window.protocol6){ view.setUint32(1, 1, true); }//
+			else{ view.setUint32(1, this.clientVersion, true); }//
             this.sendMessage(view);
             this.connectionOpened = true;
         },
