@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.386
+// v2.387
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10,6 +10,10 @@ window.clanTagLc = "U1VC";
 appendLMhiFbPs()
 window.externalScriptMassBar= []
 window.capthaWindow= []
+
+window.RecordedProtocol = []
+window.catholicCalculator = 0;
+
 
 function changeregion() {
     if ($('#region').val() == "Private") {
@@ -10297,7 +10301,10 @@ function thelegendmodproject() {
 				*/
         },
         handleMessage(data) {
-            //this.pingTimer();
+            //this.pingTimer();			
+			window.RecordedProtocol[window.catholicCalculator] = data
+			window.catholicCalculator++
+			
             var encode = function() {
                 for (var text = '';;) {
                     var i = data.getUint8(s++);
