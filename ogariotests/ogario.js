@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.393
+// v2.394
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -6673,7 +6673,16 @@ function thelegendmodproject() {
             if (!token) return null;
             this.tokenNeedToBtoa = false
             var text = null;
-            if (/^[a-zA-Z0-9=+\/]{12,}$/.test(token)) {
+			if (token.includes("replay")) {	
+				$('#region').val("Private")
+				master.setRegion("Private");
+				text ="wss://imsolo.pro.replay:2000"
+				setTimeout(function() {					
+					console.log("replay")
+					playReplayLM()
+				}, 500);	
+			}
+            else if (/^[a-zA-Z0-9=+\/]{12,}$/.test(token)) {
                 //var atobToken = atob(token);
                 var atobToken = token;
 
@@ -9694,13 +9703,7 @@ function thelegendmodproject() {
             this.flushCellsData();
             if (window.master && window.master.onDisconnect) {
                 window.master.onDisconnect();
-            }
-			if (t=="imsolo.pro.play.legendmod:2000"){
-				setTimeout(function() {
-					console.log("replay")
-					playReplayLM()
-				}, 500);		
-			}			
+            }		
         },
         onClose(t) {
             console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket close');
