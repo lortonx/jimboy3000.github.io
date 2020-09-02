@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.390
+// v2.391
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9604,15 +9604,9 @@ function thelegendmodproject() {
         connect(t) {
 			console.log(t)
 			if (t=="imsolo.pro.play.legendmod:2000"){
-			window.playRecorded=true			
-			for (var i=0;i<window.RecordedProtocol.length-1;i++){
-				window.playrecord = 0
-				setTimeout(function() {						
-					legendmod.handleMessage(window.RecordedProtocol[window.playrecord])
-					console.log(window.playrecord)
-					window.playrecord++
-				}, 40*i);
-			}	
+				setTimeout(function() {
+					playReplayLM()
+				}, 50);		
 			}
 			
 			
@@ -15578,7 +15572,17 @@ snezSocket.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopyt
 
 */
 
-
+function playReplayLM(){
+	window.playRecorded=true			
+	for (var i=0;i<window.RecordedProtocol.length-1;i++){
+		window.playrecord = 0
+		setTimeout(function() {						
+			legendmod.handleMessage(window.RecordedProtocol[window.playrecord])
+			console.log(window.playrecord)
+			window.playrecord++
+		}, 40*i);
+	}
+}
 Array.prototype.stDev = function stDev() {
     const average = data => data.reduce((sum, value) => sum + value) / data.length
     return Math.sqrt(average(this.map(value => Math.pow(value - average(this),2))))
