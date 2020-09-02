@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.396
+// v2.398
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -6676,6 +6676,7 @@ function thelegendmodproject() {
 			if (token.includes("replay")) {	
 				$('#region').val("Private")				
 				master.setRegion("Private");
+				deleteGamemode(true);
 				text ="wss://imsolo.pro.replay:2000"
 				//core.connect("wss://imsolo.pro.replay:2000")
 				window.replayToken = token
@@ -6691,7 +6692,7 @@ function thelegendmodproject() {
 					playReplayLM(specialReplay)
 					
 				}, 500);
-				return null
+				//return null
 			}
             else if (/^[a-zA-Z0-9=+\/]{12,}$/.test(token)) {
                 //var atobToken = atob(token);
