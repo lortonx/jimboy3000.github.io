@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.391
+// v2.392
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9605,8 +9605,9 @@ function thelegendmodproject() {
 			console.log(t)
 			if (t=="imsolo.pro.play.legendmod:2000"){
 				setTimeout(function() {
+					console.log("replay")
 					playReplayLM()
-				}, 50);		
+				}, 500);		
 			}
 			
 			
