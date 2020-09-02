@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.389
+// v2.390
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9602,7 +9602,7 @@ function thelegendmodproject() {
         pressedKeys: {},
         dance: false,
         connect(t) {
-			
+			console.log(t)
 			if (t=="imsolo.pro.play.legendmod:2000"){
 			window.playRecorded=true			
 			for (var i=0;i<window.RecordedProtocol.length-1;i++){
