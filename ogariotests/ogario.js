@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.392
+// v2.393
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9601,16 +9601,7 @@ function thelegendmodproject() {
         hideSmallBots: false,
         pressedKeys: {},
         dance: false,
-        connect(t) {
-			console.log(t)
-			if (t=="imsolo.pro.play.legendmod:2000"){
-				setTimeout(function() {
-					console.log("replay")
-					playReplayLM()
-				}, 500);		
-			}
-			
-			
+        connect(t) {		
             console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Connecting to game server:', t);
             var app = this;
             setTimeout(function() {
@@ -9704,6 +9695,12 @@ function thelegendmodproject() {
             if (window.master && window.master.onDisconnect) {
                 window.master.onDisconnect();
             }
+			if (t=="imsolo.pro.play.legendmod:2000"){
+				setTimeout(function() {
+					console.log("replay")
+					playReplayLM()
+				}, 500);		
+			}			
         },
         onClose(t) {
             console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket close');
