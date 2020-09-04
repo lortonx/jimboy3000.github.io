@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.400
+// v2.401
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -14,7 +14,7 @@ window.capthaWindow= []
 window.RecordedProtocol = []
 window.RecordedProtocolArenas = []
 window.catholicCalculator = 0;
-window.specificRecordedProtocol = []
+//window.specificRecordedProtocol = []
 
 
 function changeregion() {
@@ -6685,8 +6685,8 @@ function thelegendmodproject() {
 				//core.connect("wss://imsolo.pro.replay:2000")
 				window.replayToken = token
 				var specialReplay
-				if (token.includes("replay:")) {	
-					specialReplay= token.split(':')[1]
+				if (token.includes("replay^")) {	
+					specialReplay= token.split('^')[1]
 				}
 				
 				setTimeout(function() {	
@@ -15599,16 +15599,15 @@ snezSocket.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopyt
 
 function playReplayLM(temp){
 	window.playRecorded=true	
-	if (temp){
-		
-	}
-	for (var i=0;i<window.RecordedProtocol.length-1;i++){
+	if (temp && window.RecordedProtocol[temp]){
+	for (var i=0;i<window.RecordedProtocol[temp].length-1;i++){
 		window.playrecord = 0
 		setTimeout(function() {						
-			legendmod.handleMessage(window.RecordedProtocol[window.playrecord])
+			legendmod.handleMessage(window.RecordedProtocol[temp][window.playrecord])
 			console.log(window.playrecord)
 			window.playrecord++
 		}, 40*i);
+	}		
 	}
 }
 Array.prototype.stDev = function stDev() {
