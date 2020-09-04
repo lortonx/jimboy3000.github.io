@@ -6173,7 +6173,12 @@ function BeforeLegendmodShop() {
     SpecialDealsJS.src = "https://legendmod.ml/LMexpress/shop/shop.js";
     $("body").append(SpecialDealsJS);
 }
-
+function BeforeReplay() {
+    var ReplayJS = document.createElement("script");
+    ReplayJS.type = "text/javascript";
+    ReplayJS.src = "https://legendmod.ml/LMexpress/replay.js";
+    $("body").append(ReplayJS);
+}
 
 function isEquivalent(a, b) {
     var aProps = Object.getOwnPropertyNames(a);
