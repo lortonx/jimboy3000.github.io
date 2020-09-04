@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.399
+// v2.400
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -14,6 +14,7 @@ window.capthaWindow= []
 window.RecordedProtocol = []
 window.RecordedProtocolArenas = []
 window.catholicCalculator = 0;
+window.specificRecordedProtocol = []
 
 
 function changeregion() {
@@ -10327,8 +10328,15 @@ function thelegendmodproject() {
         handleMessage(data) {
             //this.pingTimer();		
 			if (!window.playRecorded){
-				window.RecordedProtocol[window.catholicCalculator] = data
-				//window.RecordedProtocolArenas[legendmod.ws] = window.RecordedProtocol[window.catholicCalculator] 
+				if (!window.RecordedProtocol[legendmod.ws]){
+					window.catholicCalculator = 0
+					window.RecordedProtocol[legendmod.ws] = []
+					window.RecordedProtocolArenas.push[legendmod.ws]
+				}				
+				window.RecordedProtocol[legendmod.ws][window.catholicCalculator] = data
+
+				//window.RecordedProtocolArenas[legendmod.ws][]
+				//window.RecordedProtocolArenas[window.specificRecordedProtocol[legendmod.ws]] = window.RecordedProtocol[window.catholicCalculator] 
 				window.catholicCalculator++
 			}
 			/*			
@@ -11357,7 +11365,7 @@ function thelegendmodproject() {
                 return
             }
             const response = window.decodeMobileData(msg);
-            console.log(response); //ALL LOGIN AND PROFILE RESPONSE INFO
+            //console.log(response); //ALL LOGIN AND PROFILE RESPONSE INFO
             this.unpackageMessage(response);
         },
         unpackageMessage: function(r) {
