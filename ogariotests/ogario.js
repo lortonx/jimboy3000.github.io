@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.411
+// v2.412
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9695,7 +9695,7 @@ function thelegendmodproject() {
             if (window.master && window.master.onConnect) {
                 window.master.onConnect();
             }
-		if (window.replayTimeOuts.length){
+		if (window.replayTimeOuts.length && !this.ws.includes("replay")){
 			for (var i=0;i<window.replayTimeOuts;i++){
 				clearTimeout(window.replayTimeOuts[i])
 			}
