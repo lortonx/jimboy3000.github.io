@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.409
+// v2.410
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -16,6 +16,7 @@ window.RecordedProtocolArenas = []
 window.RecordedArenasSpecifications = []
 window.catholicCalculator = 0;
 window.replayTiming=15
+window.replayTimeOuts = []
 //window.specificRecordedProtocol = []
 
 
@@ -15607,6 +15608,9 @@ snezSocket.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopyt
 
 function playReplayLM(temp){		
 	if (temp && window.RecordedProtocol[temp]){
+		for (var i=0;i<window.replayTimeOuts;i++){
+			clearTimeout(window.replayTimeOuts[i])
+		}
 		legendmod.indexedCells={}
 		legendmod.cells=[]
         legendmod.removedCells=[]
@@ -15618,7 +15622,7 @@ function playReplayLM(temp){
         legendmod.playerCellsMulti=[]		
 		for (var i=0;i<window.RecordedProtocol[temp].length-1;i++){
 			window.playrecord = 0
-			setTimeout(function() {
+			window.replayTimeOuts[i] = setTimeout(function() {
 				if ($("#server-token").val().includes("replay^"+temp)){	
 				
 					legendmod.handleMessage(window.RecordedProtocol[temp][window.playrecord])
