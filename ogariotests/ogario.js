@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.412
+// v2.413
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9721,6 +9721,7 @@ function thelegendmodproject() {
             this.connectionOpened = true;
         },
         onMessage(message) {
+			console.log(message.data)
             message = new DataView(message.data);
             if (this.protocolKey) {
                 message = this.shiftMessage(message, this.protocolKey ^ this.clientVersion);
