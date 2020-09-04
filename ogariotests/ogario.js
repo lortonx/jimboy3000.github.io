@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.406
+// v2.407
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -5316,6 +5316,10 @@ function thelegendmodproject() {
                 app.saveSettings(defaultmapsettings, "ogarioSettings");
                 app.setShowQuickBots();
             });
+            $(document).on("click", ".quick-replay", function(event) {
+                event.preventDefault();
+                BeforeReplay()
+            });			
             $(document).on("click", ".quick-skins", function(event) {
                 event.preventDefault();
                 defaultmapsettings.showSkinsPanel = !defaultmapsettings.showSkinsPanel;
