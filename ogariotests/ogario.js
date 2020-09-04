@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.408
+// v2.409
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15607,16 +15607,30 @@ snezSocket.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopyt
 
 function playReplayLM(temp){		
 	if (temp && window.RecordedProtocol[temp]){
-	for (var i=0;i<window.RecordedProtocol[temp].length-1;i++){
-		window.playrecord = 0
-		setTimeout(function() {						
-			legendmod.handleMessage(window.RecordedProtocol[temp][window.playrecord])
+		legendmod.indexedCells={}
+		legendmod.cells=[]
+        legendmod.removedCells=[]
+        legendmod.food=[]
+        legendmod.viruses=[]
+        legendmod.cellcolors=[]
+        legendmod.playerCells=[]
+        legendmod.playerCellIDs=[]
+        legendmod.playerCellsMulti=[]		
+		for (var i=0;i<window.RecordedProtocol[temp].length-1;i++){
+			window.playrecord = 0
+			setTimeout(function() {
+				if ($("#server-token").val().includes("replay^"+temp)){	
+				
+					legendmod.handleMessage(window.RecordedProtocol[temp][window.playrecord])
+					
 			//console.log(window.playrecord)
-			window.playrecord++
-		}, window.replayTiming*i);
-	}		
+				}
+				window.playrecord++
+			}, window.replayTiming*i);
+		}		
 	}
 }
+
 Array.prototype.stDev = function stDev() {
     const average = data => data.reduce((sum, value) => sum + value) / data.length
     return Math.sqrt(average(this.map(value => Math.pow(value - average(this),2))))
