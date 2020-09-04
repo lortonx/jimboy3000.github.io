@@ -15,7 +15,7 @@ window.RecordedProtocol = []
 window.RecordedProtocolArenas = []
 window.RecordedArenasSpecifications = []
 window.catholicCalculator = 0;
-window.replayTiming=40
+window.replayTiming=15
 //window.specificRecordedProtocol = []
 
 
@@ -15609,7 +15609,7 @@ function playReplayLM(temp){
 		window.playrecord = 0
 		setTimeout(function() {						
 			legendmod.handleMessage(window.RecordedProtocol[temp][window.playrecord])
-			console.log(window.playrecord)
+			//console.log(window.playrecord)
 			window.playrecord++
 		}, window.replayTiming*i);
 	}		
