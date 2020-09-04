@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.410
+// v2.411
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9695,6 +9695,12 @@ function thelegendmodproject() {
             if (window.master && window.master.onConnect) {
                 window.master.onConnect();
             }
+		if (window.replayTimeOuts.length){
+			for (var i=0;i<window.replayTimeOuts;i++){
+				clearTimeout(window.replayTimeOuts[i])
+			}
+			window.replayTimeOuts=[]
+		}			
         },
         onOpen() {
             //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket open');
@@ -15608,8 +15614,11 @@ snezSocket.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopyt
 
 function playReplayLM(temp){		
 	if (temp && window.RecordedProtocol[temp]){
-		for (var i=0;i<window.replayTimeOuts;i++){
-			clearTimeout(window.replayTimeOuts[i])
+		if (window.replayTimeOuts.length){
+			for (var i=0;i<window.replayTimeOuts;i++){
+				clearTimeout(window.replayTimeOuts[i])
+			}
+			window.replayTimeOuts=[]
 		}
 		legendmod.indexedCells={}
 		legendmod.cells=[]
