@@ -15695,6 +15695,10 @@ function intervalPlayingRecord(){
 						intervalPlayingRecord();
 						legendmod.playingReplayRecord++
 					}
+					else{
+						$('#pause-hud').text(textLanguage.pause);
+						$('#pause-hud').hide()						
+					}
 					
 				}
 				window.playrecord++
