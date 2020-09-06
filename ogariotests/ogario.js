@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.420
+// v2.421
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -6664,6 +6664,11 @@ function thelegendmodproject() {
             this.cells = {};
         },
         flushSkinsMap() {
+			//
+			//this.lastIP = localStorage.getItem("lastIP");
+			//if (RecordedArenasSpecifications[this.lastIP]) window.RecordedArenasSpecifications[this.lastIP].push(this.customSkinsMap)
+			//
+			if (window.temporaryRecordedProtocol2 && RecordedArenasSpecifications[window.temporaryRecordedProtocol2]) window.RecordedArenasSpecifications[window.temporaryRecordedProtocol2].push(this.customSkinsMap)
             this.customSkinsMap = {};
         },
         flushChatData() {
@@ -10356,6 +10361,8 @@ function thelegendmodproject() {
 					window.RecordedProtocol[$("#server-token").val()] = []
 					window.RecordedProtocolArenas.push($("#server-token").val())
 					window.RecordedArenasSpecifications[$("#server-token").val()]= [Date.now(), application.gameMode, application.region, $("#nick").val()]
+					window.temporaryRecordedProtocol2 = window.temporaryRecordedProtocol
+					window.temporaryRecordedProtocol = $("#server-token").val()
 					
 				}				
 				window.RecordedProtocol[$("#server-token").val()][window.catholicCalculator] = data
