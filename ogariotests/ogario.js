@@ -15647,9 +15647,11 @@ function intervalPlayingRecord(){
 						intervalPlayingRecord();
 						legendmod.playingReplayRecord++
 					}
+					
 				}
 				window.playrecord++
-	}, window.replayTiming*legendmod.playingReplayRecord);	
+	//}, parseInt(window.replayTiming)*legendmod.playingReplayRecord);	
+	}, parseInt(window.replayTiming));	
 }
 /*
 function playReplayLM(temp){		
