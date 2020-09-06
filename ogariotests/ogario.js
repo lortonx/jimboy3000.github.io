@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.431
+// v2.432
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15707,6 +15707,7 @@ function intervalPlayingRecord(){
 					legendmod.handleMessage(window.RecordedProtocol[legendmod.playingReplayServer][window.playrecord])
 					
 					if (legendmod.playingReplayRecord<window.RecordedProtocol[legendmod.playingReplayServer].length-1 && legendmod.playingReplayRecord>=0){
+						$("#totalReplayPackets").val(legendmod.playingReplayRecord + "/" +window.RecordedProtocolPackets)
 						intervalPlayingRecord();
 						if (window.replayTiming>=0){
 							legendmod.playingReplayRecord++
