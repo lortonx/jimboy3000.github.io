@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.423
+// v2.424
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15652,7 +15652,8 @@ function playReplayLM(temp){
 		//start
 		window.playrecord = 0
 		intervalPlayingRecord()	
-		
+		window.startReplayTime =$("#startReplayTime").val()
+		window.endReplayTime =$("#endReplayTime").val()
 		if ($("#savedArenas").val() && window.RecordedArenasSpecifications[$("#savedArenas").val()] && window.RecordedArenasSpecifications[$("#savedArenas").val()][4]){
 			
 			$.extend( true, application.customSkinsMap, this.customSkinsmapJSON.parse(window.RecordedArenasSpecifications[$("#savedArenas").val()][4]) );
@@ -15662,8 +15663,8 @@ function playReplayLM(temp){
 function intervalPlayingRecord(){
 	
 	//window.replayTiming2 = parseInt(window.replayTiming)
-	var temp1 = parseInt($("#startReplayTime").val())
-	var temp2 = parseInt($("#endReplayTime").val())
+	var temp1 = parseInt(window.startReplayTime)
+	var temp2 = parseInt(window.endReplayTime)
 	if (temp1<0 || temp2<=0){
 		toastr.warning("<b>[SERVER]:</b> Start and end time should be non negative").css("width", "350px");
 	}
