@@ -9152,6 +9152,15 @@ function thelegendmodproject() {
             style.beginPath()
 
 			//26/7/2020
+			if (LM.ws.includes("replay") && window.replayGreyScale){
+				style.filter='grayscale(100%)';
+			}
+			if (LM.ws.includes("replay") && window.replaySepia){
+				style.filter='sepia(100%)';
+			}		
+			if (LM.ws.includes("replay") && window.replayHueRotate){
+				style.filter='hue-rotate(90deg)';
+			}			
 			//style.filter='grayscale(100%)';
 			//
 			
