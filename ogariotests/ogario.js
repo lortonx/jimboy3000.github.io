@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.425
+// v2.426
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15637,6 +15637,7 @@ function playReplayLM(temp){
 			window.replayTimeOuts=[]
 		}*/
 		clearTimeout(window.replayTimeOuts)
+		application.flushData()
 		$('#pause-hud').text(textLanguage.pause);
 		legendmod.indexedCells={}
 		legendmod.cells=[]
