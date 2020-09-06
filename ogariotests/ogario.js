@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.426
+// v2.427
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15647,9 +15647,12 @@ function playReplayLM(temp){
         legendmod.cellcolors=[]
         legendmod.playerCells=[]
         legendmod.playerCellIDs=[]
-        legendmod.playerCellsMulti=[]	
+        legendmod.playerCellsMulti=[]
+		
 		legendmod.playingReplayRecord=0
-		legendmod.playingReplayServer=temp
+		
+		legendmod.playingReplayServer=temp	
+		if (window.replayTiming<0) legendmod.playingReplayRecord = window.RecordedProtocol[legendmod.playingReplayServer].length-1
 		//start
 		window.playrecord = 0
 		intervalPlayingRecord()	
@@ -15691,9 +15694,15 @@ function intervalPlayingRecord(){
 				if ($("#server-token").val().includes("replay^"+tempo)){	
 				
 					legendmod.handleMessage(window.RecordedProtocol[legendmod.playingReplayServer][window.playrecord])
-					if (legendmod.playingReplayRecord<window.RecordedProtocol[legendmod.playingReplayServer].length-1){
+					
+					if (legendmod.playingReplayRecord<window.RecordedProtocol[legendmod.playingReplayServer].length-1 && legendmod.playingReplayRecord>=0){
 						intervalPlayingRecord();
-						legendmod.playingReplayRecord++
+						if (window.replayTiming>=0){
+							legendmod.playingReplayRecord++
+						}
+						else{
+							legendmod.playingReplayRecord--
+						}
 					}
 					else{
 						$('#pause-hud').text(textLanguage.pause);
