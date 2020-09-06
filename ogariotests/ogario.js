@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.427
+// v2.428
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -6668,7 +6668,8 @@ function thelegendmodproject() {
 			//this.lastIP = localStorage.getItem("lastIP");
 			//if (RecordedArenasSpecifications[this.lastIP]) window.RecordedArenasSpecifications[this.lastIP].push(this.customSkinsMap)
 			//
-			if (window.temporaryRecordedProtocol2 && RecordedArenasSpecifications[window.temporaryRecordedProtocol2]) window.RecordedArenasSpecifications[window.temporaryRecordedProtocol2].push(JSON.stringify(this.customSkinsMap))
+			//if (window.temporaryRecordedProtocol2 && RecordedArenasSpecifications[window.temporaryRecordedProtocol2]) window.RecordedArenasSpecifications[window.temporaryRecordedProtocol2].push(JSON.stringify(this.customSkinsMap))
+			if (window.temporaryRecordedProtocol && RecordedArenasSpecifications[window.temporaryRecordedProtocol]) window.RecordedArenasSpecifications[window.temporaryRecordedProtocol].push(JSON.stringify(this.customSkinsMap))	
             this.customSkinsMap = {};
         },
         flushChatData() {
