@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.416
+// v2.417
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15638,6 +15638,19 @@ function playReplayLM(temp){
 	}
 }
 function intervalPlayingRecord(){
+	window.replayTiming2 = window.replayTiming
+	var temp1 = parseInt($("#startReplayTime").val())
+	var temp2 = parseInt($("#endReplayTime").val())
+	if (temp1<0 || temp2<=0){
+		toastr.warning("<b>[SERVER]:</b> Start and end time should be non negative").css("width", "350px");
+	}
+	else if (legendmod.playingReplayRecord>=temp1 && legendmod.playingReplayRecord<=temp2){
+		window.replayTiming2 = window.replayTiming
+		
+	}
+	else{
+		window.replayTiming2= 1
+	}
 	window.replayTimeOuts = setTimeout(function() {
 				var tempo = legendmod.playingReplayServer
 				if ($("#server-token").val().includes("replay^"+tempo)){	
@@ -15651,7 +15664,7 @@ function intervalPlayingRecord(){
 				}
 				window.playrecord++
 	//}, parseInt(window.replayTiming)*legendmod.playingReplayRecord);	
-	}, parseInt(window.replayTiming));	
+	}, parseInt(window.replayTiming2));	
 }
 /*
 function playReplayLM(temp){		
