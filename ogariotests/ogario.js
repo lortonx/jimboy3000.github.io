@@ -15630,6 +15630,7 @@ function playReplayLM(temp){
 			window.replayTimeOuts=[]
 		}*/
 		clearTimeout(window.replayTimeOuts)
+		$('#pause-hud').text(textLanguage.pause);
 		legendmod.indexedCells={}
 		legendmod.cells=[]
         legendmod.removedCells=[]
