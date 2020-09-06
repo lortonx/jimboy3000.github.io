@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.430
+// v2.431
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -7237,6 +7237,11 @@ function thelegendmodproject() {
             this.sendPartyToken();
             this.sendServerToken();
             this.sendPlayerNick();
+			//
+			if (!$("#server-token").val().includes("replay") && window.RecordedArenasSpecifications[$("#server-token").val()]){
+				window.RecordedArenasSpecifications[$("#server-token").val()][3]=application.lastSentNick
+			}			
+			//
         },
         sendPlayerUpdate() {
             if (this.isSocketOpen() && ogario.play && this.playerID && ogario.playerColor) {
