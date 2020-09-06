@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.428
+// v2.429
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12586,6 +12586,9 @@ Game name     : ${i.displayName}<br/>
                 cellUpdateCells.invisible = invisible;
                 if (cellUpdateCells.isPlayerCell) {
                     name = this.playerNick;
+					if (token.includes("replay")) {	
+						name = window.RecordedArenasSpecifications[legendmod.playingReplayServer][3]
+					}
                 }
                 if (name) {
                     cellUpdateCells.targetNick = name;
