@@ -15658,6 +15658,8 @@ function playReplayLM(temp){
 		intervalPlayingRecord()	
 		window.startReplayTime =$("#startReplayTime").val()
 		window.endReplayTime =$("#endReplayTime").val()
+		
+		$("#stopReplaybtn").prop('disabled', false);
 		if ($("#savedArenas").val() && window.RecordedArenasSpecifications[$("#savedArenas").val()] && window.RecordedArenasSpecifications[$("#savedArenas").val()][4]){
 			
 			$.extend( true, application.customSkinsMap, JSON.parse(window.RecordedArenasSpecifications[$("#savedArenas").val()][4]) );
@@ -15705,6 +15707,7 @@ function intervalPlayingRecord(){
 						}
 					}
 					else{
+						$("#stopReplaybtn").prop('disabled', true);
 						$('#pause-hud').text(textLanguage.pause);
 						$('#pause-hud').hide()						
 					}
