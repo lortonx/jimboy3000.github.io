@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.415
+// v2.416
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15612,15 +15612,15 @@ snezSocket.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopyt
 
 
 */
-
 function playReplayLM(temp){		
 	if (temp && window.RecordedProtocol[temp]){
-		if (window.replayTimeOuts.length){
+		/*if (window.replayTimeOuts.length){
 			for (var i=0;i<window.replayTimeOuts;i++){
 				clearTimeout(window.replayTimeOuts[i])
 			}
 			window.replayTimeOuts=[]
-		}
+		}*/
+		clearTimeout(window.replayTimeOuts)
 		legendmod.indexedCells={}
 		legendmod.cells=[]
         legendmod.removedCells=[]
@@ -15629,10 +15629,52 @@ function playReplayLM(temp){
         legendmod.cellcolors=[]
         legendmod.playerCells=[]
         legendmod.playerCellIDs=[]
-        legendmod.playerCellsMulti=[]		
-		for (var i=0;i<window.RecordedProtocol[temp].length-1;i++){
+        legendmod.playerCellsMulti=[]	
+		legendmod.playingReplayRecord=0
+		legendmod.playingReplayServer=temp
+		//start
+		window.playrecord = 0
+		intervalPlayingRecord()	
+	}
+}
+function intervalPlayingRecord(){
+	window.replayTimeOuts = setTimeout(function() {
+				var tempo = legendmod.playingReplayServer
+				if ($("#server-token").val().includes("replay^"+tempo)){	
+				
+					legendmod.handleMessage(window.RecordedProtocol[legendmod.playingReplayServer][window.playrecord])
+					if (legendmod.playingReplayRecord<window.RecordedProtocol[legendmod.playingReplayServer].length-1){
+						intervalPlayingRecord();
+						legendmod.playingReplayRecord++
+					}
+				}
+				window.playrecord++
+	}, window.replayTiming*legendmod.playingReplayRecord);	
+}
+/*
+function playReplayLM(temp){		
+	if (temp && window.RecordedProtocol[temp]){
+		//if (window.replayTimeOuts.length){
+			//for (var i=0;i<window.replayTimeOuts;i++){
+				//clearTimeout(window.replayTimeOuts[i])
+			//}
+			//window.replayTimeOuts=[]
+		//}
+		legendmod.indexedCells={}
+		legendmod.cells=[]
+        legendmod.removedCells=[]
+        legendmod.food=[]
+        legendmod.viruses=[]
+        legendmod.cellcolors=[]
+        legendmod.playerCells=[]
+        legendmod.playerCellIDs=[]
+        legendmod.playerCellsMulti=[]	
+		legendmod.playingRecord=0
+		
+		for (var legendmod.playingRecord=0;legendmod.playingRecord<window.RecordedProtocol[temp].length-1;legendmod.playingRecord++){
 			window.playrecord = 0
-			window.replayTimeOuts[i] = setTimeout(function() {
+			//window.replayTimeOuts[i] = setTimeout(function() {
+				setTimeout(function() {
 				if ($("#server-token").val().includes("replay^"+temp)){	
 				
 					legendmod.handleMessage(window.RecordedProtocol[temp][window.playrecord])
@@ -15640,11 +15682,11 @@ function playReplayLM(temp){
 			//console.log(window.playrecord)
 				}
 				window.playrecord++
-			}, window.replayTiming*i);
+			}, window.replayTiming*legendmod.playingRecord);
 		}		
 	}
 }
-
+*/
 Array.prototype.stDev = function stDev() {
     const average = data => data.reduce((sum, value) => sum + value) / data.length
     return Math.sqrt(average(this.map(value => Math.pow(value - average(this),2))))
