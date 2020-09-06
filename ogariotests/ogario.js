@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.424
+// v2.425
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15656,7 +15656,7 @@ function playReplayLM(temp){
 		window.endReplayTime =$("#endReplayTime").val()
 		if ($("#savedArenas").val() && window.RecordedArenasSpecifications[$("#savedArenas").val()] && window.RecordedArenasSpecifications[$("#savedArenas").val()][4]){
 			
-			$.extend( true, application.customSkinsMap, this.customSkinsmapJSON.parse(window.RecordedArenasSpecifications[$("#savedArenas").val()][4]) );
+			$.extend( true, application.customSkinsMap, JSON.parse(window.RecordedArenasSpecifications[$("#savedArenas").val()][4]) );
 		}
 	}
 }
