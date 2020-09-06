@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.419
+// v2.420
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15,7 +15,7 @@ window.RecordedProtocol = []
 window.RecordedProtocolArenas = []
 window.RecordedArenasSpecifications = []
 window.catholicCalculator = 0;
-window.replayTiming=15
+window.replayTiming=20
 window.replayTimeOuts = []
 //window.specificRecordedProtocol = []
 
@@ -15648,7 +15648,7 @@ function playReplayLM(temp){
 }
 function intervalPlayingRecord(){
 	
-	window.replayTiming2 = window.replayTiming
+	//window.replayTiming2 = parseInt(window.replayTiming)
 	var temp1 = parseInt($("#startReplayTime").val())
 	var temp2 = parseInt($("#endReplayTime").val())
 	if (temp1<0 || temp2<=0){
@@ -15656,18 +15656,19 @@ function intervalPlayingRecord(){
 	}
 	else if (legendmod.playingReplayRecord>=temp1 && legendmod.playingReplayRecord<=temp2){
 		
-		if (window.replayTiming2==1){
+		if (window.replayTiming2==0){
 			$('#pause-hud').text(textLanguage.pause);
 			$('#pause-hud').hide()
 		}
-		window.replayTiming2 = window.replayTiming
+		window.replayTiming2 = parseInt(window.replayTiming)
 		
 	}
 	else{
-		window.replayTiming2= 1
-		if (window.replayTiming2!=1){
-		$('#pause-hud').text("View review...");
-		$('#pause-hud').show()
+		
+		if (window.replayTiming2!=0){
+			window.replayTiming2= 0
+			$('#pause-hud').text("View review...");
+			$('#pause-hud').show()
 		}
 	}
 	window.replayTimeOuts = setTimeout(function() {
