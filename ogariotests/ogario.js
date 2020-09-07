@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.436
+// v2.437
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9715,16 +9715,16 @@ function thelegendmodproject() {
             if (window.master && window.master.onConnect) {
                 window.master.onConnect();
             }
-		if (window.replayTimeOuts.length && !this.ws.includes("replay")){
-			if ($('#pause-hud').text()=="Loading..."){
+			if (window.replayTimeOuts.length && !this.ws.includes("replay")){
+				for (var i=0;i<window.replayTimeOuts;i++){
+					clearTimeout(window.replayTimeOuts[i])
+				}
+				window.replayTimeOuts=[]
+			}
+			else if(!this.ws.includes("replay") && $('#pause-hud').text()=="Loading..."){
 				$('#pause-hud').text(textLanguage.pause);
-				$('#pause-hud').hide()
+				$('#pause-hud').hide(			
 			}
-			for (var i=0;i<window.replayTimeOuts;i++){
-				clearTimeout(window.replayTimeOuts[i])
-			}
-			window.replayTimeOuts=[]
-		}			
         },
         onOpen() {
             //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket open');
