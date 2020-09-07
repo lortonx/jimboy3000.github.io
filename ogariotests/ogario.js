@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.441
+// v2.442
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -17,6 +17,7 @@ window.RecordedArenasSpecifications = []
 window.catholicCalculator = 0;
 window.replayTiming=20
 window.replayTimeOuts = []
+window.replaySkippedLoops = 10 //10 times more frames from timing 0 replays
 //window.specificRecordedProtocol = []
 
 
@@ -15731,10 +15732,18 @@ function intervalPlayingRecord(){
 				var tempo = legendmod.playingReplayServer
 				if ($("#server-token").val().includes("replay^"+tempo)){	
 				
-					legendmod.handleMessage(window.RecordedProtocol[legendmod.playingReplayServer][legendmod.playingReplayRecord])
+					legendmod.handleMessage(window.RecordedProtocol[tempo][legendmod.playingReplayRecord]) //main fuction for replay
+					//
+					if (!legendmod.playingReplayRewind && window.replayTiming2 == 0 && legendmod.playingReplayRecord+10 < window.RecordedProtocol[tempo].length-1){
+						for (var i=0;i<window.replaySkippedLoops-1;i++){ // 10 times more
+							legendmod.handleMessage(window.RecordedProtocol[tempo][legendmod.playingReplayRecord])
+							legendmod.playingReplayRecord++
+						}
+					}
+					//
+					$("#totalReplayPackets").val(legendmod.playingReplayRecord + "/" +window.RecordedProtocolPackets)
 					
-					if (legendmod.playingReplayRecord<window.RecordedProtocol[legendmod.playingReplayServer].length-1 && legendmod.playingReplayRecord>=0){
-						$("#totalReplayPackets").val(legendmod.playingReplayRecord + "/" +window.RecordedProtocolPackets)
+					if (legendmod.playingReplayRecord<window.RecordedProtocol[tempo].length-1 && legendmod.playingReplayRecord>=0){			
 						intervalPlayingRecord();
 						if (parseInt(window.replayTiming)>=0 || !legendmod.playingReplayRewindNow){
 							legendmod.playingReplayRecord++
@@ -15752,12 +15761,8 @@ function intervalPlayingRecord(){
 						$("#stopReplaybtn").prop('disabled', true);
 						$('#pause-hud').text(textLanguage.pause);
 						$('#pause-hud').hide()						
-					}
-					
+						}					
 				}
-				//window.playrecord++
-				//console.log(window.replayTiming2)
-	//}, parseInt(window.replayTiming)*legendmod.playingReplayRecord);	
 	}, window.replayTiming2);	
 }
 /*
