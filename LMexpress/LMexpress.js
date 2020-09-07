@@ -1,7 +1,7 @@
 /**************
- * Legend express v1.15 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.16 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "08"; // the version 1.1-> 1.11
+var semimodVersion = "09"; // the version 1.1-> 1.11
 
 
 loadericon();
@@ -4989,6 +4989,7 @@ function initializeLM(modVersion) {
 		'<option value="32" data-itr="">Limited Rate + 32ms delay</option>' +
 		'<option value="64" data-itr="">Limited Rate + 64ms delay</option>' +
 		'<option value="true" data-itr="">Unlimited Rate (not suggested)</option>' +
+		'<option value="ultra" data-itr="">Ulta (not suggested - test))</option>' +
         '</select></label>');
 	$("#FrameWorkOption").parent().tooltip({	
         title: "Type on chrome: chrome://settings/system , ensure Use hardware acceleration when available checkbox, is ENABLED",
@@ -6442,7 +6443,10 @@ function changeFrameWork(){
 	} 
 	else if ($('#FrameWorkOption').val()==64){
 		defaultmapsettings.unlockedFPS=64
-	} 		
+	} 	
+	else if ($('#FrameWorkOption').val()=="ultra"){
+		defaultmapsettings.unlockedFPS="ultra"
+	} 	
 	application.saveSettings(defaultmapsettings, "ogarioSettings");
 }	
 
