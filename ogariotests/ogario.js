@@ -96,9 +96,9 @@ function deleteGamemode(temp) {
         text: 'Beta Party v2 #2',
         value: 18
     }, {	
-        /*text: 'Beta 1v1 Scrims',
+        text: 'Beta 1v1 Scrims',
         value: 32		
-    }, {*/	
+    }, {	
         text: 'FPS Test',
         value: 12
     }
