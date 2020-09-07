@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.450
+// v2.451
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -14246,13 +14246,20 @@ Game name     : ${i.displayName}<br/>
 						drawRender.render()
 					}, 0);					
 				}	
-				else if (defaultmapsettings.unlockedFPS=="sophisticated"){					
-					window.requestAnimationFrame(drawRender.render);	
-					var timeloops = parseInt((window.drawRender.fps/window.fpsloopsetter).toFixed(0));
-					for (var i=0;i<timeloops;i++){
-						drawRender.countFps()
-						drawRender.renderFrame();							
-					}							
+				else if (defaultmapsettings.unlockedFPS=="sophisticated"){										
+					var timeloops = parseInt(window.drawRender.fps/window.fpsloopsetter);
+					if (timeloops>0){
+						window.requestAnimationFrame(drawRender.render);	
+						for (var i=0;i<timeloops;i++){
+							drawRender.countFps()
+							drawRender.renderFrame();							
+						}
+					}
+					else if(window.drawRender.fps/window.fpsloopsetter<1)){
+						setTimeout(function() {
+							window.requestAnimationFrame(drawRender.render);
+						}, window.fpsloopsetter/window.drawRender.fps);						
+					}
 				}					
 				else{
 					setTimeout(function() {
