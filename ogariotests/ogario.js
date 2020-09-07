@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.439
+// v2.440
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -95,7 +95,10 @@ function deleteGamemode(temp) {
     }, {		
         text: 'Beta Party v2 #2',
         value: 18
-    }, {		
+    }, {	
+        text: 'Beta 1v1 Scrims',
+        value: 32		
+    }, {	
         text: 'FPS Test',
         value: 12
     }
@@ -199,9 +202,12 @@ function deleteGamemode(temp) {
         }
 		else if ($('#gamemode').val() == 30) {
             core.connect('wss://imsolo.pro:4109');
-        }		
+        }			
 		else if ($('#gamemode').val() == 31) {
             core.connect('wss://delta-selffeed.glitch.me');
+        }	
+		else if ($('#gamemode').val() == 32) {
+            core.connect('wss://imsolo.pro:2100');
         }		
 		/*		
 		else if ($('#gamemode').val() == 18) {
