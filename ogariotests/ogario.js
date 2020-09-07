@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.434
+// v2.435
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15666,7 +15666,7 @@ function playReplayLM(temp){
 		if (parseInt(window.replayTiming)<0) legendmod.playingReplayRewind=true
 		//if (parseInt(window.replayTiming)<0) legendmod.playingReplayRecord = window.RecordedProtocol[legendmod.playingReplayServer].length-1
 		//start
-		window.playrecord = 0
+		//window.playrecord = 0
 		intervalPlayingRecord()	
 		window.startReplayTime =$("#startReplayTime").val()
 		window.endReplayTime =$("#endReplayTime").val()
@@ -15682,21 +15682,26 @@ function intervalPlayingRecord(){
 	
 	//window.replayTiming2 = parseInt(window.replayTiming)
 	var temp1 = parseInt(window.startReplayTime)
-	var temp2 = parseInt(window.endReplayTime)
+	var temp2 = parseInt(window.endReplayTime)	
 	if (temp1<0 || temp2<=0){
 		toastr.warning("<b>[SERVER]:</b> Start and end time should be non negative").css("width", "350px");
 	}
+	else if (legendmod.playingReplayRewind && !legendmod.playingReplayRewindNow){
+		window.replayTiming2= 0
+		$('#pause-hud').text("View review...");
+		$('#pause-hud').show()
+	}	
 	else if (legendmod.playingReplayRecord>=temp1 && legendmod.playingReplayRecord<=temp2){
 		
 		if (window.replayTiming2==0){
 			$('#pause-hud').text(textLanguage.pause);
 			$('#pause-hud').hide()
 		}
-		window.replayTiming2 = parseInt(window.replayTiming)
+		window.replayTiming2 = Math.abs(parseInt(window.replayTiming))
 		
 	}
 	else{		
-		if (window.replayTiming2!=0 || (legendmod.playingReplayRewind && !legendmod.playingReplayRewindNow)){
+		if (window.replayTiming2!=0){
 			window.replayTiming2= 0
 			$('#pause-hud').text("View review...");
 			$('#pause-hud').show()
@@ -15706,7 +15711,7 @@ function intervalPlayingRecord(){
 				var tempo = legendmod.playingReplayServer
 				if ($("#server-token").val().includes("replay^"+tempo)){	
 				
-					legendmod.handleMessage(window.RecordedProtocol[legendmod.playingReplayServer][window.playrecord])
+					legendmod.handleMessage(window.RecordedProtocol[legendmod.playingReplayServer][legendmod.playingReplayRecord])
 					
 					if (legendmod.playingReplayRecord<window.RecordedProtocol[legendmod.playingReplayServer].length-1 && legendmod.playingReplayRecord>=0){
 						$("#totalReplayPackets").val(legendmod.playingReplayRecord + "/" +window.RecordedProtocolPackets)
@@ -15721,6 +15726,7 @@ function intervalPlayingRecord(){
 					else{
 						if (legendmod.playingReplayRecord>=0){
 							legendmod.playingReplayRewindNow=true
+							legendmod.playingReplayRecord--
 							intervalPlayingRecord();
 						}
 						$("#stopReplaybtn").prop('disabled', true);
@@ -15729,7 +15735,7 @@ function intervalPlayingRecord(){
 					}
 					
 				}
-				window.playrecord++
+				//window.playrecord++
 				//console.log(window.replayTiming2)
 	//}, parseInt(window.replayTiming)*legendmod.playingReplayRecord);	
 	}, window.replayTiming2);	
