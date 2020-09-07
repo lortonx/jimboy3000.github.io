@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.449
+// v2.450
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -18,6 +18,7 @@ window.catholicCalculator = 0;
 window.replayTiming=20
 window.replayTimeOuts = []
 window.replaySkippedLoops = 100 //100 times more frames from timing 0 replays
+window.fpsloopsetter=60
 //window.specificRecordedProtocol = []
 
 
@@ -14247,8 +14248,7 @@ Game name     : ${i.displayName}<br/>
 				}	
 				else if (defaultmapsettings.unlockedFPS=="sophisticated"){					
 					window.requestAnimationFrame(drawRender.render);	
-					var fpsloopsetter=60
-					var timeloops = parseInt((window.drawRender.fps/fpsloopsetter).toFixed(0));
+					var timeloops = parseInt((window.drawRender.fps/window.fpsloopsetter).toFixed(0));
 					for (var i=0;i<timeloops;i++){
 						drawRender.countFps()
 						drawRender.renderFrame();							
