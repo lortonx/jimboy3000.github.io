@@ -15663,7 +15663,10 @@ function playReplayLM(temp){
 		legendmod.playingReplayServer=temp
 		legendmod.playingReplayRewind=false
 		legendmod.playingReplayRewindNow=false
-		if (parseInt(window.replayTiming)<0) legendmod.playingReplayRewind=true
+		if (parseInt(window.replayTiming)<0){ 
+			toastr.warning("<b>[SERVER]:</b> When time traveling, wierd things happens...").css("width", "350px");
+			legendmod.playingReplayRewind=true
+		}
 		//if (parseInt(window.replayTiming)<0) legendmod.playingReplayRecord = window.RecordedProtocol[legendmod.playingReplayServer].length-1
 		//start
 		//window.playrecord = 0
