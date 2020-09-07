@@ -9716,6 +9716,10 @@ function thelegendmodproject() {
                 window.master.onConnect();
             }
 		if (window.replayTimeOuts.length && !this.ws.includes("replay")){
+			if ($('#pause-hud').text()=="Loading..."){
+				$('#pause-hud').text(textLanguage.pause);
+				$('#pause-hud').hide()
+			}
 			for (var i=0;i<window.replayTimeOuts;i++){
 				clearTimeout(window.replayTimeOuts[i])
 			}
@@ -15698,7 +15702,7 @@ function intervalPlayingRecord(){
 	}
 	else if (legendmod.playingReplayRewind && !legendmod.playingReplayRewindNow){
 		window.replayTiming2= 0
-		$('#pause-hud').text("View review...");
+		$('#pause-hud').text("Loading...");
 		$('#pause-hud').show()
 	}	
 	else if (legendmod.playingReplayRecord>=temp1 && legendmod.playingReplayRecord<=temp2){
@@ -15713,7 +15717,7 @@ function intervalPlayingRecord(){
 	else{		
 		if (window.replayTiming2!=0){
 			window.replayTiming2= 0
-			$('#pause-hud').text("View review...");
+			$('#pause-hud').text("Loading...");
 			$('#pause-hud').show()
 		}
 	}
