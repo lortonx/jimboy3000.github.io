@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.451
+// v2.452
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -14255,7 +14255,7 @@ Game name     : ${i.displayName}<br/>
 							drawRender.renderFrame();							
 						}
 					}
-					else if(window.drawRender.fps/window.fpsloopsetter<1)){
+					else if(window.drawRender.fps/window.fpsloopsetter<1){
 						setTimeout(function() {
 							window.requestAnimationFrame(drawRender.render);
 						}, window.fpsloopsetter/window.drawRender.fps);						
