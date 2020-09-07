@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.442
+// v2.443
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -17,7 +17,7 @@ window.RecordedArenasSpecifications = []
 window.catholicCalculator = 0;
 window.replayTiming=20
 window.replayTimeOuts = []
-window.replaySkippedLoops = 10 //10 times more frames from timing 0 replays
+window.replaySkippedLoops = 100 //100 times more frames from timing 0 replays
 //window.specificRecordedProtocol = []
 
 
@@ -15734,10 +15734,18 @@ function intervalPlayingRecord(){
 				
 					legendmod.handleMessage(window.RecordedProtocol[tempo][legendmod.playingReplayRecord]) //main fuction for replay
 					//
-					if (!legendmod.playingReplayRewind && window.replayTiming2 == 0 && legendmod.playingReplayRecord+10 < window.RecordedProtocol[tempo].length-1){
-						for (var i=0;i<window.replaySkippedLoops-1;i++){ // 10 times more
-							legendmod.handleMessage(window.RecordedProtocol[tempo][legendmod.playingReplayRecord])
-							legendmod.playingReplayRecord++
+					if (!legendmod.playingReplayRewind && window.replayTiming2 == 0){
+						if (window.replaySkippedLoops > 99 && legendmod.playingReplayRecord + 100 < window.RecordedProtocol[tempo].length-1){
+							for (var i=0;i<window.replaySkippedLoops-1;i++){ // 100 times more
+								legendmod.handleMessage(window.RecordedProtocol[tempo][legendmod.playingReplayRecord])
+								legendmod.playingReplayRecord++
+							}
+						}
+						else if (window.replaySkippedLoops > 9 && legendmod.playingReplayRecord + 10 < window.RecordedProtocol[tempo].length-1){
+							for (var i=0;i<9;i++){ // 10 times more
+								legendmod.handleMessage(window.RecordedProtocol[tempo][legendmod.playingReplayRecord])
+								legendmod.playingReplayRecord++
+							}
 						}
 					}
 					//
