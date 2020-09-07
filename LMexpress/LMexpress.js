@@ -4989,7 +4989,7 @@ function initializeLM(modVersion) {
 		'<option value="32" data-itr="">Limited Rate + 32ms delay</option>' +
 		'<option value="64" data-itr="">Limited Rate + 64ms delay</option>' +
 		'<option value="true" data-itr="">Unlimited Rate (not suggested)</option>' +
-		'<option value="ultra" data-itr="">Ulta (not suggested - test))</option>' +
+		'<option value="ultra" data-itr="">Ultra (not suggested - test))</option>' +
         '</select></label>');
 	$("#FrameWorkOption").parent().tooltip({	
         title: "Type on chrome: chrome://settings/system , ensure Use hardware acceleration when available checkbox, is ENABLED",
