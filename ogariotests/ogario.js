@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.455
+// v2.456
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -14250,7 +14250,7 @@ Game name     : ${i.displayName}<br/>
 					var timeloops = parseInt(window.drawRender.fps/window.fpsloopsetter);
 					if (timeloops>0){
 						window.requestAnimationFrame(drawRender.render);	
-						for (var i=0;i<timeloops-2;i++){
+						for (var i=0;i<timeloops-1;i++){
 							drawRender.countFps()
 							drawRender.renderFrame();							
 						}
