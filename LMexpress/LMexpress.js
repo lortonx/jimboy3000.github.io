@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.17 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.18 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "09"; // the version 1.1-> 1.11
 
@@ -4981,7 +4981,8 @@ function initializeLM(modVersion) {
 		
 	$('#animation-value').parent().before(
         '<label style="float:left; padding-left:0; padding-right:0">' + textLanguage.unlockedFPS + '<select id="FrameWorkOption" class="form-control" onchange="changeFrameWork();" required="" data-original-title="" title="" style="display:inline; width: 70%; float:right;" >' +
-        '<option value="4" data-itr="">Limited Rate + 4ms delay (suggested)</option>' +
+        '<option value="sophisticated" data-itr="">Sophisticated (suggested)</option>' +
+		'<option value="4" data-itr="">Limited Rate + 4ms delay (suggested)</option>' +
 		'<option value="false" data-itr="">Limited Rate + No delay</option>' +     
         '<option value="2" data-itr="">Limited Rate + 2ms delay</option>' +      
         '<option value="8" data-itr="">Limited Rate + 8ms delay</option>' +
@@ -4990,7 +4991,6 @@ function initializeLM(modVersion) {
 		'<option value="64" data-itr="">Limited Rate + 64ms delay</option>' +		
 		'<option value="true" data-itr="">Unlimited Rate (not suggested)</option>' +
 		'<option value="ultra" data-itr="">Ultra (not suggested - test)</option>' +
-		'<option value="sophisticated" data-itr="">Sophisticated (not suggested)</option>' +
         '</select></label>');
 	$("#FrameWorkOption").parent().tooltip({	
         title: "Type on chrome: chrome://settings/system , ensure Use hardware acceleration when available checkbox, is ENABLED",
