@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.458
+// v2.459
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -18,7 +18,7 @@ window.catholicCalculator = 0;
 window.replayTiming=20
 window.replayTimeOuts = []
 window.replaySkippedLoops = 100 //100 times more frames from timing 0 replays
-window.fpsloopsetter=71
+window.fpsloopsetter=70
 //window.specificRecordedProtocol = []
 
 
@@ -14204,7 +14204,7 @@ Game name     : ${i.displayName}<br/>
                 this.indicator.src = canvas.toDataURL();
                 canvas = null;
             },
-            countFps() {
+            countFps(fake) {
                 if (defaultmapsettings.showStatsFPS) {
                     var Time = Date.now();
                     if (!this.fpsLastRequest) {
@@ -14214,10 +14214,11 @@ Game name     : ${i.displayName}<br/>
                         this.fps = this.renderedFrames;
                         this.renderedFrames = 0;
                         this.fpsLastRequest = Time;
-                    }
-                    this.renderedFrames++;
+                    }				
+					this.renderedFrames++;
+                    
                 }
-            },
+            },			
             sleep(ms) {
                 return new Promise(resolve => setTimeout(resolve, ms));
             },
@@ -14227,7 +14228,7 @@ Game name     : ${i.displayName}<br/>
 			//'render': async function() {
 				//if (!window.fpsM) window.fpsM = 4
 				//await drawRender.sleep(window.fpsM);				
-                drawRender.countFps();
+                drawRender.countFps();		
                 drawRender.renderFrame();
 				if (!defaultmapsettings.unlockedFPS){
 					window.requestAnimationFrame(drawRender.render);
@@ -14250,7 +14251,8 @@ Game name     : ${i.displayName}<br/>
 					var timeloops = parseInt(window.drawRender.fps/window.fpsloopsetter);
 					if (timeloops>0){
 						window.requestAnimationFrame(drawRender.render);	
-						for (var i=0;i<timeloops-1;i++){
+						//for (var i=0;i<timeloops-1;i++){
+						if (timeloops>1){	
 							drawRender.countFps()
 							drawRender.renderFrame();							
 						}
