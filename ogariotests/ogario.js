@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.457
+// v2.458
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -18,7 +18,7 @@ window.catholicCalculator = 0;
 window.replayTiming=20
 window.replayTimeOuts = []
 window.replaySkippedLoops = 100 //100 times more frames from timing 0 replays
-window.fpsloopsetter=70
+window.fpsloopsetter=71
 //window.specificRecordedProtocol = []
 
 
