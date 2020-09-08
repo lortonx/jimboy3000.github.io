@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.460
+// v2.461
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15735,6 +15735,7 @@ function intervalPlayingRecord(){
 		toastr.warning("<b>[SERVER]:</b> Start and end time should be non negative").css("width", "350px");
 	}
 	else if (legendmod.playingReplayRewind && !legendmod.playingReplayRewindNow){
+		//console.log('a')
 		window.replayTiming2= 0
 		$('#pause-hud').text("Loading...");
 		$('#pause-hud').show()
@@ -15750,6 +15751,7 @@ function intervalPlayingRecord(){
 	}
 	else{		
 		if (window.replayTiming2!=0){
+			//console.log('b')
 			window.replayTiming2= 0
 			$('#pause-hud').text("Loading...");
 			$('#pause-hud').show()
@@ -15779,7 +15781,7 @@ function intervalPlayingRecord(){
 					$("#totalReplayPackets").val(legendmod.playingReplayRecord + "/" +window.RecordedProtocolPackets)
 					
 					if (legendmod.playingReplayRecord<window.RecordedProtocol[tempo].length-1 && legendmod.playingReplayRecord>=0){			
-						intervalPlayingRecord();
+						if (legendmod.playingReplayRecord < window.RecordedProtocol[tempo].length-2) intervalPlayingRecord();
 						if (parseInt(window.replayTiming)>=0 || !legendmod.playingReplayRewindNow){
 							legendmod.playingReplayRecord++
 						}
@@ -15787,7 +15789,7 @@ function intervalPlayingRecord(){
 							legendmod.playingReplayRecord--
 						}
 					}
-					else{
+					else if (legendmod.playingReplayRewindNow){
 						if (legendmod.playingReplayRecord>=0){
 							legendmod.playingReplayRewindNow=true
 							legendmod.playingReplayRecord--
