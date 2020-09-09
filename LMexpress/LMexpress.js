@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.18 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.19 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "09"; // the version 1.1-> 1.11
 
@@ -477,19 +477,22 @@ function adres(info, thismode, thisregion) {
                         region = thisregion;
                     }
                     if (currentIPopened == true) {
-                        history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
+						if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play/?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);	
+                        else history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
                         return currentIPopened = false;
                     } else if (thismode != null && thisregion != null) {
-                        history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
+						if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play/?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
+                        else history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
 
                     } else {
-                        history.pushState(stateObj, "page 2", "?sip=" + currentIP);
+						if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play/?sip=" + currentIP);
+                        else history.pushState(stateObj, "page 2", "?sip=" + currentIP);
                         realmode = null;
                         region = null;
                         return realmode, region;
                     }
                 } else if (realmode == ":party") {
-                    window.history.pushState(null, null, window.location.pathname);
+                    window.history.pushState(null, null, window.location.pathname);							
 					window.location.href="https://agar.io/#"+ $('#party-token').val()
                 }
 
@@ -526,18 +529,22 @@ function urlIpWhenOpened() {
 			if (!legendmod.integrity){ currentIP = $("#server-token").val();}
             if (searchSip != null) {
                 if (region == null) {
-                    history.pushState(stateObj, "page 2", "?sip=" + searchSip);
+					if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play/?sip=" + searchSip);	
+					else history.pushState(stateObj, "page 2", "?sip=" + searchSip);              
                 } else {
-                    history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + realmode);
+					if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play/?sip=" + searchSip + "&?r=" + region + "&?m=" + realmode);
+                    else history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + realmode);
                 }
             } else if (searchSip == null) {
-                history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + $('#gamemode').val());
+				if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play/?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + $('#gamemode').val());
+                else history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + $('#gamemode').val());
                 region = $('#region').val();
                 realmode = $('#gamemode').val();
                 return region, realmode;
             } else{
                 if (realmode != ":party") {
-                    history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
+					if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play/?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
+                    else history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
                 }
             }
 
@@ -5339,7 +5346,8 @@ function initializeLM(modVersion) {
             copy(CopyTkPwLb2);
         } else if (realmode != ":party") {
             if (region != null && realmode != null) {
-                CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+				if (document.URL.includes("legendmod.ml")) CopyTkPwLb2 = "https://agar.io/play/?sip=" + $("#server-token").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+                else CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 copy(CopyTkPwLb2);
             } else {
                 CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val();
@@ -5347,10 +5355,11 @@ function initializeLM(modVersion) {
             }
         } else {
             if (realmode == ":party") {
-                CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val();
+				CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val();
                 copy(CopyTkPwLb2);
             } else if (realmode != ":party") {
-                CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+				if (document.URL.includes("legendmod.ml")) CopyTkPwLb2 = "https://agar.io/play/?sip=" + $("#server-token").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+                else CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 copy(CopyTkPwLb2);
             }
         } 
@@ -5359,19 +5368,21 @@ function initializeLM(modVersion) {
     $("#copySIPandPass").click(function() {
         if (searchSip != null) {
             if (realmode == ":party") {
-                CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val();
+				CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val();
                 copy(CopyTkPwLb2);
             } else if (realmode != ":party") {
-                CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+				if (document.URL.includes("legendmod.ml")) CopyTkPwLb2 = "https://agar.io/play/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+                else CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 copy(CopyTkPwLb2);
 
             }
         } else { 
-            if (realmode == ":party") {
+            if (realmode == ":party") {			
                 CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val();
                 copy(CopyTkPwLb2);
             } else if (realmode != ":party") {
-                CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+				if (document.URL.includes("legendmod.ml")) CopyTkPwLb2 = "https://agar.io/play/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+                else CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 copy(CopyTkPwLb2);
             }
         }
@@ -5383,7 +5394,8 @@ function initializeLM(modVersion) {
                 CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val();
                 copyToClipboardAll();
             } else if (realmode != ":party") {
-                CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+				if (document.URL.includes("legendmod.ml")) CopyTkPwLb2 = "https://agar.io/play/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+                else CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 copy(CopyTkPwLb2);
             }
         } else { 
@@ -5391,7 +5403,8 @@ function initializeLM(modVersion) {
                 CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val();
                 copyToClipboardAll();
             } else if (realmode != ":party") {
-                CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+				if (document.URL.includes("legendmod.ml")) CopyTkPwLb2 = "https://agar.io/play/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+                else CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 copyToClipboardAll();
             }
         }
@@ -6108,8 +6121,8 @@ function joinSERVERfindinfo() {
                         setTimeout(function() {
 							
 							if (MaxRegion!= 0 && MaxRegion!= null && MaxMode!= 0 && MaxMode!= null){
-								
-                            if (legendmod.integrity){ history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MaxRegion + "&?m=" + MaxMode);}
+							if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play/?sip=" + currentIP);}
+                            else if (legendmod.integrity){ history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MaxRegion + "&?m=" + MaxMode);}
 							else if (!legendmod.integrity){ history.pushState(stateObj, "page 2", "?sip=" + currentIP);}
 							}
                             ModeRegionregion();
