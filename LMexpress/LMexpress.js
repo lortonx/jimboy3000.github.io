@@ -477,15 +477,15 @@ function adres(info, thismode, thisregion) {
                         region = thisregion;
                     }
                     if (currentIPopened == true) {
-						if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play/?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);	
+						if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);	
                         else history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
                         return currentIPopened = false;
                     } else if (thismode != null && thisregion != null) {
-						if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play/?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
+						if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
                         else history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
 
                     } else {
-						if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play/?sip=" + currentIP);
+						if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play?sip=" + currentIP);
                         else history.pushState(stateObj, "page 2", "?sip=" + currentIP);
                         realmode = null;
                         region = null;
@@ -529,21 +529,21 @@ function urlIpWhenOpened() {
 			if (!legendmod.integrity){ currentIP = $("#server-token").val();}
             if (searchSip != null) {
                 if (region == null) {
-					if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play/?sip=" + searchSip);	
+					if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play?sip=" + searchSip);	
 					else history.pushState(stateObj, "page 2", "?sip=" + searchSip);              
                 } else {
-					if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play/?sip=" + searchSip + "&?r=" + region + "&?m=" + realmode);
+					if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play?sip=" + searchSip + "&?r=" + region + "&?m=" + realmode);
                     else history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + realmode);
                 }
             } else if (searchSip == null) {
-				if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play/?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + $('#gamemode').val());
+				if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + $('#gamemode').val());
                 else history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + $('#gamemode').val());
                 region = $('#region').val();
                 realmode = $('#gamemode').val();
                 return region, realmode;
             } else{
                 if (realmode != ":party") {
-					if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play/?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
+					if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
                     else history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
                 }
             }
@@ -5346,7 +5346,7 @@ function initializeLM(modVersion) {
             copy(CopyTkPwLb2);
         } else if (realmode != ":party") {
             if (region != null && realmode != null) {
-				if (document.URL.includes("legendmod.ml")) CopyTkPwLb2 = "https://agar.io/play/?sip=" + $("#server-token").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+				if (document.URL.includes("legendmod.ml")) CopyTkPwLb2 = "https://agar.io/play?sip=" + $("#server-token").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 else CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 copy(CopyTkPwLb2);
             } else {
@@ -5358,7 +5358,7 @@ function initializeLM(modVersion) {
 				CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val();
                 copy(CopyTkPwLb2);
             } else if (realmode != ":party") {
-				if (document.URL.includes("legendmod.ml")) CopyTkPwLb2 = "https://agar.io/play/?sip=" + $("#server-token").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+				if (document.URL.includes("legendmod.ml")) CopyTkPwLb2 = "https://agar.io/play?sip=" + $("#server-token").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 else CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 copy(CopyTkPwLb2);
             }
@@ -5371,7 +5371,7 @@ function initializeLM(modVersion) {
 				CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val();
                 copy(CopyTkPwLb2);
             } else if (realmode != ":party") {
-				if (document.URL.includes("legendmod.ml")) CopyTkPwLb2 = "https://agar.io/play/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+				if (document.URL.includes("legendmod.ml")) CopyTkPwLb2 = "https://agar.io/play?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 else CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 copy(CopyTkPwLb2);
 
@@ -5381,7 +5381,7 @@ function initializeLM(modVersion) {
                 CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val();
                 copy(CopyTkPwLb2);
             } else if (realmode != ":party") {
-				if (document.URL.includes("legendmod.ml")) CopyTkPwLb2 = "https://agar.io/play/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+				if (document.URL.includes("legendmod.ml")) CopyTkPwLb2 = "https://agar.io/play?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 else CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 copy(CopyTkPwLb2);
             }
@@ -5394,7 +5394,7 @@ function initializeLM(modVersion) {
                 CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val();
                 copyToClipboardAll();
             } else if (realmode != ":party") {
-				if (document.URL.includes("legendmod.ml")) CopyTkPwLb2 = "https://agar.io/play/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+				if (document.URL.includes("legendmod.ml")) CopyTkPwLb2 = "https://agar.io/play?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 else CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 copy(CopyTkPwLb2);
             }
@@ -5403,7 +5403,7 @@ function initializeLM(modVersion) {
                 CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val();
                 copyToClipboardAll();
             } else if (realmode != ":party") {
-				if (document.URL.includes("legendmod.ml")) CopyTkPwLb2 = "https://agar.io/play/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+				if (document.URL.includes("legendmod.ml")) CopyTkPwLb2 = "https://agar.io/play?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 else CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 copyToClipboardAll();
             }
@@ -6121,7 +6121,7 @@ function joinSERVERfindinfo() {
                         setTimeout(function() {
 							
 							if (MaxRegion!= 0 && MaxRegion!= null && MaxMode!= 0 && MaxMode!= null){
-							if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play/?sip=" + currentIP);
+							if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play?sip=" + currentIP);
                             else if (legendmod.integrity){ history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MaxRegion + "&?m=" + MaxMode);}
 							else if (!legendmod.integrity){ history.pushState(stateObj, "page 2", "?sip=" + currentIP);}
 							}
