@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.19 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.20 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "09"; // the version 1.1-> 1.11
 
@@ -6121,7 +6121,7 @@ function joinSERVERfindinfo() {
                         setTimeout(function() {
 							
 							if (MaxRegion!= 0 && MaxRegion!= null && MaxMode!= 0 && MaxMode!= null){
-							if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play/?sip=" + currentIP);}
+							if (document.URL.includes("legendmod.ml")) history.pushState(stateObj, "page 2", "/play/?sip=" + currentIP);
                             else if (legendmod.integrity){ history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MaxRegion + "&?m=" + MaxMode);}
 							else if (!legendmod.integrity){ history.pushState(stateObj, "page 2", "?sip=" + currentIP);}
 							}
