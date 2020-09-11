@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.464
+// v2.465
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9723,25 +9723,7 @@ function thelegendmodproject() {
             if (window.master && window.master.onConnect) {
                 window.master.onConnect();
             }
-			if (window.replayTimeOuts.length && !this.ws.includes("replay")){
-				for (var i=0;i<window.replayTimeOuts;i++){
-					clearTimeout(window.replayTimeOuts[i])
-				}
-				window.replayTimeOuts=[]
-			}
-			else if (!this.ws.includes("replay") && $('#pause-hud').text()=="Loading..."){
-				$('#pause-hud').text(textLanguage.pause);
-				$('#pause-hud').hide()			
-			}
-				//if (!window.RecordedProtocol[$("#server-token").val()]){
-					//console.log('a'+$("#server-token").val())				
-			window.catholicCalculator = 0
-			window.RecordedProtocol[$("#server-token").val()] = []
-			window.RecordedProtocolArenas.push($("#server-token").val())
-			window.RecordedArenasSpecifications[$("#server-token").val()]= [Date.now(), application.gameMode, application.region, $("#nick").val()]
-			window.temporaryRecordedProtocol2 = window.temporaryRecordedProtocol
-			window.temporaryRecordedProtocol = $("#server-token").val()									
-				//}			
+			this.replayfunctions();
         },
         onOpen() {
             //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket open');
@@ -9783,6 +9765,27 @@ function thelegendmodproject() {
                 window.master.onDisconnect();
             }
         },
+		replayfunctions(){
+			if (window.replayTimeOuts.length && !this.ws.includes("replay")){
+				for (var i=0;i<window.replayTimeOuts;i++){
+					clearTimeout(window.replayTimeOuts[i])
+				}
+				window.replayTimeOuts=[]
+			}
+			else if (!this.ws.includes("replay") && $('#pause-hud').text()=="Loading..."){
+				$('#pause-hud').text(textLanguage.pause);
+				$('#pause-hud').hide()			
+			}
+				//if (!window.RecordedProtocol[$("#server-token").val()]){
+					//console.log('a'+$("#server-token").val())				
+			window.catholicCalculator = 0
+			window.RecordedProtocol[$("#server-token").val()] = []
+			window.RecordedProtocolArenas.push($("#server-token").val())
+			window.RecordedArenasSpecifications[$("#server-token").val()]= [Date.now(), application.gameMode, application.region, $("#nick").val()]
+			window.temporaryRecordedProtocol2 = window.temporaryRecordedProtocol
+			window.temporaryRecordedProtocol = $("#server-token").val()									
+				//}				
+		}
         closeConnection() {
             if (this.socket) {
                 this.socket.onopen = null;
