@@ -1,7 +1,8 @@
 /**************
- * Legend express v1.22 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.23 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "09"; // the version 1.1-> 1.11
+
 
 loadericon();
 
@@ -293,16 +294,19 @@ urlIpWhenOpened();
 //emphasischat();
 //specialeffecttargeting();
 function startLM(modVersion) {
+	if (!window.LMstarted){
+		window.LMstarted=true
     // ANNOUNCEMENTS
     //toastr.info('<b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">'+'Legend mod </span></font> is back!<br><font color="red"></b>Enable Vanilla skins on Settings</font>').css("width", "350px");
-    window.LMVersion=modVersion;
-	if (modVersion != "1.8") {	
-        toastr.info('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.8</b></font>. <br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
-    }
-    //$("#ogario-party").wrap('<div style="display: none;" id="hidendivtoken"></div>');
-    universalchat();
-	adminstuff();
-    return initializeLM(modVersion);
+		window.LMVersion=modVersion;
+		if (modVersion != "1.8") {	
+			toastr.info('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.8</b></font>. <br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+		}
+		//$("#ogario-party").wrap('<div style="display: none;" id="hidendivtoken"></div>');
+		universalchat();
+		adminstuff();
+		return initializeLM(modVersion);
+	}
 }
 
 
@@ -509,6 +513,7 @@ function adres(info, thismode, thisregion) {
 
 
 function LMserverbox() {
+	//window.LMstarted
     (function(a, c) {
         function r(a, d) {
             if (d) {
