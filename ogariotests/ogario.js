@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.482
+// v2.483
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -116,7 +116,7 @@ function deleteGamemode(temp) {
         text: 'Cellz self feed',
         value: 37		
     }, {		
-        text: 'Cellz fast crazt',
+        text: 'Cellz crazy',
         value: 38		
     }, {	
         text: 'Cellz fast split',
