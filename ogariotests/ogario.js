@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.479
+// v2.481
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -100,6 +100,9 @@ function deleteGamemode(temp) {
     }, {	
         text: 'Beta 1v1 Scrims',
         value: 32		
+    }, {	
+        text: 'Bots',
+        value: 33		
     }, {	
         text: 'FPS Test',
         value: 12
@@ -210,7 +213,10 @@ function deleteGamemode(temp) {
         }	
 		else if ($('#gamemode').val() == 32) {
             core.connect('wss://imsolo.pro:2100');
-        }		
+        }	
+		else if ($('#gamemode').val() == 33) {
+            core.connect('wss://lm-bots-ps.glitch.me');
+        }			
 		/*		
 		else if ($('#gamemode').val() == 18) {
             core.connect('wss://imsolo.pro:2111/');
