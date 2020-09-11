@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.468
+// v2.469
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9770,7 +9770,7 @@ function thelegendmodproject() {
 				for (var i=0;i<window.replayTimeOuts;i++){
 					clearTimeout(window.replayTimeOuts[i])
 				}
-				window.replayTimeOuts=[]
+				window.replayTimeOuts=[]			
 			}
 			else if (!this.ws.includes("replay") && $('#pause-hud').text()=="Loading..."){
 				$('#pause-hud').text(textLanguage.pause);
@@ -9779,8 +9779,9 @@ function thelegendmodproject() {
 				//if (!window.RecordedProtocol[$("#server-token").val()]){
 					//console.log('a'+$("#server-token").val())		
 			//window.temporaryRecordedProtocol2 = window.temporaryRecordedProtocol
+			if (!$("#server-token").val().includes("replay")){
 			if (window.RecordedArenasSpecifications[$("#server-token").val()]){
-				for (var i=0; i<10; i++){
+				for (var i=1; i<10; i++){
 					if (!window.RecordedArenasSpecifications[$("#server-token").val() + '(' + i + ')']){
 						window.temporaryRecordedProtocol = $("#server-token").val()	+ '(' + i + ')'
 						break;
@@ -9797,7 +9798,8 @@ function thelegendmodproject() {
 			window.RecordedProtocol[window.temporaryRecordedProtocol] = []
 			window.RecordedProtocolArenas.push(window.temporaryRecordedProtocol)
 			window.RecordedArenasSpecifications[window.temporaryRecordedProtocol]= [Date.now(), application.gameMode, application.region, $("#nick").val()]
-			 
+			}
+			
 											
 				//}				
 		},
