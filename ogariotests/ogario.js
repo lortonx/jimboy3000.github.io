@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.481
+// v2.482
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -103,6 +103,27 @@ function deleteGamemode(temp) {
     }, {	
         text: 'Bots',
         value: 33		
+    }, {	
+        text: 'Cellz big ffa',
+        value: 34		
+    }, {	
+        text: 'Cellz mega split',
+        value: 35		
+    }, {	
+        text: 'Cellz instant',
+        value: 36		
+    }, {	
+        text: 'Cellz self feed',
+        value: 37		
+    }, {		
+        text: 'Cellz fast crazt',
+        value: 38		
+    }, {	
+        text: 'Cellz fast split',
+        value: 39		
+    }, {	
+        text: 'Cellz ultra split',
+        value: 40		
     }, {	
         text: 'FPS Test',
         value: 12
@@ -213,10 +234,32 @@ function deleteGamemode(temp) {
         }	
 		else if ($('#gamemode').val() == 32) {
             core.connect('wss://imsolo.pro:2100');
-        }	
+        }
 		else if ($('#gamemode').val() == 33) {
             core.connect('wss://lm-bots-ps.glitch.me');
-        }			
+        }		
+		else if ($('#gamemode').val() == 34) {
+            core.connect('wss://proxy.cellz.io/4600');
+        }		
+		else if ($('#gamemode').val() == 35) {
+            core.connect('wss://proxy.cellz.io/4400');
+        }	
+		else if ($('#gamemode').val() == 36) {
+            core.connect('wss://proxy.cellz.io/4801');
+        }	
+		else if ($('#gamemode').val() == 37) {
+            core.connect('wss://proxy.cellz.io/5203');
+        }	
+		else if ($('#gamemode').val() == 38) {
+            core.connect('wss://proxy.cellz.io/4201');
+        }	
+		else if ($('#gamemode').val() == 39) {
+            core.connect('wss://proxy.cellz.io/6003');
+        }		
+		else if ($('#gamemode').val() == 40) {
+            core.connect('wss://reverse.krunt.io/7301');
+        }	
+			
 		/*		
 		else if ($('#gamemode').val() == 18) {
             core.connect('wss://imsolo.pro:2111/');
