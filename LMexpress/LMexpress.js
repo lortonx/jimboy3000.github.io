@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.24 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.25 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "09"; // the version 1.1-> 1.11
 
@@ -526,7 +526,6 @@ function LMserverbox() {
         joinSIPonstart();
         joinPLAYERonstart();
 		joinreplayURLonstart();
-		console.log('a')
 
     })(window, window.jQuery);
 }
@@ -6005,10 +6004,14 @@ function joinPLAYERonstart() {
     }, 1000);
 }
 function joinreplayURLonstart() {
+	console.log('1')
 	if (replayURL){
+		console.log('2')
 		BeforeReplay()
 		setTimeout(function() {
+			console.log('3')
 			loadReplayFromWeb(replayURL)
+			
 		}, 2000);		
 	}
 }
