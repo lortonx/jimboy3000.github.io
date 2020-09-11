@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.478
+// v2.479
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13206,10 +13206,10 @@ Game name     : ${i.displayName}<br/>
                     var tempborderwidthradius = defaultSettings.bordersWidth / 2;
                     this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
                 }
-				else if (defaultmapsettings.showMapBorders && !$("#server-token").val().includes("imsolo.pro")){
+				/*else if (defaultmapsettings.showMapBorders && !$("#server-token").val().includes("imsolo.pro")){
                     var tempborderwidthradius = defaultSettings.bordersWidth / 2;
                     this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);					
-				}
+				}*/
                 this.drawCommander();
                 this.drawCommander2();
                 if (defaultmapsettings.virusesRange) {
