@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.466
+// v2.467
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -7246,8 +7246,8 @@ function thelegendmodproject() {
             this.sendServerToken();
             this.sendPlayerNick();
 			//
-			if (!$("#server-token").val().includes("replay") && window.RecordedArenasSpecifications[$("#server-token").val()]){
-				window.RecordedArenasSpecifications[$("#server-token").val()][3]=application.lastSentNick
+			if (!$("#server-token").val().includes("replay") && window.RecordedArenasSpecifications[window.temporaryRecordedProtocol]){
+				window.RecordedArenasSpecifications[window.temporaryRecordedProtocol][3]=application.lastSentNick
 			}			
 			//
         },
@@ -9777,13 +9777,28 @@ function thelegendmodproject() {
 				$('#pause-hud').hide()			
 			}
 				//if (!window.RecordedProtocol[$("#server-token").val()]){
-					//console.log('a'+$("#server-token").val())				
+					//console.log('a'+$("#server-token").val())		
+			//window.temporaryRecordedProtocol2 = window.temporaryRecordedProtocol
+			if (window.RecordedArenasSpecifications[$("#server-token").val()]){
+				for (int i=0; i<10; i++){
+					if (!window.RecordedArenasSpecifications[$("#server-token").val() + "(" + i + ")"]){
+						window.temporaryRecordedProtocol = $("#server-token").val()	+ "(" + i + ")"
+						break;
+					}	
+					else{
+						
+					}
+				}
+			}
+			else{
+				window.temporaryRecordedProtocol = $("#server-token").val()
+			}
 			window.catholicCalculator = 0
-			window.RecordedProtocol[$("#server-token").val()] = []
-			window.RecordedProtocolArenas.push($("#server-token").val())
-			window.RecordedArenasSpecifications[$("#server-token").val()]= [Date.now(), application.gameMode, application.region, $("#nick").val()]
-			window.temporaryRecordedProtocol2 = window.temporaryRecordedProtocol
-			window.temporaryRecordedProtocol = $("#server-token").val()									
+			window.RecordedProtocol[window.temporaryRecordedProtocol] = []
+			window.RecordedProtocolArenas.push(window.temporaryRecordedProtocol)
+			window.RecordedArenasSpecifications[window.temporaryRecordedProtocol]= [Date.now(), application.gameMode, application.region, $("#nick").val()]
+			 
+											
 				//}				
 		},
         closeConnection() {
@@ -10386,7 +10401,7 @@ function thelegendmodproject() {
         handleMessage(data) {
             //this.pingTimer();		
 			if (!$("#server-token").val().includes("replay")){				
-				window.RecordedProtocol[$("#server-token").val()][window.catholicCalculator] = data
+				window.RecordedProtocol[window.temporaryRecordedProtocol][window.catholicCalculator] = data
 
 				//window.RecordedProtocolArenas[legendmod.ws][]
 				//window.RecordedProtocolArenas[window.specificRecordedProtocol[legendmod.ws]] = window.RecordedProtocol[window.catholicCalculator] 
