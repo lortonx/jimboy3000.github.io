@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.462
+// v2.463
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9734,7 +9734,7 @@ function thelegendmodproject() {
 				$('#pause-hud').hide()			
 			}
 				//if (!window.RecordedProtocol[$("#server-token").val()]){
-					console.log('a'+("#server-token").val())
+					console.log('a'+$("#server-token").val())
 					/*
 					window.catholicCalculator = 0
 					window.RecordedProtocol[$("#server-token").val()] = []
