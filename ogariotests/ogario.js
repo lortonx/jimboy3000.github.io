@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.465
+// v2.466
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9785,7 +9785,7 @@ function thelegendmodproject() {
 			window.temporaryRecordedProtocol2 = window.temporaryRecordedProtocol
 			window.temporaryRecordedProtocol = $("#server-token").val()									
 				//}				
-		}
+		},
         closeConnection() {
             if (this.socket) {
                 this.socket.onopen = null;
