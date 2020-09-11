@@ -3,7 +3,6 @@
  *************/
 var semimodVersion = "09"; // the version 1.1-> 1.11
 
-
 loadericon();
 
 //Authenticate Mod Script
