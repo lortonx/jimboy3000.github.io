@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.20 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.21 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "09"; // the version 1.1-> 1.11
 
@@ -150,6 +150,9 @@ var searchSip = getParameterByName("sip", url);
 var clanpass = getParameterByName("pass", url);
 var searchedplayer = getParameterByName("player", url);
 var autoplayplayer = getParameterByName("autoplayer", url);
+var replayURL = getParameterByName("replay", url);
+
+
 var realmode2 = "";
 var mode = ""; //just in case
 var token = "";
@@ -5994,6 +5997,14 @@ function joinPLAYERonstart() {
             window.autoPlay = true;
         }
     }, 1000);
+}
+function joinPLAYERonstart() {
+	if (replayURL){
+		BeforeReplay()
+		setTimeout(function() {
+			loadReplayFromWeb("replayURL")
+		}, 2000);		
+	}
 }
 
 function autoplayplaying() {
