@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.474
+// v2.475
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -4595,7 +4595,8 @@ function thelegendmodproject() {
                 if (value.length) {
 
 				//
-				if (LM.ws.includes("imsolo.pro") && $("#clantag").val() == ""){
+				//if (LM.ws.includes("imsolo.pro") && $("#clantag").val() == ""){
+				if (!LM.integrity && $("#clantag").val() == ""){	
 					var view = application.createView(4 + 2 * value.length);
 					view.setUint8(0, 99);
 					view.setUint8(1, 0);
@@ -7769,7 +7770,9 @@ function thelegendmodproject() {
             this.sendChatMessage(102, prepareCommand);
 			
 			//		
-				if (LM.ws.includes("imsolo.pro") && $("#clantag").val() == ""){
+				//if (LM.ws.includes("imsolo.pro") && $("#clantag").val() == ""){
+				if (!LM.integrity && $("#clantag").val() == ""){	
+					
 					var view = application.createView(4 + 2 * prepareCommand.length);
 					view.setUint8(0, 99);
 					view.setUint8(1, 0);
@@ -9731,17 +9734,21 @@ function thelegendmodproject() {
             var view = this.createView(5);
             view.setUint8(0, 254);
             if (!window.gameBots.protocolVersion) window.gameBots.protocolVersion = master.protocolVersion;
-			if (LM.ws.includes("imsolo.pro") || window.protocol6){ view.setUint32(1, 6, true); } //protocol 6 and 5
+			if (!LM.integrity){ view.setUint32(1, 6, true); }
+			else{ view.setUint32(1, this.protocolVersion, true);  } //			
+			//if (LM.ws.includes("imsolo.pro") || window.protocol6){ view.setUint32(1, 6, true); } //protocol 6 and 5
 			//else if (window.protocol5){ view.setUint32(1, 5, true); } // Protocol 5
-            else{ view.setUint32(1, this.protocolVersion, true);  } //
+            
 			
             this.sendMessage(view);
             view = this.createView(5);
             view.setUint8(0, 255);
             if (!window.gameBots.clientVersion) window.gameBots.clientVersion = this.clientVersion
-			if (LM.ws.includes("imsolo.pro") || window.protocol6){ view.setUint32(1, 1, true); } //protocol 6 and 5
-			//else if (window.protocol5){ view.setUint32(1, 1332175218, true); } // Protocol 5
+			if (!LM.integrity){ view.setUint32(1, 1, true); } //protocol 6 and 5
 			else{ view.setUint32(1, this.clientVersion, true); }//
+			//if (LM.ws.includes("imsolo.pro") || window.protocol6){ view.setUint32(1, 1, true); } //protocol 6 and 5
+			//else if (window.protocol5){ view.setUint32(1, 1332175218, true); } // Protocol 5
+			
             this.sendMessage(view);
             this.connectionOpened = true;
         },
@@ -12250,7 +12257,8 @@ Game name     : ${i.displayName}<br/>
 			}
 			
 			
-            if (legendmod.gameMode != ":battleroyale" && LM.ws && !LM.ws.includes("imsolo.pro")) {
+            //if (legendmod.gameMode != ":battleroyale" && LM.ws && !LM.ws.includes("imsolo.pro")) {
+			if (legendmod.gameMode != ":battleroyale" && LM.ws && LM.integrity) {		
                 teamText += '<span class="me">' + Premadeletter130 + ': ' + this.leaderboard.length + '</span>';
                 if (defaultmapsettings.FBTracking && legendmod.friends && legendmod.friends > 0) {
                     teamText += '<span class="teammate">' + 'Friends' + ': ' + legendmod.friends + '</span>';
@@ -12532,7 +12540,8 @@ Game name     : ${i.displayName}<br/>
                 if (8 & flags) {
                     name = window.decodeURIComponent(escape(encode()));
 					//console.log('name '+name+ 'skin '+skin);
-					if (LM.ws.includes("imsolo.pro") && name.includes('}')){
+					//if (LM.ws.includes("imsolo.pro") && name.includes('}')){
+					if (!LM.integrity && name.includes('}')){	
 						name = name.split('}')[1]
 					}
                     if (legendmod && legendmod.gameMode && legendmod.gameMode != ":teams") {
@@ -13191,7 +13200,9 @@ Game name     : ${i.displayName}<br/>
                 if (LM.gameMode === ':battleroyale') {
                     this.drawBattleArea(this.ctx);
                 }
-				if (defaultmapsettings.showMapBorders && LM.ws && !LM.ws.includes("imsolo.pro")) {
+				//if (defaultmapsettings.showMapBorders && LM.ws && !LM.ws.includes("imsolo.pro")) {
+				if (defaultmapsettings.showMapBorders && LM.ws && !LM.integrity)) {	
+					
                     var tempborderwidthradius = defaultSettings.bordersWidth / 2;
                     this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
                 }
