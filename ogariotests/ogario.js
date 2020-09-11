@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.461
+// v2.462
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9733,6 +9733,18 @@ function thelegendmodproject() {
 				$('#pause-hud').text(textLanguage.pause);
 				$('#pause-hud').hide()			
 			}
+				//if (!window.RecordedProtocol[$("#server-token").val()]){
+					console.log('a'+("#server-token").val())
+					/*
+					window.catholicCalculator = 0
+					window.RecordedProtocol[$("#server-token").val()] = []
+					window.RecordedProtocolArenas.push($("#server-token").val())
+					window.RecordedArenasSpecifications[$("#server-token").val()]= [Date.now(), application.gameMode, application.region, $("#nick").val()]
+					window.temporaryRecordedProtocol2 = window.temporaryRecordedProtocol
+					window.temporaryRecordedProtocol = $("#server-token").val()
+					*/
+					
+				//}			
         },
         onOpen() {
             //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket open');
@@ -10373,16 +10385,7 @@ function thelegendmodproject() {
         },
         handleMessage(data) {
             //this.pingTimer();		
-			if (!$("#server-token").val().includes("replay")){
-				if (!window.RecordedProtocol[$("#server-token").val()]){
-					window.catholicCalculator = 0
-					window.RecordedProtocol[$("#server-token").val()] = []
-					window.RecordedProtocolArenas.push($("#server-token").val())
-					window.RecordedArenasSpecifications[$("#server-token").val()]= [Date.now(), application.gameMode, application.region, $("#nick").val()]
-					window.temporaryRecordedProtocol2 = window.temporaryRecordedProtocol
-					window.temporaryRecordedProtocol = $("#server-token").val()
-					
-				}				
+			if (!$("#server-token").val().includes("replay")){				
 				window.RecordedProtocol[$("#server-token").val()][window.catholicCalculator] = data
 
 				//window.RecordedProtocolArenas[legendmod.ws][]
