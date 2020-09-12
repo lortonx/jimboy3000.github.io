@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.483
+// v2.484
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -104,6 +104,7 @@ function deleteGamemode(temp) {
         text: 'Bots',
         value: 33		
     }, {	
+/*
         text: 'Cellz big ffa',
         value: 34		
     }, {	
@@ -124,7 +125,8 @@ function deleteGamemode(temp) {
     }, {	
         text: 'Cellz ultra split',
         value: 40		
-    }, {	
+    }, {
+*/		
         text: 'FPS Test',
         value: 12
     }
@@ -237,7 +239,8 @@ function deleteGamemode(temp) {
         }
 		else if ($('#gamemode').val() == 33) {
             core.connect('wss://lm-bots-ps.glitch.me');
-        }		
+        }	
+/*		
 		else if ($('#gamemode').val() == 34) {
             core.connect('wss://proxy.cellz.io/4600');
         }		
@@ -259,6 +262,7 @@ function deleteGamemode(temp) {
 		else if ($('#gamemode').val() == 40) {
             core.connect('wss://reverse.krunt.io/7301');
         }	
+		*/
 			
 		/*		
 		else if ($('#gamemode').val() == 18) {
