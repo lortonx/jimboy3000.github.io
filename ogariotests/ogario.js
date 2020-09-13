@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.493
+// v2.494
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12323,8 +12323,8 @@ Game name     : ${i.displayName}<br/>
 			
 			
             //if (legendmod.gameMode != ":battleroyale" && LM.ws && !LM.ws.includes("imsolo.pro")) {
-			//if (legendmod.gameMode != ":battleroyale" && LM.ws && LM.integrity) {	
-			if (legendmod.gameMode != ":battleroyale" && LM.ws) {	
+			if (legendmod.gameMode != ":battleroyale" && LM.ws && LM.integrity) {	
+			//if (legendmod.gameMode != ":battleroyale" && LM.ws) {	
                 teamText += '<span class="me">' + Premadeletter130 + ': ' + this.leaderboard.length + '</span>';
                 if (defaultmapsettings.FBTracking && legendmod.friends && legendmod.friends > 0) {
                     teamText += '<span class="teammate">' + 'Friends' + ': ' + legendmod.friends + '</span>';
@@ -13274,7 +13274,8 @@ Game name     : ${i.displayName}<br/>
                     this.drawBattleArea(this.ctx);
                 }
 				//if (defaultmapsettings.showMapBorders && LM.ws && !LM.ws.includes("imsolo.pro")) {
-				if (defaultmapsettings.showMapBorders && LM.ws && LM.integrity) {	
+				//if (defaultmapsettings.showMapBorders && LM.ws && LM.integrity) {	
+				if (defaultmapsettings.showMapBorders && LM.ws) {	
 					
                     var tempborderwidthradius = defaultSettings.bordersWidth / 2;
                     this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
