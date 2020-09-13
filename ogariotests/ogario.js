@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.497
+// v2.498
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
 //var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
@@ -12428,17 +12428,18 @@ Game name     : ${i.displayName}<br/>
 			}
 			
 			if (!this.integrity || (right - left) > (this.mapSize - 142) && (bottom - top) > (this.mapSize - 142)) { //2020 jimboy3100
-
-                this.mapOffsetX = this.mapOffset - right;
-                this.mapOffsetY = this.mapOffset - bottom;
 				
 				if (this.integrity){
+					this.mapOffsetX = this.mapOffset - right;
+					this.mapOffsetY = this.mapOffset - bottom;					
 					this.mapMinX = ~~(-this.mapOffset - this.mapOffsetX);
 					this.mapMinY = ~~(-this.mapOffset - this.mapOffsetY);
 					this.mapMaxX = ~~(this.mapOffset - this.mapOffsetX);
 					this.mapMaxY = ~~(this.mapOffset - this.mapOffsetY);
 				}
 				else{
+					this.mapOffsetX = 0
+					this.mapOffsetY = 0
 					this.mapMinX = left
 					this.mapMinY = top
 					this.mapMaxX = right
