@@ -1,7 +1,7 @@
 /**************
  * Legend express v1.28 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "09"; // the version 1.1-> 1.11
+var semimodVersion = "10"; // the version 1.1-> 1.11
 
 
 loadericon();
@@ -51,7 +51,7 @@ var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var checkonlytenth = localStorage.getItem("checkonlytenth");
+var checkonlytwelvth = localStorage.getItem("checkonlytwelvth");
 var checkonlyeleventh = localStorage.getItem("checkonlyeleventh");
 var checkonlyrewardday1 = localStorage.getItem("checkonlyrewardday1");
 var defaultMusicUrl = "https://www.youtube.com/watch?v=ZJXPONv41jw";
@@ -345,8 +345,8 @@ function loadersettings() {
                 }
             }
         }	
-        if (checkonlytenth != "true") {
-			//LMadvertisement2020();
+        if (checkonlytwelvth != "true") {
+			LMadvertisementMegaFFA();
         //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
         /*toastr.info('<center><b>'+
 		'IF HOTKEYS <font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">NOT WORKING</font></span>:<br>'+
@@ -358,8 +358,8 @@ function loadersettings() {
                 }).css("width", "450px");
 */				
 				
-		checkonlytenth = "true";
-		localStorage.setItem("checkonlytenth", checkonlytenth);				
+		checkonlytwelvth = "true";
+		localStorage.setItem("checkonlytwelvth", checkonlytwelvth);				
        // }					
 		}
 		
@@ -4093,6 +4093,9 @@ function triggerLMbtns() {
     if ($('#discwebhook2').val() != "" && $('#discwebhook2').val() != null) {
         setdiscwebhook2();
     }
+	
+	$("#agario-main-buttons").append('<div id="LEGENDAds5"></div>')
+	$("#LEGENDAds5").load("https://legendmod.ml/banners/megaFFA");
 
     if (dyinglight1load == null || dyinglight1load == "null") {
         $("#LEGENDAds2").load("https://legendmod.ml/banners/bannerDyingLight");
@@ -6652,4 +6655,26 @@ $("#skins-panel").show();
 $("#quick-menu").show();
 $("#exp-bar").show();
 $("#administrationtools").hide();		
+}
+
+function LMadvertisementMegaFFA(){
+            $('#helloContainer').after('<div class="modal fade in" id="LMPromo" aria-hidden="false" style="display: block;">' +
+                '<div class="modal-backdrop fade in"></div>' +
+                '<div class="modal-dialog" style="top: calc(50vh - 241.5px); width: 622px;">' +
+                '<div class="modal-content">' +
+                '<div id="CloseLMPromo2" class="modal-header"><button id="CloseLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">' + Premadeletter113 + '</span></button> <button id="FAQLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">?</span><span class="sr-only">' + Premadeletter113 + '</span></button>' +
+                '<h4 class="modal-title" style="font-family: Roboto Condensed, sans-serif">' + '2020 development' + '</h4>' +
+                '</div>' +
+				'<div id="LMadvertisement3"><iframe id="customskinsIframe2" src="https://legendmod.ml/2020.html" width="620" height="490" >' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>');
+			$(".modal-dialog").draggable()
+            $("#CloseLMPromo").click(function() {
+                $("#LMPromo").remove();
+            });
+            $("#FAQLMPromo").click(function() {
+				window.open('https://legendmod.ml/', '_blank');
+            });	
 }
