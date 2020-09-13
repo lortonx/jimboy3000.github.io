@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.484
+// v2.485
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -6403,8 +6403,10 @@ function thelegendmodproject() {
             //var closingExpr = i.mapOffsetY + i.mapOffset;				
             var GearType = closeExpr ? ogario.mapOffsetX + ogario.mapOffset : ogario.mapOffset;
             var closingExpr = closeExpr ? ogario.mapOffsetY + ogario.mapOffset : ogario.mapOffset;
-            var n = Math.floor((xgh2 + closingExpr) / (ogario.mapSize / defaultSettings.sectorsY));
-            var r = Math.floor((t + GearType) / (ogario.mapSize / defaultSettings.sectorsX));
+            //var n = Math.floor((xgh2 + closingExpr) / (ogario.mapSize / defaultSettings.sectorsY));
+			var n = Math.floor((xgh2 + closingExpr) / (LM.mapSize / defaultSettings.sectorsY));
+			var r = Math.floor((t + GearType) / (LM.mapSize / defaultSettings.sectorsX));
+            //var r = Math.floor((t + GearType) / (ogario.mapSize / defaultSettings.sectorsX));
             window.calculateMapSector = n < 0 ? 0 : n >= defaultSettings.sectorsY ? defaultSettings.sectorsY - 1 : n;
             r = r < 0 ? 0 : r >= defaultSettings.sectorsX ? defaultSettings.sectorsX - 1 : r;
             String.fromCharCode(n + 65) + (r + 1);
@@ -6446,6 +6448,7 @@ function thelegendmodproject() {
                     this.miniMap.height = s;
                 }
                 var n = o / ogario.mapSize;
+				var n = o / LM.mapSize;
                 var r = ogario.mapOffsetX + ogario.mapOffset;
                 var l = ogario.mapOffsetY + ogario.mapOffset;
                 if (this.drawSelectedCell(this.miniMapCtx),
@@ -13215,8 +13218,8 @@ Game name     : ${i.displayName}<br/>
                         this.ctx.globalAlpha = defaultSettings.backgroundAlpha
                         this.ctx.drawImage(
                             cimg5,
-                            legendmod.mapMinX - 14141,
-                            legendmod.mapMinY - 14141,
+                            legendmod.mapMinX - LM.mapSize-1,
+                            legendmod.mapMinY - LM.mapSize-1,
                             (legendmod.mapMaxX - legendmod.mapMinX) * 3,
                             (legendmod.mapMaxY - legendmod.mapMinY) * 3
                         );
