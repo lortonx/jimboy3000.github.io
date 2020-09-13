@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.486
+// v2.487
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12415,7 +12415,9 @@ Game name     : ${i.displayName}<br/>
         },
         setMapOffset(left, top, right, bottom) {
             //if (right - left > 14000 && bottom - top > 14000) {
-            if (!legendmod.integrity || (right - left) > 14000 && (bottom - top) > 14000) { //2020 jimboy3100
+            //if (!legendmod.integrity || (right - left) > 14000 && (bottom - top) > 14000) { //2020 jimboy3100
+			if (!legendmod.integrity || (right - left) > (legendmod.mapSize - 142) && (bottom - top) > (legendmod.mapSize - 142)) { //2020 jimboy3100
+			legendmod.mapSize
                 this.mapOffsetX = this.mapOffset - right;
                 this.mapOffsetY = this.mapOffset - bottom;
                 this.mapMinX = ~~(-this.mapOffset - this.mapOffsetX);
