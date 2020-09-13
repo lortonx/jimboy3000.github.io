@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.495
+// v2.496
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
 //var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
@@ -6400,8 +6400,8 @@ function thelegendmodproject() {
             }*/
             //var GearType = i.mapOffsetX + i.mapOffset;
             //var closingExpr = i.mapOffsetY + i.mapOffset;				
-            var GearType = closeExpr ? ogario.mapOffsetX + ogario.mapOffset : ogario.mapOffset;
-            var closingExpr = closeExpr ? ogario.mapOffsetY + ogario.mapOffset : ogario.mapOffset;
+            var GearType = closeExpr ? ogario.mapOffsetX + LM.mapOffset : LM.mapOffset;
+            var closingExpr = closeExpr ? ogario.mapOffsetY + LM.mapOffset : LM.mapOffset;
             //var n = Math.floor((xgh2 + closingExpr) / (ogario.mapSize / defaultSettings.sectorsY));
 			var n = Math.floor((xgh2 + closingExpr) / (LM.mapSize / defaultSettings.sectorsY));
 			var r = Math.floor((t + GearType) / (LM.mapSize / defaultSettings.sectorsX));
@@ -6448,8 +6448,8 @@ function thelegendmodproject() {
                 }
                 //var n = o / ogario.mapSize;
 				var n = o / LM.mapSize;
-                var r = ogario.mapOffsetX + ogario.mapOffset;
-                var l = ogario.mapOffsetY + ogario.mapOffset;
+                var r = ogario.mapOffsetX + LM.mapOffset;
+                var l = ogario.mapOffsetY + LM.mapOffset;
                 if (this.drawSelectedCell(this.miniMapCtx),
                     //
                     this.w = ogario.playerX,
@@ -6575,12 +6575,12 @@ function thelegendmodproject() {
                     this.teamPlayers.length) {
                     c = 0;
                     for (; c < this.teamPlayers.length; c++) {
-                        this.teamPlayers[c].drawPosition(this.miniMapCtx, ogario.mapOffset, n, this.privateMiniMap, this.targetID, application.teamPlayers[c].color);
+                        this.teamPlayers[c].drawPosition(this.miniMapCtx, LM.mapOffset, n, this.privateMiniMap, this.targetID, application.teamPlayers[c].color);
                     }
                 }
                 if (this.deathLocations.length > 0) {
-                    u = Math.round((this.deathLocations[this.lastDeath].x + ogario.mapOffset) * n);
-                    d = Math.round((this.deathLocations[this.lastDeath].y + ogario.mapOffset) * n);
+                    u = Math.round((this.deathLocations[this.lastDeath].x + LM.mapOffset) * n);
+                    d = Math.round((this.deathLocations[this.lastDeath].y + LM.mapOffset) * n);
                     var f = Math.max(defaultSettings.miniMapMyCellSize - 2, 4);
                     this.miniMapCtx.lineWidth = 1;
                     this.miniMapCtx.strokeStyle = this.deathLocations.length - 1 == this.lastDeath ? defaultSettings.miniMapDeathLocationColor : "#FFFFFF";
@@ -12417,8 +12417,14 @@ Game name     : ${i.displayName}<br/>
             //if (right - left > 14000 && bottom - top > 14000) {
             //if (!legendmod.integrity || (right - left) > 14000 && (bottom - top) > 14000) { //2020 jimboy3100
 
-			if (!LM.integrity && !this.mapOffsetFixed){ LM.mapSize = Math.abs((left - right)/2); }
-			else if (LM.integrity){ LM.mapSize = 14142; }
+			if (!LM.integrity && !this.mapOffsetFixed){ 
+				LM.mapSize = Math.abs((left - right)/2); 
+				LM.mapOffset = LM.mapSize / 2
+			}
+			else if (LM.integrity){ 
+				LM.mapSize = 14142; 
+				LM.mapOffset = LM.mapSize / 2
+			}
 			
 			if (!LM.integrity || (right - left) > (LM.mapSize - 142) && (bottom - top) > (LM.mapSize - 142)) { //2020 jimboy3100
 
