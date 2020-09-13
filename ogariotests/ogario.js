@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.485
+// v2.486
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -6447,7 +6447,7 @@ function thelegendmodproject() {
                     this.miniMap.width = t;
                     this.miniMap.height = s;
                 }
-                var n = o / ogario.mapSize;
+                //var n = o / ogario.mapSize;
 				var n = o / LM.mapSize;
                 var r = ogario.mapOffsetX + ogario.mapOffset;
                 var l = ogario.mapOffsetY + ogario.mapOffset;
@@ -9779,9 +9779,18 @@ function thelegendmodproject() {
             application.displayPartyBots();
             application.setUniversalChat();
             application.setAnimatedRainbowColor();
+			
+			
             if (window.master && window.master.onConnect) {
                 window.master.onConnect();
             }
+			
+			if (this.ws.includes("imsolo.pro:2102")){ //6 times bigger 600 users limit
+				LM.mapSize = 84852
+			}
+			else{
+				LM.mapSize = 14142
+			}
 			this.replayfunctions();
         },
         onOpen() {
@@ -13218,8 +13227,8 @@ Game name     : ${i.displayName}<br/>
                         this.ctx.globalAlpha = defaultSettings.backgroundAlpha
                         this.ctx.drawImage(
                             cimg5,
-                            legendmod.mapMinX - LM.mapSize-1,
-                            legendmod.mapMinY - LM.mapSize-1,
+                            legendmod.mapMinX - LM.mapSize - 1,
+                            legendmod.mapMinY - LM.mapSize - 1,
                             (legendmod.mapMaxX - legendmod.mapMinX) * 3,
                             (legendmod.mapMaxY - legendmod.mapMinY) * 3
                         );
