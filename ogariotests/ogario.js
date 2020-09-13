@@ -1,8 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.494
-
+// v2.495
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
 //var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
@@ -12425,12 +12424,21 @@ Game name     : ${i.displayName}<br/>
 
                 this.mapOffsetX = this.mapOffset - right;
                 this.mapOffsetY = this.mapOffset - bottom;
-                this.mapMinX = ~~(-this.mapOffset - this.mapOffsetX);
-                this.mapMinY = ~~(-this.mapOffset - this.mapOffsetY);
-                this.mapMaxX = ~~(this.mapOffset - this.mapOffsetX);
-                this.mapMaxY = ~~(this.mapOffset - this.mapOffsetY);
+				
+				if (LM.integrity){
+					this.mapMinX = ~~(-this.mapOffset - this.mapOffsetX);
+					this.mapMinY = ~~(-this.mapOffset - this.mapOffsetY);
+					this.mapMaxX = ~~(this.mapOffset - this.mapOffsetX);
+					this.mapMaxY = ~~(this.mapOffset - this.mapOffsetY);
+				}
+				else{
+					this.mapMinX = left
+					this.mapMinY = top
+					this.mapMaxX = right
+					this.mapMaxY = bottom
+				}
                 this.mapMidX = (this.mapMaxX + this.mapMinX) / 2; //Sonia3 -> this.mapMidX = -legendmod.mapOffsetX
-                this.mapMidY = (this.mapMaxY + this.mapMinY) / 2; //Sonia3 -> this.mapMidY = -legendmod.mapOffsetY				
+                this.mapMidY = (this.mapMaxY + this.mapMinY) / 2; //Sonia3 -> this.mapMidY = -legendmod.mapOffsetY					
                 this.mapOffsetFixed || (this.viewX = (right + left) / 2, this.viewY = (bottom + top) / 2);
 				console.log(left, top, right, bottom)
                 this.mapOffsetFixed = true;
