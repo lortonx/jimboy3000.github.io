@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.496
+// v2.497
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
 //var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
@@ -12417,21 +12417,22 @@ Game name     : ${i.displayName}<br/>
             //if (right - left > 14000 && bottom - top > 14000) {
             //if (!legendmod.integrity || (right - left) > 14000 && (bottom - top) > 14000) { //2020 jimboy3100
 
-			if (!LM.integrity && !this.mapOffsetFixed){ 
-				LM.mapSize = Math.abs((left - right)/2); 
-				LM.mapOffset = LM.mapSize / 2
+			//if (!LM.integrity && !this.mapOffsetFixed){ 
+			if (!this.integrity){ 
+				this.mapSize = Math.abs((left - right)/2); 
+				this.mapOffset = this.mapSize / 2
 			}
-			else if (LM.integrity){ 
-				LM.mapSize = 14142; 
-				LM.mapOffset = LM.mapSize / 2
+			else if (this.integrity){ 
+				this.mapSize = 14142; 
+				this.mapOffset = this.mapSize / 2
 			}
 			
-			if (!LM.integrity || (right - left) > (LM.mapSize - 142) && (bottom - top) > (LM.mapSize - 142)) { //2020 jimboy3100
+			if (!this.integrity || (right - left) > (this.mapSize - 142) && (bottom - top) > (this.mapSize - 142)) { //2020 jimboy3100
 
                 this.mapOffsetX = this.mapOffset - right;
                 this.mapOffsetY = this.mapOffset - bottom;
 				
-				if (LM.integrity){
+				if (this.integrity){
 					this.mapMinX = ~~(-this.mapOffset - this.mapOffsetX);
 					this.mapMinY = ~~(-this.mapOffset - this.mapOffsetY);
 					this.mapMaxX = ~~(this.mapOffset - this.mapOffsetX);
