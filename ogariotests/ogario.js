@@ -37,7 +37,7 @@ function changeregion() {
 
 function deleteGamemode(temp) {
     var privateModOptions = [{
-        text: 'MEGA FFA',
+        text: 'Mega FFA',
         value: 34
     }, {
         text: 'Arctida',
