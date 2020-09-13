@@ -305,7 +305,7 @@ function deleteGamemode(temp) {
 		*/
     });
 	if (temp==true){
-		$('#gamemode option[value=6]').prop('selected', 'selected').change();
+		$('#gamemode option[value=34]').prop('selected', 'selected').change();
 	}
 }
 
