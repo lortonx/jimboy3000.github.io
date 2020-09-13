@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.500
+// v2.501
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
 //var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
@@ -37,9 +37,12 @@ function changeregion() {
 
 function deleteGamemode(temp) {
     var privateModOptions = [{
+        text: 'MEGA FFA',
+        value: 34
+    }, {
         text: 'Arctida',
         value: 6
-    }, {
+    }, {		
         text: 'Dagestan',
         value: 7
     }, {
@@ -239,6 +242,9 @@ function deleteGamemode(temp) {
 		else if ($('#gamemode').val() == 33) {
             core.connect('wss://lm-bots-ps.glitch.me');
         }	
+		else if ($('#gamemode').val() == 34) {
+            core.connect('wss://imsolo.pro:2102');
+        }			
 /*		
 		else if ($('#gamemode').val() == 34) {
             core.connect('wss://proxy.cellz.io/4600');
