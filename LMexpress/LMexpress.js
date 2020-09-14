@@ -346,7 +346,7 @@ function loadersettings() {
             }
         }	
         if (checkonlytwelvth != "true") {
-			LMadvertisementMegaFFA();
+			//LMadvertisementMegaFFA();
         //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
         /*toastr.info('<center><b>'+
 		'IF HOTKEYS <font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">NOT WORKING</font></span>:<br>'+
