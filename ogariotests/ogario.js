@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.501
+// v2.502
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
 //var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
@@ -12684,7 +12684,7 @@ Game name     : ${i.displayName}<br/>
                 //				
                 var invisible;
 
-                if (LM.playerCellsMulti.length && LM.multiBoxPlayerExists) {
+                if (LM.playerCellsMulti.length && LM.multiBoxPlayerExists && LM.integrity) {
                     invisible = this.isInViewCustom3(x, y, size)
                 }
                 cellUpdateCells = null;
