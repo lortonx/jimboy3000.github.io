@@ -7803,7 +7803,7 @@ function thelegendmodproject() {
                     //var pattern = /.*(s|5).*e.*n.*p.*a.*/i;
                     if (!pattern.test(msg) && !pattern2.test(msg) && !msg.includes(pattern3)) {
 						if (!legendmod.integrity && application.chatHistory[application.chatHistory.length-1] != msg){
-                        this.displayChatMessage(time, caseof, plId, msg);
+							this.displayChatMessage(time, caseof, plId, msg);
 						}
                     } else {
                         //console.log('Blocked: ' + msg)
