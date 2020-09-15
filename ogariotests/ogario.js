@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.504
+// v2.505
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
 //var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
@@ -7802,7 +7802,9 @@ function thelegendmodproject() {
                     //var pattern2 = /.*(m).*i.*s.*t.*i.*/i;
                     //var pattern = /.*(s|5).*e.*n.*p.*a.*/i;
                     if (!pattern.test(msg) && !pattern2.test(msg) && !msg.includes(pattern3)) {
+						if (!legendmod.integrity && application.chatHistory[application.chatHistory.length-1] != msg){
                         this.displayChatMessage(time, caseof, plId, msg);
+						}
                     } else {
                         //console.log('Blocked: ' + msg)
                     }
@@ -10804,7 +10806,9 @@ function thelegendmodproject() {
 					message = "For bot commands look at Hotkeys"
 				}
 				if (message != "WWW.IMSOLO.PRO " && message != "WWW.IMSOLO.PRO" && name != $("#nick").val() && $("#clantag").val() == ""){
+					
 					application.displayChatMessage(time, caseof, 1000, name + ": " + message); //this.displayChatMessage(time, caseof, plId, msg);
+					
 				}				
 				break;
                 case 102:
