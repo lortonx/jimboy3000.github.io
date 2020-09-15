@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.514
+// v2.515
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -7809,7 +7809,8 @@ function thelegendmodproject() {
                     //var pattern2 = /.*(m).*i.*s.*t.*i.*/i;
                     //var pattern = /.*(s|5).*e.*n.*p.*a.*/i;
                     if (!pattern.test(msg) && !pattern2.test(msg) && !msg.includes(pattern3)) {
-						if (!legendmod.integrity && application.chatHistory[application.chatHistory.length-1] != msg){
+						
+						if (!legendmod.integrity && application.chatHistory[application.chatHistory.length-1].message != msg.split(': ')[1]){
 							this.displayChatMessage(time, caseof, plId, msg);
 						}
                     } else {
