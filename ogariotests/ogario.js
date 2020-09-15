@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.512
+// v2.513
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -21,6 +21,8 @@ window.replaySkippedLoops = 100 //100 times more frames from timing 0 replays
 window.fpsloopsetter=60
 //window.specificRecordedProtocol = []
 
+//inject gamepad libraries if Mobile
+var isMobile = window.orientation > -1; //false for PC, true for mobile 
 
 function changeregion() {
     if ($('#region').val() == "Private") {
