@@ -4542,7 +4542,11 @@ function SNEZOgarUpload() {
 
     if (userid == "" || userid == null) {
         toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter128);
-    } else {
+    } 
+	else if (document.URL.includes("legendmod.ml") && $("#UserProfileUID2a").val()!= ""){
+		userid = $("#UserProfileUID2a").val()
+	}	
+	else {
         //postSNEZ("https://lmsettings.snez.org/", userid, "LMSettings", $('#export-settings').val());
         postSNEZ("https://lmsettings.snez.org/", userid, "LMSettings", escape($('#export-settings').val()));
         toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter129 + ". " + Languageletter363 + ": <font color='yellow'><b>" + userid + "</b></font>");
@@ -4552,7 +4556,11 @@ function SNEZOgarUpload() {
 function SNEZOgarDownload() {
     if (userid == "" || userid == null) {
         toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter128);
-    } else {
+    }
+	else if (document.URL.includes("legendmod.ml") && $("#UserProfileUID2a").val()!= ""){
+		userid = $("#UserProfileUID2a").val()
+	}
+	else {
         getSNEZ("https://lmsettings.snez.org/", userid, "LMSettings");
         var responseSNEZ = xhttp.response;
         $('#import-settings').val(unescape(responseSNEZ));
@@ -5887,9 +5895,9 @@ function initializeLM(modVersion) {
     $("#import-settings-btn").attr('class', 'btn btn-success');
     $("#close-exp-imp").before('<button id="SNEZOgarUploadBtn" onclick="SNEZOgarUpload(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109 + '</button>');
     $("#close-exp-imp").before('<button id="SNEZOgarDownloadBtn" onclick="SNEZOgarDownload(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109a + '</button>');
-
-
-
+	if (document.URL.includes("legendmod.ml")){
+		$("#close-exp-imp").after('<br><div id="UserProfileUID2">Social ID: <input id="UserProfileUID2a" class="user-name" style="display:inline-block"></div>');
+	}
     core.disconnect = function() {
         adres(null, $('#gamemode').val(), $('#region').val());
         pauseVideos();
