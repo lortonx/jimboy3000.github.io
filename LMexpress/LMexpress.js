@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.29 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.30 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -5899,6 +5899,10 @@ function initializeLM(modVersion) {
     $("#close-exp-imp").before('<button id="SNEZOgarDownloadBtn" onclick="SNEZOgarDownload(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109a + '</button>');
 	if (document.URL.includes("legendmod.ml")){
 		$("#close-exp-imp").after('<br><div id="UserProfileUID2">Social ID: <input id="UserProfileUID2a" class="user-name" style="display:inline-block"></div>');
+		if (localStorage.getItem("agarioUID") != "" && localStorage.getItem("agarioUID") != null && localStorage.getItem("agarioUID") !="null"){
+			window.agarioUID = localStorage.getItem("agarioUID");
+			$("#UserProfileUID2a").val(window.agarioUID)
+		}	
 	}
     core.disconnect = function() {
         adres(null, $('#gamemode').val(), $('#region').val());
