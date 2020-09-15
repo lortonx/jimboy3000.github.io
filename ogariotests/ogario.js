@@ -1,7 +1,8 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.509
+// v2.510
+
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
 //var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
@@ -3392,6 +3393,7 @@ function thelegendmodproject() {
                         i.text(textLanguage.saveSett);
                     }, 500);
 					ogarhusettings();
+					ogarhusettingsImportExportMobile();
                 });
             $('#theme').append('<div class=\"restore-settings\"><a href=\"#\">' + textLanguage.restoreThemeSettings + '</a></div>'),
                 $(document).on('click', '#theme .restore-settings a', function(e) {
@@ -4872,6 +4874,7 @@ function thelegendmodproject() {
                 $('#skins-panel').css("width", "550px");
             }
             ogarhusettings();
+			ogarhusettingsImportExportMobile();
         },
         loadProfiles() {
             if (null !== window.localStorage.getItem('ogarioPlayerProfiles')) {
@@ -5451,6 +5454,7 @@ function thelegendmodproject() {
             $(document).on("change", "#quality", function() {
                 app.getQuality(this.value);
                 ogarhusettings();
+				ogarhusettingsImportExportMobile();
             });
             $(`#skin`).popover({
                 html: true,
@@ -5773,6 +5777,7 @@ function thelegendmodproject() {
                 $(o).fadeIn(1000);
             } catch (error) {}
             ogarhusettings();
+			ogarhusettingsImportExportMobile();
             $('.submenu-panel').perfectScrollbar('update');
         },
         getDefaultSettings() {
@@ -14687,6 +14692,56 @@ Game name     : ${i.displayName}<br/>
         ogario.innerW = innerWidth;
         ogario.innerH = innerHeigth;
     }
+    function ogarhusettingsImportExportMobile() {
+		if (isMobile){
+        var innerWidth = window.innerWidth;
+        var innerHeigth = window.innerHeight;
+        var helloContainer = $("#exp-imp");
+		
+        var helloContainerHeight = helloContainer.innerHeight();
+        if (helloContainerHeight > 0) {
+            ogario.menuHeight = helloContainerHeight;
+        } 
+		else {
+            helloContainerHeight = ogario.menuHeight || 618;
+        }
+        var scale = Math.min(1, innerHeigth / helloContainerHeight);
+		//
+		scale = scale*defaultSettings.hudScale/1.2;
+		//
+        var topValue = () => {
+			var distance=355;		
+            if (window.screen.height <= 992) {
+				distance=250;
+                //scale += 0.1*defaultSettings.hudScale;
+            } 			
+            else if (window.screen.height <= 1080) {
+				distance=300;
+                //scale += 0.1*defaultSettings.hudScale;
+            } 
+			else if (window.screen.height > 1080 && window.screen.height < 1440) {
+				distance=420;
+                //scale += 0.2*defaultSettings.hudScale;
+            } 
+			else if (window.screen.height >= 1440) {
+				distance=520;
+                //scale += 0.3*defaultSettings.hudScale;
+            }
+			if (defaultSettings.hudScale>1){
+				distance = distance / defaultSettings.hudScale
+			}
+			helloContainer.css("top", distance + "px");
+        }
+        
+        topValue()
+        var transform = "translate(-50%, -30%) scale(" + scale + ")";
+
+        helloContainer.css("transform", transform);
+        helloContainer.css("-ms-transform", transform);
+        helloContainer.css("-webkit-transform", transform);
+		}
+		
+    }	
     function resetonkeydown() {
         if (application.protocolMode) {
             return;
@@ -14797,6 +14852,7 @@ Game name     : ${i.displayName}<br/>
     window.onresize = function() {
         drawRender.resizeCanvas();
         ogarhusettings();
+		ogarhusettingsImportExportMobile();
     };
     spectateBlind();
 
@@ -14977,6 +15033,7 @@ Game name     : ${i.displayName}<br/>
     drawRender.init();
     window.master.init();
     ogarhusettings();
+	ogarhusettingsImportExportMobile();
     setGUIEvents();
 
     window.canvasElem = document.querySelector("canvas");
