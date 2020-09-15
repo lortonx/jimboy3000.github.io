@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.28 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.29 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -4536,16 +4536,20 @@ function emphasischat() {
     };
 }
 
+function IdfromLegendmod(){
+	if (document.URL.includes("legendmod.ml") && $("#UserProfileUID2a").val()!= ""){
+		window.agarioUID = userid
+		localStorage.setItem("agarioUID", window.agarioUID);
+		userid = $("#UserProfileUID2a").val()
+	}		
+}
 function SNEZOgarUpload() {
     //$("#export-settings-btn").click();
     //postSNEZ("https://lmsettings.snez.org/", "test", "test1234", "{ a: 1, b: 2, d: 4}");
-
+	IdfromLegendmod()
     if (userid == "" || userid == null) {
         toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter128);
     } 
-	else if (document.URL.includes("legendmod.ml") && $("#UserProfileUID2a").val()!= ""){
-		userid = $("#UserProfileUID2a").val()
-	}	
 	else {
         //postSNEZ("https://lmsettings.snez.org/", userid, "LMSettings", $('#export-settings').val());
         postSNEZ("https://lmsettings.snez.org/", userid, "LMSettings", escape($('#export-settings').val()));
@@ -4554,12 +4558,10 @@ function SNEZOgarUpload() {
 }
 
 function SNEZOgarDownload() {
+	IdfromLegendmod()
     if (userid == "" || userid == null) {
         toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter128);
     }
-	else if (document.URL.includes("legendmod.ml") && $("#UserProfileUID2a").val()!= ""){
-		userid = $("#UserProfileUID2a").val()
-	}
 	else {
         getSNEZ("https://lmsettings.snez.org/", userid, "LMSettings");
         var responseSNEZ = xhttp.response;
