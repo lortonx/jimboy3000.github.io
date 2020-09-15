@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.502b
+// v2.503
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
 //var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
@@ -12660,8 +12660,12 @@ Game name     : ${i.displayName}<br/>
                 //    isFriend = extendedFlags & 2,
 
                 const isVirus = flags & 1;
-                const isFood = extendedFlags & 1;
+                const isFood = extendedFlags & 1;				
                 const isFriend = extendedFlags & 2;
+				
+				if (!LM.integrity){ //fix of food for private servers
+					if (size<21) isFood = 1
+				}
                 //const invisible = this.staticX!=null?this.isInView(x, y):false;
                 //id = this.newID(id),
                 //x = this.getX(x),
