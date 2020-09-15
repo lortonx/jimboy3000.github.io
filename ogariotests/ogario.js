@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.513
+// v2.514
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3395,7 +3395,7 @@ function thelegendmodproject() {
                         i.text(textLanguage.saveSett);
                     }, 500);
 					ogarhusettings();
-					ogarhusettingsImportExportMobile();
+					//ogarhusettingsImportExportMobile();
                 });
             $('#theme').append('<div class=\"restore-settings\"><a href=\"#\">' + textLanguage.restoreThemeSettings + '</a></div>'),
                 $(document).on('click', '#theme .restore-settings a', function(e) {
@@ -4876,7 +4876,7 @@ function thelegendmodproject() {
                 $('#skins-panel').css("width", "550px");
             }
             ogarhusettings();
-			ogarhusettingsImportExportMobile();
+			//ogarhusettingsImportExportMobile();
         },
         loadProfiles() {
             if (null !== window.localStorage.getItem('ogarioPlayerProfiles')) {
@@ -5456,7 +5456,7 @@ function thelegendmodproject() {
             $(document).on("change", "#quality", function() {
                 app.getQuality(this.value);
                 ogarhusettings();
-				ogarhusettingsImportExportMobile();
+				//ogarhusettingsImportExportMobile();
             });
             $(`#skin`).popover({
                 html: true,
@@ -5779,7 +5779,7 @@ function thelegendmodproject() {
                 $(o).fadeIn(1000);
             } catch (error) {}
             ogarhusettings();
-			ogarhusettingsImportExportMobile();
+			//ogarhusettingsImportExportMobile();
             $('.submenu-panel').perfectScrollbar('update');
         },
         getDefaultSettings() {
@@ -14839,7 +14839,7 @@ Game name     : ${i.displayName}<br/>
     window.onresize = function() {
         drawRender.resizeCanvas();
         ogarhusettings();
-		ogarhusettingsImportExportMobile();
+		//ogarhusettingsImportExportMobile();
     };
     spectateBlind();
 
