@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.505
+// v2.506
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
 //var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
@@ -14982,6 +14982,7 @@ Game name     : ${i.displayName}<br/>
     window.canvasElem = document.querySelector("canvas");
     window.canvasElem.addEventListener('contextmenu', openContextMenu, false);
 	document.getElementById("botsRemoteIP").addEventListener('contextmenu', openContextMenu2, false);
+	document.getElementById("server-token").addEventListener('contextmenu', openContextMenu3, false);
     PreLcCelebration();
     consoleNotice();
     $("#overlays").css("z-index", "100")
@@ -15179,9 +15180,25 @@ const menuLeft2 = new ContextMenu({
         }
     ]
 });
+const menuLeft3 = new ContextMenu({
+    'theme': 'default', // or 'blue'
+    'items': [{
+            'icon': 'download',
+            'name': 'Open',
+            action: () => {
+                leftClickOpen2()
+            }
+        }
+    ]
+});
 function leftClickOpen() {
 	var temp11 = document.getElementById("botsRemoteIP").value
 	var temp12 = "https://repl.it/@" + temp11.split('--')[1].split('.repl.co')[0] + "/" + temp11.split('wss://')[1].split('--')[0]
+	window.open(temp12 , '_blank');
+}
+function leftClickOpen2() {
+	var temp11 = document.getElementById("server-token").value
+	var temp12 = "https://glitch.com/~" + temp11.replace("wss://","").replace(".glitch.me","")
 	window.open(temp12 , '_blank');
 }
 function leftClickAttack() {
@@ -15230,6 +15247,17 @@ function openContextMenu2(evt) {
         document.getElementById("botsRemoteIP").addEventListener('click', hideContextMenu2, false);
     }
 }
+function openContextMenu3(evt) {
+    if (document.getElementById("server-token").value.includes('.glitch.me')) {
+        evt.preventDefault();
+        const time = menuLeft3.isOpen() ? 100 : 0;
+        menuLeft3.hide();
+        setTimeout(() => {
+            menuLeft3.show(evt.pageX, evt.pageY)
+        }, time);
+        document.getElementById("server-token").addEventListener('click', hideContextMenu3, false);
+    }
+}
 function hideContextMenu(evt) {
     menuLeft.hide();
     window.canvasElem.removeEventListener('click', hideContextMenu);
@@ -15237,6 +15265,10 @@ function hideContextMenu(evt) {
 function hideContextMenu2(evt) {
     menuLeft2.hide();
     document.getElementById("botsRemoteIP").removeEventListener('click', hideContextMenu2);
+}
+function hideContextMenu3(evt) {
+    menuLeft3.hide();
+    document.getElementById("server-token").removeEventListener('click', hideContextMenu3);
 }
 //Animated Skins
 function animateSkincheck() {
