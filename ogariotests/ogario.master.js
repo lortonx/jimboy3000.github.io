@@ -1,4 +1,4 @@
-//v12.60
+//v12.61
 
 var consoleMsgLMMaster = "[Master] ";
 
@@ -9,6 +9,8 @@ window.EnvConfig.master_url = self.localStorage.getItem("EnvConfig.master_url");
 window.EnvConfig.configVersion = self.localStorage.getItem("EnvConfig.configVersion");
 
 var window = this;
+var url;
+if (url && !url.includes('legendmod.ml')){
 $.ajax("//agar.io/index.html", {
     error() {},
     success(sketchContents) {
@@ -28,6 +30,7 @@ $.ajax("//agar.io/index.html", {
     cache: false,
     crossDomain: true
 });
+}	
 if (window.EnvConfig.master_url != null) {
     $.ajax(window.EnvConfig.master_url + "/getLatestID", {
         error() {},
@@ -318,7 +321,7 @@ function legendmaster(self) {
         parseClientVersion(styleValue) {
             return 10000 * parseInt(styleValue.split(".")[0]) + 100 * parseInt(styleValue.split(".")[1]) + parseInt(styleValue.split(".")[2]);
         },
-        'getRegionCode'() {
+        getRegionCode() {
             var nextNodeLoc = window.localStorage.getItem('location');
             if (nextNodeLoc) {
                 this.setRegion(nextNodeLoc, ![]);
@@ -797,7 +800,10 @@ function legendmaster(self) {
             this.getRegionNames();
             this.refreshRegionInfo();
             this.checkHash();
-            this.getRegionCode();
+			var url;
+			if (url && !url.includes('legendmod.ml')){
+				this.getRegionCode()
+			}			
             this.checkRegion();
             setInterval(function() {
                 n.refreshRegionInfo();
