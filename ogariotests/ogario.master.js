@@ -1,4 +1,4 @@
-//v12.58
+//v12.60
 
 var consoleMsgLMMaster = "[Master] ";
 
@@ -186,9 +186,9 @@ function legendmaster(self) {
             endpoint_version: "v4",
             proto_version: "15.0.3",
             //client_version: 30706,
-			client_version: 31008,
+			client_version: 31009,
 			//3.4.6
-            client_version_string: "3.10.8",
+            client_version_string: "3.10.9",
 			protocolVersion: 22
         };
     } else if (window.EnvConfig.master_url){
@@ -198,8 +198,8 @@ function legendmaster(self) {
             master_url: window.EnvConfig.master_url.replace("https://", ""),
             endpoint_version: "v4",
             proto_version: "15.0.3",
-            client_version: 31008,
-            client_version_string: "3.10.8",
+            client_version: 31009,
+            client_version_string: "3.10.9",
 			protocolVersion: 22
         };
 		} else {
@@ -209,8 +209,8 @@ function legendmaster(self) {
             master_url: "webbouncer-live-v8-0.agario.miniclippt.com",
             endpoint_version: "v4",
             proto_version: "15.0.3",
-            client_version: 31008,
-            client_version_string: "3.10.8",
+            client_version: 31009,
+            client_version_string: "3.10.9",
 			protocolVersion: 22
         };		
     }
@@ -334,9 +334,9 @@ function legendmaster(self) {
                     return xhr.setRequestHeader("Accept", "text/plain"), xhr.setRequestHeader("Accept", "*/*"), xhr.setRequestHeader("Accept", "q=0.01"), xhr.setRequestHeader("Content-Type", "application/octet-stream"), xhr.setRequestHeader("x-support-proto-version", master.xsupportprotoversion), xhr.setRequestHeader("x-client-version", master.clientVersion), true;
                 },
                 error() {
-                    if (timeout_callback) {
+                    /*if (timeout_callback) {
                         timeout_callback();
-                    }
+                    }*/
                 },
                 success(playlistCopy) {
                 $("#response").html(JSON.stringify(playlistCopy, null, 4));
@@ -521,7 +521,8 @@ function legendmaster(self) {
                             options.findServer(id, params);
                         }
                     }
-                }, function() {
+                }, 
+				function() {
                     options.backoffPeriod *= 2;
                     setTimeout(function() {
                         options.findServer(id, params);
@@ -654,7 +655,10 @@ function legendmaster(self) {
                 if (table && this.serverIP) {
                     this.connect(this.serverIP);
                 } else {
-                    this.findServer(this.region, this.gameMode);
+					var url;
+					if (url && !url.includes('legendmod.ml')){
+						this.findServer(this.region, this.gameMode);
+					}
                 }
             }
         },
@@ -860,7 +864,10 @@ function legendmaster(self) {
 };
 function continuelogout(){
         $("#UserProfileName1").text("Guest");
-        $("#UserProfileUID1").val("");
+		
+        //$("#UserProfileUID1").val("");
+		$("#replayuid").val("")
+		
 		$("#UserProfileUUID1").val("");	
         $(".agario-profile-picture").attr('src', 'https://legendmod.ml/banners/profilepic_guest.png');
 		$("#stats-content").html("");
@@ -883,8 +890,9 @@ function doFB() {
         $(".agario-profile-picture").attr('src', 'https://graph.facebook.com/' + fbresponse.id + '/picture?type=large');
 
         $("#UserProfileName1").text(fbresponse[Object.keys(fbresponse)[0]]);
-        $("#UserProfileUID1").val(fbresponse[Object.keys(fbresponse)[2]]);
-
+        //$("#UserProfileUID1").val(fbresponse[Object.keys(fbresponse)[2]]);
+		$("#replayuid").val(fbresponse[Object.keys(fbresponse)[2]])
+		
 		if (userid == fbresponse[Object.keys(fbresponse)[2]]){
 			setLevelProgressBar();
 		}		
@@ -920,7 +928,9 @@ function doGl() {
 
 	$(".agario-profile-picture").attr('src', GgImg);	
 	$("#UserProfileName1").text(GgProfileName);
-	$("#UserProfileUID1").val(GgUID);
+	
+	//$("#UserProfileUID1").val(GgUID);
+	$("#replayuid").val(GgUID)
 	
 	if (userid == GgUID){
 		setLevelProgressBar();
