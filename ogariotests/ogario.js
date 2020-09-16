@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.520
+// v2.521
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -1017,13 +1017,16 @@ function checkVideos1(a) {
 };
 
 function checkVideos3(o) {
-    if (o.readyState > 0) {
+    if (o.readyState > 0 && o.src == $("#skin").val()) {
+		
         var minutes = parseInt(o.duration / 60, 10);
         var seconds = o.duration % 60;
         if (o.videoWidth>1080 || minutes > 4) {            
-			toastr.error("<b>[" + Premadeletter123 + "]:</b> " + "Please use smaller videos than <font color='blue'><b>5 minutes</b></font>, <font color='blue'><b>low quality</b></font> and width until <font color='blue'><b>1080</b></font>, next time");
+			toastr.error("<b>[" + Premadeletter123 + "]:</b> " + "Please use smaller videos than <font color='blue'><b>5 minutes</b></font>, <font color='blue'><b>low quality</b></font> and width until <font color='blue'><b>1080</b></font>, next time.");
+			
             //toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter124);
         }
+		
     }
 }
 
