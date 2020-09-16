@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.516
+// v2.517
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -6906,7 +6906,7 @@ function thelegendmodproject() {
             this.socket.binaryType = 'arraybuffer';
             var app = this;
             this.socket.onopen = () => {
-                console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Ogario socket open:', application.publicIP);
+                //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Ogario socket open:', application.publicIP);
                 var buf = app.createView(3);
                 buf.setUint8(0, 0);
 				//console.log("socket",this.socket.url)
@@ -6925,7 +6925,7 @@ function thelegendmodproject() {
             }
             this.socket.onclose = function(buf) {
                 //app.flushData();
-                console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket close', buf);
+                //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket close', buf);
             }
             this.socket.onerror = function(buf) {
                 //app.flushData();
@@ -6971,7 +6971,7 @@ function thelegendmodproject() {
             app = this;
             window.SLGsocket.onopen = function() {
                 window.SLG3NumberTries = 0;
-                console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' SLG socket open:', room);
+                //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' SLG socket open:', room);
                 //
                 window.SLGsocket.send(JSON.stringify({
                     "auth": "JIM2" + customLMID,
@@ -6989,7 +6989,7 @@ function thelegendmodproject() {
                 application.handleSLGMessage(e);
             }
             window.SLGsocket.onclose = function(e) {
-                console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' SLG socket close');
+                //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' SLG socket close');
                 //setTimeout(function() {
                 if (window.SLG3NumberTries < 2) {
                     application.SLGconnect2(legendmod.ws)
@@ -7003,7 +7003,7 @@ function thelegendmodproject() {
             };
             window.SLGsocket.closeAndOpen = function(e) {
                 window.SLGsocket.onclose = function(e) {
-                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Previous SLG socket closed async');
+                    //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Previous SLG socket closed async');
                 }
                 if (window.SLG3NumberTries < 2) {
                     application.SLGconnect2(legendmod.ws)
@@ -7724,7 +7724,7 @@ function thelegendmodproject() {
             }
             if (window.legendmod.gameMode != ":party" && mm > 0 && (!window.legendmod.play || mm > window.legendmod.playerMass) && max <= 3 && window.legendmod.bgpi <= 3 && !window.legendmod.setrot) {
                 if (!spects.length) {
-                    console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " VMR UPDATE:", window.legendmod.vnr, mm, window.legendmod.playerMass, max, window.legendmod.bgpi);
+                    //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " VMR UPDATE:", window.legendmod.vnr, mm, window.legendmod.playerMass, max, window.legendmod.bgpi);
                     this.setvnr(max);
                     console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Map fixed with LM players. POS:', max);
                 } else if (!window.announceSpectNotifOnce) {
@@ -9736,7 +9736,7 @@ function thelegendmodproject() {
         pressedKeys: {},
         dance: false,
         connect(t) {		
-            console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Connecting to game server:', t);
+            //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Connecting to game server:', t);
             var app = this;
             setTimeout(function() {
                 application.Socket3connect(t);
@@ -15479,10 +15479,10 @@ function Socket3enabler(srv) {
         }
         Socket3.onerror = function(e) {
             window.socket3NumberTries++;
-            //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket 3 error');		
+            console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket 3 error');		
         }
         Socket3.onclose = function(e) {
-            console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket 3 close');
+            //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket 3 close');
             //setTimeout(function() {
             window.socket3NumberTries++;
             if (window.socket3NumberTries < 2) {
@@ -15491,7 +15491,7 @@ function Socket3enabler(srv) {
         }
         Socket3.closeAndOpen = function(e) {
             Socket3.onclose = function(e) {
-                console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Previous Socket 3 closed async');
+                //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Previous Socket 3 closed async');
             }
 
             if (window.Socket3) {
