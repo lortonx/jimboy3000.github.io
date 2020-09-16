@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.518
+// v2.519
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -6096,7 +6096,7 @@ function thelegendmodproject() {
                 //console.log('findOwnedVanillaSkin failed execution')				
                 if (!window.EquippableSkins && !window.findOwnedVanillaSkinOnce) {
                     window.findOwnedVanillaSkinOnce = true;
-                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' findOwnedVanillaSkin: window.EquippableSkins not loaded');
+                    //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' findOwnedVanillaSkin: window.EquippableSkins not loaded');
                     setTimeout(function() {
                         application.findOwnedVanillaSkin();
                     }, 4000);
@@ -15465,7 +15465,7 @@ function Socket3enabler(srv) {
             Socket3.send(JSON.stringify({
                 "joinHub": $("#server-token").val() + "3"
             }));
-            console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket 3 open:', room);
+            //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket 3 open:', room);
 
             //if(localStorage.getItem("isActualUsingSpecialEffectsSkin")){
             //SpecialEffectPlayers[application.lastSentNick] = localStorage.getItem("isActualUsingSpecialEffectsSkin");
