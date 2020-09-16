@@ -652,7 +652,12 @@ function searchIPHandler(searchStr) { //VERY WEIRD FUNCTION, MOD DOESNT LOAD IF 
     } else if (getParameterByName("search", searchStr)) {
         if (region) {
             $('#region option[value="' + region + '"]').prop('selected', 'selected').change();
-            getInfo();
+			var url;
+			if (url && !url.includes('legendmod.ml')){
+				getInfo();
+			}		
+            
+			
         }
         findIP(ip.replace("wss://", ""));
     } else {
@@ -2924,7 +2929,10 @@ function hideMenu() {
 }
 
 function showSearchHud() {
-    getInfo();
+	var url;
+	if (url && !url.includes('legendmod.ml')){
+		getInfo();
+	}	
     $("#backgroundFade").fadeIn();
     $("#notes").fadeIn();
     $("#statsInfo").fadeIn();
