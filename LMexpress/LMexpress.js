@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.30 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.31 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -4538,9 +4538,9 @@ function emphasischat() {
 
 function IdfromLegendmod(){
 	if (document.URL.includes("legendmod.ml") && $("#UserProfileUID2a").val()!= ""){
+		userid = $("#UserProfileUID2a").val()
 		window.agarioUID = userid
 		localStorage.setItem("agarioUID", window.agarioUID);
-		userid = $("#UserProfileUID2a").val()
 	}		
 }
 function SNEZOgarUpload() {
@@ -5902,7 +5902,10 @@ function initializeLM(modVersion) {
 		if (localStorage.getItem("agarioUID") != "" && localStorage.getItem("agarioUID") != null && localStorage.getItem("agarioUID") !="null"){
 			window.agarioUID = localStorage.getItem("agarioUID");
 			$("#UserProfileUID2a").val(window.agarioUID)
-		}	
+		}
+		$("#UserProfileUID2a").blur(function(){
+			IdfromLegendmod()
+		});
 	}
     core.disconnect = function() {
         adres(null, $('#gamemode').val(), $('#region').val());
