@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.517
+// v2.518
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10326,7 +10326,10 @@ function thelegendmodproject() {
             if (window.disableIntegrity != true) { //
                 this.clientVersion = version;
                 this.clientVersionString = string;
-                console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Versions: client:', version, string, "x-proto:", this.xsupportprotoversion, "protocol:", this.protocolVersion, "config:", "v" + window.getLatestconfigVersion, "configId:", window.getLatestID);
+				var tempooo
+				if (window.getLatestconfigVersion) tempooo = "v" + window.getLatestconfigVersion
+				
+                console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Versions: client:', version, string, "x-proto:", this.xsupportprotoversion, "protocol:", this.protocolVersion, "config:", tempooo, "configId:", window.getLatestID);
             } //
             else { //
                 this.clientVersion = 0;
