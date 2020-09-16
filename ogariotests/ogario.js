@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.519
+// v2.520
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15415,11 +15415,11 @@ var stylesLegendModConsole2 = [
 ].join(';');
 
 function consoleNotice() {
-    console.group('%cLegend express%c  %chttp://www.legendmod.ml', stylesLegendModConsole1, 'font-size: 48px; background: url(https://legendmod.ml/banners/icon48.png) no-repeat', stylesLegendModConsole1);
-    console.group("Part of");
+    console.groupCollapsed('%cLegend express%c  %chttp://www.legendmod.ml', stylesLegendModConsole1, 'font-size: 48px; background: url(https://legendmod.ml/banners/icon48.png) no-repeat', stylesLegendModConsole1);
+    console.groupCollapsed("Part of");
     console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
     console.groupEnd();
-    console.group("Mod developed by");
+    console.groupCollapsed("Mod developed by");
     console.log('%cwww.legendclan.ml', stylesLegendModConsole2);
     console.groupEnd();
     console.groupEnd();
