@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.35 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.36 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -4791,7 +4791,7 @@ function getSNEZServers(ifcalled) {
 
         },
         onOpen: function() {
-            console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Snez socket open");
+            //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Snez socket open");
             //       app.state = "Connected.";
         },
 
@@ -6084,7 +6084,7 @@ function joinSERVERfindinfo() {
 
             setTimeout(function() {
                 if ($('.logEntry').html() != undefined && $('.logEntry').html() != "") {
-                    console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Searching Snez servers..");
+                    //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Searching Snez servers..");
                     for (var i = 0; i < $('.logEntry').length; i++) {
                         if ($('.logEntry>#playerinfo').eq(i).html() == $('#nick').val()) {
                             $('.logEntry').eq(i).remove();
