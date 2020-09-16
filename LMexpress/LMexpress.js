@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.34 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.35 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -652,7 +652,7 @@ function searchIPHandler(searchStr) { //VERY WEIRD FUNCTION, MOD DOESNT LOAD IF 
     } else if (getParameterByName("search", searchStr)) {
         if (region) {
             $('#region option[value="' + region + '"]').prop('selected', 'selected').change();
-			if (document.URL.includes('legendmod.ml')){
+			if (!document.URL.includes('legendmod.ml')){
 				getInfo();
 			}		
             
@@ -2928,7 +2928,7 @@ function hideMenu() {
 }
 
 function showSearchHud() {
-	if (document.URL.includes('legendmod.ml')){
+	if (!document.URL.includes('legendmod.ml')){
 		getInfo();
 	}	
     $("#backgroundFade").fadeIn();
