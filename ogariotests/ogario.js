@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.521
+// v2.522
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9802,6 +9802,7 @@ function thelegendmodproject() {
             if (window.master && window.master.onConnect) {
                 window.master.onConnect();
             }
+			this.play = false //fix
 			/*
 			if (this.ws.includes("imsolo.pro:2102")){ //6 times bigger 600 users limit
 				this.mapSize = 14142 * 6 //84852
