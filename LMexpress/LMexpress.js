@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.36 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.37 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -151,7 +151,8 @@ var clanpass = getParameterByName("pass", url);
 var searchedplayer = getParameterByName("player", url);
 var autoplayplayer = getParameterByName("autoplayer", url);
 var replayURL = getParameterByName("replay", url);
-
+var replayStart = getParameterByName("replayStart", url);
+var replayEnd = getParameterByName("replayEnd", url);
 
 var realmode2 = "";
 var mode = ""; //just in case
