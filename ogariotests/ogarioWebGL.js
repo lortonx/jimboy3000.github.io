@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.530
+// v2.531
 //webGL TEST
 
 //window.testobjects = {};
@@ -6468,7 +6468,8 @@ function thelegendmodproject() {
                 var a = e + 9.5;
                 if (this.miniMap) {
                     this.miniMapCtx.clearRect(0, 0, t, s);
-                } else {
+                } 
+				else {
                     this.miniMap = document.getElementById("minimap");
                     this.miniMapCtx = this.miniMap.getContext("2d");
                     this.miniMapCtx.ogarioCtx = true;
@@ -13192,8 +13193,8 @@ Game name     : ${i.displayName}<br/>
             indicator: null,
             setCanvas() {
                 this.canvas = document.getElementById('canvas');
-                this.ctx = this.canvas.getContext('2d');
-				//this.ctx = enableWebGLCanvas(canvas);
+                //this.ctx = this.canvas.getContext('2d');
+				this.ctx = enableWebGLCanvas(canvas);
                 this.canvas.onmousemove = function(event) {
                     LM.clientX = event.clientX;
                     LM.clientY = event.clientY;
@@ -13257,7 +13258,7 @@ Game name     : ${i.displayName}<br/>
             renderFrame() { 
             //'renderFrame': async function() { //Sonia5
                 //await this.sleep(4); //Sonia5			
-                //this.ctx.start2D();
+                this.ctx.start2D();
 
                 LM.time = Date.now();
                 for (i = 0; i < LM.cells.length; i++) {
@@ -13467,7 +13468,7 @@ Game name     : ${i.displayName}<br/>
 
                 this.ctx.restore();
 
-                //this.ctx.finish2D();
+                this.ctx.finish2D();
                 /*if (defaultmapsettings.debug) {
                     this.ctx.fillStyle = "white";
                     this.ctx.font = "15px sans-serif";
