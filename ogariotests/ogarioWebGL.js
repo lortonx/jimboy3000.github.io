@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.528
+// v2.529
 //webGL TEST
 
 //window.testobjects = {};
@@ -13192,8 +13192,8 @@ Game name     : ${i.displayName}<br/>
             indicator: null,
             setCanvas() {
                 this.canvas = document.getElementById('canvas');
-                //this.ctx = this.canvas.getContext('2d');
-				this.ctx = enableWebGLCanvas(canvas);
+                this.ctx = this.canvas.getContext('2d');
+				//this.ctx = enableWebGLCanvas(canvas);
                 this.canvas.onmousemove = function(event) {
                     LM.clientX = event.clientX;
                     LM.clientY = event.clientY;
