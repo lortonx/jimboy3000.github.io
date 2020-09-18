@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.527
+// v2.528
 //webGL TEST
 
 //window.testobjects = {};
@@ -13257,7 +13257,7 @@ Game name     : ${i.displayName}<br/>
             renderFrame() { 
             //'renderFrame': async function() { //Sonia5
                 //await this.sleep(4); //Sonia5			
-                this.ctx.start2D();
+                //this.ctx.start2D();
 
                 LM.time = Date.now();
                 for (i = 0; i < LM.cells.length; i++) {
@@ -13465,7 +13465,7 @@ Game name     : ${i.displayName}<br/>
                 }
                 //
 
-                this.ctx.restore();
+                //this.ctx.restore();
 
                 this.ctx.finish2D();
                 /*if (defaultmapsettings.debug) {
