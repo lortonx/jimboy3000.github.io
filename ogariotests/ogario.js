@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.523
+// v2.524
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15315,7 +15315,7 @@ function openContextMenu(evt) {
     }
 }
 function openContextMenu2(evt) {
-    if (document.getElementById("botsRemoteIP").value.includes('.repl.co')) {
+    if (document.getElementById("botsRemoteIP").value.includes('.repl.co') || document.getElementById("botsRemoteIP").value.includes('.glitch.me')) {
         evt.preventDefault();
         const time = menuLeft2.isOpen() ? 100 : 0;
         menuLeft2.hide();
