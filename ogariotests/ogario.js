@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.522
+// v2.523
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15035,6 +15035,7 @@ Game name     : ${i.displayName}<br/>
     window.canvasElem.addEventListener('contextmenu', openContextMenu, false);
 	document.getElementById("botsRemoteIP").addEventListener('contextmenu', openContextMenu2, false);
 	document.getElementById("server-token").addEventListener('contextmenu', openContextMenu3, false);
+	document.getElementById("skin").addEventListener('contextmenu', openContextMenu4, false);
     PreLcCelebration();
     consoleNotice();
     $("#overlays").css("z-index", "100")
@@ -15243,14 +15244,39 @@ const menuLeft3 = new ContextMenu({
         }
     ]
 });
+const menuLeft4 = new ContextMenu({
+    'theme': 'default', // or 'blue'
+    'items': [{
+            'icon': 'download',
+            'name': 'Open',
+            action: () => {
+                leftClickOpen3()
+            }
+        }
+    ]
+});
 function leftClickOpen() {
-	var temp11 = document.getElementById("botsRemoteIP").value
-	var temp12 = "https://repl.it/@" + temp11.split('--')[1].split('.repl.co')[0] + "/" + temp11.split('wss://')[1].split('--')[0]
-	window.open(temp12 , '_blank');
+	if (document.getElementById("botsRemoteIP").value.includes('.repl.co')) {
+		var temp11 = document.getElementById("botsRemoteIP").value
+		var temp12 = "https://repl.it/@" + temp11.split('--')[1].split('.repl.co')[0] + "/" + temp11.split('wss://')[1].split('--')[0]
+		window.open(temp12 , '_blank');
+	}
+	else if (document.getElementById("botsRemoteIP").value.includes('.glitch.me')) {
+		var temp11 = document.getElementById("botsRemoteIP").value
+		var temp12 = "https://glitch.com/~" + temp11.replace("wss://","").replace(".glitch.me","")
+		window.open(temp12 , '_blank');
+	}	
 }
 function leftClickOpen2() {
 	var temp11 = document.getElementById("server-token").value
 	var temp12 = "https://glitch.com/~" + temp11.replace("wss://","").replace(".glitch.me","")
+	window.open(temp12 , '_blank');
+}
+function leftClickOpen3() {
+	var temp11 = document.getElementById("skin").value
+	var templ3 = temp11.replace("https://","").split(".github.io")[0]
+	var templ4 = temp11.replace("https://","").split(".github.io")[1]
+	var temp12 = "https://github.com/" + templ3 + "/" + templ3 + ".github.io/blob/master"+ templ4
 	window.open(temp12 , '_blank');
 }
 function leftClickAttack() {
@@ -15310,6 +15336,17 @@ function openContextMenu3(evt) {
         document.getElementById("server-token").addEventListener('click', hideContextMenu3, false);
     }
 }
+function openContextMenu4(evt) {
+    if (document.getElementById("skin").value.includes('.github.io/')) {
+        evt.preventDefault();
+        const time = menuLeft4.isOpen() ? 100 : 0;
+        menuLeft4.hide();
+        setTimeout(() => {
+            menuLeft4.show(evt.pageX, evt.pageY)
+        }, time);
+        document.getElementById("skin").addEventListener('click', hideContextMenu4, false);
+    }
+}
 function hideContextMenu(evt) {
     menuLeft.hide();
     window.canvasElem.removeEventListener('click', hideContextMenu);
@@ -15321,6 +15358,10 @@ function hideContextMenu2(evt) {
 function hideContextMenu3(evt) {
     menuLeft3.hide();
     document.getElementById("server-token").removeEventListener('click', hideContextMenu3);
+}
+function hideContextMenu4(evt) {
+    menuLeft4.hide();
+    document.getElementById("skin").removeEventListener('click', hideContextMenu4);
 }
 //Animated Skins
 function animateSkincheck() {
