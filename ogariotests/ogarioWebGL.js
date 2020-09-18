@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.525
+// v2.526
 //webGL TEST
 
 //window.testobjects = {};
@@ -6238,9 +6238,11 @@ function thelegendmodproject() {
                         depth = depth / application.graphics;
                     }
                     var i = document.createElement("canvas");
+					
                     i.width = depth;
                     i.height = depth;
-                    var $ = i.getContext("2d");
+                    //var $ = i.getContext("2d");
+					var $ = enableWebGLCanvas(i);
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -6267,7 +6269,8 @@ function thelegendmodproject() {
                     var i = document.createElement("canvas");
                     i.width = depth;
                     i.height = depth;
-                    var $ = i.getContext("2d");
+                    //var $ = i.getContext("2d");
+					var $ = enableWebGLCanvas(i);
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -6295,7 +6298,8 @@ function thelegendmodproject() {
                     var i = document.createElement("canvas");
                     i.width = depth;
                     i.height = depth;
-                    var $ = i.getContext("2d");
+                    //var $ = i.getContext("2d");
+					var $ = enableWebGLCanvas(i);
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -6322,7 +6326,8 @@ function thelegendmodproject() {
                     var i = document.createElement("canvas");
                     i.width = depth;
                     i.height = depth;
-                    var $ = i.getContext("2d");
+                    //var $ = i.getContext("2d");
+					var $ = enableWebGLCanvas(i);
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -6349,7 +6354,8 @@ function thelegendmodproject() {
                     var i = document.createElement("canvas");
                     i.width = depth;
                     i.height = depth;
-                    var $ = i.getContext("2d");
+                    //var $ = i.getContext("2d");
+					var $ = enableWebGLCanvas(i);
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -13241,7 +13247,7 @@ Game name     : ${i.displayName}<br/>
             renderFrame() { 
             //'renderFrame': async function() { //Sonia5
                 //await this.sleep(4); //Sonia5			
-                //this.ctx.start2D();
+                this.ctx.start2D();
 
                 LM.time = Date.now();
                 for (i = 0; i < LM.cells.length; i++) {
@@ -13451,7 +13457,7 @@ Game name     : ${i.displayName}<br/>
 
                 this.ctx.restore();
 
-                //this.ctx.finish2D();
+                this.ctx.finish2D();
                 /*if (defaultmapsettings.debug) {
                     this.ctx.fillStyle = "white";
                     this.ctx.font = "15px sans-serif";
@@ -14192,7 +14198,8 @@ Game name     : ${i.displayName}<br/>
             },
             drawPieChart() {
                 this.pieChart || (this.pieChart = document.createElement('canvas'));
-                var ctx = this.pieChart.getContext('2d'),
+                //var ctx = this.pieChart.getContext('2d'),
+				var ctx = enableWebGLCanvas(this.pieChart),
                     mincanvasWidth = Math.min(200, 0.3 * this.canvasWidth) / 200;
                 this.pieChart.width = 200 * mincanvasWidth;
                 this.pieChart.height = 240 * mincanvasWidth;
@@ -14329,9 +14336,11 @@ Game name     : ${i.displayName}<br/>
                 this.pellet = null;
                 var size = 10 + defaultSettings.foodSize;
                 var canvas = document.createElement('canvas');
+				
                 canvas.width = 2 * size,
                     canvas.height = 2 * size;
-                var ctx = canvas.getContext('2d');
+                //var ctx = canvas.getContext('2d');
+				var ctx = enableWebGLCanvas(canvas);
                 ctx.arc(size, size, size, 0, this.pi2, false);
                 ctx.fillStyle = defaultSettings.foodColor;
                 ctx.fill();
@@ -14342,9 +14351,11 @@ Game name     : ${i.displayName}<br/>
             preDrawIndicator() {
                 this.indicator = null;
                 var canvas = document.createElement('canvas');
+				
                 canvas.width = 90;
                 canvas.height = 50;
-                var ctx = canvas.getContext('2d');
+                //var ctx = canvas.getContext('2d');
+				var ctx = enableWebGLCanvas(canvas);
                 ctx.lineWidth = 2;
                 ctx.fillStyle = defaultSettings.teammatesIndColor;
                 ctx.strokeStyle = '#000000';
