@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.532
+// v2.533
 //webGL TEST
 
 //window.testobjects = {};
@@ -14409,7 +14409,7 @@ Game name     : ${i.displayName}<br/>
             //'renderFrame': async function() { //Sonia5
                 //await this.sleep(4); //Sonia5				
             render() {
-				ctx.start2D();
+				this.ctx.start2D();
 			//'render': async function() {
 				//if (!window.fpsM) window.fpsM = 4
 				//await drawRender.sleep(window.fpsM);	
@@ -14418,25 +14418,30 @@ Game name     : ${i.displayName}<br/>
                 drawRender.renderFrame();
 				if (!defaultmapsettings.unlockedFPS){
 					window.requestAnimationFrame(drawRender.render);
+					ctx.finish2D();
 				}
 				else if (defaultmapsettings.unlockedFPS==2 || defaultmapsettings.unlockedFPS==4 || defaultmapsettings.unlockedFPS==8 || defaultmapsettings.unlockedFPS==16 || defaultmapsettings.unlockedFPS==32 || defaultmapsettings.unlockedFPS==64){
 					setTimeout(function() {
 						window.requestAnimationFrame(drawRender.render);
+						ctx.finish2D();
 					}, defaultmapsettings.unlockedFPS);	
 				}
 				else if (defaultmapsettings.unlockedFPS=="ultra"){
 					setTimeout(function() {
 						for (var i=0;i<9;i++){
 							drawRender.countFps()
-							drawRender.renderFrame();							
+							drawRender.renderFrame();	
+							ctx.finish2D();
 						}
 						drawRender.render()
+						ctx.finish2D();
 					}, 0);					
 				}	
 				else if (defaultmapsettings.unlockedFPS=="sophisticated"){										
 					var timeloops = parseInt(window.drawRender.fps/window.fpsloopsetter);
 					if (timeloops>0){
-						window.requestAnimationFrame(drawRender.render);	
+						window.requestAnimationFrame(drawRender.render);
+					ctx.finish2D();						
 						//for (var i=0;i<timeloops-1;i++){
 						/*if (timeloops>1){	
 							drawRender.countFps()
@@ -14446,15 +14451,18 @@ Game name     : ${i.displayName}<br/>
 					else if(window.drawRender.fps/window.fpsloopsetter<1){
 						setTimeout(function() {
 							window.requestAnimationFrame(drawRender.render);
-						}, window.fpsloopsetter/window.drawRender.fps);						
+							ctx.finish2D();
+						}, window.fpsloopsetter/window.drawRender.fps);	
+						
 					}
 				}					
 				else{
 					setTimeout(function() {
 						drawRender.render()
+						ctx.finish2D();
 					}, 0);					
 				}	
-				ctx.finish2D();				
+								
 					//drawRender.render()
 				//}, 1000/window.fps);
 				//}, 0.1);
