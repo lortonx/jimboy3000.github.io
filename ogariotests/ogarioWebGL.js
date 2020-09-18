@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.533
+// v2.534
 //webGL TEST
 
 //window.testobjects = {};
@@ -13193,9 +13193,9 @@ Game name     : ${i.displayName}<br/>
             indicator: null,
             setCanvas() {
                 this.canvas = document.getElementById('canvas');
-                //this.ctx = this.canvas.getContext('2d');
+                this.ctx = this.canvas.getContext('2d');
 				
-				this.ctx = enableWebGLCanvas(canvas);
+				//this.ctx = enableWebGLCanvas(canvas);
                 this.canvas.onmousemove = function(event) {
                     LM.clientX = event.clientX;
                     LM.clientY = event.clientY;
@@ -14409,7 +14409,7 @@ Game name     : ${i.displayName}<br/>
             //'renderFrame': async function() { //Sonia5
                 //await this.sleep(4); //Sonia5				
             render() {
-				this.ctx.start2D();
+				
 			//'render': async function() {
 				//if (!window.fpsM) window.fpsM = 4
 				//await drawRender.sleep(window.fpsM);	
@@ -14418,12 +14418,12 @@ Game name     : ${i.displayName}<br/>
                 drawRender.renderFrame();
 				if (!defaultmapsettings.unlockedFPS){
 					window.requestAnimationFrame(drawRender.render);
-					ctx.finish2D();
+					
 				}
 				else if (defaultmapsettings.unlockedFPS==2 || defaultmapsettings.unlockedFPS==4 || defaultmapsettings.unlockedFPS==8 || defaultmapsettings.unlockedFPS==16 || defaultmapsettings.unlockedFPS==32 || defaultmapsettings.unlockedFPS==64){
 					setTimeout(function() {
 						window.requestAnimationFrame(drawRender.render);
-						ctx.finish2D();
+						
 					}, defaultmapsettings.unlockedFPS);	
 				}
 				else if (defaultmapsettings.unlockedFPS=="ultra"){
@@ -14434,7 +14434,7 @@ Game name     : ${i.displayName}<br/>
 							ctx.finish2D();
 						}
 						drawRender.render()
-						ctx.finish2D();
+						
 					}, 0);					
 				}	
 				else if (defaultmapsettings.unlockedFPS=="sophisticated"){										
@@ -14451,7 +14451,7 @@ Game name     : ${i.displayName}<br/>
 					else if(window.drawRender.fps/window.fpsloopsetter<1){
 						setTimeout(function() {
 							window.requestAnimationFrame(drawRender.render);
-							ctx.finish2D();
+							
 						}, window.fpsloopsetter/window.drawRender.fps);	
 						
 					}
@@ -14459,7 +14459,7 @@ Game name     : ${i.displayName}<br/>
 				else{
 					setTimeout(function() {
 						drawRender.render()
-						ctx.finish2D();
+						
 					}, 0);					
 				}	
 								
