@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.529
+// v2.530
 //webGL TEST
 
 //window.testobjects = {};
@@ -13465,9 +13465,9 @@ Game name     : ${i.displayName}<br/>
                 }
                 //
 
-                //this.ctx.restore();
+                this.ctx.restore();
 
-                this.ctx.finish2D();
+                //this.ctx.finish2D();
                 /*if (defaultmapsettings.debug) {
                     this.ctx.fillStyle = "white";
                     this.ctx.font = "15px sans-serif";
