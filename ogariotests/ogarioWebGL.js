@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.526
+// v2.527
 //webGL TEST
 
 //window.testobjects = {};
@@ -6243,6 +6243,7 @@ function thelegendmodproject() {
                     i.height = depth;
                     //var $ = i.getContext("2d");
 					var $ = enableWebGLCanvas(i);
+					$.start2D()
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -6258,6 +6259,7 @@ function thelegendmodproject() {
                     this.customSkinsCache[e + "_cached"].src = i.toDataURL();
                     i = null;
                     this.cacheSkin(this.customSkinsCache, animated);
+					$.finish2D();
                 }
             }
         },
@@ -6271,6 +6273,7 @@ function thelegendmodproject() {
                     i.height = depth;
                     //var $ = i.getContext("2d");
 					var $ = enableWebGLCanvas(i);
+					$.start2D()
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -6282,6 +6285,7 @@ function thelegendmodproject() {
                     //this.customSkinsCache[e + "_cached"].src = i.toDataURL('image/jpeg', 0.1);
                     i = null;
                     this.cacheSkin2(this.customSkinsCache);
+					$.finish2D();
                 }
             }
         },
@@ -6300,6 +6304,7 @@ function thelegendmodproject() {
                     i.height = depth;
                     //var $ = i.getContext("2d");
 					var $ = enableWebGLCanvas(i);
+					$.start2D()
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -6310,6 +6315,7 @@ function thelegendmodproject() {
                     this.customSkinsCache[e + "_cached3"].src = i.toDataURL();
                     i = null;
                     this.cacheSkin3(this.customSkinsCache);
+					$.finish2D();
                 }
             }
         },
@@ -6328,6 +6334,7 @@ function thelegendmodproject() {
                     i.height = depth;
                     //var $ = i.getContext("2d");
 					var $ = enableWebGLCanvas(i);
+					$.start2D()
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -6338,6 +6345,7 @@ function thelegendmodproject() {
                     this.customSkinsCache[e + "_cached4"].src = i.toDataURL();
                     i = null;
                     this.cacheSkin4(this.customSkinsCache);
+					$.finish2D();
                 }
             }
         },
@@ -6356,6 +6364,7 @@ function thelegendmodproject() {
                     i.height = depth;
                     //var $ = i.getContext("2d");
 					var $ = enableWebGLCanvas(i);
+					$.start2D()
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -6366,6 +6375,7 @@ function thelegendmodproject() {
                     this.customSkinsCache[e + "_cached"+skinCache].src = i.toDataURL();
                     i = null;
                     this.cacheSkinAnimated(this.customSkinsCache, animated);
+					$.finish2D();
                 }
             }
         },		
@@ -14201,6 +14211,7 @@ Game name     : ${i.displayName}<br/>
                 //var ctx = this.pieChart.getContext('2d'),
 				var ctx = enableWebGLCanvas(this.pieChart),
                     mincanvasWidth = Math.min(200, 0.3 * this.canvasWidth) / 200;
+					ctx.start2D();
                 this.pieChart.width = 200 * mincanvasWidth;
                 this.pieChart.height = 240 * mincanvasWidth;
                 ctx.scale(mincanvasWidth, mincanvasWidth);
@@ -14212,6 +14223,7 @@ Game name     : ${i.displayName}<br/>
                     ctx.arc(100, 140, 80, time, currentPie, false);
                     ctx.fill();
                     time = currentPie;
+					ctx.finish2D()
                 }
             },
             drawBattleArea(ctx) {
@@ -14341,12 +14353,14 @@ Game name     : ${i.displayName}<br/>
                     canvas.height = 2 * size;
                 //var ctx = canvas.getContext('2d');
 				var ctx = enableWebGLCanvas(canvas);
+				ctx.start2D();
                 ctx.arc(size, size, size, 0, this.pi2, false);
                 ctx.fillStyle = defaultSettings.foodColor;
                 ctx.fill();
                 this.pellet = new Image();
                 this.pellet.src = canvas.toDataURL();
                 canvas = null;
+				ctx.finish2D();
             },
             preDrawIndicator() {
                 this.indicator = null;
@@ -14356,6 +14370,7 @@ Game name     : ${i.displayName}<br/>
                 canvas.height = 50;
                 //var ctx = canvas.getContext('2d');
 				var ctx = enableWebGLCanvas(canvas);
+				ctx.start2D();
                 ctx.lineWidth = 2;
                 ctx.fillStyle = defaultSettings.teammatesIndColor;
                 ctx.strokeStyle = '#000000';
@@ -14369,6 +14384,7 @@ Game name     : ${i.displayName}<br/>
                 this.indicator = new Image();
                 this.indicator.src = canvas.toDataURL();
                 canvas = null;
+				ctx.finish2D();
             },
             countFps(fake) {
                 if (defaultmapsettings.showStatsFPS) {
