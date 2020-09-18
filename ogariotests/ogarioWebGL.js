@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.531
+// v2.532
 //webGL TEST
 
 //window.testobjects = {};
@@ -13194,6 +13194,7 @@ Game name     : ${i.displayName}<br/>
             setCanvas() {
                 this.canvas = document.getElementById('canvas');
                 //this.ctx = this.canvas.getContext('2d');
+				
 				this.ctx = enableWebGLCanvas(canvas);
                 this.canvas.onmousemove = function(event) {
                     LM.clientX = event.clientX;
@@ -13258,7 +13259,7 @@ Game name     : ${i.displayName}<br/>
             renderFrame() { 
             //'renderFrame': async function() { //Sonia5
                 //await this.sleep(4); //Sonia5			
-                this.ctx.start2D();
+                //this.ctx.start2D();
 
                 LM.time = Date.now();
                 for (i = 0; i < LM.cells.length; i++) {
@@ -13468,7 +13469,7 @@ Game name     : ${i.displayName}<br/>
 
                 this.ctx.restore();
 
-                this.ctx.finish2D();
+                //this.ctx.finish2D();
                 /*if (defaultmapsettings.debug) {
                     this.ctx.fillStyle = "white";
                     this.ctx.font = "15px sans-serif";
@@ -14408,9 +14409,11 @@ Game name     : ${i.displayName}<br/>
             //'renderFrame': async function() { //Sonia5
                 //await this.sleep(4); //Sonia5				
             render() {
+				ctx.start2D();
 			//'render': async function() {
 				//if (!window.fpsM) window.fpsM = 4
-				//await drawRender.sleep(window.fpsM);				
+				//await drawRender.sleep(window.fpsM);	
+				
                 drawRender.countFps();		
                 drawRender.renderFrame();
 				if (!defaultmapsettings.unlockedFPS){
@@ -14450,7 +14453,8 @@ Game name     : ${i.displayName}<br/>
 					setTimeout(function() {
 						drawRender.render()
 					}, 0);					
-				}				
+				}	
+				ctx.finish2D();				
 					//drawRender.render()
 				//}, 1000/window.fps);
 				//}, 0.1);
