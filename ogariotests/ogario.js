@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.524
+// v2.525
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15204,13 +15204,14 @@ const menuLeft = new ContextMenu({
             'name': 'Attack',
             action: () => {
                 leftClickAttack()
+				
             }
         },
         {
             'icon': 'question',
             'name': 'Fight',
             action: () => {
-                leftClickFight()
+                leftClickFight()	
             }
         },
         {
@@ -15229,6 +15230,7 @@ const menuLeft2 = new ContextMenu({
             'name': 'Open',
             action: () => {
                 leftClickOpen()
+				menuLeft2.hide();
             }
         }
     ]
@@ -15240,6 +15242,7 @@ const menuLeft3 = new ContextMenu({
             'name': 'Open',
             action: () => {
                 leftClickOpen2()
+				menuLeft3.hide();
             }
         }
     ]
@@ -15251,6 +15254,7 @@ const menuLeft4 = new ContextMenu({
             'name': 'Open',
             action: () => {
                 leftClickOpen3()
+				menuLeft4.hide();
             }
         }
     ]
