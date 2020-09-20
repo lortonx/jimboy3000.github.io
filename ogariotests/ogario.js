@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.526
+// v2.527
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -51,7 +51,10 @@ function deleteGamemode(temp) {
     }, {
         text: 'Zimbabwe',
         value: 31
-    }, {			
+    }, {
+        text: 'Antarctic',
+        value: 35
+    }, {		
         text: 'Instant Merging',
         value: 16
     }, {		
@@ -247,6 +250,9 @@ function deleteGamemode(temp) {
         }	
 		else if ($('#gamemode').val() == 34) {
             core.connect('wss://imsolo.pro:2102');
+        }	
+		else if ($('#gamemode').val() == 35) {
+            core.connect('wss://delta-server.glitch.me');
         }			
 /*		
 		else if ($('#gamemode').val() == 34) {
