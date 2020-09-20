@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.527
+// v2.528
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8811,7 +8811,7 @@ function thelegendmodproject() {
 							!application.chatHistory[i].message.includes('https://agar.io/sip=151.80.91.73:1511') && this.nick!=""){
 								if (application.chatHistory[i].nick == $('#nick').val() || application.chatHistory[i].nick == application.lastSentNick){
 									if(application.chatHistory[i].message.split('&')[1] && application.chatHistory[i].message.split('&')[1].split(';')[0]){
-										application.chatHistory[i].message.replace(application.chatHistory[i].message.split('&')[1].split(';')[0], "").replace("&;","");
+										application.chatHistory[i].message.replace(application.chatHistory[i].message.split('&')[1].split(';')[0], "").replace("&;","").replace("/","").replace("'","").replace("!","").replace("%","").replace("(","").replace(")","");
 									}
 									//application.chatHistory[i].message = application.chatHistory[i].message.replace("&#x2F;", "");
 									if (defaultmapsettings.showChatMyOwn){
