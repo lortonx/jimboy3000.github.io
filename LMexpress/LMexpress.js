@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.37 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.38 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -4544,10 +4544,9 @@ function emphasischat() {
 }
 
 function IdfromLegendmod(){
-	if (document.URL.includes("legendmod.ml") && $("#UserProfileUID2a").val()!= ""){
-		userid = $("#UserProfileUID2a").val()
-		window.agarioUID = userid
-		localStorage.setItem("agarioUID", window.agarioUID);
+	if (document.URL.includes("legendmod.ml") && $("#UserProfileID2a").val()!= ""){
+		window.userid = $("#UserProfileID2a").val()
+		localStorage.setItem("userid", window.userid);
 	}		
 }
 function SNEZOgarUpload() {
@@ -5905,12 +5904,12 @@ function initializeLM(modVersion) {
     $("#close-exp-imp").before('<button id="SNEZOgarUploadBtn" onclick="SNEZOgarUpload(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109 + '</button>');
     $("#close-exp-imp").before('<button id="SNEZOgarDownloadBtn" onclick="SNEZOgarDownload(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109a + '</button>');
 	if (document.URL.includes("legendmod.ml")){
-		$("#close-exp-imp").after('<br><div id="UserProfileUID2">Social ID: <input id="UserProfileUID2a" class="user-name" style="display:inline-block"></div>');
-		if (localStorage.getItem("agarioUID") != "" && localStorage.getItem("agarioUID") != null && localStorage.getItem("agarioUID") !="null"){
-			window.agarioUID = localStorage.getItem("agarioUID");
-			$("#UserProfileUID2a").val(window.agarioUID)
+		$("#close-exp-imp").after('<br><div id="UserProfileUID2">Social ID: <input id="UserProfileID2a" class="user-name" style="display:inline-block"></div>');
+		if (localStorage.getItem("userid") != "" && localStorage.getItem("userid") != null && localStorage.getItem("userid") !="null"){
+			userid = localStorage.getItem("userid");		
+			$("#UserProfileID2a").val(window.userid)
 		}
-		$("#UserProfileUID2a").blur(function(){
+		$("#UserProfileID2a").blur(function(){
 			IdfromLegendmod()
 		});
 	}
