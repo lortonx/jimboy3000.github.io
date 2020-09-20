@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.529
+// v2.528
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9821,11 +9821,13 @@ function thelegendmodproject() {
         onOpen() {
             //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket open');
             this.time = Date.now();
+			if (!window.customProtol) window.customProtol = 6
+			if (!window.customClient) window.customProtol = 1
+			
             var view = this.createView(5);
             view.setUint8(0, 254);
             if (!window.gameBots.protocolVersion) window.gameBots.protocolVersion = master.protocolVersion;
-			if (window.protocol5){ view.setUint32(1, 5, true); } //protocol 6 and 5
-			else if (!this.integrity){ view.setUint32(1, 6, true); }	
+			if (!this.integrity){ view.setUint32(1, window.customProtol, true); }
 			else{ view.setUint32(1, this.protocolVersion, true);  } //			
 			//if (LM.ws.includes("imsolo.pro") || window.protocol6){ view.setUint32(1, 6, true); } //protocol 6 and 5
 			//else if (window.protocol5){ view.setUint32(1, 5, true); } // Protocol 5
@@ -9835,8 +9837,7 @@ function thelegendmodproject() {
             view = this.createView(5);
             view.setUint8(0, 255);
             if (!window.gameBots.clientVersion) window.gameBots.clientVersion = this.clientVersion
-			if (window.protocol5){ view.setUint32(1, 0, true); } //protocol 6 and 5
-			else if (!this.integrity){ view.setUint32(1, 1, true); } //protocol 6 and 5
+			if (!this.integrity){ view.setUint32(1, window.customClient, true); } //protocol 6 and 5
 			else{ view.setUint32(1, this.clientVersion, true); }//
 			//if (LM.ws.includes("imsolo.pro") || window.protocol6){ view.setUint32(1, 1, true); } //protocol 6 and 5
 			//else if (window.protocol5){ view.setUint32(1, 1332175218, true); } // Protocol 5
