@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.528
+// v2.529
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9822,7 +9822,7 @@ function thelegendmodproject() {
             //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket open');
             this.time = Date.now();
 			if (!window.customProtol) window.customProtol = 6
-			if (!window.customClient) window.customProtol = 1
+			if (!window.customClient) window.customClient = 1
 			
             var view = this.createView(5);
             view.setUint8(0, 254);
