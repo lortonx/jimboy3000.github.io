@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.532
+// v2.533
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -6904,7 +6904,7 @@ function thelegendmodproject() {
 					$('#gamemode option:selected').next().prop('selected', 'selected').change();
 				}
 				else {
-					('#gamemode option:first').prop('selected', 'selected').change();
+					$('#gamemode option:first').prop('selected', 'selected').change();
 				}
 				//$('#gamemode option[value=34]').prop('selected', 'selected').change();
 			}
