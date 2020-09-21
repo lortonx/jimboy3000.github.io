@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.531
+// v2.532
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -6893,11 +6893,24 @@ function thelegendmodproject() {
             window.core && window.core.connect && window.core.connect(ws);
         },
         gameServerReconnect() {
-            if (window.MC && window.MC.reconnect) {
+			
+            /*if (window.MC && window.MC.reconnect) {
                 window.MC.reconnect();
                 return;
-            }
-            if (window.master && window.master.reconnect) window.master.reconnect();
+            }*/
+			//if ()
+			if (!legendmod.integrity){
+				if ( $('#gamemode option:selected').next().length > 0 ){
+					$('#gamemode option:selected').next().prop('selected', 'selected').change();
+				}
+				else {
+					('#gamemode option:first').prop('selected', 'selected').change();
+				}
+				//$('#gamemode option[value=34]').prop('selected', 'selected').change();
+			}
+			else if (legendmod.integrity){
+				if (window.master && window.master.reconnect) window.master.reconnect();
+			}
         },
         gameServerJoin(token) {
             const ws = this.recreateWS(token);
