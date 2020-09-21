@@ -774,8 +774,13 @@ window.connectionBots = {
 			window.capthaWindowOpened = true;			
 			window.addEventListener("message", function(event){
 				//if (event.data.includes('captcha-')){
-					//event.data.replace('captcha-','');		
-					legendmod.sendSpawn2(event.data);
+					//event.data.replace('captcha-','');	
+					if (legendmod.integrity){
+						legendmod.sendSpawn2(event.data);
+					}
+					else{
+						legendmod.sendSpawn2('0');
+					}
 				//}
 				/*else if (event.data.includes('sendTimeOutTokenBots-')){
 					event.data.replace('sendTimeOutTokenBots-','');
