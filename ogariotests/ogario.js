@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.540
+// v2.542 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12936,6 +12936,7 @@ Game name     : ${i.displayName}<br/>
             //if(defaultmapsettings.clickTargeting) clickTargeting.check();
 
             //if (window.historystate && legendmod.play) {historystate();}
+			drawRender.render()
         },
         color2Hex(number) {
             var color = number.toString(16);
@@ -13875,13 +13876,14 @@ Game name     : ${i.displayName}<br/>
                     ctx.lineTo(x0, x1);
                     ctx.lineTo(x0, y0);
                     ctx.lineTo(text, y0);
+					ctx.lineTo(text, x1);
                     if (defaultmapsettings.borderGlow) {
                         ctx.shadowBlur = defaultSettings.borderGlowSize;
                         ctx.shadowColor = defaultSettings.borderGlowColor;
                     } else {
                         "skrrt";
                     }
-                    ctx.closePath();
+                    //ctx.closePath();
                     ctx.stroke();
                 }
                 if (defaultmapsettings.borderGlow) {
@@ -14475,16 +14477,16 @@ Game name     : ${i.displayName}<br/>
 				}
 				else if (defaultmapsettings.unlockedFPS==2 || defaultmapsettings.unlockedFPS==4 || defaultmapsettings.unlockedFPS==8 || defaultmapsettings.unlockedFPS==16 || defaultmapsettings.unlockedFPS==32 || defaultmapsettings.unlockedFPS==64){
 					setTimeout(function() {
-						window.requestAnimationFrame(drawRender.render);
+						//window.requestAnimationFrame(drawRender.render);
 					}, defaultmapsettings.unlockedFPS);	
 				}
 				else if (defaultmapsettings.unlockedFPS=="ultra"){
 					setTimeout(function() {
 						for (var i=0;i<9;i++){
 							drawRender.countFps()
-							drawRender.renderFrame();							
+							//drawRender.renderFrame();							
 						}
-						drawRender.render()
+						//drawRender.render()
 					}, 0);					
 				}	
 				else if (defaultmapsettings.unlockedFPS=="sophisticated"){										
@@ -14499,13 +14501,13 @@ Game name     : ${i.displayName}<br/>
 					}
 					else if(window.drawRender.fps/window.fpsloopsetter<1){
 						setTimeout(function() {
-							window.requestAnimationFrame(drawRender.render);
+							//window.requestAnimationFrame(drawRender.render);
 						}, window.fpsloopsetter/window.drawRender.fps);						
 					}
 				}					
 				else{
 					setTimeout(function() {
-						drawRender.render()
+						//drawRender.render()
 					}, 0);					
 				}				
 					//drawRender.render()
