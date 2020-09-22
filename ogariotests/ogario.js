@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.538
+// v2.539
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12648,6 +12648,9 @@ Game name     : ${i.displayName}<br/>
             this.time = Date.now();
             this.removePlayerCell = false;
             var eatEventsLength = view.readUInt16LE(offset);
+			// ??? test
+			if ( view.readUInt8(offset++) != 16) return false
+			
             offset += 2;
             for (var length = 0; length < eatEventsLength; length++) {
                 var eaterID = this.indexedCells[view.readUInt32LE(offset)],
