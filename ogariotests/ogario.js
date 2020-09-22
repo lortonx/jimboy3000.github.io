@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.536
+// v2.537
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9841,49 +9841,44 @@ function thelegendmodproject() {
             this.time = Date.now();
 			if (!window.customProtol) window.customProtol = 6
 			if (!window.customClient) window.customClient = 1
+			if (LM.ws.includes("proxy.cellz.io")){
+				window.customProtol = 5
+				window.customClient = 0
+			}
 			
             var view = this.createView(5);
             view.setUint8(0, 254);
-			if (!this.integrity){ 
-				if (LM.ws.includes("proxy.cellz.io")){
-					view.setUint32(1, 1, true);
-				}
-				else{
-					view.setUint32(1, window.customProtol, true); 
-				}
+			if (!this.integrity){ 				
+				view.setUint32(1, window.customProtol, true); 			
 				window.gameBots.protocolVersion = window.customProtol
 			}
 			else{ 		
 				view.setUint32(1, this.protocolVersion, true); 
 				window.gameBots.protocolVersion = master.protocolVersion;		
-			} //			
-			//if (LM.ws.includes("imsolo.pro") || window.protocol6){ view.setUint32(1, 6, true); } //protocol 6 and 5
-			//else if (window.protocol5){ view.setUint32(1, 5, true); } // Protocol 5
-            
-			
+			} 
             this.sendMessage(view);
-            view = this.createView(5);
+			
+			view = this.createView(5);
             view.setUint8(0, 255);
 			if (!this.integrity){ 		
-				
-				if (LM.ws.includes("proxy.cellz.io")){
-					view.setUint32(1332175218, 1, true);
-				}
-				else{
-					view.setUint32(1, window.customClient, true); 
-				}
+				view.setUint32(1, window.customClient, true); 
 				window.gameBots.clientVersion = window.customClient
-			} //protocol 6 and 5
+			} 
 			else{ 
 				view.setUint32(1, this.clientVersion, true);						
 				window.gameBots.clientVersion = this.clientVersion
 			}
+			this.sendMessage(view);
+			this.connectionOpened = true;
 			//
-			//if (LM.ws.includes("imsolo.pro") || window.protocol6){ view.setUint32(1, 1, true); } //protocol 6 and 5
-			//else if (window.protocol5){ view.setUint32(1, 1332175218, true); } // Protocol 5
-			
-            this.sendMessage(view);
-            this.connectionOpened = true;
+			if (LM.ws.includes("proxy.cellz.io")){
+				view = this.createView(2); view.setUint8(0, 32); this.sendMessage(view);
+				view = this.createView(5); view.setUint8(0, 32); view.setUint8(1, 118); view.setUint8(2, 93); view.setUint8(3, 4); this.sendMessage(view);
+				view = this.createView(2); view.setUint8(0, 78); this.sendMessage(view);
+			}
+			//
+            
+            
         },
         onMessage(message) {
 			//console.log(message.data)
