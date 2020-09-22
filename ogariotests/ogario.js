@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.544
+// v2.545
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9713,8 +9713,8 @@ function thelegendmodproject() {
         serverTime: 0,
         serverTimeDiff: 0,
         //loggedInTime: 0,
-        mapSize: 14142,
-        mapOffset: 7071,
+		mapOffset: 7071,
+        mapSize: 14142,   
         mapOffsetX: 0,
         mapOffsetY: 0,
         mapOffsetFixed: false,
@@ -13346,14 +13346,15 @@ Game name     : ${i.displayName}<br/>
                 LM.sortCells();
                 LM.compareCells();
                 //this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+
+                this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
+                this.ctx.scale(this.scale, this.scale);
+                this.ctx.translate(-this.camX, -this.camY);
 				this.ctx.clearRect(defaultSettings.bordersWidth, defaultSettings.bordersWidth, this.canvasWidth-defaultSettings.bordersWidth, this.canvasHeight-defaultSettings.bordersWidth);
                 if (defaultmapsettings.showGrid) {
                     this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
                 }				
-                this.ctx.save();
-                this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
-                this.ctx.scale(this.scale, this.scale);
-                this.ctx.translate(-this.camX, -this.camY);
+                this.ctx.save();				
                 if (defaultmapsettings.showBgSectors) {
                     this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
                 }
