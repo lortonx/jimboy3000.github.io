@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.534
+// v2.535
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12630,7 +12630,7 @@ Game name     : ${i.displayName}<br/>
         updateCells(view, offset) {
 			//window.updateCellsClock=true;
             var encode = function() {
-				console.log(view.length)
+				//console.log(view.length)
                 for (var text = '';;) {
                     var string = view.readUInt8(offset++);
                     if (0 == string) break;
@@ -12668,6 +12668,7 @@ Game name     : ${i.displayName}<br/>
                 offset += 2;
                 var flags = view.readUInt8(offset++),
                     extendedFlags = 0;
+					
                 128 & flags && (extendedFlags = view.readUInt8(offset++));
                 //128 & d && (f = t.readUInt8(i++));	
                 var color = null;
