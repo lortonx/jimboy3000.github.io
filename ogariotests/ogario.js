@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.540
+// v2.541
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12677,10 +12677,10 @@ Game name     : ${i.displayName}<br/>
 				if (crazyServer){
 					var x = view.readInt16LE(offset);
 					if (window.legendmod.vector[window.legendmod.vnr][0]) x = this.translateX(x); //Sonia3
-					offset += 4;
+					offset += 2;
 					var y = view.readInt16LE(offset);
 					if (window.legendmod.vector[window.legendmod.vnr][1]) y = this.translateY(y); //Sonia3
-					offset += 4;
+					offset += 2;
 					var size = view.readUInt16LE(offset);
 					offset += 2;
 					var flags = view.readUInt8(offset++),
