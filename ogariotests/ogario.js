@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.547
+// v2.533
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9839,46 +9839,39 @@ function thelegendmodproject() {
         onOpen() {
             //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket open');
             this.time = Date.now();
-			if (!window.customProtocol) window.customProtocol = 6
+			if (!window.customProtol) window.customProtol = 6
 			if (!window.customClient) window.customClient = 1
-			if (LM.ws.includes("proxy.cellz.io")){
-				window.customProtocol = 5
-				window.customClient = 0
-			}
 			
             var view = this.createView(5);
             view.setUint8(0, 254);
-			if (!this.integrity){ 				
-				view.setUint32(1, window.customProtocol, true); 			
-				window.gameBots.protocolVersion = window.customProtocol
+			if (!this.integrity){ 
+				view.setUint32(1, window.customProtol, true); 
+				window.gameBots.protocolVersion = window.customProtol
 			}
 			else{ 		
 				view.setUint32(1, this.protocolVersion, true); 
 				window.gameBots.protocolVersion = master.protocolVersion;		
-			} 
-            this.sendMessage(view);
+			} //			
+			//if (LM.ws.includes("imsolo.pro") || window.protocol6){ view.setUint32(1, 6, true); } //protocol 6 and 5
+			//else if (window.protocol5){ view.setUint32(1, 5, true); } // Protocol 5
+            
 			
-			view = this.createView(5);
+            this.sendMessage(view);
+            view = this.createView(5);
             view.setUint8(0, 255);
 			if (!this.integrity){ 		
 				view.setUint32(1, window.customClient, true); 
 				window.gameBots.clientVersion = window.customClient
-			} 
+			} //protocol 6 and 5
 			else{ 
-				view.setUint32(1, this.clientVersion, true);						
+				view.setUint32(1, this.clientVersion, true);
 				window.gameBots.clientVersion = this.clientVersion
-			}
-			this.sendMessage(view);
-			this.connectionOpened = true;
-			//
-			if (LM.ws.includes("proxy.cellz.io")){
-				view = this.createView(2); view.setUint8(0, 32); this.sendMessage(view);
-				view = this.createView(5); view.setUint8(0, 32); view.setUint8(1, 118); view.setUint8(2, 93); view.setUint8(3, 4); this.sendMessage(view);
-				view = this.createView(2); view.setUint8(0, 78); this.sendMessage(view);
-			}
-			//
-            
-            
+			}//
+			//if (LM.ws.includes("imsolo.pro") || window.protocol6){ view.setUint32(1, 1, true); } //protocol 6 and 5
+			//else if (window.protocol5){ view.setUint32(1, 1332175218, true); } // Protocol 5
+			
+            this.sendMessage(view);
+            this.connectionOpened = true;
         },
         onMessage(message) {
 			//console.log(message.data)
@@ -12637,7 +12630,6 @@ Game name     : ${i.displayName}<br/>
         updateCells(view, offset) {
 			//window.updateCellsClock=true;
             var encode = function() {
-				//console.log(view.length)
                 for (var text = '';;) {
                     var string = view.readUInt8(offset++);
                     if (0 == string) break;
@@ -12648,27 +12640,7 @@ Game name     : ${i.displayName}<br/>
             this.time = Date.now();
             this.removePlayerCell = false;
             var eatEventsLength = view.readUInt16LE(offset);
-			
-			var crazyServer
-			if (LM.ws.includes("proxy.cellz.io") || LM.ws.includes("germs.io") ){	
-				crazyServer = true
-			}	
-			
             offset += 2;
-			if (crazyServer){
-            for (var length = 0; length < eatEventsLength; length++) {
-                var eaterID = this.indexedCells[view.readUInt16LE(offset)],
-                    victimID = this.indexedCells[view.readUInt16LE(offset + 2)];
-                if (offset += 4, eaterID && victimID) {
-                    victimID.targetX = eaterID.x;
-                    victimID.targetY = eaterID.y;
-                    victimID.targetSize = victimID.size;
-                    victimID.time = this.time;
-                    victimID.removeCell();
-                }
-            }
-			}
-			else{
             for (var length = 0; length < eatEventsLength; length++) {
                 var eaterID = this.indexedCells[view.readUInt32LE(offset)],
                     victimID = this.indexedCells[view.readUInt32LE(offset + 4)];
@@ -12680,43 +12652,21 @@ Game name     : ${i.displayName}<br/>
                     victimID.removeCell();
                 }
             }
-			}
+
             for (length = 0;;) {
                 //extendedFlags = false;
-
-				
-                
-				var id;
-				
-				if (crazyServer){
-                id = view.readInt16LE(offset);
-                if (offset += 2, 0 == id) break;					
-					var x = view.readInt16LE(offset);
-					if (window.legendmod.vector[window.legendmod.vnr][0]) x = this.translateX(x); //Sonia3
-					offset += 2;
-					var y = view.readInt16LE(offset);
-					if (window.legendmod.vector[window.legendmod.vnr][1]) y = this.translateY(y); //Sonia3
-					offset += 2;
-					var size = view.readUInt16LE(offset);
-					offset += 2;
-					var flags = view.readUInt8(offset++),
-                    extendedFlags = 0;					
-				}
-				else{
-					id = view.readUInt32LE(offset);
-					if (offset += 4, 0 == id) break;
-					var x = view.readInt32LE(offset);
-					if (window.legendmod.vector[window.legendmod.vnr][0]) x = this.translateX(x); //Sonia3
-					offset += 4;
-					var y = view.readInt32LE(offset);
-					if (window.legendmod.vector[window.legendmod.vnr][1]) y = this.translateY(y); //Sonia3
-					offset += 4;
-					var size = view.readUInt16LE(offset);
-					offset += 2;
-					var flags = view.readUInt8(offset++),
+                var id = view.readUInt32LE(offset);
+                if (offset += 4, 0 == id) break;
+                var x = view.readInt32LE(offset);
+                if (window.legendmod.vector[window.legendmod.vnr][0]) x = this.translateX(x); //Sonia3
+                offset += 4;
+                var y = view.readInt32LE(offset);
+                if (window.legendmod.vector[window.legendmod.vnr][1]) y = this.translateY(y); //Sonia3
+                offset += 4;
+                var size = view.readUInt16LE(offset);
+                offset += 2;
+                var flags = view.readUInt8(offset++),
                     extendedFlags = 0;
-				}	
-				
                 128 & flags && (extendedFlags = view.readUInt8(offset++));
                 //128 & d && (f = t.readUInt8(i++));	
                 var color = null;
@@ -12738,7 +12688,7 @@ Game name     : ${i.displayName}<br/>
                     						//console.log('skin '+g);
 
                 }
-                if (8 & flags && !crazyServer) {
+                if (8 & flags) {
                     name = window.decodeURIComponent(escape(encode()));
 					//console.log('name '+name+ 'skin '+skin);
 					//if (LM.ws.includes("imsolo.pro") && name.includes('}')){
@@ -12878,31 +12828,17 @@ Game name     : ${i.displayName}<br/>
                     //console.log('FB friend cell in view', isFriend)
                 }
             }
-			if (crazyServer){
-				eatEventsLength = view.readUInt16LE(offset);
-				offset += 2;
-				for (length = 0; length < eatEventsLength; length++) {
-					var id = view.readUInt16LE(offset);
-					offset += 2;
-					cell = this.indexedCells[id];
-					if (cell) {
-						cell.removeCell();
-					}
-				}				
-			}
-			else{
-				eatEventsLength = view.readUInt16LE(offset);
-				offset += 2;
-				for (length = 0; length < eatEventsLength; length++) {
-					var id = view.readUInt32LE(offset);
-					offset += 4;
-					cell = this.indexedCells[id];
-					if (cell) {
-						cell.removeCell();
-					}
-				}
-			}
-			
+
+            eatEventsLength = view.readUInt16LE(offset);
+            offset += 2;
+            for (length = 0; length < eatEventsLength; length++) {
+                var id = view.readUInt32LE(offset);
+                offset += 4;
+                cell = this.indexedCells[id];
+                if (cell) {
+                    cell.removeCell();
+                }
+            }
             /*				
                             for (eatEventsLength = view.readUInt16LE(offset), offset += 2, a = 0; a < eatEventsLength; a++) {
                                 id = view.readUInt32LE(offset);
