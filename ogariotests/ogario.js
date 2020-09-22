@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.543
+// v2.544
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12655,6 +12655,20 @@ Game name     : ${i.displayName}<br/>
 			}	
 			
             offset += 2;
+			if (crazyServer){
+            for (var length = 0; length < eatEventsLength; length++) {
+                var eaterID = this.indexedCells[view.readUInt16LE(offset)],
+                    victimID = this.indexedCells[view.readUInt16LE(offset + 2)];
+                if (offset += 4, eaterID && victimID) {
+                    victimID.targetX = eaterID.x;
+                    victimID.targetY = eaterID.y;
+                    victimID.targetSize = victimID.size;
+                    victimID.time = this.time;
+                    victimID.removeCell();
+                }
+            }
+			}
+			else{
             for (var length = 0; length < eatEventsLength; length++) {
                 var eaterID = this.indexedCells[view.readUInt32LE(offset)],
                     victimID = this.indexedCells[view.readUInt32LE(offset + 4)];
@@ -12666,7 +12680,7 @@ Game name     : ${i.displayName}<br/>
                     victimID.removeCell();
                 }
             }
-
+			}
             for (length = 0;;) {
                 //extendedFlags = false;
 
@@ -12722,7 +12736,7 @@ Game name     : ${i.displayName}<br/>
                     						//console.log('skin '+g);
 
                 }
-                if (8 & flags) {
+                if (8 & flags && !crazyServer) {
                     name = window.decodeURIComponent(escape(encode()));
 					//console.log('name '+name+ 'skin '+skin);
 					//if (LM.ws.includes("imsolo.pro") && name.includes('}')){
@@ -12862,7 +12876,7 @@ Game name     : ${i.displayName}<br/>
                     //console.log('FB friend cell in view', isFriend)
                 }
             }
-
+			/*
             eatEventsLength = view.readUInt16LE(offset);
             offset += 2;
             for (length = 0; length < eatEventsLength; length++) {
@@ -12873,6 +12887,7 @@ Game name     : ${i.displayName}<br/>
                     cell.removeCell();
                 }
             }
+			*/
             /*				
                             for (eatEventsLength = view.readUInt16LE(offset), offset += 2, a = 0; a < eatEventsLength; a++) {
                                 id = view.readUInt32LE(offset);
