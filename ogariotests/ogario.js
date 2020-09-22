@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.546
+// v2.547
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12690,7 +12690,7 @@ Game name     : ${i.displayName}<br/>
 				
 				if (crazyServer){
                 id = view.readInt16LE(offset);
-                if (offset += 4, 0 == id) break;					
+                if (offset += 2, 0 == id) break;					
 					var x = view.readInt16LE(offset);
 					if (window.legendmod.vector[window.legendmod.vnr][0]) x = this.translateX(x); //Sonia3
 					offset += 2;
@@ -12878,17 +12878,30 @@ Game name     : ${i.displayName}<br/>
                     //console.log('FB friend cell in view', isFriend)
                 }
             }
-			
-            eatEventsLength = view.readUInt16LE(offset);
-            offset += 2;
-            for (length = 0; length < eatEventsLength; length++) {
-                var id = view.readUInt32LE(offset);
-                offset += 4;
-                cell = this.indexedCells[id];
-                if (cell) {
-                    cell.removeCell();
-                }
-            }
+			if (crazyServer){
+				eatEventsLength = view.readUInt16LE(offset);
+				offset += 2;
+				for (length = 0; length < eatEventsLength; length++) {
+					var id = view.readUInt16LE(offset);
+					offset += 2;
+					cell = this.indexedCells[id];
+					if (cell) {
+						cell.removeCell();
+					}
+				}				
+			}
+			else{
+				eatEventsLength = view.readUInt16LE(offset);
+				offset += 2;
+				for (length = 0; length < eatEventsLength; length++) {
+					var id = view.readUInt32LE(offset);
+					offset += 4;
+					cell = this.indexedCells[id];
+					if (cell) {
+						cell.removeCell();
+					}
+				}
+			}
 			
             /*				
                             for (eatEventsLength = view.readUInt16LE(offset), offset += 2, a = 0; a < eatEventsLength; a++) {
