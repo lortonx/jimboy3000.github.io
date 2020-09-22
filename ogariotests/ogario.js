@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.550 testing
+// v2.551 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13883,11 +13883,26 @@ Game name     : ${i.displayName}<br/>
 					ctx.moveTo(x0, x1+ctx.lineWidth);
                     ctx.lineTo(x0, y0-ctx.lineWidth);
 					
+					//
+					ctx.moveTo(x0, y0);
+					ctx.lineTo(x0+ctx.lineWidth, y0+ctx.lineWidth);
+					//
+					
 					ctx.moveTo(x0 - ctx.lineWidth, y0);		
                     ctx.lineTo(text + ctx.lineWidth, y0);
+
+					//
+					ctx.moveTo(text, y0);
+					ctx.lineTo(text-ctx.lineWidth, y0+ctx.lineWidth);
+					//
 					
 					ctx.moveTo(text, y0 - ctx.lineWidth);
 					ctx.lineTo(text, x1 + ctx.lineWidth);
+					
+					//
+					ctx.moveTo(text, x1);
+					ctx.lineTo(text-ctx.lineWidth, x1-ctx.lineWidth);
+					//					
 					//ctx.lineTo(text, x1);
                     if (defaultmapsettings.borderGlow) {
                         ctx.shadowBlur = defaultSettings.borderGlowSize;
