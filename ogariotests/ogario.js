@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.538
+// v2.539
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13879,6 +13879,38 @@ Game name     : ${i.displayName}<br/>
                     ctx.strokeStyle = radius;
                     ctx.lineWidth = canvas;
                     ctx.beginPath();
+                    ctx.moveTo(text, x1-100);
+					ctx.moveTo(x1-80, x1);
+					
+                    ctx.lineTo(x0, x1-100);
+					ctx.lineTo(x1-80, x1)
+					
+                    ctx.lineTo(x0, y0-100);
+					ctx.lineTo(y0-80, y0);
+					
+					
+                    ctx.lineTo(text, y0-100);
+					ctx.lineTo(y0-80, y0);
+                    if (defaultmapsettings.borderGlow) {
+                        ctx.shadowBlur = defaultSettings.borderGlowSize;
+                        ctx.shadowColor = defaultSettings.borderGlowColor;
+                    } else {
+                        "skrrt";
+                    }
+                    ctx.closePath();
+                    ctx.stroke();
+                }
+                if (defaultmapsettings.borderGlow) {
+                    ctx.shadowBlur = 0;
+                } else {
+                    "skrrt";
+                }
+            },				
+            /*drawMapBorders(ctx, macros, text, x1, x0, y0, radius, canvas) {
+                if (macros) {
+                    ctx.strokeStyle = radius;
+                    ctx.lineWidth = canvas;
+                    ctx.beginPath();
                     ctx.moveTo(text, x1);
                     ctx.lineTo(x0, x1);
                     ctx.lineTo(x0, y0);
@@ -13897,7 +13929,7 @@ Game name     : ${i.displayName}<br/>
                 } else {
                     "skrrt";
                 }
-            },
+            },*/
             drawVirusesRange(t, e, i) {
                 if (e.length) {
                     t.beginPath();
