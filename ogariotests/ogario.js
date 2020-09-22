@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.535
+// v2.536
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -11578,7 +11578,7 @@ function thelegendmodproject() {
                     break;
 
                     
-                case 16: //2020 jimboy3100 specific private servers
+                case 2: case 16: //2020 jimboy3100 specific private servers
                     //this.updateCells(new LMbuffer(data['buffer']), s);
                     this.updateCells(new window.buffer.Buffer(data.buffer), s);
                     //this.countPps()
