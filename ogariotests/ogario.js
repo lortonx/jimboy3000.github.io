@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.539
+// v2.540
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13879,8 +13879,8 @@ Game name     : ${i.displayName}<br/>
                     ctx.strokeStyle = radius;
                     ctx.lineWidth = canvas;
                     ctx.beginPath();
-                    ctx.moveTo(text, x1-100);
-					ctx.moveTo(x1-80, x1);
+                    //ctx.moveTo(text, x1-100);
+					ctx.moveTo(text, x1);
 					
                     ctx.lineTo(x0, x1-100);
 					ctx.lineTo(x1-80, x1)
