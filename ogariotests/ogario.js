@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.545
+// v2.538
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9708,13 +9708,12 @@ function thelegendmodproject() {
         //clientVersionString: '3.6.4',
         clientVersionString: master.clientVersionString,
         xsupportprotoversion: master.xsupportprotoversion,
-		drawedMapBorders: false,
         time: Date.now(),
         serverTime: 0,
         serverTimeDiff: 0,
         //loggedInTime: 0,
-		mapOffset: 7071,
-        mapSize: 14142,   
+        mapSize: 14142,
+        mapOffset: 7071,
         mapOffsetX: 0,
         mapOffsetY: 0,
         mapOffsetFixed: false,
@@ -13345,16 +13344,14 @@ Game name     : ${i.displayName}<br/>
                 LM.getCursorPosition();
                 LM.sortCells();
                 LM.compareCells();
-                //this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
-
+                this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+                if (defaultmapsettings.showGrid) {
+                    this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
+                }
+                this.ctx.save();
                 this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
                 this.ctx.scale(this.scale, this.scale);
                 this.ctx.translate(-this.camX, -this.camY);
-				this.ctx.clearRect(defaultSettings.bordersWidth, defaultSettings.bordersWidth, this.canvasWidth-defaultSettings.bordersWidth, this.canvasHeight-defaultSettings.bordersWidth);
-                if (defaultmapsettings.showGrid) {
-                    this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
-                }				
-                this.ctx.save();				
                 if (defaultmapsettings.showBgSectors) {
                     this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
                 }
@@ -13416,14 +13413,13 @@ Game name     : ${i.displayName}<br/>
                 if (LM.gameMode === ':battleroyale') {
                     this.drawBattleArea(this.ctx);
                 }
-				if (defaultmapsettings.showMapBorders && !LM.drawedMapBorders) {
-					LM.drawedMapBorders = true
-                    var tempborderwidthradius = defaultSettings.bordersWidth / 2;
-                    this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
-                }				
 				//if (defaultmapsettings.showMapBorders && LM.ws && !LM.ws.includes("imsolo.pro")) {
 				//if (defaultmapsettings.showMapBorders && LM.ws && LM.integrity) {	
-
+				if (defaultmapsettings.showMapBorders && LM.ws) {	
+					
+                    var tempborderwidthradius = defaultSettings.bordersWidth / 2;
+                    this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
+                }
 				/*else if (defaultmapsettings.showMapBorders && !$("#server-token").val().includes("imsolo.pro")){
                     var tempborderwidthradius = defaultSettings.bordersWidth / 2;
                     this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);					
@@ -13877,7 +13873,7 @@ Game name     : ${i.displayName}<br/>
                 drawMapBorders(t, e, i, s, o, a, n, r) {
                     e && (t.strokeStyle = n, t.lineWidth = r, t.beginPath(), t.moveTo(i, s), t.lineTo(o, s), t.lineTo(o, a), t.lineTo(i, a), t.closePath(), t.stroke());
                 },
-				*/				
+				*/
             drawMapBorders(ctx, macros, text, x1, x0, y0, radius, canvas) {
                 if (macros) {
                     ctx.strokeStyle = radius;
