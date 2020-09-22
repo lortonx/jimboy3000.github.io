@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.534
+// v2.535
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -293,10 +293,25 @@ function deleteGamemode(temp) {
            setTimeout(function() {
                 legendmod.gameMode = ":teams";
             }, 500)			
-        }	
+        }		
 		else if ($('#gamemode').val() == 41) {
             core.connect('wss://distrustfurryserver.herokuapp.com/');
+        }	
+		/*
+		else if ($('#gamemode').val() == 42) {
+            core.connect('ws://dummyserver.glitch.me/');
         }			
+		else if ($('#gamemode').val() == 43) {
+            core.connect('wss://dummyserver-rainbow.glitch.me/');
+        }	
+		else if ($('#gamemode').val() == 44) {
+            core.connect('wss://dummyserver-instant.glitch.me/');
+        }	
+		else if ($('#gamemode').val() == 45) {
+            core.connect('wss://dummyserver-instant.glitch.me/');
+        }	
+		*/
+	//ac-clan.glitch.me
 /*		
 		else if ($('#gamemode').val() == 34) {
             core.connect('wss://proxy.cellz.io/4600');
