@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.543
+// v2.544
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9708,6 +9708,7 @@ function thelegendmodproject() {
         //clientVersionString: '3.6.4',
         clientVersionString: master.clientVersionString,
         xsupportprotoversion: master.xsupportprotoversion,
+		drawedMapBorders: false,
         time: Date.now(),
         serverTime: 0,
         serverTimeDiff: 0,
@@ -13414,7 +13415,8 @@ Game name     : ${i.displayName}<br/>
                 if (LM.gameMode === ':battleroyale') {
                     this.drawBattleArea(this.ctx);
                 }
-				if (defaultmapsettings.showMapBorders) {
+				if (defaultmapsettings.showMapBorders && !LM.drawedMapBorders) {
+					LM.drawedMapBorders = true
                     var tempborderwidthradius = defaultSettings.bordersWidth / 2;
                     this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
                 }				
