@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.544 testing
+// v2.545 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13872,17 +13872,17 @@ Game name     : ${i.displayName}<br/>
                     ctx.strokeStyle = radius;
                     ctx.lineWidth = canvas;
                     ctx.beginPath();
-                    ctx.moveTo(text, x1);
+                    ctx.moveTo(text+defaultSettings.bordersWidth, x1);
                     ctx.lineTo(x0, x1-defaultSettings.bordersWidth);
-					ctx.moveTo(x0, x1);
 					
+					ctx.moveTo(x0+defaultSettings.bordersWidth, x1);
                     ctx.lineTo(x0, y0-defaultSettings.bordersWidth);
-					ctx.moveTo(x0, y0);
 					
-                    ctx.lineTo(text-defaultSettings.bordersWidth, y0);
+					ctx.moveTo(x0, y0);		
+                    ctx.lineTo(text, y0);
+					
 					ctx.moveTo(text, y0);
-					
-					ctx.lineTo(text-defaultSettings.bordersWidth, x1);
+					ctx.lineTo(text, x1);
 					//ctx.lineTo(text, x1);
                     if (defaultmapsettings.borderGlow) {
                         ctx.shadowBlur = defaultSettings.borderGlowSize;
