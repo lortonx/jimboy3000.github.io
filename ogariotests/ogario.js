@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.539
+// v2.540
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13359,17 +13359,11 @@ Game name     : ${i.displayName}<br/>
                     this.drawBattleArea(this.ctx);
                 }
 				this.drawCustomBackgrounds()
-				//if (defaultmapsettings.showMapBorders && LM.ws && !LM.ws.includes("imsolo.pro")) {
-				//if (defaultmapsettings.showMapBorders && LM.ws && LM.integrity) {	
 				if (defaultmapsettings.showMapBorders) {	
 					
                     var tempborderwidthradius = defaultSettings.bordersWidth / 2;
                     this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
                 }
-				/*else if (defaultmapsettings.showMapBorders && !$("#server-token").val().includes("imsolo.pro")){
-                    var tempborderwidthradius = defaultSettings.bordersWidth / 2;
-                    this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);					
-				}*/
                 this.drawCommander();
                 this.drawCommander2();
                 if (defaultmapsettings.virusesRange) {
@@ -13383,34 +13377,7 @@ Game name     : ${i.displayName}<br/>
                     this.calMinMaxMulti();
                 }
                 this.calMinMax();
-                if (LM.play || LM.playerCellsMulti.length) {
-                    if (defaultmapsettings.splitRange) {
-                        this.drawSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCells, LM.selectBiggestCell);
-                        this.drawSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCells, LM.selectBiggestCell); //Sonia
-                        this.drawDoubleSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCells, LM.selectBiggestCell); //Sonia
-                        //
-                        this.drawSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCellsMulti, LM.selectBiggestCell);
-                        this.drawSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCellsMulti, LM.selectBiggestCell); //Sonia
-                        this.drawDoubleSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCellsMulti, LM.selectBiggestCell); //Sonia						
-                    }
-                    if (defaultmapsettings.oppRings && !defaultmapsettings.bubbleInd) {
-                        //this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache , LM.SSCellsCache); //Sonia
-                        this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache); //Sonia
-                    }
-                    if (defaultmapsettings.cursorTracking && !defaultmapsettings.bubbleCursorTracker) {
-                        if (!window.multiboxFollowMouse) {
-                            if (!window.multiboxPlayerEnabled) {
-                                this.drawCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
-                            } else if (window.multiboxPlayerEnabled) {
-                                this.drawCursorTracking(this.ctx, LM.playerCellsMulti, LM.cursorX, LM.cursorY);
-                            }
-                        } else {
-                            this.drawCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
-                            this.drawCursorTracking(this.ctx, LM.playerCellsMulti, LM.cursorX, LM.cursorY);
-                        }
-
-                    }
-                }       
+				this.drawHelpers();       
 				this.drawGhostCells();
                 for (var i = 0; i < LM.removedCells.length; i++) {
                     LM.removedCells[i].draw(this.ctx, true);
@@ -13454,6 +13421,36 @@ Game name     : ${i.displayName}<br/>
 				
 				//drawRender.render();
             },
+			drawHelpers(){
+                if (LM.play || LM.playerCellsMulti.length) {
+                    if (defaultmapsettings.splitRange) {
+                        this.drawSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCells, LM.selectBiggestCell);
+                        this.drawSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCells, LM.selectBiggestCell); //Sonia
+                        this.drawDoubleSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCells, LM.selectBiggestCell); //Sonia
+                        //
+                        this.drawSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCellsMulti, LM.selectBiggestCell);
+                        this.drawSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCellsMulti, LM.selectBiggestCell); //Sonia
+                        this.drawDoubleSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCellsMulti, LM.selectBiggestCell); //Sonia						
+                    }
+                    if (defaultmapsettings.oppRings && !defaultmapsettings.bubbleInd) {
+                        //this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache , LM.SSCellsCache); //Sonia
+                        this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache); //Sonia
+                    }
+                    if (defaultmapsettings.cursorTracking && !defaultmapsettings.bubbleCursorTracker) {
+                        if (!window.multiboxFollowMouse) {
+                            if (!window.multiboxPlayerEnabled) {
+                                this.drawCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
+                            } else if (window.multiboxPlayerEnabled) {
+                                this.drawCursorTracking(this.ctx, LM.playerCellsMulti, LM.cursorX, LM.cursorY);
+                            }
+                        } else {
+                            this.drawCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
+                            this.drawCursorTracking(this.ctx, LM.playerCellsMulti, LM.cursorX, LM.cursorY);
+                        }
+
+                    }
+                }
+			},	
 			drawMiscRings(){
                 if (LM.play || LM.playerCellsMulti.length) {
                     if (defaultmapsettings.bubbleInd) {
