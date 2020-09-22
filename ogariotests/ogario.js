@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.541
+// v2.542
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9842,8 +9842,8 @@ function thelegendmodproject() {
 			if (!window.customProtol) window.customProtol = 6
 			if (!window.customClient) window.customClient = 1
 			if (LM.ws.includes("proxy.cellz.io")){
-				//window.customProtol = 5
-				//window.customClient = 0
+				window.customProtol = 5
+				window.customClient = 0
 			}
 			
             var view = this.createView(5);
