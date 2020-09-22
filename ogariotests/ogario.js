@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.535
+// v2.536
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9845,7 +9845,12 @@ function thelegendmodproject() {
             var view = this.createView(5);
             view.setUint8(0, 254);
 			if (!this.integrity){ 
-				view.setUint32(1, window.customProtol, true); 
+				if (LM.ws.includes("proxy.cellz.io")){
+					view.setUint32(1, 1, true);
+				}
+				else{
+					view.setUint32(1, window.customProtol, true); 
+				}
 				window.gameBots.protocolVersion = window.customProtol
 			}
 			else{ 		
@@ -9860,13 +9865,20 @@ function thelegendmodproject() {
             view = this.createView(5);
             view.setUint8(0, 255);
 			if (!this.integrity){ 		
-				view.setUint32(1, window.customClient, true); 
+				
+				if (LM.ws.includes("proxy.cellz.io")){
+					view.setUint32(1332175218, 1, true);
+				}
+				else{
+					view.setUint32(1, window.customClient, true); 
+				}
 				window.gameBots.clientVersion = window.customClient
 			} //protocol 6 and 5
 			else{ 
-				view.setUint32(1, this.clientVersion, true);
+				view.setUint32(1, this.clientVersion, true);						
 				window.gameBots.clientVersion = this.clientVersion
-			}//
+			}
+			//
 			//if (LM.ws.includes("imsolo.pro") || window.protocol6){ view.setUint32(1, 1, true); } //protocol 6 and 5
 			//else if (window.protocol5){ view.setUint32(1, 1332175218, true); } // Protocol 5
 			
