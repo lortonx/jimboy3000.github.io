@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.538
+// v2.539
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13355,67 +13355,13 @@ Game name     : ${i.displayName}<br/>
                 if (defaultmapsettings.showBgSectors) {
                     this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
                 }
-                if (defaultSettings.customBackground && defaultSettings.customBackground!="") {
-                    if (!legendmod.customMidPic) {
-                        if (defaultSettings.customBackground) {
-                            legendmod.customMidPic = new Image;
-                            legendmod.customMidPic.src = defaultSettings.customBackground;
-                        } 
-						/*else {
-                            legendmod.customMidPic = new Image;
-                            legendmod.customMidPic.src = defaultSettings.customServerImage1;
-                        }*/
-                    } 
-					else if (legendmod.customMidPic && defaultSettings.customBackground && legendmod.customMidPic.src != defaultSettings.customBackground) {
-                        legendmod.customMidPic = new Image;
-                        legendmod.customMidPic.src = defaultSettings.customBackground;
-                    }
-                    if (dyinglight1load == "yes") {
-                        this.prevctxglobalAlpha = this.ctx.globalAlpha;
-                        this.ctx.globalAlpha = defaultSettings.backgroundAlpha
-                        this.ctx.drawImage(
-                            cimg5,
-                            legendmod.mapMinX - LM.mapSize - 1,
-                            legendmod.mapMinY - LM.mapSize - 1,
-                            (legendmod.mapMaxX - legendmod.mapMinX) * 3,
-                            (legendmod.mapMaxY - legendmod.mapMinY) * 3
-                        );
-                        this.ctx.globalAlpha = this.prevctxglobalAlpha
-                    }
-                    if (defaultSettings.customBackground) {
-                        this.prevctxglobalAlpha = this.ctx.globalAlpha;
-                        this.ctx.globalAlpha = defaultSettings.backgroundAlpha
-                        this.ctx.drawImage(
-                            legendmod.customMidPic,
-
-                            legendmod.mapMinX,
-                            legendmod.mapMinY,
-                            legendmod.mapMaxX - legendmod.mapMinX,
-                            legendmod.mapMaxY - legendmod.mapMinY
-                        );
-                        this.ctx.globalAlpha = this.prevctxglobalAlpha
-                    } 
-					else {
-                        this.prevctxglobalAlpha = this.ctx.globalAlpha;
-                        this.ctx.globalAlpha = defaultSettings.backgroundAlpha
-                        var ofx = ((legendmod.mapMaxX - legendmod.mapMinX) / 5) * 2.2
-                        var ofy = ((legendmod.mapMinY - legendmod.mapMaxY) / 5) * 2.2
-                        this.ctx.drawImage(
-                            legendmod.customMidPic, //2.1:5.9
-                            legendmod.mapMinX + ofx,
-                            legendmod.mapMaxY + ofy,
-                            (legendmod.mapMaxX - legendmod.mapMinX) / 8.5,
-                            (legendmod.mapMinY - legendmod.mapMaxY) / 8.5
-                        );
-                        this.ctx.globalAlpha = this.prevctxglobalAlpha
-                    }
-                }
                 if (LM.gameMode === ':battleroyale') {
                     this.drawBattleArea(this.ctx);
                 }
+				this.drawCustomBackgrounds()
 				//if (defaultmapsettings.showMapBorders && LM.ws && !LM.ws.includes("imsolo.pro")) {
 				//if (defaultmapsettings.showMapBorders && LM.ws && LM.integrity) {	
-				if (defaultmapsettings.showMapBorders && LM.ws) {	
+				if (defaultmapsettings.showMapBorders) {	
 					
                     var tempborderwidthradius = defaultSettings.bordersWidth / 2;
                     this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
@@ -13483,6 +13429,32 @@ Game name     : ${i.displayName}<br/>
                         //this.drawRing(this.ctx,LM.cells[i].x,LM.cells[i].y,LM.cells[i].size,0.75,'#ffffff')
                     }
                 }
+				this.drawMiscRings();
+                //lylko
+                defaultmapsettings.jellyPhisycs && LM.updateQuadtree(LM.cells); //
+		
+				this.drawRings();
+				this.drawRMB();
+                //
+                if (defaultmapsettings.debug) {
+                    this.drawViewPorts(this.ctx)
+                }
+                //
+
+                this.ctx.restore();
+
+                //this.ctx.finish2D();
+                if (LM.gameMode === ':teams') {
+                    if (this.pieChart && this.pieChart.width) {
+                        this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
+                    }
+                }				
+				
+				//window.updateCellsClock=false
+				
+				//drawRender.render();
+            },
+			drawMiscRings(){
                 if (LM.play || LM.playerCellsMulti.length) {
                     if (defaultmapsettings.bubbleInd) {
                         this.drawBOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache, LM.SSCellsCache);
@@ -13494,28 +13466,8 @@ Game name     : ${i.displayName}<br/>
                         this.drawFBTracking(this.ctx, LM.playerCells, LM.arrowFB[0].x, LM.arrowFB[0].y);
                     }
                 }
-                //lylko
-                defaultmapsettings.jellyPhisycs && LM.updateQuadtree(LM.cells); //
-		
-				if (defaultmapsettings.reverseTrick){
-					LM.indexedCells[reverseTrick.biggerEnemy] && this.drawRing(this.ctx,
-						LM.indexedCells[reverseTrick.biggerEnemy].x,
-						LM.indexedCells[reverseTrick.biggerEnemy].y,
-						LM.indexedCells[reverseTrick.biggerEnemy].size,
-						0.75, 'red');
-					LM.indexedCells[reverseTrick.smallerEnemy] && this.drawRing(this.ctx,
-						LM.indexedCells[reverseTrick.smallerEnemy].x,
-						LM.indexedCells[reverseTrick.smallerEnemy].y,
-						LM.indexedCells[reverseTrick.smallerEnemy].size,
-						0.75, 'blue');
-				}
-                LM.indexedCells[LM.selected] && this.drawRing(this.ctx,
-                    LM.indexedCells[LM.selected].x,
-                    LM.indexedCells[LM.selected].y,
-                    LM.indexedCells[LM.selected].size,
-                    0.75, '#ffffff')
-
-
+			},				
+			drawRMB(){
                 if (drawRender.RMB && LM.indexedCells[LM.selected] && LM.playerCellIDs.length) {
                     var index = LM.selectBiggestCell ? LM.playerCells.length - 1 : 0;
                     //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 760, 0, this.pi2, false);
@@ -13535,41 +13487,84 @@ Game name     : ${i.displayName}<br/>
                     LM.cursorX = xc + (Math.cos(ang) * distance)
                     LM.cursorY = yc + (Math.sin(ang) * distance)
                     LM.sendPosition()
-                }
-                //
-                if (defaultmapsettings.debug) {
-                    this.drawViewPorts(this.ctx)
-                }
-                //
-
-                this.ctx.restore();
-
-                //this.ctx.finish2D();
-                /*if (defaultmapsettings.debug) {
-                    this.ctx.fillStyle = "white";
-                    this.ctx.font = "15px sans-serif";
-                    this.ctx.textAlign = "start";
-                    var lw = (this.canvasHeight / 2)
-                    LM.camMaxX && this.ctx.fillText("isFreeSpectate: " + LM.isFreeSpectate, 50, lw += 25);
-                    LM.camMaxX && this.ctx.fillText("isSpectateEnabled: " + LM.isSpectateEnabled, 50, lw += 25);
-                    LM.camMaxX && this.ctx.fillText("realQuadrant: "+LM.realQuadrant, 50, lw+=25);
-                    LM.camMaxX && this.ctx.fillText("lastQuadrant: "+LM.lastQuadrant, 50, lw+=25);
-                    LM.camMaxX && this.ctx.fillText("quadrant: "+LM.quadrant, 50, lw+=25);
-                    LM.camMaxX && this.ctx.fillText("cMaxX: "+LM.camMaxX, 50, lw+=30);
-                    LM.camMaxY && this.ctx.fillText("cMaxY: "+LM.camMaxY, 50, lw+=30);
-                    LM.camMinX && this.ctx.fillText("cMinX: "+LM.camMinX, 50, lw+=30);
-                    LM.camMinY && this.ctx.fillText("cMinY: "+LM.camMinY, 50, lw+=30);
-                }*/
-                if (LM.gameMode === ':teams') {
-                    if (this.pieChart && this.pieChart.width) {
-                        this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
+                }	
+			},				
+			drawRings(){
+				if (defaultmapsettings.reverseTrick){
+					LM.indexedCells[reverseTrick.biggerEnemy] && this.drawRing(this.ctx,
+						LM.indexedCells[reverseTrick.biggerEnemy].x,
+						LM.indexedCells[reverseTrick.biggerEnemy].y,
+						LM.indexedCells[reverseTrick.biggerEnemy].size,
+						0.75, 'red');
+					LM.indexedCells[reverseTrick.smallerEnemy] && this.drawRing(this.ctx,
+						LM.indexedCells[reverseTrick.smallerEnemy].x,
+						LM.indexedCells[reverseTrick.smallerEnemy].y,
+						LM.indexedCells[reverseTrick.smallerEnemy].size,
+						0.75, 'blue');
+				}
+                LM.indexedCells[LM.selected] && this.drawRing(this.ctx,
+                    LM.indexedCells[LM.selected].x,
+                    LM.indexedCells[LM.selected].y,
+                    LM.indexedCells[LM.selected].size,
+                    0.75, '#ffffff')
+			},					
+			drawCustomBackgrounds(){
+                if (defaultSettings.customBackground && defaultSettings.customBackground!="") {
+                    if (!legendmod.customMidPic) {
+                        if (defaultSettings.customBackground) {
+                            legendmod.customMidPic = new Image;
+                            legendmod.customMidPic.src = defaultSettings.customBackground;
+                        } 
+						/*else {
+                            legendmod.customMidPic = new Image;
+                            legendmod.customMidPic.src = defaultSettings.customServerImage1;
+                        }*/
+                    } 
+					else if (legendmod.customMidPic && defaultSettings.customBackground && legendmod.customMidPic.src != defaultSettings.customBackground) {
+                        legendmod.customMidPic = new Image;
+                        legendmod.customMidPic.src = defaultSettings.customBackground;
                     }
-                }				
-				
-				//window.updateCellsClock=false
-				
-				//drawRender.render();
-            },
+                    if (dyinglight1load == "yes") {
+                        this.prevctxglobalAlpha = this.ctx.globalAlpha;
+                        this.ctx.globalAlpha = defaultSettings.backgroundAlpha
+                        this.ctx.drawImage(
+                            cimg5,
+                            legendmod.mapMinX - LM.mapSize - 1,
+                            legendmod.mapMinY - LM.mapSize - 1,
+                            (legendmod.mapMaxX - legendmod.mapMinX) * 3,
+                            (legendmod.mapMaxY - legendmod.mapMinY) * 3
+                        );
+                        this.ctx.globalAlpha = this.prevctxglobalAlpha
+                    }
+                    if (defaultSettings.customBackground) {
+                        this.prevctxglobalAlpha = this.ctx.globalAlpha;
+                        this.ctx.globalAlpha = defaultSettings.backgroundAlpha
+                        this.ctx.drawImage(
+                            legendmod.customMidPic,
+
+                            legendmod.mapMinX,
+                            legendmod.mapMinY,
+                            legendmod.mapMaxX - legendmod.mapMinX,
+                            legendmod.mapMaxY - legendmod.mapMinY
+                        );
+                        this.ctx.globalAlpha = this.prevctxglobalAlpha
+                    } 
+					else {
+                        this.prevctxglobalAlpha = this.ctx.globalAlpha;
+                        this.ctx.globalAlpha = defaultSettings.backgroundAlpha
+                        var ofx = ((legendmod.mapMaxX - legendmod.mapMinX) / 5) * 2.2
+                        var ofy = ((legendmod.mapMinY - legendmod.mapMaxY) / 5) * 2.2
+                        this.ctx.drawImage(
+                            legendmod.customMidPic, //2.1:5.9
+                            legendmod.mapMinX + ofx,
+                            legendmod.mapMaxY + ofy,
+                            (legendmod.mapMaxX - legendmod.mapMinX) / 8.5,
+                            (legendmod.mapMinY - legendmod.mapMaxY) / 8.5
+                        );
+                        this.ctx.globalAlpha = this.prevctxglobalAlpha
+                    }
+                }
+			},
             drawViewPorts(ctx) {
 				//console.log('a')
                 this.drawViewport(this.ctx, 'Viewport', LM.camMinX, LM.camMinY, LM.camMaxX, LM.camMaxY, defaultSettings.bordersColor, 15);
