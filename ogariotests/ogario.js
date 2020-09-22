@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.542
+// v2.543
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9839,18 +9839,18 @@ function thelegendmodproject() {
         onOpen() {
             //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket open');
             this.time = Date.now();
-			if (!window.customProtol) window.customProtol = 6
+			if (!window.customProtocol) window.customProtocol = 6
 			if (!window.customClient) window.customClient = 1
 			if (LM.ws.includes("proxy.cellz.io")){
-				window.customProtol = 5
+				window.customProtocol = 5
 				window.customClient = 0
 			}
 			
             var view = this.createView(5);
             view.setUint8(0, 254);
 			if (!this.integrity){ 				
-				view.setUint32(1, window.customProtol, true); 			
-				window.gameBots.protocolVersion = window.customProtol
+				view.setUint32(1, window.customProtocol, true); 			
+				window.gameBots.protocolVersion = window.customProtocol
 			}
 			else{ 		
 				view.setUint32(1, this.protocolVersion, true); 
@@ -12669,12 +12669,13 @@ Game name     : ${i.displayName}<br/>
 
             for (length = 0;;) {
                 //extendedFlags = false;
-                var id = view.readUInt32LE(offset);
-                if (offset += 4, 0 == id) break;
+
 				
                 
-				
+				var id;
 				if (crazyServer){
+                id = view.readInt16LE(offset);
+                if (offset += 4, 0 == id) break;					
 					var x = view.readInt16LE(offset);
 					if (window.legendmod.vector[window.legendmod.vnr][0]) x = this.translateX(x); //Sonia3
 					offset += 2;
@@ -12687,6 +12688,8 @@ Game name     : ${i.displayName}<br/>
                     extendedFlags = 0;					
 				}
 				else{
+					id = view.readUInt32LE(offset);
+					if (offset += 4, 0 == id) break;
 					var x = view.readInt32LE(offset);
 					if (window.legendmod.vector[window.legendmod.vnr][0]) x = this.translateX(x); //Sonia3
 					offset += 4;
