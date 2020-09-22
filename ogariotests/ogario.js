@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.544
+// v2.545
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12689,6 +12689,7 @@ Game name     : ${i.displayName}<br/>
 				var id;
 				if (crazyServer){
                 id = view.readInt16LE(offset);
+				/*
                 if (offset += 4, 0 == id) break;					
 					var x = view.readInt16LE(offset);
 					if (window.legendmod.vector[window.legendmod.vnr][0]) x = this.translateX(x); //Sonia3
@@ -12714,7 +12715,8 @@ Game name     : ${i.displayName}<br/>
 					offset += 2;
 					var flags = view.readUInt8(offset++),
                     extendedFlags = 0;
-				}	
+				}
+				*/				
                 128 & flags && (extendedFlags = view.readUInt8(offset++));
                 //128 & d && (f = t.readUInt8(i++));	
                 var color = null;
@@ -12876,7 +12878,7 @@ Game name     : ${i.displayName}<br/>
                     //console.log('FB friend cell in view', isFriend)
                 }
             }
-			/*
+			
             eatEventsLength = view.readUInt16LE(offset);
             offset += 2;
             for (length = 0; length < eatEventsLength; length++) {
@@ -12887,7 +12889,7 @@ Game name     : ${i.displayName}<br/>
                     cell.removeCell();
                 }
             }
-			*/
+			
             /*				
                             for (eatEventsLength = view.readUInt16LE(offset), offset += 2, a = 0; a < eatEventsLength; a++) {
                                 id = view.readUInt32LE(offset);
