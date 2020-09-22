@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.539
+// v2.540
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12648,8 +12648,11 @@ Game name     : ${i.displayName}<br/>
             this.time = Date.now();
             this.removePlayerCell = false;
             var eatEventsLength = view.readUInt16LE(offset);
-			// ??? test
-			if ( view.readUInt8(offset++) != 16) return false
+			
+			var crazyServer
+			if (LM.ws.includes("proxy.cellz.io") || LM.ws.includes("germs.io") ){	
+				crazyServer = true
+			}	
 			
             offset += 2;
             for (var length = 0; length < eatEventsLength; length++) {
@@ -12668,17 +12671,33 @@ Game name     : ${i.displayName}<br/>
                 //extendedFlags = false;
                 var id = view.readUInt32LE(offset);
                 if (offset += 4, 0 == id) break;
-                var x = view.readInt32LE(offset);
-                if (window.legendmod.vector[window.legendmod.vnr][0]) x = this.translateX(x); //Sonia3
-                offset += 4;
-                var y = view.readInt32LE(offset);
-                if (window.legendmod.vector[window.legendmod.vnr][1]) y = this.translateY(y); //Sonia3
-                offset += 4;
-                var size = view.readUInt16LE(offset);
-                offset += 2;
-                var flags = view.readUInt8(offset++),
+				
+                
+				
+				if (crazyServer){
+					var x = view.readInt16LE(offset);
+					if (window.legendmod.vector[window.legendmod.vnr][0]) x = this.translateX(x); //Sonia3
+					offset += 4;
+					var y = view.readInt16LE(offset);
+					if (window.legendmod.vector[window.legendmod.vnr][1]) y = this.translateY(y); //Sonia3
+					offset += 4;
+					var size = view.readUInt16LE(offset);
+					offset += 2;
+					var flags = view.readUInt8(offset++),
+                    extendedFlags = 0;					
+				}
+				else{
+					var x = view.readInt32LE(offset);
+					if (window.legendmod.vector[window.legendmod.vnr][0]) x = this.translateX(x); //Sonia3
+					offset += 4;
+					var y = view.readInt32LE(offset);
+					if (window.legendmod.vector[window.legendmod.vnr][1]) y = this.translateY(y); //Sonia3
+					offset += 4;
+					var size = view.readUInt16LE(offset);
+					offset += 2;
+					var flags = view.readUInt8(offset++),
                     extendedFlags = 0;
-					
+				}	
                 128 & flags && (extendedFlags = view.readUInt8(offset++));
                 //128 & d && (f = t.readUInt8(i++));	
                 var color = null;
