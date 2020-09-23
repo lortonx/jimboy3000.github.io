@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.563 testing
+// v2.564 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12684,12 +12684,11 @@ Game name     : ${i.displayName}<br/>
 				
 				if (this.totalPlayerMassBigFFA>900000000 && !window.proLicenceUID){
 					this.totalPlayerMassBigFFA = 0
-					//localStorage.setItem("MassBigFFAAnnouncement", true);					
-					
-					localStorage.setItem("PremiumLimitedDateStart", dateNow);
+					//localStorage.setItem("MassBigFFAAnnouncement", true);															
 					window.proLicenceUID = "MegaFFA"
 					localStorage.setItem("proLicenceUID", window.proLicenceUID);
 					var dateNow = parseInt(new Date().toISOString().slice(0,new Date().toISOString().indexOf("T")).replace(/-/g,""));
+					localStorage.setItem("PremiumLimitedDateStart", dateNow);
 					var tempdateNow = dateNow.toString()
 					var tempdateNow2 = parseInt(tempdateNow.slice(6, 8))
 					if (tempdateNow2<24){
