@@ -396,7 +396,7 @@ function erasescripter(){
 //4 Animated Skins
 
             animatedskins =      {
-               'legend clan': {
+               'legend_clan': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -426,7 +426,7 @@ function erasescripter(){
                      {id: 'ZK1C8gV', delay: '0.05'}
                   ]
                },
-               'Only For Shiro': {
+               'Only_For_Shiro': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -451,7 +451,7 @@ function erasescripter(){
 					{id: 'Q3v6jOj', delay: '0.2'}	
                   ]
                },	
-               'Only For Shiro 1': {
+               'Only_For_Shiro 1': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -476,7 +476,7 @@ function erasescripter(){
 					{id: '0ZJHfQN', delay: '0.2'}
                   ]
                },	
-               'Only For Shiro 2': {
+               'Only_For_Shiro_2': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -536,7 +536,7 @@ function erasescripter(){
 					{id: 'tkIlXxd', delay: '0.05'}
 				]
                },	
-               '℄🌀JustWatchPro': {
+               '℄🌀JustWatchProAnimation': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -1162,7 +1162,7 @@ function erasescripter(){
                      {id: 'lFP4blK', delay: '0.1'}
                   ]
                },
-               'wicked cat': {
+               'wicked_cat': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -1682,7 +1682,7 @@ function erasescripter(){
                      {id: 'ZXxLp0Q', delay: '0.03'}
                   ]
                },
-               'trippy 2': {
+               'trippy_2': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -1798,7 +1798,7 @@ function erasescripter(){
                      {id: 'FXBj2HN', delay: '0.1'}
                   ]
                },
-               'pizza 2': {
+               'pizza_2': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -1812,7 +1812,7 @@ function erasescripter(){
                      {id: 'PkhWbF2', delay: '0.1'}
                   ]
                },
-               'cat': {
+               'trippy_cat': {
                   cached:    false,
                   ready:     false,
                   current:   0,
