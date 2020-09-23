@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.562 testing
+// v2.563 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12691,7 +12691,15 @@ Game name     : ${i.displayName}<br/>
 					localStorage.setItem("proLicenceUID", window.proLicenceUID);
 					var dateNow = parseInt(new Date().toISOString().slice(0,new Date().toISOString().indexOf("T")).replace(/-/g,""));
 					var tempdateNow = dateNow.toString()
-					toastr.warning("<b>[" + Premadeletter123 + "]:</b> <span style='text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);'>Congratulations</span> for your score on MEGA FFA.<br>  Your licence is stored as Giveaway Premium until <font color='red'><b>" + tempdateNow.slice(6, 8) + "th</font></b> of this month. Thank you for using our mod!").css("width", "350px");
+					var tempdateNow2 = parseInt(tempdateNow.slice(6, 8))
+					if (tempdateNow2<24){
+						tempdateNow2 += 7
+						tempdateNow2 += "th";
+					}
+					else{
+						tempdateNow2 = "last day"
+					}
+					toastr.warning("<b>[" + Premadeletter123 + "]:</b> <span style='text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);'>Congratulations</span> for your score on MEGA FFA.<br>  Your licence is stored as Giveaway Premium until <font color='red'><b>" + tempdateNow2 + "</font></b> of this month. Thank you for using our mod!").css("width", "350px");
 				}
 				localStorage.setItem("totalPlayerMassBigFFA", this.totalPlayerMassBigFFA);
 			}			
