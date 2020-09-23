@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.41 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.42 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -397,23 +397,21 @@ function loadericon() {
 }
 
 function PremiumUsersFFAScore() {
-	if (PremiumLimitedDateStart && !isNaN(parseInt(PremiumLimitedDateStart))){
-		var YYYYMMDD=parseInt(new Date().toISOString().slice(0,new Date().toISOString().indexOf("T")).replace(/-/g,""))
-		if (PremiumLimitedDateStart && PremiumLimitedDateStart < YYYYMMDD + 6 && window.proLicenceUID){
-			window.proLicenceUID = null
-			toastr.warning("<b>[SERVER]:</b> Your Giveaway licence has ended. Thank you for using our mod!").css("width", "350px");
-		}		
-	}
-	else{
-		window.proLicenceUID = null		
-	}
-	localStorage.setItem("proLicenceUID", window.proLicenceUID);
-}
-function PremiumUsers() {
 	if (window.proLicenceUID && window.proLicenceUID.includes("MegaFFA")){
-		PremiumUsersFFAScore()
+		if (PremiumLimitedDateStart && !isNaN(parseInt(PremiumLimitedDateStart))){
+			var YYYYMMDD=parseInt(new Date().toISOString().slice(0,new Date().toISOString().indexOf("T")).replace(/-/g,""))
+			if (PremiumLimitedDateStart && PremiumLimitedDateStart < YYYYMMDD + 6 && window.proLicenceUID){
+				window.proLicenceUID = null
+				toastr.warning("<b>[SERVER]:</b> Your Giveaway licence has ended. Thank you for using our mod!").css("width", "350px");
+			}		
+		}
+		else{
+			window.proLicenceUID = null		
+		}
+		localStorage.setItem("proLicenceUID", window.proLicenceUID);
 	}
-		
+}
+function PremiumUsers() {		
 	if (!window.proLicenceUID || window.proLicenceUID.includes("Give")){
 
 		if (window.agarioUID && ProLicenceUsersTable.ProLicenceUsers[window.agarioUID]){
@@ -4977,7 +4975,7 @@ function init(modVersion) {
 }
 
 function initializeLM(modVersion) {
-	
+	PremiumUsersFFAScore()
 	
 
     $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
