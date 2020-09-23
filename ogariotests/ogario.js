@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.554 testing
+// v2.555 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -14886,7 +14886,7 @@ Game name     : ${i.displayName}<br/>
 			}
             if (event.target.className === hotkeysSetup.inputClassName){ 
 				return event.preventDefault(), void hotkeysSetup.setHotkey(pressedKey, event.target.id);
-			|
+			}
             if (hotkeys[pressedKey]) {
                 event.preventDefault();
                 var i = hotkeys[pressedKey];
