@@ -787,7 +787,7 @@ function createCaptchaWindow(i){
 		window.capthaWindow[i].style.height = "0px";
 		document.body.appendChild(window.capthaWindow[i]);	*/
 		if (window.LMVersion=="1.7"){
-			toastr.info('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + '	Your version is outdated for bts. Download ' + ' <font color="yellow"><b>v1.8</b></font>. <br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+			toastr.info('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + '	Your version is outdated for bts. Download ' + ' <font color="yellow"><b>v1.8</b></font>. <br>visit: <a target="_blank" href="https://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 		}
 		window.capthaWindow[i] = window.open("https://agar.io/captcha");
 }	
@@ -5230,7 +5230,7 @@ function thelegendmodproject() {
             $("#statsContinue").attr("id", "statsContinue2");
             $("#mainPanel").empty().remove();
             $(".center-container").addClass("ogario-menu");
-            $(".center-container").append('<div id="menu-footer" class="menu-main-color"> <a href="http://legendmod.ml" target="_blank">legendmod.ml</a> | ' + this.version + ' <a href="http://legendmod.ml" class="release ogicon-info" target="_blank"></a></div>');
+            $(".center-container").append('<div id="menu-footer" class="menu-main-color"> <a href="https://legendmod.ml" target="_blank">legendmod.ml</a> | ' + this.version + ' <a href="https://legendmod.ml" class="release ogicon-info" target="_blank"></a></div>');
             $("#leftPanel, #rightPanel").addClass("ogario-menu").removeAttr("id");
             $(".agario-profile-panel, .agario-panel-freecoins, .agario-panel-gifting, .agario-shop-panel, #dailyquests-panel").appendTo($("#profile")).removeClass("agario-side-panel");
             $(".agario-profile-panel").after('<div id="block-warn">' + textLanguage.blockWarn + '<br><a href="#" id="unblock-popups">' + textLanguage.unblockPopups + "</a></div>");
@@ -14880,8 +14880,13 @@ Game name     : ${i.displayName}<br/>
     document.onkeydown = function(event) {
         var pressedKey = hotkeysSetup.getPressedKey(event);
         if (('INPUT' !== event.target.tagName || event.target.className === hotkeysSetup.inputClassName || pressedKey === hotkeys['spec-messageKey']) && '' !== pressedKey && !keyBlind[pressedKey]) {
-            if (keyBlind[pressedKey] = true, 'ESC' === pressedKey) return event.preventDefault(), void(application && application.showMenu());
-            if (event.target.className === hotkeysSetup.inputClassName) return event.preventDefault(), void hotkeysSetup.setHotkey(pressedKey, event.target.id);
+			
+            if (keyBlind[pressedKey] = true, 'ESC' === pressedKey){ 
+				return event.preventDefault(), void(application && application.showMenu() );
+			}
+            if (event.target.className === hotkeysSetup.inputClassName){ 
+				return event.preventDefault(), void hotkeysSetup.setHotkey(pressedKey, event.target.id);
+			|
             if (hotkeys[pressedKey]) {
                 event.preventDefault();
                 var i = hotkeys[pressedKey];
