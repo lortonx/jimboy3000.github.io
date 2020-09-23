@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.43 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.44 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -405,12 +405,9 @@ function PremiumUsersFFAScore() {
 			if (tempdateNow2 < 7){
 				tempdateNow2 = tempdateNow2 - 70
 			}			
-			tempdateNow = parseInt(tempdateNow)
 			var temp = parseInt(PremiumLimitedDateStart)
-			
-			
 
-			if (PremiumLimitedDateStart && parseInt(PremiumLimitedDateStart) < tempdateNow && window.proLicenceUID){
+			if (PremiumLimitedDateStart && parseInt(PremiumLimitedDateStart) < tempdateNow2 && window.proLicenceUID){
 				window.proLicenceUID = null
 				toastr.warning("<b>[SERVER]:</b> Your Giveaway licence has ended. Thank you for using our mod!").css("width", "350px");
 			}		
