@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.568 testing
+// v2.569 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -1117,7 +1117,7 @@ function pauseVideos() {
 function LegendModSpawn() {};
 
 function LegendModDeath() {
-	localStorage.setItem("totalPlayerMass", this.totalPlayerMass);
+	localStorage.setItem("totalPlayerMass", legendmod.totalPlayerMass);
 };
 //window.Bufferdata;
 //window.generatedClientKey;
