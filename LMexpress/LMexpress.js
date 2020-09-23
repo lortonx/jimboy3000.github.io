@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.42 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.43 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -399,8 +399,18 @@ function loadericon() {
 function PremiumUsersFFAScore() {
 	if (window.proLicenceUID && window.proLicenceUID.includes("MegaFFA")){
 		if (PremiumLimitedDateStart && !isNaN(parseInt(PremiumLimitedDateStart))){
-			var YYYYMMDD=parseInt(new Date().toISOString().slice(0,new Date().toISOString().indexOf("T")).replace(/-/g,""))
-			if (PremiumLimitedDateStart && parseInt(PremiumLimitedDateStart) < YYYYMMDD + 6 && window.proLicenceUID){
+			//var tempdateNow = parseInt(new Date().toISOString().slice(0,new Date().toISOString().indexOf("T")).replace(/-/g,""))
+			var tempdateNow = new Date().toISOString().slice(0,new Date().toISOString().indexOf("T")).replace(/-/g,"")
+			var tempdateNow2 = parseInt(tempdateNow.slice(6, 8)) + 6
+			if (tempdateNow2 < 7){
+				tempdateNow2 = tempdateNow2 - 70
+			}			
+			tempdateNow = parseInt(tempdateNow)
+			var temp = parseInt(PremiumLimitedDateStart)
+			
+			
+
+			if (PremiumLimitedDateStart && parseInt(PremiumLimitedDateStart) < tempdateNow && window.proLicenceUID){
 				window.proLicenceUID = null
 				toastr.warning("<b>[SERVER]:</b> Your Giveaway licence has ended. Thank you for using our mod!").css("width", "350px");
 			}		
