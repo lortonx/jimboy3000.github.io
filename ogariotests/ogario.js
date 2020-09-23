@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.559 testing
+// v2.560 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9878,10 +9878,10 @@ function thelegendmodproject() {
 			this.play = false //fix
 			
 			
-			/*if (this.ws.includes("imsolo.pro:2102")){ //4 times bigger 600 users limit
+			if (this.ws.includes("imsolo.pro:2102")){ //4 times bigger 600 users limit
 				this.totalPlayerMassBigFFA = localStorage.getItem("totalPlayerMassBigFFA");
 				
-			}		*/	
+			}			
 			this.replayfunctions();
 			
         },
@@ -12678,10 +12678,10 @@ Game name     : ${i.displayName}<br/>
         //https://github.com/NuclearC/agar.io-protocol
         updateCells(view, offset) {
 			//window.updateCellsClock=true;
-			/*if (this.ws.includes("imsolo.pro:2102")){
+			if (this.ws.includes("imsolo.pro:2102")){
 				this.totalPlayerMassBigFFA += this.playerMass
 				localStorage.setItem("totalPlayerMassBigFFA", this.totalPlayerMassBigFFA);
-			}*/
+			}
             var encode = function() {
                 for (var text = '';;) {
                     var string = view.readUInt8(offset++);
