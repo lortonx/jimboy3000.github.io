@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.38 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.39 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -396,8 +396,27 @@ function loadericon() {
         }, 1600); //remove it
 }
 
+function PremiumUsersFFAScore() {
+	if (PremiumLimitedDateStart){
+		var YYYYMMDD=parseInt(new Date().toISOString().slice(0,new Date().toISOString().indexOf("T")).replace(/-/g,""))
+		if (PremiumLimitedDateStart && PremiumLimitedDateStart < YYYYMMDD + 6 && window.proLicenceUID){
+			window.proLicenceUID = null
+			toastr.warning("<b>[SERVER]:</b> Your Giveaway licence has ended. Thank you for using our mod!").css("width", "350px");
+		}		
+	}
+	localStorage.setItem("proLicenceUID", window.proLicenceUID);
+	else{
+		window.proLicenceUID = null
+		localStorage.setItem("proLicenceUID", window.proLicenceUID);
+	}
+}
 function PremiumUsers() {
-	if (!window.proLicenceUID || window.proLicenceUID.includes("Give")){		
+	if (window.proLicenceUID && window.proLicenceUID.includes("MegaFFA")){
+		PremiumUsersFFAScore()
+	}
+		
+	if (!window.proLicenceUID || window.proLicenceUID.includes("Give")){
+
 		if (window.agarioUID && ProLicenceUsersTable.ProLicenceUsers[window.agarioUID]){
 			
 			if (ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason.includes("Give")){
