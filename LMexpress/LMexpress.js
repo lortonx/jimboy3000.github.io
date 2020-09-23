@@ -301,7 +301,7 @@ function startLM(modVersion) {
     //toastr.info('<b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">'+'Legend mod </span></font> is back!<br><font color="red"></b>Enable Vanilla skins on Settings</font>').css("width", "350px");
 		window.LMVersion=modVersion;
 		if (modVersion != "1.8") {	
-			toastr.info('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.8</b></font>. <br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+			toastr.info('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.8</b></font>. <br>visit: <a target="_blank" href="https://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 		}
 		//$("#ogario-party").wrap('<div style="display: none;" id="hidendivtoken"></div>');
 		universalchat();
@@ -5866,7 +5866,7 @@ function initializeLM(modVersion) {
 
     /*		$("#LMImplements").click(function() {
     			if (modVersion == "1.3" ) {
-    			var myWindow = window.open("http://agar.io/LMImplements", "_blank", "width=400,height=800");
+    			var myWindow = window.open("https://agar.io/LMImplements", "_blank", "width=400,height=800");
     			}
     			else{
     			toastr.info('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.3</b></font>, in order to use this function</font>');	
@@ -5879,7 +5879,7 @@ function initializeLM(modVersion) {
     $("#menu-footer").text("");
     //$("#agario-main-buttons").after('<div id="LEGENDAds4"></div>'); //
     //$("#LEGENDAds4").load("https://legendmod.ml/banners/bannerLMdevs"); //
-    $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Website" data-placement="left">v' + modVersion + semimodVersion + 
+    $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="https://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Website" data-placement="left">v' + modVersion + semimodVersion + 
 	//' </a> <img align="right" src="https://legendmod.ml/banners/iconsaynotoffabots.png"></span>' +
         '</a></span><span style="float: left;  margin-left: 80px; font-size: 13px;"><a id="MorefpsText" href="https://legendmod.ml/?nav=FPS" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a></span>'+
 		'<span style="float: right; font-size: 13px; height:10px;margin-top: -2px"><form id="donationbtn" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form></span>');
