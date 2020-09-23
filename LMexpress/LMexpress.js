@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.44 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.45 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -401,10 +401,14 @@ function PremiumUsersFFAScore() {
 		if (PremiumLimitedDateStart && !isNaN(parseInt(PremiumLimitedDateStart))){
 			//var tempdateNow = parseInt(new Date().toISOString().slice(0,new Date().toISOString().indexOf("T")).replace(/-/g,""))
 			var tempdateNow = new Date().toISOString().slice(0,new Date().toISOString().indexOf("T")).replace(/-/g,"")
-			var tempdateNow2 = parseInt(tempdateNow.slice(6, 8)) + 6
-			if (tempdateNow2 < 7){
-				tempdateNow2 = tempdateNow2 - 70
-			}			
+			
+			var tempdateNow2 = parseInt(tempdateNow.slice(6, 8)) - 6
+			var tempdateNow3 = parseInt(tempdateNow.slice(0, 6)) * 100
+			
+			if (tempdateNow2 < 0){
+				tempdateNow2 = tempdateNow2 - 70				
+			}	
+			tempdateNow2 = tempdateNow3 + tempdateNow2
 			var temp = parseInt(PremiumLimitedDateStart)
 
 			if (PremiumLimitedDateStart && parseInt(PremiumLimitedDateStart) < tempdateNow2 && window.proLicenceUID){
