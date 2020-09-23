@@ -12699,7 +12699,7 @@ Game name     : ${i.displayName}<br/>
 						//tempdateNow2 = "last day"
 					}
 					tempdateNow2 += "th";
-					toastr.warning("<b>[" + Premadeletter123 + "]:</b> <span style='text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);'>Congratulations</span> for your score on MEGA FFA.<br>  Your licence is stored as Giveaway Premium until <font color='red'><b>" + tempdateNow2 + "</font></b> of this month. Thank you for using our mod!").css("width", "350px");
+					toastr.warning("<b>[" + Premadeletter123 + "]:</b> <span style='text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);'>Congratulations</span> for your score on MEGA FFA.<br>  Your licence is stored as Giveaway Premium until <font color='blue'><b>" + tempdateNow2 + "</font></b> of this month. Thank you for using our mod!").css("width", "350px");
 				}
 				localStorage.setItem("totalPlayerMassBigFFA", this.totalPlayerMassBigFFA);
 			}			
