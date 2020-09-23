@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.39 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.40 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -404,11 +404,10 @@ function PremiumUsersFFAScore() {
 			toastr.warning("<b>[SERVER]:</b> Your Giveaway licence has ended. Thank you for using our mod!").css("width", "350px");
 		}		
 	}
-	localStorage.setItem("proLicenceUID", window.proLicenceUID);
 	else{
-		window.proLicenceUID = null
-		localStorage.setItem("proLicenceUID", window.proLicenceUID);
+		window.proLicenceUID = null		
 	}
+	localStorage.setItem("proLicenceUID", window.proLicenceUID);
 }
 function PremiumUsers() {
 	if (window.proLicenceUID && window.proLicenceUID.includes("MegaFFA")){
