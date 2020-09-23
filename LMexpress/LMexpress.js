@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.40 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.41 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -397,7 +397,7 @@ function loadericon() {
 }
 
 function PremiumUsersFFAScore() {
-	if (PremiumLimitedDateStart){
+	if (PremiumLimitedDateStart && !isNaN(parseInt(PremiumLimitedDateStart))){
 		var YYYYMMDD=parseInt(new Date().toISOString().slice(0,new Date().toISOString().indexOf("T")).replace(/-/g,""))
 		if (PremiumLimitedDateStart && PremiumLimitedDateStart < YYYYMMDD + 6 && window.proLicenceUID){
 			window.proLicenceUID = null
