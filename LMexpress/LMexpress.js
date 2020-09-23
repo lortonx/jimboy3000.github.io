@@ -400,7 +400,7 @@ function PremiumUsersFFAScore() {
 	if (window.proLicenceUID && window.proLicenceUID.includes("MegaFFA")){
 		if (PremiumLimitedDateStart && !isNaN(parseInt(PremiumLimitedDateStart))){
 			var YYYYMMDD=parseInt(new Date().toISOString().slice(0,new Date().toISOString().indexOf("T")).replace(/-/g,""))
-			if (PremiumLimitedDateStart && PremiumLimitedDateStart < YYYYMMDD + 6 && window.proLicenceUID){
+			if (PremiumLimitedDateStart && parseInt(PremiumLimitedDateStart) < YYYYMMDD + 6 && window.proLicenceUID){
 				window.proLicenceUID = null
 				toastr.warning("<b>[SERVER]:</b> Your Giveaway licence has ended. Thank you for using our mod!").css("width", "350px");
 			}		
