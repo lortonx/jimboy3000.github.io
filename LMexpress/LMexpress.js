@@ -4129,7 +4129,7 @@ function triggerLMbtns() {
     }
 	
 	$("#agario-main-buttons").append('<div id="LEGENDAds5"></div>')
-	$("#LEGENDAds5").load("https://legendmod.ml/banners/megaFFA");
+	//$("#LEGENDAds5").load("https://legendmod.ml/banners/megaFFA");
 
     if (dyinglight1load == null || dyinglight1load == "null") {
         $("#LEGENDAds2").load("https://legendmod.ml/banners/bannerDyingLight");
