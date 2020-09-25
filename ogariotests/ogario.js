@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.572 testing
+// v2.573 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13363,7 +13363,12 @@ Game name     : ${i.displayName}<br/>
             sleep(ms) {
                 return new Promise(resolve => setTimeout(resolve, ms));
             },
-            renderFrame() { 
+			renderFrame() {
+				this.ctx.save()
+				this.renderFrame2();
+				this.ctx.restore()
+			},
+            renderFrame2() { 
             //'renderFrame': async function() { //Sonia5
                 //await this.sleep(4); //Sonia5			
                 //this.ctx.start2D();
@@ -13376,7 +13381,7 @@ Game name     : ${i.displayName}<br/>
                 LM.getCursorPosition();
                 LM.sortCells();
                 LM.compareCells();
-                this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+                //this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
                 if (defaultmapsettings.showGrid) {
                     this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
                 }
