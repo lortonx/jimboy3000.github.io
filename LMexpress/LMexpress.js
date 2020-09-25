@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.45 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.46 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -54,7 +54,7 @@ var checkonlyonce = localStorage.getItem("checkonlyonce");
 var checkonlytwelvth = localStorage.getItem("checkonlytwelvth");
 var checkonlyeleventh = localStorage.getItem("checkonlyeleventh");
 var checkonlyrewardday1 = localStorage.getItem("checkonlyrewardday1");
-var defaultMusicUrl = "https://www.youtube.com/watch?v=ZJXPONv41jw";
+var defaultMusicUrl = "https://www.youtube.com/watch?v=nj33MArNjC8";
 var musicPlayer;
 
 var stateObj = {
@@ -5906,7 +5906,7 @@ function initializeLM(modVersion) {
     $("#menu-footer").text("");
     //$("#agario-main-buttons").after('<div id="LEGENDAds4"></div>'); //
     //$("#LEGENDAds4").load("https://legendmod.ml/banners/bannerLMdevs"); //
-    $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="https://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Website" data-placement="left">v' + modVersion + semimodVersion + 
+	$("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="https://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Website" data-placement="left">v' + modVersion + semimodVersion + 
 	//' </a> <img align="right" src="https://legendmod.ml/banners/iconsaynotoffabots.png"></span>' +
         '</a></span><span style="float: left;  margin-left: 80px; font-size: 13px;"><a id="MorefpsText" href="https://legendmod.ml/?nav=FPS" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a></span>'+
 		'<span style="float: right; font-size: 13px; height:10px;margin-top: -2px"><form id="donationbtn" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form></span>');
