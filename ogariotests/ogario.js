@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.576 testing
+// v2.577 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9711,11 +9711,11 @@ function thelegendmodproject() {
         serverTimeDiff: 0,
         //loggedInTime: 0,
         mapSize: 14142, //14142.13562
-        mapOffset:  7071 //7071.067811865476
-        mapMinX: -7071
-        mapMinY: -7071
-        mapMaxX: 7071
-        mapMaxY: 7071
+        mapOffset:  7071, //7071.067811865476
+        mapMinX: -7071,
+        mapMinY: -7071,
+        mapMaxX: 7071,
+        mapMaxY: 7071,
 	
         mapOffsetX: 0,
         mapOffsetY: 0,
