@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.577 testing
+// v2.578 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12716,6 +12716,7 @@ Game name     : ${i.displayName}<br/>
 			}			
 		},		
         updateCells(view, offset) {
+			this.updatingCells = true
 			//window.updateCellsClock=true;
 			this.megaFFAscore();
 			
@@ -12967,7 +12968,8 @@ Game name     : ${i.displayName}<br/>
             if (defaultmapsettings.reverseTrick) reverseTrick.check();
             //if(defaultmapsettings.clickTargeting) clickTargeting.check();
 
-            //if (window.historystate && legendmod.play) {historystate();}			
+            //if (window.historystate && legendmod.play) {historystate();}	
+			this.updatingCells = false
         },
         color2Hex(number) {
             var color = number.toString(16);
@@ -13364,6 +13366,10 @@ Game name     : ${i.displayName}<br/>
                 return new Promise(resolve => setTimeout(resolve, ms));
             },
             renderFrame() { 
+			if (LM.updatingCells == true){
+				console.log('renderFrame skipped')
+				return;
+			}
             //'renderFrame': async function() { //Sonia5
                 //await this.sleep(4); //Sonia5			
                 //this.ctx.start2D();
