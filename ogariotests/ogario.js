@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.579 testing
+// v2.580 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9865,7 +9865,9 @@ function thelegendmodproject() {
                 app.onOpen();
             };
             this.socket.onmessage = function(t) {
+				this.updatingCells = true
                 app.onMessage(t);
+				this.updatingCells = false
             };
             this.socket.onerror = function(t) {
                 app.onError(t);
@@ -9934,7 +9936,7 @@ function thelegendmodproject() {
             this.connectionOpened = true;
         },
         onMessage(message) {
-			this.updatingCells = true
+			
 			//console.log(message.data)
             message = new DataView(message.data);
             if (this.protocolKey) {
@@ -9942,7 +9944,7 @@ function thelegendmodproject() {
             }
             this.handleMessage(message);
 			
-			this.updatingCells = false
+			
         },
         onError(t) {
             console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket error');
