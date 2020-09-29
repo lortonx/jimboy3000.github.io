@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.585 testing
+// v2.586 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13307,6 +13307,10 @@ Game name     : ${i.displayName}<br/>
             pieChart: null,
             pellet: null,
             indicator: null,
+			//
+			counterTime = 0,
+			renderTime = 0;
+			//			
             setCanvas() {
                 this.canvas = document.getElementById('canvas');
                 this.ctx = this.canvas.getContext('2d');
@@ -13459,8 +13463,15 @@ Game name     : ${i.displayName}<br/>
                     if (this.pieChart && this.pieChart.width) {
                         this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
                     }
-                }				
-				console.log(performance.now() - this.renderStarted, (performance.now() - this.renderStarted) * drawRender.fps)
+                }
+					
+				this.renderTime += performance.now() - this.renderStarted
+				this.counterTime++
+				if (this.counterTime == drawRender.fps){
+					this.counterTime = 0
+					console.log(this.renderTime)
+				}
+				//console.log(performance.now() - this.renderStarted, (performance.now() - this.renderStarted) * drawRender.fps)
 				//window.updateCellsClock=false
 				
 				//drawRender.render();
