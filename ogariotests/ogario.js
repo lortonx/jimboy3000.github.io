@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.581 testing
+// v2.582 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13375,7 +13375,7 @@ Game name     : ${i.displayName}<br/>
 				console.log('renderFrame skipped')
 				return;
 			}
-			this.renderStarted = Date.Now()
+			this.renderStarted = Date.now()
             //'renderFrame': async function() { //Sonia5
                 //await this.sleep(4); //Sonia5			
                 //this.ctx.start2D();
