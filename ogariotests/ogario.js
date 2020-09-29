@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.596 testing
+// v2.597 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -4451,7 +4451,7 @@ function thelegendmodproject() {
                     }
                 }				
 				if (defaultmapsettings.showStatsRender) {
-					t += ' 💻: ' + drawRender.averageRenderTime  "% | "//Sonia6
+					t += '💻: ' + drawRender.averageRenderTime  + '% | '//Sonia6
 				}
                 if (defaultmapsettings.showStatsFPS) {
                     t += 'FPS: ' + drawRender.fps;
