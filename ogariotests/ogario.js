@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.583 testing
+// v2.584 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13375,7 +13375,7 @@ Game name     : ${i.displayName}<br/>
 				console.log('renderFrame skipped')
 				return;
 			}
-			this.renderStarted = Date.now()
+			this.renderStarted = performance.now()
             //'renderFrame': async function() { //Sonia5
                 //await this.sleep(4); //Sonia5			
                 //this.ctx.start2D();
@@ -13460,7 +13460,7 @@ Game name     : ${i.displayName}<br/>
                         this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
                     }
                 }				
-				console.log(Date.now() - this.renderStarted, (Date.now() - this.renderStarted) * drawRender.fps)
+				console.log(Date.now() - this.renderStarted, (performance.now() - this.renderStarted) * drawRender.fps)
 				//window.updateCellsClock=false
 				
 				//drawRender.render();
