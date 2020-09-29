@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.598 testing
+// v2.599 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -1389,7 +1389,7 @@ var displayText = {
         showStatsN16: 'n/16: Pieces',
         showStatsFPS: 'Statystyki: FPS',
         //showStatsPPS: 'Statystyki: PPS',
-		showStatsRender: 'Show render use percentage',
+		showStatsRender: 'Time percentage % consumed for Render',
         blockPopups: 'Blokuj popupy (reklamy/sklep/zadanie)',
         gameOverStats: 'Game over stats',
         hotkeys: 'Skróty klawiszowe',
@@ -1840,7 +1840,7 @@ var displayText = {
         showStatsN16: 'n/16: Pieces',
         showStatsFPS: 'FPS: Frames per second',
         //showStatsPPS: 'Game stats: PPS',
-		showStatsRender: 'Show render use percentage',
+		showStatsRender: 'Time percentage % consumed for Render',
         blockPopups: 'Block popups (ads/shop/quest)',
         gameOverStats: 'Game over stats',
         hotkeys: 'Hotkeys',
