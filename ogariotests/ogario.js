@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.588 testing
+// v2.589 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13465,12 +13465,12 @@ Game name     : ${i.displayName}<br/>
                     }
                 }
 					
-				this.renderTime += performance.now() - this.renderStarted
-				this.counterTime++
-				if (this.counterTime == drawRender.fps){
-					this.counterTime = 0
-					this.renderTime = 0
-					console.log(this.renderTime)
+				window.drawRender.renderTime += performance.now() - this.renderStarted
+				window.drawRender.counterTime++
+				if (window.drawRender.counterTime == drawRender.fps){
+					window.drawRender.counterTime = 0
+					window.drawRender.renderTime = 0
+					console.log(window.drawRender.renderTime)
 				}
 				//console.log(performance.now() - this.renderStarted, (performance.now() - this.renderStarted) * drawRender.fps)
 				//window.updateCellsClock=false
