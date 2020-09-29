@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.595 testing
+// v2.596 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -1389,6 +1389,7 @@ var displayText = {
         showStatsN16: 'n/16: Pieces',
         showStatsFPS: 'Statystyki: FPS',
         //showStatsPPS: 'Statystyki: PPS',
+		showStatsRender: 'Show render use percentage',
         blockPopups: 'Blokuj popupy (reklamy/sklep/zadanie)',
         gameOverStats: 'Game over stats',
         hotkeys: 'Skróty klawiszowe',
@@ -1839,6 +1840,7 @@ var displayText = {
         showStatsN16: 'n/16: Pieces',
         showStatsFPS: 'FPS: Frames per second',
         //showStatsPPS: 'Game stats: PPS',
+		showStatsRender: 'Show render use percentage',
         blockPopups: 'Block popups (ads/shop/quest)',
         gameOverStats: 'Game over stats',
         hotkeys: 'Hotkeys',
@@ -3006,6 +3008,7 @@ var defaultmapsettings = {
     showStatsN16: true,
     showStatsFPS: true,
     //showStatsPPS: true,
+	showStatsRender: false,
     blockPopups: false,
     gameOverStats: false,
     streamMode: false,
@@ -4446,7 +4449,10 @@ function thelegendmodproject() {
                     if (defaultmapsettings.showStatsFPS) {
                         t += ' | '
                     }
-                }
+                }				
+				if (defaultmapsettings.showStatsRender) {
+					t += ' 💻: ' + drawRender.averageRenderTime  "% | "//Sonia6
+				}
                 if (defaultmapsettings.showStatsFPS) {
                     t += 'FPS: ' + drawRender.fps;
                 }
@@ -5322,7 +5328,7 @@ function thelegendmodproject() {
 			this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
             //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
             this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
-            this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "gameOverStats", "showTime"], "statsGroup");
+            this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "showStatsRender", "gameOverStats", "showTime"], "statsGroup");
             this.addOptions(["oneColoredSpectator", "multiBoxShadow", "multiKeepMoving", "middleMultiViewWhenClose", "middleMultiView"], "multiBox");			
             this.addOptions([], "macroGroup");
             this.addOptions([], "profiles");
@@ -13308,6 +13314,7 @@ Game name     : ${i.displayName}<br/>
 			//
 			counterTime: 0,
 			renderTime: 0,
+			averageRenderTime: 0,
 			//			
             setCanvas() {
                 this.canvas = document.getElementById('canvas');
@@ -13463,7 +13470,8 @@ Game name     : ${i.displayName}<br/>
 				drawRender.counterTime++
 				if (drawRender.counterTime >= drawRender.fps || drawRender.counterTime >= 500){
 					if (drawRender.counterTime < 500 && drawRender.counterTime > 8){
-						console.log(drawRender.renderTime, drawRender.counterTime)
+						this.averageRenderTime = (drawRender.renderTime / 10).toFixed(2)
+						
 					}
 						drawRender.counterTime = 0
 						drawRender.renderTime = 0	
