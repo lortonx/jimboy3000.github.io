@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.594 testing
+// v2.595 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13461,8 +13461,8 @@ Game name     : ${i.displayName}<br/>
 					
 				drawRender.renderTime += performance.now() - this.renderStarted
 				drawRender.counterTime++
-				if ((drawRender.counterTime >= drawRender.fps && drawRender.counterTime > 8) || drawRender.counterTime >= 500){
-					if (drawRender.counterTime < 500){
+				if (drawRender.counterTime >= drawRender.fps || drawRender.counterTime >= 500){
+					if (drawRender.counterTime < 500 && drawRender.counterTime > 8){
 						console.log(drawRender.renderTime, drawRender.counterTime)
 					}
 						drawRender.counterTime = 0
