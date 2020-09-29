@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.578 testing
+// v2.579 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9934,12 +9934,15 @@ function thelegendmodproject() {
             this.connectionOpened = true;
         },
         onMessage(message) {
+			this.updatingCells = true
 			//console.log(message.data)
             message = new DataView(message.data);
             if (this.protocolKey) {
                 message = this.shiftMessage(message, this.protocolKey ^ this.clientVersion);
             }
             this.handleMessage(message);
+			
+			this.updatingCells = false
         },
         onError(t) {
             console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket error');
@@ -12716,7 +12719,7 @@ Game name     : ${i.displayName}<br/>
 			}			
 		},		
         updateCells(view, offset) {
-			this.updatingCells = true
+			
 			//window.updateCellsClock=true;
 			this.megaFFAscore();
 			
@@ -12969,7 +12972,7 @@ Game name     : ${i.displayName}<br/>
             //if(defaultmapsettings.clickTargeting) clickTargeting.check();
 
             //if (window.historystate && legendmod.play) {historystate();}	
-			this.updatingCells = false
+			
         },
         color2Hex(number) {
             var color = number.toString(16);
