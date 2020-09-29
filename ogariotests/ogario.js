@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.597 testing
+// v2.598 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -4451,10 +4451,15 @@ function thelegendmodproject() {
                     }
                 }				
 				if (defaultmapsettings.showStatsRender) {
-					t += '💻: ' + drawRender.averageRenderTime  + '% | '//Sonia6
+					var color = '';
+					if(drawRender.averageRenderTime>70)  color = 'color:red'
+					else if(drawRender.averageRenderTime>40)  color = 'color:yellow'
+					else if(drawRender.averageRenderTime<40)  color = 'color:green'
+					t += '💻: <span style=' + color + '>' + drawRender.averageRenderTime + '%</span> | ';
 				}
                 if (defaultmapsettings.showStatsFPS) {
                     t += 'FPS: ' + drawRender.fps;
+					
                 }
                 /*if (defaultmapsettings.showStatsPPS) {
                 	if (defaultmapsettings.showStatsFPS || ogario.play ) t += ` | `;
