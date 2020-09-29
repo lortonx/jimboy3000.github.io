@@ -14634,7 +14634,7 @@ Game name     : ${i.displayName}<br/>
 					else if (drawRender.averageRenderTime<30 && window.renderDelay>0){
 						window.renderDelay--
 					}
-					else if (drawRender.averageRenderTime>60 && window.renderDelay<32){
+					else if (drawRender.averageRenderTime>60 && window.renderDelay<64){
 						window.renderDelay++
 					}
 					setTimeout(function() {
