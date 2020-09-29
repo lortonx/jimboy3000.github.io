@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.607 testing
+// v2.608 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -14634,7 +14634,7 @@ Game name     : ${i.displayName}<br/>
 					else if (drawRender.averageRenderTime<30 && window.renderDelay>0){
 						window.renderDelay--
 					}
-					else if (drawRender.averageRenderTime>60){
+					else if (drawRender.averageRenderTime>60 && window.renderDelay<32){
 						window.renderDelay++
 					}
 					setTimeout(function() {
