@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.591 testing
+// v2.592 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9864,10 +9864,8 @@ function thelegendmodproject() {
             this.socket.onopen = function() {
                 app.onOpen();
             };
-            this.socket.onmessage = function(t) {
-				this.updatingCells = true
-                app.onMessage(t);
-				this.updatingCells = false
+            this.socket.onmessage = function(t) {			
+                app.onMessage(t);				
             };
             this.socket.onerror = function(t) {
                 app.onError(t);
@@ -13375,10 +13373,6 @@ Game name     : ${i.displayName}<br/>
                 return new Promise(resolve => setTimeout(resolve, ms));
             },
             renderFrame() { 
-			if (LM.updatingCells == true){
-				console.log('renderFrame skipped')
-				return;
-			}
 			this.renderStarted = performance.now()
             //'renderFrame': async function() { //Sonia5
                 //await this.sleep(4); //Sonia5			
@@ -13467,10 +13461,13 @@ Game name     : ${i.displayName}<br/>
 					
 				drawRender.renderTime += performance.now() - this.renderStarted
 				drawRender.counterTime++
-				if (drawRender.counterTime == drawRender.fps || drawRender.counterTime > 500){
-					console.log(drawRender.renderTime, drawRender.counterTime)
-					drawRender.counterTime = 0
-					drawRender.renderTime = 0				
+				if (drawRender.counterTime >= drawRender.fps || drawRender.counterTime >= 500){
+					if (drawRender.counterTime < 500){
+						console.log(drawRender.renderTime, drawRender.counterTime)
+					}
+						drawRender.counterTime = 0
+						drawRender.renderTime = 0	
+					
 				}
 				//console.log(performance.now() - this.renderStarted, (performance.now() - this.renderStarted) * drawRender.fps)
 				//window.updateCellsClock=false
