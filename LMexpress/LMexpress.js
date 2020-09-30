@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.48 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.49 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -551,7 +551,7 @@ function LMserverbox() {
             } else f = "";
             document.cookie = "agario_redirect=" + a + f + "; path=/"
         }
-        joinSIPonstart();
+        joinSIPonstart(realmode);
         joinPLAYERonstart();
 		joinreplayURLonstart();
 
@@ -5985,11 +5985,11 @@ function initializeLM(modVersion) {
 }
 
 
-function joinSIPonstart() {
+function joinSIPonstart(mode) {
     setTimeout(function() {
         if (searchSip != null) {
-            if (realmode != null && region != null) {
-                $('#gamemode').val(realmode);
+            if (mode != null && region != null) {
+                $('#gamemode').val(mode);
                 if (region == "Private") {
 					deleteGamemode();
 				}
