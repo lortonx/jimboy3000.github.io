@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.50 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.51 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -144,6 +144,7 @@ if (document.URL.includes('legendmod.ml')){
 }
 var region = getParameterByName("r", url);
 var realmode = getParameterByName("m", url);
+var realmodePS = realmode
 var searchStr = getParameterByName("search", url);
 var searchSip = getParameterByName("sip", url);
 
@@ -551,7 +552,7 @@ function LMserverbox() {
             } else f = "";
             document.cookie = "agario_redirect=" + a + f + "; path=/"
         }
-        joinSIPonstart(realmode);
+        joinSIPonstart();
         joinPLAYERonstart();
 		joinreplayURLonstart();
 
@@ -5985,14 +5986,14 @@ function initializeLM(modVersion) {
 }
 
 
-function joinSIPonstart(mode) {
+function joinSIPonstart() {
     setTimeout(function() {
         if (searchSip != null) {
-            if (mode != null && region != null) {
+            if (realmodePS != null && region != null) {
                 
 				
                 if (region == "Private") {
-					$('#gamemode').val(mode);
+					$('#gamemode').val(realmodePS);
 					$('#region').val(region);
 					deleteGamemode();
 				}
