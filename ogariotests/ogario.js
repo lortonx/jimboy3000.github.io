@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.639 testing
+// v2.640 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -14376,9 +14376,9 @@ Game name     : ${i.displayName}<br/>
 				drawRender.countFps();
 				drawRender.renderFrame();
 			}
-            else{
+            else{			
 				console.log('stopped')	
-				drawRender.renderingDelay=0	
+				drawRender.renderingDelay =	drawRender.renderingDelay - 1000
 			}
             if (!defaultmapsettings.unlockedFPS) {
                 window.requestAnimationFrame(drawRender.render);
