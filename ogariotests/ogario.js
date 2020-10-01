@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.625 testing
+// v2.626 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13182,7 +13182,7 @@ Game name     : ${i.displayName}<br/>
             }			
             this.ctx.save();
             //this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
-			this.ctx.translate((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camX * this.scale ));
+			this.ctx.translate((this.canvasWidth / 2) + (this.camX * this.scale), (this.canvasHeight / 2) + (this.camX * this.scale ));
             this.ctx.scale(this.scale, this.scale);
             //this.ctx.translate(-this.camX, -this.camY);
 			
