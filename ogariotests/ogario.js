@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.610 testing
+// v2.611 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9064,7 +9064,7 @@ function thelegendmodproject() {
                         	console.log('draw',this.targetNick,this.SpecialEffect)
                         	window.eud=true
                         }*/
-                    }
+                    
                     if (this.SpecialEffect == "Hat" || this.SpecialEffect2 == "Hat") {
                         //style.drawImage(cimgSpecialSkinEffectsHat3, this.x - 1/4 * y, this.y - 5/4 * y, y/2, y/2); 					
                         style.drawImage(cimgSpecialSkinEffectsHat3, this.x - 1 / 2 * y, this.y - 3 / 2 * y, y, y);
@@ -9307,7 +9307,7 @@ function thelegendmodproject() {
                                 style.drawImage(cimg2, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
                             }
                         } catch (e) {}
-
+				}
             }			
 		}
         this.draw = function(style, canCreateDiscussions) { //this function draws each cell/virus/food 1 time only
@@ -9453,7 +9453,8 @@ function thelegendmodproject() {
                     if (defaultmapsettings.myCustomColor && ogarcopythelb.color && LM.gameMode != ":teams") {
                         color = ogarcopythelb.color;
                     }
-                } else {
+                } 
+				else {
                     //if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings) {
                     if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings && !this.isFood) {
                         color = this.oppColor;
@@ -9506,7 +9507,7 @@ function thelegendmodproject() {
                             s = false;
 						}*/
             var node = null;
-            var node2 = {}; //, node2.src = application.customSkinsMap[this.targetNick]
+            
 
 
             if (defaultmapsettings.multiBoxShadow && this.targetNick != null && (this.targetNick == profiles[application.selectedOldProfile].nick || this.targetNick == profiles[application.selectedProfile].nick) && LM.playerCellsMulti && legendmod.playerCellsMulti.length) {
@@ -9520,28 +9521,9 @@ function thelegendmodproject() {
                     }
                 }
             }
-
-            /*	
-			if (defaultmapsettings.multiBoxShadow && (this.isPlayerCell || this.isPlayerCellMulti) && LM.playerCellsMulti){	
-				this.Multi=false;
-				for (var i = 0; i < LM.playerCellsMulti.length; i++){
-					if (LM.playerCellsMulti[i].id == this.id){
-						style.shadowBlur = 40;
-						style.shadowColor = profiles[application.selectedOldProfile].color;
-						this.Multi=true
-					}
-				}
-				if (this.Multi==false){
-					style.shadowBlur = 40;
-					style.shadowColor = profiles[application.selectedProfile].color;				
-				}
-			}
-*/
             //lylko
             if (defaultmapsettings.customSkins && LM.showCustomSkins) {				
-                node = application.getCustomSkin(this.targetNick, this.color);
-				//node = application.getCustomSkin(this.targetNick, color);
-				
+                node = application.getCustomSkin(this.targetNick, this.color);				
                 if (node) {
                     if ((defaultmapsettings.transparentSkins || LM.play && defaultmapsettings.oppColors) && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
                         style.globalAlpha *= defaultSettings.skinsAlpha;
@@ -9565,10 +9547,37 @@ function thelegendmodproject() {
 							style.restore();
 	
 						} 
-						else{
-							try {
+						else{        
+ 							try {
 								style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y); //all skin drawing
-							} catch (e) {}						
+						} catch (e) {}
+							
+						if (defaultmapsettings.videoSkins) {
+							var node2 = {}; //, node2.src = application.customSkinsMap[this.targetNick]
+							node2.src = application.customSkinsMap[this.targetNick];
+							if (node2.src) {
+								if (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) {
+									checkVideos(node2.src, this.targetNick);
+									try {
+										style.save();
+										style.clip();	
+										if (defaultmapsettings.videoDestorted){
+											var temp = window.videoSkinPlayer[node2.src].videoWidth / window.videoSkinPlayer[node2.src].videoHeight;
+											style.drawImage(window.videoSkinPlayer[node2.src], this.x - y, this.y - y * temp, 2 * y, 2 * y * temp);	
+										}
+										else{
+											style.drawImage(window.videoSkinPlayer[node2.src], this.x - y, this.y - y, 2 * y, 2 * y);
+										}
+										style.restore();
+									} catch (e) {}
+								}
+							}
+						}
+						if (dyinglight1load == "yes" && node == null && this.targetNick.includes(legendmod.playerNick) == false && !this.isFood && this.mass > 12) {
+							try {
+								style.drawImage(cimgDyingLight, this.x - y, this.y - y, 2 * y, 2 * y);
+							} catch (e) {}
+							}		
 						}
 					}
                     //special animations
@@ -9610,53 +9619,8 @@ function thelegendmodproject() {
                 return;
             } 
 			else {
-                if (defaultmapsettings.customSkins && LM.showCustomSkins) {
-                    node2.src = application.customSkinsMap[this.targetNick];
-                    application.customSkinsMap[this.targetNick];
-                    if (node2.src) {
-                        if (defaultmapsettings.videoSkins) {
-                            if (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) {
-                                checkVideos(node2.src, this.targetNick);
-                                try {
-
-									//style.arc(this.x - y, this.y - y, 2 * y, 0, this.pi2, true);
-									style.save();
-									style.clip();	
-
-									//style.drawImage(window.videoSkinPlayer[node2.src], 0, 0,2*y,2*y);	
-									//style.drawImage(window.videoSkinPlayer[node2.src], this.x - y, this.y - y, 2 * y, 2 * y);
-									if (defaultmapsettings.videoDestorted){
-										var temp = window.videoSkinPlayer[node2.src].videoWidth / window.videoSkinPlayer[node2.src].videoHeight;
-										style.drawImage(window.videoSkinPlayer[node2.src], this.x - y, this.y - y * temp, 2 * y, 2 * y * temp);	
-									}
-									else{
-										style.drawImage(window.videoSkinPlayer[node2.src], this.x - y, this.y - y, 2 * y, 2 * y);
-									}
-									style.restore();
-                                    //style.drawImage(window.videoSkinPlayer[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y);
-									
-									
-									
-                          /*(o.l.context.drawImage(o.l.video, 0, 0, o.l.video.videoWidth,
-                                            o.l.video.videoHeight,
-                                            -((512 * (o.l.video.videoWidth / o.l.video.videoHeight) - 512) / 2), 0,
-                                            512 * (o.l.video.videoWidth / o.l.video.videoHeight), 512),
-                                        t[0] = o.l.canvas)*/
-									
-                                } catch (e) {}
-                            }
-                        }
-                    }
-                    if (dyinglight1load == "yes" && node == null && this.targetNick.includes(legendmod.playerNick) == false && !this.isFood && this.mass > 12) {
-                        try {
-                            style.drawImage(cimgDyingLight, this.x - y, this.y - y, 2 * y, 2 * y);
-                        } catch (e) {}
-                    }
-
-                }
                 var recursive = false;
                 if (!this.isPlayerCell && (recursive = application.setAutoHideCellInfo(y)) && defaultmapsettings.autoHideNames && defaultmapsettings.autoHideMass) {
-                    style.restore();
                 } 
 				else {
                     this.setDrawing();
@@ -9678,11 +9642,11 @@ function thelegendmodproject() {
 								this.drawChat(style);
 							}
                         }
-                    }
-                    style.restore();
+                    }     
                 }
+				style.restore();
             }
-        };
+        }
     }
     window.legendmod1 = ogarbasicassembly;
 
