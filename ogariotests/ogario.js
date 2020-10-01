@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.632 testing
+// v2.634 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13098,6 +13098,7 @@ Game name     : ${i.displayName}<br/>
         counterTime: 0,
         renderTime: 0,
         averageRenderTime: 0,
+		renderingDelay: 0,
         //			
         setCanvas() {
             this.canvas = document.getElementById('canvas');
@@ -13266,10 +13267,7 @@ Game name     : ${i.displayName}<br/>
             }
 			if (performance.now() - this.renderStarted > 10){
 				console.log(performance.now() - this.renderStarted)
-				this.rendering=true
-			}
-			else{
-				this.rendering=false
+				this.renderingDelay += performance.now() - this.renderStarted
 			}
             //console.log(performance.now() - this.renderStarted, (performance.now() - this.renderStarted) * drawRender.fps)
             //window.updateCellsClock=false
@@ -14374,15 +14372,16 @@ Game name     : ${i.displayName}<br/>
         render() {
             //'render': async function() {
             //if (!window.fpsM) window.fpsM = 4
-            //await drawRender.sleep(window.fpsM);				
-            
-			if (!drawRender.rendering){
+            //await drawRender.sleep(window.fpsM);	
+			if (drawRender.renderingDelay - 10 > 0){
+				drawRender.renderingDelay = drawRender.renderingDelay - 10
+			}
+			if (drawRender.renderingDelay<0){
 				drawRender.countFps();
 				drawRender.renderFrame();
 			}
             else{
-				//console.log('stopped')
-				drawRender.rendering=false
+				console.log('stopped')			
 			}
             if (!defaultmapsettings.unlockedFPS) {
                 window.requestAnimationFrame(drawRender.render);
