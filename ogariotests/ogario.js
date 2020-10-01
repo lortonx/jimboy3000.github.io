@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.614 testing
+// v2.615 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9287,7 +9287,7 @@ function thelegendmodproject() {
                     }*/
                     return defaultmapsettings.transparentViruses && (style.globalAlpha *= defaultSettings.virusAlpha, s = true), defaultmapsettings.virColors && LM.play ? (style.fillStyle = application.setVirusColor(y), style.strokeStyle = application.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = defaultSettings.virusStrokeSize, defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
                         defaultSettings.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), defaultmapsettings.showMass && (this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
-                        this.setMass(this.size), this.drawMass(style), (defaultmapsettings.showChat && this.drawChat(style)), (window.ExternalScripts && !window.legendmod5.optimizedMass && this.drawMerge(style))), void style.restore();
+                        this.setMass(this.size), this.drawMass(style), (window.ExternalScripts && !window.legendmod5.optimizedMass)), void style.restore();
                 }
             } else {
                 if (this.isVirus) {
@@ -9319,12 +9319,12 @@ function thelegendmodproject() {
                         this.setDrawingScale();
                         this.setMass(this.size);
                         this.drawMass(style);
-                        if (window.ExternalScripts && !window.legendmod5.optimizedMass) {
+                        /*if (window.ExternalScripts && !window.legendmod5.optimizedMass) {
                             this.drawMerge(style);
                         }
                         if (defaultmapsettings.showChat) {
                             this.drawChat(style);
-                        }
+                        }*/
                     }
                     style.restore();
                     return;
@@ -9397,7 +9397,7 @@ function thelegendmodproject() {
                 if (node) {
                     if ((defaultmapsettings.transparentSkins || LM.play && defaultmapsettings.oppColors) && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
                         style.globalAlpha *= defaultSettings.skinsAlpha;
-                        s = true;
+                        //s = true;
                     }
                     if (legendmod.gameMode != ":teams") {
                         if (defaultmapsettings.jellyPhisycs) {
@@ -9436,19 +9436,18 @@ function thelegendmodproject() {
                     }
                 } else {
                     if (defaultmapsettings.videoSkins) {
-                        var node2 = {};
-                        node2.src = application.customSkinsMap[this.targetNick];
-                        if (node2.src) {
-                            if (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) {
-                                checkVideos(node2.src, this.targetNick);
+                        var node2 = application.customSkinsMap[this.targetNick];
+                        if (node2) {
+                            if (node2.includes(".mp4") || node2.includes(".webm") || node2.includes(".ogv")) {
+                                checkVideos(node2, this.targetNick);
                                 try {
                                     style.save();
                                     style.clip();
                                     if (defaultmapsettings.videoDestorted) {
-                                        var temp = window.videoSkinPlayer[node2.src].videoWidth / window.videoSkinPlayer[node2.src].videoHeight;
-                                        style.drawImage(window.videoSkinPlayer[node2.src], this.x - y, this.y - y * temp, 2 * y, 2 * y * temp);
+                                        var temp = window.videoSkinPlayer[node2].videoWidth / window.videoSkinPlayer[node2].videoHeight;
+                                        style.drawImage(window.videoSkinPlayer[node2], this.x - y, this.y - y * temp, 2 * y, 2 * y * temp);
                                     } else {
-                                        style.drawImage(window.videoSkinPlayer[node2.src], this.x - y, this.y - y, 2 * y, 2 * y);
+                                        style.drawImage(window.videoSkinPlayer[node2], this.x - y, this.y - y, 2 * y, 2 * y);
                                     }
                                     style.restore();
                                 } catch (e) {}
@@ -9472,7 +9471,7 @@ function thelegendmodproject() {
                 //return;
             } else {
                 var recursive = false;
-                if (!this.isPlayerCell && (recursive = application.setAutoHideCellInfo(y)) && defaultmapsettings.autoHideNames && defaultmapsettings.autoHideMass) {} else {
+                if (!(!this.isPlayerCell && (recursive = application.setAutoHideCellInfo(y)) && defaultmapsettings.autoHideNames && defaultmapsettings.autoHideMass)){
                     this.setDrawing();
                     this.setDrawingScale();
                     style.globalAlpha *= defaultSettings.textAlpha;
