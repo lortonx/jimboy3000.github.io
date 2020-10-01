@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.613 testing
+// v2.614 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9540,21 +9540,19 @@ function thelegendmodproject() {
 						} catch (e) {}
 							
 						if (defaultmapsettings.videoSkins) {
-							console.log('a')
-							var node2 = {};
-							node2.src = application.customSkinsMap[this.targetNick];
-							if (node2.src) {
-								if (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) {
-									checkVideos(node2.src, this.targetNick);
+							if (node) {
+								if (node.includes(".mp4") || node.includes(".webm") || node.includes(".ogv")) {
+									checkVideos(node, this.targetNick);
+									console.log(node)
 									try {
 										style.save();
 										style.clip();	
 										if (defaultmapsettings.videoDestorted){
-											var temp = window.videoSkinPlayer[node2.src].videoWidth / window.videoSkinPlayer[node2.src].videoHeight;
-											style.drawImage(window.videoSkinPlayer[node2.src], this.x - y, this.y - y * temp, 2 * y, 2 * y * temp);	
+											var temp = window.videoSkinPlayer[node].videoWidth / window.videoSkinPlayer[node].videoHeight;
+											style.drawImage(window.videoSkinPlayer[node], this.x - y, this.y - y * temp, 2 * y, 2 * y * temp);	
 										}
 										else{
-											style.drawImage(window.videoSkinPlayer[node2.src], this.x - y, this.y - y, 2 * y, 2 * y);
+											style.drawImage(window.videoSkinPlayer[node], this.x - y, this.y - y, 2 * y, 2 * y);
 										}
 										style.restore();
 									} catch (e) {}
