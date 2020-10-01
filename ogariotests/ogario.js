@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.618 testing
+// v2.619 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13180,14 +13180,8 @@ Game name     : ${i.displayName}<br/>
             if (defaultmapsettings.showGrid) {
                 this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
             }
-            this.drawCustomBackgrounds()
-            if (defaultmapsettings.showMapBorders) {
-
-                var tempborderwidthradius = defaultSettings.bordersWidth / 2;
-                this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
-            }			
             this.ctx.save();
-            this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
+            //this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
             this.ctx.scale(this.scale, this.scale);
             this.ctx.translate(-this.camX, -this.camY);
 			
@@ -13196,6 +13190,12 @@ Game name     : ${i.displayName}<br/>
             }
             if (LM.gameMode === ':battleroyale') {
                 this.drawBattleArea(this.ctx);
+            }
+            this.drawCustomBackgrounds()
+            if (defaultmapsettings.showMapBorders) {
+
+                var tempborderwidthradius = defaultSettings.bordersWidth / 2;
+                this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
             }
             this.drawCommander();
             this.drawCommander2();
