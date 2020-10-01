@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.636 testing
+// v2.637 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -14376,7 +14376,7 @@ Game name     : ${i.displayName}<br/>
             //if (!window.fpsM) window.fpsM = 4
             //await drawRender.sleep(window.fpsM);	
 			
-			if (parseInt(drawRender.averageRenderTime)<10){
+			//if (parseInt(drawRender.averageRenderTime)<10){
 				drawRender.countFps();
 				drawRender.renderFrame();
 			/*}
