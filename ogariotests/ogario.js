@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.615 testing
+// v2.616 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9204,20 +9204,8 @@ function thelegendmodproject() {
                 }
             }
         }
-        this.draw = function(style, canCreateDiscussions) { //this function draws each cell/virus/food 1 time only
-            if (LM.hideSmallBots && this.size <= 36) {
-                return;
-            }
-            //if (defaultmapsettings.hideSizes > 0 && this.size < defaultmapsettings.hideSizes) {
-            //return;
-            //}			
-            // check this
-            //if (this.spectator>0 && this.isInV()||this.invisible==true) {
-            //if (this.spectator>0 && this.isInV() || this.invisible==true || this.spectator>0 && this.isInView()) {
-            //if (this.invisible == true || (this.spectator > 0 && this.isInV() && !window.multiboxPlayerEnabled)) {
-            //if (this.spectator>0 && this.isInV() || this.invisible == true) {	
-            //if (this.isVirus && this.spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator && this.isInView()) this.invisible = true			
-            if (this.invisible == true) {
+        this.draw = function(style, cellMoved) { //this function draws each cell/virus/food 1 time only
+            if ((LM.hideSmallBots && this.size <= 36) || this.invisible == true) {
                 return;
             }
             //					
@@ -9225,7 +9213,7 @@ function thelegendmodproject() {
 
 
             this.redrawed++;
-            if (canCreateDiscussions) {
+            if (cellMoved) {
                 this.moveCell();
             }
             if (this.removed) {
@@ -9467,7 +9455,7 @@ function thelegendmodproject() {
                 drawRender.drawTeammatesInd(style, this.x, this.y, y)
             }
 
-            if (defaultmapsettings.noNames && !defaultmapsettings.showMass || canCreateDiscussions) {
+            if (defaultmapsettings.noNames && !defaultmapsettings.showMass || cellMoved) {
                 //return;
             } else {
                 var recursive = false;
