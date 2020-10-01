@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.630 testing
+// v2.631 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13163,7 +13163,6 @@ Game name     : ${i.displayName}<br/>
             return new Promise(resolve => setTimeout(resolve, ms));
         },
         renderFrame() {
-			this.rendering=true
             this.renderStarted = performance.now()
             //'renderFrame': async function() { //Sonia5
             //await this.sleep(4); //Sonia5			
@@ -13265,8 +13264,12 @@ Game name     : ${i.displayName}<br/>
                 drawRender.renderTime = 0
 
             }
-			console.log(performance.now() - this.renderStarted)
-			this.rendering=false
+			if (performance.now() - this.renderStarted > 10){
+				this.rendering=true
+			}
+			else{
+				this.rendering=false
+			}
             //console.log(performance.now() - this.renderStarted, (performance.now() - this.renderStarted) * drawRender.fps)
             //window.updateCellsClock=false
 
@@ -14378,6 +14381,7 @@ Game name     : ${i.displayName}<br/>
 			}
             else{
 				console.log('stopped')
+				drawRender.rendering=false
 			}
             if (!defaultmapsettings.unlockedFPS) {
                 window.requestAnimationFrame(drawRender.render);
