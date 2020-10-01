@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.635 testing
+// v2.636 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13098,8 +13098,8 @@ Game name     : ${i.displayName}<br/>
         counterTime: 0,
         renderTime: 0,
         averageRenderTime: 0,
-		renderingDelay: 0,
-        //			
+		//renderingDelay: 0,
+        			
         setCanvas() {
             this.canvas = document.getElementById('canvas');
             this.ctx = this.canvas.getContext('2d');
@@ -13253,7 +13253,7 @@ Game name     : ${i.displayName}<br/>
                     this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
                 }
             }
-
+			console.log(performance.now() - this.renderStarted)
             drawRender.renderTime += performance.now() - this.renderStarted
             drawRender.counterTime++
             if (drawRender.counterTime >= drawRender.fps || drawRender.counterTime >= 500) {
@@ -13265,10 +13265,12 @@ Game name     : ${i.displayName}<br/>
                 drawRender.renderTime = 0
 
             }
+			
+			/*
 			if (performance.now() - this.renderStarted > 10){
 				console.log(performance.now() - this.renderStarted)
 				this.renderingDelay += performance.now() - this.renderStarted
-			}
+			}*/
             //console.log(performance.now() - this.renderStarted, (performance.now() - this.renderStarted) * drawRender.fps)
             //window.updateCellsClock=false
 
@@ -14373,16 +14375,14 @@ Game name     : ${i.displayName}<br/>
             //'render': async function() {
             //if (!window.fpsM) window.fpsM = 4
             //await drawRender.sleep(window.fpsM);	
-			if (drawRender.renderingDelay - 10 > 0){
-				drawRender.renderingDelay = drawRender.renderingDelay - 10
-			}
-			if (drawRender.renderingDelay<10){
+			
+			if (parseInt(drawRender.averageRenderTime)<10){
 				drawRender.countFps();
 				drawRender.renderFrame();
-			}
+			/*}
             else{
 				console.log('stopped')			
-			}
+			}*/
             if (!defaultmapsettings.unlockedFPS) {
                 window.requestAnimationFrame(drawRender.render);
             } 
