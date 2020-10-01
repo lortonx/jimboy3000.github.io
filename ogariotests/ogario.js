@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.637 testing
+// v2.638 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13098,7 +13098,7 @@ Game name     : ${i.displayName}<br/>
         counterTime: 0,
         renderTime: 0,
         averageRenderTime: 0,
-		//renderingDelay: 0,
+		renderingDelay: 0,
         			
         setCanvas() {
             this.canvas = document.getElementById('canvas');
@@ -13254,6 +13254,8 @@ Game name     : ${i.displayName}<br/>
                 }
             }
 			console.log(performance.now() - this.renderStarted)
+			this.renderingDelay = (performance.now() - this.renderStarted) * drawRender.fps
+			console.log(this.renderingDelay)
             drawRender.renderTime += performance.now() - this.renderStarted
             drawRender.counterTime++
             if (drawRender.counterTime >= drawRender.fps || drawRender.counterTime >= 500) {
