@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.612 testing
+// v2.613 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9455,29 +9455,16 @@ function thelegendmodproject() {
                     }
                 } 
 				else {
-                    //if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings) {
                     if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings && !this.isFood) {
                         color = this.oppColor;
                     }
                 }
             }
-            //if (dyinglight1load != "yes" || this.targetNick.includes("The Dying Light") || this.isFood) {
-            /*if (defaultmapsettings.cellContours) {
-                style.lineWidth = 20; ///
-                style.strokeStyle = this.color; ///
-                style.stroke(); ///
-            } */
-
 			if (window.multiboxPlayerEnabled && this.isPlayerCellMulti && this.spectator && LM.play){				
 						style.lineWidth = 20; ///
 						style.strokeStyle = this.color; ///
 						style.stroke(); //
 			}
-			/*else if (this.isPlayerCell && legendmod.multiBoxPlayerExists && !this.spectator && LM.play && !window.multiboxPlayerEnabled){	
-						style.lineWidth = 20; ///
-						style.strokeStyle = this.color; ///
-						style.stroke(); //
-			}*/
 			else if (!window.multiboxPlayerEnabled && this.isPlayerCell && legendmod.multiBoxPlayerExists && !this.spectator && LM.play){	
 						style.lineWidth = 20; ///
 						style.strokeStyle = this.color; ///
@@ -9553,7 +9540,8 @@ function thelegendmodproject() {
 						} catch (e) {}
 							
 						if (defaultmapsettings.videoSkins) {
-							var node2 = {}; //, node2.src = application.customSkinsMap[this.targetNick]
+							console.log('a')
+							var node2 = {};
 							node2.src = application.customSkinsMap[this.targetNick];
 							if (node2.src) {
 								if (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) {
@@ -9580,11 +9568,6 @@ function thelegendmodproject() {
 							}		
 						}
 					}
-                    //special animations
-                    //if (legendmod.friends){
-                    //if (this.targetNick.includes())
-
-                    //}
 					if (defaultmapsettings.FBTracking){
 						var nodeFb = application.customSkinsMap[this.targetNick + "facebookskin"];
 							if (nodeFb && application.customSkinsCache[nodeFb + "_cached4"]) {
