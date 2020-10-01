@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.616 testing
+// v2.617 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13180,10 +13180,11 @@ Game name     : ${i.displayName}<br/>
             if (defaultmapsettings.showGrid) {
                 this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
             }
-            this.ctx.save();
+            //this.ctx.save();
             this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
             this.ctx.scale(this.scale, this.scale);
             this.ctx.translate(-this.camX, -this.camY);
+			
             if (defaultmapsettings.showBgSectors) {
                 this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
             }
@@ -13240,7 +13241,7 @@ Game name     : ${i.displayName}<br/>
             }
             //
 
-            this.ctx.restore();
+            //this.ctx.restore();
 
             //this.ctx.finish2D();
             if (LM.gameMode === ':teams') {
