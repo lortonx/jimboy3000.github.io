@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.621 testing
+// v2.622 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13181,7 +13181,8 @@ Game name     : ${i.displayName}<br/>
                 this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
             }			
             this.ctx.save();
-            this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
+            //this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
+			this.ctx.translate((this.canvasWidth / 2) - this.camX, (this.canvasHeight / 2) - this.camX);
             this.ctx.scale(this.scale, this.scale);
             //this.ctx.translate(-this.camX, -this.camY);
 			
