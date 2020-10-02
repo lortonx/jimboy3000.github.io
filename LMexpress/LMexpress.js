@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.54 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.55 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -5040,7 +5040,8 @@ function initializeLM(modVersion) {
         title: "When ENABLED: Optimized mass (+/-2%) ON, Merge Timer BETA OFF. Suggested to be ENABLED for Lag reduce.",
         placement: "bottom"
     });	
-		
+	$('#animation-value').parent().before("Type on chrome: chrome://settings/system , ensure Use hardware acceleration when available checkbox, is ENABLED<br><br>");
+/*		
 	$('#animation-value').parent().before(
         '<label style="float:left; padding-left:0; padding-right:0">' + textLanguage.unlockedFPS + '<select id="FrameWorkOption" class="form-control" onchange="changeFrameWork();" required="" data-original-title="" title="" style="display:inline; width: 70%; float:right;" >' +        
 		'<option value="4" data-itr="">Limited Rate + 4ms delay (suggested)</option>' +		
@@ -5057,7 +5058,8 @@ function initializeLM(modVersion) {
 	$("#FrameWorkOption").parent().tooltip({	
         title: "Type on chrome: chrome://settings/system , ensure Use hardware acceleration when available checkbox, is ENABLED",
         placement: "bottom"
-    });			
+    });
+*/	
     $("#videoSkins").parent().parent().tooltip({    
         title: "For more info on how to use video skins visit: https://legendmod.ml/developers/ videoskins.html",
         placement: "top"
