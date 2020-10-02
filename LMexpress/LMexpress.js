@@ -5040,7 +5040,7 @@ function initializeLM(modVersion) {
         title: "When ENABLED: Optimized mass (+/-2%) ON, Merge Timer BETA OFF. Suggested to be ENABLED for Lag reduce.",
         placement: "bottom"
     });	
-	$('#animation-value').parent().before("Type on chrome: chrome://settings/system , ensure Use hardware acceleration when available checkbox, is ENABLED<br><br>");
+	$('#animation-value').parent().before("Type on chrome: <b>chrome://settings/system</b> , ensure <i>Use hardware acceleration when available</i> checkbox, is <b>ENABLED</b><br><br>");
 /*		
 	$('#animation-value').parent().before(
         '<label style="float:left; padding-left:0; padding-right:0">' + textLanguage.unlockedFPS + '<select id="FrameWorkOption" class="form-control" onchange="changeFrameWork();" required="" data-original-title="" title="" style="display:inline; width: 70%; float:right;" >' +        
