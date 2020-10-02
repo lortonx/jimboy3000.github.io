@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.643 testing
+// v2.644 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -8682,7 +8682,12 @@ function thelegendmodproject() {
             //delay = delay < 0 ? 0 : delay > 1 ? 1 : delay;
             this.x += (this.targetX - this.x) * delay;
             this.y += (this.targetY - this.y) * delay;
-            this.size += (this.targetSize - this.size) * delay;
+			if (!defaultmapsettings.suckAnimation){
+				this.size += (this.targetSize - this.size) * delay;
+			}
+			else{
+				this.size += (this.targetSize - this.size) * (time / 800);
+			}
             this.alpha = delay;
             if (!this.removed) {
                 this.time = LM.time;
