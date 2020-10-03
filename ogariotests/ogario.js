@@ -1,8 +1,8 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.652 testing
-
+// v2.653 testing
+window.testing=800
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
 //var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
@@ -8698,7 +8698,7 @@ function thelegendmodproject() {
             }
 			//
 			if (!defaultmapsettings.suckAnimation){ //for the removed
-				this.size -= 2*(this.targetSize - this.size) * (time / 800);
+				this.size -= 2*(this.targetSize - this.size) * (time / window.testing);
 				if (this.size<0) this.size = 0 //fix
 			}
 			//
