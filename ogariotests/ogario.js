@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.651 testing
+// v2.652 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -1386,6 +1386,7 @@ var displayText = {
         'hk-multiboxFollowMouse': 'Multibox toggle follow mouse',
         'hk-showTop5': 'Pokaż/ukryj top 5 teamu',
         'hk-dance': 'Dance',
+		'hk-limitposition': 'Macro position to limits',
         'hk-showTime': 'Pokaż/ukryj aktualny czas',
         'hk-showSplitRange': 'Pokaż/ukryj zasięg podziału',
         'hk-showSplitInd': 'Pokaż/ukryj zasięg podziału z ringami',
@@ -1838,6 +1839,7 @@ var displayText = {
         'hk-multiboxFollowMouse': 'Multibox toggle follow mouse',
         'hk-showTop5': 'Show/hide teamboard',
         'hk-dance': 'Dance',
+		'hk-limitposition': 'Macro position to limits',
         'hk-showTime': 'Show/hide current time',
         'hk-showSplitRange': 'Show/hide split range',
         'hk-showSplitInd': 'Show/hide split indicators',
