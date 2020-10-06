@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.649 testing
+// v2.650 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10102,9 +10102,19 @@ function thelegendmodproject() {
                         cursorX = this.viewXTrue + this.distX;
                         cursorY = this.viewYTrue + this.distY;
                     }
-                } else if (LM.dance) {
+                } else if (LM.dance || window.followStraight) {
                     let d = ~~((Date.now() / 40) % 8),
-                        distance = 50000;
+                        distance = 50000;					
+					if (window.followStraight){
+						if (this.playerX - this.cursorX > 0 && this.playerY - this.cursorY > 0 ) d = 3
+						else if (this.playerX - this.cursorX < 0 && this.playerY - this.cursorY > 0) d = 5
+						else if (this.playerX - this.cursorX < 0 && this.playerY - this.cursorY < 0) d = 7
+						else if (this.playerX - this.cursorX > 0 && this.playerY - this.cursorY < 0) d = 1
+						else if (this.playerX - this.cursorX < 0) d = 6 
+						else if (this.playerX - this.cursorX > 0) d = 2
+						else if (this.playerY - this.cursorY > 0) d = 4
+						else if (this.playerY - this.cursorY < 0) d = 0
+					}			
                     switch (d) {
                         case 7:
                             cursorX = this.playerX - distance;
@@ -10158,14 +10168,7 @@ function thelegendmodproject() {
                         if (!this.play && this.targeting || this.pause) {
                             cursorX = this.targetX;
                             cursorY = this.targetY;
-                        }
-						else if (window.followStraight){
-
-						if (cursorX>0) cursorX = Math.abs(cursorX / cursorY * 100000);		
-						else cursorX = - Math.abs(cursorX / cursorY * 100000);
-						if (cursorY>0) cursorY = Math.abs(cursorY / cursorX * 100000);	
-						else cursorY = - Math.abs(cursorY / cursorY * 100000);					
-						}						
+                        }					
                     }
                     //autoplay handling
                     else if (!specialcommand) {
