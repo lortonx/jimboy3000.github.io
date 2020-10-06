@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.650 testing
+// v2.651 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10101,6 +10101,7 @@ function thelegendmodproject() {
                         //cursorY = this.playerY + this.distY;
                         cursorX = this.viewXTrue + this.distX;
                         cursorY = this.viewYTrue + this.distY;
+						
                     }
                 } else if (LM.dance) {
                     let d = ~~((Date.now() / 40) % 8),
@@ -10148,12 +10149,7 @@ function thelegendmodproject() {
                     //cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
                     //cursorY=9999;					
                     //} 
-					if (window.followStraight){
-						cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
-						cursorX = cursorX * 100
-						cursorY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(this.cursorY) : this.cursorY; //Sonia3
-						cursorY = cursorY * 100
-					}				
+						
                     else if (!window.autoPlay) {
                         if (window.lockPosition) {
                             console.log('LockPosition enabled')
@@ -10161,10 +10157,17 @@ function thelegendmodproject() {
                         }
                         cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
                         cursorY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(this.cursorY) : this.cursorY; //Sonia3
+						
                         if (!this.play && this.targeting || this.pause) {
                             cursorX = this.targetX;
                             cursorY = this.targetY;
                         }
+						else if (window.followStraight){
+
+						if (cursorX>0) cursorX = Math.abs(cursorX / cursorY * 100000);		
+						else cursorX = - Math.abs(cursorX / cursorY * 100000);
+						if (cursorY>0) cursorY = Math.abs(cursorY / cursorX * 100000);	
+						else cursorY = - Math.abs(cursorY / cursorY * 100000);					
                     }
                     //autoplay handling
                     else if (!specialcommand) {
