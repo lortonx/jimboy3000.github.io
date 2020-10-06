@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.654 testing
+// v2.655 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10155,8 +10155,8 @@ function thelegendmodproject() {
                             console.log(d);
                             break;													
                     }
-					cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
-                    cursorY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(this.cursorY) : this.cursorY; //Sonia3	
+					cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(cursorX) : cursorX; //Sonia3
+                    cursorY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(cursorY) : cursorY; //Sonia3	
                 } else {
                     //if (specialcommand) {
                     //console.log('hi')
