@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.648 testing
+// v2.650 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10148,7 +10148,13 @@ function thelegendmodproject() {
                     //cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
                     //cursorY=9999;					
                     //} 
-                    if (!window.autoPlay) {
+					if (window.followStraight){
+						cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
+						cursorX = cursorX * 100
+						cursorY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(this.cursorY) : this.cursorY; //Sonia3
+						cursorY = cursorY * 100
+					}				
+                    else if (!window.autoPlay) {
                         if (window.lockPosition) {
                             console.log('LockPosition enabled')
                             return false;
