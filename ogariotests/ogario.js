@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.650 testing
+// v2.651 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -10106,14 +10106,15 @@ function thelegendmodproject() {
                     let d = ~~((Date.now() / 40) % 8),
                         distance = 50000;					
 					if (window.followStraight){
-						if (this.playerX - this.cursorX > 0 && this.playerY - this.cursorY > 0 ) d = 3
-						else if (this.playerX - this.cursorX < 0 && this.playerY - this.cursorY > 0) d = 5
-						else if (this.playerX - this.cursorX < 0 && this.playerY - this.cursorY < 0) d = 7
-						else if (this.playerX - this.cursorX > 0 && this.playerY - this.cursorY < 0) d = 1
-						else if (this.playerX - this.cursorX < 0) d = 6 
-						else if (this.playerX - this.cursorX > 0) d = 2
-						else if (this.playerY - this.cursorY > 0) d = 4
-						else if (this.playerY - this.cursorY < 0) d = 0
+						
+						if (this.cursorX - this.playerX > 0 && this.cursorY - this.playerY > 0 ) d = 3
+						else if (this.cursorX - this.playerX < 0 && this.cursorY - this.playerY > 0) d = 5
+						else if (this.cursorX - this.playerX < 0 && this.cursorY - this.playerY < 0) d = 7
+						else if (this.cursorX - this.playerX > 0 && this.cursorY - this.playerY < 0) d = 1
+						else if (this.cursorX - this.playerX < 0) d = 6 
+						else if (this.cursorX - this.playerX > 0) d = 2
+						else if (this.cursorY - this.playerY > 0) d = 4
+						else if (this.cursorY - this.playerY < 0) d = 0
 					}			
                     switch (d) {
                         case 7:
