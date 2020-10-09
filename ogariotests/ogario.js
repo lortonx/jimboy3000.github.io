@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.662 testing
+// v2.663 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13192,6 +13192,15 @@ Game name     : ${i.displayName}<br/>
             LM.playerY = this.camY;
 
         },
+		sendWaves(x1,y1,color1) {	
+              var wave = {
+                x: x1,
+                y: y1
+              }
+              wave.time = Date.now();
+              wave.color = color1;
+          legendmod.Waves.push(wave)			
+		},
         setScale(size) {
             if (!LM.autoZoom) {
                 this.scale = (9 * this.scale + this.getZoom()) / 10;
