@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.661 testing
+// v2.662 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13476,8 +13476,8 @@ Game name     : ${i.displayName}<br/>
             let waves = LM.Waves
 
             this.ctx.globalAlpha = defaultSettings.darkTheme ? 0.75 : 0.35;
-            for (let length = waves.length - 1; length > 0; length--) {
-
+            for (let length = waves.length - 1; length >= 0; length--) {
+			//for (let length = waves.length - 1; length > 0; length--) {
                 let r = (Date.now() - waves[length].time) / 2
 
 
