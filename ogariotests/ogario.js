@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.668 testing
+// v2.669 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9038,7 +9038,7 @@ function thelegendmodproject() {
 				application.customSkinsMap[this.targetNick] = "https://dkyriak.github.io/VideoFloRidaLow.mp4"
 			}
 			if (LM.Waves && LM.Waves && LM.Waves.length == 0) {
-				LM.sendWaves(this.x, this.y, this.color, 500)
+				LM.sendWaves(this.x, this.y, this.color, this.size + 760)
 			}			
 		},
         this.drawSpecialSkin = function(style, y) {
