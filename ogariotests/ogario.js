@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.674 testing
+// v2.675 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9044,8 +9044,7 @@ function thelegendmodproject() {
 					if (application.teamPlayers.length>0) {
 						c = 0;
 						for (; c < application.teamPlayers.length; c++) {
-							if (application.teamPlayers[c].nick == )
-							tempcolor = application.teamPlayers[c].color
+							if (application.teamPlayers[c].nick == this.targetNick) tempcolor = application.teamPlayers[c].color		
 						}
 					}				
 				LM.sendWaves(this.x, this.y, tempcolor, this.size + 760)
