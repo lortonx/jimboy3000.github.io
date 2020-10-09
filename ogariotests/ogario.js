@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.670 testing
+// v2.671 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9033,7 +9033,7 @@ function thelegendmodproject() {
             }
             return ctxfx;
         };
-		this.drawSpecialSkinDancer = function(style, y){
+		this.drawSpecialSkinDancer = function(style, y) {
 			if (application.customSkinsMap[this.targetNick] != "https://dkyriak.github.io/VideoFloRidaLow.mp4"){
 				application.customSkinsMap[this.targetNick] = "https://dkyriak.github.io/VideoFloRidaLow.mp4"
 			}
@@ -14010,6 +14010,7 @@ Game name     : ${i.displayName}<br/>
                 ctx.globalAlpha = defaultSettings.darkTheme ? 0.7 : 0.35,
                     ctx.strokeStyle = defaultSettings.splitRangeColor;
                 ctx.beginPath();
+				if (ogarcopythelb && ogarcopythelb.color) ctx.fillStyle = ogarcopythelb.color;
                 ctx.arc(players[current].x, players[current].y, players[current].size + 760, 0, this.pi2, false);
                 ctx.closePath();
                 ctx.stroke();
@@ -14032,6 +14033,7 @@ Game name     : ${i.displayName}<br/>
                     ctx.globalAlpha = defaultSettings.darkTheme ? 0.7 : 0.35,
                         ctx.strokeStyle = defaultSettings.splitRangeColor;
                     ctx.beginPath();
+					if (ogarcopythelb && ogarcopythelb.color) ctx.fillStyle = ogarcopythelb.color;
                     ctx.arc(players[current].x, players[current].y, 2 * players[current].size + 760, 0, this.pi2, false);
                     ctx.closePath();
                     ctx.stroke();
