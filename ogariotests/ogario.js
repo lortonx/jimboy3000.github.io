@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.664 testing
+// v2.665 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -13265,8 +13265,9 @@ Game name     : ${i.displayName}<br/>
             if (defaultmapsettings.virusesRange) {
                 this.drawVirusesRange(this.ctx, LM.viruses);
             }
-            if (defaultmapsettings.waves) {
-            this.drawWaves();
+            //if (defaultmapsettings.waves ) {
+			if (LM.Waves && LM.Waves && LM.Waves.length>0) {	
+				this.drawWaves();
             }				
             this.drawFood();
             if (LM.playerCellsMulti.length) {
