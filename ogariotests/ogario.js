@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.659 testing
+// v2.660 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9455,9 +9455,10 @@ function thelegendmodproject() {
                                 } catch (e) {}
                             }
                         }
-                        this.drawSpecialSkin(style, y)
+                        //this.drawSpecialSkin(style, y)
                     }
-                } else {
+                } 
+				else {
                     if (defaultmapsettings.videoSkins) {
                         var node2 = application.customSkinsMap[this.targetNick];
                         if (node2) {
@@ -9483,6 +9484,7 @@ function thelegendmodproject() {
                         } catch (e) {}
                     }
                 }
+				this.drawSpecialSkin(style, y)
             }
             if (defaultmapsettings.teammatesInd && !this.isPlayerCell && y <= 800 &&
                 window.teammatenicks && this.targetNick != "" &&
