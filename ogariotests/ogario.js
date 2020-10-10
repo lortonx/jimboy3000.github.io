@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.684 testing
+// v2.685 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9052,7 +9052,7 @@ function thelegendmodproject() {
 							if (application.teamPlayers[c].nick == this.targetNick) tempcolor = application.teamPlayers[c].color		
 						}
 					}				
-				LM.sendWaves(this.x, this.y, tempcolor, this.size + 760, this.targetNick)
+				LM.sendWaves(this.x, this.y, tempcolor, this.size + 760, this.targetNick, null)
 				//application.teamPlayers[0].color
 			}
 			else if (LM.Waves && LM.Waves.length > 0){
@@ -9064,10 +9064,10 @@ function thelegendmodproject() {
 						}
 					}
 				if (this.mass && this.mass >= 1560 && defaultmapsettings.qdsplitRange){
-					LM.changeWaves(this.x, this.y, tempcolor, 2 * this.size + 760, this.targetNick)					
+					LM.changeWaves(this.x, this.y, tempcolor, 2 * this.size + 760, this.targetNick, true)					
 				}
 				else{
-					LM.changeWaves(this.x, this.y, tempcolor, this.size + 760, this.targetNick)	
+					LM.changeWaves(this.x, this.y, tempcolor, this.size + 760, this.targetNick,  null)	
 				}
 				
 			}			
@@ -12603,7 +12603,7 @@ Game name     : ${i.displayName}<br/>
                 localStorage.setItem("totalPlayerMassBigFFA", this.totalPlayerMassBigFFA);
             }
         },
-		sendWaves(x1, y1, color1, length, sender) {	
+		sendWaves(x1, y1, color1, length, sender, moreAnimation) {	
               var wave = {
                 x: x1,
                 y: y1
@@ -12612,15 +12612,17 @@ Game name     : ${i.displayName}<br/>
               wave.color = color1;
 			  wave.wavelength = length;
 			  wave.sender = sender
+			  wave.moreAnimation = moreAnimation
           this.Waves.push(wave)			
 		},	
-		changeWaves(x1, y1, color1, length, sender) {
+		changeWaves(x1, y1, color1, length, sender, moreAnimation) {
 			if (this.Waves && this.Waves[0] && this.Waves[0].sender == sender){
 				this.Waves[0].x = x1
 				this.Waves[0].y = y1
 				this.Waves[0].color = color1;
-				if (length > 1560) this.Waves[0].color = defaultSettings.enemyBColor
+				
 				this.Waves[0].wavelength = length;
+				this.Waves[0].moreAnimation = moreAnimation
 			}			
 		},
         updateCells(view, offset) {
@@ -13543,10 +13545,14 @@ Game name     : ${i.displayName}<br/>
 
 
                 let gradient = this.ctx.createRadialGradient(waves[length].x, waves[length].y, r - r / 4, waves[length].x, waves[length].y, r);
-
-                gradient.addColorStop(0, waves[length].color + "00");
-                gradient.addColorStop(1, waves[length].color);
-
+				if (waves[length].moreAnimation && r < 1560){
+					gradient.addColorStop(0, defaultSettings.enemyBColor + "00");
+					gradient.addColorStop(1, defaultSettings.enemyBColor);
+				}
+				else {
+					gradient.addColorStop(0, waves[length].color + "00");
+					gradient.addColorStop(1, waves[length].color);
+				}				
                 this.ctx.strokeStyle = gradient;
                 this.ctx.lineWidth = r / 4;
                 this.ctx.beginPath();
@@ -13560,7 +13566,7 @@ Game name     : ${i.displayName}<br/>
                 this.ctx.arc(waves[length].x, waves[length].y, r, 0, this.pi2, false);
                 this.ctx.closePath();
                 this.ctx.stroke();
-                //if (r > 500) {
+                //if (r > 500) {					
 				if (r > waves[length].wavelength) {					
                     LM.Waves.splice(length, 1);
                 }
