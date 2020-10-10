@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.680 testing
+// v2.681 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12619,7 +12619,7 @@ Game name     : ${i.displayName}<br/>
 				this.Waves[0].x = x1
 				this.Waves[0].y = y1
 				this.Waves[0].color = color1;
-				if (length > 1560) color  = "#ff0a00"
+				if (length > 1560) color  = defaultSettings.enemyBColor
 				this.Waves[0].wavelength = length;
 			}			
 		},
