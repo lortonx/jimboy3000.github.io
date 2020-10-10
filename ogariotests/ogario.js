@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.682 testing
+// v2.683 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9063,11 +9063,11 @@ function thelegendmodproject() {
 							if (application.teamPlayers[c].nick == this.targetNick) tempcolor = application.teamPlayers[c].color		
 						}
 					}
-				if (this.mass && this.mass >= 1500 && defaultmapsettings.qdsplitRange){
-					LM.changeWaves(this.x, this.y, tempcolor, this.size + 760, this.targetNick)	
+				if (this.mass && this.mass >= 1560 && defaultmapsettings.qdsplitRange){
+					LM.changeWaves(this.x, this.y, tempcolor, 2 * this.size + 760, this.targetNick)					
 				}
 				else{
-					LM.changeWaves(this.x, this.y, tempcolor, 2 * this.size + 760, this.targetNick)	
+					LM.changeWaves(this.x, this.y, tempcolor, this.size + 760, this.targetNick)	
 				}
 				
 			}			
