@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.678 testing
+// v2.679 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -12610,8 +12610,8 @@ Game name     : ${i.displayName}<br/>
 		},	
 		changeWaves(x1, y1, color1, length, sender) {
 			if (this.Waves && this.Waves[0] && this.Waves[0].sender == sender){
-				this.Waves[0].x
-				this.Waves[0].y
+				this.Waves[0].x = x1
+				this.Waves[0].y = y1
 				this.Waves[0].wavelength = length;
 			}
 		},
