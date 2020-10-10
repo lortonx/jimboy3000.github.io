@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.685 testing
+// v2.686 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9052,7 +9052,7 @@ function thelegendmodproject() {
 							if (application.teamPlayers[c].nick == this.targetNick) tempcolor = application.teamPlayers[c].color		
 						}
 					}				
-				LM.sendWaves(this.x, this.y, tempcolor, this.size + 760, this.targetNick, null)
+				LM.sendWaves(this.x, this.y, tempcolor, this.size + 760, this.targetNick, true)
 				//application.teamPlayers[0].color
 			}
 			else if (LM.Waves && LM.Waves.length > 0){
@@ -9067,7 +9067,7 @@ function thelegendmodproject() {
 					LM.changeWaves(this.x, this.y, tempcolor, 2 * this.size + 760, this.targetNick, true)					
 				}
 				else{
-					LM.changeWaves(this.x, this.y, tempcolor, this.size + 760, this.targetNick,  null)	
+					LM.changeWaves(this.x, this.y, tempcolor, this.size + 760, this.targetNick,  true)	
 				}
 				
 			}			
@@ -13545,7 +13545,7 @@ Game name     : ${i.displayName}<br/>
 
 
                 let gradient = this.ctx.createRadialGradient(waves[length].x, waves[length].y, r - r / 4, waves[length].x, waves[length].y, r);
-				if (waves[length].moreAnimation && r < 1560){
+				if (waves[length].moreAnimation && r > 1560){
 					gradient.addColorStop(0, defaultSettings.enemyBColor + "00");
 					gradient.addColorStop(1, defaultSettings.enemyBColor);
 				}
