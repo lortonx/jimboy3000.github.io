@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.676 testing
+// v2.677 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9044,7 +9044,7 @@ function thelegendmodproject() {
 				
 				//checkVideos(node2, this.targetNick);
 			}
-			if (LM.Waves && LM.Waves && LM.Waves.length == 0) {
+			if (LM.Waves && LM.Waves.length == 0) {
                     var tempcolor = this.color
 					if (application.teamPlayers.length>0) {
 						c = 0;
@@ -9054,6 +9054,16 @@ function thelegendmodproject() {
 					}				
 				LM.sendWaves(this.x, this.y, tempcolor, this.size + 760)
 				//application.teamPlayers[0].color
+			}
+			else if (LM.Waves && LM.Waves.length > 0){
+                    var tempcolor = this.color
+					if (application.teamPlayers.length>0) {
+						c = 0;
+						for (; c < application.teamPlayers.length; c++) {
+							if (application.teamPlayers[c].nick == this.targetNick) tempcolor = application.teamPlayers[c].color		
+						}
+					}				
+				LM.changeWaves(this.x, this.y, tempcolor, this.size + 760)	
 			}			
 		};
         this.drawSpecialSkin = function(style, y) {
@@ -12596,7 +12606,14 @@ Game name     : ${i.displayName}<br/>
               wave.color = color1;
 			  wave.wavelength = length;
           this.Waves.push(wave)			
-		},		
+		},	
+		changeWaves(x1, y1, color1, length){
+			if (this.Waves && this.Waves[0] && this.Waves[0].color = color1){
+				this.Waves[0].x
+				this.Waves[0].y
+				this.Waves[0].wavelength = length;
+			}
+		},
         updateCells(view, offset) {
 
             //window.updateCellsClock=true;
