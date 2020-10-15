@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.696 testing
+// v2.697 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -156,8 +156,10 @@ function deleteGamemode(temp) {
 */
             text: 'FPS Test',
             value: 12
+        }, {
+            text: 'LocalHost:443',
+            value: 41
         }
-
         /*, {	
         text: 'FFA',
         value: 8
@@ -264,8 +266,10 @@ function deleteGamemode(temp) {
         } else if ($('#gamemode').val() == 40) {
             core.connect('wss://ogar.eatcells.com/api/');			
         } else if ($('#gamemode').val() == 41) {
-            core.connect('wss://distrustfurryserver.herokuapp.com/');
+            //core.connect('wss://distrustfurryserver.herokuapp.com/');
+			core.connect('ws://localhost:443 ');
         }
+		
         /*
 		else if ($('#gamemode').val() == 42) {
             core.connect('ws://dummyserver.glitch.me/');
@@ -278,7 +282,13 @@ function deleteGamemode(temp) {
         }	
 		else if ($('#gamemode').val() == 45) {
             core.connect('wss://dummyserver-instant.glitch.me/');
-        }	
+        }
+sxparty.glitch.me Party
+sxinstantmerge.glitch.me Crazy
+ws://sxultrasplit.glitch.me/ Ultrasplit
+ws://speedybots.glitch.me/ SpeedyBots
+ws://ahmetcantest.glitch.me/ Ahmetcan
+ws://localhost:443 		
 		*/
         //ac-clan.glitch.me
         /*		
