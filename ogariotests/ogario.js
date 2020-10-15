@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.697 testing
+// v2.698 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -157,7 +157,7 @@ function deleteGamemode(temp) {
             text: 'FPS Test',
             value: 12
         }, {
-            text: 'LocalHost:443',
+            text: 'ws://localhost:443',
             value: 41
         }
         /*, {	
