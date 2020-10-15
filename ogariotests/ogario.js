@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.692 testing
+// v2.693 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -9815,7 +9815,11 @@ function thelegendmodproject() {
             } else {
                 view.setUint32(1, this.protocolVersion, true);
                 window.gameBots.protocolVersion = master.protocolVersion;
-            } //			
+            } 
+			if (LM.ws.includes("cellz.io"){
+				view.setUint8(0, 80);
+			}
+			//			
             //if (LM.ws.includes("imsolo.pro") || window.protocol6){ view.setUint32(1, 6, true); } //protocol 6 and 5
             //else if (window.protocol5){ view.setUint32(1, 5, true); } // Protocol 5
 
