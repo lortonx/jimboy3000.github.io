@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.700 testing
+// v2.701 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -56,14 +56,14 @@ function deleteGamemode(temp) {
             text: 'Antarctic',
             value: 35
         }, {
-            text: 'Instant Merging',
-            value: 16
-        }, {
             text: 'MK NA east',
             value: 36
         }, {
             text: 'Eatcells',
             value: 42
+        }, {
+            text: 'Instant Merging',
+            value: 16
         }, {			
             text: 'Party MegaSplit',
             value: 19
