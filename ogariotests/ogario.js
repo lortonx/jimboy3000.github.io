@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.698 testing
+// v2.699 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -59,6 +59,12 @@ function deleteGamemode(temp) {
             text: 'Instant Merging',
             value: 16
         }, {
+            text: 'MK NA east',
+            value: 36
+        }, {
+            text: 'Eatcells',
+            value: 42
+        }, {			
             text: 'Party MegaSplit',
             value: 19
         }, {
@@ -113,9 +119,6 @@ function deleteGamemode(temp) {
             text: 'Bots',
             value: 33
         }, {
-            text: 'MK NA east',
-            value: 36
-        }, {
             text: 'MK Oceania',
             value: 37
         }, {
@@ -124,7 +127,7 @@ function deleteGamemode(temp) {
         }, {
             text: 'MK Bots WIP',
             value: 39
-        }, {
+        }, {			
             text: 'Ogar Eat-cells',
             value: 40
         }, {			
@@ -264,10 +267,12 @@ function deleteGamemode(temp) {
         } else if ($('#gamemode').val() == 39) {
             core.connect('wss://mkserv-bots.herokuapp.com/');
         } else if ($('#gamemode').val() == 40) {
-            core.connect('wss://ogar.eatcells.com/api/');			
+            core.connect('wss://ogar.eatcells.com/api/');	
+        } else if ($('#gamemode').val() == 42) {
+			core.connect('wss://eatcells.com/api');			
         } else if ($('#gamemode').val() == 41) {
             //core.connect('wss://distrustfurryserver.herokuapp.com/');
-			core.connect('ws://localhost:443 ');
+			core.connect('ws://localhost:443');
         }
 		
         /*
