@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.706 testing
+// v2.710 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -161,7 +161,8 @@ function deleteGamemode(temp) {
 */
             text: 'FPS Test',
             value: 12
-        }, {
+        }, 
+		/*{
             text: 'ws://localhost:443',
             value: 41
         }
@@ -294,9 +295,9 @@ function deleteGamemode(temp) {
             //core.connect('wss://distrustfurryserver.herokuapp.com/');
 			core.connect('ws://localhost:443');
         } else if ($('#gamemode').val() == 100) {
-			core.connect('ws://34.89.203.157:3000/');
+			core.connect('ws://34.107.109.11:3001/');
         } else if ($('#gamemode').val() == 101) {
-			core.connect('ws://34.89.203.157:3002/');
+			core.connect('ws://34.89.203.157:3000/');
         } else if ($('#gamemode').val() == 102) {
 			core.connect('ws://m16ogar.al.gl:2052/');
         } else if ($('#gamemode').val() == 103) {
@@ -7428,6 +7429,7 @@ function thelegendmodproject() {
         },
         sendPartyData() {
             this.sendPlayerClanTag();
+			
             this.sendPartyToken();
             this.sendServerToken();
             this.sendPlayerNick();
