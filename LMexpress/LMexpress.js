@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.57 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.58 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -110,7 +110,7 @@ var timesopened = localStorage.getItem("timesopened");
 var url = localStorage.getItem("url");
 
 var modVersion;
-if (document.URL.includes('legendmod.ml')){
+if (document.URL.includes('legendmod.ml') || document.URL.includes('jimboy3100.github.io')){
 	$("#region").val("Private").change()
 	$("#region").hide()
 	//$(".row").hide()
