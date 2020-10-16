@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.60 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.61 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -4572,8 +4572,7 @@ function emphasischat() {
 }
 
 function IdfromLegendmod(){
-	if (document.URL.includes("legendmod.ml") && $("#UserProfileID2a").val()!= ""){
-		toastr.warning("Legend mod over http. Many functions cannot work properly. To join Non SSL servers use <font color='blue'>ws://</font> in front of websocket.<br>e.g <font color='blue'>ws://34.89.203.157:3000/</font>").css("width", "350px");
+	if (document.URL.includes("legendmod.ml") && $("#UserProfileID2a").val()!= ""){		
 		window.userid = $("#UserProfileID2a").val()
 		localStorage.setItem("userid", window.userid);
 	}		
