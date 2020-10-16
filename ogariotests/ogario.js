@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.701 testing
+// v2.702 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -40,7 +40,9 @@ function changeregion() {
 }
 
 function deleteGamemode(temp) {
-    var privateModOptions = [{
+	var privateModOptions
+
+	privateModOptions = [{
             text: 'FFA PowerUp',
             value: 34
         }, {
@@ -180,6 +182,16 @@ function deleteGamemode(temp) {
         value: 13
     }*/
     ];
+    if (location.protocol !== 'https:') {
+		privateModOptions.unshift({
+			text: 'cellshub.ga Minions',
+			value: 100
+		})
+		privateModOptions.unshift({
+			text: 'cellshub.ga Moondust',
+			value: 101
+		})
+	}	
     if (!window.gamemodeBackup) {
         window.gamemodeBackup = $("#gamemode").html();
     }
@@ -273,6 +285,10 @@ function deleteGamemode(temp) {
         } else if ($('#gamemode').val() == 41) {
             //core.connect('wss://distrustfurryserver.herokuapp.com/');
 			core.connect('ws://localhost:443');
+        } else if ($('#gamemode').val() == 100) {
+			core.connect('ws://34.89.203.157:3000/');
+        } else if ($('#gamemode').val() == 101) {
+			core.connect('ws://34.89.203.157:3002/');
         }
 		
         /*
