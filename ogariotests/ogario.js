@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.702 testing
+// v2.703 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -191,6 +191,10 @@ function deleteGamemode(temp) {
 			text: 'cellshub.ga Moondust',
 			value: 101
 		})
+		privateModOptions.unshift({
+			text: 'M16 Korea',
+			value: 102
+		})		
 	}	
     if (!window.gamemodeBackup) {
         window.gamemodeBackup = $("#gamemode").html();
@@ -289,6 +293,8 @@ function deleteGamemode(temp) {
 			core.connect('ws://34.89.203.157:3000/');
         } else if ($('#gamemode').val() == 101) {
 			core.connect('ws://34.89.203.157:3002/');
+        } else if ($('#gamemode').val() == 102) {
+			core.connect('ws://m16ogar.al.gl:2052/');
         }
 		
         /*
