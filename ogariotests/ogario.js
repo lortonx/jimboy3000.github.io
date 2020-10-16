@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.704 testing
+// v2.705 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -308,7 +308,7 @@ function deleteGamemode(temp) {
         } else if ($('#gamemode').val() == 104) {
 			core.connect('ws://217.182.71.35:443/');
         }
-		//na.agarios.org:443/
+
         /*
 		else if ($('#gamemode').val() == 42) {
             core.connect('ws://dummyserver.glitch.me/');
@@ -327,7 +327,9 @@ sxinstantmerge.glitch.me Crazy
 ws://sxultrasplit.glitch.me/ Ultrasplit
 ws://speedybots.glitch.me/ SpeedyBots
 ws://ahmetcantest.glitch.me/ Ahmetcan
-ws://localhost:443 		
+wss://myagar.pro:1443/ minions
+wss://myagar.pro:1444/ instant
+wss://myagar.pro:1445/ crazy		
 		*/
         //ac-clan.glitch.me
         /*		
