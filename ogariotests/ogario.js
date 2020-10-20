@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.744 testing
+// v2.745 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -5479,9 +5479,11 @@ window.MouseClicks=[];
             this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
 //			
 			Settings.addPresetBox2('.mouseGroup', 'leftClickPreset', hotkeysCommand, 'preset', 'changeleftCmd');
-
+			$("#leftClickPreset option[value=" + defaultmapsettings.leftClick + "]").prop('selected', 'selected').change();
 			Settings.addPresetBox2('.mouseGroup', 'rightClickPreset', hotkeysCommand, 'preset', 'changerightCmd');	
+			$("#leftClickPreset option[value=" + defaultmapsettings.rightClick + "]").prop('selected', 'selected').change();
 			Settings.addPresetBox2('.mouseGroup', 'middleClickPreset', hotkeysCommand, 'preset', 'changemiddleCmd');	
+			$("#leftClickPreset option[value=" + defaultmapsettings.middleClick + "]").prop('selected', 'selected').change();
 //
             //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
             this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
