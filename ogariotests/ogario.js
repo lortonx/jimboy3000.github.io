@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.741 testing
+// v2.742 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -1553,7 +1553,7 @@ var displayText = {
         themePreset: 'Motyw',
 		leftClickPreset: 'Left click command',
 		rightClickPreset: 'Right click command',
-		middeClickPreset: 'Mouse wheel click',
+		middleClickPreset: 'Mouse wheel click',
         chatPosition: 'Chat Position',
         themeType: 'Typ motywu',
         darkTheme: 'Ciemny motyw',
@@ -2029,7 +2029,7 @@ var displayText = {
         themePreset: 'Theme preset',
 		leftClickPreset: 'Left click command',
 		rightClickPreset: 'Right click command',	
-		middeClickPreset: 'Mouse wheel click',	
+		middleClickPreset: 'Mouse wheel click',	
         chatPosition: 'Chat Position',
         themeType: 'Theme type',
         darkTheme: 'Dark theme',
