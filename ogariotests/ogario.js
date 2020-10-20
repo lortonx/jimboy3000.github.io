@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.757 testing
+// v2.758 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15170,7 +15170,7 @@ Game name     : ${i.displayName}<br/>
                 if (defaultmapsettings.mouseCommand5 && (5 == event.which)) {
                     event.preventDefault();			
                     if (application) {
-							hotkeysCommand[defaultmapsettings.mouseCommand5.keyDown()					
+							hotkeysCommand[defaultmapsettings.mouseCommand5].keyDown()					
                     }
                 }				
             }
