@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.720 testing
+// v2.721 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3252,7 +3252,7 @@ function thelegendmodproject() {
             }
             this[name].html(css);
         },
-		addPresetBox2 =function(id, name, options, value, callback) {
+		addPresetBox2(id, name, options, value, callback) {
 	
             for (var option in $(id).append(textLanguage[name] + '<div class=\"select-wrapper\" style="display:inline-block; width: 60%; float:right;"><select id=\"' + name + '\" class=\"form-control\"></select></div>'), options) {
                 Object.values(options) && $('#' + name).append('<option value=\"' + option + '\">' + options[option]['label'] + '</option>');
@@ -5463,7 +5463,10 @@ function thelegendmodproject() {
             //this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
             this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo"], "helpersGroup"); //Sonia2
             this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
-			
+//			
+			this.addPresetBox2('.mouseGroup', 'themePreset', hotkeysCommand, 'preset', 'changeleftCmd');	
+			this.addPresetBox2('.mouseGroup', 'themePreset', hotkeysCommand, 'preset', 'changeleftCmd2');	
+//			
             //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
             this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
             this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "showStatsRender", "gameOverStats", "showTime"], "statsGroup");
