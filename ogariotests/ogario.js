@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.740 testing
+// v2.741 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -1553,6 +1553,7 @@ var displayText = {
         themePreset: 'Motyw',
 		leftClickPreset: 'Left click command',
 		rightClickPreset: 'Right click command',
+		middeClickPreset: 'Mouse wheel click',
         chatPosition: 'Chat Position',
         themeType: 'Typ motywu',
         darkTheme: 'Ciemny motyw',
@@ -2027,7 +2028,8 @@ var displayText = {
         basicTheming: 'Basic theming',
         themePreset: 'Theme preset',
 		leftClickPreset: 'Left click command',
-		rightClickPreset: 'Right click command',		
+		rightClickPreset: 'Right click command',	
+		middeClickPreset: 'Mouse wheel click',	
         chatPosition: 'Chat Position',
         themeType: 'Theme type',
         darkTheme: 'Dark theme',
@@ -15073,9 +15075,15 @@ Game name     : ${i.displayName}<br/>
                 event.preventDefault();
                 if (application) {
                     if (defaultmapsettings.mouseWheelClick) {
-                        application.multiboxswap()
-                    } else {
-                        application.sendCommand(10);
+						if (!defaultmapsettings.middleClick){
+							application.multiboxswap()
+						}						
+                        else{
+							hotkeysCommand[defaultmapsettings.middleClick].keyDown()
+						}
+                    } 
+					else {						
+                        //application.sendCommand(10);
                     }
                 }
 
