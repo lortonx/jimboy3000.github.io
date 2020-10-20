@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.755 testing
+// v2.756 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -5487,12 +5487,12 @@ window.MouseClicks=[];
             //this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
 			this.addOptions(["mouseSplit", "mouseFeed", "mouseWheelClick"], "mouseGroup");
 //			
-			Settings.addPresetBox3('#mouseSplit', 'mouseSplit', hotkeysCommand, 'preset', 'changeleftCmd');
-			$("#mouseSplit option[value=" + defaultmapsettings.leftClick + "]").prop('selected', 'selected').change();
-			Settings.addPresetBox3('#mouseFeed', 'mouseFeed', hotkeysCommand, 'preset', 'changerightCmd');	
-			$("#mouseFeed option[value=" + defaultmapsettings.rightClick + "]").prop('selected', 'selected').change();
-			Settings.addPresetBox3('#mouseWheelClick', 'mouseWheelClick', hotkeysCommand, 'preset', 'changemiddleCmd');	
-			$("#mouseWheelClick option[value=" + defaultmapsettings.middleClick + "]").prop('selected', 'selected').change();
+			Settings.addPresetBox3('#mouseSplit', 'mouseSplit2', hotkeysCommand, 'preset', 'changeleftCmd');
+			$("#mouseSplit2 option[value=" + defaultmapsettings.leftClick + "]").prop('selected', 'selected').change();
+			Settings.addPresetBox3('#mouseFeed', 'mouseFeed2', hotkeysCommand, 'preset', 'changerightCmd');	
+			$("#mouseFeed2 option[value=" + defaultmapsettings.rightClick + "]").prop('selected', 'selected').change();
+			Settings.addPresetBox3('#mouseWheelClick', 'mouseWheelClick2', hotkeysCommand, 'preset', 'changemiddleCmd');	
+			$("#mouseWheelClick2 option[value=" + defaultmapsettings.middleClick + "]").prop('selected', 'selected').change();
 //
             //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
             this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
