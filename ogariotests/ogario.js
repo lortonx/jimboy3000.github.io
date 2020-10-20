@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.738 testing
+// v2.739 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3267,7 +3267,7 @@ window.MouseClicks=[];
                 var id = this.value;
 				console.log(id,name)
                 window.MouseClicks[name] = id;
-                app[callback](id);
+                app[callback](name);
             });
         },	
         addPresetBox(id, name, options, value, callback) {
