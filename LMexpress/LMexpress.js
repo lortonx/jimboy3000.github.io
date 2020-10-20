@@ -6349,21 +6349,21 @@ function UIDcontroller() {
 
 function AgarBannedUIDs() {
     //postSNEZ('https://lmsettings.snez.org/', 'LMAgarBannedUIDs', 'LMAgarBannedUIDsPass', JSON.stringify({0: "v12/2204/", 1: "v12/2168/", 2: "v12/1922/"}));		 //default
-	try{
-    getSNEZ("https://lmsettings.snez.org/", "LMAgarBannedUIDs", "LMAgarBannedUIDsPass");
-    var responseLMAgarBannedUIDs = JSON.parse(xhttp.response);
-    for (var i = 0; i < Object.keys(responseLMAgarBannedUIDs).length; i++) {		
-		if (window.bannedUserUIDs){
-			responseLMAgarBannedUIDs[i].split('@')[0];
-			if (!bannedUserUIDs.includes(responseLMAgarBannedUIDs[i])){
+	try {
+		getSNEZ("https://lmsettings.snez.org/", "LMAgarBannedUIDs", "LMAgarBannedUIDsPass");
+		var responseLMAgarBannedUIDs = JSON.parse(xhttp.response);
+		for (var i = 0; i < Object.keys(responseLMAgarBannedUIDs).length; i++) {		
+			if (window.bannedUserUIDs){
+				responseLMAgarBannedUIDs[i].split('@')[0];
+				if (!bannedUserUIDs.includes(responseLMAgarBannedUIDs[i])){
 				//console.log('does not include', responseLMAgarBannedUIDs[i])
-				window.bannedUserUIDs.push(responseLMAgarBannedUIDs[i])
+					window.bannedUserUIDs.push(responseLMAgarBannedUIDs[i])
+				}
 			}
 		}
-    }
-	window.AgarBannedUIDsAdded=true;
+		window.AgarBannedUIDsAdded=true;
 	}
-	catch{}
+	catch (error){}
 }
 
 function AddAgarBannedUIDs(UID){
