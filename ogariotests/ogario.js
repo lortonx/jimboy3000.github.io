@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.726 testing
+// v2.727 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3225,7 +3225,7 @@ function thelegendmodproject() {
         chatCSS: null,
         chatScaleCSS: null,
         cursorCSS: null,
-		Click=[],
+		Click: [],
         loadThemeSettings() {
             let storage = null;
             if (window.localStorage.getItem('ogarioThemeSettings') !== null) {
