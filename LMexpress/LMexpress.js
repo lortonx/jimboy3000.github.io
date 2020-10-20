@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.62 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.63 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
 
@@ -394,10 +394,10 @@ function loadersettings() {
 
 function loadericon() {
     //continue loadericon
-        $("#imagebig").fadeOut(1500);
+        /*$("#imagebig").fadeOut(1500);
         setTimeout(function() {
             $("#imagebig").remove();
-        }, 1600); //remove it
+        }, 1600); */
 }
 
 function PremiumUsersFFAScore() {
