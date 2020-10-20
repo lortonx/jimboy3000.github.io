@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.758 testing
+// v2.759 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3134,7 +3134,7 @@ var defaultmapsettings = {
 	rightClick: 'hk-split',
 	middleClick: 'hk-multiboxswap',
 	mouse4Click: 'hk-doubleBotSplit',
-	mouse6Click: 'hk-splitBot16',
+	mouse5Click: 'hk-splitBot16',
 	//
     FacebookIDs: ''
 };
@@ -15164,13 +15164,13 @@ Game name     : ${i.displayName}<br/>
                 if (defaultmapsettings.mouseCommand4 && (4 == event.which)) {
                     event.preventDefault();			
                     if (application) {
-							hotkeysCommand[defaultmapsettings.mouseCommand4].keyDown()					
+							hotkeysCommand[defaultmapsettings.mouse4Click].keyDown()					
                     }
                 }
                 if (defaultmapsettings.mouseCommand5 && (5 == event.which)) {
                     event.preventDefault();			
                     if (application) {
-							hotkeysCommand[defaultmapsettings.mouseCommand5].keyDown()					
+							hotkeysCommand[defaultmapsettings.mouse4Click].keyDown()					
                     }
                 }				
             }
