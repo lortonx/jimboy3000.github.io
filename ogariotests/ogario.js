@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.745 testing
+// v2.747 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -1383,7 +1383,7 @@ var displayText = {
         FBTracking: 'Facebook bubble tracker',
         mouseSplit: 'LPM - Split myszką',
         mouseFeed: 'PPM - Feed myszką',
-        mouseWheelClick: 'Mouse wheel click - Multibox Swap',
+        mouseWheelClick: 'Mouse wheel',
         mouseInvert: 'Odwróć klawisze myszki',
         disableChat: 'Wyłącz czat',
         coloredNicks: 'Colored nicknames',
@@ -1860,7 +1860,7 @@ var displayText = {
         FBTracking: 'Facebook bubble tracker',
         mouseSplit: 'LMB - Mouse split',
         mouseFeed: 'RMB - Mouse feed',
-        mouseWheelClick: 'Mouse wheel click - Multibox Swap',
+        mouseWheelClick: 'Mouse wheel',
         mouseInvert: 'Invert mouse buttons',
         disableChat: 'Disable chat',
         coloredNicks: 'Colored nicknames',
@@ -5476,14 +5476,15 @@ window.MouseClicks=[];
             //            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "reverseTrick", "showPartyBots"], "helpersGroup"); //Sonia2
             //this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
             this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo"], "helpersGroup"); //Sonia2
-            this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
+            //this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
+			this.addOptions(["mouseSplit", "mouseFeed", "mouseWheelClick"], "mouseGroup");
 //			
 			Settings.addPresetBox2('.mouseGroup', 'leftClickPreset', hotkeysCommand, 'preset', 'changeleftCmd');
 			$("#leftClickPreset option[value=" + defaultmapsettings.leftClick + "]").prop('selected', 'selected').change();
 			Settings.addPresetBox2('.mouseGroup', 'rightClickPreset', hotkeysCommand, 'preset', 'changerightCmd');	
-			$("#leftClickPreset option[value=" + defaultmapsettings.rightClick + "]").prop('selected', 'selected').change();
+			$("#rightClickPreset option[value=" + defaultmapsettings.rightClick + "]").prop('selected', 'selected').change();
 			Settings.addPresetBox2('.mouseGroup', 'middleClickPreset', hotkeysCommand, 'preset', 'changemiddleCmd');	
-			$("#leftClickPreset option[value=" + defaultmapsettings.middleClick + "]").prop('selected', 'selected').change();
+			$("#middleClickPreset option[value=" + defaultmapsettings.middleClick + "]").prop('selected', 'selected').change();
 //
             //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
             this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
