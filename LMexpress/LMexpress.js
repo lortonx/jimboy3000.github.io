@@ -6349,6 +6349,7 @@ function UIDcontroller() {
 
 function AgarBannedUIDs() {
     //postSNEZ('https://lmsettings.snez.org/', 'LMAgarBannedUIDs', 'LMAgarBannedUIDsPass', JSON.stringify({0: "v12/2204/", 1: "v12/2168/", 2: "v12/1922/"}));		 //default
+	try{
     getSNEZ("https://lmsettings.snez.org/", "LMAgarBannedUIDs", "LMAgarBannedUIDsPass");
     var responseLMAgarBannedUIDs = JSON.parse(xhttp.response);
     for (var i = 0; i < Object.keys(responseLMAgarBannedUIDs).length; i++) {		
@@ -6361,6 +6362,8 @@ function AgarBannedUIDs() {
 		}
     }
 	window.AgarBannedUIDsAdded=true;
+	}
+	catch{}
 }
 
 function AddAgarBannedUIDs(UID){
