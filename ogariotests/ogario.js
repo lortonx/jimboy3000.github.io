@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.766 testing
+// v2.767 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15232,7 +15232,13 @@ Game name     : ${i.displayName}<br/>
 				}
 				else if (defaultmapsettings.mouseFeed && (3 == event.which) && defaultmapsettings.rightClick) {	
 					if (hotkeysCommand[defaultmapsettings.rightClick].keyUp) hotkeysCommand[defaultmapsettings.rightClick].keyUp()
-				}				
+				}	
+				else if (defaultmapsettings.mouseCommand4 && (4 == event.which) && defaultmapsettings.mouse4Click) {	
+					if (hotkeysCommand[defaultmapsettings.mouse4Click].keyUp) hotkeysCommand[defaultmapsettings.mouse4Click].keyUp()
+				}		
+				else if (defaultmapsettings.mouseCommand5 && (5 == event.which) && defaultmapsettings.mouse5Click) {	
+					if (hotkeysCommand[defaultmapsettings.mouse5Click].keyUp) hotkeysCommand[defaultmapsettings.mouse5Click].keyUp()
+				}					
 				else {
 					event.which == 1 ? (drawRender.LMB = false) : (drawRender.RMB = false)
 				}
