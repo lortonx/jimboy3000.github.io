@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.729 testing
+// v2.730 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3215,7 +3215,7 @@ function thelegendmodproject() {
     //if (displayText[r].comm15 != undefined) {
     //console.log(textLanguage.comm15);
     //}
-
+window.MouseClicks=[];
     Settings = {
         menuMainColorCSS: null,
         menuPanelColorCSS: null,
@@ -3224,8 +3224,7 @@ function thelegendmodproject() {
         hudCSS: null,
         chatCSS: null,
         chatScaleCSS: null,
-        cursorCSS: null,
-		Click: [],
+        cursorCSS: null,		
         loadThemeSettings() {
             let storage = null;
             if (window.localStorage.getItem('ogarioThemeSettings') !== null) {
@@ -3267,7 +3266,7 @@ function thelegendmodproject() {
             $('#' + name).on('change', function() {
                 var id = this.value;
 				console.log(id,name)
-                this.Click[name] = id;
+                window.MouseClicks[name] = id;
                 app[callback](id);
             });
         },	
