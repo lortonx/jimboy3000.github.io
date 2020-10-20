@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.730 testing
+// v2.731 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3622,13 +3622,13 @@ window.MouseClicks=[];
             this.setTheme();
         },
         changeleftCmd(name) {
-			defaultmapsettings.leftClick = this.Click(name)
+			defaultmapsettings.leftClick = window.MouseClicks(name)
         },	
         changerightCmd(name) {
-			defaultmapsettings.rightClick = this.Click(name)
+			defaultmapsettings.rightClick = window.MouseClicks(name)
         },	
         changemiddleCmd(name) {
-			defaultmapsettings.middleClick = this.Click(name)
+			defaultmapsettings.middleClick = window.MouseClicks(name)
         },			
         changeChatThemePosition(name) {
             this.changePreset(name, chatPositions);
