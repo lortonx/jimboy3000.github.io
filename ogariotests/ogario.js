@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.739 testing
+// v2.740 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15095,7 +15095,7 @@ Game name     : ${i.displayName}<br/>
 							application.split();
 						}
 						else{
-							Object.values(hotkeysCommand)[defaultmapsettings.leftClick].keyDown()
+							hotkeysCommand[defaultmapsettings.leftClick].keyDown()
 						}
                     }
                 }
@@ -15106,7 +15106,7 @@ Game name     : ${i.displayName}<br/>
 							application.split();
 						}
 						else{
-							Object.values(hotkeysCommand)[defaultmapsettings.rightClick].keyDown()
+							hotkeysCommand[defaultmapsettings.rightClick].keyDown()
 						}
                     }
                 }
