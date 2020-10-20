@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.733 testing
+// v2.734 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15087,18 +15087,26 @@ Game name     : ${i.displayName}<br/>
             } else if (defaultmapsettings.reverseTrick) {
                 reverseTrick.pointInCircle(legendmod.cursorX, legendmod.cursorY, event.which);
             } else {
-                if (defaultmapsettings.mouseSplit && (1 == event.which && !defaultmapsettings.mouseInvert || 3 == event.which && defaultmapsettings.mouseInvert)) {
+                if (defaultmapsettings.mouseSplit && (1 == event.which && !defaultmapsettings.mouseInvert || 3 == event.which && defaultmapsettings.mouseInvert)) {					
                     event.preventDefault();
                     if (application) {
-						
-                        application.split();
-						
+						if (!defaultmapsettings.leftClick){
+							application.split();
+						}
+						else{
+							Object.values(hotkeysCommand)[defaultmapsettings.leftClick].keyDown()
+						}
                     }
                 }
                 if (defaultmapsettings.mouseFeed && (3 == event.which && !defaultmapsettings.mouseInvert || 1 == event.which && defaultmapsettings.mouseInvert)) {
-                    event.preventDefault();
+                    event.preventDefault();			
                     if (application) {
-                        application.macroFeed(true);
+						if (!defaultmapsettings.rightClick){
+							application.split();
+						}
+						else{
+							Object.values(hotkeysCommand)[defaultmapsettings.rightClick].keyDown()
+						}
                     }
                 }
             }
