@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.717 testing
+// v2.718 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3140,7 +3140,7 @@ if (userLanguage && displayText.hasOwnProperty(userLanguage)) {
     lang = userLanguage;
 }
 var textLanguage = displayText[lang];
-
+defineChatCommand();
 function defineChatCommand() {
 	window.chatCommand = {
 		comm0: textLanguage.comm0,
