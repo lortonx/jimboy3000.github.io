@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.732 testing
+// v2.733 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -5469,8 +5469,9 @@ window.MouseClicks=[];
             this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
 //			
 			Settings.addPresetBox2('.mouseGroup', 'leftClickPreset', hotkeysCommand, 'preset', 'changeleftCmd');	
-			Settings.addPresetBox2('.mouseGroup', 'rightClickPreset', hotkeysCommand, 'preset', 'changeleftCmd2');	
-//			
+			Settings.addPresetBox2('.mouseGroup', 'rightClickPreset', hotkeysCommand, 'preset', 'changerightCmd');	
+			Settings.addPresetBox2('.mouseGroup', 'middleClickPreset', hotkeysCommand, 'preset', 'changemiddleCmd');	
+//
             //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
             this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
             this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "showStatsRender", "gameOverStats", "showTime"], "statsGroup");
