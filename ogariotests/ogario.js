@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.743 testing
+// v2.744 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3129,6 +3129,11 @@ var defaultmapsettings = {
     commandSound: 'https://legendmod.ml/sounds/chat-message.mp3',
     virusSoundurl: 'https://legendmod.ml/sounds/sound-gunshot.mp3',
     soundSplit: 'https://www.myinstants.com/media/sounds/quack_5.mp3',
+	//
+	leftClick: 'hk-feed',
+	rightClick: 'hk-split',
+	middleClick: 'hk-multiboxswap',
+	//
     FacebookIDs: ''
 };
 var profiles = [];
@@ -5473,7 +5478,8 @@ window.MouseClicks=[];
             this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo"], "helpersGroup"); //Sonia2
             this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
 //			
-			Settings.addPresetBox2('.mouseGroup', 'leftClickPreset', hotkeysCommand, 'preset', 'changeleftCmd');	
+			Settings.addPresetBox2('.mouseGroup', 'leftClickPreset', hotkeysCommand, 'preset', 'changeleftCmd');
+
 			Settings.addPresetBox2('.mouseGroup', 'rightClickPreset', hotkeysCommand, 'preset', 'changerightCmd');	
 			Settings.addPresetBox2('.mouseGroup', 'middleClickPreset', hotkeysCommand, 'preset', 'changemiddleCmd');	
 //
