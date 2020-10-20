@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.759 testing
+// v2.760 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3133,8 +3133,8 @@ var defaultmapsettings = {
 	leftClick: 'hk-feed',
 	rightClick: 'hk-split',
 	middleClick: 'hk-multiboxswap',
-	mouse4Click: 'hk-doubleBotSplit',
-	mouse5Click: 'hk-splitBot16',
+	mouse4Click: 'hk-doubleSplit',
+	mouse5Click: 'hk-split16',
 	//
     FacebookIDs: ''
 };
