@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.763 testing
+// v2.764 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -15227,16 +15227,15 @@ Game name     : ${i.displayName}<br/>
 				if (defaultmapsettings.mouseSplit && (1 == event.which) && defaultmapsettings.leftClick) {	
 					hotkeysCommand[defaultmapsettings.leftClick].keyUp()
 				}
-				if (defaultmapsettings.mouseWheelClick && (2 == event.which) && defaultmapsettings.middleClick) {	
+				else if (defaultmapsettings.mouseWheelClick && (2 == event.which) && defaultmapsettings.middleClick) {	
 					hotkeysCommand[defaultmapsettings.middleClick].keyUp()
 				}
-				if (defaultmapsettings.mouseFeed && (3 == event.which) && defaultmapsettings.rightClick) {	
+				else if (defaultmapsettings.mouseFeed && (3 == event.which) && defaultmapsettings.rightClick) {	
 					hotkeysCommand[defaultmapsettings.rightClick].keyUp()
 				}				
-			//}
-        } else {
-            event.which == 1 ? (drawRender.LMB = false) : (drawRender.RMB = false)
-        }
+				else {
+					event.which == 1 ? (drawRender.LMB = false) : (drawRender.RMB = false)
+				}
     };
     window.onbeforeunload = function(event) {
         if (ogario.play) {
