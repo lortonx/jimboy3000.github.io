@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.723 testing
+// v2.724 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3257,8 +3257,7 @@ function thelegendmodproject() {
             this[name].html(css);
         },
 		addPresetBox2(id, name, options, value, callback) {
-	
-            for (var option in $(id).append(textLanguage[name] + '<div class=\"select-wrapper\" style="display:inline-block; width: 60%; float:right;"><select id=\"' + name + '\" class=\"form-control\"></select></div>'), options) {
+            for (var option in $(id).append('<label style="float:left; padding-left:0; padding-right:0" data-original-title="" title="">' +textLanguage[name] + '<div class=\"select-wrapper\" style="display:inline-block; width: 60%; float:right;"><select id=\"' + name + '\" class=\"form-control\"></select></div></label>'), options) {
                 Object.values(options) && $('#' + name).append('<option value=\"' + option + '\">' + options[option]['label'] + '</option>');
 				//options.hasOwnProperty(option) && $('#' + name).append('<option value=\"' + option + '\">' + options[option]['name'] + '</option>');
             }
