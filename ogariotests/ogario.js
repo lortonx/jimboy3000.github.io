@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.742 testing
+// v2.743 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3624,14 +3624,16 @@ window.MouseClicks=[];
             this.setTheme();
         },
         changeleftCmd(name) {
-			console.log(name)
 			defaultmapsettings.leftClick = window.MouseClicks[name]
+			application.saveSettings(defaultmapsettings, 'ogarioSettings');
         },	
         changerightCmd(name) {
 			defaultmapsettings.rightClick = window.MouseClicks[name]
+			application.saveSettings(defaultmapsettings, 'ogarioSettings');
         },	
         changemiddleCmd(name) {
 			defaultmapsettings.middleClick = window.MouseClicks[name]
+			application.saveSettings(defaultmapsettings, 'ogarioSettings');
         },			
         changeChatThemePosition(name) {
             this.changePreset(name, chatPositions);
