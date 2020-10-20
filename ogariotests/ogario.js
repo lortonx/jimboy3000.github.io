@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.753 testing
+// v2.754 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -3284,7 +3284,7 @@ window.MouseClicks=[];
             });
         },	
 		addPresetBox3(id, name, options, value, callback) {
-            for (var option in $(id).before('<div class=\"select-wrapper\" style="display:inline-block; width: 40%; margin-Right: 10px"><select id=\"' + name + '\" class=\"form-control\"></select></div>'), options) {
+            for (var option in $(id).before('<div class=\"select-wrapper\" style="display:inline-block; width: 48%; margin-Left: 10px"><select id=\"' + name + '\" class=\"form-control\"></select></div>'), options) {
                 Object.values(options) && $('#' + name).append('<option value=\"' + option + '\">' + options[option]['label'] + '</option>');
 				//options.hasOwnProperty(option) && $('#' + name).append('<option value=\"' + option + '\">' + options[option]['name'] + '</option>');
             }
