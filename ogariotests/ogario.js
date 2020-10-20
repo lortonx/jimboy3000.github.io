@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.721 testing
+// v2.722 testing
 
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
@@ -5464,8 +5464,8 @@ function thelegendmodproject() {
             this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo"], "helpersGroup"); //Sonia2
             this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
 //			
-			this.addPresetBox2('.mouseGroup', 'themePreset', hotkeysCommand, 'preset', 'changeleftCmd');	
-			this.addPresetBox2('.mouseGroup', 'themePreset', hotkeysCommand, 'preset', 'changeleftCmd2');	
+			Settings.addPresetBox2('.mouseGroup', 'themePreset', hotkeysCommand, 'preset', 'changeleftCmd');	
+			Settings.addPresetBox2('.mouseGroup', 'themePreset', hotkeysCommand, 'preset', 'changeleftCmd2');	
 //			
             //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
             this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
