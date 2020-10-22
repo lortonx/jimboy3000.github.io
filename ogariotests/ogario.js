@@ -1,5 +1,5 @@
 /* Source script
-v2.768
+v2.769
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9780,7 +9780,13 @@ window.MouseClicks=[];
                 } 
 				else {
                     if (defaultmapsettings.videoSkins) {
-                        var node2 = application.customSkinsMap[this.targetNick];
+						var node2;
+						//if (legendmod.gameMode !=":party"){
+							//node2 = application.customSkinsMap[this.targetNick];
+						//}
+						//else{
+							node2 = application.getCustomSkin(this.targetNick, this.color);
+						//}
                         if (node2) {
                             if (node2.includes(".mp4") || node2.includes(".webm") || node2.includes(".ogv")) {
                                 checkVideos(node2, this.targetNick);
@@ -9788,7 +9794,6 @@ window.MouseClicks=[];
                                     style.save();
                                     style.clip();
                                     if (defaultmapsettings.videoDestorted) {
-										console.log('video started')
                                         var temp = window.videoSkinPlayer[node2].videoWidth / window.videoSkinPlayer[node2].videoHeight;
                                         style.drawImage(window.videoSkinPlayer[node2], this.x - y, this.y - y * temp, 2 * y, 2 * y * temp);
                                     } else {
