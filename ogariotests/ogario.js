@@ -1,5 +1,5 @@
 /* Source script
-v2.779
+v2.780
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -10578,8 +10578,8 @@ window.MouseClicks=[];
                             // var cursorX = cell.x;
                             //var cursorY = cell.y;
                         } else if (target){
-                            cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(target2.x) : target2.x; //Sonia3
-                            cursorY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(target2.y) : target2.y; //Sonia3
+                            //cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(target2.x) : target2.x; //Sonia3
+                            //cursorY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(target2.y) : target2.y; //Sonia3
                             //var cursorX = target2.x;
                             //var cursorY = target2.y;
                         }
