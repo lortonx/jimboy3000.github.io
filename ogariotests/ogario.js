@@ -1,5 +1,5 @@
 /* Source script
-v2.781
+v2.782
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -10488,7 +10488,7 @@ window.MouseClicks=[];
         },
 
         sendPosition(cell, target2, specialcommand) {
-            var cursorX, cursorY, target2;
+            var cursorX, cursorY//, target2;
             if (this.isSocketOpen() && this.connectionOpened && (this.clientKey || !legendmod.integrity)) {
                 if (window.multiboxPlayerEnabled && !window.multiboxFollowMouse && !window.autoPlay) {
                     if (defaultmapsettings.multiKeepMoving) {
