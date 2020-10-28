@@ -1,5 +1,5 @@
 /* Source script
-v2.790 pixi
+v2.791 pixi
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -6601,9 +6601,7 @@ window.MouseClicks=[];
                     var i = document.createElement("canvas");
                     i.width = depth;
                     i.height = depth;
-					//var $ = i.getContext("pixi")
                     var $ = i.getContext("2d");
-					//$.start();
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -6619,7 +6617,6 @@ window.MouseClicks=[];
                     this.customSkinsCache[e + "_cached"].src = i.toDataURL();
                     i = null;
                     this.cacheSkin(this.customSkinsCache, animated);
-					//$.flush();
                 }
             }
         },
@@ -6631,8 +6628,6 @@ window.MouseClicks=[];
                     var i = document.createElement("canvas");
                     i.width = depth;
                     i.height = depth;
-					//var $ = i.getContext("pixi")
-					//$.start();
                     var $ = i.getContext("2d");
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
@@ -6645,7 +6640,6 @@ window.MouseClicks=[];
                     //this.customSkinsCache[e + "_cached"].src = i.toDataURL('image/jpeg', 0.1);
                     i = null;
                     this.cacheSkin2(this.customSkinsCache);
-					//$.flush();
                 }
             }
         },
@@ -6662,8 +6656,6 @@ window.MouseClicks=[];
                     var i = document.createElement("canvas");
                     i.width = depth;
                     i.height = depth;
-					//var $ = i.getContext("pixi")
-					//$.start();
                     var $ = i.getContext("2d");
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
@@ -6675,7 +6667,6 @@ window.MouseClicks=[];
                     this.customSkinsCache[e + "_cached3"].src = i.toDataURL();
                     i = null;
                     this.cacheSkin3(this.customSkinsCache);
-					//$.flush();
                 }
             }
         },
@@ -6692,8 +6683,6 @@ window.MouseClicks=[];
                     var i = document.createElement("canvas");
                     i.width = depth;
                     i.height = depth;
-					//var $ = i.getContext("pixi")
-					//$.start();
                     var $ = i.getContext("2d");
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
@@ -6705,7 +6694,6 @@ window.MouseClicks=[];
                     this.customSkinsCache[e + "_cached4"].src = i.toDataURL();
                     i = null;
                     this.cacheSkin4(this.customSkinsCache);
-					//$.flush();
                 }
             }
         },
@@ -6723,8 +6711,6 @@ window.MouseClicks=[];
                     var i = document.createElement("canvas");
                     i.width = depth;
                     i.height = depth;
-					//var $ = i.getContext("pixi")
-					//$.start();
                     var $ = i.getContext("2d");
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
@@ -6736,7 +6722,6 @@ window.MouseClicks=[];
                     this.customSkinsCache[e + "_cached" + skinCache].src = i.toDataURL();
                     i = null;
                     this.cacheSkinAnimated(this.customSkinsCache, animated);
-					//$.flush();
                 }
             }
         },
@@ -13652,14 +13637,12 @@ Game name     : ${i.displayName}<br/>
             LM.getCursorPosition();
             LM.sortCells();
             LM.compareCells();
-            this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
-			this.ctx.flush();
-			this.ctx.start();
+            this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);			
             if (defaultmapsettings.showGrid) {
                 this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
             }			
-            this.ctx.save();
-            
+            //this.ctx.save();
+            this.ctx.start();
 			this.ctx.translate((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camY * this.scale ));
             this.ctx.scale(this.scale, this.scale);
 			//this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
@@ -13723,8 +13706,8 @@ Game name     : ${i.displayName}<br/>
             }
             //
 
-            this.ctx.restore();
-
+            //this.ctx.restore();
+			this.ctx.flush();
             //this.ctx.finish2D();
 			//this.ctx.flush();
             if (LM.gameMode === ':teams') {
