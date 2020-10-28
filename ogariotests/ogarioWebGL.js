@@ -1,5 +1,5 @@
 /* Source script
-v2.789 pixi
+v2.790 pixi
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13652,7 +13652,7 @@ Game name     : ${i.displayName}<br/>
             LM.getCursorPosition();
             LM.sortCells();
             LM.compareCells();
-            //this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+            this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
 			this.ctx.flush();
 			this.ctx.start();
             if (defaultmapsettings.showGrid) {
