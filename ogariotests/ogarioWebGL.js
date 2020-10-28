@@ -1,5 +1,5 @@
 /* Source script
-v2.784 pixi
+v2.785 pixi
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -6619,7 +6619,7 @@ window.MouseClicks=[];
                     this.customSkinsCache[e + "_cached"].src = i.toDataURL();
                     i = null;
                     this.cacheSkin(this.customSkinsCache, animated);
-					$.flush();
+					//$.flush();
                 }
             }
         },
@@ -6645,7 +6645,7 @@ window.MouseClicks=[];
                     //this.customSkinsCache[e + "_cached"].src = i.toDataURL('image/jpeg', 0.1);
                     i = null;
                     this.cacheSkin2(this.customSkinsCache);
-					$.flush();
+					//$.flush();
                 }
             }
         },
@@ -6675,7 +6675,7 @@ window.MouseClicks=[];
                     this.customSkinsCache[e + "_cached3"].src = i.toDataURL();
                     i = null;
                     this.cacheSkin3(this.customSkinsCache);
-					$.flush();
+					//$.flush();
                 }
             }
         },
@@ -6705,7 +6705,7 @@ window.MouseClicks=[];
                     this.customSkinsCache[e + "_cached4"].src = i.toDataURL();
                     i = null;
                     this.cacheSkin4(this.customSkinsCache);
-					$.flush();
+					//$.flush();
                 }
             }
         },
@@ -6736,7 +6736,7 @@ window.MouseClicks=[];
                     this.customSkinsCache[e + "_cached" + skinCache].src = i.toDataURL();
                     i = null;
                     this.cacheSkinAnimated(this.customSkinsCache, animated);
-					$.flush();
+					//$.flush();
                 }
             }
         },
