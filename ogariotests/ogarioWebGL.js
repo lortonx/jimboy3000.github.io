@@ -1,5 +1,5 @@
 /* Source script
-v2.787 pixi
+v2.788 pixi
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13639,7 +13639,7 @@ Game name     : ${i.displayName}<br/>
         },
         renderFrame() {
             this.renderStarted = performance.now()
-			this.ctx.start();
+			//this.ctx.start();
             //'renderFrame': async function() { //Sonia5
             //await this.sleep(4); //Sonia5			
             //this.ctx.start2D();
@@ -13653,6 +13653,7 @@ Game name     : ${i.displayName}<br/>
             LM.sortCells();
             LM.compareCells();
             this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+			this.ctx.start();
             if (defaultmapsettings.showGrid) {
                 this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
             }			
