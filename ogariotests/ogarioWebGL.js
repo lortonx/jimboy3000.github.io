@@ -1,5 +1,5 @@
 /* Source script
-v2.791 pixi
+v2.792 pixi
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13628,21 +13628,22 @@ Game name     : ${i.displayName}<br/>
             //'renderFrame': async function() { //Sonia5
             //await this.sleep(4); //Sonia5			
             //this.ctx.start2D();
-
+			this.ctx.start();
             LM.time = Date.now();
             for (i = 0; i < LM.cells.length; i++) {
                 LM.cells[i].moveCell();
             }
             this.setView();
+			
             LM.getCursorPosition();
             LM.sortCells();
-            LM.compareCells();
+            LM.compareCells();		
             this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);			
             if (defaultmapsettings.showGrid) {
                 this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
             }			
-            //this.ctx.save();
-            this.ctx.start();
+            this.ctx.save();
+            
 			this.ctx.translate((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camY * this.scale ));
             this.ctx.scale(this.scale, this.scale);
 			//this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
@@ -13706,7 +13707,7 @@ Game name     : ${i.displayName}<br/>
             }
             //
 
-            //this.ctx.restore();
+            this.ctx.restore();
 			this.ctx.flush();
             //this.ctx.finish2D();
 			//this.ctx.flush();
