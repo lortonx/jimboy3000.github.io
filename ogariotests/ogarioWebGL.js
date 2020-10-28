@@ -1,5 +1,5 @@
 /* Source script
-v2.786 pixi
+v2.787 pixi
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -6601,8 +6601,8 @@ window.MouseClicks=[];
                     var i = document.createElement("canvas");
                     i.width = depth;
                     i.height = depth;
-					var $ = i.getContext("pixi")
-                    //var $ = i.getContext("2d");
+					//var $ = i.getContext("pixi")
+                    var $ = i.getContext("2d");
 					//$.start();
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
@@ -6631,9 +6631,9 @@ window.MouseClicks=[];
                     var i = document.createElement("canvas");
                     i.width = depth;
                     i.height = depth;
-					var $ = i.getContext("pixi")
+					//var $ = i.getContext("pixi")
 					//$.start();
-                    //var $ = i.getContext("2d");
+                    var $ = i.getContext("2d");
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -6662,9 +6662,9 @@ window.MouseClicks=[];
                     var i = document.createElement("canvas");
                     i.width = depth;
                     i.height = depth;
-					var $ = i.getContext("pixi")
+					//var $ = i.getContext("pixi")
 					//$.start();
-                    //var $ = i.getContext("2d");
+                    var $ = i.getContext("2d");
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -6692,9 +6692,9 @@ window.MouseClicks=[];
                     var i = document.createElement("canvas");
                     i.width = depth;
                     i.height = depth;
-					var $ = i.getContext("pixi")
+					//var $ = i.getContext("pixi")
 					//$.start();
-                    //var $ = i.getContext("2d");
+                    var $ = i.getContext("2d");
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -6723,9 +6723,9 @@ window.MouseClicks=[];
                     var i = document.createElement("canvas");
                     i.width = depth;
                     i.height = depth;
-					var $ = i.getContext("pixi")
+					//var $ = i.getContext("pixi")
 					//$.start();
-                    //var $ = i.getContext("2d");
+                    var $ = i.getContext("2d");
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -13575,7 +13575,8 @@ Game name     : ${i.displayName}<br/>
         			
         setCanvas() {
             this.canvas = document.getElementById('canvas');
-            this.ctx = this.canvas.getContext('2d');
+            //this.ctx = this.canvas.getContext('2d');
+			this.ctx = this.canvas.getContext('pixi');
             this.canvas.onmousemove = function(event) {
                 LM.clientX = event.clientX;
                 LM.clientY = event.clientY;
@@ -13638,6 +13639,7 @@ Game name     : ${i.displayName}<br/>
         },
         renderFrame() {
             this.renderStarted = performance.now()
+			this.ctx.start();
             //'renderFrame': async function() { //Sonia5
             //await this.sleep(4); //Sonia5			
             //this.ctx.start2D();
@@ -13722,6 +13724,7 @@ Game name     : ${i.displayName}<br/>
             this.ctx.restore();
 
             //this.ctx.finish2D();
+			this.ctx.flush();
             if (LM.gameMode === ':teams') {
                 if (this.pieChart && this.pieChart.width) {
                     this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
