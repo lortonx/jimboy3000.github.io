@@ -1,5 +1,5 @@
 /* Source script
-v2.785 pixi
+v2.786 pixi
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -6603,7 +6603,7 @@ window.MouseClicks=[];
                     i.height = depth;
 					var $ = i.getContext("pixi")
                     //var $ = i.getContext("2d");
-					$.start();
+					//$.start();
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -6632,7 +6632,7 @@ window.MouseClicks=[];
                     i.width = depth;
                     i.height = depth;
 					var $ = i.getContext("pixi")
-					$.start();
+					//$.start();
                     //var $ = i.getContext("2d");
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
@@ -6663,7 +6663,7 @@ window.MouseClicks=[];
                     i.width = depth;
                     i.height = depth;
 					var $ = i.getContext("pixi")
-					$.start();
+					//$.start();
                     //var $ = i.getContext("2d");
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
@@ -6693,7 +6693,7 @@ window.MouseClicks=[];
                     i.width = depth;
                     i.height = depth;
 					var $ = i.getContext("pixi")
-					$.start();
+					//$.start();
                     //var $ = i.getContext("2d");
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
@@ -6724,7 +6724,7 @@ window.MouseClicks=[];
                     i.width = depth;
                     i.height = depth;
 					var $ = i.getContext("pixi")
-					$.start();
+					//$.start();
                     //var $ = i.getContext("2d");
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
