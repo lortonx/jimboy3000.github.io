@@ -1,5 +1,5 @@
 /* Source script
-v2.825
+v2.783
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9935,7 +9935,6 @@ window.MouseClicks=[];
         clientVersionString: master.clientVersionString,
         xsupportprotoversion: master.xsupportprotoversion,
         time: Date.now(),
-		//newServer: true,
         serverTime: 0,
         serverTimeDiff: 0,
         //loggedInTime: 0,
@@ -13560,16 +13559,7 @@ Game name     : ${i.displayName}<br/>
         			
         setCanvas() {
             this.canvas = document.getElementById('canvas');
-			
-			this.canvas2 = document.createElement('canvas');
-	
-			this.ctx2 = this.canvas.getContext("2d");
-			this.ctx = this.canvas2.getContext('2d');
-			
-			this.CanvasGrid = document.createElement('canvas');
-			this.ctxGrid = this.CanvasGrid.getContext("2d");			
-			//context.drawImage(m_canvas, 0, 0);
-            //this.ctx2 = this.ctx.getContext('2d');
+            this.ctx = this.canvas.getContext('2d');
             this.canvas.onmousemove = function(event) {
                 LM.clientX = event.clientX;
                 LM.clientY = event.clientY;
@@ -13583,12 +13573,6 @@ Game name     : ${i.displayName}<br/>
             this.canvas.height = this.canvasHeight;
             LM.canvasWidth = this.canvasWidth;
             LM.canvasHeight = this.canvasHeight;
-			
-			this.canvas2.width = this.canvas.width;
-			this.canvas2.height = this.canvas.height;	
-
-			this.CanvasGrid.width = this.canvas.width;
-			this.CanvasGrid.height = this.canvas.height;
             //this.renderFrame();
         },
         setView() {
@@ -13636,32 +13620,6 @@ Game name     : ${i.displayName}<br/>
         sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         },
-		//drawExisted(token, newServ){
-		drawExistedGrid(){
-			this.ctx2.drawImage(this.CanvasGrid, 0, 0)	
-			this.ctxGrid.clearRect(0, 0, this.canvasWidth, this.canvasHeight);			
-		},
-		drawExisted(){	
-			/*if (token == "showGrid" && newServ){
-				this.ctxGrid.drawImage(this.canvas2, 0, 0)
-			}
-			else if (token == "showGrid"){
-				this.ctx2.drawImage(this.CanvasGrid, 0, 0)
-				return;
-			}*/
-			
-			//this.ctx.clearRect(0, 0, LM.mapSize, LM.mapSize);
-			this.ctx2.drawImage(this.canvas2, 0, 0)
-			if (window.testRenderingParts){
-				this.canvas2Image = new Image();
-				//this.canvas2Image.src = this.canvas2.toDataURL();
-				this.canvas2Image.src = this.canvas2.toDataURL();
-			}
-			this.ctx.clearRect(LM.mapMinX-100, LM.mapMinY-100, LM.mapMinX+2*LM.mapSize, LM.mapMinY+2*LM.mapSize);
-			//this.ctx.clearRect(LM.mapMinX-100, LM.mapMinY-100, LM.mapMinX+30000, LM.mapMinY+30000);
-			//this.ctx.clearRect(0, 0, LM.mapSize, LM.mapSize);
-			//this.ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);			
-		},
         renderFrame() {
             this.renderStarted = performance.now()
             //'renderFrame': async function() { //Sonia5
@@ -13677,20 +13635,8 @@ Game name     : ${i.displayName}<br/>
             LM.sortCells();
             LM.compareCells();
             this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
-			this.ctx2.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
-			
-			
             if (defaultmapsettings.showGrid) {
-				//this.ctx.save(); //
-				//if (LM.newServer){
-					//this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
-					this.drawGrid(this.ctxGrid, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);					
-					//LM.newServer = false;
-				//}
-				//this.ctx.restore();
-				//var token = "showGrid"
-				this.drawExistedGrid()	
-				//this.drawExisted(token, LM.newServer);						
+                this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
             }			
             this.ctx.save();
             
@@ -13701,8 +13647,8 @@ Game name     : ${i.displayName}<br/>
             //this.ctx.translate(-this.camX, -this.camY);
 			
             if (defaultmapsettings.showBgSectors) {
-                this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);	          
-			}
+                this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
+            }
             if (LM.gameMode === ':battleroyale') {
                 this.drawBattleArea(this.ctx);
             }
@@ -13711,8 +13657,7 @@ Game name     : ${i.displayName}<br/>
 
                 var tempborderwidthradius = defaultSettings.bordersWidth / 2;
                 this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
-				this.drawExisted();	         
-			}
+            }
             this.drawCommander();
             this.drawCommander2();
             if (defaultmapsettings.virusesRange) {
@@ -13721,16 +13666,13 @@ Game name     : ${i.displayName}<br/>
             //if (defaultmapsettings.waves ) {
 			if (LM.Waves && LM.Waves && LM.Waves.length>0) {	
 				this.drawWaves();
-            }	
-			
+            }				
             this.drawFood();
-			this.drawExisted();
             if (LM.playerCellsMulti.length) {
                 this.calMinMaxMulti();
             }
             this.calMinMax();
             this.drawHelpers();
-			this.drawExisted();
             this.drawGhostCells();
             for (var i = 0; i < LM.removedCells.length; i++) {
                 LM.removedCells[i].draw(this.ctx, true);
@@ -13749,7 +13691,6 @@ Game name     : ${i.displayName}<br/>
                     //this.drawRing(this.ctx,LM.cells[i].x,LM.cells[i].y,LM.cells[i].size,0.75,'#ffffff')
                 }
             }
-			
             this.drawMiscRings();
             //lylko
             defaultmapsettings.jellyPhisycs && LM.updateQuadtree(LM.cells); //
@@ -13760,18 +13701,8 @@ Game name     : ${i.displayName}<br/>
             if (defaultmapsettings.debug) {
                 this.drawViewPorts(this.ctx)
             }
-			this.ctx2.drawImage(this.canvas2, 0, 0);
             //
-			//this.ctx2.save()
-            //this.canvas2Image = new Image();
-            //this.canvas2Image.src = this.canvas2.toDataURL();
-			
-            /*this.canvas2Image.onload = function() {
-				this.ctx2.drawImage(this.canvas2Image, 0, 0);
-            };	*/		
-			//this.ctx2.restore();
-			//this.ctx2 = this.ctx.getContext('2d');
-			//
+
             this.ctx.restore();
 
             //this.ctx.finish2D();
