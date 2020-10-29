@@ -1,5 +1,5 @@
 /* Source script
-v2.785
+v2.786
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13561,8 +13561,7 @@ Game name     : ${i.displayName}<br/>
             this.canvas = document.getElementById('canvas');
 			
 			this.canvas2 = document.createElement('canvas');
-			this.canvas2.width = drawRender.canvasWidth;
-			this.canvas2.height = drawRender.canvasHeight;	
+	
 			this.ctx2 = this.canvas.getContext("2d");
 			this.ctx = this.canvas2.getContext('2d');
 			//context.drawImage(m_canvas, 0, 0);
@@ -13580,6 +13579,9 @@ Game name     : ${i.displayName}<br/>
             this.canvas.height = this.canvasHeight;
             LM.canvasWidth = this.canvasWidth;
             LM.canvasHeight = this.canvasHeight;
+			
+			this.canvas2.width = this.canvas.width;
+			this.canvas2.height = this.canvas.height;			
             //this.renderFrame();
         },
         setView() {
