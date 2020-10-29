@@ -1,5 +1,5 @@
 /* Source script
-v2.813
+v2.814
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13632,11 +13632,12 @@ Game name     : ${i.displayName}<br/>
         },
 		drawExisted(token, newServ){
 			if (token == "showGrid" && newServ){
-				this.savedCanvasGrid = document.createElement('canvas');
-				this.savedCanvasGrid.drawImage(this.canvas2, 0, 0)
+				this.CanvasGrid = document.createElement('canvas');
+				this.ctxGrid = this.CanvasGrid.getContext("2d");
+				this.ctxGrid.drawImage(this.canvas2, 0, 0)
 			}
 			else if (token == "showGrid"){
-				this.canvas2.drawImage(this.savedCanvasGrid, 0, 0)
+				this.ctx.drawImage(this.savedCanvasGrid, 0, 0)
 			}
 			
 			//this.ctx.clearRect(0, 0, LM.mapSize, LM.mapSize);
