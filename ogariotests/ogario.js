@@ -1,5 +1,5 @@
 /* Source script
-v2.796
+v2.797
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13629,6 +13629,10 @@ Game name     : ${i.displayName}<br/>
         sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         },
+		drawExisted(){
+			this.ctx2.drawImage(this.canvas2, 0, 0)
+			this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);			
+		},
         renderFrame() {
             this.renderStarted = performance.now()
             //'renderFrame': async function() { //Sonia5
@@ -13651,9 +13655,7 @@ Game name     : ${i.displayName}<br/>
 				//this.ctx.save(); //
                 this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
 				//this.ctx.restore();
-				this.ctx2.drawImage(this.canvas2, 0, 0)
-				this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
-							
+				this.drawExisted();						
             }			
             this.ctx.save();
             
@@ -13665,8 +13667,7 @@ Game name     : ${i.displayName}<br/>
 			
             if (defaultmapsettings.showBgSectors) {
                 this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
-  				this.ctx2.drawImage(this.canvas2, 0, 0)
-				this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);          
+  				this.drawExisted();	          
 			}
             if (LM.gameMode === ':battleroyale') {
                 this.drawBattleArea(this.ctx);
@@ -13676,13 +13677,13 @@ Game name     : ${i.displayName}<br/>
 
                 var tempborderwidthradius = defaultSettings.bordersWidth / 2;
                 this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
-				this.ctx2.drawImage(this.canvas2, 0, 0)
-				this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);            
+				this.drawExisted();	         
 			}
             this.drawCommander();
             this.drawCommander2();
             if (defaultmapsettings.virusesRange) {
                 this.drawVirusesRange(this.ctx, LM.viruses);
+				this.drawExisted();
             }
             //if (defaultmapsettings.waves ) {
 			if (LM.Waves && LM.Waves && LM.Waves.length>0) {	
@@ -13690,11 +13691,13 @@ Game name     : ${i.displayName}<br/>
             }	
 			
             this.drawFood();
+			this.drawExisted();
             if (LM.playerCellsMulti.length) {
                 this.calMinMaxMulti();
             }
             this.calMinMax();
             this.drawHelpers();
+			this.drawExisted();
             this.drawGhostCells();
             for (var i = 0; i < LM.removedCells.length; i++) {
                 LM.removedCells[i].draw(this.ctx, true);
@@ -13713,6 +13716,7 @@ Game name     : ${i.displayName}<br/>
                     //this.drawRing(this.ctx,LM.cells[i].x,LM.cells[i].y,LM.cells[i].size,0.75,'#ffffff')
                 }
             }
+			this.drawExisted();
             this.drawMiscRings();
             //lylko
             defaultmapsettings.jellyPhisycs && LM.updateQuadtree(LM.cells); //
