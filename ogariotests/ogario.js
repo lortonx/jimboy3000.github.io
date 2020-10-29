@@ -1,5 +1,5 @@
 /* Source script
-v2.795
+v2.796
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13648,9 +13648,9 @@ Game name     : ${i.displayName}<br/>
 			
 			
             if (defaultmapsettings.showGrid) {
-				this.ctx.save(); //
+				//this.ctx.save(); //
                 this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
-				this.ctx.restore();
+				//this.ctx.restore();
 				this.ctx2.drawImage(this.canvas2, 0, 0)
 				this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
 							
@@ -13665,7 +13665,9 @@ Game name     : ${i.displayName}<br/>
 			
             if (defaultmapsettings.showBgSectors) {
                 this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
-            }
+  				this.ctx2.drawImage(this.canvas2, 0, 0)
+				this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);          
+			}
             if (LM.gameMode === ':battleroyale') {
                 this.drawBattleArea(this.ctx);
             }
@@ -13674,7 +13676,9 @@ Game name     : ${i.displayName}<br/>
 
                 var tempborderwidthradius = defaultSettings.bordersWidth / 2;
                 this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
-            }
+				this.ctx2.drawImage(this.canvas2, 0, 0)
+				this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);            
+			}
             this.drawCommander();
             this.drawCommander2();
             if (defaultmapsettings.virusesRange) {
@@ -13683,7 +13687,8 @@ Game name     : ${i.displayName}<br/>
             //if (defaultmapsettings.waves ) {
 			if (LM.Waves && LM.Waves && LM.Waves.length>0) {	
 				this.drawWaves();
-            }				
+            }	
+			
             this.drawFood();
             if (LM.playerCellsMulti.length) {
                 this.calMinMaxMulti();
