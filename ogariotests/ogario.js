@@ -1,5 +1,5 @@
 /* Source script
-v2.818
+v2.820
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13585,7 +13585,10 @@ Game name     : ${i.displayName}<br/>
             LM.canvasHeight = this.canvasHeight;
 			
 			this.canvas2.width = this.canvas.width;
-			this.canvas2.height = this.canvas.height;			
+			this.canvas2.height = this.canvas.height;	
+
+			this.ctxGrid.width = this.canvas.width;
+			this.ctxGrid.height = this.canvas.height;
             //this.renderFrame();
         },
         setView() {
@@ -13634,6 +13637,10 @@ Game name     : ${i.displayName}<br/>
             return new Promise(resolve => setTimeout(resolve, ms));
         },
 		//drawExisted(token, newServ){
+		drawExistedGrid(){
+			this.ctx2.drawImage(this.CanvasGrid, 0, 0)	
+			this.ctxGrid.clearRect(LM.mapMinX-100, LM.mapMinY-100, LM.mapMinX+30000, LM.mapMinY+30000);			
+		},
 		drawExisted(){	
 			/*if (token == "showGrid" && newServ){
 				this.ctxGrid.drawImage(this.canvas2, 0, 0)
@@ -13675,7 +13682,8 @@ Game name     : ${i.displayName}<br/>
             if (defaultmapsettings.showGrid) {
 				//this.ctx.save(); //
 				//if (LM.newServer){
-					this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);		
+					//this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
+					this.drawGrid(this.ctxGrid, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);					
 					/*LM.newServer = false;
 				}
 				else{
@@ -13683,7 +13691,7 @@ Game name     : ${i.displayName}<br/>
 				}*/
 				//this.ctx.restore();
 				//var token = "showGrid"
-				this.drawExisted();	
+				this.drawExistedGrid()	
 				//this.drawExisted(token, LM.newServer);						
             }			
             this.ctx.save();
