@@ -1,5 +1,5 @@
 /* Source script
-v2.817
+v2.818
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9935,7 +9935,7 @@ window.MouseClicks=[];
         clientVersionString: master.clientVersionString,
         xsupportprotoversion: master.xsupportprotoversion,
         time: Date.now(),
-		newServer: true,
+		//newServer: true,
         serverTime: 0,
         serverTimeDiff: 0,
         //loggedInTime: 0,
@@ -13633,14 +13633,15 @@ Game name     : ${i.displayName}<br/>
         sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         },
-		drawExisted(token, newServ){
-			if (token == "showGrid" && newServ){
+		//drawExisted(token, newServ){
+		drawExisted(){	
+			/*if (token == "showGrid" && newServ){
 				this.ctxGrid.drawImage(this.canvas2, 0, 0)
 			}
 			else if (token == "showGrid"){
 				this.ctx2.drawImage(this.CanvasGrid, 0, 0)
 				return;
-			}
+			}*/
 			
 			//this.ctx.clearRect(0, 0, LM.mapSize, LM.mapSize);
 			this.ctx2.drawImage(this.canvas2, 0, 0)
@@ -13673,16 +13674,17 @@ Game name     : ${i.displayName}<br/>
 			
             if (defaultmapsettings.showGrid) {
 				//this.ctx.save(); //
-				if (LM.newServer){
+				//if (LM.newServer){
 					this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);		
-					LM.newServer = false;
+					/*LM.newServer = false;
 				}
 				else{
 					
-				}
+				}*/
 				//this.ctx.restore();
-				var token = "showGrid"
-				this.drawExisted(token, LM.newServer);						
+				//var token = "showGrid"
+				this.drawExisted();	
+				//this.drawExisted(token, LM.newServer);						
             }			
             this.ctx.save();
             
@@ -13752,9 +13754,7 @@ Game name     : ${i.displayName}<br/>
             if (defaultmapsettings.debug) {
                 this.drawViewPorts(this.ctx)
             }
-			//this.drawExisted();
-			this.drawExisted();
-			//this.ctx2.drawImage(this.canvas2, 0, 0);
+			this.ctx2.drawImage(this.canvas2, 0, 0);
             //
 			//this.ctx2.save()
             //this.canvas2Image = new Image();
