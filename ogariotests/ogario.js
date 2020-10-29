@@ -1,5 +1,5 @@
 /* Source script
-v2.801
+v2.802
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13630,6 +13630,7 @@ Game name     : ${i.displayName}<br/>
             return new Promise(resolve => setTimeout(resolve, ms));
         },
 		drawExisted(){
+			this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);	
 			this.ctx2.drawImage(this.canvas2, 0, 0)
 			if (window.testRenderingParts){
 				this.canvas2Image = new Image();
@@ -13688,7 +13689,6 @@ Game name     : ${i.displayName}<br/>
             this.drawCommander2();
             if (defaultmapsettings.virusesRange) {
                 this.drawVirusesRange(this.ctx, LM.viruses);
-				this.drawExisted();
             }
             //if (defaultmapsettings.waves ) {
 			if (LM.Waves && LM.Waves && LM.Waves.length>0) {	
