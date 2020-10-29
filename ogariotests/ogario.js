@@ -1,5 +1,5 @@
 /* Source script
-v2.807
+v2.808
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13630,7 +13630,7 @@ Game name     : ${i.displayName}<br/>
             return new Promise(resolve => setTimeout(resolve, ms));
         },
 		drawExisted(){
-			this.ctx.clearRect(LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY);
+			this.ctx.clearRect(LM.mapMinX, LM.mapMinY, LM.mapMinX+30000, LM.mapMinY+30000);
 			//this.ctx.clearRect(0, 0, LM.mapSize, LM.mapSize);
 			this.ctx2.drawImage(this.canvas2, 0, 0)
 			if (window.testRenderingParts){
