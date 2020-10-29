@@ -1,5 +1,5 @@
 /* Source script
-v2.799
+v2.800
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13630,13 +13630,12 @@ Game name     : ${i.displayName}<br/>
             return new Promise(resolve => setTimeout(resolve, ms));
         },
 		drawExisted(){
-			this.ctx.save()
 			this.ctx2.drawImage(this.canvas2, 0, 0)
 			if (window.testRenderingParts){
 				this.canvas2Image = new Image();
-				this.canvas2Image.src = this.canvas2.toDataURL();
+				//this.canvas2Image.src = this.canvas2.toDataURL();
+				this.canvas2Image.src = this.canvas.toDataURL();
 			}
-			this.ctx.restore()
 			this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);			
 		},
         renderFrame() {
@@ -13653,7 +13652,7 @@ Game name     : ${i.displayName}<br/>
             LM.getCursorPosition();
             LM.sortCells();
             LM.compareCells();
-            this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+            //this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
 			this.ctx2.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
 			
 			
@@ -13733,7 +13732,8 @@ Game name     : ${i.displayName}<br/>
             if (defaultmapsettings.debug) {
                 this.drawViewPorts(this.ctx)
             }
-			this.ctx2.drawImage(this.canvas2, 0, 0);
+			this.drawExisted();
+			//this.ctx2.drawImage(this.canvas2, 0, 0);
             //
 			//this.ctx2.save()
             //this.canvas2Image = new Image();
