@@ -1,5 +1,5 @@
 /* Source script
-v2.821
+v2.822
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13587,8 +13587,8 @@ Game name     : ${i.displayName}<br/>
 			this.canvas2.width = this.canvas.width;
 			this.canvas2.height = this.canvas.height;	
 
-			this.ctxGrid.width = this.canvas.width;
-			this.ctxGrid.height = this.canvas.height;
+			this.CanvasGrid.width = this.canvas.width;
+			this.CanvasGrid.height = this.canvas.height;
             //this.renderFrame();
         },
         setView() {
