@@ -1,5 +1,5 @@
 /* Source script
-v2.787
+v2.788
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13644,6 +13644,8 @@ Game name     : ${i.displayName}<br/>
             LM.sortCells();
             LM.compareCells();
             this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+			this.ctx2.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+			
             if (defaultmapsettings.showGrid) {
                 this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
             }			
@@ -13711,9 +13713,9 @@ Game name     : ${i.displayName}<br/>
                 this.drawViewPorts(this.ctx)
             }
             //
-			this.ctx2.save()
+			//this.ctx2.save()
 			this.ctx2.drawImage(this.canvas2, 0, 0);
-			this.ctx2.restore();
+			//this.ctx2.restore();
 			//this.ctx2 = this.ctx.getContext('2d');
 			//
             this.ctx.restore();
