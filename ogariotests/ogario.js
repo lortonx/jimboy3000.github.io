@@ -1,5 +1,5 @@
 /* Source script
-v2.796
+v2.797
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -2920,7 +2920,7 @@ function loadIconSpecialSkins(val){
 	eval('window.' + val + ' = new Image;');
 	eval('window.' + val + '.src = ' + 'https://legendmod.ml/banners/' + val + '.png;');
 }
-
+/*
 iconSpecialSkinEffectsCrown = new Image;
 iconSpecialSkinEffectsCrown.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsCrown.png';
 iconSpecialSkinEffectsMask = new Image;
@@ -3031,6 +3031,7 @@ iconSpecialSkinEffectsTiger = new Image;
 iconSpecialSkinEffectsTiger.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsTiger.png';
 iconSpecialSkinEffectsPanicAtDisco = new Image;
 iconSpecialSkinEffectsPanicAtDisco.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsPanicAtDisco.png';
+*/
 if (dyinglight1load == "yes") {
     cimgDyingLight = new Image;
     cimgDyingLight.src = defaultSettings.commanderImageDyingLight;
@@ -9447,40 +9448,52 @@ window.MouseClicks=[];
                     //style.drawImage(iconSpecialSkinEffectsHat3, this.x - 1/2 * y, this.y - y, y, y); //top middle 1/2 size 
                     // the bigger the -y, the upper it draws
                 } else if (this.SpecialEffect == "JellyFish" || this.SpecialEffect2 == "JellyFish") {
-                    style.drawImage(iconSpecialSkinEffectsJellyFish, this.x - 1 / 3 * y, this.y - 3 / 2 * y, y, y);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsJellyFish, this.x - 1 / 3 * y, this.y - 3 / 2 * y, y, y, style); 
+                    //style.drawImage(iconSpecialSkinEffectsJellyFish, this.x - 1 / 3 * y, this.y - 3 / 2 * y, y, y);
                 } else if (this.SpecialEffect == "King" || this.SpecialEffect2 == "King") {
                     //style.drawImage(iconSpecialSkinEffectsCrown	, this.x - 1/4 * y, this.y - 5/4 * y, y/2, y/2); 
-					
-                    style.drawImage(iconSpecialSkinEffectsCrown, this.x - 1 / 4 * y, this.y - 5.3 / 4 * y, y / 2, y / 2);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsCrown, this.x - 1 / 4 * y, this.y - 5.3 / 4 * y, y / 2, y / 2, style); 
+                    //style.drawImage(iconSpecialSkinEffectsCrown, this.x - 1 / 4 * y, this.y - 5.3 / 4 * y, y / 2, y / 2);
                 }
                 if (this.SpecialEffect == "Smoke" || this.SpecialEffect2 == "Smoke") {
-                    style.drawImage(iconSpecialSkinEffectsSmoke, this.x - 2 / 3 * y, this.y - 4 / 3 * y, y, y);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsSmoke, this.x - 2 / 3 * y, this.y - 4 / 3 * y, y, y, style);
+                    //style.drawImage(iconSpecialSkinEffectsSmoke, this.x - 2 / 3 * y, this.y - 4 / 3 * y, y, y);
                 } else if (this.SpecialEffect == "USA" || this.SpecialEffect2 == "USA") {
-                    style.drawImage(iconSpecialSkinEffectsUSA, this.x - 5 / 7 * y, this.y - 1 / 2 * y, y * 2, y * 2);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsUSA, this.x - 5 / 7 * y, this.y - 1 / 2 * y, y * 2, y * 2, style);
+                    //style.drawImage(iconSpecialSkinEffectsUSA, this.x - 5 / 7 * y, this.y - 1 / 2 * y, y * 2, y * 2);
                 } else if (this.SpecialEffect == "SunGlasses" || this.SpecialEffect2 == "SunGlasses") {
-                    style.drawImage(iconSpecialSkinEffectsSunGlasses, this.x - 0.85 * y, this.y - 1.1 * y, y * 1.7, y * 1.4);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsSunGlasses, this.x - 0.85 * y, this.y - 1.1 * y, y * 1.7, y * 1.4, style);
+                    //style.drawImage(iconSpecialSkinEffectsSunGlasses, this.x - 0.85 * y, this.y - 1.1 * y, y * 1.7, y * 1.4);
                 } else if (this.SpecialEffect == "Moderator" || this.SpecialEffect2 == "Moderator") {
-                    style.drawImage(iconSpecialSkinEffectsModerator, this.x - 0.333 * y, this.y - 1.325 * y, y / 1.5, y / 6);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsModerator, this.x - 0.333 * y, this.y - 1.325 * y, y / 1.5, y / 6, style);
+                    //style.drawImage(iconSpecialSkinEffectsModerator, this.x - 0.333 * y, this.y - 1.325 * y, y / 1.5, y / 6);
                 } else if (this.SpecialEffect == "Turtle" || this.SpecialEffect2 == "Turtle") {
-                    style.drawImage(iconSpecialSkinEffectsTurtle, this.x - 0.999 * y, this.y - 0.810 * y, y / 0.5, y / 0.5);
-                    ///style.drawImage(iconSpecialSkinEffectsTurtle, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);					                     
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsTurtle, this.x - 0.999 * y, this.y - 0.810 * y, y / 0.5, y / 0.5, style);
+                    //style.drawImage(iconSpecialSkinEffectsTurtle, this.x - 0.999 * y, this.y - 0.810 * y, y / 0.5, y / 0.5);
+                    //style.drawImage(iconSpecialSkinEffectsTurtle, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);					                     
                 } else if (this.SpecialEffect == "Shiro" || this.SpecialEffect2 == "Shiro") {
-                    style.drawImage(iconSpecialSkinEffectsShiro, this.x + 0.05 * y, this.y - 1.2 * y, y, y);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsShiro, this.x + 0.05 * y, this.y - 1.2 * y, y, y, style);
+                    //style.drawImage(iconSpecialSkinEffectsShiro, this.x + 0.05 * y, this.y - 1.2 * y, y, y);
                 } else if (this.SpecialEffect == "Bird" || this.SpecialEffect2 == "Bird") {
-                    style.drawImage(iconSpecialSkinEffectsBird, this.x - 0 * y, this.y - 1.3 * y, y / 1, y / 1);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsBird, this.x - 0 * y, this.y - 1.3 * y, y / 1, y / 1, style);
+                    //style.drawImage(iconSpecialSkinEffectsBird, this.x - 0 * y, this.y - 1.3 * y, y / 1, y / 1);
                 } else if (this.SpecialEffect == "AbsolutVodka" || this.SpecialEffect2 == "AbsolutVodka") {
-                    style.drawImage(iconSpecialSkinEffectsAbsolutVodka, this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsAbsolutVodka, this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1, style);
+                    //style.drawImage(iconSpecialSkinEffectsAbsolutVodka, this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1);
                     //style.drawImage(iconSpecialSkinEffectsAbsolutVodka, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4;							
                     //if (!window.xx1) window.xx1 = -0.1
                     //if (!window.xx2) window.xx2= -0.15
                     //if (!window.xx3) window.xx3 = 1.5
                     //if (!window.xx4) window.xx4 = 1			
                 } else if (this.SpecialEffect == "Chemistry" || this.SpecialEffect2 == "Chemistry") {
-                    style.drawImage(iconSpecialSkinEffectsChemistry, this.x + 0.3 * y, this.y - 1.1 * y, y / 2, y / 2);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsChemistry, this.x + 0.3 * y, this.y - 1.1 * y, y / 2, y / 2, style);
+                    //style.drawImage(iconSpecialSkinEffectsChemistry, this.x + 0.3 * y, this.y - 1.1 * y, y / 2, y / 2);
                 } else if (this.SpecialEffect == "Japan" || this.SpecialEffect2 == "Japan") {
-                    style.drawImage(iconSpecialSkinEffectsJapan, this.x - 0.8 * y, this.y - 1 * y, y / 0.5, y / 0.5);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsJapan, this.x - 0.8 * y, this.y - 1 * y, y / 0.5, y / 0.5, style);
+                    //style.drawImage(iconSpecialSkinEffectsJapan, this.x - 0.8 * y, this.y - 1 * y, y / 0.5, y / 0.5);
                 } else if (this.SpecialEffect == "Japan2" || this.SpecialEffect2 == "Japan2") {
-                    style.drawImage(iconSpecialSkinEffectsJapan2, this.x - 0.5 * y, this.y + 0.47 * y, y / 1, y / 1);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsJapan2, this.x - 0.5 * y, this.y + 0.47 * y, y / 1, y / 1, style);
+                    //style.drawImage(iconSpecialSkinEffectsJapan2, this.x - 0.5 * y, this.y + 0.47 * y, y / 1, y / 1);
                     /*style.drawImage(iconSpecialSkinEffectsJapan2, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
                         if (!window.xx1) window.xx1= 0.5
                         if (!window.xx2) window.xx2= -0.47
@@ -9488,62 +9501,89 @@ window.MouseClicks=[];
                         if (!window.xx4) window.xx4 = 1							
                         */
                 } else if (this.SpecialEffect == "Byzantium" || this.SpecialEffect2 == "Byzantium") {
-                    style.drawImage(iconSpecialSkinEffectsByzantium, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsByzantium, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsByzantium, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Close" || this.SpecialEffect2 == "Close") {
-                    style.drawImage(iconSpecialSkinEffectsClose, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsClose, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsClose, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Earth" || this.SpecialEffect2 == "Earth") {
-                    style.drawImage(iconSpecialSkinEffectsEarth, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsEarth, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsEarth, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "FootStep" || this.SpecialEffect2 == "FootStep") {
-                    style.drawImage(iconSpecialSkinEffectsFootStep, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsFootStep, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsFootStep, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Forward" || this.SpecialEffect2 == "Forward") {
-                    style.drawImage(iconSpecialSkinEffectsForward, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsForward, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsForward, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Forever" || this.SpecialEffect2 == "Forever") {
-                    style.drawImage(iconSpecialSkinEffectsFriendsForever, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsFriendsForever, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsFriendsForever, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Forever2" || this.SpecialEffect2 == "Forever2") {
-                    style.drawImage(iconSpecialSkinEffectsFriendsForever2, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsFriendsForever2, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsFriendsForever2, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Forever3" || this.SpecialEffect2 == "Forever3") {
-                    style.drawImage(iconSpecialSkinEffectsFriendsForever3, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsFriendsForever3, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsFriendsForever3, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Police" || this.SpecialEffect2 == "Police") {
-                    style.drawImage(iconSpecialSkinEffectsPolice, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsPolice, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsPolice, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Police2" || this.SpecialEffect2 == "Police2") {
-                    style.drawImage(iconSpecialSkinEffectsPolice2, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsPolice2, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsPolice2, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Unrest" || this.SpecialEffect2 == "Unrest") {
-                    style.drawImage(iconSpecialSkinEffectsUnrest, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsUnrest, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsUnrest, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Eagle" || this.SpecialEffect2 == "Eagle") {
-                    style.drawImage(iconSpecialSkinEffectsEagle, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsEagle, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsEagle, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "BobMarley" || this.SpecialEffect2 == "BobMarley") {
-                    style.drawImage(iconSpecialSkinEffectsBobMarley, this.x + 0.6 * y, this.y + 0.6 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsBobMarley, this.x + 0.6 * y, this.y + 0.6 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsBobMarley, this.x + 0.6 * y, this.y + 0.6 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Einstein" || this.SpecialEffect2 == "Einstein") {
-                    style.drawImage(iconSpecialSkinEffectsEinstein, this.x + 0.65 * y, this.y + 0.65 * y, y / 2.5, y / 2.5);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsEinstein, this.x + 0.65 * y, this.y + 0.65 * y, y / 2.5, y / 2.5, style);
+                    //style.drawImage(iconSpecialSkinEffectsEinstein, this.x + 0.65 * y, this.y + 0.65 * y, y / 2.5, y / 2.5);
                 } else if (this.SpecialEffect == "DeadTable" || this.SpecialEffect2 == "DeadTable") {
-                    style.drawImage(iconSpecialSkinEffectsDeadTable, this.x + 0.7 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsDeadTable, this.x + 0.7 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsDeadTable, this.x + 0.7 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Kebab" || this.SpecialEffect2 == "Kebab") {
-                    style.drawImage(iconSpecialSkinEffectsKebab, this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsKebab, this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2, style);
+                    //style.drawImage(iconSpecialSkinEffectsKebab, this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2);
                 } else if (this.SpecialEffect == "Meditation" || this.SpecialEffect2 == "Meditation") {
-                    style.drawImage(iconSpecialSkinEffectsMeditation, this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsMeditation, this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2, style);
+                    //style.drawImage(iconSpecialSkinEffectsMeditation, this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2);
                 } else if (this.SpecialEffect == "Splash" || this.SpecialEffect2 == "Splash") {
-                    style.drawImage(iconSpecialSkinEffectsSplash, this.x - 1.15 * y, this.y - 1.3 * y, y / 0.36, y / 0.36);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsSplash, this.x - 1.15 * y, this.y - 1.3 * y, y / 0.36, y / 0.36, style);
+                    //style.drawImage(iconSpecialSkinEffectsSplash, this.x - 1.15 * y, this.y - 1.3 * y, y / 0.36, y / 0.36);
                 } else if (this.SpecialEffect == "Butterfly" || this.SpecialEffect2 == "Butterfly") {
-                    style.drawImage(iconSpecialSkinEffectsButterfly, this.x - 1 * y, this.y - 0.6 * y, y / 2, y / 4);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsButterfly, this.x - 1 * y, this.y - 0.6 * y, y / 2, y / 4, style);
+                    //style.drawImage(iconSpecialSkinEffectsButterfly, this.x - 1 * y, this.y - 0.6 * y, y / 2, y / 4);
                 } else if (this.SpecialEffect == "Mouse" || this.SpecialEffect2 == "Mouse") {
-                    style.drawImage(iconSpecialSkinEffectsMouse, this.x + 0.5 * y, this.y - 0.1 * y, y / 3, y / 1);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsMouse, this.x + 0.5 * y, this.y - 0.1 * y, y / 3, y / 1, style);
+                    //style.drawImage(iconSpecialSkinEffectsMouse, this.x + 0.5 * y, this.y - 0.1 * y, y / 3, y / 1);
                 } else if (this.SpecialEffect == "Sword" || this.SpecialEffect2 == "Sword") {
-                    style.drawImage(iconSpecialSkinEffectsSword, this.x - 0.8 * y, this.y - 3 / 5 * y, y * 1.6, y * 1.6);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsSword, this.x - 0.8 * y, this.y - 3 / 5 * y, y * 1.6, y * 1.6, style);
+                    //style.drawImage(iconSpecialSkinEffectsSword, this.x - 0.8 * y, this.y - 3 / 5 * y, y * 1.6, y * 1.6);
                 }
                 if (this.SpecialEffect == "Mask" || this.SpecialEffect2 == "Mask") {
-                    style.drawImage(iconSpecialSkinEffectsMask, this.x - 1 / 2 * y, this.y + 1 / 4 * y, y, y);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsMask, this.x - 1 / 2 * y, this.y + 1 / 4 * y, y, y, style);
+                    //style.drawImage(iconSpecialSkinEffectsMask, this.x - 1 / 2 * y, this.y + 1 / 4 * y, y, y);
                 } else if (this.SpecialEffect == "Heart" || this.SpecialEffect2 == "Heart") {
-                    style.drawImage(iconSpecialSkinEffectsHeart, this.x - 1 / 2 * y, this.y + 1 / 3 * y, y, y);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsHeart, this.x - 1 / 2 * y, this.y + 1 / 3 * y, y, y, style);
+                    //style.drawImage(iconSpecialSkinEffectsHeart, this.x - 1 / 2 * y, this.y + 1 / 3 * y, y, y);
                 }
                 if (this.SpecialEffect == "Vip" || this.SpecialEffect2 == "Vip") {
-                    style.drawImage(iconSpecialSkinEffectsVip, this.x - 1 / 8 * y, this.y - 5.3 / 4 * y, y / 5, y / 5);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsVip, this.x - 1 / 8 * y, this.y - 5.3 / 4 * y, y / 5, y / 5, style);
+                    //style.drawImage(iconSpecialSkinEffectsVip, this.x - 1 / 8 * y, this.y - 5.3 / 4 * y, y / 5, y / 5);
                 } else if (this.SpecialEffect == "Ddev" || this.SpecialEffect2 == "Ddev") {
-                    style.drawImage(iconSpecialSkinEffectsDdev, this.x - 1 / 8 * y, this.y - 4.6 / 4 * y, y / 3, y / 5);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsDdev, this.x - 1 / 8 * y, this.y - 4.6 / 4 * y, y / 3, y / 5, style);
+                    //style.drawImage(iconSpecialSkinEffectsDdev, this.x - 1 / 8 * y, this.y - 4.6 / 4 * y, y / 3, y / 5);
                 } else if (this.SpecialEffect == "Youtube" || this.SpecialEffect2 == "Youtube") {
-                    style.drawImage(iconSpecialSkinEffectsYoutube, this.x - 1 / 6 * y, this.y - 5.3 / 4 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsYoutube, this.x - 1 / 6 * y, this.y - 5.3 / 4 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsYoutube, this.x - 1 / 6 * y, this.y - 5.3 / 4 * y, y / 3, y / 3);
                     //style.drawImage(iconSpecialSkinEffectsYoutube, this.x - 1/2 * y, this.y - 3/2 * y, y, y); 
                 } else if (this.SpecialEffect == "LegendHeroes" || this.SpecialEffect2 == "LegendHeroes") {
-                    style.drawImage(iconSpecialSkinEffectsLegendclan, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsLegendclan, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4, style);
+                    //style.drawImage(iconSpecialSkinEffectsLegendclan, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);
 
                     /*style.drawImage(iconSpecialSkinEffectsLegendclan, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
                     if (!window.xx1) window.xx1 = 0.95
@@ -9551,7 +9591,8 @@ window.MouseClicks=[];
                     if (!window.xx3) window.xx3 = 0.5
                     if (!window.xx4) window.xx4 = 4*/
                 } else if (this.SpecialEffect == "LegendClan" || this.SpecialEffect2 == "LegendClan") {
-                    style.drawImage(iconSpecialSkinEffectsLegendclan2, this.x - 1 / 3 * y, this.y - 5.3 / 4 * y, y / 1.5, y / 6);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsLegendclan2, this.x - 1 / 3 * y, this.y - 5.3 / 4 * y, y / 1.5, y / 6, style);
+                    //style.drawImage(iconSpecialSkinEffectsLegendclan2, this.x - 1 / 3 * y, this.y - 5.3 / 4 * y, y / 1.5, y / 6);
                     /*style.drawImage(iconSpecialSkinEffectsLegendclan2, this.x - window.xx5 * y, this.y - window.xx6 * y, y/window.xx7, y/window.xx8);				
                     if (!window.xx5) window.xx5 = 1/3
                     if (!window.xx6) window.xx6 = 5.3/4
@@ -9559,9 +9600,11 @@ window.MouseClicks=[];
                     if (!window.xx8) window.xx8 = 6*/
                 } else if (this.SpecialEffect == "BabyBoss" || this.SpecialEffect2 == "BabyBoss") {
                     if (this.mass < 3000) {
-                        style.drawImage(iconSpecialSkinEffectsBabyBoss, this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);
+						this.drawImageSpecialSkin(iconSpecialSkinEffectsBabyBoss, this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5, style);
+                        //style.drawImage(iconSpecialSkinEffectsBabyBoss, this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);
                     } else {
-                        style.drawImage(iconSpecialSkinEffectsBabyBoss1, this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);
+						this.drawImageSpecialSkin(iconSpecialSkinEffectsBabyBoss1, this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5, style);
+                        //style.drawImage(iconSpecialSkinEffectsBabyBoss1, this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);
                     }
                 } else if (this.SpecialEffect == "Gladiator" || this.SpecialEffect2 == "Gladiator") {
                     var d = new Date();
@@ -9573,9 +9616,11 @@ window.MouseClicks=[];
                     style.filter = 'contrast(1.4) sepia(' + e + ')';
                     */
                     style.filter = 'hue-rotate(-' + n / 60 + 'turn)';
-                    style.drawImage(iconSpecialSkinEffectsGladiator, this.x - 0.85 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsGladiator, this.x - 0.85 * y, this.y - 1.2 * y, y / 1.5, y / 1.5, style);
+                    //style.drawImage(iconSpecialSkinEffectsGladiator, this.x - 0.85 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);
                 } else if (this.SpecialEffect == "Hero" || this.SpecialEffect2 == "Hero") {
-                    style.drawImage(iconSpecialSkinEffectsHero, this.x - 0.35 * y, this.y - 1.35 * y, y / 1.5, y / 1.5);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsHero, this.x - 0.35 * y, this.y - 1.35 * y, y / 1.5, y / 1.5, style);
+                    //style.drawImage(iconSpecialSkinEffectsHero, this.x - 0.35 * y, this.y - 1.35 * y, y / 1.5, y / 1.5);
                 } else if (this.SpecialEffect == "Hero1" || this.SpecialEffect2 == "Hero1") {
                     var d = new Date();
                     var n = d.getSeconds();
@@ -9588,25 +9633,33 @@ window.MouseClicks=[];
                     }
                     style.save();
                     style.globalAlpha = e
-                    style.drawImage(iconSpecialSkinEffectsHero1, this.x - 0.1 * y, this.y - 1.35 * y, y / 1, y / 1);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsHero1, this.x - 0.1 * y, this.y - 1.35 * y, y / 1, y / 1, style);
+                    //style.drawImage(iconSpecialSkinEffectsHero1, this.x - 0.1 * y, this.y - 1.35 * y, y / 1, y / 1);
                     style.restore();
 
                 } else if (this.SpecialEffect == "Hero2" || this.SpecialEffect2 == "Hero2") {
-                    style.drawImage(iconSpecialSkinEffectsHero2, this.x - 0.3 * y, this.y - 1.48 * y, y / 2, y / 2);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsHero2, this.x - 0.3 * y, this.y - 1.48 * y, y / 2, y / 2, style);
+                    //style.drawImage(iconSpecialSkinEffectsHero2, this.x - 0.3 * y, this.y - 1.48 * y, y / 2, y / 2);
                 } else if (this.SpecialEffect == "Key" || this.SpecialEffect2 == "Key") {
-                    style.drawImage(iconSpecialSkinEffectsKey, this.x + 0.4 * y, this.y - 1.15 * y, y / 2, y / 2);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsKey, this.x + 0.4 * y, this.y - 1.15 * y, y / 2, y / 2, style);
+                    //style.drawImage(iconSpecialSkinEffectsKey, this.x + 0.4 * y, this.y - 1.15 * y, y / 2, y / 2);
                 } else if (this.SpecialEffect == "MetalOfHonor" || this.SpecialEffect2 == "MetalOfHonor") {
-                    style.drawImage(iconSpecialSkinEffectsMetalOfHonor, this.x - 0.25 * y, this.y + 0.8 * y, y / 2, y / 2);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsMetalOfHonor, this.x - 0.25 * y, this.y + 0.8 * y, y / 2, y / 2, style);
+                    //style.drawImage(iconSpecialSkinEffectsMetalOfHonor, this.x - 0.25 * y, this.y + 0.8 * y, y / 2, y / 2);
                 } else if (this.SpecialEffect == "PeaceMaker" || this.SpecialEffect2 == "PeaceMaker") {
-                    style.drawImage(iconSpecialSkinEffectsPeaceMaker, this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 2);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsPeaceMaker, this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 2, style);
+                    //style.drawImage(iconSpecialSkinEffectsPeaceMaker, this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 2);
                 } else if (this.SpecialEffect == "Survivor" || this.SpecialEffect2 == "Survivor") {
-                    style.drawImage(iconSpecialSkinEffectsSurvivor, this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 1.5);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsSurvivor, this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 1.5, style);
+                    //style.drawImage(iconSpecialSkinEffectsSurvivor, this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 1.5);
                 } else if (this.SpecialEffect == "Tiger" || this.SpecialEffect2 == "Tiger") {
-                    style.drawImage(iconSpecialSkinEffectsTiger, this.x - 1.1 * y, this.y - 1.3 * y, y / 1.5, y / 1.5);
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsTiger, this.x - 1.1 * y, this.y - 1.3 * y, y / 1.5, y / 1.5, style);
+                    //style.drawImage(iconSpecialSkinEffectsTiger, this.x - 1.1 * y, this.y - 1.3 * y, y / 1.5, y / 1.5);
                 } else if (this.targetNick.includes("The Dying Light") || this.SpecialEffect == "RedArrow" || this.SpecialEffect2 == "RedArrow") {
                     style.drawImage(cimg5, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
                 } else if (this.SpecialEffect == "PanicAtDisco" || this.SpecialEffect2 == "PanicAtDisco") {
-                    style.drawImage(iconSpecialSkinEffectsPanicAtDisco, this.x - 1 * y, this.y - 1 * y, y/1, y/4);	
+					this.drawImageSpecialSkin(iconSpecialSkinEffectsPanicAtDisco, this.x - 1 * y, this.y - 1 * y, y/1, y/4, style);
+                    //style.drawImage(iconSpecialSkinEffectsPanicAtDisco, this.x - 1 * y, this.y - 1 * y, y/1, y/4);	
 					this.drawSpecialSkinDancer(style, y);
                 } else if (this.SpecialEffect == "WhiteArrow" || this.SpecialEffect2 == "WhiteArrow") {
                     //style.drawImage(cimg2, this.x - y * 2, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
