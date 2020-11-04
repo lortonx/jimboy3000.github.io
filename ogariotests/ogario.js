@@ -1,5 +1,5 @@
 /* Source script
-v2.787
+v2.788
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -41,7 +41,7 @@ IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
 */
 
 //window.testobjects = {};
-window.tempVirusLength = 6
+window.tempSpikes =0.5
 var consoleMsgLM = "[Client] ";
 //var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
 window.clanTagLc = "U1VC";
@@ -9328,7 +9328,8 @@ window.MouseClicks=[];
             }
         };
         this.createStrokeVirusPath = function(shadowXpos, shadowYpos, zeroSizeMax, pixelSizeTargetMax) {
-            const nAngelsOfVirus = ~~(45 * zeroSizeMax / 98);
+            //const nAngelsOfVirus = ~~(zeroSizeMax * 45 / 98);
+			const nAngelsOfVirus = ~~(zeroSizeMax * window.tempSpikes);
             const GROUPSIZE = this.pi2 / nAngelsOfVirus;
             const degreeStep = GROUPSIZE / 2;
             const ctxfx = new Path2D;
@@ -9688,8 +9689,7 @@ window.MouseClicks=[];
 					style.lineWidth = defaultSettings.virusStrokeSize, 
 					defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
                         defaultSettings.virusGlowColor) : "yeet", 
-						//defaultmapsettings.virusShape ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)) : style.stroke(),
-						defaultmapsettings.virusShape ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, window.tempVirusLength)) : style.stroke(),
+						defaultmapsettings.virusShape ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)) : style.stroke(),
 						//style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), 
 						defaultmapsettings.showMass && 
 						(this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
