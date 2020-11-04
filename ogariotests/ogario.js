@@ -1,5 +1,5 @@
 /* Source script
-v2.786
+v2.787
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -41,6 +41,7 @@ IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
 */
 
 //window.testobjects = {};
+window.tempVirusLength = 6
 var consoleMsgLM = "[Client] ";
 //var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
 window.clanTagLc = "U1VC";
@@ -9688,7 +9689,7 @@ window.MouseClicks=[];
 					defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
                         defaultSettings.virusGlowColor) : "yeet", 
 						//defaultmapsettings.virusShape ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)) : style.stroke(),
-						defaultmapsettings.virusShape ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 12)) : style.stroke(),
+						defaultmapsettings.virusShape ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, window.tempVirusLength)) : style.stroke(),
 						//style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), 
 						defaultmapsettings.showMass && 
 						(this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
