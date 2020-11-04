@@ -1,5 +1,5 @@
 /* Source script
-v2.791
+v2.792
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -39,7 +39,7 @@ IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
 ´´´´´´¶¶´´¶¶´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´¶¶´´¶¶´´´´´´
 ´´´´´´´¶¶¶¶´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´¶¶¶¶´´´´´´´
 */
-
+window.tempH = 6
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
 //var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
@@ -8856,7 +8856,7 @@ window.MouseClicks=[];
         this.pi2 = 2 * Math.PI;
         this.virusColor = null;
         this.virusStroke = null;
-        this.nHeight = 6;
+        //this.nHeight = 6;
 
         this.updateNumPoints = function() {
             //adjustment of the number of contacts
@@ -9337,7 +9337,8 @@ window.MouseClicks=[];
             const degreeStep = GROUPSIZE / 2;
             const ctxfx = new Path2D;
             const radiusX = zeroSizeMax - pixelSizeTargetMax;
-            const tileHeight = radiusX + this.nHeight;
+			const tileHeight = radiusX + pixelSizeTargetMax;
+            //const tileHeight = radiusX + this.nHeight;
             const n = this.pi2 + GROUPSIZE;
             for (let i = 0, j = degreeStep; i <= n; j = (i = i + GROUPSIZE) + degreeStep) {
                 ctxfx.lineTo(~~(shadowXpos + radiusX * Math.sin(i)), ~~(shadowYpos + radiusX * Math.cos(i)));
@@ -9692,7 +9693,8 @@ window.MouseClicks=[];
 					style.lineWidth = defaultSettings.virusStrokeSize, 
 					defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
                         defaultSettings.virusGlowColor) : "yeet", 
-						defaultmapsettings.virusSpikes ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)) : style.stroke(),
+						defaultmapsettings.virusSpikes ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, window.tempH)) : style.stroke(),
+						//defaultmapsettings.virusSpikes ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)) : style.stroke(),
 						//style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), 
 						defaultmapsettings.showMass && 
 						(this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
