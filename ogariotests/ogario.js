@@ -1,5 +1,5 @@
 /* Source script
-v2.804
+v2.807
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -2917,8 +2917,9 @@ cimg6.src = defaultSettings.commanderImage6;
 //cimg7 = new Image;
 //cimg7.src = 'https://legendmod.ml/banners/iconLcForCanvas.png';
 function loadIconSpecialSkins(val){
-	eval('window.' + val + ' = new Image;');
-	eval('window.' + val + '.src = https://legendmod.ml/banners/' + val + '.png;');
+	eval('window.' + val + ' = new Image');
+	var tempDataIconSpecialSkins = 'window.' + val + '.src = https://legendmod.ml/banners/' + val + '.png'
+	eval(tempDataIconSpecialSkins);
 }
 /*
 iconSpecialSkinEffectsCrown = new Image;
@@ -9425,10 +9426,10 @@ window.MouseClicks=[];
 			eval ('var ' + imageSpecial)
 			if (eval('!' + imageSpecial)) {	
 				// variable is undefined
-				loadIconSpecialSkins(eval(imageSpecial))
+				eval('loadIconSpecialSkins(' + imageSpecial +')')
 				
 			}			
-			else if (eval(imageSpecial) && eval('imageSpecial').complete) style.drawImage(eval(imageSpecial), b, c, d, e);		
+			else if (eval(imageSpecial) && var tempImgSp = eval(imageSpecial) && tempImgSp.complete) style.drawImage(tempImgSp, b, c, d, e);		
 		};
         this.drawSpecialSkin = function(style, y) {
             if (SpecialEffectPlayers[this.targetNick] && SpecialEffectPlayers[this.targetNick].split && SpecialEffectPlayers[this.targetNick].split(';')) {
