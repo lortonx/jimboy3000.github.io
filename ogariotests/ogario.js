@@ -1,5 +1,5 @@
 /* Source script
-v2.784
+v2.785
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -1397,6 +1397,7 @@ var displayText = {
         //hideSizes: 'Hide everything with size smaller than',
         profileNumber: 'Profiles Number',
         suckAnimation: 'Cell Eat [Sucking] Animation',
+		virusShape: 'Virus shape',
         virusGlow: 'Virus Glow',
         borderGlow: 'Border Glow',
         zoomSpeedValue2: 'Szybkość zoomu',
@@ -1871,6 +1872,7 @@ var displayText = {
         //hideSizes: 'Hide everything with size smaller than',
         profileNumber: 'Profiles Number',
         suckAnimation: 'Cell Eat [Sucking] Animation',
+		virusShape: 'Virus shape',
         virusGlow: 'Virus Glow',
         borderGlow: 'Border Glow',
         zoomSpeedValue2: 'Zoom speed',
@@ -3193,6 +3195,7 @@ var defaultmapsettings = {
     cameraSpeed: 7,
     commanderDelay: 1E3,
     suckAnimation: false,
+	virusShape: true,
     virusGlow: false,
     borderGlow: false,
     limLB: 10,
@@ -5605,7 +5608,7 @@ window.MouseClicks=[];
             this.addOptions(["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound", "potionsDrinker"], "massGroup");
             this.addOptions(["noSkins", "customSkins", "vanillaSkins", "jellyPhisycs", "suckAnimation", "videoSkins", "videoDestorted", "videoSkinsMusic2", "videoOthersSkinSoundLevelproportion"], "skinsGroup");
             this.addOptions(["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup");
-            this.addOptions(["noColors", "myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow", 'cellContours', "animatedRainbowColor"], "transparencyGroup");
+            this.addOptions(["noColors", "myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusShape", "virusGlow", 'cellContours', "animatedRainbowColor"], "transparencyGroup");
             this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
             this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChat", "showChatMyOwn", "showChatTranslation", "coloredNicks", "hidecountry", "universalChat"], "chatGroup");
             this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup");
@@ -9684,7 +9687,7 @@ window.MouseClicks=[];
 					style.lineWidth = defaultSettings.virusStrokeSize, 
 					defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
                         defaultSettings.virusGlowColor) : "yeet", 
-						style.stroke(),
+						defaultmapsettings.virusShape ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)) : style.stroke(),
 						//style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), 
 						defaultmapsettings.showMass && 
 						(this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
