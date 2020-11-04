@@ -1,5 +1,5 @@
 /* Source script
-v2.792
+v2.793
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -1669,6 +1669,7 @@ var displayText = {
         sectorsX: 'Sectors X',
         sectorsY: 'Sectors Y',
 		virusSpikesRatio: 'Virus spikes ratio',
+		virusSpikesSize: 'Virus spikes size',
         cellsAlpha: 'Przezroczystość kulek',
         skinsAlpha: 'Przezroczystość skinów',
         virusAlpha: 'Przezroczystość wirusów',
@@ -2146,6 +2147,7 @@ var displayText = {
         sectorsX: 'Sectors X',
         sectorsY: 'Sectors Y',
 		virusSpikesRatio: 'Virus spikes ratio',
+		virusSpikesSize: 'Virus spikes size',
         cellsAlpha: 'Cells transparency',
         skinsAlpha: 'Skins transparency',
         virusAlpha: 'Virus transparency',
@@ -2802,6 +2804,7 @@ var defaultSettings = {
     sectorsX: 5,
     sectorsY: 5,
 	virusSpikesRatio: 0.46,
+	virusSpikesSize: 6,
     namesScale: 1,
     massScale: 3,
     virMassScale: 3,
@@ -3588,6 +3591,7 @@ window.MouseClicks=[];
             this.addSliderBox('#theme-main', 'strokeScale', 1, 4, 0.1);
             this.addSliderBox('#theme-main', 'foodSize', 1, 50, 1, 'setFoodColor');
 			this.addSliderBox('#theme-main', 'virusSpikesRatio', 0.03, 0.8, 0.01);
+			this.addSliderBox('#theme-main', 'virusSpikesSize', 1, 60, 1);
             this.addSliderBox('#theme-main', 'virusStrokeSize', 2, 40, 1);
             this.addSliderBox('#theme-main', 'bordersWidth', 2, 200, 2);
             this.addSliderBox('#theme-main', 'borderGlowSize', 0, 40, 1);
@@ -9693,7 +9697,7 @@ window.MouseClicks=[];
 					style.lineWidth = defaultSettings.virusStrokeSize, 
 					defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
                         defaultSettings.virusGlowColor) : "yeet", 
-						defaultmapsettings.virusSpikes ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, window.tempH)) : style.stroke(),
+						defaultmapsettings.virusSpikes ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, defaultSettings.virusSpikesSize)) : style.stroke(),
 						//defaultmapsettings.virusSpikes ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)) : style.stroke(),
 						//style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), 
 						defaultmapsettings.showMass && 
