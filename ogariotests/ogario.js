@@ -1,5 +1,5 @@
 /* Source script
-v2.788
+v2.789
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -41,7 +41,6 @@ IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
 */
 
 //window.testobjects = {};
-window.tempSpikes =0.5
 var consoleMsgLM = "[Client] ";
 //var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
 window.clanTagLc = "U1VC";
@@ -1398,7 +1397,7 @@ var displayText = {
         //hideSizes: 'Hide everything with size smaller than',
         profileNumber: 'Profiles Number',
         suckAnimation: 'Cell Eat [Sucking] Animation',
-		virusShape: 'Virus shape',
+		virusSpikes: 'Virus spikes',
         virusGlow: 'Virus Glow',
         borderGlow: 'Border Glow',
         zoomSpeedValue2: 'Szybkość zoomu',
@@ -1669,6 +1668,7 @@ var displayText = {
         sectorsFontSize: 'Rozmiar czcionki sektorów',
         sectorsX: 'Sectors X',
         sectorsY: 'Sectors Y',
+		virusSpikesRatio: 'Virus spikes ratio',
         cellsAlpha: 'Przezroczystość kulek',
         skinsAlpha: 'Przezroczystość skinów',
         virusAlpha: 'Przezroczystość wirusów',
@@ -1873,7 +1873,7 @@ var displayText = {
         //hideSizes: 'Hide everything with size smaller than',
         profileNumber: 'Profiles Number',
         suckAnimation: 'Cell Eat [Sucking] Animation',
-		virusShape: 'Virus shape',
+		virusSpikes: 'Virus spikes',
         virusGlow: 'Virus Glow',
         borderGlow: 'Border Glow',
         zoomSpeedValue2: 'Zoom speed',
@@ -2145,6 +2145,7 @@ var displayText = {
         sectorsFontSize: 'Sectors font size',
         sectorsX: 'Sectors X',
         sectorsY: 'Sectors Y',
+		virusSpikesRatio: 'Virus spikes ratio',
         cellsAlpha: 'Cells transparency',
         skinsAlpha: 'Skins transparency',
         virusAlpha: 'Virus transparency',
@@ -2800,6 +2801,7 @@ var defaultSettings = {
     sectorsFontWeight: 400,
     sectorsX: 5,
     sectorsY: 5,
+	virusSpikesRatio: 0.46,
     namesScale: 1,
     massScale: 3,
     virMassScale: 3,
@@ -3196,7 +3198,7 @@ var defaultmapsettings = {
     cameraSpeed: 7,
     commanderDelay: 1E3,
     suckAnimation: false,
-	virusShape: true,
+	virusSpikes: true,
     virusGlow: false,
     borderGlow: false,
     limLB: 10,
@@ -3585,6 +3587,7 @@ window.MouseClicks=[];
             this.addSliderBox('#theme-main', 'virMassScale', 1, 5, 1);
             this.addSliderBox('#theme-main', 'strokeScale', 1, 4, 0.1);
             this.addSliderBox('#theme-main', 'foodSize', 1, 50, 1, 'setFoodColor');
+			this.addSliderBox('#theme-main', 'virusSpikesRatio', 0.03, 0.8, 0.01);
             this.addSliderBox('#theme-main', 'virusStrokeSize', 2, 40, 1);
             this.addSliderBox('#theme-main', 'bordersWidth', 2, 200, 2);
             this.addSliderBox('#theme-main', 'borderGlowSize', 0, 40, 1);
@@ -5606,7 +5609,7 @@ window.MouseClicks=[];
             this.addOptions([], "boardGroup");
             this.addOptions(["quickResp", "autoResp", "spawnSpecialEffects"], "respGroup");
             this.addOptions(["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup");
-            this.addOptions(["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virusShape", "virMassShots", "massStroke", "virusSound", "potionsDrinker"], "massGroup");
+            this.addOptions(["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virusSpikes", "virMassShots", "massStroke", "virusSound", "potionsDrinker"], "massGroup");
             this.addOptions(["noSkins", "customSkins", "vanillaSkins", "jellyPhisycs", "suckAnimation", "videoSkins", "videoDestorted", "videoSkinsMusic2", "videoOthersSkinSoundLevelproportion"], "skinsGroup");
             this.addOptions(["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup");
             this.addOptions(["noColors", "myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow", 'cellContours', "animatedRainbowColor"], "transparencyGroup");
@@ -9329,7 +9332,7 @@ window.MouseClicks=[];
         };
         this.createStrokeVirusPath = function(shadowXpos, shadowYpos, zeroSizeMax, pixelSizeTargetMax) {
             //const nAngelsOfVirus = ~~(zeroSizeMax * 45 / 98);
-			const nAngelsOfVirus = ~~(zeroSizeMax * window.tempSpikes);
+			const nAngelsOfVirus = ~~(zeroSizeMax * defaultSettings.virusSpikesRatio);
             const GROUPSIZE = this.pi2 / nAngelsOfVirus;
             const degreeStep = GROUPSIZE / 2;
             const ctxfx = new Path2D;
@@ -9689,7 +9692,7 @@ window.MouseClicks=[];
 					style.lineWidth = defaultSettings.virusStrokeSize, 
 					defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
                         defaultSettings.virusGlowColor) : "yeet", 
-						defaultmapsettings.virusShape ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)) : style.stroke(),
+						defaultmapsettings.virusSpikes ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)) : style.stroke(),
 						//style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), 
 						defaultmapsettings.showMass && 
 						(this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
