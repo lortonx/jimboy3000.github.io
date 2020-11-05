@@ -1,5 +1,5 @@
 /* Source script
-v2.812
+v2.813
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -2918,8 +2918,7 @@ cimg6.src = defaultSettings.commanderImage6;
 //cimg7.src = 'https://legendmod.ml/banners/iconLcForCanvas.png';
 function loadIconSpecialSkins(val){
 	eval('window.' + val + ' = new Image');
-	window.tempDataIconSpecialSkins = 'window.' + val + '.src = https://legendmod.ml/banners/' + val + '.png'
-	eval(window.tempDataIconSpecialSkins);
+	eval('window.' + val + '.src = "https://legendmod.ml/banners/' + val + '.png"')
 }
 /*
 iconSpecialSkinEffectsCrown = new Image;
@@ -9425,10 +9424,11 @@ window.MouseClicks=[];
 			//if (typeof eval(a) === 'undefined') {
 				
 			if ('window.' + imageSpecial) {	
-				// variable is undefined
+				console.log('step 1')
 				loadIconSpecialSkins(imageSpecial)				
 			}			
 			else{
+				console.log('step 2')
 				var tempImgSp = eval(imageSpecial)
 				if (tempImgSp.complete) style.drawImage(tempImgSp, b, c, d, e);	
 			}				
