@@ -1,5 +1,5 @@
 /* Source script
-v2.808
+v2.809
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9430,7 +9430,8 @@ window.MouseClicks=[];
 				
 			}			
 			else{
-				&& var tempImgSp = eval(imageSpecial) && tempImgSp.complete) style.drawImage(tempImgSp, b, c, d, e);		
+				var tempImgSp = eval(imageSpecial)
+				if (tempImgSp.complete) style.drawImage(tempImgSp, b, c, d, e);		
 		};
         this.drawSpecialSkin = function(style, y) {
             if (SpecialEffectPlayers[this.targetNick] && SpecialEffectPlayers[this.targetNick].split && SpecialEffectPlayers[this.targetNick].split(';')) {
