@@ -1,5 +1,5 @@
 /* Source script
-v2.821
+v2.822
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9661,7 +9661,47 @@ window.MouseClicks=[];
                     //style.drawImage(iconSpecialSkinEffectsPanicAtDisco, this.x - 1 * y, this.y - 1 * y, y/1, y/4);	
 					this.drawSpecialSkinDancer(style, y);
                 } else if (this.targetNick.includes("The Dying Light") || this.SpecialEffect == "RedArrow" || this.SpecialEffect2 == "RedArrow") {
-                    style.drawImage(cimg5, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);					
+                    style.drawImage(cimg5, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);	
+                } else if (this.SpecialEffect == "HappyNewYear" || this.SpecialEffect2 == "HappyNewYear") {
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsHappyNewYear", this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4, style);
+                    //style.drawImage(iconSpecialSkinEffectsHappyNewYear, this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1);
+                    //style.drawImage(iconSpecialSkinEffectsHappyNewYear, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4;							
+                    //if (!window.xx1) window.xx1 = -0.1
+                    //if (!window.xx2) window.xx2= -0.15
+                    //if (!window.xx3) window.xx3 = 1.5
+                    //if (!window.xx4) window.xx4 = 1	
+                } else if (this.SpecialEffect == "ThanksGivings" || this.SpecialEffect2 == "ThanksGivings") {
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsThanksGivings", this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4, style);
+                    //style.drawImage(iconSpecialSkinEffectsThanksGivings, this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1);
+                    //style.drawImage(iconSpecialSkinEffectsThanksGivings, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4;							
+                    //if (!window.xx1) window.xx1 = -0.1
+                    //if (!window.xx2) window.xx2= -0.15
+                    //if (!window.xx3) window.xx3 = 1.5
+                    //if (!window.xx4) window.xx4 = 1	
+                } else if (this.SpecialEffect == "ChristmasTree" || this.SpecialEffect2 == "ChristmasTree") {
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsChristmasTree", this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4, style);
+                    //style.drawImage(iconSpecialSkinEffectsChristmasTree, this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1);
+                    //style.drawImage(iconSpecialSkinEffectsChristmasTree, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4;							
+                    //if (!window.xx1) window.xx1 = -0.1
+                    //if (!window.xx2) window.xx2= -0.15
+                    //if (!window.xx3) window.xx3 = 1.5
+                    //if (!window.xx4) window.xx4 = 1	
+                } else if (this.SpecialEffect == "SantaHat" || this.SpecialEffect2 == "SantaHat") {
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsSantaHat", this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4, style);
+                    //style.drawImage(iconSpecialSkinEffectsSantaHat, this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1);
+                    //style.drawImage(iconSpecialSkinEffectsSantaHat, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4;							
+                    //if (!window.xx1) window.xx1 = -0.1
+                    //if (!window.xx2) window.xx2= -0.15
+                    //if (!window.xx3) window.xx3 = 1.5
+                    //if (!window.xx4) window.xx4 = 1	
+                } else if (this.SpecialEffect == "Flag4July" || this.SpecialEffect2 == "Flag4July") {
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsUSAFlag4July", this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4, style);
+                    //style.drawImage(iconSpecialSkinEffectsUSAFlag4July, this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1);
+                    //style.drawImage(iconSpecialSkinEffectsUSAFlag4July, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4;							
+                    //if (!window.xx1) window.xx1 = -0.1
+                    //if (!window.xx2) window.xx2= -0.15
+                    //if (!window.xx3) window.xx3 = 1.5
+                    //if (!window.xx4) window.xx4 = 1						
                 } else if (this.SpecialEffect == "WhiteArrow" || this.SpecialEffect2 == "WhiteArrow") {
                     //style.drawImage(cimg2, this.x - y * 2, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
 
