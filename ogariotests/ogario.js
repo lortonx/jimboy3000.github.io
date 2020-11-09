@@ -1,5 +1,5 @@
 /* Source script
-v2.827
+v2.828
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14938,7 +14938,7 @@ Game name     : ${i.displayName}<br/>
             ctx.fillStyle = defaultSettings.teammatesIndColor;
             ctx.strokeStyle = '#000000';
 			var d = Math.min(canvas.width, canvas.height);
-			var k = 0;
+			var k = 70;
 
 			ctx.moveTo(k, k + d / 4);
 			ctx.quadraticCurveTo(k, k, k + d / 4, k);
