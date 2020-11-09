@@ -1,5 +1,5 @@
 /* Source script
-v2.825
+v2.826
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14751,9 +14751,13 @@ Game name     : ${i.displayName}<br/>
         },
         drawTeammatesInd(ctx, x, y, size) {
             //console.log("t:"+ t + " e:" + e + " i:" + i + "s:" + s);
-            if (this.indicator) {
+            /*if (this.indicator) {
                 ctx.drawImage(this.indicator, x - 45, y - size - 90);
-            }
+            }*/
+            if (this.heartIndicator) {
+                ctx.drawImage(this.heartIndicator, x - 45, y - size - 90);
+            }			
+			
         },
         drawPieChart() {
             this.pieChart || (this.pieChart = document.createElement('canvas'));
@@ -14924,6 +14928,34 @@ Game name     : ${i.displayName}<br/>
             this.indicator.src = canvas.toDataURL();
             canvas = null;
         },
+        preDrawHeartIndicator() {			
+            this.heartIndicator = null;
+            var canvas = document.createElement('canvas');
+            canvas.width = 90;
+            canvas.height = 50;
+            var ctx = canvas.getContext('2d');
+            ctx.lineWidth = 2;
+            ctx.fillStyle = defaultSettings.teammatesIndColor;
+            ctx.strokeStyle = '#000000';
+			var d = Math.min(w, h);
+			var k = 0;
+
+			ctx.moveTo(k, k + d / 4);
+			ctx.quadraticCurveTo(k, k, k + d / 4, k);
+			ctx.quadraticCurveTo(k + d / 2, k, k + d / 2, k + d / 4);
+			ctx.quadraticCurveTo(k + d / 2, k, k + d * 3/4, k);
+			ctx.quadraticCurveTo(k + d, k, k + d, k + d / 4);
+			ctx.quadraticCurveTo(k + d, k + d / 2, k + d * 3/4, k + d * 3/4);
+			ctx.lineTo(k + d / 2, k + d);
+			ctx.lineTo(k + d / 4, k + d * 3/4);
+			ctx.quadraticCurveTo(k, k + d / 2, k, k + d / 4);
+
+			ctx.fill();
+			ctx.stroke();
+            this.heartIndicator = new Image();
+            this.heartIndicator.src = canvas.toDataURL();
+            canvas = null;
+        },		
         countFps(fake) {
             if (defaultmapsettings.showStatsFPS) {
                 var Time = Date.now();
@@ -15011,6 +15043,7 @@ Game name     : ${i.displayName}<br/>
             this.resizeCanvas();
             this.preDrawPellet();
             this.preDrawIndicator();
+			this.preDrawHeartIndicator();
             window.requestAnimationFrame(drawRender.render);
         }
 
