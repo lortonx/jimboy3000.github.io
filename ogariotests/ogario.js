@@ -1,5 +1,5 @@
 /* Source script
-v2.832
+v2.833
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14933,22 +14933,23 @@ Game name     : ${i.displayName}<br/>
         },
 		preDrawSmileIndicator() {
 			var canvas = document.getElementById('canvas');
+			canvas.x = 90;
+			canvas.y = 90;			
 			var ctx = canvas.getContext('2d');
-    // Filled triangle
+			ctx.fillStyle = defaultSettings.teammatesIndColor;
+			ctx.strokeStyle = '#000000';
 			ctx.beginPath();
-			ctx.moveTo(25, 25);
-			ctx.lineTo(105, 25);
-			ctx.lineTo(25, 105);
-			ctx.fill();
-    // Stroked triangle
-			ctx.beginPath();
-			ctx.moveTo(125, 125);
-			ctx.lineTo(125, 45);
-			ctx.lineTo(45, 125);
-			ctx.closePath();
+			
+			ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
+			ctx.moveTo(110, 75);
+			ctx.arc(75, 75, 35, 0, Math.PI, false);  // Mouth (clockwise)
+			ctx.moveTo(65, 65);
+			ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // Left eye
+			ctx.moveTo(95, 65);
+			ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // Right eye
 			ctx.stroke();
             this.smileIndicator = new Image();
-            this.smileIndicator.src = canvas.toDataURL();				
+            this.smileIndicator.src = canvas.toDataURL();							
 		},
         preDrawHeartIndicator() {			
             this.heartIndicator = null;
