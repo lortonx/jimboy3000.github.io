@@ -1,5 +1,5 @@
 /* Source script
-v2.828
+v2.829
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14931,14 +14931,14 @@ Game name     : ${i.displayName}<br/>
         preDrawHeartIndicator() {			
             this.heartIndicator = null;
             var canvas = document.createElement('canvas');
-            canvas.width = 90;
+            canvas.width = 50;
             canvas.height = 50;
             var ctx = canvas.getContext('2d');
             ctx.lineWidth = 2;
             ctx.fillStyle = defaultSettings.teammatesIndColor;
             ctx.strokeStyle = '#000000';
 			var d = Math.min(canvas.width, canvas.height);
-			var k = 70;
+			var k = 0;
 
 			ctx.moveTo(k, k + d / 4);
 			ctx.quadraticCurveTo(k, k, k + d / 4, k);
