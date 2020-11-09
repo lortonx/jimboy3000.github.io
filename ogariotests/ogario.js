@@ -1,5 +1,5 @@
 /* Source script
-v2.833
+v2.834
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14753,12 +14753,12 @@ Game name     : ${i.displayName}<br/>
             //console.log("t:"+ t + " e:" + e + " i:" + i + "s:" + s);
             /*if (this.indicator) {
                 ctx.drawImage(this.indicator, x - 45, y - size - 90);
-            }*/
+            }
             if (this.heartIndicator) {
                 ctx.drawImage(this.heartIndicator, x - 25, y - size - 90);
-            }	
+            }*/	
             if (this.smileIndicator) {
-                ctx.drawImage(this.smileIndicator, x - 25, y - size - 50);
+                ctx.drawImage(this.smileIndicator, x - 45, y - size - 90);
             }			
 			
         },
@@ -14936,6 +14936,7 @@ Game name     : ${i.displayName}<br/>
 			canvas.x = 90;
 			canvas.y = 90;			
 			var ctx = canvas.getContext('2d');
+			ctx.lineWidth = 2;
 			ctx.fillStyle = defaultSettings.teammatesIndColor;
 			ctx.strokeStyle = '#000000';
 			ctx.beginPath();
