@@ -1,5 +1,5 @@
 /* Source script
-v2.822
+v2.824
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9664,6 +9664,8 @@ window.MouseClicks=[];
                     style.drawImage(cimg5, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);	
                 } else if (this.SpecialEffect == "HappyNewYear" || this.SpecialEffect2 == "HappyNewYear") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsHappyNewYear", this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4, style);
+					if (!window.xxn) window.xxn = 30
+					style.filter = 'hue-rotate(-' + window.xxn / 60 + 'turn)';
                     //style.drawImage(iconSpecialSkinEffectsHappyNewYear, this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1);
                     //style.drawImage(iconSpecialSkinEffectsHappyNewYear, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4;							
                     //if (!window.xx1) window.xx1 = -0.1
