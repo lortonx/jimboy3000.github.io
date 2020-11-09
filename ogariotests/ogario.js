@@ -1,5 +1,5 @@
 /* Source script
-v2.831
+v2.832
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14756,6 +14756,9 @@ Game name     : ${i.displayName}<br/>
             }*/
             if (this.heartIndicator) {
                 ctx.drawImage(this.heartIndicator, x - 25, y - size - 90);
+            }	
+            if (this.smileIndicator) {
+                ctx.drawImage(this.smileIndicator, x - 25, y - size - 50);
             }			
 			
         },
@@ -14928,6 +14931,25 @@ Game name     : ${i.displayName}<br/>
             this.indicator.src = canvas.toDataURL();
             canvas = null;
         },
+		preDrawSmileIndicator() {
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+    // Filled triangle
+			ctx.beginPath();
+			ctx.moveTo(25, 25);
+			ctx.lineTo(105, 25);
+			ctx.lineTo(25, 105);
+			ctx.fill();
+    // Stroked triangle
+			ctx.beginPath();
+			ctx.moveTo(125, 125);
+			ctx.lineTo(125, 45);
+			ctx.lineTo(45, 125);
+			ctx.closePath();
+			ctx.stroke();
+            this.smileIndicator = new Image();
+            this.smileIndicator.src = canvas.toDataURL();				
+		},
         preDrawHeartIndicator() {			
             this.heartIndicator = null;
             var canvas = document.createElement('canvas');
@@ -15044,6 +15066,7 @@ Game name     : ${i.displayName}<br/>
             this.preDrawPellet();
             this.preDrawIndicator();
 			this.preDrawHeartIndicator();
+			this.preDrawSmileIndicator();
             window.requestAnimationFrame(drawRender.render);
         }
 
