@@ -1,5 +1,5 @@
 /* Source script
-v2.830
+v2.831
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14755,7 +14755,7 @@ Game name     : ${i.displayName}<br/>
                 ctx.drawImage(this.indicator, x - 45, y - size - 90);
             }*/
             if (this.heartIndicator) {
-                ctx.drawImage(this.heartIndicator, x - 65, y - size - 90);
+                ctx.drawImage(this.heartIndicator, x - 25, y - size - 90);
             }			
 			
         },
