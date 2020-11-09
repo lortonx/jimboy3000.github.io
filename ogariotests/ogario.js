@@ -1,5 +1,5 @@
 /* Source script
-v2.837
+v2.838
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14919,7 +14919,7 @@ Game name     : ${i.displayName}<br/>
             var ctx = canvas.getContext('2d');
             ctx.lineWidth = 2;
             ctx.fillStyle = defaultSettings.teammatesIndColor;
-            ctx.strokeStyle = defaultSettings.teammatesIndColor;
+            ctx.strokeStyle = '#000000';
             ctx.beginPath();
             ctx.moveTo(0, 0);
             ctx.lineTo(90, 0);
@@ -14938,7 +14938,7 @@ Game name     : ${i.displayName}<br/>
 			var ctx = canvas.getContext('2d');
 			ctx.lineWidth = 2;
 			ctx.fillStyle = defaultSettings.teammatesIndColor;
-			ctx.strokeStyle = '#000000';
+			ctx.strokeStyle = defaultSettings.teammatesIndColor;
 			ctx.beginPath();
 			
 			ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
