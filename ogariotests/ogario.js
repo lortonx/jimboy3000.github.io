@@ -1,5 +1,5 @@
 /* Source script
-v2.841
+v2.842
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -3825,7 +3825,9 @@ window.MouseClicks=[];
             this.changePreset(name, themeMenus);
             this.setMenu();
         },
-        changeGraphics(value) {},
+        changeGraphics(value) {
+			
+		},
         setMenuOpacity() {
             $('#helloContainer, #hotkeys, #exp-imp').css('opacity', defaultSettings.menuOpacity);
         },
@@ -13920,6 +13922,9 @@ Game name     : ${i.displayName}<br/>
 
                 LM.cursorX = xc + (Math.cos(ang) * distance)
                 LM.cursorY = yc + (Math.sin(ang) * distance)
+				//
+				//LM.selected = null
+				//
                 LM.sendPosition()
             }
         },
@@ -15521,7 +15526,12 @@ Game name     : ${i.displayName}<br/>
 					if (hotkeysCommand[defaultmapsettings.mouse5Click].keyUp) hotkeysCommand[defaultmapsettings.mouse5Click].keyUp()
 				}					
 				else {
-					event.which == 1 ? (drawRender.LMB = false) : (drawRender.RMB = false)
+					if (event.which == 1){
+						drawRender.LMB = false
+					}
+					else{
+						drawRender.RMB = false
+					}
 				}
     };
     window.onbeforeunload = function(event) {
@@ -16612,7 +16622,7 @@ var reverseTrick = {
             var xc = legendmod.playerCells[index].targetX //.x
             var yc = legendmod.playerCells[index].targetY //.y
 
-            /*var x = legendmod.indexedCells[legendmod.selected].targetX//.x
+            var x = legendmod.indexedCells[legendmod.selected].targetX//.x
             var y = legendmod.indexedCells[legendmod.selected].targetY//.y
             
             var a = xc - x
@@ -16622,7 +16632,11 @@ var reverseTrick = {
             var ang = Math.atan2(y - yc, x - xc);
             legendmod.cursorX= xc +(Math.cos(ang)*distance)
             legendmod.cursorY= yc +(Math.sin(ang)*distance)
-            legendmod.sendPosition()*/
+            legendmod.sendPosition()
+			//
+			legendmod.sendEject()
+			legendmod.selected = null
+			//
             console.log(reverseTrick)
         }
     }
