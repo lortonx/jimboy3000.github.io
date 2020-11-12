@@ -1,5 +1,5 @@
 /* Source script
-v2.842
+v2.843
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -1438,6 +1438,7 @@ var displayText = {
         showMapBorders: 'Granice mapy',
         showGhostCells: 'Duchy kulek (fps drop)',
         showGhostCellsInfo: 'Ghost cells info (confusing)',
+		stickyCell: 'Sticky cells (left click, hold right click)',
         //showPartyBots: 'Party bots',
         rotateMap: 'Rotate Map',
         showMiniMap: 'Pokaż minimapę',
@@ -1916,6 +1917,7 @@ var displayText = {
         showMapBorders: 'Show map borders',
         showGhostCells: 'Ghost cells (fps drop)',
         showGhostCellsInfo: 'Ghost cells info (confusing)',
+		stickyCell: 'Sticky cells (left click, hold right click)',
         //showPartyBots: 'Party bots',
         rotateMap: 'Rotate Map',
         showMiniMap: 'Show minimap',
@@ -3141,6 +3143,7 @@ var defaultmapsettings = {
     showMapBorders: true,
     showGhostCells: false,
     showGhostCellsInfo: false,
+	stickyCell: false,
     //showPartyBots: false,
     showMiniMap: true,
     rotateMap: true,
@@ -5648,7 +5651,7 @@ window.MouseClicks=[];
             this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup");
             //            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "reverseTrick", "showPartyBots"], "helpersGroup"); //Sonia2
             //this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
-            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo"], "helpersGroup"); //Sonia2
+            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "stickyCell"], "helpersGroup"); //Sonia2
             //this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
 			this.addOptions(["mouseSplit", "mouseFeed", "mouseWheelClick", "mouseCommand4", "mouseCommand5"], "mouseGroup");
 //	
@@ -15439,8 +15442,7 @@ Game name     : ${i.displayName}<br/>
 			//console.log(event.which)
             if (2 == event.which) {
                 event.preventDefault();
-                if (application) {
-                    if (defaultmapsettings.mouseWheelClick) {
+                    if (application && defaultmapsettings.mouseWheelClick) {
 						if (!defaultmapsettings.middleClick){
 							application.multiboxswap()
 						}						
@@ -15451,8 +15453,9 @@ Game name     : ${i.displayName}<br/>
 					else {						
                         //application.sendCommand(10);
                     }
-                }
-
+					if (defaultmapsettings.stickyCell){
+						LM.selected=null
+					}
             } 
 			else if (defaultmapsettings.stickyCell) {
                 if (1 == event.which) {
@@ -15526,8 +15529,9 @@ Game name     : ${i.displayName}<br/>
 					if (hotkeysCommand[defaultmapsettings.mouse5Click].keyUp) hotkeysCommand[defaultmapsettings.mouse5Click].keyUp()
 				}					
 				else {
+					//1=leftclick, 3=rightclick, 2=wheelclick
 					if (event.which == 1){
-						drawRender.LMB = false
+						drawRender.LMB = false						
 					}
 					else{
 						drawRender.RMB = false
@@ -16634,8 +16638,8 @@ var reverseTrick = {
             legendmod.cursorY= yc +(Math.sin(ang)*distance)
             legendmod.sendPosition()
 			//
-			legendmod.sendEject()
-			legendmod.selected = null
+			//legendmod.sendSplit()
+			//legendmod.selected = null
 			//
             console.log(reverseTrick)
         }
