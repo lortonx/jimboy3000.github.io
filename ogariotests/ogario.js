@@ -1,5 +1,5 @@
 /* Source script
-v2.843
+v2.844
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -1438,7 +1438,7 @@ var displayText = {
         showMapBorders: 'Granice mapy',
         showGhostCells: 'Duchy kulek (fps drop)',
         showGhostCellsInfo: 'Ghost cells info (confusing)',
-		stickyCell: 'Sticky cells (left click, hold right click)',
+		stickyCell: 'Sticky cells (left button, hold right button)',
         //showPartyBots: 'Party bots',
         rotateMap: 'Rotate Map',
         showMiniMap: 'Pokaż minimapę',
@@ -1917,7 +1917,7 @@ var displayText = {
         showMapBorders: 'Show map borders',
         showGhostCells: 'Ghost cells (fps drop)',
         showGhostCellsInfo: 'Ghost cells info (confusing)',
-		stickyCell: 'Sticky cells (left click, hold right click)',
+		stickyCell: 'Sticky cells (left button, hold right button)',
         //showPartyBots: 'Party bots',
         rotateMap: 'Rotate Map',
         showMiniMap: 'Show minimap',
@@ -5651,9 +5651,9 @@ window.MouseClicks=[];
             this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup");
             //            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "reverseTrick", "showPartyBots"], "helpersGroup"); //Sonia2
             //this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
-            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "stickyCell"], "helpersGroup"); //Sonia2
+            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo"], "helpersGroup"); //Sonia2
             //this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
-			this.addOptions(["mouseSplit", "mouseFeed", "mouseWheelClick", "mouseCommand4", "mouseCommand5"], "mouseGroup");
+			this.addOptions(["stickyCell", "mouseSplit", "mouseFeed", "mouseWheelClick", "mouseCommand4", "mouseCommand5"], "mouseGroup");
 //	
 			Settings.addPresetBox3('#mouseSplit', 'mouseSplit2', hotkeysCommand, 'preset', 'changeleftCmd');
 			$("#mouseSplit2 option[value=" + defaultmapsettings.leftClick + "]").prop('selected', 'selected').change();
