@@ -4132,10 +4132,10 @@ function triggerLMbtns() {
         setdiscwebhook2();
     }
 	
-	$("#agario-main-buttons").append('<div id="LEGENDAds5"></div>')
+	/*$("#agario-main-buttons").append('<div id="LEGENDAds5"></div>')
 	if (!window.proLicenceUID && !document.getElementById("nick").value.includes("℄")){
 		$("#LEGENDAds5").load("https://legendmod.ml/banners/agario2");
-	}
+	}*/
     if (dyinglight1load == null || dyinglight1load == "null") {
         $("#LEGENDAds2").load("https://legendmod.ml/banners/bannerDyingLight");
     } else if (dyinglight1load == "yes") {
