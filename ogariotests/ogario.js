@@ -1,5 +1,5 @@
 /* Source script
-v2.847
+v2.848
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -6853,7 +6853,8 @@ window.MouseClicks=[];
                 var a = e + 9.5;
                 if (this.miniMap) {
                     this.miniMapCtx.clearRect(0, 0, t, s);
-                } else {
+                } 
+				else {
                     this.miniMap = document.getElementById("minimap");
                     this.miniMapCtx = this.miniMap.getContext("2d");
                     this.miniMapCtx.ogarioCtx = true;
@@ -6890,7 +6891,8 @@ window.MouseClicks=[];
                     //this.miniMapCtx.fillText(this.currentSector, 10, e),
                     this.miniMapSectors || this.drawMiniMapSectors(defaultSettings.sectorsX, defaultSettings.sectorsY, o, s, a),
                     this.miniMapCtx.save(),
-                    this.miniMapCtx.translate(9.5, a), ":battleroyale" === this.gameMode && drawRender && drawRender.drawBattleAreaOnMinimap(this.miniMapCtx, o, o, n, r, l),
+                    this.miniMapCtx.translate(9.5, a), 
+					":battleroyale" === this.gameMode && drawRender && drawRender.drawBattleAreaOnMinimap(this.miniMapCtx, o, o, n, r, l),
                     defaultmapsettings.showMiniMapGhostCells) {
                     var h = ogario.ghostCells;
                     this.miniMapCtx.beginPath();
@@ -6940,7 +6942,6 @@ window.MouseClicks=[];
 
                     var fixminidaxx = u - (minidaxx / 2);
                     var fixminidayy = d - (minidayy / 2);
-
                     //if (fixminidaxx<0){ fixminidaxx=0; }
                     //if (fixminidayy<0){ fixminidayy=0; }
                     this.miniMapCtx.rect(fixminidaxx, fixminidayy, minidaxx, minidayy);
@@ -6993,7 +6994,7 @@ window.MouseClicks=[];
                     this.teamPlayers.length) {
                     c = 0;
                     for (; c < this.teamPlayers.length; c++) {
-                        this.teamPlayers[c].drawPosition(this.miniMapCtx, LM.mapOffset, n, this.privateMiniMap, this.targetID, application.teamPlayers[c].color);
+                        this.teamPlayers[c].drawPosition(this.miniMapCtx, LM.mapOffset, n, this.privateMiniMap, this.targetID, application.teamPlayers[c].color); // draw all minimap cells
                     }
                 }
                 if (this.deathLocations.length > 0) {
@@ -15035,22 +15036,18 @@ Game name     : ${i.displayName}<br/>
             //if (!window.fpsM) window.fpsM = 4
             //await drawRender.sleep(window.fpsM);	
 			
-
+			
+			drawRender.countFps();
+			drawRender.renderFrame();
+			/*
 			if (drawRender.renderingDelay<750){
 				drawRender.countFps();
 				drawRender.renderFrame();
 			}
             else{			
-				//drop the frame instead of lag
-				//console.log('stoped')
 				drawRender.renderingDelay =	drawRender.renderingDelay - 750
 			}
-			/*
-            setTimeout(function() {
-                drawRender.render()
-            }, 0);
 			*/
-			
             if (!defaultmapsettings.unlockedFPS) {
                 window.requestAnimationFrame(drawRender.render);
             } 
