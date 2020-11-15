@@ -1,5 +1,5 @@
 /* Source script
-v2.850
+v2.847
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -6853,8 +6853,7 @@ window.MouseClicks=[];
                 var a = e + 9.5;
                 if (this.miniMap) {
                     this.miniMapCtx.clearRect(0, 0, t, s);
-                } 
-				else {
+                } else {
                     this.miniMap = document.getElementById("minimap");
                     this.miniMapCtx = this.miniMap.getContext("2d");
                     this.miniMapCtx.ogarioCtx = true;
@@ -6891,8 +6890,7 @@ window.MouseClicks=[];
                     //this.miniMapCtx.fillText(this.currentSector, 10, e),
                     this.miniMapSectors || this.drawMiniMapSectors(defaultSettings.sectorsX, defaultSettings.sectorsY, o, s, a),
                     this.miniMapCtx.save(),
-                    this.miniMapCtx.translate(9.5, a), 
-					":battleroyale" === this.gameMode && drawRender && drawRender.drawBattleAreaOnMinimap(this.miniMapCtx, o, o, n, r, l),
+                    this.miniMapCtx.translate(9.5, a), ":battleroyale" === this.gameMode && drawRender && drawRender.drawBattleAreaOnMinimap(this.miniMapCtx, o, o, n, r, l),
                     defaultmapsettings.showMiniMapGhostCells) {
                     var h = ogario.ghostCells;
                     this.miniMapCtx.beginPath();
@@ -6942,6 +6940,7 @@ window.MouseClicks=[];
 
                     var fixminidaxx = u - (minidaxx / 2);
                     var fixminidayy = d - (minidayy / 2);
+
                     //if (fixminidaxx<0){ fixminidaxx=0; }
                     //if (fixminidayy<0){ fixminidayy=0; }
                     this.miniMapCtx.rect(fixminidaxx, fixminidayy, minidaxx, minidayy);
@@ -6994,7 +6993,7 @@ window.MouseClicks=[];
                     this.teamPlayers.length) {
                     c = 0;
                     for (; c < this.teamPlayers.length; c++) {
-                        this.teamPlayers[c].drawPosition(this.miniMapCtx, LM.mapOffset, n, this.privateMiniMap, this.targetID, application.teamPlayers[c].color); // draw all minimap cells
+                        this.teamPlayers[c].drawPosition(this.miniMapCtx, LM.mapOffset, n, this.privateMiniMap, this.targetID, application.teamPlayers[c].color);
                     }
                 }
                 if (this.deathLocations.length > 0) {
@@ -13713,6 +13712,7 @@ Game name     : ${i.displayName}<br/>
             this.canvas.height = this.canvasHeight;
             LM.canvasWidth = this.canvasWidth;
             LM.canvasHeight = this.canvasHeight;
+            //this.renderFrame();
         },
         setView() {
             this.setScale(LM.playerSize);
@@ -13850,7 +13850,6 @@ Game name     : ${i.displayName}<br/>
                     this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
                 }
             }
-			
 			this.renderingDelay = (performance.now() - this.renderStarted) * drawRender.fps
 			//console.log(this.renderingDelay)
             drawRender.renderTime += performance.now() - this.renderStarted
@@ -13867,7 +13866,7 @@ Game name     : ${i.displayName}<br/>
             //console.log(performance.now() - this.renderStarted, (performance.now() - this.renderStarted) * drawRender.fps)
             //window.updateCellsClock=false
 
-            drawRender.render();
+            //drawRender.render();
         },
         drawHelpers() {
             if (LM.play || LM.playerCellsMulti.length) {
@@ -15034,24 +15033,30 @@ Game name     : ${i.displayName}<br/>
         render() {
             //'render': async function() {
             //if (!window.fpsM) window.fpsM = 4
-            //await drawRender.sleep(window.fpsM);		
-			/*
+            //await drawRender.sleep(window.fpsM);	
+			
+
 			if (drawRender.renderingDelay<750){
 				drawRender.countFps();
 				drawRender.renderFrame();
 			}
             else{			
+				//drop the frame instead of lag
+				//console.log('stoped')
 				drawRender.renderingDelay =	drawRender.renderingDelay - 750
 			}
+			/*
+            setTimeout(function() {
+                drawRender.render()
+            }, 0);
 			*/
+			
             if (!defaultmapsettings.unlockedFPS) {
-				drawRender.countFps();
-                window.requestAnimationFrame(drawRender.renderFrame);
+                window.requestAnimationFrame(drawRender.render);
             } 
 			else if (defaultmapsettings.unlockedFPS == 2 || defaultmapsettings.unlockedFPS == 4 || defaultmapsettings.unlockedFPS == 8 || defaultmapsettings.unlockedFPS == 16 || defaultmapsettings.unlockedFPS == 32 || defaultmapsettings.unlockedFPS == 64) {
                 setTimeout(function() {
-					drawRender.countFps();
-                    window.requestAnimationFrame(drawRender.renderFrame);
+                    window.requestAnimationFrame(drawRender.render);
                 }, defaultmapsettings.unlockedFPS);
             } 
 			else if (defaultmapsettings.unlockedFPS == "ultra") {
@@ -15060,7 +15065,7 @@ Game name     : ${i.displayName}<br/>
                         drawRender.countFps()
                         drawRender.renderFrame();
                     }
-                    //drawRender.render()
+                    drawRender.render()
                 }, 0);
             }
             else if (defaultmapsettings.unlockedFPS == "sophisticated") {
@@ -15073,14 +15078,12 @@ Game name     : ${i.displayName}<br/>
                 }
                 setTimeout(function() {
                     //window.requestAnimationFrame(drawRender.render);
-					drawRender.countFps();
-                    drawRender.renderFrame();
+                    drawRender.render();
                 }, window.renderDelay);
             } else {
 				
                 setTimeout(function() {
-					drawRender.countFps();
-                    drawRender.renderFrame();
+                    drawRender.render()
                 }, 0);
             }
 			
