@@ -1,5 +1,5 @@
 /* Source script
-v2.850
+v2.852
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15046,8 +15046,8 @@ Game name     : ${i.displayName}<br/>
 			}
             else{			
 				//drop the frame instead of lag
-				//console.log('stoped')
-				drawRender.renderingDelay =	drawRender.lastRenderingDelay - 750
+				console.log('stoped')
+				drawRender.renderingDelay =	drawRender.renderingDelay - drawRender.lastRenderingDelay
 			}
 			/*
             setTimeout(function() {
