@@ -1,5 +1,5 @@
 /* Source script
-v2.851
+v2.849
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13760,7 +13760,7 @@ Game name     : ${i.displayName}<br/>
             return new Promise(resolve => setTimeout(resolve, ms));
         },
         renderFrame() {
-			this.countFps();
+			drawRender.countFps();
             this.renderStarted = performance.now()
             //'renderFrame': async function() { //Sonia5
             //await this.sleep(4); //Sonia5			
@@ -15036,7 +15036,6 @@ Game name     : ${i.displayName}<br/>
             //'render': async function() {
             //if (!window.fpsM) window.fpsM = 4
             //await drawRender.sleep(window.fpsM);		
-			//drawRender.renderFrame();
 			/*
 			if (drawRender.renderingDelay<750){
 				drawRender.countFps();
@@ -15047,10 +15046,12 @@ Game name     : ${i.displayName}<br/>
 			}
 			*/
             if (!defaultmapsettings.unlockedFPS) {
+				drawRender.countFps();
                 window.requestAnimationFrame(drawRender.renderFrame);
             } 
 			else if (defaultmapsettings.unlockedFPS == 2 || defaultmapsettings.unlockedFPS == 4 || defaultmapsettings.unlockedFPS == 8 || defaultmapsettings.unlockedFPS == 16 || defaultmapsettings.unlockedFPS == 32 || defaultmapsettings.unlockedFPS == 64) {
                 setTimeout(function() {
+					drawRender.countFps();
                     window.requestAnimationFrame(drawRender.renderFrame);
                 }, defaultmapsettings.unlockedFPS);
             } 
@@ -15060,7 +15061,7 @@ Game name     : ${i.displayName}<br/>
                         drawRender.countFps()
                         drawRender.renderFrame();
                     }
-                    drawRender.render()
+                    //drawRender.render()
                 }, 0);
             }
             else if (defaultmapsettings.unlockedFPS == "sophisticated") {
@@ -15073,15 +15074,21 @@ Game name     : ${i.displayName}<br/>
                 }
                 setTimeout(function() {
                     //window.requestAnimationFrame(drawRender.render);
-                   drawRender.renderFrame();
+					drawRender.countFps();
+                    drawRender.renderFrame();
                 }, window.renderDelay);
-            } 
-			else {
+            } else {
 				
                 setTimeout(function() {
-                    drawRender.renderFrame()
+					drawRender.countFps();
+                    drawRender.renderFrame();
                 }, 0);
             }
+			
+            //drawRender.render()
+            //}, 1000/window.fps);
+            //}, 0.1);
+            //window.requestAnimationFrame(drawRender.render);
         },
         init() {
             this.setCanvas();
