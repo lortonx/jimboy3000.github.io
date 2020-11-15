@@ -1,5 +1,5 @@
 /* Source script
-v2.848
+v2.849
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13850,7 +13850,7 @@ Game name     : ${i.displayName}<br/>
                     this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
                 }
             }
-			this.renderingDelay = (performance.now() - this.renderStarted) * drawRender.fps
+			this.renderingDelay += (performance.now() - this.renderStarted) //* drawRender.fps
 			//console.log(this.renderingDelay)
             drawRender.renderTime += performance.now() - this.renderStarted
             drawRender.counterTime++
@@ -15019,6 +15019,9 @@ Game name     : ${i.displayName}<br/>
                 if (Time - this.fpsLastRequest >= 1000) {
                     this.fps = this.renderedFrames;
                     this.renderedFrames = 0;
+					//
+					this.renderingDelay = 0
+					//
                     this.fpsLastRequest = Time;
                 }
                 this.renderedFrames++;
