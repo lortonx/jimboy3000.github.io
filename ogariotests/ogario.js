@@ -1,5 +1,5 @@
 /* Source script
-v2.849
+v2.850
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15047,11 +15047,11 @@ Game name     : ${i.displayName}<br/>
 			}
 			*/
             if (!defaultmapsettings.unlockedFPS) {
-                window.requestAnimationFrame(drawRender.renderFrame());
+                window.requestAnimationFrame(drawRender.renderFrame);
             } 
 			else if (defaultmapsettings.unlockedFPS == 2 || defaultmapsettings.unlockedFPS == 4 || defaultmapsettings.unlockedFPS == 8 || defaultmapsettings.unlockedFPS == 16 || defaultmapsettings.unlockedFPS == 32 || defaultmapsettings.unlockedFPS == 64) {
                 setTimeout(function() {
-                    window.requestAnimationFrame(drawRender.renderFrame());
+                    window.requestAnimationFrame(drawRender.renderFrame);
                 }, defaultmapsettings.unlockedFPS);
             } 
 			else if (defaultmapsettings.unlockedFPS == "ultra") {
