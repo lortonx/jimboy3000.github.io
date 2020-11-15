@@ -1,5 +1,5 @@
 /* Source script
-v2.848
+v2.849
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13713,7 +13713,6 @@ Game name     : ${i.displayName}<br/>
             this.canvas.height = this.canvasHeight;
             LM.canvasWidth = this.canvasWidth;
             LM.canvasHeight = this.canvasHeight;
-            //this.renderFrame();
         },
         setView() {
             this.setScale(LM.playerSize);
@@ -13761,6 +13760,7 @@ Game name     : ${i.displayName}<br/>
             return new Promise(resolve => setTimeout(resolve, ms));
         },
         renderFrame() {
+			drawRender.countFps();
             this.renderStarted = performance.now()
             //'renderFrame': async function() { //Sonia5
             //await this.sleep(4); //Sonia5			
@@ -13851,6 +13851,7 @@ Game name     : ${i.displayName}<br/>
                     this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
                 }
             }
+			
 			this.renderingDelay = (performance.now() - this.renderStarted) * drawRender.fps
 			//console.log(this.renderingDelay)
             drawRender.renderTime += performance.now() - this.renderStarted
@@ -13867,7 +13868,7 @@ Game name     : ${i.displayName}<br/>
             //console.log(performance.now() - this.renderStarted, (performance.now() - this.renderStarted) * drawRender.fps)
             //window.updateCellsClock=false
 
-            //drawRender.render();
+            drawRender.render();
         },
         drawHelpers() {
             if (LM.play || LM.playerCellsMulti.length) {
@@ -15034,11 +15035,8 @@ Game name     : ${i.displayName}<br/>
         render() {
             //'render': async function() {
             //if (!window.fpsM) window.fpsM = 4
-            //await drawRender.sleep(window.fpsM);	
-			
-			
-			drawRender.countFps();
-			drawRender.renderFrame();
+            //await drawRender.sleep(window.fpsM);		
+			//drawRender.renderFrame();
 			/*
 			if (drawRender.renderingDelay<750){
 				drawRender.countFps();
@@ -15049,11 +15047,11 @@ Game name     : ${i.displayName}<br/>
 			}
 			*/
             if (!defaultmapsettings.unlockedFPS) {
-                window.requestAnimationFrame(drawRender.render);
+                window.requestAnimationFrame(drawRender.renderFrame());
             } 
 			else if (defaultmapsettings.unlockedFPS == 2 || defaultmapsettings.unlockedFPS == 4 || defaultmapsettings.unlockedFPS == 8 || defaultmapsettings.unlockedFPS == 16 || defaultmapsettings.unlockedFPS == 32 || defaultmapsettings.unlockedFPS == 64) {
                 setTimeout(function() {
-                    window.requestAnimationFrame(drawRender.render);
+                    window.requestAnimationFrame(drawRender.renderFrame());
                 }, defaultmapsettings.unlockedFPS);
             } 
 			else if (defaultmapsettings.unlockedFPS == "ultra") {
@@ -15075,19 +15073,15 @@ Game name     : ${i.displayName}<br/>
                 }
                 setTimeout(function() {
                     //window.requestAnimationFrame(drawRender.render);
-                    drawRender.render();
+                   drawRender.renderFrame();
                 }, window.renderDelay);
-            } else {
+            } 
+			else {
 				
                 setTimeout(function() {
-                    drawRender.render()
+                    drawRender.renderFrame()
                 }, 0);
             }
-			
-            //drawRender.render()
-            //}, 1000/window.fps);
-            //}, 0.1);
-            //window.requestAnimationFrame(drawRender.render);
         },
         init() {
             this.setCanvas();
