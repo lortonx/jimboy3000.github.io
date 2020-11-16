@@ -1,5 +1,5 @@
 /* Source script
-v2.876
+v2.877
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15112,9 +15112,10 @@ Game name     : ${i.displayName}<br/>
             }, 0);
 			*/
 			if(defaultmapsettings.unlockedFPS==true || legendmod.integrity) { 
-                setTimeout(function() {
-                    drawRender.render()
-                }, 0);			
+                //setTimeout(function() {
+					soon(() => drawRender.render());
+                    
+                //}, 0);			
 			}			
             else if (!defaultmapsettings.unlockedFPS) {
                 window.requestAnimationFrame(drawRender.render);
@@ -16932,3 +16933,4 @@ Array.prototype.stDev = function stDev() {
     return Math.sqrt(average(this.map(value => Math.pow(value - average(this), 2))))
     //return Math.sqrt(average(this.map(value => (value - average(this)) ** 2)))
 };
+var soon=(function(){var c=[];function b(){while(c.length){var d=c[0];d.f.apply(d.m,d.a);c.shift()}}var a=(function(){if(typeof MutationObserver!=="undefined"){var d=document.createElement("div");return function(e){var f=new MutationObserver(function(){f.disconnect();e()});f.observe(d,{attributes:true});d.setAttribute("a",0)}}if(typeof setImmediate!=="undefined"){return setImmediate}return function(e){setTimeout(e,0)}})();return function(d){c.push({f:d,a:[].slice.apply(arguments).splice(1),m:this});if(c.length==1){a(b)}}})();
