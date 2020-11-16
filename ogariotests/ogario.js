@@ -1,5 +1,5 @@
 /* Source script
-v2.873
+v2.874
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9963,7 +9963,8 @@ window.MouseClicks=[];
                 node = application.getCustomSkin(this.targetNick, this.color);
                 if (node) {
                     if ((defaultmapsettings.transparentSkins || LM.play && defaultmapsettings.oppColors) && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
-                        style.globalAlpha *= defaultSettings.skinsAlpha;
+                        console.log('transparent')
+						style.globalAlpha *= defaultSettings.skinsAlpha;
                         //s = true;
                     }
                     if (legendmod.gameMode != ":teams") {
@@ -15136,6 +15137,7 @@ Game name     : ${i.displayName}<br/>
 							drawRender.countFps()
 							drawRender.renderFrame();
 						}
+						if (!drawRender.averageRenderTime){drawRender.countFps();drawRender.renderFrame();}
                     }
                     drawRender.render()
                 }, 0);
