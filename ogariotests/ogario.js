@@ -1,5 +1,5 @@
 /* Source script
-v2.883
+v2.884
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15107,7 +15107,8 @@ Game name     : ${i.displayName}<br/>
                 drawRender.render()
             }, 0);
 			*/
-			if(defaultmapsettings.unlockedFPS==true || legendmod.integrity) { 
+			//if(defaultmapsettings.unlockedFPS==true || legendmod.integrity) { 
+			if(defaultmapsettings.unlockedFPS==true) { 
 				//drawRender.render()
                 setTimeout(function() {
                     drawRender.render()
