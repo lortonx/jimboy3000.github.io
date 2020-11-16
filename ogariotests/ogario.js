@@ -1,5 +1,5 @@
 /* Source script
-v2.855
+v2.856
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9829,7 +9829,9 @@ window.MouseClicks=[];
 					if (defaultmapsettings.virusSpikes){
 						style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, defaultSettings.virusSpikesSize))
 					}
-					style.stroke()
+					else{
+						style.stroke()
+					}
                     if (defaultmapsettings.showMass) {
                         this.setDrawing();
                         this.setDrawingScale();
