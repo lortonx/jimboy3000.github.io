@@ -1,5 +1,5 @@
 /* Source script
-v2.853
+v2.854
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9804,6 +9804,41 @@ window.MouseClicks=[];
                             style.drawImage(cimgDyingLightvirus, this.x - 0.8 * this.size, this.y - 0.8 * this.size, 1.6 * this.size, 1.6 * this.size);
                         } catch (e) {}
                     }*/
+                    if (defaultmapsettings.transparentViruses) {
+                        style.globalAlpha *= defaultSettings.virusAlpha;
+                        s = true;
+                    }
+					if (defaultmapsettings.virColors && LM.play) {
+						style.fillStyle = application.setVirusColor(y); 
+						style.strokeStyle = application.setVirusStrokeColor(y);
+					}
+					else{ 
+						style.fillStyle = this.virusColor 
+						style.strokeStyle = this.virusStroke	
+					}
+					style.fill()
+					if (s) {
+                        style.globalAlpha = value;
+                        s = false;
+                    }
+					style.lineWidth = defaultSettings.virusStrokeSize
+					if (defaultmapsettings.virusGlow){
+                        style.shadowBlur = defaultSettings.virusGlowSize;
+                        style.shadowColor = defaultSettings.virusGlowColor;						
+					}
+					if (defaultmapsettings.virusSpikes){
+						style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, defaultSettings.virusSpikesSize)
+					}
+					style.stroke()
+                    if (defaultmapsettings.showMass) {
+                        this.setDrawing();
+                        this.setDrawingScale();
+                        this.setMass(this.size);
+                        this.drawMass(style);
+                    }					
+					style.restore();
+                    return;
+					/*
                     return defaultmapsettings.transparentViruses && (style.globalAlpha *= defaultSettings.virusAlpha, s = true), 
 					defaultmapsettings.virColors && LM.play ? (style.fillStyle = application.setVirusColor(y), style.strokeStyle = application.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, 
 					style.strokeStyle = this.virusStroke), 
@@ -9818,8 +9853,10 @@ window.MouseClicks=[];
 						defaultmapsettings.showMass && 
 						(this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
                         this.setMass(this.size), this.drawMass(style), (window.ExternalScripts && !window.legendmod5.optimizedMass)), void style.restore();
+						*/
                 }
-            } else {
+            } 
+			else {
                 if (this.isVirus) {
                     //console.log("is jelly");
                     if (defaultmapsettings.transparentViruses) {
