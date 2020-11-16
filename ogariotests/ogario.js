@@ -1,5 +1,5 @@
 /* Source script
-v2.890
+v2.891
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13807,6 +13807,11 @@ Game name     : ${i.displayName}<br/>
         //'renderFrame': async function() { //Sonia5
         //await this.sleep(4); //Sonia5			
             //this.ctx.start2D();
+			if (this.lastRenderingDelay > 10){
+				this.lastRenderingDelay = this.lastRenderingDelay - 10
+				this.fps--
+				return; 
+			}
 			this.renderStarted = performance.now()
             LM.time = Date.now();
             for (i = 0; i < LM.cells.length; i++) {
@@ -15092,7 +15097,7 @@ Game name     : ${i.displayName}<br/>
             //if (!window.fpsM) window.fpsM = 4
             //await drawRender.sleep(window.fpsM);	
 			
-
+/*
 			if (drawRender.renderingDelay<666){ //750
 				drawRender.countFps();
 				drawRender.renderFrame();
@@ -15102,7 +15107,7 @@ Game name     : ${i.displayName}<br/>
 				console.log('stoped')
 				drawRender.renderingDelay =	drawRender.renderingDelay - drawRender.lastRenderingDelay
 			}
-			/*
+			
             setTimeout(function() {
                 drawRender.render()
             }, 0);
@@ -15146,19 +15151,7 @@ Game name     : ${i.displayName}<br/>
                     }
                     drawRender.render()
                 }, 0);
-            }
-			else if (defaultmapsettings.unlockedFPS == "ultra2") {
-                setTimeout(function() {
-                    for (var i = 0; i < 3; i++) {
-						if (drawRender.averageRenderTime && drawRender.averageRenderTime < 30 + i * 20 && window.renderDelay > 0){
-							drawRender.countFps()
-							drawRender.renderFrame();
-						}
-						if (!drawRender.averageRenderTime){drawRender.countFps();drawRender.renderFrame();}
-                    }
-                    drawRender.render()
-                }, 0);
-            }						
+            }				
             else if (defaultmapsettings.unlockedFPS == "sophisticated") {
                 if (!drawRender.averageRenderTime) {
                     window.renderDelay = 0;
