@@ -14539,9 +14539,8 @@ Game name     : ${i.displayName}<br/>
                 }
             } 
 			else {
-                ctx.beginPath();
                 for (var length = 0; length < food.length; length++) {
-					//ctx.beginPath();
+					ctx.beginPath();
                     if (!food[length].invisible) {				
                         var x = food[length].x;
                         var y = food[length].y;
