@@ -9791,7 +9791,7 @@ window.MouseClicks=[];
             } else style.arc(this.x, this.y, y, 0, this.pi2, false);
 
             style.closePath();
-			if (window.hi) return
+			if (window.hi) return;
 
 
             //if (style.arc(this.x, this.y, y, 0, this.pi2, false), style.closePath(), this.isFood) {
@@ -10523,4 +10523,6397 @@ window.MouseClicks=[];
                 //for (let length = 0; length < nick.length; length++, pos++) view.setUint8(pos, nick.charCodeAt(length))
                 pos++
                 for (let length = 0; length < token.length; length++, pos++) view.setUint8(pos, token.codePointAt(length))
-                //for (let length = 0; length < token.length; lengt
+                //for (let length = 0; length < token.length; length++, pos++) view.setUint8(pos, token.charCodeAt(length));
+                self.sendMessage(view);
+            }
+            var sendSpawnPrivateServer = function() {
+                var token = '0'
+                nick = window.unescape(window.encodeURIComponent(self.playerNick));
+                var view = self.createView(1 + nick.length + 1 + token.length + 1);
+                var pos = 1
+                for (let length = 0; length < nick.length; length++, pos++) view.setUint8(pos, nick.codePointAt(length))
+                //for (let length = 0; length < nick.length; length++, pos++) view.setUint8(pos, nick.charCodeAt(length))
+                pos++
+                for (let length = 0; length < token.length; length++, pos++) view.setUint8(pos, token.codePointAt(length))
+                //for (let length = 0; length < token.length; length++, pos++) view.setUint8(pos, token.charCodeAt(length));
+                self.sendMessage(view);
+            }
+
+            if (!LM.integrity) {
+                //token = '0';
+                sendSpawnPrivateServer()
+                return;
+            } else if (LM.integrity) {
+                window.agarCaptcha.requestCaptchaV3("play", function(token) {
+                    sendSpawn(token)
+                    //window.core.sendNick(nick, token)
+                })
+            }
+            /*
+            if (!grecaptcha.onceLoad || grecaptcha.v2mode) {
+                //first time need recaptcha v2
+                requestCaptchaV3();
+                grecaptcha.onceLoad = true;
+                //grecaptcha.reset();
+                grecaptcha.execute(0, {
+                    'action': 'play'
+                }).then(function() {
+                    sendSpawn();
+					grecaptcha.reset();
+                });
+            } else {
+                //next times need recaptcha v3
+                //grecaptcha.reset();
+                grecaptcha.execute(0, {
+                    'action': 'play'
+                }).then(function() {
+                    sendSpawn();
+					grecaptcha.reset();
+                });
+            }
+*/
+            setTimeout(function() {
+                if (!window.cookieCaptchaOK && LM.integrity) {
+                    legendmod.sendNick2(self.playerNick)
+                }
+            }, 1800);
+
+        },
+        sendTimeOutTokenForBots() {
+            //window.sendTimeOutTokenBots=false;
+            if (document.getElementById('userStatus').innerText == 'Connected' && window.RequestedTokens > 1) {
+                setTimeout(function() {
+                    legendmod.sendTimeOutTokenForBots();
+                    //console.log('sendTimeOutTokenForBots triggered')
+                    if (!window.sendTimeOutTokenBots) {
+                        //window.RequestedTokens=1000;
+                        //this code is to inform me when a new loop process starts again
+                        console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' bots started again')
+                        legendmod.sendTokenForBots();
+                        /*
+						$('#captchaErrors1').text(parseInt($('#captchaErrors1').text())+1)
+                        legendmod.sendTokenForBots();
+                        if ($('#captchaSpeed').val()) {
+                            window.tempol = $('#captchaSpeed').val();
+                        } else {
+                            window.tempol = 0.5;
+							$('#captchaSpeed').val(window.tempol)
+                        }
+						*/
+                    }
+                    //}, 10000 + window.tempol * 1000);
+                }, 10000);
+            } else {
+                //setTimeout(function() {	
+                window.sendFirstTimeTokenBots = false
+                //}, 100);
+            }
+        },
+        sendSpawn2(temp) {
+            var token = temp
+            window.botsSpawncodeNum++;
+            window.botsSpawncode[window.botsSpawncodeNum] = token;
+
+            if (document.getElementById('userStatus').innerText == 'Connected' && window.RequestedTokens > 1) {
+                window.RequestedTokens--;
+                $('#captchatokens').html(parseInt($('#captchatokens').html()) + 1);
+                //setTimeout(function() {
+                legendmod.sendTokenForBots();
+                //}, 100);
+                //window.sendTimeOutTokenBots	= true;			
+            }
+            window.connectionBots.send(JSON.stringify({
+                "message": "botscode",
+                "msg": JSON.stringify(token)
+                //"msg": JSON.stringify(window.botsSpawncode[window.botsSpawncodeNum])
+            }));
+            //self.sendMessage(view);			
+        },
+        sendTokenForBots() {
+
+            /*legendmod.botscaptcha = true;
+            window.sendTimeOutTokenBots = false;
+            if ($('#captchaSpeed').val()) {
+                window.tempol = $('#captchaSpeed').val();
+            }
+			setTimeout(function() {*/
+            for (var i = 0; i < window.captchaOpenedWindow; i++) {
+                if (legendmod.integrity && window.capthaWindow[i] && !window.capthaWindow[i].closed) {
+                    window.capthaWindow[i].ProcessParentMessage('doCaptcha');
+                } else if (legendmod.integrity && window.capthaWindow[i] && window.capthaWindow[i].closed) {
+                    createCaptchaWindow(i)
+                }
+
+            }
+            //}, 500);			
+
+            /*this.integrity && window.agarCaptcha.requestCaptchaV3("play", function(token) {
+
+				if(window.capthaWindow) window.capthaWindow.ProcessParentMessage('doCaptcha');
+                setTimeout(function() {
+                    legendmod.sendSpawn2(token);
+                }, window.tempol * 1000);
+                //window.core.sendNick(nick, token)
+            })*/
+        },
+        sendNick2(nick) {
+            this.playerNick = nick,
+                nick = window.unescape(window.encodeURIComponent(nick));
+            window.Bufferdata = nick; //
+            var view = this.createView(1 + nick.length);
+            view.setUint8(0, 0);
+            for (var length = 0; length < nick.length; length++) view.setUint8(length + 1, nick.charCodeAt(length));
+            this.sendMessage(view);
+        },
+
+        sendPosition(cell, target2, specialcommand) {
+            var cursorX, cursorY;
+            if (this.isSocketOpen() && this.connectionOpened && (this.clientKey || !legendmod.integrity)) {
+                if (window.multiboxPlayerEnabled && !window.multiboxFollowMouse && !window.autoPlay) {
+                    if (defaultmapsettings.multiKeepMoving) {
+                        //cursorX = this.playerX + this.distX;
+                        //cursorY = this.playerY + this.distY;
+                        cursorX = this.viewXTrue + this.distX;
+                        cursorY = this.viewYTrue + this.distY;
+                    }
+                } else if (LM.dance || window.followStraight) {
+                    let d = ~~((Date.now() / 40) % 8),
+                        distance = 50000;					
+					if (window.followStraight){
+						
+						if (this.cursorX - this.playerX > 0 && this.cursorY - this.playerY > 0 ) d = 3
+						else if (this.cursorX - this.playerX < 0 && this.cursorY - this.playerY > 0) d = 5
+						else if (this.cursorX - this.playerX < 0 && this.cursorY - this.playerY < 0) d = 7
+						else if (this.cursorX - this.playerX > 0 && this.cursorY - this.playerY < 0) d = 1
+						else if (this.cursorX - this.playerX < 0) d = 6 
+						else if (this.cursorX - this.playerX > 0) d = 2
+						else if (this.cursorY - this.playerY > 0) d = 4
+						else if (this.cursorY - this.playerY < 0) d = 0
+					}			
+                    switch (d) {
+                        case 7:
+                            cursorX = this.playerX - distance;
+                            cursorY = this.playerY - distance;
+                            break;
+                        case 6:
+                            cursorX = this.playerX - distance;
+                            cursorY = this.playerY;
+                            break;
+                        case 5:
+                            cursorX = this.playerX - distance;
+                            cursorY = this.playerY + distance;
+                            break;
+                        case 4:
+                            cursorX = this.playerX;
+                            cursorY = this.playerY + distance;
+                            break;
+                        case 3:
+                            cursorX = this.playerX + distance;
+                            cursorY = this.playerY + distance;
+                            break;
+                        case 2:
+                            cursorX = this.playerX + distance;
+                            cursorY = this.playerY;
+                            break;
+                        case 1:
+                            cursorX = this.playerX + distance;
+                            cursorY = this.playerY - distance;
+                            break;
+                        case 0:
+                            cursorX = this.playerX;
+                            cursorY = this.playerY - distance;
+                            break;
+                        default:
+                            console.log(d);
+                            break;													
+                    }
+					cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(cursorX) : cursorX; //Sonia3
+                    cursorY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(cursorY) : cursorY; //Sonia3	
+                } else {
+                    //if (specialcommand) {
+                    //console.log('hi')
+                    //cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
+                    //cursorY=9999;					
+                    //} 
+                    if (!window.autoPlay) {
+                        if (window.lockPosition) {
+                            console.log('LockPosition enabled')
+                            return false;
+                        }
+                        cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
+                        cursorY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(this.cursorY) : this.cursorY; //Sonia3
+                        if (!this.play && this.targeting || this.pause) {
+                            cursorX = this.targetX;
+                            cursorY = this.targetY;
+                        }					
+                    }
+                    //autoplay handling
+                    else if (!specialcommand) {
+                        //if (typeof cell != "undefined") { //when used, autoplay not working as expected
+                        //if (target2 && Object.keys(target2).length == 0) {
+						if (cell) {	
+                            cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(cell.x) : cell.x; //Sonia3
+                            cursorY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(cell.y) : cell.y; //Sonia3
+                            // var cursorX = cell.x;
+                            //var cursorY = cell.y;
+                        //} else if (target2){
+						} else{	
+							return false;
+                            //cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(target2.x) : target2.x; //Sonia3
+                            //cursorY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(target2.y) : target2.y; //Sonia3
+                            //var cursorX = target2.x;
+                            //var cursorY = target2.y;
+                        }
+                        //}
+                    }
+                    //for multi
+                    //this.distX  = cursorX - this.playerX	
+                    //this.distY  = cursorY - this.playerY
+                    this.distX = cursorX - this.viewXTrue
+                    this.distY = cursorY - this.viewYTrue
+                }
+                var view = this.createView(13);
+                view.setUint8(0, 16);
+                view.setInt32(1, cursorX, true);
+                view.setInt32(5, cursorY, true);
+                view.setUint32(9, this.protocolKey, true);
+                this.sendMessage(view);
+            }
+            if (window.userBots.startedBots && window.userBots.isAlive) {
+                window.userBots.mouseX = this.cursorX - window.userBots.offsetX;
+                window.userBots.mouseY = this.cursorY - window.userBots.offsetY;
+                window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))
+            }
+        },
+        /*            sendAccessToken(t, e, i) {
+                        if (!this['accessTokenSent']) {
+                            i || (i = 102);
+                            for (var s = t.length, o = this.clientVersionString.length, a = [i, 8, 1, 18, s + o + 23, 1, 8, 10, 0x52, s + o + 18, 1, 8, e, 18, o + 8, 8, 5, 18, o], n = 0; n < o; n++) a.push(this.clientVersionString.charCodeAt(n));
+                            for (a.push(24, 0, 32, 0, 26, s + 3, 1, 10, s, 1), n = 0; n < s; n++) a.push(t.charCodeAt(n));
+                            a = new Uint8Array(a);
+                            var r = new DataView(a['buffer']);
+                            this.sendMessage(r);
+                        }
+                    }, */
+        sendAccessToken(shapes, options, oW) {
+            if (!legendmod.integrity) {
+                return
+            }
+            if (LM.accessTokenSent) {
+                return;
+            }
+            if (!oW) {
+                oW = 102;
+            }
+            var curr = shapes.length;
+            var count = this.clientVersionString.length;
+            var data = [oW, 8, 1, 18];
+            //this.writeUint32(data, curr + count + 23);
+            application.writeUint32(data, curr + count + 23);
+            data.push(8, 10, 82);
+            application.writeUint32(data, curr + count + 18);
+            //this.writeUint32(data, curr + count + 18);
+            data.push(8, options, 18, count + 8, 8, 5, 18, count);
+            var prev = 0;
+            for (; prev < count; prev++) {
+                data.push(this.clientVersionString.charCodeAt(prev));
+            }
+            data.push(24, 0, 32, 0, 26);
+            application.writeUint32(data, curr + 3);
+            //this.writeUint32(data, curr + 3);
+            data.push(10);
+            application.writeUint32(data, curr);
+            //this.writeUint32(data, curr);
+            prev = 0;
+            for (; prev < curr; prev++) {
+                data.push(shapes.charCodeAt(prev));
+            }
+            data = new Uint8Array(data);
+            var raw_basefont = new DataView(data.buffer);
+            this.sendMessage(raw_basefont);
+        },
+        sendFbToken(token) {
+            //                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Facebook token: " + token);
+            this.sendAccessToken(token, 2);
+        },
+        sendGplusToken(token) {
+            //                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Google Plus token: " + token);
+            //this.sendAccessToken(token, 3);
+            this.sendAccessToken(token, 4);
+        },
+        sendRecaptcha(token) {
+            var view = this.createView(2 + token.length);
+            view.setUint8(0, 86);
+            for (var length = 0; length < token.length; length++) view.setUint8(1 + length, token.charCodeAt(length));
+            view.setUint8(token.length + 1, 0);
+            this.sendMessage(view);
+        },
+        setClientVersion(version, string) {
+
+            if (window.disableIntegrity != true) { //
+                this.clientVersion = version;
+                this.clientVersionString = string;
+                var tempooo
+                if (window.getLatestconfigVersion) tempooo = "v" + window.getLatestconfigVersion
+
+                console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Versions: client:', version, string, "x-proto:", this.xsupportprotoversion, "protocol:", this.protocolVersion, "config:", tempooo, "configId:", window.getLatestID);
+            } //
+            else { //
+                this.clientVersion = 0;
+                this.clientVersionString = string;
+                console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Client version:', version, string); //
+            } //
+        },
+        /*
+        			generateClientKey(t, e) {
+                        if (!t.length || !e.byteLength) return null;
+                        for (var i = null, s = 1540483477, o = t.match(/(ws+:\/\/)([^:]*)(:\d+)/)[2], a = o.length + e.byteLength, n = new Uint8Array(a), r = 0; r < o.length; r++) n[r] = o.charCodeAt(r);
+                        n.set(e, o.length);
+                        for (var l = new DataView(n['buffer']), h = a - 1, c = 4 + (h - 4 & -4) | 0, u = 255 ^ h, d = 0; h > 3;) i = 0 | Math.imul(l.getInt32(d, true), s), u = (0 | Math.imul(i >>> 24 ^ i, s)) ^ (0 | Math.imul(u, s)), h -= 4, d += 4;
+                        switch (h) {
+                            case 3:
+                                u = n[c + 2] << 16 ^ u, u = n[c + 1] << 8 ^ u;
+                                break;
+                            case 2:
+                                u = n[c + 1] << 8 ^ u;
+                                break;
+                            case 1:
+                                break;
+                            default:
+                                i = u;
+                        }
+                        return i != u && (i = 0 | Math.imul(n[c] ^ u, s)), i ^= u = i >>> 13, i = 0 | Math.imul(i, s), i ^= u = i >>> 15, console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Generated client key:', i),window.generatedClientKey=i, i;
+                    },
+                    shiftKey(t) {
+                        //if (window.disableIntegrity!=false){ //
+                        return t = 0 | Math.imul(t, 1540483477), t = 114296087 ^ (0 | Math.imul(t >>> 24 ^ t, 1540483477)), (t = 0 | Math.imul(t >>> 13 ^ t, 1540483477)) >>> 15 ^ t;
+                        //} //
+                        //else{ //
+                        //return 0; //
+                        //} //
+                    },
+        			*/
+        generateClientKey(ip, options) {
+            if (!ip.length || !options.byteLength) {
+                return null;
+            }
+            var x = null;
+            var suggestedValue = 1540483477;
+            var ipCheck = ip.match(/(ws+:\/\/)([^:]*)(:\d+)/)[2];
+            var newLength = ipCheck.length + options.byteLength;
+            var uint8Arr = new Uint8Array(newLength);
+            var value = 0;
+            for (; value < ipCheck.length; value++) {
+                uint8Arr[value] = ipCheck.charCodeAt(value);
+            }
+            uint8Arr.set(options, ipCheck.length);
+            var dataview = new DataView(uint8Arr.buffer);
+            var type = newLength - 1;
+            var value = (type - 4 & -4) + 4 | 0;
+            var newValue = type ^ 255;
+            var offset = 0;
+            for (; type > 3;) {
+                x = Math.imul(dataview.getInt32(offset, true), suggestedValue) | 0;
+                newValue = (Math.imul(x >>> 24 ^ x, suggestedValue) | 0) ^ (Math.imul(newValue, suggestedValue) | 0);
+                type = type - 4;
+                offset = offset + 4;
+            }
+            switch (type) {
+                case 3:
+                    newValue = uint8Arr[value + 2] << 16 ^ newValue;
+                    newValue = uint8Arr[value + 1] << 8 ^ newValue;
+                    break;
+                case 2:
+                    newValue = uint8Arr[value + 1] << 8 ^ newValue;
+                    break;
+                case 1:
+                    break;
+                default:
+                    x = newValue;
+                    break;
+            }
+            if (x != newValue) {
+                x = Math.imul(uint8Arr[value] ^ newValue, suggestedValue) | 0;
+            }
+            newValue = x >>> 13;
+            x = newValue ^ x;
+            x = Math.imul(x, suggestedValue) | 0;
+            newValue = x >>> 15;
+            x = newValue ^ x;
+            //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Generated client key:', x);
+            window.generatedClientKey = x;
+            return x;
+
+        },
+        "shiftKey": function(key) {
+            if (window.disableIntegrity != true) {
+                var suggestedValue = 1540483477;
+                key = Math.imul(key, suggestedValue) | 0;
+                key = (Math.imul(key >>> 24 ^ key, suggestedValue) | 0) ^ 114296087;
+                key = Math.imul(key >>> 13 ^ key, suggestedValue) | 0;
+                return key >>> 15 ^ key;
+            } else {
+                return 0;
+            }
+        },
+        "shiftMessage": function(view, key, write) {
+            if (window.disableIntegrity != true) {
+                var length = 0;
+                if (!write) {
+                    for (; length < view.byteLength; length++) {
+                        view.setUint8(length, view.getUint8(length) ^ key >>> length % 4 * 8 & 255);
+                    }
+                } else {
+                    for (; length < view.length; length++) {
+                        view.writeUInt8(view.readUInt8(length) ^ key >>> length % 4 * 8 & 255, length);
+                    }
+                }
+                return view;
+            } else {
+                return view;
+            }
+        },
+        /*
+        shiftMessage(t, e, i) {
+            //if (window.disableIntegrity!=false){ //
+            if (i)
+                for (s = 0; s < t.length; s++) t.writeUInt8(t.readUInt8(s) ^ e >>> s % 4 * 8 & 255, s);
+            else
+                for (var s = 0; s < t.byteLength; s++) t.setUint8(s, t.getUint8(s) ^ e >>> s % 4 * 8 & 255);
+            return t;
+            //} //
+            //else{ //
+            //return t; //
+            //} //
+        },		*/
+        //https://github.com/pierrec/node-lz4/blob/master/lib/binding.js
+        pingTimer() {
+            if (!this.pingUsed) {
+                this.pingUsed = 0;
+            }
+            if (!this.pingArray) {
+                this.pingArray = [];
+            }
+            if (this.pingTime) {
+                this.ping = Date.now() - this.pingTime
+            }
+            this.pingTime = Date.now();
+            this.pingUsed++;
+            this.pingArray.push(this.ping);
+            if (this.pingUsed == 99) {
+                //console.log('standardDeviation - usePopulation', standardDeviation(this.pingArray, true));
+                console.log('standardDeviation', this.pingArray.stDev());
+                this.pingArray = [];
+                this.pingUsed = 0;
+            }
+        },
+        decompressMessage(message) {
+            const buffer = window.buffer.Buffer;
+            const messageBuffer = new buffer(message.buffer);
+            const readMessage = new buffer(messageBuffer.readUInt32LE(1));
+            LZ4.decodeBlock(messageBuffer.slice(5), readMessage);
+            return readMessage;
+            /*
+                var buffer = new LMbuffer(message['buffer']);
+                var readMessage = new LMbuffer(buffer.readUInt32LE(1));
+                return LZ4.decodeBlock(buffer.slice(5), readMessage), readMessage;
+				*/
+        },
+        handleMessage(data) {
+            //this.pingTimer();		
+            if (!$("#server-token").val().includes("replay") && !$("#server-token").val().includes("imsolo.pro:2109/")) {
+                window.RecordedProtocol[window.temporaryRecordedProtocol][window.catholicCalculator] = data
+
+                //window.RecordedProtocolArenas[legendmod.ws][]
+                //window.RecordedProtocolArenas[window.specificRecordedProtocol[legendmod.ws]] = window.RecordedProtocol[window.catholicCalculator] 
+                window.catholicCalculator++
+            }
+            /*			
+			for (window.playrecord=0;window.playrecord<window.RecordedProtocol.length-1;window.playrecord++){
+				setTimeout(function() {	
+					legendmod.handleMessage(window.RecordedProtocol[window.playrecord])
+					console.log(window.playrecord)
+				}, 40*window.playrecord);
+			}			
+*/
+            var encode = function() {
+                for (var text = '';;) {
+                    var i = data.getUint8(s++);
+                    if (0 == i) break;
+                    text += String.fromCharCode(i);
+                }
+                return text;
+            };
+            var s = 0;
+            var opcode = data.getUint8(s++);
+            switch (54 == opcode && (opcode = 53), opcode) {
+
+
+
+
+                case 5: //Yahnych
+                    window.testobjectsOpcode5 = data;
+                    this.fbOnline = [];
+
+                    for (; s < data.byteLength;) {
+                        let user = {};
+
+                        user.id = data.getUint32(s, true);
+                        s += 4;
+                        user.fbId = window.decodeURIComponent(window.escape(encode()));
+
+                        for (i = 0; i <= this.leaderboard.length - 1; i++) {
+                            if (this.leaderboard[i].id == user.id) {
+                                user.nick = this.leaderboard[i].nick
+                            }
+                        }
+                        if (!application.customSkinsMap[user.nick + "facebookskin"]) {
+                            application.customSkinsMap[user.nick + "facebookskin"] = `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`;
+                            application.loadSkin(application.customSkinsCache, `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`, "fbSkin");
+                            //console.log("fb id found", user.id, user.nick, `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`);
+                        }
+                        //application.cacheCustomSkin(user.fbId, '#000000', `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`);
+
+                        this.fbOnline.push(user);
+                    }
+                    //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
+                    break;
+                case 17:
+                    window.testobjectsOpcode17 = data;
+                    var x = data.getFloat32(s, true);
+
+                    if ((defaultmapsettings.middleMultiView || window.middleMultiViewFlag) && legendmod.multiBoxPlayerExists) {
+                        //
+                    } else if (!window.multiboxPlayerEnabled) {
+                        this.viewX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(x) : x;
+                    }
+                    this.viewXTrue = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(x) : x;
+
+                    s += 4;
+                    var y = data.getFloat32(s, true);
+
+                    if ((defaultmapsettings.middleMultiView || window.middleMultiViewFlag) && legendmod.multiBoxPlayerExists) {
+                        //
+                    } else if (!window.multiboxPlayerEnabled) {
+                        this.viewY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(y) : y;
+                    }
+                    this.viewYTrue = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(y) : y;
+                    s += 4;
+                    this.scale = data.getFloat32(s, true);
+                    break;
+                case 18:
+                    window.testobjectsOpcode18 = data;
+                    if (this.protocolKey) {
+                        this.protocolKey = this.shiftKey(this.protocolKey);
+                    }
+                    this.flushCellsData();
+                    break;
+                case 20:
+                    this.flushCellsData();
+                    break;
+                case 32:
+                    window.testobjectsOpcode32 = data;
+                    this.playerCellIDs.push(data.getUint32(s, true));
+                    if (!this.play) {
+                        this.play = true;
+                        this.isSpectateEnabled = false
+                        application.hideMenu();
+                        this.playerColor = null;
+                        application.onPlayerSpawn();
+                        window.userBots.isAlive = true;
+                        if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([5, Number(window.userBots.isAlive)]).buffer);
+                    }
+                    break;
+                case 50:
+                    window.testobjectsOpcode50 = data;
+                    this.pieChart = [];
+                    var a = data.getUint32(s, true);
+                    s += 4; //5,12,19
+                    //for (var n = 0; n < a; n++) this.pieChart.push(data.getFloat32(s, true)), s += 4;
+                    for (var n = 0; n < a; n++) this.pieChart.push(data.getFloat32(s, true)), s += 7;
+                    drawRender.drawPieChart();
+                    break;
+                case 53:
+                    window.testobjectsOpcode53 = data;
+                    this.leaderboard = [];
+                    this.friends = this.fbOnline.length;
+
+                    this.playerPosition = 0;
+                    if (data.getUint8(0) == 54) {
+                        const pos = data.getUint16(s, true);
+                        s += 2;
+                        //console.log('Friends:', pos)
+                    }
+                    for (let position = 0; s < data.byteLength;) {
+                        var flags = data.getUint8(s++);
+                        let nick = '';
+                        let id = 0;
+                        let isFriend = false;
+                        let isFBFriend = false;
+                        position++;
+                        if (flags & 2) {
+                            nick = window.decodeURIComponent(window.escape(encode()));
+                        }
+                        if (flags & 4) {
+                            id = data.getUint32(s, true);
+                            s += 4;
+                        }
+                        if (flags & 8) {
+                            nick = this.playerNick;
+                            id = 'isPlayer';
+                            this.playerPosition = position;
+                        }
+                        if (flags & 16) {
+                            isFriend = true;
+                            this.friends++;
+                        }
+                        let friend = LM.fbOnline.find(element => {
+                            return element.id == id;
+                        });
+                        friend != undefined ? isFBFriend = friend.fbId : isFBFriend = false;
+                        this.leaderboard.push({
+                            nick: nick,
+                            id: id,
+                            isFriend: isFriend,
+                            isFBFriend: isFBFriend
+                        });
+                    }
+                    this.handleLeaderboard();
+                    break;
+                case 49: //leaderboard for specific private servers
+                    window.testobjectsOpcode49 = data;
+                    this.leaderboard = [];
+                    var count = data.getUint32(s, true);
+                    s += 4;
+                    for (i = 0; i < count; ++i) {
+                        var isMe = !!data.getUint32(s, true);
+                        s += 4;
+                        if (isMe) {
+                            isMe = 'isPlayer'
+                        }
+                        let nick = window.decodeURIComponent(window.escape(encode())); //data.getStringUTF8();
+                        var temp;
+
+                        if (nick.includes('}')) {
+                            temp = nick.split('}')[0].split('{')[1]
+                            nick = nick.split('}')[1]
+                        }
+                        if (!application.customSkinsMap[nick] && temp) {
+                            core.registerSkin(nick, null, "https://dkyriak.github.io/imsolo/" + temp + ".png", null);
+                            application.customSkinsMap[nick + "\'s imsolo.pro bot"] = "https://dkyriak.github.io/imsolo/" + temp + ".png"
+                            //core.registerSkin(nick, null, "https://imsolo.pro/web/skins/" + temp + ".png", null);
+                        }
+
+                        this.leaderboard.push({
+                            id: isMe,
+                            nick: nick
+                        });
+                    }
+                    this.handleLeaderboard();
+                    break;
+                    /*    
+                        if (this.leaderboard = [], this.playerPosition = 0, 54 == data.getUint8(0)) {
+                            data.getUint16(s, true);
+                            s += 2;
+                        }
+                        for (var r = 0; s < data.byteLength;) {
+                            var le = '';
+                            var h = 0;
+                            var c = false;
+                            r++;
+                            if (2 & (y = data.getUint8(s++))) {
+                                le = window.decodeURIComponent(escape(i()));
+                            }
+							//console.log(y) 4 or 6
+							
+                            //if (16 & y) {
+                                //c = true;
+								//console.log('16+y')
+								//var temp = data.getUint32(s, true);
+								//console.log(temp)
+                            //}							
+                            if (4 & y) {
+                                h = data.getUint32(s, true);
+                                s += 4;
+                            }
+                            if (8 & y) {
+                                le = this.playerNick;
+                                h = 'isPlayer';
+                                this.playerPosition = r
+								
+								// for bots
+								//if (typeof l === "object") { 
+								//console.log(l)
+								//l=legendmod.playerNick;
+								//} 
+								//
+                            }
+
+                            this.leaderboard.push({
+                                'nick': le,
+                                'id': h,
+                                'isFriend': c
+                            });
+                        }
+                        this.handleLeaderboard();*/
+                case 54:
+                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
+                    window.testobjectsOpcode54 = data;
+                    break;
+                case 69:
+                    window.testobjectsOpcode65 = data;
+                    var u = data.getUint16(s, true);
+                    s += 2, this.ghostCells = [];
+                    var max = 0; //Sonia3
+                    var mmax = 0; //Sonia3
+                    for (n = 0; n < u; n++) {
+                        var d = data.getInt32(s, true);
+                        s += 4;
+                        var f = data.getInt32(s, true);
+                        s += 4;
+                        var m = data.getUint32(s, true);
+                        s += 5;
+                        var g = ~~Math.sqrt(100 * m);
+                        this.ghostCells.push({
+                            'x': window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(d) : d, //Sonia3
+                            'y': window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(f) : f, //Sonia3
+                            'size': g,
+                            'mass': m,
+                            'inView': this.isInView(d, f, g)
+                        });
+                        if (m > mmax) { //Sonia3
+                            mmax = m; //Sonia3
+                            max = n; //Sonia3
+                        } //Sonia3
+                    }
+                    //window.legendmod.bgpi = this.calculatebgpi(this.ghostCells[max].x, this.ghostCells[max].y); //Sonia3
+                    if (this.ghostCells[0]) {
+                        window.legendmod.bgpi = this.calculatebgpi(this.ghostCells[0].x, this.ghostCells[0].y); //Sonia3
+                    } else {
+                        window.legendmod.bgpi = 4;
+                    }
+                    break;
+
+                case 85:
+                    window.testobjectsOpcode85 = data;
+                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Captcha requested');
+                    //if (window.master && window.master.recaptchaRequested) {
+                    if (window.smartbotslimited && legendmod5.autoResp) { //
+                        core.connect(legendmod.ws);
+                        setTimeout(function() {
+                            application.autoResp();
+                        }, 2000);
+                    } else {
+                        if (window.captchawidget && grecaptcha) {
+                            grecaptcha.reset(window.captchawidget);
+                            //window.captchawidget=null;
+                        }
+                        window.agarCaptcha.requestCaptcha()
+                        //window.master.recaptchaRequested();
+                    }
+                    //}
+                    break;
+                case 99: //chat for specific private servers
+                    window.testobjectsOpcode99 = data;
+                    var flag = data.getUint8(s++);
+                    var color2 = this.rgb2Hex(data.getUint8(s++), data.getUint8(s++), data.getUint8(s++));
+
+                    var name = window.decodeURIComponent(window.escape(encode())); //data.getStringUTF8();
+
+                    var message = window.decodeURIComponent(window.escape(encode())); //data.getStringUTF8();	
+                    var server = !!(flags & 128),
+                        admin = !!(flags & 64),
+                        mod = !!(flag & 32);
+
+                    if (server && name !== "SERVER") name = "[SERVER] " + name;
+                    if (name == "SERVER") name = "[SERVER]"
+                    if (admin) name = "[ADMIN] " + name;
+                    if (mod) name = "[MOD] " + name;
+                    //var wait = Math.max(3000, 1000 + message.length * 150);
+                    var time = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
+                    var caseof = 101
+                    if (name == "SERVER") {
+                        caseof = 102
+                    }
+                    if (name.includes('}')) {
+                        name = name.split('}')[1]
+                    }
+                    if (message.includes("E = split bots")) {
+                        message = "For bot commands look at Hotkeys"
+                    }
+                    this.chatableServer = true;
+                    if (message != "WWW.IMSOLO.PRO " && message != "WWW.IMSOLO.PRO" && $("#clantag").val() == "") {
+                        application.displayChatMessage(time, caseof, 1000, name + ": " + message); //this.displayChatMessage(time, caseof, plId, msg);	
+                    }
+                    break;
+                case 102:
+                    var msg = new buffer.Buffer(data.buffer.slice(1));
+                    this.onMobileData(msg);
+                    //break;				
+                    if (data.byteLength < 20) {
+                        //this["loggedIn"] = ![];
+                        //if (window["logout"]) {
+                        //window["logout"]();
+                        //}
+                    }
+                    if (data.buffer.byteLength > 1000) {
+                        //
+                        window.testobjects = data;
+                        var sampleBytes = new Uint8Array(window.testobjects.buffer);
+                        var enc = new TextDecoder();
+                        window.testobjects2 = enc.decode(sampleBytes);
+                        try {
+                            var temp = window.testobjects2.split('').pop().split('R')[0].replace('', "");
+                            if (temp && temp.includes("Uskin_custom")) {
+                                //window.UserVanillaSkin = EnvConfig.custom_skins_url + temp.substring(1).charAt(0).toUpperCase() + temp.substring(1).slice(1) + '.png'
+                                window.UserVanillaSkin = EnvConfig.custom_skins_url + temp.substring(1) + '.png';
+                            } else if (temp) {
+                                temp = temp.replace('skin_', "").replace(/\W+/g, "")
+                                window.UserVanillaSkin = temp;
+                                //window.UserVanillaSkin = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + temp.charAt(0).toUpperCase() + temp.slice(1) + '.png'
+                            }
+                            window.agarioUID = window.testobjects2.split('$')[1].substr(0, 36);
+                            window.agarioID = window.testobjects2.split('$')[1].split('')[1].split('')[0].replace(/\s/g, "");
+                            window.agarioLEVEL = window.testobjects2.split('$')[1].split("(")[0].slice(-1).charCodeAt();
+                            setLevelProgressBar();
+                            application.findOwnedVanillaSkin();
+                            if (!window.callEveryFullHourCoinDig) {
+                                window.callEveryFullHourCoinDig = true;
+                                callEveryFullHourCoinDigger();
+                            }
+                        } catch (error) {}
+                        window.googlePic = "https" + window.testobjects2.split('https')[1].split('H')[0] + "H";
+
+                        /*if (defaultmapsettings.massBooster && master.context) {				
+                        	massx31hour();
+                        	if (!window.massBoosterMsg){
+                        		toastr.warning("<b>[" + Premadeletter123 + "]:</b> Mass *2 booster -> *3 booster is enabled, this upgrades your boost to *3 for FREE if you have enabled Mass boost *2 on agar.io.<br><font color='blue'>Otherwise disable it, cause it will consume your boosts.</font>").css("width", "350px");
+                        		window.massBoosterMsg=true;
+                        	}
+                        }*/
+
+                        if (window.agarioUID != undefined) {
+                            localStorage.setItem("agarioUID", window.agarioUID);
+                            localStorage.setItem("agarioID", window.agarioID);
+                            $("#UserProfileUUID1").val(agarioUID);
+
+                        } else {
+                            window.agarioUID = localStorage.getItem("agarioUID");
+                            window.agarioID = localStorage.getItem("agarioID");
+                        }
+                        if (window.agarioUID && UIDcontroller && !window.checkOneTheUID) {
+                            window.checkOneTheUID = true;
+							UIDfunction();
+                        }
+                        if (window.testobjects2.split('"�')[1]) {
+                            window.agarioEncodedUID = window.testobjects2.split('"�')[1].split('=')[0] + "%3D";
+                        }
+                    }
+
+
+
+                    const node = new Node(data, s);
+
+                    var key_or_value = node.readFlag();
+                    if (key_or_value == 1) {
+                        node.setContentType();
+                    }
+                    key_or_value = node.readFlag();
+                    if (key_or_value == 2) {
+                        node.setUncompressedSize();
+                    }
+                    key_or_value = node.readFlag();
+                    if (key_or_value == 1) {
+                        var option = node.readUint32();
+                        var response = node.readFlag();
+                        var response_2 = node.readUint32();
+                        switch (option) {
+                            case 1:
+                                window.testobjects1021 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Type", option, response);
+                                break;
+                            case 10:
+                                window.testobjects10210 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Login Request", option, response);
+                                break;
+                            case 11:
+                                window.testobjects10211 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Login Response", node.contentType, node.uncompressedSize, option, response, response_2);
+                                break;
+                            case 12:
+                                window.testobjects10212 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Realm Upgrade Request", option, response);
+                                break;
+                            case 13:
+                                window.testobjects10213 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Realm Upgrade Response", option, response);
+                                break;
+                            case 14:
+                                window.testobjects10214 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Connect Request", option, response);
+                                break;
+                            case 15:
+                                window.testobjects10215 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Connect Response", option, response);
+                                break;
+                            case 16:
+                                window.testobjects10216 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Device Token Update", option, response);
+                                break;
+                            case 20:
+                                window.testobjects10220 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Disconnect", option, response);
+                                if (response == 20) {
+                                    //toastr.error('<b>[SERVER]:</b> You have been disconnected because your User ID logged in from another place');
+                                }
+                                break;
+                            case 21:
+                                window.testobjects10221 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Reconnect", option, response);
+                                break;
+                            case 22:
+                                window.testobjects10222 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 No Proper Response", option, response);
+                                break;
+                            case 30:
+                                window.testobjects10230 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Ping", option, response);
+                                break;
+                            case 31:
+                                window.testobjects10231 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Pong", option, response);
+                                break;
+                            case 32:
+                                window.testobjects10232 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Udp Handshake", option, response);
+                                break;
+                            case 33:
+                                window.testobjects10233 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Configuration Change", option, response);
+                                break;
+                            case 34:
+                                window.testobjects10234 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Server Going Offline", option, response);
+                                break;
+                            case 40:
+                                window.testobjects10240 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Enter Request", option, response);
+                                break;
+                            case 41:
+                                window.testobjects10241 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Enter Response", option, response);
+                                break;
+                            case 42:
+                                window.testobjects10242 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Joined", option, response);
+                                break;
+                            case 44:
+                                window.testobjects10244 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Lobby Enter Request", option, response);
+                                break;
+                            case 45:
+                                window.testobjects10245 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Lobby Enter Response", option, response);
+                                break;
+                            case 47:
+                                window.testobjects10247 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Lobby Queue Update", option, response);
+                                break;
+                            case 50:
+                                window.testobjects10250 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Arena Direction Vector", option, response);
+                                break;
+                            case 54:
+                                window.testobjects10254 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Continue Update Request", option, response);
+                                break;
+                            case 55:
+                                window.testobjects10255 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Continue Update Response", option, response);
+                                break;
+                            case 60:
+                                window.testobjects10260 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Arena Leaderboard", option, response);
+                                break;
+                            case 61:
+                                window.testobjects10261 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Arena State", option, response);
+                                break;
+                            case 62:
+                                window.testobjects10262 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game over");
+                                LegendModDeath();
+                                //$('#pause-hud').text("PAUSE!");							
+                                break;
+                            case 63:
+                                window.testobjects10263 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Arena Party Cell Updates", option, response);
+                                break;
+                            case 64:
+                                window.testobjects10264 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Arena Party Leaderboard Entries Updates", option, response);
+                                break;
+                            case 65:
+                                window.testobjects10265 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Arena Even", option, response);
+                                break;
+                            case 66:
+                                window.testobjects10266 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Arena Current Safe Area", option, response);
+                                break;
+                            case 67:
+                                window.testobjects10267 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Continue Info", option, response);
+                                break;
+                            case 68:
+                                window.testobjects10268 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Battle Royale Arena Phase", option, response);
+                                break;
+                            case 69:
+                                window.testobjects10269 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Session Highest Mass", option, response);
+                                break;
+                            case 70:
+                                window.testobjects10270 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Soft Purchase Request", option, response);
+                                break;
+                            case 71:
+                                window.testobjects10271 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Soft Purchase Response", option, response);
+                                break;
+                            case 72:
+                                window.testobjects10272 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Apple Inapp Purchase Request", option, response);
+                                break;
+                            case 73:
+                                window.testobjects10273 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Google Inapp Purchase Request", option, response);
+                                break;
+                            case 74:
+                                window.testobjects10274 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Inapp Purchase Response", option, response);
+                                break;
+                            case 75:
+                                window.testobjects10275 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Wallet Updates", option, response);
+                                break;
+                            case 76:
+                                window.testobjects10276 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Purchase Wallet Updates", option, response);
+                                break;
+                            case 77:
+                                window.testobjects10277 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Offer Bundle Request", option, response);
+                                break;
+                            case 78:
+                                window.testobjects10278 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Offer Bundle Response", option, response);
+                                break;
+                            case 79:
+                                window.testobjects10279 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Subscription Wallet Updates", option, response);
+                                break;
+                            case 80:
+                                window.testobjects10280 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Update User Settings Request", option, response);
+                                break;
+                            case 81:
+                                window.testobjects10281 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Update User Settings Response", option, response);
+                                break;
+                            case 82:
+                                window.testobjects10282 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Stats Request", option, response);
+                                break;
+                            case 83:
+                                window.testobjects10283 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Stats Response", option, response);
+                                break;
+                            case 90:
+                                window.testobjects10290 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Server To Server Game Over Wrapper", option, response);
+                                break;
+                            case 100:
+                                window.testobjects102100 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Claim Gifts Request", option, response);
+                                break;
+                            case 101:
+                                window.testobjects102101 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Claim Gifts Response", option, response);
+                                break;
+                            case 102:
+                                window.testobjects102102 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Send Gifts", option, response);
+                                break;
+                            case 103:
+                                window.testobjects102103 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate consume Requests", option, response);
+                                break;
+                            case 104:
+                                window.testobjects102104 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Request Gifts", option, response);
+                                break;
+                            case 105:
+                                window.testobjects102105 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Facebook Invitation Reward Updates", option, response);
+                                break;
+                            case 110:
+                                window.testobjects102110 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate Timed event Request", option, response); //hourly bonus
+                                break;
+                            case 111:
+                                window.testobjects102111 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate Timed event Response", option, response); //hourly bonus
+                                break;
+                            case 112:
+                                window.testobjects102112 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate Boost Request", option, response);
+                                break;
+                            case 113:
+                                window.testobjects102113 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate Boost Response", option, response);
+                                //mass 2x1h yes [8, 1, 18, 67, 8, 113, 138, 7, 62, 10, 21, 10, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104, 16, 144, 28, 18, 37, 8, 5, 18, 22, 8, 2, 18, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104, 24, 1, 24, 255, 255, 255, 255, 255, 255, 255, 255, 255, 1]
+                                //mass 2x1h no  [8, 1, 18, 58, 8, 113, 138, 7, 53, 10, 21, 10, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104, 16, 149, 25, 18, 28, 8, 5, 18, 22, 8, 2, 18, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104, 24, 1, 24, 0]
+
+                                //mass 3x1h no [8, 1, 18, 58, 8, 113, 138, 7, 53, 10, 21, 10, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 49, 104, 16, 200, 23, 18, 28, 8, 5, 18, 22, 8, 2, 18, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 49, 104, 24, 2, 24, 0]
+
+                                break;
+                            case 114:
+                                window.testobjects102114 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate Quest Request", option, response);
+                                break;
+                            case 115:
+                                window.testobjects102115 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate Quest Response", option, response);
+                                break;
+                            case 116:
+                                window.testobjects102116 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Timed Event Updates", option, response);
+                                break;
+                            case 117:
+                                window.testobjects102116 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate User Rewards Request", option, response);
+                                break;
+                            case 118:
+                                window.testobjects102116 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate User Rewards Response", option, response);
+                                break;
+                            case 120:
+                                window.testobjects102120 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Open Potion For Product Request", option, response);
+                                break;
+                            case 121:
+                                window.testobjects102121 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Open Potion For Product Response", option, response);
+                                var bytes = [8, 1, 18, 21, 8, 110, 242, 6, 16, 10, 14, 112, 111, 116, 105, 111, 110, 83, 107, 105, 112, 66, 114, 101, 119]
+                                window.core.proxyMobileData(bytes); //Confirm Brew of any potions
+                                break;
+                            case 122:
+                                window.testobjects102122 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Brew Potion For Slot Request", option, response);
+                                break;
+                            case 123:
+                                window.testobjects102123 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Brew Potion For Slot Response", option, response);
+                                break;
+                            case 124:
+                                window.testobjects102124 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Open Potion For Product Request", option, response);
+                                break;
+                            case 125:
+                                window.testobjects102125 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Open Potion For Product Response", option, response);
+                                break;
+                            case 130:
+                                window.testobjects102130 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Leagues Info Request", option, response);
+                                break;
+                            case 131:
+                                window.testobjects102131 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Leagues Info Response", option, response);
+                                var sampleBytes = new Uint8Array(window.testobjects102131.view.buffer);
+                                var enc = new TextDecoder();
+                                window.testobjects102131DEC = enc.decode(sampleBytes);
+                                window.testobjects102131DEC2 = window.testobjects102131DEC.split('')[0]
+                                var matchNew = window.testobjects102131DEC2.split("$")
+                                window.RecordPlayers = [];
+                                for (var i = 1; i < matchNew.length; i++) {
+                                    window.RecordPlayers[i] = {}
+                                    //console.log(i)
+                                    window.RecordPlayers[i].uid = matchNew[i].split("")[0] //uid
+                                    if (matchNew[i].split("")[1]) window.RecordPlayers[i].id = matchNew[i].split("")[1].split('')[0].replace('', "").replace('', ""); //id
+                                    if (matchNew[i].split("")[1] && matchNew[i].split("")[1].split('')[1]) window.RecordPlayers[i].level = matchNew[i].split("")[1].split('')[1].split('\"')[0] //level
+                                    if (matchNew[i].split("")[1] && matchNew[i].split("")[1].split('\"')[1]) window.RecordPlayers[i].country = matchNew[i].split("")[1].split('\"')[1].split('\(')[0].replace('', ""); //country
+                                    if (matchNew[i].split("")[1]) window.RecordPlayers[i].socialid = matchNew[i].split("")[1].split('')[0] //social id						
+                                    if (matchNew[i].split("�")[1]) window.RecordPlayers[i].icon = matchNew[i].split("�")[1].split('')[0].split('%')[0].split('"')[0] //icon	
+                                    else if (matchNew[i].split("")[1]) window.RecordPlayers[i].icon = matchNew[i].split("")[1].split('')[0].substr(1).split('"')[0];
+                                }
+                                userLeaguesInfoResponse();
+                                break;
+                            case 132:
+                                window.testobjects102132 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Leagues Pass Update", option, response);
+                                break;
+                            case 141:
+                                window.testobjects102141 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Party Create Response", option, response);
+                                break;
+                            case 142:
+                                window.testobjects102142 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Party Join Request", option, response);
+                                break;
+                            case 143:
+                                window.testobjects102143 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Party Join Response", option, response);
+                                break;
+                            case 145:
+                                window.testobjects102145 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User User Party Membership Update", option, response);
+                                break;
+                            case 146:
+                                window.testobjects102146 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Party Facebook Invite", option, response);
+                                break;
+                            case 147:
+                                window.testobjects102147 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Friend List Update", option, response);
+                                break;
+                            case 150:
+                                window.testobjects102150 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Skins Create Request", option, response);
+                                break;
+                            case 151:
+                                window.testobjects102151 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Skins Create Response", option, response);
+                                break;
+                            case 152:
+                                window.testobjects102152 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Skins Delete", option, response);
+                                break;
+                            case 160:
+                                window.testobjects102160 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Automation Request Update", option, response);
+                                break;
+                            case 170:
+                                window.testobjects102170 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Action Counters Update", option, response);
+                                break;
+                            case 171:
+                                window.testobjects102171 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Ab Test Groups Update", option, response);
+                                break;
+                            case 180:
+                                window.testobjects102180 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Rewards Token Request", option, response);
+                                break;
+                            case 181:
+                                window.testobjects102181 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Rewards Token Response", option, response);
+                                break;
+                            case 182:
+                                window.testobjects102182 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Rewards Updates", option, response);
+                                break;
+                            case 183:
+                                window.testobjects102183 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate Reward Link Request", option, response);
+                                break;
+                            case 184:
+                                window.testobjects102184 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate Reward Link Response", option, response);
+                                break;
+                            case 185:
+                                window.testobjects102185 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Generic Video Ad Reward Token Request", option, response);
+                                break;
+                            case 186:
+                                window.testobjects102186 = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Generic Video Ad Reward Token Response", option, response);
+                                break;
+                            default:
+                                window.testobjects102default = node;
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Unknown", option, response);
+                                break;
+                        }
+                    }
+
+                    break;
+                case 103:
+                    window.testobjectsOpcode103 = data;
+                    //LM["accessTokenSent"] = !![];
+                    this.accessTokenSent = true;
+                    if (window.master.context == 'facebook') { //Yahnych
+                        this.sendFBIDS(window.master.fbUsers);
+                    }
+                    break;
+                case 104:
+                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Logout forced');
+                    logout();
+                    window.testobjectsOpcode104 = data;
+                    break;
+                case 112:
+                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
+                    window.testobjectsOpcode112 = data;
+                    break;
+                case 114:
+                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
+                    window.testobjectsOpcode114 = data;
+                    break;
+                case 160: //Yahnych
+                    //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
+                    window.testobjectsOpcode160 = data;
+                    //this.arrowFB = [];
+                    let num = 0
+                    let friendX = 0,
+                        friendY = 0,
+                        friendNick = null;
+                    for (; s < data.byteLength;) {
+                        num++
+                        friendX = data.getUint16(s, true);
+                        if (friendX > 32250) {
+                            friendX -= 65500;
+                        }
+                        s += 2;
+                        friendY = data.getUint16(s, true);
+                        if (friendY > 32250) {
+                            friendY -= 65500;
+                        }
+                        s += 2;
+                        if (s < data.byteLength) {
+                            friendNick = window.decodeURIComponent(window.escape(encode()));
+                        } else {
+                            friendNick = "";
+                        }
+                        //this.arrowFB.push({
+                        //    nick: friendNick,
+                        //    x: friendX,
+                        //    y: friendY
+                        //});   
+                        //console.log(num)
+                        this.arrowFB[0].visible = true;
+                        this.arrowFB[0].x = friendX;
+                        this.arrowFB[0].y = friendY;
+                        this.arrowFB[0].nick = friendNick != "" ? friendNick : this.arrowFB[0].nick;
+                    }
+                    break;
+                case 161:
+                    //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
+                    window.testobjectsOpcode161 = data;
+                    this.arrowFB[0].visible = false;
+                    break;
+                case 128:
+                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
+                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' client outdated');
+                    window.testobjectsOpcode128 = data;
+                    break;
+                case 176:
+                    window.testobjectsOpcode176 = data;
+                    this.battleRoyale.startTime = data.getUint32(s, true);
+                    break;
+                case 177:
+                    window.testobjectsOpcode177 = data;
+                    this.battleRoyale.joined = true;
+                    break;
+                case 178:
+                    window.testobjectsOpcode178 = data;
+                    this.battleRoyale.players = data.getUint16(s, true);
+                    //$('#btl-players-count').text(this.battleRoyale.players),
+                    s += 2;
+                    var y = data.getUint16(s, true);
+                    s += 2,
+                        y || (this.battleRoyale.state = 0, this.battleRoyale.joined = false),
+                        3 & y && (this.battleRoyale.state = data.getUint8(s++),
+                            this.battleRoyale.x = data.getInt32(s, true),
+                            s += 4,
+                            this.battleRoyale.y = data.getInt32(s, true),
+                            s += 4,
+                            this.battleRoyale.radius = data.getUint32(s, true),
+                            s += 4,
+                            this.battleRoyale.shrinkTime = 1000 * data.getUint32(s, true),
+                            s += 4,
+                            this.battleRoyale.shrinkTime &&
+                            (this.battleRoyale.timeLeft = ~~((this.battleRoyale.shrinkTime - Date.now() + this.serverTimeDiff) / 1000),
+                                this.battleRoyale.timeLeft < 0 && (this.battleRoyale.timeLeft = 0))),
+                        2 & y && (this.battleRoyale.targetX = data.getInt32(s, true),
+                            s += 4,
+                            this.battleRoyale.targetY = data.getInt32(s, true),
+                            s += 4,
+                            this.battleRoyale.targetRadius = data.getUint32(s, true));
+                    this.handleLeaderboard();
+                    break;
+                case 179:
+                    window.testobjectsOpcode179 = data;
+                    y = data.getUint8(s);
+                    window.decodeURIComponent(escape(encode()));
+                    y || window.decodeURIComponent(escape(encode()));
+                    break;
+                case 180:
+                    window.testobjectsOpcode181 = data;
+                    this.battleRoyale.joined = false;
+                    this.battleRoyale.rank = [];
+                    this.battleRoyale.playerRank = data.getUint32(s, true);
+                    s += 8;
+                    var profiles = data.getUint16(s, true);
+                    s += 2;
+                    for (n = 0; n < profiles; n++) {
+                        var ogarcopythelb = window.decodeURIComponent(escape(encode()));
+                        v = data.getUint32(s, true);
+                        s += 4;
+                        this.battleRoyale.rank.push({
+                            //'place': defaultmapsettings,
+                            'place': v,
+                            'name': ogarcopythelb
+                        });
+                    }
+                    var temp = '<b>[' + Premadeletter123 + ']:</b> <font color="yellow"><b>Battle Royal Ranks:</b></font>';
+                    for (var i = 0; i < legendmod.battleRoyale.rank.length; i++) {
+                        temp += '<br>' + legendmod.battleRoyale.rank[i].place + ". " + legendmod.battleRoyale.rank[i].name;
+                    }
+                    temp += '<br>' + 'Your rank: <font color="yellow"><b>' + legendmod.battleRoyale.playerRank + '</b></font>';
+                    toastr.info(temp);
+                    break;
+                case 226:
+                    window.testobjectsOpcode226 = data;
+                    var extraOptions = data.getUint16(1, !![]);
+                    data = this.createView(3);
+                    data.setUint8(0, 227);
+                    data.setUint16(1, extraOptions);
+                    this.sendMessage(data);
+                    break;
+                case 241:
+                    window.testobjectsOpcode241 = data;
+                    this.protocolKey = data.getUint32(s, true);
+                    //window.testobjectsOpcode241.getUint32(1, true);
+                    //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Received protocol key:', this.protocolKey);
+                    window.generatedProtocolKey = this.protocolKey;
+                    var key = new Uint8Array(data.buffer, s += 4);
+                    this.clientKey = this.generateClientKey(this.ws, key);
+                    //legendmod.generateClientKey("wss://live-arena-19y1u3v.agar.io:443",new Uint8Array(window.testobjectsOpcode241['buffer'], 5))
+                    if (window.master && window.master.login) {
+                        window.master.login();
+                    }
+                    break;
+                case 242:
+                    window.testobjectsOpcode242 = data;
+                    this.serverTime = 1000 * data.getUint32(s, true);
+                    this.serverTimeDiff = Date.now() - this.serverTime;
+                    break;
+                case 255:
+                    window.testobjectsOpcode255 = data;
+                    this.handleSubmessage(data);
+                    break;
+
+
+                case 16: //2020 jimboy3100 specific private servers
+                    //this.updateCells(new LMbuffer(data['buffer']), s);
+                    this.updateCells(new window.buffer.Buffer(data.buffer), s);
+                    //this.countPps()
+                    break;
+                case 64: //2020 jimboy3100 specific private servers
+                    //var message = new LMbuffer(data['buffer'])						
+                    var message = new window.buffer.Buffer(data.buffer)
+                    this.viewMinX = message.readDoubleLE(s);
+                    s += 8;
+                    this.viewMinY = message.readDoubleLE(s);
+                    s += 8;
+                    this.viewMaxX = message.readDoubleLE(s);
+                    s += 8;
+                    this.viewMaxY = message.readDoubleLE(s);
+
+                    this.setMapOffset(this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY);
+
+                    if (~~(this.viewMaxX - this.viewMinX) === LM.mapSize && ~~(this.viewMaxY - this.viewMinY) === LM.mapSize) {
+                        window.userBots.offsetX = (this.viewMinX + this.viewMaxX) / 2
+                        window.userBots.offsetY = (this.viewMinY + this.viewMaxY) / 2
+                    }
+
+                    break;
+                    //2020 jimboy3100
+
+                default:
+                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Unknown opcode:', data.getUint8(0));
+            }
+        },
+        /*countPps() {
+        	if (!defaultmapsettings.showStatsPPS) {
+        		return;
+        	}
+        	const Time = Date.now();
+        	if (!this.ppsLastRequest) {
+        		this.ppsLastRequest = Time;
+        	}
+        	if (Time - this.ppsLastRequest >= 1000) {
+        		this.pps = this.totalPackets;
+        		this.totalPackets = 0;
+        		this.ppsLastRequest = Time;
+        	}
+        	this.totalPackets++;
+        },*/
+        onMobileData: function(msg) {
+            if (msg == null) {
+                return
+            }
+            const response = window.decodeMobileData(msg);
+            //console.log(response); //ALL LOGIN AND PROFILE RESPONSE INFO
+            this.unpackageMessage(response);
+        },
+        unpackageMessage: function(r) {
+            //var returnMessage = r;
+
+            var type = r.uncompressedData.type;
+            switch (type) {
+                case 71:
+                    console.log("returnMessage = r.get_softPurchaseResponseField();");
+                    break;
+                case 74:
+                    console.log("returnMessage = r.get_inappPurchaseResponseField();");
+                    break;
+                case 20:
+                    var u = r.uncompressedData.disconnectField;
+                    this.disconnectMessage(u.reason);
+
+                    this.loggedIn = false;
+                    window.logout && window.logout();
+
+                    break;
+                case 113:
+                    var u = r.uncompressedData.activateBoostResponseField;
+                    this.updateWalletInfo([u.productUpdates[0].userWalletItem]);
+                    this.displayActiveBoosts([u.userBoostItem]);
+                    break;
+                case 11:
+                    this.user = {
+                        coins: 0,
+                        dna: 0,
+                        trophy: 0,
+                        boosts: {},
+                        rushBoosts: {},
+                        skins: {},
+                        skinPieces: {},
+                        potions: {},
+                        potionsStatus: {},
+                        skipBrew: {}
+                    };
+                    var u = r.uncompressedData.loginResponseField;
+
+                    if (window.coinsTimer) clearTimeout(window.coinsTimer);
+                    window.coinsTimer = setTimeout(() => {
+                        window.autocoins()
+                    }, 3000);
+
+                    window.localStorage.setItem("getLatestID", u.latestConfiguration);
+
+                    this.updateWalletInfo(u.userWallet);
+
+                    this.displayActiveBoosts(u.userBoosts);
+
+                    this.user.stats = u.userStats;
+                    this.displayStats(u.userStats);
+
+                    this.updateEvents(u.userTimedEvents)
+
+                    this.displayActiveQuests(u.userActiveQuests); //FIX IT
+
+                    this.createSkinsHTML();
+
+                    this.updateUserSettings(u.userSettings)
+
+                    this.updateUserInfo(u.userInfo)
+
+                    this.updatePotions(u.userPotions)
+                    break;
+                case 81:
+                    var u = r.uncompressedData.updateUserSettingsResponseField;
+                    this.updateUserSettings(u.updatedUserSettings)
+                    break;
+                case 111:
+                    var u = r.uncompressedData.activateTimedEventResponseField;
+                    this.updateProducts(u.productUpdates);
+                    this.updateEvents([u.userTimedEvent])
+                    break;
+                case 76:
+                    console.log("returnMessage = r.get_purchaseWalletUpdatesField();");
+                    break;
+                case 62:
+                    var u = r.uncompressedData.gameOverField;
+                    this.displayStats(u.userStats);
+                    var exp = 100,
+                        i = u.xpLevelUpdates[0];
+                    if (i.finalLevel != 100) exp = ~~(i.finalXpForLevel * 100 / this.agarExp(i.finalLevel));
+                    $('.progress-bar-striped').width(exp + '%');
+                    $('.progress-bar-star').text(i.finalLevel);
+                    this.updateProducts(u.productUpdates);
+                    if (u.potionInfo && u.potionInfo.newUserPotion) {
+                        this.newPotion(u.potionInfo.newUserPotion);
+                    };
+                    if (defaultmapsettings.gameOverStats) {
+                        this.showSessionStats(u.gameSessionStats);
+                    }
+                    break;
+                case 75:
+                    console.log("returnMessage = r.get_walletUpdatesField();");
+                    break;
+                case 116:
+                    console.log("returnMessage = r.get_userTimedEventUpdatesField();");
+                    break;
+                case 33:
+                    console.log("returnMessage = r.get_configurationChangeField();");
+                    break;
+                case 101:
+                    console.log("returnMessage = r.get_claimGiftsResponseField();");
+                    break;
+                case 115:
+                    var u = r.uncompressedData.activateQuestResponseField;
+                    this.updateProducts(u.productUpdates);
+                    this.displayActiveQuests([u.userQuest])
+                    break;
+                case 78:
+                    console.log("returnMessage = r.get_offerBundleResponseField();");
+                    break;
+                case 123:
+                    var u = r.uncompressedData.brewPotionForSlotResponseField;
+                    this.updatePotions(u.userPotions)
+                    break;
+                case 121:
+                    console.log("returnMessage = r.get_openPotionForProductResponseField();");
+                    break;
+                case 125:
+                    var u = r.uncompressedData.openPotionForSlotResponseField;
+                    this.updateProducts(u.productUpdates);
+                    this.updatePotions(u.userPotions)
+                    break;
+                case 131:
+                    console.log("returnMessage = r.get_userLeaguesInfoResponseField();");
+                    //window.returnMessage = r.get_userLeaguesInfoResponseField()
+                    break;
+                case 132:
+                    console.log("returnMessage = r.get_userLeaguesPassUpdateField();");
+                    break;
+                case 83:
+                    console.log("returnMessage = r.get_userStatsResponseField();");
+                    break;
+                case 105:
+                    console.log("returnMessage = r.get_facebookInvitationRewardUpdatesField();");
+                    break;
+                case 22:
+                    console.log("returnMessage = r.get_noProperResponseField();");
+                    break;
+                case 184:
+                    console.log("returnMessage = r.get_activateRewardLinkResponseField();");
+                    break;
+                case 186:
+                    console.log("returnMessage = r.get_genericVideoAdRewardTokenResponseField();");
+                    break;
+                case 151:
+                    console.log("returnMessage = r.get_userSkinsCreateResponseField();");
+                    break;
+                case 170:
+                    var u = r.uncompressedData.actionCountersUpdateField,
+                        prev = this.user.actionCounters;
+                    if (u.potionsObtained > prev.potionsObtained) toastr.info('<b>[' + Premadeletter123 + ']:</b> New potion');
+                    if (u.questsCompleted > prev.questsCompleted) toastr.info('<b>[' + Premadeletter123 + ']:</b> Quest completed');
+                    if (u.skinsCreated > prev.skinsCreated) toastr.info('<b>[' + Premadeletter123 + ']:</b> Skin created');
+                    break;
+                default:
+                    //null
+                    console.log("unknown type", type)
+            }
+            //return returnMessage
+        },
+        disconnectMessage(type) {
+            switch (type) {
+                case 1:
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Incompatible client')
+                    break;
+                case 2:
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Packet not authorized')
+                    break;
+                case 3:
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Login elsewhere')
+                    break;
+                case 4:
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Server offline')
+                    break;
+                case 5:
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. User banned')
+                    break;
+                case 6:
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Ping error')
+                    break;
+                case 7:
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Unknown game type')
+                    break;
+                case 8:
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Too many operations')
+                    break;
+                case 9:
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Unreachable realm')
+                    break;
+                case 10:
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. User deleted')
+                    break;
+                case 11:
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Not authorized by realm')
+                    break;
+                case 12:
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Bad request')
+                    break;
+                case 13:
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Reset by peer')
+                    break;
+                case 14:
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Invalid token')
+                    break;
+                case 15:
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Expired token')
+                    break;
+                case 16:
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. State transfer error')
+                    break;
+                default:
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Unknown error: ' + type)
+            }
+        },
+        updateProducts(prod) {
+            for (var i = 0; i < prod.length; i++) {
+                this.updateWalletInfo([prod[i].userWalletItem])
+            }
+        },
+        updateWalletInfo(items) {
+            for (var i = 0; i < items.length; i++) {
+                var type = items[i].type;
+                switch (type) {
+                    case 1:
+                        var name = items[i].productId;
+                        switch (name) {
+                            case "coin":
+                                this.user.coins = items[i].amount;
+                                $("#coins").html(`💰` + this.user.coins);
+                                break;
+                            case "dna":
+                                this.user.dna = items[i].amount;
+                                $("#dna").html(`💊` + this.user.dna);
+                                break;
+                            case "create_skin_token_for_vip_weekly":
+                                //this.user.skinCreateVIPTokens = items[i].amount;
+                                break;
+                            default:
+                                console.log("unknown item", items[i])
+                        }
+                        break;
+                    case 2:
+                        this.user.boosts[items[i].productId] = items[i].amount;
+                        $('#s-boost option[value=\"' + items[i].productId + '\"]').text(' (' + items[i].amount + ') ' + ' [' + application.boostsInfo[items[i].productId].price + ']  ' + application.boostsInfo[items[i].productId].name);
+                        break;
+                    case 3:
+                        /*var name = items[i].productId;
+                        if (name.includes && name.includes("_level_")) {
+                          var level = name[name.length-1],
+                              s = name.slice(0,name.length-1);
+                          console.log(s, level)
+                          if(level == "1") {
+                            if(this.user.skins.hasOwnProperty(s+"2")) {break;}
+                            if(this.user.skins.hasOwnProperty(s+"3")) {break;}
+                          } else if(level == "2") {
+                            if(this.user.skins.hasOwnProperty(s+"1")) {
+                              //this.user.skins[name+"1"].disabled = true;
+                              delete this.user.skins[s+"1"];}
+                            if(this.user.skins.hasOwnProperty(s+"3")) {break;}
+                          } else if(level == "3") {
+                            if(this.user.skins.hasOwnProperty(s+"1")) {
+                              //this.user.skins[name+"2"].disabled = true;
+                              delete this.user.skins[s+"1"];}
+                            if(this.user.skins.hasOwnProperty(s+"2")) {
+                              //this.user.skins[name+"2"].disabled = true;
+                              delete this.user.skins[s+"2"];}
+                          }
+                        }*/
+                        var skin = this.getLink(items[i].productId);
+                        if (skin) {
+                            var url = this.urlReplaces.hasOwnProperty(skin[0]) ? this.urlReplaces[skin[0]] : skin[0],
+                                pID = items[i].productId;
+                            if (pID.includes("_level_") && this.user.skins.hasOwnProperty(skin[0])) {
+                                if (Number(pID[pID.length - 1]) < Number(this.user.skins[skin[0]].productId[pID.length - 1])) {
+                                    pID = this.user.skins[skin[0]].productId;
+                                }
+                            }
+                            this.user.skins[skin[0]] = {
+                                amount: items[i].amount,
+                                type: skin[1],
+                                url: url,
+                                productId: pID
+                            };
+                        } else { //console.log("undefined skin", items[i].productId, skin ) 
+                        };
+                        break;
+                    case 4:
+                        if (items[i].amount > 0) window.activateQuest();
+                        break;
+                    case 5:
+                        this.user.rushBoosts[items[i].productId] = items[i].amount;
+                        break;
+                    case 6:
+                        this.user.potions[items[i].productId] = items[i].amount;
+                        break;
+                    case 7:
+                        this.user.trophy = items[i].amount;
+                        $("#trophy").html(`🏆` + this.user.trophy);
+                        break;
+                    case 8:
+                        this.user.skinPieces[items[i].productId] = items[i].amount;
+                        break;
+                    case 9:
+                        this.user.skipBrew[items[i].productId] = items[i].amount;
+                        break;
+                    case 10:
+                        //this.user.skinCreateTokens = items[i].amount;
+                        break;
+                    case 11:
+                        var skin = this.getLink(items[i].productId),
+                            url = this.urlReplaces.hasOwnProperty(skin[0]) ? this.urlReplaces[skin[0]] : skin[0];
+                        if (skin) this.user.skins[skin[0]] = {
+                            amount: items[i].amount,
+                            type: skin[1],
+                            url: url,
+                            productId: items[i].productId
+                        };
+                        break;
+                    case 12:
+                        //this.user.gameContinueToken = items[i].amount;
+                        break;
+                    case 13:
+                        var name = items[i].productId;
+                        switch (name) {
+                            case "arena_event_token":
+                                //this.user.arenaEventToken = items[i].amount;
+                                break;
+                            case "season_token":
+                                //this.user.seasonToken = items[i].amount;
+                                break;
+                            default:
+                                console.log("unknown item", items[i])
+                        }
+                        break;
+                    case 14:
+                        //this.user.videoRewards = items[i].amount;
+                        break;
+                    default:
+                        console.log("unknown item", items[i])
+                }
+            }
+        },
+        showSessionStats(u) {
+            toastr.info('<b>[' + Premadeletter123 + ']:</b><br> ' +
+                '<b class="message-nick">Final mass:</b> ' + u.finalMass + '<br>' +
+                '<b class="message-nick">Final position:</b> ' + u.finalPosition + '<br>' +
+                '<b class="message-nick">Food eaten:</b> ' + u.foodEaten + '<br>' +
+                '<b class="message-nick">Highest mass:</b> ' + u.highestMass + '<br>' +
+                '<b class="message-nick">Longest time alive:</b> ' + u.longestTimeAlive + '<br>' +
+                '<b class="message-nick">Mass consumed:</b> ' + u.massConsumed + '<br>' +
+                '<b class="message-nick">Normal cells eaten:</b> ' + u.normalCellsEaten + '<br>' +
+                '<b class="message-nick">Players eaten:</b> ' + u.playersEaten + '<br>' +
+                '<b class="message-nick">Time on leaderboard:</b> ' + u.timeInLeaderboard + '<br>' +
+                '<b class="message-nick">Total time:</b> ' + u.timeTotal + '<br>' +
+                '<b class="message-nick">Top position:</b> ' + u.topPosition + '<br>' +
+                '<b class="message-nick">Viruses eaten:</b> ' + u.virusesEaten)
+        },
+        updateEvents(event) {
+            if (event.length == 0) window.questActivationReq()
+            for (var i = 0; i < event.length; i++) {
+                var e = event[i],
+                    type = e.eventId,
+                    timer = e.nextAvailableInSeconds * 1000;
+                switch (type) {
+                    case "dailyQuest":
+                        if (window.dailyQuestTimer) clearTimeout(window.dailyQuestTimer);
+                        window.dailyQuestTimer = setTimeout(() => {
+                            window.questActivationReq()
+                        }, timer);
+                        break;
+                    case "hourlyBonus":
+                        if (window.coinsTimer) clearTimeout(window.coinsTimer);
+                        window.coinsTimer = setTimeout(() => {
+                            window.autocoins()
+                        }, timer);
+                        break;
+                    case "potionSkipBrew": //maybe it help to autobrewing
+                        console.log("can open after", timer / 60000)
+                        //if(window.coinsTimer) clearTimeout(window.coinsTimer);
+                        //window.coinsTimer = setTimeout(()=>{window.activateQuest()},timer);
+                        break;
+                    default:
+                        console.log("unknown event", e)
+                }
+            }
+        },
+        newPotion(s) {
+            if (window.autobrewTimer) clearTimeout(window.autobrewTimer);
+            window.autobrewTimer = setTimeout(() => {
+                LM.autobrew()
+            }, 3000);
+            var t = s.productId,
+                r = s.secondsRemaining,
+                potion = "potion" + s.slot,
+                time = new Date(Date.now() + r * 1000),
+                expire = time.toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
+            this.user.potionsStatus[potion] = {
+                type: t,
+                status: s.status,
+                expires: time,
+                slot: s.slot
+            };
+            $(`#${potion} img`).attr('src', `https://legendmod.ml/banners/${t}.png`);
+            if (s.status == 1) {
+                if (defaultmapsettings.autobrewing && this.user.brewingEnd < Date.now()) window.brewPotion(s.slot);
+                $(`#${potion} img`).css("border-color", "red");
+                $(`#${potion} div`).css("border-color", "red");
+                $(`#${potion} div`).text('brew');
+            };
+
+            this.user.emptySlots -= 1;
+        },
+        updatePotions(slots) {
+            var empty = ["potion1", "potion2", "potion3"];
+            this.user.brewedSlots = 0;
+            if (window.autobrewTimer) clearTimeout(window.autobrewTimer);
+            window.autobrewTimer = setTimeout(() => {
+                LM.autobrew()
+            }, 3000);
+            for (var i = 0; i < slots.length; i++) {
+                var s = slots[i],
+                    t = s.productId,
+                    r = s.secondsRemaining,
+                    potion = "potion" + s.slot,
+                    time = new Date(Date.now() + r * 1000),
+                    expire = time.toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1'),
+                    index = empty.indexOf(potion);
+                if (index > -1) empty.splice(index, 1);
+                this.user.potionsStatus[potion] = {
+                    type: t,
+                    status: s.status,
+                    expires: time,
+                    slot: s.slot
+                };
+                $(`#${potion} img`).attr('src', `https://legendmod.ml/banners/${t}.png`);
+                if (s.status == 1) {
+                    $(`#${potion} img`).css("border-color", "red");
+                    $(`#${potion} div`).css("border-color", "red");
+                    $(`#${potion} div`).text('brew');
+                } else if (s.status == 2) {
+                    this.user.brewingEnd = time;
+                    if (window.autobrewTimer) clearTimeout(window.autobrewTimer);
+                    window.autobrewTimer = setTimeout(() => {
+                        LM.autobrew()
+                    }, r * 1000);
+                    $(`#${potion} img`).css("border-color", "yellow");
+                    $(`#${potion} div`).css("border-color", "yellow");
+                    $(`#${potion} div`).text(expire);
+                } else if (s.status == 3) {
+                    this.user.brewedSlots++;
+                    $(`#${potion} img`).css("border-color", "green");
+                    $(`#${potion} div`).css("border-color", "green");
+                    $(`#${potion} div`).text('open');
+                };
+            }
+            this.user.emptySlots = empty.length;
+            empty.forEach((potion) => {
+                $(`#${potion} img`).attr('src', `https://legendmod.ml/banners/potion_empty.png`);
+                $(`#${potion} img`).css("border-color", "grey");
+                $(`#${potion} div`).css("border-color", "grey");
+                $(`#${potion} div`).text('empty');
+            })
+        },
+        autobrew() {
+            if (defaultmapsettings.autobrewing && (window.master.context == "facebook" || window.master.context == "google")) {
+                for (var potion of Object.values(LM.user.potionsStatus)) {
+                    if (potion.status == 1) {
+                        window.brewPotion(potion.slot);
+                        break;
+                    }
+                };
+            }
+        },
+        getPotionForOpen() {
+            if ((window.master.context == "facebook" || window.master.context == "google")) {
+                for (var potion of Object.values(LM.user.potionsStatus)) {
+                    if (potion.status == 3 || (potion.status == 2 && this.user.brewingEnd < Date.now())) {
+                        window.openPotion(potion.slot);
+                        break;
+                    }
+                };
+            }
+        },
+        updateUserSettings(s) {
+            for (var i = 0; i < s.length; i++) {
+                var key = s[i].key;
+                switch (key) {
+                    case 1:
+                        var skin = this.getLink(s[i].valueString);
+                        if (skin && skin[0]) {
+                            url = this.urlReplaces.hasOwnProperty(skin[0]) ? this.urlReplaces[skin[0]] : skin[0];
+                            $('.vanilla-skin-preview').attr('src', url);
+                        }
+                        break;
+                    case 2:
+                        //stop moving on relise (1,0)
+                        break;
+                    case 3:
+                        //direction on touch (1,0)
+                        break;
+                    case 4:
+                        //touch button position (string)
+                        break;
+                    case 5:
+                        //show mass (1,0)
+                        break;
+                    case 6:
+                        //show arrow(to cursor) (1,0)
+                        break;
+                    case 7:
+                        //dark theme (1,0)
+                        break;
+                    case 8:
+                        //show level (1,0)
+                        break;
+                    case 9:
+                        //language (string)
+                        break;
+                    case 10:
+                        //game sounds (1,0)
+                        break;
+                    case 11:
+                        //menu sounds (1,0)
+                        break;
+                    case 12:
+                        //show quest (1,0)
+                        break;
+                    case 13:
+                        //show quest (1,0)
+                        this.user.showOnline = s[i].valueInt32; //FIX IT
+                        break;
+                    default:
+                        console.log("unknown settings", s[i])
+                }
+            }
+        },
+        urlReplaces: {},
+        getImg(url, name, callback) {
+            const app = this;
+            var img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.setAttribute("alt", name);
+            img.onload = function() {
+                if (this.complete && this.width && this.height) {
+                    callback(img);
+                }
+            };
+            img.onerror = function() {
+                //console.log("error loading image: "+ url);
+                if (url.includes('configs-web.agario.miniclippt')) {
+                    var newURL = "https://legendmod.ml/vanillaskins/" + url.split('/').pop();
+                    app.urlReplaces[url] = newURL;
+                    //console.log("new destination is: " + newURL);
+                    app.user.skins[url].url = newURL;
+                    app.getImg(newURL, name, callback);
+                    return newURL;
+
+                } else if (url.includes('legendmod.ml/vanillaskins/"')) {
+                    if (!application.brokenSkins.hasOwnProperty(url)) {
+                        application.brokenSkins[url] = 1;
+                        application.messageToDiscord('Unknown skin: ', url);
+                    }
+                    return url;
+                }
+            };
+            img.src = url;
+        },
+        getLink(link) {
+            var type = "premium";
+            if (link != null) {
+
+                if (link.includes && link.includes("custom_")) {
+                    type = "custom";
+                    return ["https://configs.agario.miniclippt.com/live/custom_skins/" + link + ".png", type];
+                } else if (link.includes && link.includes("_level_")) {
+                    type = "potion";
+                    var link1 = link.replace('skin_', '')
+                    link1 = link1.replace('_level_1', '').replace('_level_2', '').replace('_level_3', '');
+                    link1 = link1.charAt(0).toUpperCase() + link1.slice(1);
+                    link1 = makeUpperCaseAfterUnderline(link1);
+                    return ["https://configs-web.agario.miniclippt.com/live/" + window.agarversion + link1 + ".png", type];
+                } else if (window.LMAgarGameConfiguration != undefined) {
+                    for (var player = 0; player < window.EquippableSkins.length; player++) {
+                        if (window.EquippableSkins[player].productId == link && window.EquippableSkins[player].image != "uses_spine") {
+                            return ["https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image, type];
+                        }
+                    }
+                }
+            }
+        },
+        createSkinsHTML() {
+            const s = this.user.skins;
+            $("#player-skins").html(``);
+            var callback = function(img) {
+                img.style = "display:inline-block;width:100px;height:100px;border-radius: 50px;";
+                $("#player-skins").append(img);
+            };
+            for (var [key, value] of Object.entries(s)) {
+                //if(value.hasOwnProperty('disabled')) return;
+                this.getImg(value.url, value.productId, callback);
+            }
+        },
+        displayActiveBoosts(items) {
+            for (var i = 0; i < items.length; i++) {
+                var item = items[i];
+                if (item.productId[0] == "x") {
+                    $("#xp-active").html(`${application.boostsInfo[item.productId].name} expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
+                } else if (item.productId[0] == "m") {
+                    $("#mass-active").html(`${application.boostsInfo[item.productId].name} expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
+                }
+            }
+        },
+        displayActiveQuests(items) {
+            if (items.length == 0) window.questActivationReq()
+            for (var i = 0; i < items.length; i++) {
+                var item = items[i],
+                    type = item.type;
+                switch (type) {
+                    case "normal_cells_eaten":
+                        $("#quest-active").html(`Eat ${item.goal} cells. Expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
+                        break;
+                    case "viruses_eaten":
+                        $("#quest-active").html(`Eat ${item.goal} viruses. Expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
+                        break;
+                    case "food_eaten":
+                        $("#quest-active").html(`Eat ${item.goal} dots. Expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
+                        break;
+                    case "highest_mass":
+                        $("#quest-active").html(`Reach ${item.goal} mass. Expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
+                        break;
+                    case "top_position":
+                        $("#quest-active").html(`Reach TOP-${item.goal} position. Expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
+                        break;
+                    case "time_total":
+                        $("#quest-active").html(`Survive ${item.goal/60} minutes. Expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
+                        break;
+                    default:
+                        $("#quest-active").html(`${type} : ${item.goal}. Expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
+                }
+            }
+        },
+        displayStats(s) {
+            $("#stats-content").html(`
+All time score     : ${s.allTimeScore}<br/>
+Games played      : ${s.gamesPlayed}<br/>
+Highest mass      : ${s.highestMass}<br/>
+Longest time alive : ${(s.longestTimeAlive/3600).toFixed(3)} H<br/>
+Mass consumed     : ${s.massConsumed}<br/>
+Most cells eaten   : ${s.mostCellsEaten}
+      `)
+        },
+        updateUserInfo(i) {
+            var exp = 100;
+            if (i.level != 100) exp = ~~(i.xp * 100 / this.agarExp(i.level));
+            $('.progress-bar-striped').width(exp + '%');
+            $('.progress-bar-star').text(i.level);
+            this.user.actionCounters = i.actionCounters;
+            $("#user-info").html(`
+Account age     : ${~~(i.accountAge/3600/24)}D<br/>
+Potions obtained : ${i.actionCounters.potionsObtained}<br/>
+Quests completed      : ${i.actionCounters.questsCompleted}<br/>
+Skins created : ${i.actionCounters.skinsCreated}<br/>
+Country     : ${i.latestCountryCode}<br/>
+Game name     : ${i.displayName}<br/>
+      `)
+        },
+        agarExp(q) {
+            var s = {};
+            var i = 0,
+                exp = 0;
+            for (i = 1; i <= q; i++) {
+                exp += i * 100;
+            }
+            exp -= 500;
+            if (q <= 4) {
+                exp = q == 1 ? 50 : q == 2 ? 125 : q == 3 ? 250 : 500;
+            }
+            return exp
+        },
+        handleSubmessage(message) {
+            var e = 0;
+            switch ((message = this.decompressMessage(message)).readUInt8(e++)) {
+                case 16:
+                    this.updateCells(message, e);
+                    //this.countPps()
+                    break;
+                case 64:
+                    this.viewMinX = message.readDoubleLE(e);
+                    e += 8;
+                    this.viewMinY = message.readDoubleLE(e);
+                    e += 8;
+                    this.viewMaxX = message.readDoubleLE(e);
+                    e += 8;
+                    this.viewMaxY = message.readDoubleLE(e);
+                    this.setMapOffset(this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY);
+
+                    if (~~(this.viewMaxX - this.viewMinX) === LM.mapSize && ~~(this.viewMaxY - this.viewMinY) === LM.mapSize) {
+                        window.userBots.offsetX = (this.viewMinX + this.viewMaxX) / 2;
+                        window.userBots.offsetY = (this.viewMinY + this.viewMaxY) / 2;
+                    }
+                    break;
+                default:
+                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Unknown sub opcode:', message.readUInt8(0));
+            }
+        },
+        handleLeaderboard() {
+            /*                for (var t = '', e = '', i = 0; i < this.leaderboard.length && defaultmapsettings.leaderboardlimit != i; i++) {
+                                var s = '<span>';
+                                'isPlayer' === this.leaderboard[i].id ? s = '<span class=\"me\">' : ogarcopythelb.clanTag.length && 0 == this.leaderboard[i].nick.indexOf(ogarcopythelb.clanTag) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + application.escapeHTML(this.leaderboard[i].nick) + '</span>';
+                            } */
+            window.teammatenicks = [];
+            window.teammatelegendmodnicks = [];
+            if (application.top5) {
+                for (i = 0; i < application.top5.length; i++) {
+                    window.teammatelegendmodnicks.push(application.top5[i].nick);
+                }
+            }
+            window.teammatenicks = window.teammatelegendmodnicks;
+            if (window.agartoolteammatenicks != undefined) {
+                window.teammatenicks = window.teammatenicks.concat(window.agartoolteammatenicks);
+            }
+            let text = '';
+            let teamText = '';
+
+            //
+            this.playerPositionMulti = null;
+            /*if(LM.multiBoxPlayerExists && (window.multiboxPlayerEnabled || window.multiboxPlayerEnabledSaved)){
+            	
+            	if (window.multiboxPlayerEnabled){
+            		for (var i=0; i<spects[window.multiboxPlayerEnabled-1].leaderboard.length; i++){
+            			if (spects[window.multiboxPlayerEnabled-1].leaderboard[i].id == "isPlayer"){		
+            					if (this.leaderboard[i]){ 
+            						this.leaderboard[i].id = 'isPlayer'
+            						this.playerPositionNickMulti  = this.leaderboard[i].nick
+            						this.playerPositionMulti = i
+            					}								
+            				}
+            			}
+            		}                      
+            	else if (window.multiboxPlayerEnabledSaved){
+            		for (var i=0; i<spects[window.multiboxPlayerEnabledSaved-1].leaderboard.length; i++){
+            			if (spects[window.multiboxPlayerEnabledSaved-1].leaderboard[i].id == "isPlayer"){	
+            				if (this.leaderboard[i]){
+            					this.leaderboard[i].id = 'isPlayer'	
+            					this.playerPositionNickMulti  = this.leaderboard[i].nick
+            					this.playerPositionMulti = i
+            				}
+            			}
+            		}
+            	}  
+            	
+            }*/
+            //			
+            for (var temp = 0; temp < this.leaderboard.length && defaultmapsettings.leaderboardlimit != temp; temp++) {
+                var html = '<span>';
+                if (this.leaderboard[temp].id === 'isPlayer') {
+                    html = '<span class=\"me\">';
+                } else if (LM.multiBoxPlayerExists && this.leaderboard[temp].nick == profiles[application.selectedOldProfile].nick && this.leaderboard[temp].nick != "") {
+                    html = '<span class=\"me\">';
+                } else {
+                    if (ogarcopythelb.clanTag.length && 0 != window.teammatenicks.includes(this.leaderboard[temp].nick)) {
+                        html = '<span class=\"teammate\">';
+                    } else if (this.leaderboard[temp].isFriend) {
+                        html = '<span class=\"teammate\">';
+                    }
+
+                }
+                teamText += html + (temp + 1) + '. ' + application.escapeHTML(this.leaderboard[temp].nick) + '</span>';
+            }
+            //
+            if (LM.multiBoxPlayerExists) {
+                for (var temp = 0; temp < this.leaderboard.length; temp++) {
+                    if (this.leaderboard[temp].nick == profiles[application.selectedOldProfile].nick && profiles[application.selectedOldProfile].nick != profiles[application.selectedProfile].nick && this.leaderboard[temp].nick != "") {
+                        this.playerPositionMulti = temp;
+                    }
+                }
+            }
+            var tempPositionText = null
+            var tempPositionText2 = null
+            if (this.playerPositionMulti && this.playerPositionMulti > defaultmapsettings.leaderboardlimit) {
+                tempPositionText = '<span class=\"me\">' + (this.playerPositionMulti + 1) + '. ' + application.escapeHTML(this.leaderboard[this.playerPositionMulti].nick) + '</span>';
+            }
+            //			
+            if (this.playerPosition > defaultmapsettings.leaderboardlimit) {
+                tempPositionText2 = '<span class=\"me\">' + this.playerPosition + '. ' + application.escapeHTML(this.playerNick) + '</span>';
+                //defaultmapsettings['showLbData'];
+            }
+            if (!tempPositionText) {
+                if (tempPositionText2) teamText += tempPositionText2
+            } else if (tempPositionText) {
+                if (this.playerPositionMulti && (this.playerPositionMulti + 1) > this.playerPosition) {
+                    teamText += tempPositionText2
+                    teamText += tempPositionText
+                } else if (this.playerPositionMulti && (this.playerPositionMulti + 1) < this.playerPosition) {
+                    teamText += tempPositionText
+                    teamText += tempPositionText2
+                } else if (this.playerPositionMulti && (this.playerPositionMulti + 1) == this.playerPosition) { //bug
+                    teamText += tempPositionText2
+                }
+            }
+
+
+            //if (legendmod.gameMode != ":battleroyale" && LM.ws && !LM.ws.includes("imsolo.pro")) {
+            if (legendmod.gameMode != ":battleroyale" && LM.ws && LM.integrity) {
+                //if (legendmod.gameMode != ":battleroyale" && LM.ws) {	
+                teamText += '<span class="me">' + Premadeletter130 + ': ' + this.leaderboard.length + '</span>';
+                if (defaultmapsettings.FBTracking && legendmod.friends && legendmod.friends > 0) {
+                    teamText += '<span class="teammate">' + 'Friends' + ': ' + legendmod.friends + '</span>';
+                }
+                //t += '<span class="teammate">' + 'Friends' + ': ' + legendmod.friends + '</span>';
+            } else if (legendmod.gameMode == ":battleroyale") {
+                teamText = '<span>';
+                if (legendmod.battleRoyale.shrinkTime - Date.now() / 1000 > 0) {
+                    teamText += '<span>Shrink time: ' + legendmod.battleRoyale.timeLeft + '</span>';
+                }
+                teamText += '<span class="me">' + 'Players: ' + legendmod.battleRoyale.players + '</span>';
+                teamText += '</span>';
+            }
+            if (defaultmapsettings.showLbData) {
+                for (var l2ngth = 0; l2ngth < this.ghostCells.length && l2ngth < defaultmapsettings.leaderboardlimit; l2ngth++) {
+                    //
+                    var w = this.ghostCells[l2ngth].x;
+                    var u = this.ghostCells[l2ngth].y;
+                    /*
+					w = window.legendmod.vector[window.legendmod.vnr][0] ? legendmod.translateX(this.ghostCells[o].x) : this.ghostCells[o].x; 
+                    u = window.legendmod.vector[window.legendmod.vnr][1] ? legendmod.translateY(this.ghostCells[o].y) : this.ghostCells[o].y; 
+					*/
+                    //
+                    text += '<span class=\"lb-data\" id= "' + 'leaderboardtargeting' + l2ngth + '" style="pointer-events: auto;" onclick="window.legendmod.targetingLead(' + l2ngth + ');">';
+                    text += '<span class=\"top5-mass-color\">[' + application.shortMassFormat(this.ghostCells[l2ngth].mass) + ']</span>';
+                    //e += '<span class=\"hud-main-color\">[' + application.calculateMapSector(this.ghostCells[o].x, this.ghostCells[o].y) + ']</span>', e += '</span>';
+                    text += '<span class=\"hud-main-color\">[' + application.calculateMapSector(w + legendmod.mapOffsetX, u + legendmod.mapOffsetY) + ']</span>', text += '</span>';
+                }
+            }
+            application.displayLeaderboard(teamText, text);
+            //application['displayPartyBots']();
+
+
+
+
+            ///////////////// establish core.registerSkin
+            if (defaultmapsettings.vanillaSkins == true && window.customskinsname != null && application.customSkinsMap[window.customskinsname] == null && window.customskinsarray[window.customskinsname] && window.customskinsarray[window.customskinsname].customskinsurl != null) {
+                for (i = 0; i <= this.leaderboard.length - 1; i++) {
+                    if (this.leaderboard[i].nick == window.customskinsname) {
+                        application.customSkinsMap[window.customskinsname] = window.customskinsarray[window.customskinsname].customskinsurl;
+                        application.loadSkin(application.customSkinsCache, window.customskinsarray[window.customskinsname].customskinsurl, window.customskinsarray[window.customskinsname].customskinanimated);
+                        window.customskinsname = null;
+                        window.customskinsarray[window.customskinsname] == null
+                    }
+                }
+            }
+            //if ($("#ao2t-capture").length && $("#ao2t-capture").hasClass("connected")) { //if existed and connected and visible
+            for (var e = 0; e < legendmod.ghostCells.length; e++) {
+                window.predictedGhostCells[e] = {};
+                window.predictedGhostCells[e] = legendmod.ghostCells[e];
+                if (legendmod.leaderboard[e]) {
+                    window.predictedGhostCells[e].id = legendmod.leaderboard[e].id;
+                    window.predictedGhostCells[e].nick = legendmod.leaderboard[e].nick;
+                    window.predictedGhostCells[e].isFriend = legendmod.leaderboard[e].isFriend;
+                }
+            }
+
+            //}				
+        },
+        targetingLead(o) {
+            window.targetingLeadX = legendmod.ghostCells[o].x;
+            window.targetingLeadY = legendmod.ghostCells[o].y;
+            legendmod.drawCommander2 = true;
+        },
+        flushCellsData() {
+            this.indexedCells = {};
+            this.cells = [];
+            this.playerCells = [];
+            this.playerCellsMulti = []; //for multi fix
+            this.playerCellIDs = [];
+            this.ghostCells = [];
+            this.food = [];
+            this.foodMulti = []; //for multi fix
+            this.viruses = [];
+
+            //for SPECT
+            //this.ghostCellsStep = 0;
+            this.flushSpecsData();
+        },
+        flushSpecsData() {
+            this.isSpectateEnabled = false;
+            this.isFreeSpectate = false;
+            if (window.spects) {
+                window.spects.forEach((spect) => {
+                    spect.closeConnection()
+                })
+                window.spects = [];
+            }
+        },
+        setMapOffset(left, top, right, bottom) {
+            //if (right - left > 14000 && bottom - top > 14000) {
+            //if (!legendmod.integrity || (right - left) > 14000 && (bottom - top) > 14000) { //2020 jimboy3100
+
+            //if (!LM.integrity && !this.mapOffsetFixed){ 
+            if (!this.integrity) {
+                this.mapSize = Math.abs((left - right));
+                this.mapOffset = 0
+            } else if (this.integrity) {
+                this.mapSize = 14142 //14142.13562
+                this.mapOffset = this.mapSize / 2
+            }
+
+            if (!this.integrity || (right - left) > (this.mapSize - 142) && (bottom - top) > (this.mapSize - 142)) { //2020 jimboy3100
+
+                if (this.integrity) {
+                    this.mapOffsetX = this.mapOffset - right;
+                    this.mapOffsetY = this.mapOffset - bottom;
+                    this.mapMinX = ~~(-this.mapOffset - this.mapOffsetX);
+                    this.mapMinY = ~~(-this.mapOffset - this.mapOffsetY);
+                    this.mapMaxX = ~~(this.mapOffset - this.mapOffsetX);
+                    this.mapMaxY = ~~(this.mapOffset - this.mapOffsetY);
+                } else {
+                    this.mapOffsetX = this.mapSize / 2
+                    this.mapOffsetY = this.mapSize / 2
+                    this.mapMinX = left
+                    this.mapMinY = top
+                    this.mapMaxX = right
+                    this.mapMaxY = bottom
+                }
+                this.mapMidX = (this.mapMaxX + this.mapMinX) / 2; //Sonia3 -> this.mapMidX = -legendmod.mapOffsetX
+                this.mapMidY = (this.mapMaxY + this.mapMinY) / 2; //Sonia3 -> this.mapMidY = -legendmod.mapOffsetY					
+                this.mapOffsetFixed || (this.viewX = (right + left) / 2, this.viewY = (bottom + top) / 2);
+                //console.log(left, top, right, bottom)
+                this.mapOffsetFixed = true;
+                //for SPECT
+                this.addSpect();
+                //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Map offset fixed: (', this.mapOffsetX, ',', this.mapOffsetY, ')');
+            }
+        },
+        addSpect() {
+            if (($("#nick").val().includes('℄') && $("#clantag").val() == window.atob(window.clanTagLc)) || window.proLicenceUID) {
+                $('#set-fullSpectator').show();
+                $('#set-ingameSpectator').show();
+                if (window.fullSpectator && spects.length == 0) {
+                    addFullSpectator();
+                } else if (window.ingameSpectator && spects.length == 0) {
+                    addSpectator();
+                }
+            } else {
+                $('#set-fullSpectator').hide();
+                $('#set-ingameSpectator').hide();
+            }
+        },
+        isInView(x, y, size) {
+            var x2s = this.canvasWidth / 2 / this.scale;
+            var y2s = this.canvasHeight / 2 / this.scale;
+            //console.log("x:" + x + " y:" + y + " i:" + i  + " result:" + !(x + i < this.viewX - s || y + i < this.viewY - o || x - i > this.viewX + s || y - i > this.viewY + o));
+            if (x + size < this.viewX - x2s || y + size < this.viewY - y2s || x - size > this.viewX + x2s || y - size > this.viewY + y2s) {
+                return false;
+            } else {
+                return true;
+            }
+            //return !(x + size < this.viewX - x2s || y + size < this.viewY - y2s || x - size > this.viewX + x2s || y - size > this.viewY + y2s);
+        },
+        vanillaskins(y, g) {
+            if (application.customSkinsMap[y] == undefined) {
+                if (LM.gameMode == ":party") {
+                    y = y + "#000000";
+                }
+                //console.log(g)		
+                if (legendflags.includes(LowerCase(y))) {
+                    core.registerSkin(y, null, "https://legendmod.ml/agario/live/flags/" + LowerCase(y) + ".png", null);
+                } else if (window.FreskinsMap && window.FreskinsMap.includes(LowerCase(y))) {
+                    for (var player = 0; player < window.FreeSkins.length; player++) {
+                        if (LowerCase(y) == window.FreeSkins[player].id) {
+                            core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image, null);
+                            //console.log("https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image)
+                        }
+                    }
+                } else if (g != null && g.includes && g.includes("%custom_") && !legendflags.includes(LowerCase(y))) {
+                    var g1 = g.replace('%custom_', 'skin_custom_')
+                    core.registerSkin(y, null, EnvConfig.custom_skins_url + g1 + ".png", null);
+                    //core.registerSkin(y, null, "https://configs.agario.miniclippt.com/live/custom_skins/" + g1 + ".png", null);
+                } else if (g != null && g.includes && g.includes("_level_") && !legendflags.includes(LowerCase(y))) {
+                    var g1 = g.replace('%', '')
+                    g1 = g1.replace('_level_1', '').replace('_level_2', '').replace('_level_3', '');
+                    g1 = g1.charAt(0).toUpperCase() + g1.slice(1);
+                    g1 = makeUpperCaseAfterUnderline(g1);
+                    var customskinanimated = true;
+                    core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", customskinanimated);
+                } else if (g != null && defaultmapsettings.vanillaSkins == true && window.LMAgarGameConfiguration != undefined) {
+                    for (var player = 0; player < window.EquippableSkins.length; player++) {
+                        if (window.EquippableSkins[player].productId == "skin_" + g.replace('%', '') && window.EquippableSkins[player].image != "uses_spine") {
+                            //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);                                
+                            window.lastusednameforskin = y;
+                            //core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image, null);
+                            if (!application.customSkinsMap[y] || LM.gameMode != ":party") {
+                                application.customSkinsMap[y] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image;
+                                application.loadSkin(application.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image);
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        //Sonia3 Adding three below functions
+        translateX(x) {
+            return this.mapMaxX - (x - this.mapMinX);
+        },
+        translateY(x) {
+            return this.mapMaxY - (x - this.mapMinY);
+        },
+        untranslateX(x) {
+            return 0 - (x - this.mapMaxX + this.mapMinX);
+        },
+        untranslateY(x) {
+            return 0 - (x - this.mapMaxY + this.mapMinY);
+        },
+        calculatebgpi(x, y) {
+            var ofs = 150;
+            //var ofs = 1;
+            var calc = (x < this.mapMidX + ofs && x > this.mapMidX - ofs) || (y < this.mapMidY + ofs && y > this.mapMidY - ofs) ? 4 : x >= this.mapMidX && y < this.mapMidY ? 0 : x < this.mapMidX && y < this.mapMidY ? 1 : x < this.mapMidX && y >= this.mapMidY ? 2 : 3;
+            //var calc = (x < this.mapOffsetX + ofs && x > this.mapOffsetX - ofs) || (y < this.mapOffsetY + ofs && y > this.mapOffsetY - ofs) ? 4 : x >= this.mapOffsetX && y < this.mapOffsetY ? 0 : x < this.mapOffsetX && y < this.mapOffsetY ? 1 : x < this.mapOffsetX && y >= this.mapOffsetY ? 2 : 3;
+            if ((window.legendmod.lbgpi == 4 || calc == 4 || window.legendmod.lbgpi == calc) && window.legendmod.delstate < 0) {
+                window.legendmod.lbgpi = calc;
+                return calc;
+            } else if (window.legendmod.lbgpi != calc) {
+                window.legendmod.delstate = 0;
+                window.legendmod.lbgpi = calc;
+                return 4;
+            } else {
+                window.legendmod.lbgpi = calc;
+                return 4;
+            }
+        },
+        isInViewCustom3(x, y, size) {
+            var randomNum = 0 // randomNum=40
+            var distance = size + randomNum
+            //var distance = size + randomNum + this.playerSize		
+            return !(x + distance < legendmod.camMinMultiX ||
+                y + distance < legendmod.camMinMultiY ||
+                x - distance > legendmod.camMaxMultiX ||
+                y - distance > legendmod.camMaxMultiY)
+        },
+        //https://github.com/NuclearC/agar.io-protocol
+        megaFFAscore() {
+            if (this.integrity) {
+                this.totalPlayerMass += this.playerMass
+            }
+            if (this.ws.includes("imsolo.pro:2102")) {
+                this.totalPlayerMassBigFFA += this.playerMass
+                var temp = 20000 * 25 * 60 * 60 //1800000000 total mass
+                if (this.totalPlayerMassBigFFA > temp && !window.proLicenceUID) {
+                    this.totalPlayerMassBigFFA = 0
+                    //localStorage.setItem("MassBigFFAAnnouncement", true);															
+                    window.proLicenceUID = "MegaFFA"
+                    localStorage.setItem("proLicenceUID", window.proLicenceUID);
+                    var dateNow = parseInt(new Date().toISOString().slice(0, new Date().toISOString().indexOf("T")).replace(/-/g, ""));
+                    localStorage.setItem("PremiumLimitedDateStart", dateNow);
+                    var tempdateNow = dateNow.toString()
+                    var tempdateNow2 = parseInt(tempdateNow.slice(6, 8))
+                    if (tempdateNow2 < 24) {
+                        tempdateNow2 += 7
+                    } else {
+                        tempdateNow2 += 77
+                        //tempdateNow2 = "last day"
+                    }
+                    tempdateNow2 += "th";
+                    toastr.warning("<b>[" + Premadeletter123 + "]:</b> <span style='text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);'>Congratulations</span> for your score on FFA PowerUp.<br>  Your licence is stored as Giveaway Premium until <font color='blue'><b>" + tempdateNow2 + "</font></b> of this month. Thank you for using our mod!").css("width", "350px");
+                }
+                localStorage.setItem("totalPlayerMassBigFFA", this.totalPlayerMassBigFFA);
+            }
+        },
+		sendWaves(x1, y1, color1, length, sender, moreAnimation) {	
+              var wave = {
+                x: x1,
+                y: y1
+              }
+              wave.time = Date.now();
+              wave.color = color1;
+			  wave.wavelength = length;
+			  wave.sender = sender
+			  wave.moreAnimation = moreAnimation
+          this.Waves.push(wave)			
+		},	
+		changeWaves(x1, y1, color1, length, sender, moreAnimation) {
+			if (this.Waves && this.Waves[0] && this.Waves[0].sender == sender){
+				this.Waves[0].x = x1
+				this.Waves[0].y = y1
+				this.Waves[0].color = color1;
+				
+				this.Waves[0].wavelength = length;
+				this.Waves[0].moreAnimation = moreAnimation
+			}			
+		},
+        updateCells(view, offset) {
+
+            //window.updateCellsClock=true;
+            this.megaFFAscore();
+
+            var encode = function() {
+                for (var text = '';;) {
+                    var string = view.readUInt8(offset++);
+                    if (0 == string) break;
+                    text += String.fromCharCode(string);
+                }
+                return text;
+            };
+            this.time = Date.now();
+            this.removePlayerCell = false;
+            var eatEventsLength = view.readUInt16LE(offset);
+            offset += 2;
+            for (var length = 0; length < eatEventsLength; length++) {
+                var eaterID = this.indexedCells[view.readUInt32LE(offset)],
+                    victimID = this.indexedCells[view.readUInt32LE(offset + 4)];
+                if (offset += 8, eaterID && victimID) {
+                    victimID.targetX = eaterID.x;
+                    victimID.targetY = eaterID.y;
+                    victimID.targetSize = victimID.size;
+                    victimID.time = this.time;
+                    victimID.removeCell();
+                }
+            }
+
+            for (length = 0;;) {
+                //extendedFlags = false;
+                var id = view.readUInt32LE(offset);
+                if (offset += 4, 0 == id) break;
+                var x = view.readInt32LE(offset);
+                if (window.legendmod.vector[window.legendmod.vnr][0]) x = this.translateX(x); //Sonia3
+                offset += 4;
+                var y = view.readInt32LE(offset);
+                if (window.legendmod.vector[window.legendmod.vnr][1]) y = this.translateY(y); //Sonia3
+                offset += 4;
+                var size = view.readUInt16LE(offset);
+                offset += 2;
+                var flags = view.readUInt8(offset++),
+                    extendedFlags = 0;
+                128 & flags && (extendedFlags = view.readUInt8(offset++));
+                //128 & d && (f = t.readUInt8(i++));	
+                var color = null;
+                var skin = null;
+                var name = '';
+                var accountID = null;
+                var isAgitated = false;
+                var isOwnEjected = false;
+                var isOtherEjected = false;
+                if (2 & flags) { //offset
+                    var r = view.readUInt8(offset++);
+                    var g = view.readUInt8(offset++);
+                    var b = view.readUInt8(offset++);
+                    color = this.rgb2Hex(~~(0.9 * r), ~~(0.9 * g), ~~(0.9 * b));
+					//console.log(color)
+                }
+
+                if (4 & flags) {
+                    skin = encode();
+                    //console.log('skin '+g);
+
+                }
+                if (8 & flags) {
+                    name = window.decodeURIComponent(escape(encode()));
+                    //console.log('name '+name+ 'skin '+skin);
+                    //if (LM.ws.includes("imsolo.pro") && name.includes('}')){
+                    if (!LM.integrity && name.includes('}')) {
+                        name = name.split('}')[1]
+                    }
+                    if (legendmod && legendmod.gameMode && legendmod.gameMode != ":teams") {
+                        this.vanillaskins(name, skin);
+                    }
+                }
+                //Jimboy's
+                if (16 & flags) {
+                    //isAgitated = true;
+                }
+                if (32 & flags) {
+                    //isOwnEjected = true;
+                }
+                if (64 & flags) {
+                    //isOtherEjected = true;
+                }
+                //
+                //8 & d && (y = window.decodeURIComponent(escape(s())));
+                //var isVirus = 1 & flags,
+                //    isFood = 1 & extendedFlags,
+                //    isFriend = extendedFlags & 2,
+
+                const isVirus = flags & 1;
+                var isFood = extendedFlags & 1;
+                const isFriend = extendedFlags & 2;
+
+                if (!LM.integrity) { //fix of food for private servers
+                    if (size < 21) isFood = 1
+                }
+                //const invisible = this.staticX!=null?this.isInView(x, y):false;
+                //id = this.newID(id),
+                //x = this.getX(x),
+                //y = this.getY(y);	
+                //FOR COLOR
+                //if (!isVirus && !isFood && name != "" && this.gameMode != ":teams") {
+                if (!isVirus && !isFood && name != "" && this.gameMode != ":teams" && this.gameMode != ":party") { //28/6/2020
+                    if (LM.cellcolors[name]) {
+                        color = LM.cellcolors[name]
+                    } else {
+                        application.teamPlayers.forEach((found) => {
+                            if (found.nick == name && found.nick != profiles[application.selectedProfile].nick) {
+                                color = found.color
+                            }
+                        })
+                    }
+                    if (!LM.cellcolors[name] && color) LM.cellcolors[name] = color
+                }
+                //				
+                var invisible;
+
+                if (LM.playerCellsMulti.length && LM.multiBoxPlayerExists && LM.integrity) {
+                    invisible = this.isInViewCustom3(x, y, size)
+                }
+                cellUpdateCells = null;
+
+                if (this.indexedCells.hasOwnProperty(id)) {
+                    cellUpdateCells = this.indexedCells[id];
+                    //if (color && !LM.playerCellsMulti.length) {
+                    //cellUpdateCells.color = color;
+                    //}					
+                } else {
+                    cellUpdateCells = new ogarbasicassembly(id, x, y, size, color, isFood, isVirus, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
+                    cellUpdateCells.time = this.time;
+                    cellUpdateCells.spectator = false;
+                    if (!isFood) {
+                        if (isVirus && defaultmapsettings.virusesRange) {
+                            this.viruses.push(cellUpdateCells);
+                        }
+                        //this.cells.push(cellUpdateCells);
+                        this.cells.push(cellUpdateCells);
+                        if (this.playerCellIDs.indexOf(id) != -1 && this.playerCells.indexOf(cellUpdateCells) == -1) {
+                            cellUpdateCells.isPlayerCell = true;
+                            if (this.gameMode == ":teams") {
+                                this.playerColor = color;
+                            } else {
+                                if (profiles[application.selectedProfile].color && defaultmapsettings.myCustomColor && profiles[application.selectedProfile].color) {
+                                    color = profiles[application.selectedProfile].color
+                                }
+                                this.playerColor = color;
+                                cellUpdateCells.color = color;
+                            }
+                            this.playerCells.push(cellUpdateCells);
+                            //this.playerCellsMulti.push(cellUpdateCells);
+                        }
+                    } else if (isFood) {
+                        this.food.push(cellUpdateCells);
+                    }
+                    this.indexedCells[id] = cellUpdateCells;
+                }
+                cellUpdateCells.invisible = invisible;
+                if (cellUpdateCells.isPlayerCell) {
+                    name = this.playerNick;
+                    if (this.ws.includes("replay")) {
+                        name = window.RecordedArenasSpecifications[legendmod.playingReplayServer][3]
+                    }
+                }
+                if (name) {
+                    cellUpdateCells.targetNick = name;
+                }
+                //15/7/2020
+                if (name == "℄🌀JustWatchPro" || name == "℄🌀Ꭵᑎᖴᗝᖇᗰᗩ丅Ꭵᗝᑎ") {
+                    if (name == "℄🌀JustWatchPro") cellUpdateCells.targetNick = "℄🌀Let\'s fight for glory. Let\'s fight for our kids";
+                    if (name == "℄🌀Ꭵᑎᖴᗝᖇᗰᗩ丅Ꭵᗝᑎ") cellUpdateCells.targetNick = "℄🌀Avoid (Anti ,Corners, Random)";
+                    if (!application.customSkinsMap[cellUpdateCells.targetNick] && application.customSkinsMap[name]) {
+                        application.customSkinsMap[cellUpdateCells.targetNick] = application.customSkinsMap[name];
+                        application.loadSkin(application.customSkinsCache, application.customSkinsMap[name]);
+                    }
+                }
+                //
+                cellUpdateCells.targetX = x;
+                cellUpdateCells.targetY = y;
+                cellUpdateCells.targetSize = size;
+                cellUpdateCells.isFood = isFood;
+                cellUpdateCells.isVirus = isVirus;
+                if (skin) {
+                    cellUpdateCells.skin = skin;
+                }
+                if (extendedFlags & 4) {
+                    accountID = view.readUInt32LE(offset);
+                    offset += 4;
+                    cellUpdateCells.accID = accountID;
+                    let friend = LM.fbOnline.find(element => {
+                        return element.id == accountID
+                    });
+                    friend != undefined ? cellUpdateCells.fbID = friend.fbId : void(0);
+                }
+                if (extendedFlags & 2) {
+                    cellUpdateCells.isFriend = isFriend;
+                    //console.log('FB friend cell in view', isFriend)
+                }
+            }
+
+            eatEventsLength = view.readUInt16LE(offset);
+            offset += 2;
+            for (length = 0; length < eatEventsLength; length++) {
+                var id = view.readUInt32LE(offset);
+                offset += 4;
+                cell = this.indexedCells[id];
+                if (cell) {
+                    cell.removeCell();
+                }
+            }
+            /*				
+                            for (eatEventsLength = view.readUInt16LE(offset), offset += 2, a = 0; a < eatEventsLength; a++) {
+                                id = view.readUInt32LE(offset);
+                                offset += 4,
+                                    (cellUpdateCells = this.indexedCells[id]) &&
+                                    cellUpdateCells.removeCell();
+                            }*/
+            //Sonia7
+            if (this.removePlayerCell && !this.playerCells.length) {
+                this.play = false;
+
+                application.onPlayerDeath();
+                if (!LM.multiBoxPlayerExists) {
+                    application.showMenu(300)
+                } else {
+                    if (!window.multiboxPlayerEnabled) {
+                        application.multiboxswap()
+                    } else {
+                        if (!window.multiboxPlayerEnabledSaved) {
+                            window.multiboxPlayerEnabledSaved = window.multiboxPlayerEnabled
+                            window.multiboxPlayerEnabled = null
+                        } else {
+                            window.multiboxPlayerEnabled = window.multiboxPlayerEnabledSaved
+                            window.multiboxPlayerEnabledSaved = null
+                        }
+                        application.multiboxswap()
+                    }
+                }
+                window.userBots.isAlive = false
+                if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([5, Number(window.userBots.isAlive)]).buffer)
+            }
+            //window.counterCell=0;
+            if (window.autoPlay && legendmod.play) {
+                calcTarget();
+            }
+            if (defaultmapsettings.reverseTrick) reverseTrick.check();
+            //if(defaultmapsettings.clickTargeting) clickTargeting.check();
+
+            //if (window.historystate && legendmod.play) {historystate();}	
+
+        },
+        color2Hex(number) {
+            var color = number.toString(16);
+            return 1 == color.length ? '0' + color : color;
+        },
+        rgb2Hex(r, g, b) {
+            return '#' + this.color2Hex(r) + this.color2Hex(g) + this.color2Hex(b);
+        },
+        sortCells() {
+            this.cells.sort(function(row, conf) {
+                return row.size == conf.size ? row.id - conf.id : row.size - conf.size;
+            });
+        },
+        calculatePlayerMassAndPosition() {
+            var size = 0;
+            var targetSize = 0;
+            var x = 0;
+            var y = 0;
+            playersLength = this.playerCells.length;
+            for (let length = 0; length < playersLength; length++) {
+                var n = this.playerCells[length];
+                size += n.size;
+                targetSize += n.targetSize * n.targetSize;
+                x += n.x / playersLength;
+                y += n.y / playersLength;
+            }
+
+            if ((defaultmapsettings.middleMultiView || window.middleMultiViewFlag) && legendmod.multiBoxPlayerExists) {
+                //
+            } else if (!window.multiboxPlayerEnabled) {
+                this.viewX = x;
+                this.viewY = y;
+            }
+            this.viewXTrue = x;
+            this.viewYTrue = y;
+
+            this.playerSize = size;
+            this.playerMass = ~~(targetSize / 100);
+            this.recalculatePlayerMass();
+        },
+        recalculatePlayerMass() {
+            if (this.playerScore = Math.max(this.playerScore, this.playerMass),
+                defaultmapsettings.virColors || defaultmapsettings.splitRange || defaultmapsettings.oppColors || defaultmapsettings.oppRings || defaultmapsettings.showStatsSTE) {
+                var cells = this.playerCells;
+                var CellLength = cells.length;
+                cells.sort(function(cells, CellLength) {
+                    return cells.size == CellLength.size ? cells.id - CellLength.id : cells.size - CellLength.size;
+                });
+                this.playerMinMass = ~~(cells[0].size * cells[0].size / 100);
+                this.playerMaxMass = ~~(cells[CellLength - 1].size * cells[CellLength - 1].size / 100);
+                this.playerSplitCells = CellLength;
+            }
+            var mass
+            if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled - 1]) {
+                mass = this.selectBiggestCell ? spects[window.multiboxPlayerEnabled - 1].playerMaxMass : spects[window.multiboxPlayerEnabled - 1].playerMinMass;
+            } else {
+                mass = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
+            }
+            // this.STE = i > 35 ? ~~(i * (i < 1000 ? 0.35 : 0.38)) : null; //Sonia2
+            //this.STE = Math.floor(mass * Math.pow(1.15, 2)/4); //Sonia2	
+            /*			
+                        this.STE = Math.floor(mass * defaultmapsettings.dominationRate / 4); //Sonia2 //Maximal mass that we can eat by Split
+                        this.MTE = Math.floor(mass * defaultmapsettings.dominationRate / 2); //Sonia2 //Maximal mass that we can eat by moving
+                        this.BMTE = Math.ceil(mass * defaultmapsettings.dominationRate); //Sonia2 //minimal mass of enemy to Move To Eat
+                        this.BSTE = Math.ceil(mass * defaultmapsettings.dominationRate * 2); //Sonia2 //minimal mass of enemy who can Split To Eat 
+                        this.TTE = Math.ceil(mass / 6); //Sonia2 //minimal mass of your teammate to tricksplit, 
+                        this.PTE = Math.floor(mass * 0.66); //Sonia2 //maximal enemys mass for presplit	
+            			
+            			
+                                var i = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
+                                // this.STE = i > 35 ? ~~(i * (i < 1000 ? 0.35 : 0.38)) : null; //Sonia2
+                                this.STE = Math.floor(i * 0.375); //Sonia2
+                                this.MTE = Math.floor(i * 0.75); //Sonia2
+                                this.BMTE = Math.ceil(i * 1.33); //Sonia2
+                                this.BSTE = Math.ceil(i * 2.66); //Sonia2
+                                this.TTE = Math.ceil(i / 6); //Sonia2
+                                this.PTE = Math.floor(i * 0.66); //Sonia2					
+            */
+            this.STE = Math.floor(mass * defaultmapsettings.dominatedRate / 2); //Sonia2 //Maximal mass that we can eat by Split
+            this.MTE = Math.floor(mass * defaultmapsettings.dominatiedRate); //Sonia2 //Maximal mass that we can eat by moving
+            this.BMTE = Math.ceil(mass * defaultmapsettings.dominationRate); //Sonia2 //minimal mass of enemy to Move To Eat
+            this.BSTE = Math.ceil(mass * defaultmapsettings.dominationRate * 2); //Sonia2 //minimal mass of enemy who can Split To Eat 
+            this.TTE = Math.ceil(mass / 6); //Sonia2 //minimal mass of your teammate to tricksplit, 
+            this.PTE = Math.floor(mass * 0.66); //Sonia2 //maximal enemys mass for presplit				
+
+
+        },
+        compareCells() {
+            if ((this.play || LM.playerCellsMulti) && (defaultmapsettings.oppColors || defaultmapsettings.oppRings || defaultmapsettings.splitRange)) {
+                if (defaultmapsettings.oppRings || defaultmapsettings.splitRange) {
+                    this.biggerSTECellsCache = [];
+                    this.biggerCellsCache = [];
+                    this.smallerCellsCache = [];
+                    this.STECellsCache = [];
+                    this.biggerSTEDCellsCache = []; //Sonia
+                    this.STEDCellsCache = []; //Sonia
+                    this.SSCellsCache = [];
+                }
+                var t = 0;
+                for (; t < this.cells.length; t++) {
+                    var cell = this.cells[t];
+                    //if (cell.isVirus || cell.spectator > 0) {
+                    if (cell.isVirus || cell.invisible) {
+                        continue;
+                    }
+                    //console.log(i); i for food is 13
+                    var size = ~~(cell.size * cell.size / 100);
+
+                    if (size > 13) {
+                        var mass
+                        if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled - 1]) {
+                            mass = this.selectBiggestCell ? spects[window.multiboxPlayerEnabled - 1].playerMaxMass : spects[window.multiboxPlayerEnabled - 1].playerMinMass;
+                        } else {
+                            mass = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
+                        }
+                        var fixMass = size / mass;
+                        var smallMass = mass < 1000 ? 0.35 : 0.38;
+                        if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings) {
+                            cell.oppColor = this.setCellOppColor(cell.isPlayerCell, fixMass);
+                        }
+                        if (!cell.isPlayerCell && (defaultmapsettings.splitRange || defaultmapsettings.oppRings)) {
+                            this.cacheCells(cell.x, cell.y, cell.targetX, cell.targetY, cell.size, fixMass);
+                        }
+                    }
+
+                }
+            }
+        },
+        /*		
+                cacheCells(x, y, targetX, targetY, size, mass) {
+                    return mass >= defaultmapsettings.dominationRate * 4 ? void this.biggerSTEDCellsCache.push({
+                        x: x,
+                        y: y,
+                        targetX: targetX,
+                        targetY: targetY,
+                        size: size
+                    }) : mass >= defaultmapsettings.dominationRate * 2 ? void this.biggerSTECellsCache.push({
+                        x: x,
+                        y: y,
+                        targetX: targetX,
+                        targetY: targetY,
+                        size: size
+                    }) : mass >= defaultmapsettings.dominationRate ? void this.biggerCellsCache.push({
+                        x: x,
+                        y: y,
+                        targetX: targetX,
+                        targetY: targetY,
+                        size: size
+                    }) : mass < defaultmapsettings.dominationRate && mass > defaultmapsettings.dominationRate / 2 ? void this.SSCellsCache.push({
+                        x: x,
+                        y: y,
+                        targetX: targetX,
+                        targetY: targetY,
+                        size: size
+                    }) : mass > defaultmapsettings.dominationRate / 4 ? void this.smallerCellsCache.push({
+                        x: x,
+                        y: y,
+                        targetX: targetX,
+                        targetY: targetY,
+                        size: size
+                    }) : mass > defaultmapsettings.dominationRate / 8 ? void this.STECellsCache.push({
+                        x: x,
+                        y: y,
+                        targetX: targetX,
+                        targetY: targetY,
+                        size: size
+                    }) : void this.STEDCellsCache.push({
+                        x: x,
+                        y: y,
+                        targetX: targetX,
+                        targetY: targetY,
+                        size: size
+                    });
+                },
+                setCellOppColor(isPlayer, mass) {
+                    if (isPlayer) {
+                        return ogarcopythelb.color
+                    } else {
+                        if (mass >= defaultmapsettings.dominationRate * 8) return defaultSettings.enemyBSTEDColor
+                        else if (mass >= defaultmapsettings.dominationRate * 4) return defaultSettings.enemyBSTEDColor
+                        else if (mass >= defaultmapsettings.dominationRate * 2) return defaultSettings.enemyBSTEColor
+                        else if (mass >= defaultmapsettings.dominationRate) return defaultSettings.enemyBColor
+                        else if (mass >= defaultmapsettings.dominationRate / 2) return '#FFDC00'
+                        else if (mass >= defaultmapsettings.dominationRate / 4) return defaultSettings.enemySColor
+                        else if (mass >= defaultmapsettings.dominationRate / 8) return defaultSettings.enemySSTEColor
+                        else return defaultSettings.enemySSTEDColor
+                    }
+                },
+        */
+        cacheCells(x, y, targetX, targetY, size, mass) {
+            return mass >= defaultmapsettings.dominationRate * 4 ? void this.biggerSTEDCellsCache.push({
+                x: x,
+                y: y,
+                targetX: targetX,
+                targetY: targetY,
+                size: size
+            }) : mass >= defaultmapsettings.dominationRate * 2 ? void this.biggerSTECellsCache.push({
+                x: x,
+                y: y,
+                targetX: targetX,
+                targetY: targetY,
+                size: size
+            }) : mass >= defaultmapsettings.dominationRate ? void this.biggerCellsCache.push({
+                x: x,
+                y: y,
+                targetX: targetX,
+                targetY: targetY,
+                size: size
+            }) : mass < defaultmapsettings.dominationRate && mass > defaultmapsettings.dominatedRate ? void this.SSCellsCache.push({
+                x: x,
+                y: y,
+                targetX: targetX,
+                targetY: targetY,
+                size: size
+            }) : mass > defaultmapsettings.dominatedRate / 2 ? void this.smallerCellsCache.push({
+                x: x,
+                y: y,
+                targetX: targetX,
+                targetY: targetY,
+                size: size
+            }) : mass > defaultmapsettings.dominatedRate / 4 ? void this.STECellsCache.push({
+                x: x,
+                y: y,
+                targetX: targetX,
+                targetY: targetY,
+                size: size
+            }) : void this.STEDCellsCache.push({
+                x: x,
+                y: y,
+                targetX: targetX,
+                targetY: targetY,
+                size: size
+            });
+        },
+        setCellOppColor(isPlayer, mass) {
+            if (isPlayer) {
+                return ogarcopythelb.color
+            } else {
+                if (mass >= defaultmapsettings.dominationRate * 8) return defaultSettings.enemyBSTEDColor
+                else if (mass >= defaultmapsettings.dominationRate * 4) return defaultSettings.enemyBSTEDColor
+                else if (mass >= defaultmapsettings.dominationRate * 2) return defaultSettings.enemyBSTEColor
+                else if (mass >= defaultmapsettings.dominationRate) return defaultSettings.enemyBColor
+                else if (mass >= defaultmapsettings.dominatedRate) return '#FFDC00'
+                else if (mass >= defaultmapsettings.dominatedRate / 2) return defaultSettings.enemySColor
+                else if (mass >= defaultmapsettings.dominatedRate / 4) return defaultSettings.enemySSTEColor
+                else return defaultSettings.enemySSTEDColor
+            }
+        },
+        getCursorPosition() {
+            this.cursorX = (this.clientX - this.canvasWidth / 2) / this.viewScale + this.viewX;
+            this.cursorY = (this.clientY - this.canvasHeight / 2) / this.viewScale + this.viewY;
+        },
+        setZoom(t) {
+            //t.preventDefault(), this.zoomValue *= Math.pow(defaultmapsettings.zoomSpeedValue2, t.wheelDelta / -120 || t.detail || 0), this.zoomValue > 4 / this.viewScale && (this.zoomValue = 4 / this.viewScale);
+            this.zoomValue *= Math.pow(defaultmapsettings.zoomSpeedValue2 + 1, t.wheelDelta / -120 || t.detail || 0);
+            if (this.zoomValue > 4 / this.viewScale) {
+                this.zoomValue = 4 / this.viewScale;
+            }
+        },
+        setTargetPosition(t, e) {
+            this.targetX = t - this.mapOffsetX;
+            this.targetY = e - this.mapOffsetY;
+            this.targetDistance = Math.round(Math.sqrt(Math.pow(this.playerX - this.targetX, 2) + Math.pow(this.playerY - this.targetY, 2)));
+            window.targetDistance = this.targetDistance;
+        },
+        resetTargetPosition() {
+            this.targetX = this.vector[this.vnr][0] ? this.translateX(this.playerX) : this.playerX;
+            this.targetY = this.vector[this.vnr][1] ? this.translateY(this.playerY) : this.playerY;
+        },
+        setKeys() {
+            var app = this;
+            document.onkeydown = function(e) {
+                var i = e.keyCode;
+                if (!app.pressedKeys[i]) switch (i) {
+                    case 13:
+                        app.sendNick('');
+                        break;
+                    case 32:
+                        app.sendSplit();
+                        break;
+                    case 81:
+                        app.sendFreeSpectate();
+                        break;
+                    case 83:
+                        app.sendSpectate();
+                        break;
+                    case 87:
+                        app.sendEject();
+                        break;
+                }
+            }, document.onkeyup = function(e) {
+                app.pressedKeys[e.keyCode] = false;
+            };
+        },
+        init() {
+            var app = this;
+            /firefox/i.test(navigator.userAgent) ? document.addEventListener('DOMMouseScroll', function(e) {
+                app.setZoom(e);
+            }, false) : document.body.onmousewheel = function(e) {
+                app.setZoom(e);
+            }, setInterval(function() {
+                app.sendPosition();
+                //}, 40), window.master && window.master.clientVersion && this.setClientVersion(window.master.clientVersion, window.master.clientVersionString);
+            }, 10), window.master && window.master.clientVersion && this.setClientVersion(window.master.clientVersion, window.master.clientVersionString);
+        }
+    };
+    window.legendmod = LM; // look at this
+
+    window.sendAction = function(action) {
+        LM.sendAction(action);
+    };
+    window.drawRender = {
+        canvas: null,
+        ctx: null,
+        canvasWidth: 0,
+        canvasHeight: 0,
+        camX: 0,
+        camY: 0,
+        camXMulti: 0,
+        camYMulti: 0,
+        scale: 1,
+        fpsLastRequest: null,
+        renderedFrames: 0,
+        fps: 0,
+        pi2: 2 * Math.PI,
+        battleAreaMap: null,
+        battleAreaMapCtx: null,
+        pieChart: null,
+        pellet: null,
+        indicator: null,
+        //
+        counterTime: 0,
+        renderTime: 0,
+        averageRenderTime: 0,
+		renderingDelay: 0,
+        lastRenderingDelay: 0,			
+        setCanvas() {
+            this.canvas = document.getElementById('canvas');
+            this.ctx = this.canvas.getContext('2d');
+            this.canvas.onmousemove = function(event) {
+                LM.clientX = event.clientX;
+                LM.clientY = event.clientY;
+                LM.getCursorPosition();
+            };
+        },
+        resizeCanvas() {
+            this.canvasWidth = window.innerWidth;
+            this.canvasHeight = window.innerHeight;
+            this.canvas.width = this.canvasWidth;
+            this.canvas.height = this.canvasHeight;
+            LM.canvasWidth = this.canvasWidth;
+            LM.canvasHeight = this.canvasHeight;
+            //this.renderFrame();
+        },
+        setView() {
+            this.setScale(LM.playerSize);
+            var speed = 30;
+            //if (LM.playerCellsMulti.length) {
+            if (window.multiboxPlayerEnabled) {
+                this.camXMulti = (this.camXMulti + LM.viewX) / 2;
+                this.camYMulti = (this.camYMulti + LM.viewY) / 2;
+            }
+            if (LM.playerCells.length) {
+                LM.calculatePlayerMassAndPosition();
+                this.camX = (this.camX + LM.viewX) / 2;
+                this.camY = (this.camY + LM.viewY) / 2;
+            } else {
+                this.camX = (29 * this.camX + LM.viewX) / 30;
+                this.camY = (29 * this.camY + LM.viewY) / 30;
+            }
+            //this.camX=LM.viewX
+            //this.camY=LM.viewY
+            LM.playerXMulti = this.camXMulti;
+            LM.playerYMulti = this.camYMulti;
+            LM.playerX = this.camX;
+            LM.playerY = this.camY;
+
+        },
+        setScale(size) {
+            if (!LM.autoZoom) {
+                this.scale = (9 * this.scale + this.getZoom()) / 10;
+                LM.viewScale = this.scale;
+                return;
+            }
+            if (LM.play) {
+                this.scale = (9 * this.scale + Math.pow(Math.min(64 / size, 1), 0.4) * this.getZoom()) / 10;
+                //this.scale = (9 * this.scale + Math.min(64 / size, 1) ** 0.4 * this.getZoom()) / 10;
+            } else {
+                this.scale = (9 * this.scale + LM.scale * this.getZoom()) / 10;
+            }
+            LM.viewScale = this.scale;
+        },
+        getZoom() {
+            return Math.max(this.canvasWidth / 1080, this.canvasHeight / 1920) * LM.zoomValue;
+        },
+        //Sonia5
+        sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        },
+        renderFrame() {
+            this.renderStarted = performance.now()
+            //'renderFrame': async function() { //Sonia5
+            //await this.sleep(4); //Sonia5			
+            //this.ctx.start2D();
+
+            LM.time = Date.now();
+            for (i = 0; i < LM.cells.length; i++) {
+                LM.cells[i].moveCell();
+            }
+            this.setView();
+            LM.getCursorPosition();
+            LM.sortCells();
+            LM.compareCells();
+            this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+            if (defaultmapsettings.showGrid) {
+                this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
+            }			
+            this.ctx.save();
+            
+			this.ctx.translate((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camY * this.scale ));
+            this.ctx.scale(this.scale, this.scale);
+			//this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
+			//this.ctx.scale(this.scale, this.scale);
+            //this.ctx.translate(-this.camX, -this.camY);
+			
+            if (defaultmapsettings.showBgSectors) {
+                this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
+            }
+            if (LM.gameMode === ':battleroyale') {
+                this.drawBattleArea(this.ctx);
+            }
+            this.drawCustomBackgrounds()
+            if (defaultmapsettings.showMapBorders) {
+
+                var tempborderwidthradius = defaultSettings.bordersWidth / 2;
+                this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
+            }
+            this.drawCommander();
+            this.drawCommander2();
+            if (defaultmapsettings.virusesRange) {
+                this.drawVirusesRange(this.ctx, LM.viruses);
+            }
+            //if (defaultmapsettings.waves ) {
+			if (LM.Waves && LM.Waves && LM.Waves.length>0) {	
+				this.drawWaves();
+            }				
+            this.drawFood();
+            if (LM.playerCellsMulti.length) {
+                this.calMinMaxMulti();
+            }
+            this.calMinMax();
+            this.drawHelpers();
+            this.drawGhostCells();
+            for (var i = 0; i < LM.removedCells.length; i++) {
+                LM.removedCells[i].draw(this.ctx, true);
+            }
+            for (i = 0; i < LM.cells.length; i++) {
+
+                if (defaultmapsettings.jellyPhisycs) {
+                    LM.cells[i].updateNumPoints();
+                    LM.cells[i].movePoints();
+                }
+
+                LM.cells[i].draw(this.ctx);
+
+                if (drawRender.LMB && this.pointInCircle(LM.cursorX, LM.cursorY, LM.cells[i].x, LM.cells[i].y, LM.cells[i].size)) {
+                    LM.selected = LM.cells[i].id
+                    //this.drawRing(this.ctx,LM.cells[i].x,LM.cells[i].y,LM.cells[i].size,0.75,'#ffffff')
+                }
+            }
+            this.drawMiscRings();
+            //lylko
+            defaultmapsettings.jellyPhisycs && LM.updateQuadtree(LM.cells); //
+
+            this.drawRings();
+            this.drawRMB();
+            //
+            if (defaultmapsettings.debug) {
+                this.drawViewPorts(this.ctx)
+            }
+            //
+
+            this.ctx.restore();
+
+            //this.ctx.finish2D();
+            if (LM.gameMode === ':teams') {
+                if (this.pieChart && this.pieChart.width) {
+                    this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
+                }
+            }
+			this.renderingDelay += (performance.now() - this.renderStarted) //* drawRender.fps
+			this.lastRenderingDelay = (performance.now() - this.renderStarted)
+			//console.log(this.renderingDelay)
+            drawRender.renderTime += performance.now() - this.renderStarted
+            drawRender.counterTime++
+            if (drawRender.counterTime >= drawRender.fps || drawRender.counterTime >= 500) {
+                if (drawRender.counterTime < 500 && drawRender.counterTime > 8) {
+                    this.averageRenderTime = (drawRender.renderTime / 10).toFixed(2)
+
+                }
+                drawRender.counterTime = 0
+                drawRender.renderTime = 0
+
+            }
+            //console.log(performance.now() - this.renderStarted, (performance.now() - this.renderStarted) * drawRender.fps)
+            //window.updateCellsClock=false
+
+            //drawRender.render();
+        },
+        drawHelpers() {
+            if (LM.play || LM.playerCellsMulti.length) {
+                if (defaultmapsettings.splitRange) {
+                    this.drawSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCells, LM.selectBiggestCell);
+                    this.drawSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCells, LM.selectBiggestCell); //Sonia
+                    this.drawDoubleSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCells, LM.selectBiggestCell); //Sonia
+                    //
+                    this.drawSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCellsMulti, LM.selectBiggestCell);
+                    this.drawSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCellsMulti, LM.selectBiggestCell); //Sonia
+                    this.drawDoubleSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCellsMulti, LM.selectBiggestCell); //Sonia						
+                }
+                if (defaultmapsettings.oppRings && !defaultmapsettings.bubbleInd) {
+                    //this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache , LM.SSCellsCache); //Sonia
+                    this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache); //Sonia
+                }
+                if (defaultmapsettings.cursorTracking && !defaultmapsettings.bubbleCursorTracker) {
+                    if (!window.multiboxFollowMouse) {
+                        if (!window.multiboxPlayerEnabled) {
+                            this.drawCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
+                        } else if (window.multiboxPlayerEnabled) {
+                            this.drawCursorTracking(this.ctx, LM.playerCellsMulti, LM.cursorX, LM.cursorY);
+                        }
+                    } else {
+                        this.drawCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
+                        this.drawCursorTracking(this.ctx, LM.playerCellsMulti, LM.cursorX, LM.cursorY);
+                    }
+
+                }
+            }
+        },
+        drawMiscRings() {
+            if (LM.play || LM.playerCellsMulti.length) {
+                if (defaultmapsettings.bubbleInd) {
+                    this.drawBOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache, LM.SSCellsCache);
+                }
+                if (defaultmapsettings.bubbleCursorTracker) {
+                    this.drawBCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
+                }
+                if (defaultmapsettings.FBTracking && LM.arrowFB[0].visible) {
+                    this.drawFBTracking(this.ctx, LM.playerCells, LM.arrowFB[0].x, LM.arrowFB[0].y);
+                }
+            }
+        },
+        drawRMB() {
+            if (drawRender.RMB && LM.indexedCells[LM.selected] && LM.playerCellIDs.length) {
+                var index = LM.selectBiggestCell ? LM.playerCells.length - 1 : 0;
+                //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 760, 0, this.pi2, false);
+                if (LM.playerCells[index] == undefined) return;
+                var xc = LM.playerCells[index].targetX //.x
+                var yc = LM.playerCells[index].targetY //.y
+
+                var x = LM.indexedCells[LM.selected].targetX //.x
+                var y = LM.indexedCells[LM.selected].targetY //.y
+
+                var a = xc - x
+                var b = yc - y
+                var distance = Math.sqrt(a * a + b * b) - (LM.indexedCells[LM.selected].size + LM.playerCells[index].size)
+
+                var ang = Math.atan2(y - yc, x - xc);
+
+                LM.cursorX = xc + (Math.cos(ang) * distance)
+                LM.cursorY = yc + (Math.sin(ang) * distance)
+				//
+				//LM.selected = null
+				//
+                LM.sendPosition()
+            }
+        },
+        drawRings() {
+            if (defaultmapsettings.reverseTrick) {
+                LM.indexedCells[reverseTrick.biggerEnemy] && this.drawRing(this.ctx,
+                    LM.indexedCells[reverseTrick.biggerEnemy].x,
+                    LM.indexedCells[reverseTrick.biggerEnemy].y,
+                    LM.indexedCells[reverseTrick.biggerEnemy].size,
+                    0.75, 'red');
+                LM.indexedCells[reverseTrick.smallerEnemy] && this.drawRing(this.ctx,
+                    LM.indexedCells[reverseTrick.smallerEnemy].x,
+                    LM.indexedCells[reverseTrick.smallerEnemy].y,
+                    LM.indexedCells[reverseTrick.smallerEnemy].size,
+                    0.75, 'blue');
+            }
+            LM.indexedCells[LM.selected] && this.drawRing(this.ctx,
+                LM.indexedCells[LM.selected].x,
+                LM.indexedCells[LM.selected].y,
+                LM.indexedCells[LM.selected].size,
+                0.75, '#ffffff')
+        },
+        drawCustomBackgrounds() {
+            if (defaultSettings.customBackground && defaultSettings.customBackground != "") {
+                if (!legendmod.customMidPic) {
+                    if (defaultSettings.customBackground) {
+                        legendmod.customMidPic = new Image;
+                        legendmod.customMidPic.src = defaultSettings.customBackground;
+                    }
+                    /*else {
+                            legendmod.customMidPic = new Image;
+                            legendmod.customMidPic.src = defaultSettings.customServerImage1;
+                        }*/
+                } else if (legendmod.customMidPic && defaultSettings.customBackground && legendmod.customMidPic.src != defaultSettings.customBackground) {
+                    legendmod.customMidPic = new Image;
+                    legendmod.customMidPic.src = defaultSettings.customBackground;
+                }
+                if (dyinglight1load == "yes") {
+                    this.prevctxglobalAlpha = this.ctx.globalAlpha;
+                    this.ctx.globalAlpha = defaultSettings.backgroundAlpha
+                    this.ctx.drawImage(
+                        cimg5,
+                        legendmod.mapMinX - LM.mapSize - 1,
+                        legendmod.mapMinY - LM.mapSize - 1,
+                        (legendmod.mapMaxX - legendmod.mapMinX) * 3,
+                        (legendmod.mapMaxY - legendmod.mapMinY) * 3
+                    );
+                    this.ctx.globalAlpha = this.prevctxglobalAlpha
+                }
+                if (defaultSettings.customBackground) {
+                    this.prevctxglobalAlpha = this.ctx.globalAlpha;
+                    this.ctx.globalAlpha = defaultSettings.backgroundAlpha
+                    this.ctx.drawImage(
+                        legendmod.customMidPic,
+
+                        legendmod.mapMinX,
+                        legendmod.mapMinY,
+                        legendmod.mapMaxX - legendmod.mapMinX,
+                        legendmod.mapMaxY - legendmod.mapMinY
+                    );
+                    this.ctx.globalAlpha = this.prevctxglobalAlpha
+                } else {
+                    this.prevctxglobalAlpha = this.ctx.globalAlpha;
+                    this.ctx.globalAlpha = defaultSettings.backgroundAlpha
+                    var ofx = ((legendmod.mapMaxX - legendmod.mapMinX) / 5) * 2.2
+                    var ofy = ((legendmod.mapMinY - legendmod.mapMaxY) / 5) * 2.2
+                    this.ctx.drawImage(
+                        legendmod.customMidPic, //2.1:5.9
+                        legendmod.mapMinX + ofx,
+                        legendmod.mapMaxY + ofy,
+                        (legendmod.mapMaxX - legendmod.mapMinX) / 8.5,
+                        (legendmod.mapMinY - legendmod.mapMaxY) / 8.5
+                    );
+                    this.ctx.globalAlpha = this.prevctxglobalAlpha
+                }
+            }
+        },
+        drawViewPorts(ctx) {
+            //console.log('a')
+            this.drawViewport(this.ctx, 'Viewport', LM.camMinX, LM.camMinY, LM.camMaxX, LM.camMaxY, defaultSettings.bordersColor, 15);
+            if (legendmod.multiBoxPlayerExists && LM.camMinMultiX && LM.camMinMultiY && LM.camMaxMultiX && LM.camMaxMultiY) {
+                this.drawViewport(this.ctx, 'Multi', LM.camMinMultiX, LM.camMinMultiY, LM.camMaxMultiX, LM.camMaxMultiY, defaultSettings.bordersColor, 15);
+            }
+            if (window.fullSpectator) {
+                for (let i = 0; i < spects.length; i++) {
+                    this.newViewport(this.ctx, spects[i].number, spects[i].getX(spects[i].viewX), spects[i].getY(spects[i].viewY), spects[i].isSpectateEnabled, spects[i].isFreeSpectate, [], [])
+                }
+            }
+        },
+        drawWaves() {
+            let waves = LM.Waves
+
+            this.ctx.globalAlpha = defaultSettings.darkTheme ? 0.75 : 0.35;
+            for (let length = waves.length - 1; length >= 0; length--) {
+			//for (let length = waves.length - 1; length > 0; length--) {
+                let r = (Date.now() - waves[length].time) / 2
+
+
+                let gradient = this.ctx.createRadialGradient(waves[length].x, waves[length].y, r - r / 4, waves[length].x, waves[length].y, r);
+				//if (waves[length].moreAnimation && r > 1560){
+				if (waves[length].moreAnimation && r > 1160 && r > (waves[length].wavelength + 760 )/ 2 ){	
+				//if (waves[length].moreAnimation && r > 1160 && r > (waves[length].wavelength / 2) + 760 ){	
+					gradient.addColorStop(0, defaultSettings.splitRangeColor + "00");
+					gradient.addColorStop(1, defaultSettings.splitRangeColor);
+				}
+				else {
+					gradient.addColorStop(0, waves[length].color + "00");
+					gradient.addColorStop(1, waves[length].color);
+				}				
+                this.ctx.strokeStyle = gradient;
+                this.ctx.lineWidth = r / 4;
+                this.ctx.beginPath();
+                this.ctx.arc(waves[length].x, waves[length].y, r - r / 8, 0, this.pi2, false);
+                this.ctx.closePath();
+                this.ctx.stroke();
+                this.ctx.beginPath();
+                this.ctx.strokeStyle = defaultSettings.splitRangeColor;
+                this.ctx.lineWidth = 5;
+                this.ctx.beginPath();
+                this.ctx.arc(waves[length].x, waves[length].y, r, 0, this.pi2, false);
+                this.ctx.closePath();
+                this.ctx.stroke();
+                //if (r > 500) {					
+				if (r > waves[length].wavelength) {					
+                    LM.Waves.splice(length, 1);
+                }
+            }
+            this.ctx.globalAlpha = 1;
+            /*
+            var wave = {
+              x: LM.cursorX,//window.user.mouseX,
+              y: LM.cursorY,//window.user.mouseY,
+              color: ogario.playerColor
+            }
+            wave.time = Date.now();
+            LM.Waves.push(wave)		  		*/
+        },
+        drawFBTracking(ctx, players, x, y) { //Yahnych
+            for (let length = 0; length < players.length; length++) {
+                let t = players[length];
+                let r = t.size / 3;
+                //distance to target
+                var dis = Math.sqrt((x - t.x) * (x - t.x) + (y - t.y) * (y - t.y));
+                //angle 
+                var angl = Math.round((Math.acos((t.y - y) / dis) / Math.PI) * 180);
+                //if target on left side
+
+                if ((t.x - x > 0 && t.y - y < 0) || (t.x - x > 0 && t.y - y > 0)) {
+                    angl = 180 + (180 - angl);
+                }
+                // Store the current context state (i.e. rotation, translation etc..)
+                ctx.save()
+
+                //Convert degrees to radian 
+                var rad = angl * Math.PI / 180;
+
+                //Set the origin to the center of the image
+                ctx.translate(t.x, t.y);
+
+                //Rotate the canvas around the origin
+                ctx.rotate(rad);
+
+                //draw the image    
+                //ctx.drawImage(c, t.size * (-1),t.size * (-1),t.size*2,t.size*2);
+
+                let grad = ctx.createLinearGradient(0, -t.size, 0, r * 2 - t.size); //Yahnych
+                grad.addColorStop(0, defaultSettings.splitRangeColor);
+                grad.addColorStop(1, defaultSettings.splitRangeColor + "00");
+
+
+                ctx.fillStyle = grad;
+                ctx.globalAlpha = defaultSettings.darkTheme ? 0.75 : 0.35;
+                ctx.beginPath();
+                ctx.arc(0, 0 - (t.size - r), r, 0, Math.PI * 2, false)
+                ctx.fill();
+                ctx.globalAlpha = 1;
+                // Restore canvas state as saved from above
+                ctx.restore();
+            }
+        },
+        newViewport(ctx, name, viewX, viewY, isSpectateEnabled = false, isFreeSpectate = false, leaderboard = [], cells = []) {
+            var size = 0
+            var mtp = 1.985
+
+            if (cells.length > 0) {
+                for (var im = 0; cells.length > im; im++)
+                    size += cells[im].size
+            } else if (isFreeSpectate == false && isSpectateEnabled == true) {
+                for (var i = 0; leaderboard.length > i; i++) {
+                    for (var im = 0; cells.length > im; im++)
+                        if (cells[im].nick == leaderboard[i].nick)
+                            size += cells[im].size
+                    break
+                }
+            } else {
+                if (isFreeSpectate && isSpectateEnabled) mtp = 4.95
+            }
+            var s = Math.pow(Math.min(64 / size, 1), 0.4000);
+            var w = 1024 / s / 2 * mtp; //WSVGA
+            var h = 600 / s / 2 * mtp;
+            this.drawViewport(ctx, `Viewport# ${name}`, viewX - w, viewY - h, viewX + w, viewY + h, defaultSettings.bordersColor, 15);
+            //this.drawRing(this.ctx, LM.viewX, LM.viewY, 15, 1, '#ff00ff') 
+        },
+        drawViewport: function(ctx, text, minX, maxY, maxX, minY, stroke, width) {
+
+            ctx.strokeStyle = stroke;
+            ctx.lineWidth = width;
+
+            ctx.fillStyle = "white";
+            ctx.font = "100px sans-serif";
+            ctx.textAlign = "end";
+            ctx.textBaseline = "hanging"
+            ctx.fillText(text, maxX, maxY);
+
+            ctx.beginPath();
+            ctx.moveTo(minX, maxY);
+            ctx.lineTo(maxX, maxY);
+            ctx.lineTo(maxX, minY);
+            ctx.lineTo(minX, minY);
+            ctx.closePath();
+            ctx.stroke();
+
+        },
+        pointInCircle: function(x, y, cx, cy, radius) {
+            var distancesquared = (x - cx) * (x - cx) + (y - cy) * (y - cy);
+            return distancesquared <= radius * radius;
+        },
+        drawRing: function(ctx, x, y, size, alpha, color) {
+            ctx.lineWidth = 20;
+            ctx.globalAlpha = alpha;
+            ctx.strokeStyle = color;
+            ctx.beginPath();
+            ctx.arc(x, y, size - 10, 0, this.pi2, false);
+            ctx.closePath();
+            ctx.stroke();
+
+            ctx.globalAlpha = 1;
+        },
+        drawGrid(ctx, width, heigth, scale, camX, camY) {
+            const reWidth = width / scale;
+            const reHeigth = heigth / scale;
+            let x = (-camX + reWidth / 2) % 50;
+            let y = (-camY + reHeigth / 2) % 50;
+            ctx.strokeStyle = defaultSettings.gridColor;
+            ctx.globalAlpha = 1 * scale;
+            ctx.beginPath();
+            for (; x < reWidth; x += 50) {
+                ctx.moveTo(x * scale - 0.5, 0);
+                ctx.lineTo(x * scale - 0.5, reHeigth * scale);
+            }
+            for (; y < reHeigth; y += 50) {
+                ctx.moveTo(0, y * scale - 0.5);
+                ctx.lineTo(reWidth * scale, y * scale - 0.5);
+            }
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+        },
+        drawSectors(ctx, mapOffset, x, y, minX, minY, maxX, maxY, stroke, color, width, type) {
+            if (mapOffset || !type) {
+                var posX = ~~((maxX - minX) / x);
+                var posY = ~~((maxY - minY) / y);
+                var rePosX = 0;
+                var rePosY = 0;
+                if (ctx.strokeStyle = stroke, ctx.fillStyle = color, ctx.lineWidth = width, type || !type && defaultmapsettings.showMiniMapGrid) {
+                    ctx.beginPath();
+                    var length = 0;
+                    for (; length < x + 1; length++) {
+                        rePosX = minX + posX * length;
+                        ctx.moveTo(length == x ? maxX : rePosX, minY);
+                        ctx.lineTo(length == x ? maxX : rePosX, maxY);
+                    }
+                    length = 0;
+                    for (; length < y + 1; length++) {
+                        rePosY = minY + posY * length;
+                        ctx.moveTo(minX - width / 2, length == y ? maxY : rePosY);
+                        ctx.lineTo(maxX + width / 2, length == y ? maxY : rePosY);
+                    }
+                    ctx.stroke();
+                } else {
+                    this.drawMapBorders(ctx, mapOffset, minX, minY, maxX, maxY, stroke, width);
+                }
+                ctx.font = type ? defaultSettings.sectorsFontWeight + " " + defaultSettings.sectorsFontSize + "px " + defaultSettings.sectorsFontFamily : defaultSettings.miniMapFontWeight + " " + ~~(0.4 * posY) + "px " + defaultSettings.miniMapFontFamily;
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                length = 0;
+                for (; length < y; length++) {
+                    var ogarcopythelb = 0;
+                    for (; ogarcopythelb < x; ogarcopythelb++) {
+                        var application = String.fromCharCode(65 + length) + (ogarcopythelb + 1);
+                        rePosX = ~~(minX + posX / 2 + ogarcopythelb * posX);
+                        rePosY = ~~(minY + posY / 2 + length * posY);
+                        ctx.fillText(application, rePosX, rePosY);
+                    }
+                }
+            }
+        },
+        drawCommander() {
+            //console.log('Special effects stage 2');
+            if (LM.drawCommander) {
+                var pickerAxes = this.ctx;
+                cimg = new Image;
+                cimg.src = defaultSettings.commanderImage;
+                cimg1 = new Image;
+                cimg1.src = defaultSettings.commanderImage1;
+                cimg12 = new Image;
+                cimg12.src = defaultSettings.commanderImage2;
+                pickerAxes.save();
+                pickerAxes.globalAlpha = LM.cAlpha;
+                pickerAxes.translate(ogario.spawnX, ogario.spawnY);
+                pickerAxes.rotate(LM.cAngle);
+                pickerAxes.drawImage(cimg, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                pickerAxes.restore();
+                pickerAxes.save();
+                pickerAxes.globalAlpha = LM.cAlpha;
+                pickerAxes.translate(ogario.spawnX, ogario.spawnY);
+                pickerAxes.rotate(LM.cAngle1);
+                pickerAxes.drawImage(cimg1, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                pickerAxes.restore();
+                pickerAxes.save();
+                pickerAxes.globalAlpha = LM.cAlpha;
+                pickerAxes.translate(ogario.spawnX, ogario.spawnY);
+                pickerAxes.rotate(LM.cAngle2);
+                pickerAxes.drawImage(cimg12, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                pickerAxes.restore();
+                pickerAxes.globalAlpha = 1;
+                this.updateCommander();
+            }
+        },
+        drawCommander2() {
+            //console.log('Special effects stage 2');
+            if (LM.drawCommander2) {
+                var pickerAxes = this.ctx;
+                cimg = new Image;
+                cimg.src = defaultSettings.commanderImage3;
+                cimg1 = new Image;
+                cimg1.src = defaultSettings.commanderImage4;
+                cimg12 = new Image;
+                cimg12.src = defaultSettings.commanderImage5;
+                pickerAxes.save();
+                pickerAxes.globalAlpha = LM.cAlpha;
+                pickerAxes.translate(window.targetingLeadX, window.targetingLeadY);
+                pickerAxes.rotate(LM.cAngle);
+                pickerAxes.drawImage(cimg, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                pickerAxes.restore();
+                pickerAxes.save();
+                pickerAxes.globalAlpha = LM.cAlpha;
+                pickerAxes.translate(window.targetingLeadX, window.targetingLeadY);
+                pickerAxes.rotate(LM.cAngle1);
+                pickerAxes.drawImage(cimg1, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                pickerAxes.restore();
+                pickerAxes.save();
+                pickerAxes.globalAlpha = LM.cAlpha;
+                pickerAxes.translate(window.targetingLeadX, window.targetingLeadY);
+                pickerAxes.rotate(LM.cAngle2);
+                pickerAxes.drawImage(cimg12, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                pickerAxes.restore();
+                pickerAxes.globalAlpha = 1;
+                this.updateCommander();
+            }
+        },
+        updateCommander() {
+            LM.cRadius += 7;
+            LM.cAngle += .007;
+            LM.cAngle1 -= .006;
+            LM.cAngle2 += .003;
+            if (2025 <= LM.cRadius) {
+                LM.cAlpha *= .95;
+            }
+            if (0.05 >= LM.cAlpha) {
+                this.resetCommander();
+            }
+        },
+        resetCommander() {
+            LM.cRadius = 10; //LM.clientX
+            LM.cAngle = 4;
+            LM.cAngle1 = 0;
+            LM.cAngle2 = 0;
+            LM.cAlpha = 1;
+            LM.drawCommander = false;
+            LM.drawCommander2 = false;
+            ogario.spawnX = 0;
+            ogario.spawnY = 0;
+        },
+        /*
+                drawMapBorders(t, e, i, s, o, a, n, r) {
+                    e && (t.strokeStyle = n, t.lineWidth = r, t.beginPath(), t.moveTo(i, s), t.lineTo(o, s), t.lineTo(o, a), t.lineTo(i, a), t.closePath(), t.stroke());
+                },
+				*/
+        drawMapBorders(ctx, macros, text, x1, x0, y0, radius, canvas) {
+            if (macros) {
+                ctx.strokeStyle = radius;
+                ctx.lineWidth = canvas;
+                ctx.beginPath();
+                ctx.moveTo(text + ctx.lineWidth, x1);
+                ctx.lineTo(x0 - ctx.lineWidth, x1);
+
+                //
+                ctx.moveTo(x0, x1); //ctx.moveTo(x0, x1);
+                ctx.lineTo(x0 + ctx.lineWidth, x1 - ctx.lineWidth);
+                //
+
+                ctx.moveTo(x0, x1 + ctx.lineWidth);
+                ctx.lineTo(x0, y0 - ctx.lineWidth);
+
+                //
+                ctx.moveTo(x0, y0);
+                ctx.lineTo(x0 + ctx.lineWidth, y0 + ctx.lineWidth);
+                //
+
+                ctx.moveTo(x0 - ctx.lineWidth, y0);
+                ctx.lineTo(text + ctx.lineWidth, y0);
+
+                //
+                ctx.moveTo(text, y0);
+                ctx.lineTo(text - ctx.lineWidth, y0 + ctx.lineWidth);
+                //
+
+                ctx.moveTo(text, y0 - ctx.lineWidth);
+                ctx.lineTo(text, x1 + ctx.lineWidth);
+
+                //
+                ctx.moveTo(text, x1);
+                ctx.lineTo(text - ctx.lineWidth, x1 - ctx.lineWidth);
+                //					
+                //ctx.lineTo(text, x1);
+                if (defaultmapsettings.borderGlow) {
+                    ctx.shadowBlur = defaultSettings.borderGlowSize;
+                    ctx.shadowColor = defaultSettings.borderGlowColor;
+                } else {
+                    "skrrt";
+                }
+                //ctx.closePath();
+                ctx.stroke();
+            }
+            if (defaultmapsettings.borderGlow) {
+                ctx.shadowBlur = 0;
+            } else {
+                "skrrt";
+            }
+        },
+        /*drawMapBorders(ctx, macros, text, x1, x0, y0, radius, canvas) {
+                if (macros) {
+                    ctx.strokeStyle = radius;
+                    ctx.lineWidth = canvas;
+                    ctx.beginPath();
+                    ctx.moveTo(text, x1);
+                    ctx.lineTo(x0, x1);
+                    ctx.lineTo(x0, y0);
+                    ctx.lineTo(text, y0);
+				
+					//ctx.lineTo(text, x1);
+                    if (defaultmapsettings.borderGlow) {
+                        ctx.shadowBlur = defaultSettings.borderGlowSize;
+                        ctx.shadowColor = defaultSettings.borderGlowColor;
+                    } else {
+                        "skrrt";
+                    }
+                    ctx.closePath();
+                    ctx.stroke();
+                }
+                if (defaultmapsettings.borderGlow) {
+                    ctx.shadowBlur = 0;
+                } else {
+                    "skrrt";
+                }
+            },	*/
+        drawVirusesRange(t, e, i) {
+            if (e.length) {
+                t.beginPath();
+                for (var s = 0; s < e.length; s++) {
+                    if (e[s].invisible != true) {
+                        var o = e[s].x;
+                        var a = e[s].y;
+                        t.moveTo(o, a);
+                        t.arc(o, a, e[s].size + 820, 0, this.pi2, false);
+                    }
+                }
+                t.fillStyle = defaultSettings.virusColor;
+                t.globalAlpha = 0.1;
+                t.fill();
+                t.globalAlpha = 1;
+                i && (e = []);
+            }
+        },
+        calMinMaxMulti() {
+            if (legendmod.multiBoxPlayerExists && LM.foodMulti.length) {
+                LM.camMaxMultiX = LM.playerXMulti
+                LM.camMaxMultiY = LM.playerYMulti
+                LM.camMinMultiX = LM.playerXMulti
+                LM.camMinMultiY = LM.playerYMulti
+                for (var length = 0; length < LM.foodMulti.length; length++) {
+                    var x = LM.foodMulti[length].x - 10 - defaultSettings.foodSize;
+                    var y = LM.foodMulti[length].y - 10 - defaultSettings.foodSize;
+                    if (x > LM.camMaxMultiX) LM.camMaxMultiX = x
+                    if (y > LM.camMaxMultiY) LM.camMaxMultiY = y
+                    if (x < LM.camMinMultiX) LM.camMinMultiX = x
+                    if (y < LM.camMinMultiY) LM.camMinMultiY = y
+                }
+            }
+        },
+        calMinMax() {
+            var tempX, tempY
+            tempX = legendmod.viewXTrue
+            tempY = legendmod.viewYTrue
+
+            LM.camMaxX = tempX
+            LM.camMaxY = tempY
+            LM.camMinX = tempX
+            LM.camMinY = tempY
+            for (var length = 0; length < LM.food.length; length++) {
+                if (LM.food[length].spectator == false) {
+                    var x = LM.food[length].x - 10 - defaultSettings.foodSize;
+                    var y = LM.food[length].y - 10 - defaultSettings.foodSize;
+                    if (x > LM.camMaxX) LM.camMaxX = x
+                    if (y > LM.camMaxY) LM.camMaxY = y
+                    if (x < LM.camMinX) LM.camMinX = x
+                    if (y < LM.camMinY) LM.camMinY = y
+                }
+            }
+        },
+        drawFood() {
+
+            if (!LM.showFood) {
+                return;
+            }
+            if (defaultmapsettings.autoHideFoodOnZoom && this.scale < 0.2) {
+                return;
+            }
+            if (defaultmapsettings.autoHideFood && !LM.foodIsHidden && LM.playerMass > 1000) {
+                LM.showFood = false;
+                LM.foodIsHidden = true;
+                return;
+            }
+            //if (!defaultmapsettings.rainbowFood) {
+                this.drawCachedFood(this.ctx, LM.food, this.scale);
+                //return;
+            //}
+            /*for (let length = 0; length < LM.food.length; length++) {
+                LM.food[length].moveCell();
+                if (!LM.food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) LM.food[length].invisible = true
+                if (!LM.food[length].invisible) {
+                    LM.food[length].draw(this.ctx);
+                }
+            }*/
+        },
+        drawCachedFood(ctx, food, scale, reset) {
+            if (!food.length) {
+                return;
+            }
+            if (defaultmapsettings.optimizedFood && !defaultmapsettings.rainbowFood && this.pellet) {
+
+                for (var length = 0; length < food.length; length++) {
+                    //
+                    if (!food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true
+                    //
+                    if (!food[length].invisible) {
+                        var x = food[length].x - 10 - defaultSettings.foodSize;
+                        var y = food[length].y - 10 - defaultSettings.foodSize;
+                        ctx.drawImage(this.pellet, x, y);
+                    }
+                }
+            } 
+			else {
+                for (var length = 0; length < food.length; length++) {
+					ctx.beginPath();
+                    if (!food[length].invisible) {				
+                        var x = food[length].x;
+                        var y = food[length].y;
+                        ctx.moveTo(x, y);
+						if (scale < 0.08) {
+                        //if (scale < 0.16) {
+                            const size = food[length].size + defaultSettings.foodSize;
+							
+                            ctx.rect(x - size, y - size, 2 * size, 2 * size);
+                            //continue;
+                        }
+						else{
+							ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
+						}
+						if (defaultmapsettings.rainbowFood){ 
+							
+							ctx.fillStyle = food[length].color
+							
+						}
+                    }
+				if (!defaultmapsettings.rainbowFood){ 				
+					ctx.fillStyle = defaultSettings.foodColor;
+				}
+                ctx.globalAlpha = 1;
+                ctx.fill();					
+                }
+
+            }
+            if (reset) {
+                food = [];
+            }
+        },
+        /*drawCachedFood(t, e, i, s) {
+            if (e.length) {
+                if (defaultmapsettings.optimizedFood && this.pellet)
+                    for (var o = 0; o < e.length; o++) {
+                        var a = e[o].x - 10 - defaultSettings.foodSize,
+                            n = e[o].y - 10 - defaultSettings.foodSize;
+                        t.drawImage(this.pellet, a, n);
+                    } else {
+                        t.beginPath();
+                        for (o = 0; o < e.length; o++) {
+                            a = e[o].x, n = e[o].y;
+                            if (t.moveTo(a, n), i < 0.16) {
+                                var r = e[o].size + defaultSettings.foodSize;
+                                t.rect(a - r, n - r, 2 * r, 2 * r);
+                            } else t.arc(a, n, e[o].size + defaultSettings.foodSize, 0, this.pi2, false);
+                        }
+                        t.fillStyle = defaultSettings.foodColor, t.globalAlpha = 1, t.fill();
+                    }
+                s && (e = []);
+            }
+        },*/
+        drawSplitRange(ctx, biggestCell, players, currentBiggestCell, reset) {
+            if (this.drawCircles(ctx, biggestCell, 760, 4, 0.4, defaultSettings.enemyBSTEColor), players.length) { //Sonia2
+                //if (this.drawCircles(ctx, biggestCell, 760, 4, 0.4, '#ff0000'), players.length) { //Sonia
+                var current = currentBiggestCell ? players.length - 1 : 0;
+                ctx.lineWidth = 6;
+                ctx.globalAlpha = defaultSettings.darkTheme ? 0.7 : 0.35;
+                ctx.strokeStyle = defaultSettings.splitRangeColor;
+                ctx.beginPath();
+				
+                ctx.arc(players[current].x, players[current].y, players[current].size + 760, 0, this.pi2, false);
+                ctx.closePath();
+                ctx.stroke();
+            }
+            ctx.globalAlpha = 1;
+            if (reset) {
+                biggestCell = [];
+            }
+        },
+        drawDoubleSplitRange(ctx, biggestCell, players, currentBiggestCell, reset) {
+            //if (this.drawCircles(ctx, biggestCell, 760, 4, 0.4, '#BE00FF'), players.length) {
+            if (this.draw2Circles(ctx, biggestCell, 760, 4, 0.4, defaultSettings.enemyBSTEDColor), players.length) { //Sonia2
+                //if (this.draw2Circles(ctx, biggestCell, 760, 4, 0.4, '#8000ff'), players.length) { //Sonia
+                //this.drawSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCells, LM.selectBiggestCell);
+
+                var current = currentBiggestCell ? players.length - 1 : 0;
+                //console.log(currentBiggestCell[current].size);
+                if (players[current].size >= 400 && defaultmapsettings.qdsplitRange) { //Sonia2
+                    ctx.lineWidth = 6;
+                    ctx.globalAlpha = defaultSettings.darkTheme ? 0.7 : 0.35;
+                    ctx.strokeStyle = defaultSettings.splitRangeColor;
+                    ctx.beginPath();
+                    ctx.arc(players[current].x, players[current].y, 2 * players[current].size + 760, 0, this.pi2, false);
+                    ctx.closePath();
+                    ctx.stroke();
+                }
+            }
+            ctx.globalAlpha = 1;
+            if (reset) {
+                biggestCell = [];
+            }
+        },
+        drawBOppRings(ctx, scale, ip, biggerSte, biggetCell, smallerCell, smallSte, ap, ss, reset) {
+            const width = 14 + 2 / scale;
+            const alpha = 12 + 1 / scale;
+            this.drawBubbleCircles(ctx, ip, width, alpha, 0.75, defaultSettings.enemyBSTEDColor); //Sonia2
+            this.drawBubbleCircles(ctx, biggerSte, width, alpha, 0.75, defaultSettings.enemyBSTEColor);
+            this.drawBubbleCircles(ctx, biggetCell, width, alpha, 0.75, defaultSettings.enemyBColor);
+            this.drawBubbleCircles(ctx, ss, width, alpha, 0.75, defaultSettings.splitRangeColor);
+            this.drawBubbleCircles(ctx, smallerCell, width, alpha, 0.75, defaultSettings.enemySColor);
+            this.drawBubbleCircles(ctx, smallSte, width, alpha, 0.75, defaultSettings.enemySSTEColor);
+            this.drawBubbleCircles(ctx, ap, width, alpha, 0.75, defaultSettings.enemySSTEDColor); //Sonia2
+            if (reset) {
+                biggerSte = [];
+                biggetCell = [];
+                smallerCell = [];
+                smallSte = [];
+                ip = [];
+                ap = [];
+                ss = [];
+            }
+        },
+        //Sonia (entire function update)
+        drawOppRings(ctx, scale, ip, biggerSte, biggetCell, smallerCell, smallSte, ap, reset) {
+            //drawOppRings(ctx, scale, ip, biggerSte, biggetCell, smallerCell, smallSte, ap, ss, reset) {
+            var width = 14 + 2 / scale;
+            var alpha = 12 + 1 / scale;
+            this.drawCircles(ctx, ip, width, alpha, 0.75, defaultSettings.enemyBSTEDColor); //Sonia2
+            this.drawCircles(ctx, biggerSte, width, alpha, 0.75, defaultSettings.enemyBSTEColor); //Sonia2
+            this.drawCircles(ctx, biggetCell, width, alpha, 0.75, defaultSettings.enemyBColor); //Sonia2
+            //this.drawCircles(ctx, ss, width, alpha, 0.75, defaultSettings.splitRangeColor);						
+            this.drawCircles(ctx, smallerCell, width, alpha, 0.75, defaultSettings.enemySColor); //Sonia2
+            this.drawCircles(ctx, smallSte, width, alpha, 0.75, defaultSettings.enemySSTEColor); //Sonia2
+            this.drawCircles(ctx, ap, width, alpha, 0.75, defaultSettings.enemySSTEDColor); //Sonia2
+            if (reset) {
+                biggerSte = [];
+                biggetCell = [];
+                smallerCell = [];
+                smallSte = [];
+                ip = [];
+                ap = [];
+                //ss = [];
+            }
+        },
+        drawBCursorTracking(ctx, players, cursorX, cursorY) { //Yahnych
+            for (let length = 0; length < players.length; length++) {
+                let t = LM.playerCells[length];
+                if (LM.playerCells[length].angle == undefined) {
+                    LM.playerCells[length].angle = 0
+                }
+                let r = t.size / 3;
+                //distance to target
+                var dis = Math.sqrt((cursorX - t.x) * (cursorX - t.x) + (cursorY - t.y) * (cursorY - t.y));
+                //angle in deg
+                var angl = Math.round((Math.acos((t.y - cursorY) / dis) / Math.PI) * 180);
+                //if target on left side
+
+                if ((t.x - cursorX > 0 && t.y - cursorY < 0) || (t.x - cursorX > 0 && t.y - cursorY > 0)) {
+                    angl = 180 + (180 - angl);
+                }
+                var d = 4;
+                if (angl - t.angle > d && angl - t.angle < 180 - d || angl - t.angle < 180 * (-1) + d) {
+                    t.angle += d / 2;
+                    if (t.angle > 360) {
+                        t.angle = t.angle - 360
+                    }
+                } else if (angl - t.angle < d * (-1) && angl - t.angle > 180 * (-1) + d || angl - t.angle > 180 + d) {
+                    t.angle -= d / 2;
+                    if (t.angle < 0) {
+                        t.angle = 360 - t.angle
+                    }
+                }
+
+                ctx.save()
+
+                //Convert degrees to radian 
+                var rad = t.angle * Math.PI / 180;
+
+                ctx.translate(t.x, t.y);
+
+                ctx.rotate(rad);
+
+                //ctx.drawImage(c, t.size * (-1),t.size * (-1),t.size*2,t.size*2);
+                let grad = ctx.createLinearGradient(0, -t.size, 0, r * 2 - t.size); //Yahnych
+                grad.addColorStop(0, defaultSettings.cursorTrackingColor);
+                grad.addColorStop(1, defaultSettings.cursorTrackingColor + "00");
+
+
+                ctx.fillStyle = grad;
+                ctx.globalAlpha = defaultSettings.darkTheme ? 0.75 : 0.35;
+                ctx.beginPath();
+                ctx.arc(0, 0 - (t.size - r), r, 0, Math.PI * 2, false)
+                ctx.fill();
+                ctx.globalAlpha = 1;
+                // Restore canvas state as saved from above
+                ctx.restore();
+            }
+        },
+        drawCursorTracking(ctx, players, cursorX, cursorY) {
+            ctx.lineWidth = 4,
+                ctx.globalAlpha = defaultSettings.darkTheme ? 0.75 : 0.35;
+            ctx.strokeStyle = defaultSettings.cursorTrackingColor;
+            ctx.beginPath();
+            for (var o = 0; o < players.length; o++) ctx.moveTo(players[o].x, players[o].y), ctx.lineTo(cursorX, cursorY);
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+        },
+        drawCircles(ctx, players, scale, width, alpha, stroke) {
+            ctx.lineWidth = width;
+            ctx.globalAlpha = alpha;
+            ctx.strokeStyle = stroke;
+            for (var length = 0; length < players.length; length++) {
+                ctx.beginPath();
+                ctx.arc(players[length].x, players[length].y, players[length].size + scale, 0, this.pi2, false);
+                ctx.closePath();
+                ctx.stroke();
+            }
+            ctx.globalAlpha = 1;
+        },
+        drawBubbleCircles(ctx, players, scale, width, alpha, stroke) { //Yahnych
+            for (let length = 0; length < players.length; length++) {
+                let t = players[length];
+                let r = t.size / 3;
+                //distance to target
+                var dis = Math.sqrt((t.targetX - t.x) * (t.targetX - t.x) + (t.targetY - t.y) * (t.targetY - t.y));
+                //angle 
+                var angl = Math.round((Math.acos((t.y - t.targetY) / dis) / Math.PI) * 180);
+                //if target on left side
+
+                if ((t.x - t.targetX > 0 && t.y - t.targetY < 0) || (t.x - t.targetX > 0 && t.y - t.targetY > 0)) {
+                    angl = 180 + (180 - angl);
+                }
+                //console.log(t.x, t.targetX)
+
+                // Store the current context state (i.e. rotation, translation etc..)
+                ctx.save()
+
+                //Convert degrees to radian 
+                var rad = angl * Math.PI / 180;
+
+                //Set the origin to the center of the image
+                ctx.translate(t.x, t.y);
+
+                //Rotate the canvas around the origin
+                ctx.rotate(rad);
+
+                //draw the image    
+                //ctx.drawImage(c, t.size * (-1),t.size * (-1),t.size*2,t.size*2);
+                let grad = ctx.createLinearGradient(0, -t.size, 0, r * 2 - t.size); //Yahnych
+                grad.addColorStop(0, stroke);
+                grad.addColorStop(1, stroke + "00");
+
+
+                ctx.fillStyle = grad;
+                ctx.globalAlpha = alpha;
+                ctx.beginPath();
+                ctx.arc(0, 0 - (t.size - r), r, 0, Math.PI * 2, false)
+                ctx.fill();
+                ctx.globalAlpha = 1;
+                // Restore canvas state as saved from above
+                ctx.restore();
+            }
+
+        },
+        //Sonia (added entire function)
+        draw2Circles(ctx, players, scale, width, alpha, color) {
+            ctx.lineWidth = width;
+            ctx.globalAlpha = alpha;
+            ctx.strokeStyle = color;
+            //for (var n = 0; n < players.length; n++) ctx.beginPath(), ctx.arc(players[n].x, players[n].y, 1.5*players[n].size + 2*scale, 0, this.pi2, false), ctx.closePath(), ctx.stroke();
+            if (defaultmapsettings.qdsplitRange) { //Sonia2
+                for (var n = 0; n < players.length; n++) {
+                    ctx.beginPath();
+                    ctx.arc(players[n].x, players[n].y, 2 * players[n].size + scale, 0, this.pi2, false);
+                    ctx.closePath();
+                    ctx.stroke(); //760+2*cell.size is the correct
+                }
+            } //Sonia2
+            if (defaultmapsettings.sdsplitRange) { //Sonia2
+                for (var n = 0; n < players.length; n++) {
+                    ctx.setLineDash([20, 30]);
+                    ctx.lineWidth = 2 * width;
+                    ctx.beginPath();
+                    ctx.arc(players[n].x, players[n].y, 1.5 * players[n].size + 2 * scale, 0, this.pi2, false);
+                    ctx.closePath();
+                    ctx.stroke(); //Sonia2
+                }
+                ctx.setLineDash([]); //Sonia2
+                ctx.lineWidth = width; //Sonia2
+            } //Sonia2
+            ctx.globalAlpha = 1;
+        },
+        drawDashedCircle(ctx, x, y, radius, times, width, color) {
+            var pi2 = this.pi2 / times;
+            ctx.lineWidth = width;
+            ctx.strokeStyle = color;
+            for (var length = 0; length < times; length += 2) {
+                ctx.beginPath();
+                ctx.arc(x, y, radius - width / 2, length * pi2, (length + 1) * pi2, false);
+                ctx.stroke();
+            }
+        },
+        drawTeammatesInd(ctx, x, y, size) {
+			if (this.indicator){
+				if (defaultSettings.indicators=="normal"){
+					 ctx.drawImage(this.indicator, x - 45, y - size - 90);
+				}
+				else if (defaultSettings.indicators=="heart"){
+					ctx.drawImage(this.heartIndicator, x - 25, y - size - 90);
+				}
+				else if (defaultSettings.indicators=="smile"){
+					 ctx.drawImage(this.smileIndicator, x - 55, y - size - 150);
+				}
+			}	
+        },
+        drawPieChart() {
+            this.pieChart || (this.pieChart = document.createElement('canvas'));
+            var ctx = this.pieChart.getContext('2d'),
+                mincanvasWidth = Math.min(200, 0.3 * this.canvasWidth) / 200;
+            this.pieChart.width = 200 * mincanvasWidth;
+            this.pieChart.height = 240 * mincanvasWidth;
+            ctx.scale(mincanvasWidth, mincanvasWidth);
+            for (var colors = ['#333333', '#FF3333', '#33FF33', '#3333FF'], time = 0, length = 0; length < LM.pieChart.length; length++) {
+                var currentPie = time + LM.pieChart[length] * this.pi2;
+                ctx.fillStyle = colors[length + 1];
+                ctx.beginPath();
+                ctx.moveTo(100, 140);
+                ctx.arc(100, 140, 80, time, currentPie, false);
+                ctx.fill();
+                time = currentPie;
+            }
+        },
+        drawBattleArea(ctx) {
+            if (LM.battleRoyale.state) {
+                this.drawDangerArea(ctx, LM.battleRoyale.x, LM.battleRoyale.y, LM.battleRoyale.radius, LM.mapMinX, LM.mapMinY, LM.mapMaxX - LM.mapMinX, LM.mapMaxY - LM.mapMinY, defaultSettings.dangerAreaColor, 0.25);
+                this.drawSafeArea(ctx, LM.battleRoyale.targetX, LM.battleRoyale.targetY, LM.battleRoyale.targetRadius, 40, defaultSettings.safeAreaColor);
+            }
+        },
+        drawBattleAreaOnMinimap(ctx, width, heigth, newWidth, offsetX, offsetY) {
+            if (LM.battleRoyale.state) {
+                if (!this.battleAreaMap) {
+                    this.battleAreaMap = document.createElement("canvas");
+                    this.battleAreaMapCtx = this.battleAreaMap.getContext("2d");
+                }
+                if (this.battleAreaMap.width != width) {
+                    this.battleAreaMap.width = width;
+                    this.battleAreaMap.height = heigth;
+                } else {
+                    this.battleAreaMapCtx.clearRect(0, 0, width, heigth);
+                }
+                var newX = (LM.battleRoyale.x + offsetX) * newWidth;
+                var newY = (LM.battleRoyale.y + offsetY) * newWidth;
+                var newRadius = LM.battleRoyale.radius * newWidth;
+                this.drawDangerArea(this.battleAreaMapCtx, newX, newY, newRadius, 0, 0, width, heigth, defaultSettings.dangerAreaColor, 0.25);
+                newX = ~~((LM.battleRoyale.targetX + offsetX) * newWidth);
+                newY = ~~((LM.battleRoyale.targetY + offsetY) * newWidth);
+                newRadius = ~~(LM.battleRoyale.targetRadius * newWidth);
+                this.drawSafeArea(this.battleAreaMapCtx, newX, newY, newRadius, 2, defaultSettings.safeAreaColor);
+                ctx.drawImage(this.battleAreaMap, 0, 0);
+            }
+        },
+        drawDangerArea(ctx, x, y, radius, minX, minY, maxX, maxY, color, aplha) {
+            if (!(LM.battleRoyale.radius == LM.battleRoyale.maxRadius || radius <= 0)) {
+                ctx.save();
+                ctx.globalAlpha = aplha;
+                ctx.fillStyle = color;
+                ctx.fillRect(minX, minY, maxX, maxY);
+                ctx.globalCompositeOperation = "destination-out";
+                ctx.globalAlpha = 1;
+                ctx.beginPath();
+                ctx.arc(x, y, radius, 0, this.pi2, false);
+                ctx.fill();
+                ctx.restore();
+            }
+        },
+        drawSafeArea(ctx, targetX, targetY, radius, width, color) {
+            if (!(LM.battleRoyale.state > 2 || radius <= 0)) {
+                this.drawDashedCircle(ctx, targetX, targetY, radius, 60, width, color);
+            }
+        },
+        drawTextAlongArc(ctx, str, centerX, centerY, radius, angle) {
+            var len = str.length,
+                s;
+            this.ctx.save();
+            this.ctx.translate(centerX, centerY);
+            this.ctx.rotate(-1 * angle / 2);
+            this.ctx.rotate(-1 * (angle / len) / 2);
+            for (var n = 0; n < len; n++) {
+                this.ctx.rotate(angle / len);
+                this.ctx.save();
+                this.ctx.translate(0, -1 * radius);
+                s = str[n];
+                this.ctx.fillText(s, 0, 0);
+                this.ctx.restore();
+            }
+            this.ctx.restore();
+        },
+        drawGhostCells() {
+            if (defaultmapsettings.showGhostCells) {
+                var ghostsCells = LM.ghostCells;
+                this.ctx.beginPath();
+                var length = 0;
+                for (; length < ghostsCells.length; length++) {
+                    if (!ghostsCells[length].inView) {
+                        var x = ghostsCells[length].x;
+                        var y = ghostsCells[length].y;
+                        this.ctx.moveTo(x, y);
+                        this.ctx.arc(x, y, ghostsCells[length].size, 0, this.pi2, false);
+                        //
+                        if (defaultmapsettings.showGhostCellsInfo) {
+                            this.nickScale = 1;
+                            this.fontSize = Math.max(ghostsCells[length].size * 0.3, 26) * this.scale;
+                            this.nickSize = ~~(this.fontSize * this.nickScale);
+                            this.ctx.font = defaultSettings.namesFontWeight + " " + this.nickSize * 4 + "px " + defaultSettings.namesFontFamily;
+                            this.ctx.textAlign = 'center';
+                            this.ctx.fillStyle = defaultSettings.namesColor;
+                            this.ctx.strokeStyle = defaultSettings.namesStrokeColor;
+                            this.ctx.lineWidth = 4;
+                            angle = Math.PI * 0.8;
+
+                            if (LM.leaderboard[length] != undefined) { //LM instead of legendmod for quicker response
+
+                                this.ghostcellstext = removeEmojis(application.escapeHTML(LM.leaderboard[length].nick)); //application.escapeHTML(legendmod.leaderboard[0].nick)
+                            } else {
+                                this.ghostcellstext = "Ghost cell";
+                            }
+                            this.drawTextAlongArc(this.ctx, this.ghostcellstext, x, y, ghostsCells[length].size * this.pi2 / 6, angle);
+                            if (defaultmapsettings.customSkins && LM.showCustomSkins) {
+                                if (LM.leaderboard[length] != undefined) {
+                                    node = application.getCustomSkin(LM.leaderboard[length].nick, "#000000");
+                                    if (node) {
+                                        this.ctx.drawImage(node, x - ghostsCells[length].size, y - ghostsCells[length].size, ghostsCells[length].size * 2, ghostsCells[length].size * 2);
+                                    }
+                                }
+                            }
+                        }
+                        //
+                    }
+                }
+                this.ctx.fillStyle = defaultSettings.ghostCellsColor;
+                this.ctx.globalAlpha = defaultSettings.ghostCellsAlpha;
+                this.ctx.shadowColor = defaultSettings.ghostCellsColor;
+                this.ctx.shadowBlur = 40;
+                this.ctx.shadowOffsetX = 0;
+                this.ctx.shadowOffsetY = 0;
+                this.ctx.fill();
+                this.ctx.globalAlpha = 1;
+                this.ctx.shadowBlur = 0;
+            }
+        },
+        preDrawPellet() {
+            this.pellet = null;
+            var size = 10 + defaultSettings.foodSize;
+            var canvas = document.createElement('canvas');
+            canvas.width = 2 * size,
+                canvas.height = 2 * size;
+            var ctx = canvas.getContext('2d');
+            ctx.arc(size, size, size, 0, this.pi2, false);
+            ctx.fillStyle = defaultSettings.foodColor;
+            ctx.fill();
+            this.pellet = new Image();
+            this.pellet.src = canvas.toDataURL();
+            canvas = null;
+        },
+        preDrawIndicator() {
+            this.indicator = null;
+            var canvas = document.createElement('canvas');
+            canvas.width = 90;
+            canvas.height = 50;
+            var ctx = canvas.getContext('2d');
+            ctx.lineWidth = 2;
+            ctx.fillStyle = defaultSettings.teammatesIndColor;
+            ctx.strokeStyle = '#000000';
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(90, 0);
+            ctx.lineTo(45, 50);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            this.indicator = new Image();
+            this.indicator.src = canvas.toDataURL();
+            canvas = null;
+        },
+		preDrawSmileIndicator() {
+			var canvas = document.getElementById('canvas');
+			canvas.x = 90;
+			canvas.y = 90;			
+			var ctx = canvas.getContext('2d');
+			ctx.lineWidth = 2;
+			ctx.fillStyle = defaultSettings.teammatesIndColor;
+			ctx.strokeStyle = defaultSettings.teammatesIndColor;
+			ctx.beginPath();
+			
+			ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
+			ctx.moveTo(110, 75);
+			ctx.arc(75, 75, 35, 0, Math.PI, false);  // Mouth (clockwise)
+			ctx.moveTo(65, 65);
+			ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // Left eye
+			ctx.moveTo(95, 65);
+			ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // Right eye
+			ctx.stroke();
+            this.smileIndicator = new Image();
+            this.smileIndicator.src = canvas.toDataURL();							
+		},
+        preDrawHeartIndicator() {			
+            this.heartIndicator = null;
+            var canvas = document.createElement('canvas');
+            canvas.width = 50;
+            canvas.height = 50;
+            var ctx = canvas.getContext('2d');
+            ctx.lineWidth = 2;
+            ctx.fillStyle = defaultSettings.teammatesIndColor;
+            ctx.strokeStyle = '#000000';
+			var d = Math.min(canvas.width, canvas.height);
+			var k = 0;
+
+			ctx.moveTo(k, k + d / 4);
+			ctx.quadraticCurveTo(k, k, k + d / 4, k);
+			ctx.quadraticCurveTo(k + d / 2, k, k + d / 2, k + d / 4);
+			ctx.quadraticCurveTo(k + d / 2, k, k + d * 3/4, k);
+			ctx.quadraticCurveTo(k + d, k, k + d, k + d / 4);
+			ctx.quadraticCurveTo(k + d, k + d / 2, k + d * 3/4, k + d * 3/4);
+			ctx.lineTo(k + d / 2, k + d);
+			ctx.lineTo(k + d / 4, k + d * 3/4);
+			ctx.quadraticCurveTo(k, k + d / 2, k, k + d / 4);
+
+			ctx.fill();
+			ctx.stroke();
+            this.heartIndicator = new Image();
+            this.heartIndicator.src = canvas.toDataURL();
+            canvas = null;
+        },		
+        countFps(fake) {
+            if (defaultmapsettings.showStatsFPS) {
+                var Time = Date.now();
+                if (!this.fpsLastRequest) {
+                    this.fpsLastRequest = Time;
+                }
+                if (Time - this.fpsLastRequest >= 1000) {
+                    this.fps = this.renderedFrames;
+                    this.renderedFrames = 0;
+					//
+					this.renderingDelay = 0
+					//
+                    this.fpsLastRequest = Time;
+                }
+                this.renderedFrames++;
+
+            }
+        },
+        sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        },
+        //'renderFrame': async function() { //Sonia5
+        //await this.sleep(4); //Sonia5				
+        render() {
+            //'render': async function() {
+            //if (!window.fpsM) window.fpsM = 4
+            //await drawRender.sleep(window.fpsM);	
+			
+
+			if (drawRender.renderingDelay<750){
+				drawRender.countFps();
+				drawRender.renderFrame();
+			}
+            else{			
+				//drop the frame instead of lag
+				//console.log('stoped')
+				drawRender.renderingDelay =	drawRender.renderingDelay - drawRender.lastRenderingDelay
+			}
+			/*
+            setTimeout(function() {
+                drawRender.render()
+            }, 0);
+			*/
+			if(defaultmapsettings.unlockedFPS==true || legendmod.integrity) { 
+                setTimeout(function() {
+                    drawRender.render()
+                }, 0);			
+			}			
+            else if (!defaultmapsettings.unlockedFPS) {
+                window.requestAnimationFrame(drawRender.render);
+            } 
+			else if (defaultmapsettings.unlockedFPS == 2 || defaultmapsettings.unlockedFPS == 4 || defaultmapsettings.unlockedFPS == 8 || defaultmapsettings.unlockedFPS == 16 || defaultmapsettings.unlockedFPS == 32 || defaultmapsettings.unlockedFPS == 64) {
+                setTimeout(function() {
+                    window.requestAnimationFrame(drawRender.render);
+                }, defaultmapsettings.unlockedFPS);
+            } 
+			else if (defaultmapsettings.unlockedFPS == "ultra") {
+                setTimeout(function() {
+                    for (var i = 0; i < 9; i++) {
+                        drawRender.countFps()
+                        drawRender.renderFrame();
+                    }
+                    drawRender.render()
+                }, 0);
+            }
+            else if (defaultmapsettings.unlockedFPS == "sophisticated") {
+                if (!drawRender.averageRenderTime) {
+                    window.renderDelay = 0;
+                } else if (drawRender.averageRenderTime < 30 && window.renderDelay > 0) {
+                    window.renderDelay--
+                } else if (drawRender.averageRenderTime > 60 && window.renderDelay < 64) {
+                    window.renderDelay++
+                }
+                setTimeout(function() {
+                    //window.requestAnimationFrame(drawRender.render);
+                    drawRender.render();
+                }, window.renderDelay);
+            } 
+        },
+        init() {
+            this.setCanvas();
+            this.resizeCanvas();
+            this.preDrawPellet();
+            this.preDrawIndicator();
+			this.preDrawHeartIndicator();
+			this.preDrawSmileIndicator();
+            window.requestAnimationFrame(drawRender.render);
+        }
+
+    }
+    var hotkeysSetup = {
+        lastPressedKey: '',
+        lastKeyId: '',
+        defaultMessageKey: 'ENTER',
+        inputClassName: 'custom-key-in form-control input-sm',
+        loadDefaultHotkeys() {
+            hotkeys = {};
+            for (const command in hotkeysCommand) {
+                if (hotkeysCommand.hasOwnProperty(command)) {
+                    hotkeys[hotkeysCommand[command].defaultKey] = command;
+                }
+            }
+            hotkeys['spec-messageKey'] = this.defaultMessageKey;
+            /*for (var t in hotkeys = {}, hotkeysCommand) hotkeysCommand.hasOwnProperty(t) && (hotkeys[hotkeysCommand[t].defaultKey] = t);
+            hotkeys['spec-messageKey'] = this.defaultMessageKey;*/
+        },
+        loadHotkeys() {
+            if (null !== window.localStorage.getItem('ogarioHotkeys')) {
+                hotkeys = JSON.parse(window.localStorage.getItem('ogarioHotkeys'))
+            } else {
+                this.loadDefaultHotkeys()
+            }
+            if (null !== window.localStorage.getItem('ogarioCommands')) {
+                chatCommand = JSON.parse(window.localStorage.getItem('ogarioCommands'));
+            }
+        },
+        saveHotkeys() {			
+            window.localStorage.setItem('ogarioHotkeys', JSON.stringify(hotkeys));
+            this.saveCommands();
+        },
+        saveCommands() {
+			defineChatCommand();
+            $('#hotkeys .command-in').each(function() {
+                var element = $(this);
+                var id = element.attr('id');
+                if (chatCommand.hasOwnProperty(id)) {
+                    chatCommand[id] = element.val()
+                }
+            });
+            window.localStorage.setItem('ogarioCommands', JSON.stringify(chatCommand));
+        },
+        resetHotkeys() {
+            this.loadDefaultHotkeys();
+            $('#hotkeys-cfg .custom-key-in').each(function() {
+                var t = $(this).attr('id');
+                hotkeysCommand[t] && $(this).val(hotkeysCommand[t].defaultKey);
+            });
+        },
+        setHotkeysMenu() {
+            //var t = this;
+            const setup = this;
+            for (var command in $('body').append('<div id=\"hotkeys\"><div id=\"hotkeys-menu\"><button id=\"reset-hotkeys\" class=\"btn btn-primary\">' + textLanguage.restoreSettings + '</button> <button id=\"save-hotkeys\" class=\"btn btn-success\">' + textLanguage.saveSett + '</button> <button id=\"close-hotkeys\" class=\"btn btn-danger\">' + textLanguage['close'] + '</button></div><div id=\"hotkeys-cfg\"></div><div id=\"hotkeys-inst\"><ul><li>' + textLanguage['hk-inst-assign'] + '</li><li>' + textLanguage['hk-inst-delete'] + '</li><li>' + textLanguage['hk-inst-keys'] + '</li></ul></div></div>'), hotkeysCommand)
+                if (hotkeysCommand.hasOwnProperty(command)) {
+                    var currentCommand = hotkeysCommand[command],
+                        text = '';
+                    for (var key in hotkeys)
+                        if (hotkeys.hasOwnProperty(key) && hotkeys[key] === command) {
+                            text = key;
+                            break;
+                        } if ('hk-switchServerMode' === command && application && !application.privateIP) continue;
+                    if ('command' === currentCommand.type) {
+                        var replaceHk = command.replace('hk-', '');
+                        $('#hotkeys-cfg').append('<div class=\"row\"><div class=\"key-label\"><input id=\"' + replaceHk + '\" class=\"command-in form-control input-sm\" value=\"' + chatCommand[replaceHk] + '\" maxlength=\"80\" /></div><div class=\"default-key\">' + currentCommand.defaultKey + '</div><div class=\"custom-key\"><input id=\"' + command + '\" class=\"custom-key-in form-control input-sm\" value=\"' + text + '\" /></div></div>');
+                    } else $('#hotkeys-cfg').append('<div class=\"row\"><div class=\"key-label\">' + currentCommand.label + '</div><div class=\"default-key\">' + currentCommand.defaultKey + '</div><div class=\"custom-key\"><input id=\"' + command + '\" class=\"custom-key-in form-control input-sm\" value=\"' + text + '\" /></div></div>');
+                }
+            $(document).on('click', '#reset-hotkeys', function(event) {
+                    event.preventDefault();
+                    //hotkeysSetup.resetHotkeys();
+                    setup.resetHotkeys();
+                }),
+                $(document).on('click', '#save-hotkeys', function(event) {
+                    event.preventDefault();
+                    //hotkeysSetup.saveHotkeys();
+                    setup.saveHotkeys();
+                    $('#hotkeys').fadeOut(500);
+                }),
+                $(document).on('click', '#close-hotkeys', function(event) {
+                    event.preventDefault();
+                    $('#hotkeys').fadeOut(500);
+                }),
+                $(document).on('click', '.hotkeys-link', function(event) {
+                    $('#hotkeys').fadeIn(500);
+                    $('#hotkeys-cfg').perfectScrollbar('update');
+                    resetonkeydown();
+                }),
+                $('#hotkeys-cfg').perfectScrollbar(),
+                Settings && Settings.setMenuBg();
+        },
+        getPressedKey(key) {
+            var specialKey = '';
+            var normalKey = '';
+            if (key.ctrlKey || key.keyCode == 17) {
+                specialKey = 'CTRL';
+            } else if (key.altKey || key.keyCode == 18) {
+                specialKey = 'ALT';
+            }
+            switch (key.keyCode) {
+                //switch (key['ctrlKey'] || 17 == key.keyCode ? specialKey = 'CTRL' : (key.altKey || 18 == key.keyCode) && (specialKey = 'ALT'), key.keyCode) {
+                case 9:
+                    normalKey = 'TAB';
+                    break;
+                case 13:
+                    normalKey = 'ENTER';
+                    break;
+                case 16:
+                    normalKey = 'SHIFT';
+                    break;
+                case 17:
+                case 18:
+                    break;
+                case 27:
+                    normalKey = 'ESC';
+                    break;
+                case 32:
+                    normalKey = 'SPACE';
+                    break;
+                case 37:
+                    normalKey = 'LEFT';
+                    break;
+                case 38:
+                    normalKey = 'UP';
+                    break;
+                case 39:
+                    normalKey = 'RIGHT';
+                    break;
+                case 40:
+                    normalKey = 'DOWN';
+                    break;
+                case 46:
+                    normalKey = 'DEL';
+                    break;
+                case 61:
+                case 187:
+                    normalKey = '=';
+                    break;
+                case 192:
+                    normalKey = 'TILDE';
+                    break;
+                default:
+                    normalKey = String.fromCharCode(key.keyCode);
+            }
+            if (specialKey !== '') {
+                if (normalKey !== '') {
+                    return specialKey + '+' + normalKey;
+                }
+                return specialKey;
+            }
+            return normalKey;
+            //return '' !== specialKey ? '' !== normalKey ? specialKey + '+' + normalKey : specialKey : normalKey;
+        },
+        deleteHotkey(name, id) {
+            delete hotkeys[name];
+            $('#' + id).val('');
+        },
+        setDefaultHotkey(id) {
+            var key = false;
+            if (hotkeysCommand[id] && !hotkeys.hasOwnProperty(hotkeysCommand[id].defaultKey)) {
+                key = hotkeysCommand[id].defaultKey;
+                hotkeys[key] = id;
+            }
+            return key;
+        },
+        setHotkey(key, id) {
+            if (id && (this.lastPressedKey !== key || this.lastKeyId !== id)) {
+                var value = $('#' + id).val();
+                if (this.deleteHotkey(value, id), 'DEL' !== key) {
+                    if (hotkeys[key] && hotkeys[key] !== id) {
+                        var hotkey = hotkeys[key],
+                            defaultKey = this.setDefaultHotkey(hotkey);
+                        if (defaultKey) {
+                            hotkeys[defaultKey] = hotkey;
+                            $('#' + hotkey).val(defaultKey)
+                        } else {
+                            this.deleteHotkey(key, hotkey);
+                        }
+                    }
+                    hotkeys[key] = id,
+                        $('#' + id).val(key);
+                    if ('hk-chatMessage' === id) {
+                        hotkeys['spec-messageKey'] = key
+                    }
+                    this.lastPressedKey = key;
+                    this.lastKeyId = id;
+                }
+            }
+        },
+        init() {
+            this.loadHotkeys();
+            this.setHotkeysMenu();
+        }
+    };
+    window.legendmod2 = drawRender; //look at this
+    window.legendmod6 = hotkeysSetup;
+
+    function spectateBlind() {
+        window.onkeydown = function(event) {
+            if (81 == event.keyCode && window.core.specialOn) {
+                window.core.specialOn();
+            }
+        }
+        window.onkeyup = function(event) {};
+    }
+
+    /*function ogarhusettings() {
+        var innerWidth = window.innerWidth;
+        var innerHeigth = window.innerHeight;
+        var helloContainer = $("#helloContainer");
+        var helloContainerHeight = helloContainer.innerHeight();
+        if (helloContainerHeight > 0) {
+            ogario.menuHeight = helloContainerHeight;
+        } else {
+            helloContainerHeight = ogario.menuHeight || 618;
+        }
+        var scale = Math.min(1, innerHeigth / helloContainerHeight);
+        var transform = "translate(-50%, -30%) scale(" + scale + ")";
+        helloContainer.css("transform", transform);
+        helloContainer.css("-ms-transform", transform);
+        helloContainer.css("-webkit-transform", transform);
+        ogario.innerW = innerWidth;
+        ogario.innerH = innerHeigth;
+    }*/
+    function ogarhusettings() {
+        var innerWidth = window.innerWidth;
+        var innerHeigth = window.innerHeight;
+        var helloContainer = $("#helloContainer");
+        var helloContainerHeight = helloContainer.innerHeight();
+        if (helloContainerHeight > 0) {
+            ogario.menuHeight = helloContainerHeight;
+        } else {
+            helloContainerHeight = ogario.menuHeight || 618;
+        }
+        var scale = Math.min(1, innerHeigth / helloContainerHeight);
+        //
+        scale = scale * defaultSettings.hudScale;
+        //
+        var topValue = () => {
+            //var distance=355;
+            var distance;
+            //var tempp = window.screen.height
+            if (innerHeigth <= 992) {
+
+                distance = 250;
+                //scale += 0.1*defaultSettings.hudScale;
+            } else if (innerHeigth <= 1080) {
+                distance = 300;
+                //scale += 0.1*defaultSettings.hudScale;
+            } else if (innerHeigth > 1080 && innerHeigth < 1440) {
+                distance = 420;
+                //scale += 0.2*defaultSettings.hudScale;
+            } else if (innerHeigth >= 1440) {
+                distance = 520;
+                //scale += 0.3*defaultSettings.hudScale;
+            }
+            if (defaultSettings.hudScale > 1) {
+                distance = distance / defaultSettings.hudScale
+            }
+            helloContainer.css("top", distance + "px");
+        }
+
+        topValue()
+        var transform = "translate(-50%, -30%) scale(" + scale + ")";
+
+        helloContainer.css("transform", transform);
+        helloContainer.css("-ms-transform", transform);
+        helloContainer.css("-webkit-transform", transform);
+        ogario.innerW = innerWidth;
+        ogario.innerH = innerHeigth;
+    }
+
+    function ogarhusettingsImportExportMobile() {
+        if (isMobile) {
+            var innerWidth = window.innerWidth;
+            var innerHeigth = window.innerHeight;
+            var helloContainer = $("#exp-imp");
+
+            var helloContainerHeight = helloContainer.innerHeight();
+            if (helloContainerHeight > 0) {
+                ogario.menuHeight = helloContainerHeight;
+            } else {
+                helloContainerHeight = ogario.menuHeight || 618;
+            }
+            var scale = Math.min(1, innerHeigth / helloContainerHeight);
+            //
+            scale = scale * defaultSettings.hudScale / 1.2;
+            //
+            var topValue = () => {
+                var distance = 150;
+                if (defaultSettings.hudScale > 1) {
+                    distance = distance / defaultSettings.hudScale
+                }
+                helloContainer.css("top", distance + "px");
+            }
+
+            topValue()
+            var transform = "translate(-50%, -30%) scale(" + scale + ")";
+
+            helloContainer.css("transform", transform);
+            helloContainer.css("-ms-transform", transform);
+            helloContainer.css("-webkit-transform", transform);
+            helloContainer.width(helloContainer.width() / 1.2)
+        }
+
+    }
+
+    function resetonkeydown() {
+        if (application.protocolMode) {
+            return;
+        }
+        window.onkeydown = event => {};
+    }
+    document.onkeydown = function(event) {
+        var pressedKey = hotkeysSetup.getPressedKey(event);
+        if (('INPUT' !== event.target.tagName || event.target.className === hotkeysSetup.inputClassName || pressedKey === hotkeys['spec-messageKey']) && '' !== pressedKey && !keyBlind[pressedKey]) {
+
+            if (keyBlind[pressedKey] = true, 'ESC' === pressedKey) {
+                return event.preventDefault(), void(application && application.showMenu());
+            }
+            if (event.target.className === hotkeysSetup.inputClassName) {
+                return event.preventDefault(), void hotkeysSetup.setHotkey(pressedKey, event.target.id);
+            }
+            if (hotkeys[pressedKey]) {
+                event.preventDefault();
+                var i = hotkeys[pressedKey];
+                '' !== i && hotkeysCommand[i] && hotkeysCommand[i].keyDown && hotkeysCommand[i].keyDown();
+            }
+        }
+    }
+    document.onkeyup = function(event) {
+        var pressedKey = hotkeysSetup.getPressedKey(event);
+        if ('' !== pressedKey) {
+            if (hotkeys[pressedKey]) {
+                var key = hotkeys[pressedKey];
+                if ('' !== key && hotkeysCommand[key] && hotkeysCommand[key].keyUp) {
+                    hotkeysCommand[key].keyUp();
+                }
+            }
+            keyBlind[pressedKey] = false;
+        }
+    }
+    window.onmousedown = function(event) {
+        if (!$("#overlays").is(":visible")) {
+			//console.log(event.which)
+            if (2 == event.which) {
+                event.preventDefault();
+                    if (application && defaultmapsettings.mouseWheelClick) {
+						if (!defaultmapsettings.middleClick){
+							application.multiboxswap()
+						}						
+                        else{
+							hotkeysCommand[defaultmapsettings.middleClick].keyDown()
+						}
+                    } 
+					else {						
+                        //application.sendCommand(10);
+                    }
+					if (defaultmapsettings.stickyCell){
+						LM.selected=null
+					}
+            } 
+			else if (defaultmapsettings.stickyCell) {
+                if (1 == event.which) {
+                    drawRender.LMB = true
+                } else {
+                    drawRender.RMB = true
+                }
+            } 
+			else if (defaultmapsettings.reverseTrick) {
+                reverseTrick.pointInCircle(legendmod.cursorX, legendmod.cursorY, event.which);
+            } 
+			else {
+                //if (defaultmapsettings.mouseSplit && (1 == event.which && !defaultmapsettings.mouseInvert || 3 == event.which && defaultmapsettings.mouseInvert)) {
+				if (defaultmapsettings.mouseSplit && (1 == event.which)) {							
+                    event.preventDefault();
+                    if (application) {
+						if (!defaultmapsettings.leftClick){
+							application.split();
+						}
+						else{
+							hotkeysCommand[defaultmapsettings.leftClick].keyDown()
+						}
+                    }
+                }
+                //if (defaultmapsettings.mouseFeed && (3 == event.which && !defaultmapsettings.mouseInvert || 1 == event.which && defaultmapsettings.mouseInvert)) {
+				if (defaultmapsettings.mouseFeed && (3 == event.which)) {
+                    event.preventDefault();			
+                    if (application) {
+						if (!defaultmapsettings.rightClick){
+							application.split();
+						}
+						else{
+							hotkeysCommand[defaultmapsettings.rightClick].keyDown()
+						}
+                    }
+                }
+                if (defaultmapsettings.mouseCommand4 && (4 == event.which)) {
+                    event.preventDefault();			
+                    if (application) {
+							hotkeysCommand[defaultmapsettings.mouse4Click].keyDown()					
+                    }
+                }
+                if (defaultmapsettings.mouseCommand5 && (5 == event.which)) {
+                    event.preventDefault();			
+                    if (application) {
+							hotkeysCommand[defaultmapsettings.mouse4Click].keyDown()					
+                    }
+                }				
+            }
+        }
+    }
+    window.onmouseup = function(event) {
+        //if (defaultmapsettings.mouseFeed) {
+			//if (1 == event.which && hotkeysCommand[defaultmapsettings.leftClick]==textLanguage['hk-macroFeed'] || 2 == event.which && hotkeysCommand[defaultmapsettings.middleClick]==textLanguage['hk-macroFeed'] || 3 == event.which && hotkeysCommand[defaultmapsettings.rightClick]==textLanguage['hk-macroFeed'] || 4 == event.which && hotkeysCommand[defaultmapsettings.mouse4Click]==textLanguage['hk-macroFeed'] || 5 == event.which && hotkeysCommand[defaultmapsettings.mouse5Click]==textLanguage['hk-macroFeed']) {
+            //if (3 == event.which && !defaultmapsettings.mouseInvert || 1 == event.which && defaultmapsettings.mouseInvert) {  
+				//application && application.macroFeed(false);
+            //}
+				if (defaultmapsettings.mouseSplit && (1 == event.which) && defaultmapsettings.leftClick) {	
+					if (hotkeysCommand[defaultmapsettings.leftClick].keyUp) hotkeysCommand[defaultmapsettings.leftClick].keyUp()
+				}
+				else if (defaultmapsettings.mouseWheelClick && (2 == event.which) && defaultmapsettings.middleClick) {	
+					if (hotkeysCommand[defaultmapsettings.middleClick].keyUp) hotkeysCommand[defaultmapsettings.middleClick].keyUp()
+				}
+				else if (defaultmapsettings.mouseFeed && (3 == event.which) && defaultmapsettings.rightClick) {	
+					if (hotkeysCommand[defaultmapsettings.rightClick].keyUp) hotkeysCommand[defaultmapsettings.rightClick].keyUp()
+				}	
+				else if (defaultmapsettings.mouseCommand4 && (4 == event.which) && defaultmapsettings.mouse4Click) {	
+					if (hotkeysCommand[defaultmapsettings.mouse4Click].keyUp) hotkeysCommand[defaultmapsettings.mouse4Click].keyUp()
+				}		
+				else if (defaultmapsettings.mouseCommand5 && (5 == event.which) && defaultmapsettings.mouse5Click) {	
+					if (hotkeysCommand[defaultmapsettings.mouse5Click].keyUp) hotkeysCommand[defaultmapsettings.mouse5Click].keyUp()
+				}					
+				else {
+					//1=leftclick, 3=rightclick, 2=wheelclick
+					if (event.which == 1){ //for reversetrick or stickycell
+						drawRender.LMB = false						
+					}
+					else{
+						drawRender.RMB = false
+					}
+				}
+    };
+    window.onbeforeunload = function(event) {
+        if (ogario.play) {
+            return textLanguage.exit;
+        } else {
+            return;
+        }
+    };
+    window.changeHistory = function(value) {
+        if (window.history && window.history.replaceState) {
+            window.history.replaceState({}, window.document.title, value);
+        };
+    }
+    window.changeUrl = function() {
+        if (window.location.pathname === `/legendmod`) {
+            changeHistory(`/${window.location.hash}`);
+        };
+    }
+
+    ogario = LM;
+
+    //LMbuffer = t('buffer')['Buffer'];
+    //window.LMbuffer=LMbuffer; //buffer 3
+    //LZ4 = t('lz4'); 
+    //window.LZ4=LZ4; //LZ4 18
+    if ('/legendmod' === window.location.pathname) {
+        changeUrl('/' + window.location.hash);
+    }
+    window.onresize = function() {
+        drawRender.resizeCanvas();
+        ogarhusettings();
+        //ogarhusettingsImportExportMobile();
+    };
+    spectateBlind();
+
+    function Node(view, offset) {
+        this.view = view;
+        this.offset = offset;
+        this.contentType = 1;
+        this.uncompressedSize = 0;
+        this.setContentType = function() {
+            this.contentType = this.readUint32();
+        };
+        this.setUncompressedSize = function() {
+            this.uncompressedSize = this.readUint32();
+        };
+        this.compareBytesGt = (bytes1, bytes2) => {
+            const byte_1 = bytes1 < 0;
+            const byte_2 = bytes2 < 0;
+            if (byte_1 != byte_2) {
+                return byte_1;
+            }
+            return bytes1 > bytes2;
+        };
+        this.skipByte = function() {
+            const read = this.readByte();
+            if (read < 128) {
+                return;
+            }
+            this.skipByte();
+        };
+        this.readByte = function() {
+            return this.view.getUint8(this.offset++);
+        };
+        this.readUint32 = function() {
+            let number = 0;
+            let mayor = 0;
+            while (true) {
+                const read = this.readByte();
+                if (this.compareBytesGt(32, mayor)) {
+                    if (read >= 128) {
+                        number |= (read & 127) << mayor;
+                    } else {
+                        number |= read << mayor;
+                        break;
+                    }
+                } else {
+                    this.skipByte();
+                    break;
+                }
+                mayor += 7;
+            }
+            return number;
+        };
+        this.readFlag = function() {
+            return this.readUint32() >>> 3;
+        };
+    }
+    window.core = {
+        //'connect': function(url) {
+        connect(url) {
+            LM.connect(url);
+            //LM.connect(url); //for multibox with new Protocol and Client
+        },
+        disconnect() {},
+        sendNick(nick) {
+            LM.sendNick(nick);
+        },
+        sendSpectate() {
+            LM.sendSpectate();
+        },
+        Botseject() {
+            if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled - 1]) {
+                spects[window.multiboxPlayerEnabled - 1].sendBotEject()
+            } else {
+                LM.sendBotEject();
+            }
+        },
+        Botsplit() {
+            if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled - 1]) {
+                spects[window.multiboxPlayerEnabled - 1].sendBotSplit()
+            } else {
+                LM.sendBotSplit();
+            }
+        },
+        eject() {
+            if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled - 1]) {
+                spects[window.multiboxPlayerEnabled - 1].sendEject()
+            } else {
+                LM.sendEject();
+            }
+            window.lastejected = true;
+        },
+        split() {
+            if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled - 1]) {
+                spects[window.multiboxPlayerEnabled - 1].sendSplit()
+            } else {
+                LM.sendSplit();
+            }
+        },
+        specialOn() {
+            LM.sendFreeSpectate();
+        },
+        specialOff() {
+            LM.sendFreeSpectate();
+        },
+        sendFbToken(token) {
+            LM.sendFbToken(token);
+        },
+        sendGplusToken(token) {
+            LM.sendGplusToken(token);
+        },
+        recaptchaHandlerResponse(token) {
+            if (window.botscaptcha == true) {
+                setTimeout(function() {
+                    core.recaptchaBotResponse(token);
+                }, 100);
+            } else {
+                core.recaptchaResponse(token);
+            }
+        },
+        recaptchaResponse(token) {
+            window.lastRecaptchaResponseToken = token;
+            LM.sendRecaptcha(token);
+        },
+        recaptchaBotResponse(token) {
+            window.lastRecaptchaResponseToken = token;
+            window.botscaptcha = false;
+            //toastr.info('Captcha token sent to node.js', token)
+            toastr.info('<b>[' + Premadeletter123 + ']:</b> Thank you for solving Captcha for bots')
+            window.connectionBots.send(window.buffers.captchatoken(token))
+        },
+        setClientVersion(version, strVersion) {
+            LM.setClientVersion(version, strVersion);
+        },
+        proxyMobileData(arr = []) {
+            if (!Array.isArray(arr)) {
+                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " ProxyMobileData ERROR: Array data required.");
+                return;
+            }
+            if (arr[0] == 8) {
+                arr.unshift(102);
+            }
+            arr = new Uint8Array(arr);
+            LM.sendMessage(new DataView(arr.buffer));
+        },
+        registerSkin(a, b, c, d) {
+            if (a) {
+                window.customskinsname = a;
+                window.customskinsarray[window.customskinsname] = [];
+                window.customskinsarray[window.customskinsname].customskinsname = a
+                window.customskinsarray[window.customskinsname].customskinsurl = c
+                window.customskinsarray[window.customskinsname].customskinanimated = d
+            }
+        },
+        //lulko
+        playerHasCells() {
+            return LM.playerCells.length > 0
+        },
+        //lulko
+        proxy(data) {
+            if (!Array.isArray(data)) {
+                console.log('Proxy ERROR: Array data required.');
+                return;
+            }
+            if (data[0] == 8) {
+                data.unshift(102);
+            }
+            data = new Uint8Array(data);
+            LM.sendBuffer(new DataView(data.buffer));
+        }
+    };
+    window.master.getClientVersion();
+    Settings.init();
+    application.init();
+    application.getDefaultSettings();
+    application.connect();
+    hotkeysSetup.init();
+    LM.init();
+    drawRender.init();
+    window.master.init();
+    ogarhusettings();
+    ogarhusettingsImportExportMobile();
+    setGUIEvents();
+
+    window.canvasElem = document.querySelector("canvas");
+    window.canvasElem.addEventListener('contextmenu', openContextMenu, false);
+    document.getElementById("botsRemoteIP").addEventListener('contextmenu', openContextMenu2, false);
+    document.getElementById("server-token").addEventListener('contextmenu', openContextMenu3, false);
+    document.getElementById("skin").addEventListener('contextmenu', openContextMenu4, false);
+    PreLcCelebration();
+    consoleNotice();
+    $("#overlays").css("z-index", "100")
+    //    })(ogario);
+}
+
+function setGUIEvents() {
+    document.getElementById('botsAmount').addEventListener('keypress', e => {
+        e.preventDefault()
+    })
+    var storedbotsRemoteIP = localStorage.getItem("localstoredBotsRemoteIP");
+    if (storedbotsRemoteIP == null || storedbotsRemoteIP == "") {
+        storedbotsRemoteIP = "ws://localhost:1337";
+    }
+    window.captchaOpenedWindow = 1;
+    /*var captchaSpeed = localStorage.getItem("captchaSpeed2");
+	if (captchaSpeed == null || captchaSpeed == "null" || captchaSpeed == ""){ 
+		window.captchaOpenedWindow = 1
+	}
+	else{	
+		window.captchaOpenedWindow = parseInt(captchaSpeed);
+		$('#captchaSpeed').val(window.captchaOpenedWindow)
+	}*/
+    window.bots.remoteIP = storedbotsRemoteIP
+    window.SERVER_HOST = storedbotsRemoteIP;
+    $('#botsRemoteIP').val(storedbotsRemoteIP)
+    var storedbotsname = localStorage.getItem("localStoredBotsName");
+    if (storedbotsname == null || storedbotsname == "") {
+        storedbotsname = "Legendmod|ml";
+    }
+    window.bots.nameLM = storedbotsname;
+    $('#botsNameLM').val(storedbotsname)
+    var storedbotsamount = localStorage.getItem("localStoredBotsAmount");
+    if (storedbotsamount == null || storedbotsamount == "") {
+        storedbotsamount = 50;
+
+    }
+    window.bots.amount = storedbotsamount;
+    $('#botsAmount').val(storedbotsamount)
+    /*document.getElementById('captchaSpeed').addEventListener('change', function() {
+		window.captchaOpenedWindow = $('#captchaSpeed').val()
+        localStorage.setItem('captchaSpeed2', $('#captchaSpeed').val())
+    })*/
+    document.getElementById('botsRemoteIP').addEventListener('change', function() {
+        window.bots.remoteIP = this.value
+        localStorage.setItem('localstoredBotsRemoteIP', window.bots.remoteIP)
+        window.SERVER_HOST = window.bots.remoteIP
+    })
+    document.getElementById('botsNameLM').addEventListener('change', function() {
+        document.getElementById('botsNameLM').value = document.getElementById('botsNameLM').value.replace(/[^\x20-\x7E]/g, '');
+        window.bots.nameLM = this.value
+        localStorage.setItem('localStoredBotsName', window.bots.nameLM)
+    })
+    document.getElementById('botsAmount').addEventListener('change', function() {
+        localStorage.setItem('localStoredBotsAmount', window.bots.amount)
+        window.bots.amount = Number(this.value)
+    })
+    document.getElementById('connectBots').addEventListener('click', () => {
+        if (!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
+    })
+    document.getElementById('startBots').addEventListener('click', () => {
+        if (legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots) {
+            if (legendmod.gameMode == ":party" || $("#nick").val().includes('℄') && $("#clantag").val() == window.atob(window.clanTagLc) || window.AdminRights == 1 || window.IamNeo == true) {
+                if (window.bots.amount) {
+                    if (window.bots.amount + legendmod.leaderboard.length > 197) window.bots.amount = 197 - legendmod.leaderboard.length;
+                    //if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') {
+                    //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
+                    window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
+
+                    if (legendmod.gameMode != ":party") window.connectionBots.send(window.buffers.sendMode(window.unescape(window.encodeURIComponent(ogarcopythelb.nick))))
+                    //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.botsSpawncode[window.botsSpawncodeNum], window.bots.amount))                     					
+                } else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots amount required (max 190)')
+            } else {
+                toastr.info('<b>[' + Premadeletter123 + ']:</b> Party bots only available for Party mode')
+            }
+        }
+    })
+    document.getElementById('stopBots').addEventListener('click', () => {
+        if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
+    })
+}
+
+
+function minimapCell(envId, cb, i, s) {
+    this.id = envId;
+    this.nick = cb;
+    this.skinID = i;
+    this.skinURL = s;
+    this.lbgpi = -1; //Sonia4
+    this.x = 0;
+    this.y = 0;
+    this.lastX = 0;
+    this.lastY = 0;
+    this.mass = 0;
+    this.clanTag = "";
+    this.color = null;
+    this.customColor = defaultSettings.miniMapTeammatesColor;
+    this.alive = false;
+    this.updateTime = null;
+    this.pi2 = 2 * Math.PI;
+    this.setColor = function(i, inRevIdx) {
+        this.color = i;
+        if (7 == inRevIdx.length) {
+            this.customColor = inRevIdx;
+        }
+    };
+    this.drawPosition = function(options, margin, mult, startcode, endcode, value) {
+        if (!(!this.alive || startcode && endcode && this.id != endcode)) {
+            /*
+            var isPositionOK=false;
+            var flag=false;
+            for (var e = 0; e < legendmod.ghostCells.length; e++){ 				
+            	if (window.predictedGhostCells[e] && legendmod.leaderboard[e] && this.nick == legendmod.leaderboard[e].nick){
+            		flag=true;	
+            		this.lastX = window.predictedGhostCells[e].x;
+            		this.lastY = window.predictedGhostCells[e].y;
+            		isPositionOK = true;
+            	}
+            }
+            if ( (flag==false && this.lbgpi >= 0) || legendmod.gameMode == ":party"){
+            	isPositionOK = true;									
+            }	
+            
+            */
+            this.lastX = (29 * this.lastX + this.x) / 30;
+            this.lastY = (29 * this.lastY + this.y) / 30;
+
+            //if (isPositionOK){
+            var w = (this.lastX + margin) * mult;
+            var h = (this.lastY + margin) * mult;
+            if (this.nick.length > 0) {
+                options.font = defaultSettings.miniMapNickFontWeight + " " + defaultSettings.miniMapNickSize + "px " + defaultSettings.miniMapNickFontFamily;
+                options.textAlign = "center";
+                var namead = "";
+                //if (this.lbgpi < 0) namead += " [N]";
+                if (defaultSettings.miniMapNickStrokeSize > 0) {
+                    options.lineWidth = defaultSettings.miniMapNickStrokeSize;
+                    options.strokeStyle = defaultSettings.miniMapNickStrokeColor;
+
+                    options.strokeText(this.nick + namead, w, h - (2 * defaultSettings.miniMapTeammatesSize + 2));
+                }
+                options.fillStyle = defaultSettings.miniMapNickColor;
+                options.fillText(this.nick + namead, w, h - (2 * defaultSettings.miniMapTeammatesSize + 2));
+            }
+            options.beginPath();
+            options.arc(w, h, defaultSettings.miniMapTeammatesSize, 0, this.pi2, false);
+            options.closePath();
+            if (defaultmapsettings.oneColoredTeammates) {
+                options.fillStyle = defaultSettings.miniMapTeammatesColor;
+            } else {
+                options.fillStyle = value;
+            }
+            options.fill();
+            //}
+        }
+    };
+}
+
+
+const menuLeft = new ContextMenu({
+    'theme': 'default', // or 'blue'
+    'items': [{
+            'icon': 'download',
+            'name': 'Attack',
+            action: () => {
+                leftClickAttack()
+
+            }
+        },
+        {
+            'icon': 'question',
+            'name': 'Fight',
+            action: () => {
+                leftClickFight()
+            }
+        },
+        {
+            'icon': 'exclamation-triangle',
+            'name': 'Run',
+            action: () => {
+                leftClickRun()
+            }
+        },
+    ]
+});
+const menuLeft2 = new ContextMenu({
+    'theme': 'default', // or 'blue'
+    'items': [{
+        'icon': 'download',
+        'name': 'Open',
+        action: () => {
+            leftClickOpen()
+            menuLeft2.hide();
+        }
+    }]
+});
+const menuLeft3 = new ContextMenu({
+    'theme': 'default', // or 'blue'
+    'items': [{
+        'icon': 'download',
+        'name': 'Open',
+        action: () => {
+            leftClickOpen2()
+            menuLeft3.hide();
+        }
+    }]
+});
+const menuLeft4 = new ContextMenu({
+    'theme': 'default', // or 'blue'
+    'items': [{
+        'icon': 'download',
+        'name': 'Open',
+        action: () => {
+            leftClickOpen3()
+            menuLeft4.hide();
+        }
+    }]
+});
+
+function leftClickOpen() {
+    if (document.getElementById("botsRemoteIP").value.includes('.repl.co')) {
+        var temp11 = document.getElementById("botsRemoteIP").value
+        var temp12 = "https://repl.it/@" + temp11.split('--')[1].split('.repl.co')[0] + "/" + temp11.split('wss://')[1].split('--')[0]
+        window.open(temp12, '_blank');
+    } else if (document.getElementById("botsRemoteIP").value.includes('.glitch.me')) {
+        var temp11 = document.getElementById("botsRemoteIP").value
+        var temp12 = "https://glitch.com/~" + temp11.replace("wss://", "").replace(".glitch.me", "")
+        window.open(temp12, '_blank');
+    }
+}
+
+function leftClickOpen2() {
+    var temp11 = document.getElementById("server-token").value
+    var temp12 = "https://glitch.com/~" + temp11.replace("wss://", "").replace(".glitch.me", "")
+    window.open(temp12, '_blank');
+}
+
+function leftClickOpen3() {
+    var temp11 = document.getElementById("skin").value
+    var templ3 = temp11.replace("https://", "").split(".github.io")[0]
+    var templ4 = temp11.replace("https://", "").split(".github.io")[1]
+    var temp12 = "https://github.com/" + templ3 + "/" + templ3 + ".github.io/blob/master" + templ4
+    window.open(temp12, '_blank');
+}
+
+function leftClickAttack() {
+    var temp = legendmod.cursorX + legendmod.mapOffsetX
+    var temp2 = legendmod.cursorY + legendmod.mapOffsetY
+    application.sendChatMessage(101, "[DosAttack]" + temp + "," + temp2 + "[/DosAttack]")
+    //console.log(application.getPlayerX() + legendmod.cursorX, application.getPlayerY() + legendmod.cursorY)
+    hideContextMenu()
+}
+
+function leftClickFight() {
+    var temp = legendmod.cursorX + legendmod.mapOffsetX
+    var temp2 = legendmod.cursorY + legendmod.mapOffsetY
+    application.sendChatMessage(101, "[DosFight]" + temp + "," + temp2 + "[/DosFight]")
+    //console.log(application.getPlayerX() + legendmod.cursorX, application.getPlayerY() + legendmod.cursorY)
+    hideContextMenu()
+}
+
+function leftClickRun() {
+    var temp = legendmod.cursorX + legendmod.mapOffsetX
+    var temp2 = legendmod.cursorY + legendmod.mapOffsetY
+    application.sendChatMessage(101, "[DosRun]" + temp + "," + temp2 + "[/DosRun]")
+    //console.log(application.getPlayerX() + legendmod.cursorX, application.getPlayerY() + legendmod.cursorY)
+    hideContextMenu()
+}
+
+function openContextMenu(evt) {
+    if (legendmod.play && !$("#overlays:hover").length && !defaultmapsettings.mouseSplit && !defaultmapsettings.mouseFeed && (legendmod.gameMode == ":party" || !legendmod.integrity)) {
+        evt.preventDefault();
+        const time = menuLeft.isOpen() ? 100 : 0;
+        menuLeft.hide();
+        setTimeout(() => {
+            menuLeft.show(evt.pageX, evt.pageY)
+        }, time);
+        window.canvasElem.addEventListener('click', hideContextMenu, false);
+    }
+}
+
+function openContextMenu2(evt) {
+    if (document.getElementById("botsRemoteIP").value.includes('.repl.co') || document.getElementById("botsRemoteIP").value.includes('.glitch.me')) {
+        evt.preventDefault();
+        const time = menuLeft2.isOpen() ? 100 : 0;
+        menuLeft2.hide();
+        setTimeout(() => {
+            menuLeft2.show(evt.pageX, evt.pageY)
+        }, time);
+        document.getElementById("botsRemoteIP").addEventListener('click', hideContextMenu2, false);
+    }
+}
+
+function openContextMenu3(evt) {
+    if (document.getElementById("server-token").value.includes('.glitch.me')) {
+        evt.preventDefault();
+        const time = menuLeft3.isOpen() ? 100 : 0;
+        menuLeft3.hide();
+        setTimeout(() => {
+            menuLeft3.show(evt.pageX, evt.pageY)
+        }, time);
+        document.getElementById("server-token").addEventListener('click', hideContextMenu3, false);
+    }
+}
+
+function openContextMenu4(evt) {
+    if (document.getElementById("skin").value.includes('.github.io/')) {
+        evt.preventDefault();
+        const time = menuLeft4.isOpen() ? 100 : 0;
+        menuLeft4.hide();
+        setTimeout(() => {
+            menuLeft4.show(evt.pageX, evt.pageY)
+        }, time);
+        document.getElementById("skin").addEventListener('click', hideContextMenu4, false);
+    }
+}
+
+function hideContextMenu(evt) {
+    menuLeft.hide();
+    window.canvasElem.removeEventListener('click', hideContextMenu);
+}
+
+function hideContextMenu2(evt) {
+    menuLeft2.hide();
+    document.getElementById("botsRemoteIP").removeEventListener('click', hideContextMenu2);
+}
+
+function hideContextMenu3(evt) {
+    menuLeft3.hide();
+    document.getElementById("server-token").removeEventListener('click', hideContextMenu3);
+}
+
+function hideContextMenu4(evt) {
+    menuLeft4.hide();
+    document.getElementById("skin").removeEventListener('click', hideContextMenu4);
+}
+//Animated Skins
+function animateSkincheck() {
+    //for (i = 0; i < 10; i++) {
+    //SpecialEffectPlayers[	
+    for (i = 0; i < 1; i++) {
+        for (animatedi = 0; animatedi < legendmod.leaderboard.length; animatedi++) {
+            for (animatedkey in animatedskins) {
+                if (animatedkey == legendmod.leaderboard[animatedi].nick) {
+                    if (animatedskins[animatedkey] && animatedskins[animatedkey].frames) {
+                        e = animatedskins[animatedkey].frames.length - 1;
+                        window.anual = 0;
+                        for (animateda = 0; animateda <= animatedskins[animatedkey].frames.length - 1; animateda++) {
+                            b = animateda;
+                            verifiednames = animatedkey;
+                            window.anual = window.anual + animatedskins[verifiednames].frames[b].delay * 1000;
+                            d = animatedi;
+                            animateSkin(b, verifiednames, d, e, i);
+                            if (window.anualTop < window.anual) window.anualTop = window.anual
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+    //if (window.preSetanimateSkincheck > window.anualTop + 1000 ) window.preSetanimateSkincheck = window.anualTop + 1000
+    window.preSetanimateSkincheck = window.anualTop
+    if (defaultmapsettings.vanillaSkins) {
+        setTimeout(function() {
+            animateSkincheck()
+        }, window.preSetanimateSkincheck);
+    }
+}
+
+function animateSkin(b, verifiednames, d, e, i) {
+    setTimeout(function() {
+        //if (verifiednames==legendmod.leaderboard[d].nick){
+        application.cacheCustomSkin(verifiednames, animatedskins[verifiednames].color, "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");
+        //if (b == e) {
+        //if (i == 9) {
+        //if (i == 0) {	
+        //window.anual = 0;
+        //if (animatedserverchanged == false) {}
+        //}
+        //}
+    }, window.anual);
+}
+
+function animateSkinsStop() {
+    //clearInterval(defaultmapsettings.animateSkinsStart);
+}
+
+function animateCustomSkin(nick, id) {
+
+    Object.keys(animatedskins).forEach(function(key) {
+        if (animatedskins[key] && animatedskins[key].id == id) {
+            //console.log(key, animatedskins[key]);
+            animatedskins[nick] = animatedskins[key];
+            //animatedskins[key] = null
+            //console.log (animatedskins[key])
+        }
+    });
+}
+
+function PreLcCelebration() {
+    if (defaultSettings.checkonetimeLc == false) {
+        var checkdate;
+        Date.prototype.yyyymmdd = function() {
+            //var yyyy = this.getFullYear().toString();
+            var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
+            var dd = this.getDate().toString();
+            //return yyyy + "/" + (mm[1] ? mm : "0" + mm[0]) + "/" + (dd[1] ? dd : "0" + dd[0]); // padding
+            return (mm[1] ? mm : "0" + mm[0]) + "/" + (dd[1] ? dd : "0" + dd[0]); // padding
+        };
+        var date = new Date();
+        checkdate = date.yyyymmdd();
+        if (checkdate == "11/12") {
+            LcCelebration();
+			window.celebrationDay="LcDay"
+        }
+		else if (checkdate == "12/31" || checkdate == "1/1"){
+			window.celebrationDay="NewYear"
+		}
+		else if (checkdate == "11/26"){
+			window.celebrationDay="ThanksGiving"
+		}
+		else if (checkdate == "12/25" || checkdate == "12/24"){
+			window.celebrationDay="Christmas"
+		}	
+		else if (checkdate == "7/4"){
+			window.celebrationDay="4July"
+		}		
+    }
+}
+
+function LcCelebration() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://legendmod.ml/extras/LcHistory/LcHistoryBanner.js";
+    $("body").append(s);
+    defaultSettings.checkonetimeLc = true;
+}
+var stylesLegendModConsole1 = [
+    'background: linear-gradient(#D33106, #571402)', 'border: 1px solid #3E0E02', 'color: #99c2ff', 'display: block', 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)', 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset', 'line-height: 40px', 'text-align: center', 'font-weight: bold'
+].join(';');
+var stylesLegendModConsole2 = [
+    'background: linear-gradient(grey, black)', 'border: 1px solid #3E0E02', 'color: #FFFFFF', 'display: block', 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)', 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset', 'text-align: center'
+].join(';');
+
+function consoleNotice() {
+    console.groupCollapsed('%cLegend express%c  %chttp://www.legendmod.ml', stylesLegendModConsole1, 'font-size: 48px; background: url(https://legendmod.ml/banners/icon48.png) no-repeat', stylesLegendModConsole1);
+    console.groupCollapsed("Part of");
+    console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
+    console.groupEnd();
+    console.groupCollapsed("Mod developed by");
+    console.log('%cwww.legendclan.ml', stylesLegendModConsole2);
+    console.groupEnd();
+    console.groupEnd();
+}
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function kFormatter(num) {
+    return num > 999 ? (num / 1000).toFixed(1) + "k" : num;
+}
+
+function timernow() {
+    var today = new Date();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
+    return time;
+}
+
+function Socket3enabler(srv) {
+    if (srv && srv.match("-([A-Za-z0-9]{6,7})\.")) {
+        //var room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
+        var room = $("#server-token").val(); //jimboy3100 5/5/2020
+        //Socket3 = new WebSocket("wss://connect.websocket.in/Jimboy3100_socket?room_id=" + this.room);
+        Socket3 = new WebSocket("wss://cloud.achex.ca/JIMBOY3100" + room);
+        Socket3.onmessage = function(message) {
+            Socket3handler(message.data);
+        }
+        Socket3.onopen = function(e) {
+            window.socket3NumberTries = 0;
+            Socket3.send(JSON.stringify({
+                "auth": "JIM" + customLMID,
+                "password": "legendmod"
+            }));
+            //Socket3.send(JSON.stringify({ "auth": "JIM" + application.playerID, "password": "legendmod"}));
+            //Socket3.send(JSON.stringify({ "joinHub": "legendmod"}));	
+            Socket3.send(JSON.stringify({
+                "joinHub": $("#server-token").val() + "3"
+            }));
+            //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket 3 open:', room);
+
+            //if(localStorage.getItem("isActualUsingSpecialEffectsSkin")){
+            //SpecialEffectPlayers[application.lastSentNick] = localStorage.getItem("isActualUsingSpecialEffectsSkin");
+            //window.application.sendSocket3Info("spfc", localStorage.getItem("isActualUsingSpecialEffectsSkin"))	
+            //}
+            if (!window.socket3Opened && window.noOgarioSocket) {
+                $("#message").keydown(function(event) {
+                    if (event.keyCode === 13) { //window.legendmod6.getPressedKey(13)
+                        enterChatMessage2();
+                    }
+                });
+            }
+            window.socket3Opened = true;
+        }
+        Socket3.onerror = function(e) {
+            window.socket3NumberTries++;
+            console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket 3 error');
+        }
+        Socket3.onclose = function(e) {
+            //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket 3 close');
+            //setTimeout(function() {
+            window.socket3NumberTries++;
+            if (window.socket3NumberTries < 2) {
+                //Socket3enabler(window.legendmod.ws)
+            }
+        }
+        Socket3.closeAndOpen = function(e) {
+            Socket3.onclose = function(e) {
+                //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Previous Socket 3 closed async');
+            }
+
+            if (window.Socket3) {
+                window.Socket3['onmessage'] = null;
+                try {
+                    window.Socket3['close']();
+                } catch (ogarcloseconlabel) {}
+                window.Socket3 = null;
+            }
+
+            if (window.socket3NumberTries < 2) {
+                Socket3enabler(window.legendmod.ws);
+            }
+        }
+        return Socket3;
+    }
+}
+
+function Socket3handler(message) {
+    var Socket3data2 = JSON.parse(message);
+    var Socket3data = Socket3data2.msg;
+    //console.log(Socket3data);
+    //
+    if (Socket3data == null) {
+        return;
+    } else if (Socket3data.com == "chat") {
+        Socket3DisplaychatMsg(Socket3data.chattype, Socket3data.tid, Socket3data.nick, Socket3data.chat);
+    } else if (Socket3data.com == "sendPlayerSkinURL") {
+        Socket3updateTeamPlayer(Socket3data);
+    } else if (Socket3data.com == "pos") {
+        Socket3updateTeamPlayerPosition(Socket3data);
+    } else if (Socket3data.com == "death") { //not used yet
+        Socket3updateTeamPlayerDeath(Socket3data);
+    } else if (Socket3data.com == "info") {
+        if (Socket3data.com2 = "spfc") {
+            Socket3updateTeamPlayerSpfc(Socket3data);
+        }
+    }
+}
+
+
+function Socket3updateTeamPlayerSpfc(Socket3data) {
+    var h = window.decodeURIComponent(escape(Socket3data.id));
+    var message = Socket3data.x;
+    //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Player ', h, 'uses Special Effect ', message);
+    if (h && message) {
+        SpecialEffectPlayers[h] = message;
+        animateCustomSkin(h, message)
+    }
+}
+
+function Socket3updateTeamPlayer(Socket3data) {
+    var h = window.decodeURIComponent(escape(application.checkPlayerNick(Socket3data.id)));
+    if (!application.teamPlayers[h]) {
+        h = application.teamPlayers.length;
+        application.teamPlayers[h] = {}
+    }
+    application.teamPlayers[h].id = Socket3data.id;
+    application.teamPlayers[h].nick = Socket3data.nick;
+    application.teamPlayers[h].skinID = Socket3data.nick;
+    application.teamPlayers[h].skinURL = Socket3data.skin;
+    application.teamPlayers[h].color = Socket3data.color;
+
+    application.teamPlayers[h].lbgpi = -2;
+    //application.teamPlayers[h].x = window.legendmod.vector[window.legendmod.vnr][0] ? legendmod.translateX(Socket3data.x + legendmod.mapOffsetX) : Socket3data.x + legendmod.mapOffsetX //Sonia3
+    //application.teamPlayers[h].y = window.legendmod.vector[window.legendmod.vnr][1] ? legendmod.translateX(Socket3data.y + legendmod.mapOffsetY) : Socket3data.y + legendmod.mapOffsetY //Sonia3	
+    application.teamPlayers[h].x = Socket3data.x;
+    application.teamPlayers[h].y = Socket3data.y;
+    application.teamPlayers[h].alive = true;
+    application.teamPlayers[h].mass = Socket3data.mass;
+    application.teamPlayers[h].temp = true;
+    application.teamPlayers[h].drawPosition = function() {};
+    var tempTime = new Date().getTime();
+    application.teamPlayers[h].lastUpdatedTime = tempTime;
+}
+
+function Socket3updateTeamPlayerPosition(Socket3data) {
+    var h = window.decodeURIComponent(escape(application.checkPlayerNick(Socket3data.id)));
+    if (!application.teamPlayers[h]) {
+        return;
+    }
+    application.teamPlayers[h].x = Socket3data.x;
+    application.teamPlayers[h].y = Socket3data.y;
+    application.teamPlayers[h].mass = Socket3data.mass;
+    application.teamPlayers[h].alive = true;
+    var tempTime = new Date().getTime();
+    application.teamPlayers[h].lastUpdatedTime = tempTime;
+}
+
+function Socket3updateTeamPlayerDeath(Socket3data) {
+    //var h = application.checkPlayerNick(Socket3data.id);	
+    var h = window.decodeURIComponent(escape(application.checkPlayerNick(Socket3data.id)));
+    application.teamPlayers[h].alive = false;
+    application.teamPlayers[h].mass = 1;
+}
+
+
+
+//Socket3.send(JSON.stringify({ com: "death", id: customLMID}));
+//Socket3.send(JSON.stringify({ com: "sendPlayerSkinURL", nick: ogarcopythelb.nick, token: application.serverToken, tag: ogarcopythelb.clanTag, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color, id: customLMID, x: application.getPlayerX(), y: application.getPlayerY(), mass: legendmod.playerMass}));
+//Socket3.send(JSON.stringify({ com: "pos", id: customLMID, x: application.getPlayerX(), y: application.getPlayerY(), mass: legendmod.playerMass}));
+
+//sending commands
+function Socket3MessageChat(chattypemsg, chatreader) {
+    var temp = {
+        com: "chat",
+        //id: customLMID,
+        //id: application.playerID,
+        id: window.unescape(window.encodeURIComponent(application.lastSentNick)),
+        nick: ogarcopythelb.nick,
+        chat: chatreader,
+        chattype: chattypemsg
+    };
+    //Socket3.send(JSON.stringify({ "toH": "legendmod", "msg": temp}));
+    Socket3.send(JSON.stringify({
+        "toH": $("#server-token").val() + "3",
+        "msg": temp
+    }));
+    //wss://connect.websocket.in does not send commands to sender again
+    Socket3DisplaychatMsg(chattypemsg, customLMID, ogarcopythelb.nick, chatreader)
+    //Socket3DisplaychatMsg(chattypemsg, application.playerID, ogarcopythelb.nick, chatreader)
+}
+
+function Socket3DisplaychatMsg(b, c, x, d) {
+    var time;
+    timernow();
+    application.displayChatMessage(time, b, c, x + ": " + d);
+}
+
+//enterChatMessage();					
+function enterChatMessage2() {
+    var t = $('#message-box');
+    var e = $('#message');
+    if (t.is(':visible')) {
+        var o = e.val();
+        o.length ? (Socket3MessageChat(101, o), legendmod.play && (e.blur(), t.hide())) : (e.blur(), t.hide()), e.val('');
+        setTimeout(function() {
+            t.hide();
+        }, 10);
+    } else {
+        t.show();
+        e.focus();
+        e.val('');
+    }
+}
+
+function repeatSendingSpecialSkins() {
+    temp = localStorage.getItem("isActualUsingSpecialEffectsSkin")
+    //var temp= temp.split(';')
+
+    if (temp && temp != "null" && (($("#nick").val().includes('℄') && $("#clantag").val() == window.atob(window.clanTagLc)) || window.proLicenceUID || temp == "Byzantium" || window.tempAnimatedCoolArray.includes(temp))) {
+        if (application.lastSentNick == "") application.lastSentNick = $("#nick").val()
+        SpecialEffectPlayers[application.lastSentNick] = temp
+        //
+        animateCustomSkin($("#nick").val(), temp)
+        //
+        window.application.sendSocket3Info("spfc", temp)
+    }
+}
+
+function preUserLeaguesInfoRequest() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://legendmod.ml/LMexpress/userLeaguesInfoRequest.js";
+    $("body").append(s);
+}
+
+function openhelper() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://legendmod.ml/legendhelper.js";
+    $("body").append(s);
+}
+
+function opennamechars() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://legendmod.ml/nicks/nicknamechars.js";
+    $("body").append(s);
+}
+
+function legendformIframe() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://legendmod.ml/legendformIframe.js";
+    $("body").append(s);
+}
+
+function rotateminimapsectors() {
+    if (!spects.length) {
+        if (!window.manualRotation) window.manualRotation = window.legendmod.bgpi
+        window.manualRotation--
+        if (window.manualRotation < 0) {
+            window.manualRotation = 3
+        }
+        console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Map rotated.Tech POS:', window.manualRotation);
+        application.settechvnr(window.manualRotation)
+    } else if (!window.announceSpectNotifOnce) {
+        window.announceSpectNotifOnce = true;
+        toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + "Rotation can work only before the creation of Multi-Viewports");
+    }
+}
+
+function toggleFullScreen(fullornot) {
+    if (!window.fullornot) {
+        launchIntoFullscreen(document.documentElement);
+        window.fullornot = true
+    } else {
+        exitFullscreen();
+        window.fullornot = false
+    }
+}
+
+function launchIntoFullscreen(element) {
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+    }
+}
+
+function exitFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    }
+}
+
+function preEmbPassword() {
+    if (!window.preEmbPass) {
+        window.preEmbPass = true
+        embPassword()
+    }
+}
+
+function embPassword() {
+    if (clanpass != null && clanpass != "") {
+        $("#clantag").val(clanpass);
+        $('#clantag').css('background-color', '#ff6347');
+    }
+}
+
+function appendLMhiFbPs() {
+    $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
+        MSGCOMMANDS2 = $(".toast.toast-warning").html();
+        if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {
+            toastr.error(Premadeletter0);
+        } else if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
+            $(".toast.toast-warning").remove();
+        }
+    });
+    $("body").on('DOMSubtreeModified', "#chat-box", function() {
+        var MSGCOMMANDS3 = $(".command-text").text();
+        if (MSGCOMMANDS3.includes("You are using an old version of OGARio by")) {
+            $(".command-text").text(Premadeletter0);
+        } else if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
+            $(".command-text").text(Premadeletter0);
+        }
+    });
+
+    $("body").on('DOMNodeInserted', ".toast.toast-success", function() {
+        MSGCOMMANDS = $(".toast.toast-success").text();
+        MSGNICK = $(".message-nick").last().text().replace(": ", "");
+    });
+    $("body").on('DOMSubtreeModified', "#chat-box", function() {
+        MSGCOMMANDS = $(".message-text").text();
+        MSGNICK = $(".message-nick").last().text().replace(": ", "");
+    });
+}
+var reverseTrick = {
+    biggerEnemy: null,
+    biggerEnemyAcc: null,
+    smallerEnemy: null,
+    smallerEnemyAcc: null,
+    smallerSize: null,
+    biggerSize: null,
+    smallerSumm: 0,
+    biggerSumm: 0,
+    biggerCells: 0,
+    smallerCells: 0,
+    getAngle(x1, y1, x2, y2, dis) {
+        var angl = Math.round((Math.acos((y2 - y1) / dis) / Math.PI) * 180);
+        //if target on left side
+
+        if ((x2 - x1 > 0 && y2 - y1 < 0) || (x2 - x1 > 0 && y2 - y1 > 0)) {
+            angl = 180 + (180 - angl);
+        }
+        return angl
+    },
+    getDistance(x1, y1, x2, y2) {
+        return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+    },
+    pointInCircle: function(x, y, type) {
+        for (length = 0; length < legendmod.cells.length; length++) {
+            var distancesquared = (x - legendmod.cells[length].x) * (x - legendmod.cells[length].x) + (y - legendmod.cells[length].y) * (y - legendmod.cells[length].y);
+
+            if (type == 1 && distancesquared <= legendmod.cells[length].size * legendmod.cells[length].size) {
+                reverseTrick.biggerEnemy = legendmod.cells[length].id;
+                reverseTrick.biggerEnemyAcc = legendmod.cells[length].accID;
+                reverseTrick.biggerSize = ~~(legendmod.cells[length].size * legendmod.cells[length].size / 100);
+            } else if (type == 3 && distancesquared <= legendmod.cells[length].size * legendmod.cells[length].size) {
+                reverseTrick.smallerEnemy = legendmod.cells[length].id;
+                reverseTrick.smallerEnemyAcc = legendmod.cells[length].accID;
+                reverseTrick.smallerSize = ~~(legendmod.cells[length].size * legendmod.cells[length].size / 100);
+            }
+        }
+    },
+    check() {
+        if (this.biggerEnemy && this.smallerEnemy && legendmod.playerCellIDs.length) {
+            if (!legendmod.indexedCells.hasOwnProperty(this.biggerEnemy)) {
+                this.biggerEnemy = null;
+                this.biggerEnemyAcc = null;
+                this.biggerSize = null;
+                return
+            }
+            if (!legendmod.indexedCells.hasOwnProperty(this.smallerEnemy)) {
+                this.smallerEnemy = null;
+                this.smallerEnemyAcc = null;
+                this.smallerSize = null;
+                return
+            }
+
+            var index = legendmod.selectBiggestCell ? legendmod.playerCells.length - 0x1 : 0x0;
+            var p = legendmod.playerCells[index];
+            if (legendmod.playerCells[index] == undefined) return;
+
+            var small = legendmod.indexedCells[this.smallerEnemy],
+                distToP = this.getDistance(p.targetX, p.targetY, small.targetX, small.targetY);
+            //ctx.arc(players[current].x, players[current].y, players[current].size + 760, 0, this.pi2, false);
+            this.smallerSize = ~~(legendmod.indexedCells[this.smallerEnemy].size * legendmod.indexedCells[this.smallerEnemy].size / 100);
+
+            if (small.size + 760 + p.size < distToP) return
+
+            var xc = legendmod.playerCells[index].targetX //.x
+            var yc = legendmod.playerCells[index].targetY //.y
+
+
+			var selectedToUse = reverseTrick.smallerEnemy;
+            var x = legendmod.indexedCells[selectedToUse].targetX//.x
+            var y = legendmod.indexedCells[selectedToUse].targetY//.y
+            
+            var a = xc - x
+            var b = yc - y
+            var distance = Math.sqrt( a*a + b*b ) - (legendmod.indexedCells[selectedToUse].size+legendmod.playerCells[index].size)
+
+            var ang = Math.atan2(y - yc, x - xc);
+            legendmod.cursorX= xc +(Math.cos(ang)*distance)
+            legendmod.cursorY= yc +(Math.sin(ang)*distance)
+            legendmod.sendPosition()
+			//
+			//legendmod.sendSplit()
+			//legendmod.selected = null
+			//
+ 		
+			$('#pause-hud').text("Avoiding reverse split...");
+			$('#pause-hud').show()
+           setTimeout(function() {
+			$('#pause-hud').text(textLanguage.pause);
+			$('#pause-hud').hide()	
+            }, 500)				
+			
+            console.log(reverseTrick)
+        }
+    }
+}
+
+function LMadvertisement2020() {
+    $('#helloContainer').after('<div class="modal fade in" id="LMPromo" aria-hidden="false" style="display: block;">' +
+        '<div class="modal-backdrop fade in"></div>' +
+        '<div class="modal-dialog" style="top: calc(50vh - 241.5px); width: 622px;">' +
+        '<div class="modal-content">' +
+        '<div id="CloseLMPromo2" class="modal-header"><button id="CloseLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">' + Premadeletter113 + '</span></button> <button id="FAQLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">?</span><span class="sr-only">' + Premadeletter113 + '</span></button>' +
+        '<h4 class="modal-title" style="font-family: Roboto Condensed, sans-serif">' + '2020 development' + '</h4>' +
+        '</div>' +
+        '<div id="LMadvertisement3"><iframe id="customskinsIframe2" src="https://legendmod.ml/extras/banneranimatedLegendmod2020.html" width="620" height="490" >' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '</div>');
+    $(".modal-dialog").draggable()
+    $("#CloseLMPromo").click(function() {
+        $("#LMPromo").remove();
+    });
+    $("#FAQLMPromo").click(function() {
+        window.open('https://legendmod.ml/', '_blank');
+    });
+}
+
+
+
+/*
+var snezSocketdata;
+var snezSocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=123");
+
+snezSocket.onmessage = function(message) { 
+snezSocketdata = JSON.parse(message.data); 
+console.log(message.data);
+}
+
+
+snezSocket.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopythelb.nick, token: application.serverToken, tag: ogarcopythelb.clanTag, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color}));
+
+
+
+*/
+function playReplayLM(temp) {
+    if (temp && window.RecordedProtocol[temp]) {
+        /*if (window.replayTimeOuts.length){
+        	for (var i=0;i<window.replayTimeOuts;i++){
+        		clearTimeout(window.replayTimeOuts[i])
+        	}
+        	window.replayTimeOuts=[]
+        }*/
+        clearTimeout(window.replayTimeOuts)
+        application.flushData()
+        $('#pause-hud').text(textLanguage.pause);
+        legendmod.indexedCells = {}
+        legendmod.cells = []
+        legendmod.removedCells = []
+        legendmod.food = []
+        legendmod.viruses = []
+        legendmod.cellcolors = []
+        legendmod.playerCells = []
+        legendmod.playerCellIDs = []
+        legendmod.playerCellsMulti = []
+
+        legendmod.playingReplayRecord = 0
+
+        legendmod.playingReplayServer = temp
+        legendmod.playingReplayRewind = false
+        legendmod.playingReplayRewindNow = false
+        if (parseInt(window.replayTiming) < 0) {
+            toastr.warning("<b>[SERVER]:</b> When time traveling, wierd things happens...").css("width", "350px");
+            legendmod.playingReplayRewind = true
+        }
+        //if (parseInt(window.replayTiming)<0) legendmod.playingReplayRecord = window.RecordedProtocol[legendmod.playingReplayServer].length-1
+        //start
+        //window.playrecord = 0
+        intervalPlayingRecord()
+        window.startReplayTime = $("#startReplayTime").val()
+        window.endReplayTime = $("#endReplayTime").val()
+
+        $("#stopReplaybtn").prop('disabled', false);
+        if ($("#savedArenas").val() && window.RecordedArenasSpecifications[$("#savedArenas").val()] && window.RecordedArenasSpecifications[$("#savedArenas").val()][4]) {
+
+            $.extend(true, application.customSkinsMap, JSON.parse(window.RecordedArenasSpecifications[$("#savedArenas").val()][4]));
+        }
+    }
+}
+
+function intervalPlayingRecord() {
+    if ($("#greyScale").length) {
+        window.replayGreyScale = $("#greyScale").prop("checked") == true
+    }
+    if ($("#sepia").length) {
+        window.replaySepia = $("#sepia").prop("checked") == true
+    }
+    if ($("#hueRotate").length) {
+        window.replayHueRotate = $("#hueRotate").prop("checked") == true
+    }
+    var temp1 = parseInt(window.startReplayTime)
+    var temp2 = parseInt(window.endReplayTime)
+    if (temp1 < 0 || temp2 <= 0) {
+        toastr.warning("<b>[SERVER]:</b> Start and end time should be non negative").css("width", "350px");
+    } else if (legendmod.playingReplayRewind && !legendmod.playingReplayRewindNow) {
+        //console.log('a')
+        window.replayTiming2 = 0
+        $('#pause-hud').text("Loading...");
+        $('#pause-hud').show()
+    } else if (legendmod.playingReplayRecord >= temp1 && legendmod.playingReplayRecord <= temp2) {
+
+        if (window.replayTiming2 == 0) {
+            $('#pause-hud').text(textLanguage.pause);
+            $('#pause-hud').hide()
+        }
+        window.replayTiming2 = Math.abs(parseInt(window.replayTiming))
+
+    } else {
+        if (window.replayTiming2 != 0) {
+            //console.log('b')
+            window.replayTiming2 = 0
+            $('#pause-hud').text("Loading...");
+            $('#pause-hud').show()
+        }
+    }
+    window.replayTimeOuts = setTimeout(function() {
+        var tempo = legendmod.playingReplayServer
+        if ($("#server-token").val().includes("replay^" + tempo)) {
+
+            legendmod.handleMessage(window.RecordedProtocol[tempo][legendmod.playingReplayRecord]) //main fuction for replay
+            //
+            if (!legendmod.playingReplayRewind && window.replayTiming2 == 0) {
+                if (window.replaySkippedLoops > 99 && legendmod.playingReplayRecord + 100 < window.RecordedProtocol[tempo].length - 1) {
+                    for (var i = 0; i < window.replaySkippedLoops - 1; i++) { // 100 times more
+                        legendmod.handleMessage(window.RecordedProtocol[tempo][legendmod.playingReplayRecord])
+                        legendmod.playingReplayRecord++
+                    }
+                } else if (window.replaySkippedLoops > 9 && legendmod.playingReplayRecord + 10 < window.RecordedProtocol[tempo].length - 1) {
+                    for (var i = 0; i < 9; i++) { // 10 times more
+                        legendmod.handleMessage(window.RecordedProtocol[tempo][legendmod.playingReplayRecord])
+                        legendmod.playingReplayRecord++
+                    }
+                }
+            }
+            //
+            $("#totalReplayPackets").val(legendmod.playingReplayRecord + "/" + window.RecordedProtocolPackets)
+
+            if (legendmod.playingReplayRecord < window.RecordedProtocol[tempo].length - 1 && legendmod.playingReplayRecord >= 0) {
+                if (legendmod.playingReplayRecord < window.RecordedProtocol[tempo].length - 2) intervalPlayingRecord();
+                if (parseInt(window.replayTiming) >= 0 || !legendmod.playingReplayRewindNow) {
+                    legendmod.playingReplayRecord++
+                } else {
+                    legendmod.playingReplayRecord--
+                }
+            } else if (legendmod.playingReplayRewindNow) {
+                if (legendmod.playingReplayRecord >= 0) {
+                    legendmod.playingReplayRewindNow = true
+                    legendmod.playingReplayRecord--
+                    intervalPlayingRecord();
+                }
+                $("#stopReplaybtn").prop('disabled', true);
+                $('#pause-hud').text(textLanguage.pause);
+                $('#pause-hud').hide()
+            }
+        }
+    }, window.replayTiming2);
+}
+
+/*
+function playReplayLM(temp){		
+	if (temp && window.RecordedProtocol[temp]){
+		//if (window.replayTimeOuts.length){
+			//for (var i=0;i<window.replayTimeOuts;i++){
+				//clearTimeout(window.replayTimeOuts[i])
+			//}
+			//window.replayTimeOuts=[]
+		//}
+		legendmod.indexedCells={}
+		legendmod.cells=[]
+        legendmod.removedCells=[]
+        legendmod.food=[]
+        legendmod.viruses=[]
+        legendmod.cellcolors=[]
+        legendmod.playerCells=[]
+        legendmod.playerCellIDs=[]
+        legendmod.playerCellsMulti=[]	
+		legendmod.playingRecord=0
+		
+		for (var legendmod.playingRecord=0;legendmod.playingRecord<window.RecordedProtocol[temp].length-1;legendmod.playingRecord++){
+			window.playrecord = 0
+			//window.replayTimeOuts[i] = setTimeout(function() {
+				setTimeout(function() {
+				if ($("#server-token").val().includes("replay^"+temp)){	
+				
+					legendmod.handleMessage(window.RecordedProtocol[temp][window.playrecord])
+					
+			//console.log(window.playrecord)
+				}
+				window.playrecord++
+			}, window.replayTiming*legendmod.playingRecord);
+		}		
+	}
+}
+*/
+Array.prototype.stDev = function stDev() {
+    const average = data => data.reduce((sum, value) => sum + value) / data.length
+    return Math.sqrt(average(this.map(value => Math.pow(value - average(this), 2))))
+    //return Math.sqrt(average(this.map(value => (value - average(this)) ** 2)))
+};
