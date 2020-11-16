@@ -1,5 +1,5 @@
 /* Source script
-v2.866
+v2.867
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14539,9 +14539,9 @@ Game name     : ${i.displayName}<br/>
                 }
             } 
 			else {
-                //ctx.beginPath();
+                ctx.beginPath();
                 for (var length = 0; length < food.length; length++) {
-					ctx.beginPath();
+					//ctx.beginPath();
                     if (!food[length].invisible) {				
                         var x = food[length].x;
                         var y = food[length].y;
