@@ -1,5 +1,5 @@
 /* Source script
-v2.884
+v2.885
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15135,7 +15135,7 @@ Game name     : ${i.displayName}<br/>
 			else if (defaultmapsettings.unlockedFPS == "ultra2") {
                 setTimeout(function() {
                     for (var i = 0; i < 3; i++) {
-						if (drawRender.averageRenderTime && drawRender.averageRenderTime < 50 + i * 5 && window.renderDelay > 0){
+						if (drawRender.averageRenderTime && drawRender.averageRenderTime < 30 + i * 20 && window.renderDelay > 0){
 							drawRender.countFps()
 							drawRender.renderFrame();
 						}
