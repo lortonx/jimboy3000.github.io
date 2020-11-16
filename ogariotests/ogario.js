@@ -1,5 +1,5 @@
 /* Source script
-v2.897
+v2.898
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13803,7 +13803,7 @@ Game name     : ${i.displayName}<br/>
         sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         },
-        renderFrame() {
+        renderFrame(speeder) {
         //'renderFrame': async function() { //Sonia5
         //await this.sleep(4); //Sonia5			
             //this.ctx.start2D();
@@ -13812,8 +13812,8 @@ Game name     : ${i.displayName}<br/>
 				this.fps--
 				console.log("cut")
 			}
-			else if (this.renderingDelay>750){
-				this.renderingDelay = this.renderingDelay - this.lastRenderingDelay
+			else if (speeder && this.lastRenderingDelay>10){
+				this.lastRenderingDelay = this.lastRenderingDelay - 10
 				this.fps--
 				console.log("cut2")				
 			}
@@ -15126,9 +15126,9 @@ Game name     : ${i.displayName}<br/>
 					drawRender.renderFrame();					
                     for (var i = 0; i < 3; i++) {
 						var a;	
-						if (drawRender.averageRenderTime && parseFloat(drawRender.averageRenderTime) < 75 - i * 15){
+						if (drawRender.averageRenderTime && parseFloat(drawRender.averageRenderTime) < 45 - i * 10){
 							drawRender.countFps()
-							drawRender.renderFrame();
+							drawRender.renderFrame(i);
 							a = i
 						}
 						if (a) console.log("bubble butt"+a)
