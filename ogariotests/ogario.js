@@ -1,5 +1,5 @@
 /* Source script
-v2.857
+v2.858
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -3153,7 +3153,7 @@ var defaultmapsettings = {
     showMiniMapGhostCells: true,
     oneColoredTeammates: false,
     optimizedFood: true,
-    rainbowFood: false,
+    rainbowFood: true,
     oppColors: true,
     oppRings: true,
     virColors: false,
@@ -14509,17 +14509,17 @@ Game name     : ${i.displayName}<br/>
                 LM.foodIsHidden = true;
                 return;
             }
-            if (!defaultmapsettings.rainbowFood) {
+            //if (!defaultmapsettings.rainbowFood) {
                 this.drawCachedFood(this.ctx, LM.food, this.scale);
-                return;
-            }
-            for (let length = 0; length < LM.food.length; length++) {
+                //return;
+            //}
+            /*for (let length = 0; length < LM.food.length; length++) {
                 LM.food[length].moveCell();
                 if (!LM.food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) LM.food[length].invisible = true
                 if (!LM.food[length].invisible) {
                     LM.food[length].draw(this.ctx);
                 }
-            }
+            }*/
         },
         drawCachedFood(ctx, food, scale, reset) {
             if (!food.length) {
@@ -14545,7 +14545,8 @@ Game name     : ${i.displayName}<br/>
                         var x = food[length].x;
                         var y = food[length].y;
                         ctx.moveTo(x, y);
-                        if (scale < 0.16) {
+						if (scale < 0.08) {
+                        //if (scale < 0.16) {
                             const size = food[length].size + defaultSettings.foodSize;
                             ctx.rect(x - size, y - size, 2 * size, 2 * size);
                             continue;
@@ -14553,7 +14554,8 @@ Game name     : ${i.displayName}<br/>
                         ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
                     }
                 }
-                ctx.fillStyle = defaultSettings.foodColor;
+				if (!defaultmapsettings.rainbowFood){ ctx.fillStyle = defaultSettings.foodColor;}
+                else { ctx.fillStyle = this.color}
                 ctx.globalAlpha = 1;
                 ctx.fill();
             }
