@@ -1,5 +1,5 @@
 /* Source script
-v2.888
+v2.889
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15093,7 +15093,7 @@ Game name     : ${i.displayName}<br/>
             //await drawRender.sleep(window.fpsM);	
 			
 
-			if (drawRender.renderingDelay<750){
+			if (drawRender.renderingDelay<666){ //750
 				drawRender.countFps();
 				drawRender.renderFrame();
 			}
@@ -15111,11 +15111,13 @@ Game name     : ${i.displayName}<br/>
 			if (defaultmapsettings.unlockedFPS == true) {
                 setTimeout(function() {
                     for (var i = 0; i < 3; i++) {
+						var a;
 						if (drawRender.averageRenderTime && parseFloat(drawRender.averageRenderTime) < 30 + i * 15 && window.renderDelay > 0){
-							console.log("bubble butt")
 							drawRender.countFps()
 							drawRender.renderFrame();
+							a = i
 						}
+						if (a) console.log("bubble butt"+a)
 						if (!drawRender.averageRenderTime){drawRender.countFps();drawRender.renderFrame();}
                     }
                     drawRender.render()
