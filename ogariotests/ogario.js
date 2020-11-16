@@ -1,5 +1,5 @@
 /* Source script
-v2.875
+v2.876
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -3154,7 +3154,7 @@ var defaultmapsettings = {
     oneColoredTeammates: false,
     optimizedFood: true,
     rainbowFood: true,
-    oppColors: true,
+    oppColors: false,
     oppRings: true,
     virColors: false,
     splitRange: false,
@@ -9964,7 +9964,7 @@ window.MouseClicks=[];
                 if (node) {
                     //if ((defaultmapsettings.transparentSkins || LM.play && defaultmapsettings.oppColors) && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
                     if (defaultmapsettings.transparentSkins && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
-                        console.log('transparent')
+                        //console.log('transparent')
 						style.globalAlpha *= defaultSettings.skinsAlpha;
                         //s = true;
                     }
@@ -10046,12 +10046,15 @@ window.MouseClicks=[];
 
             if (defaultmapsettings.noNames && !defaultmapsettings.showMass || cellMoved) {
                 //return;
-            } else {
+            } 
+			else {
                 var recursive = false;
                 if (!(!this.isPlayerCell && (recursive = application.setAutoHideCellInfo(y)) && defaultmapsettings.autoHideNames && defaultmapsettings.autoHideMass)){
                     this.setDrawing();
                     this.setDrawingScale();
-                    style.globalAlpha *= defaultSettings.textAlpha;
+					if ( defaultSettings.textAlpha != 1 ){
+						style.globalAlpha *= defaultSettings.textAlpha;
+					}
                     if (!(defaultmapsettings.noNames || recursive && defaultmapsettings.autoHideNames || this.isPlayerCell && defaultmapsettings.hideMyName || node && defaultmapsettings.hideTeammatesNames)) {
                         if (this.setNick(this.targetNick)) {
                             this.drawNick(style);
@@ -14563,7 +14566,7 @@ Game name     : ${i.displayName}<br/>
 				if (!defaultmapsettings.rainbowFood){ 				
 					ctx.fillStyle = defaultSettings.foodColor;
 				}
-                ctx.globalAlpha = 1;
+                //ctx.globalAlpha = 1;
                 ctx.fill();					
                 }
 
