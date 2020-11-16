@@ -1,5 +1,5 @@
 /* Source script
-v2.856
+v2.857
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9773,7 +9773,8 @@ window.MouseClicks=[];
                     var point = this.points[i];
                     style.lineTo(point.x, point.y);
                 }
-            } else if (defaultmapsettings.jellyPhisycs && this.isVirus) {
+            } 
+			else if (defaultmapsettings.jellyPhisycs && this.isVirus) {
                 style.lineJoin = "miter"
                 var pointCount = 120;
                 var incremental = this.pi2 / pointCount;
@@ -13206,6 +13207,7 @@ Game name     : ${i.displayName}<br/>
                     var g = view.readUInt8(offset++);
                     var b = view.readUInt8(offset++);
                     color = this.rgb2Hex(~~(0.9 * r), ~~(0.9 * g), ~~(0.9 * b));
+					console.log(color)
                 }
 
                 if (4 & flags) {
@@ -14535,7 +14537,8 @@ Game name     : ${i.displayName}<br/>
                         ctx.drawImage(this.pellet, x, y);
                     }
                 }
-            } else {
+            } 
+			else {
                 ctx.beginPath();
                 for (var length = 0; length < food.length; length++) {
                     if (!food[length].invisible) {
