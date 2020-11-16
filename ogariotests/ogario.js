@@ -1,5 +1,5 @@
 /* Source script
-v2.871
+v2.872
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9791,13 +9791,6 @@ window.MouseClicks=[];
             } else style.arc(this.x, this.y, y, 0, this.pi2, false);
 
             style.closePath();
-			if (window.hi) {
-				style.fill()
-				style.restore()
-				return;
-				}
-
-
             //if (style.arc(this.x, this.y, y, 0, this.pi2, false), style.closePath(), this.isFood) {
             //    return style.fillStyle = this.color, style.fill(), void style.restore();
             //}						
@@ -15105,7 +15098,7 @@ Game name     : ${i.displayName}<br/>
 			}
             else{			
 				//drop the frame instead of lag
-				//console.log('stoped')
+				console.log('stoped')
 				drawRender.renderingDelay =	drawRender.renderingDelay - drawRender.lastRenderingDelay
 			}
 			/*
