@@ -1,5 +1,5 @@
 /* Source script
-v2.858
+v2.859
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13207,7 +13207,7 @@ Game name     : ${i.displayName}<br/>
                     var g = view.readUInt8(offset++);
                     var b = view.readUInt8(offset++);
                     color = this.rgb2Hex(~~(0.9 * r), ~~(0.9 * g), ~~(0.9 * b));
-					console.log(color)
+					//console.log(color)
                 }
 
                 if (4 & flags) {
@@ -14555,7 +14555,10 @@ Game name     : ${i.displayName}<br/>
                     }
                 }
 				if (!defaultmapsettings.rainbowFood){ ctx.fillStyle = defaultSettings.foodColor;}
-                else { ctx.fillStyle = this.color}
+                else { 
+					console.log(this.color)
+					ctx.fillStyle = this.color
+				}
                 ctx.globalAlpha = 1;
                 ctx.fill();
             }
