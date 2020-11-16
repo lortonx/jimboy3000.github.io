@@ -1,5 +1,5 @@
 /* Source script
-v2.880
+v2.881
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13803,9 +13803,9 @@ Game name     : ${i.displayName}<br/>
         sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         },
-        //renderFrame() {
-        'renderFrame': async function() { //Sonia5
-        await this.sleep(4); //Sonia5			
+        renderFrame() {
+        //'renderFrame': async function() { //Sonia5
+        //await this.sleep(4); //Sonia5			
             //this.ctx.start2D();
 			this.renderStarted = performance.now()
             LM.time = Date.now();
@@ -15090,7 +15090,9 @@ Game name     : ${i.displayName}<br/>
         },
         //'renderFrame': async function() { //Sonia5
         //await this.sleep(4); //Sonia5				
-        render() {
+        //render() {
+	   'render': async function() { //Sonia5
+        await this.sleep(4); //Sonia5		
             //'render': async function() {
             //if (!window.fpsM) window.fpsM = 4
             //await drawRender.sleep(window.fpsM);	
