@@ -1,5 +1,5 @@
 /* Source script
-v2.891
+v2.892
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13810,8 +13810,9 @@ Game name     : ${i.displayName}<br/>
 			if (this.lastRenderingDelay > 10){
 				this.lastRenderingDelay = this.lastRenderingDelay - 10
 				this.fps--
-				return; 
+				console.log("cut")
 			}
+			else{
 			this.renderStarted = performance.now()
             LM.time = Date.now();
             for (i = 0; i < LM.cells.length; i++) {
@@ -13916,6 +13917,7 @@ Game name     : ${i.displayName}<br/>
             //window.updateCellsClock=false
 
             //drawRender.render();
+			}
         },
         drawHelpers() {
             if (LM.play || LM.playerCellsMulti.length) {
