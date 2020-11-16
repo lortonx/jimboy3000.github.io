@@ -1,5 +1,5 @@
 /* Source script
-v2.860
+v2.861
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14552,13 +14552,13 @@ Game name     : ${i.displayName}<br/>
                             continue;
                         }
                         ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
+						if (defaultmapsettings.rainbowFood){ 
+							ctx.fillStyle = food[length].color
+						}
                     }
                 }
 				if (!defaultmapsettings.rainbowFood){ 
 					ctx.fillStyle = defaultSettings.foodColor;
-				}
-                else { 
-					ctx.fillStyle = food[length].color
 				}
                 ctx.globalAlpha = 1;
                 ctx.fill();
