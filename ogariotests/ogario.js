@@ -9788,10 +9788,11 @@ window.MouseClicks=[];
                     )
                 }
                 style.lineTo(this.x, this.y + this.size + 3);
-            } else style.arc(this.x, this.y, y, 0, this.pi2, false);
+            } 
+			else style.arc(this.x, this.y, y, 0, this.pi2, false);
 
             style.closePath();
-
+			if (window.hi) return;
 
 
             //if (style.arc(this.x, this.y, y, 0, this.pi2, false), style.closePath(), this.isFood) {
@@ -9841,22 +9842,6 @@ window.MouseClicks=[];
                     }					
 					style.restore();
                     return;
-					/*
-                    return defaultmapsettings.transparentViruses && (style.globalAlpha *= defaultSettings.virusAlpha, s = true), 
-					defaultmapsettings.virColors && LM.play ? (style.fillStyle = application.setVirusColor(y), style.strokeStyle = application.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, 
-					style.strokeStyle = this.virusStroke), 
-					style.fill(), 
-					s && (style.globalAlpha = value, s = false), 
-					style.lineWidth = defaultSettings.virusStrokeSize, 
-					defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
-                        defaultSettings.virusGlowColor) : "yeet", 
-						defaultmapsettings.virusSpikes ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, defaultSettings.virusSpikesSize)) : style.stroke(),
-						//defaultmapsettings.virusSpikes ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)) : style.stroke(),
-						//style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), 
-						defaultmapsettings.showMass && 
-						(this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
-                        this.setMass(this.size), this.drawMass(style), (window.ExternalScripts && !window.legendmod5.optimizedMass)), void style.restore();
-						*/
                 }
             } 
 			else {
@@ -9986,7 +9971,8 @@ window.MouseClicks=[];
                             style.globalCompositeOperation = '';
                             style.restore();
 
-                        } else {
+                        } 
+						else {
                             try {
                                 style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y); //all skin drawing
                             } catch (e) {}
@@ -10047,7 +10033,8 @@ window.MouseClicks=[];
 
             if (defaultmapsettings.noNames && !defaultmapsettings.showMass || cellMoved) {
                 //return;
-            } else {
+            } 
+			else {
                 var recursive = false;
                 if (!(!this.isPlayerCell && (recursive = application.setAutoHideCellInfo(y)) && defaultmapsettings.autoHideNames && defaultmapsettings.autoHideMass)){
                     this.setDrawing();
@@ -14539,8 +14526,9 @@ Game name     : ${i.displayName}<br/>
                 }
             } 
 			else {
+                ctx.beginPath();
                 for (var length = 0; length < food.length; length++) {
-					ctx.beginPath();
+					//ctx.beginPath();
                     if (!food[length].invisible) {				
                         var x = food[length].x;
                         var y = food[length].y;
