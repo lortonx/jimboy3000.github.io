@@ -1,5 +1,5 @@
 /* Source script
-v2.882
+v2.883
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15087,9 +15087,7 @@ Game name     : ${i.displayName}<br/>
         },
         //'renderFrame': async function() { //Sonia5
         //await this.sleep(4); //Sonia5				
-        //render() {
-	   'render': async function() { //Sonia5
-        await drawRender.sleep(4); //Sonia5		
+        render() {
             //'render': async function() {
             //if (!window.fpsM) window.fpsM = 4
             //await drawRender.sleep(window.fpsM);	
@@ -15110,10 +15108,10 @@ Game name     : ${i.displayName}<br/>
             }, 0);
 			*/
 			if(defaultmapsettings.unlockedFPS==true || legendmod.integrity) { 
-				drawRender.render()
-                //setTimeout(function() {
-                    //drawRender.render()
-                //}, 0);			
+				//drawRender.render()
+                setTimeout(function() {
+                    drawRender.render()
+                }, 0);			
 			}			
             else if (!defaultmapsettings.unlockedFPS) {
                 window.requestAnimationFrame(drawRender.render);
@@ -15135,7 +15133,7 @@ Game name     : ${i.displayName}<br/>
             }
 			else if (defaultmapsettings.unlockedFPS == "ultra2") {
                 setTimeout(function() {
-                    for (var i = 0; i < 9; i++) {
+                    for (var i = 0; i < 3; i++) {
 						if (drawRender.averageRenderTime && drawRender.averageRenderTime < 50 + i * 5 && window.renderDelay > 0){
 							drawRender.countFps()
 							drawRender.renderFrame();
