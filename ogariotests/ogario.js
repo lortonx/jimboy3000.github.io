@@ -1,5 +1,5 @@
 /* Source script
-v2.872
+v2.873
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9227,7 +9227,7 @@ window.MouseClicks=[];
                 var temp;
                 for (var i = 0; i < application.chatHistory.length; i++) {
                     if (application.chatHistory[i].nick == this.nick && (Date.now() - application.chatHistory[i].time < 15000)) {
-                        if (!application.chatHistory[i].message.includes('<img src') && !application.chatHistory[i].message.includes('DosAttack') &&
+                        if (!application.chatHistory[i].message.includes('emoticon') && !application.chatHistory[i].message.includes('<img src') && !application.chatHistory[i].message.includes('DosAttack') &&
                             !application.chatHistory[i].message.includes('DosFight') && !application.chatHistory[i].message.includes('DosRun') &&
                             !application.chatHistory[i].message.includes('https://agar.io/sip=151.80.91.73:1511') && this.nick != "") {
                             if (application.chatHistory[i].nick == $('#nick').val() || application.chatHistory[i].nick == application.lastSentNick) {
@@ -15122,12 +15122,24 @@ Game name     : ${i.displayName}<br/>
 			else if (defaultmapsettings.unlockedFPS == "ultra") {
                 setTimeout(function() {
                     for (var i = 0; i < 9; i++) {
+						
                         drawRender.countFps()
                         drawRender.renderFrame();
                     }
                     drawRender.render()
                 }, 0);
             }
+			else if (defaultmapsettings.unlockedFPS == "ultra2") {
+                setTimeout(function() {
+                    for (var i = 0; i < 9; i++) {
+						if (drawRender.averageRenderTime && drawRender.averageRenderTime < 50 + i * 5 && window.renderDelay > 0){
+							drawRender.countFps()
+							drawRender.renderFrame();
+						}
+                    }
+                    drawRender.render()
+                }, 0);
+            }						
             else if (defaultmapsettings.unlockedFPS == "sophisticated") {
                 if (!drawRender.averageRenderTime) {
                     window.renderDelay = 0;
