@@ -1,5 +1,5 @@
 /* Source script
-v2.904
+v2.905
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13807,14 +13807,6 @@ Game name     : ${i.displayName}<br/>
         //'renderFrame': async function() { //Sonia5
         //await this.sleep(4); //Sonia5			
             //this.ctx.start2D();
-			if (!window.abb) window.abb=1000		
-			if (this.lastRenderingDelay * this.fps > window.abb){
-				//this.lastRenderingDelay = this.lastRenderingDelay - 10
-				this.lastRenderingDelay = 0
-				this.fps--
-				console.log("cut2")
-			}
-			else{
 			this.renderStarted = performance.now()
             LM.time = Date.now();
             for (i = 0; i < LM.cells.length; i++) {
@@ -13919,7 +13911,7 @@ Game name     : ${i.displayName}<br/>
             //window.updateCellsClock=false
 
             //drawRender.render();
-			}
+			
         },
         drawHelpers() {
             if (LM.play || LM.playerCellsMulti.length) {
@@ -15119,16 +15111,25 @@ Game name     : ${i.displayName}<br/>
 			//if(defaultmapsettings.unlockedFPS==true || legendmod.integrity) { 
 			if (defaultmapsettings.unlockedFPS == true) {
                 setTimeout(function() {
-					drawRender.countFps()
-					drawRender.renderFrame();					
-                    for (var i = 0; i < 3; i++) {
-						var a;	
-						if (drawRender.lastRenderingDelay>10 && drawRender.averageRenderTime && parseFloat(drawRender.averageRenderTime) < 45 - i * 10){
-							drawRender.countFps()
-							drawRender.renderFrame();
-							a = i
+					if (!window.abb) window.abb=1000		
+					if (drawRender.lastRenderingDelay * drawRender.fps > window.abb){
+						//drawRender.lastRenderingDelay = drawRender.lastRenderingDelay - 10
+						drawRender.lastRenderingDelay = 0
+						console.log("cut2")					
+					}
+					else{
+						drawRender.countFps()
+						drawRender.renderFrame();					
+						for (var i = 0; i < 3; i++) {
+							var a;	
+							if (drawRender.lastRenderingDelay>10) console.log("cut")
+							if (drawRender.lastRenderingDelay<=10 && drawRender.averageRenderTime && parseFloat(drawRender.averageRenderTime) < 45 - i * 10){
+								drawRender.countFps()
+								drawRender.renderFrame();
+								a = i
+							}
 						}
-                    }
+					}
                     drawRender.render()
                 }, 0);
             }			
