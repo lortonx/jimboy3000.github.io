@@ -1,5 +1,5 @@
 /* Source script
-v2.918a
+v2.918b
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15094,6 +15094,7 @@ Game name     : ${i.displayName}<br/>
         //await this.sleep(4); //Sonia5				
         render() {
 			if (defaultmapsettings.unlockedFPS == true) {
+				setTimeout(function() {	
 				drawRender.lastRenderingDelayObserver = 0; 							
 						drawRender.countFps()
 						drawRender.renderFrame();					
@@ -15103,7 +15104,7 @@ Game name     : ${i.displayName}<br/>
 								drawRender.renderFrame();
 							}
 						}
-                setTimeout(function() {							
+                						
 						drawRender.render()                 
                 }, 0);			
             }				
