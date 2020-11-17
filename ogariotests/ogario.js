@@ -1,5 +1,5 @@
 /* Source script
-v2.901
+v2.902
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13807,12 +13807,13 @@ Game name     : ${i.displayName}<br/>
         //'renderFrame': async function() { //Sonia5
         //await this.sleep(4); //Sonia5			
             //this.ctx.start2D();
+			if (!window.abb) window.abb=1000
 			if (speeder && this.lastRenderingDelay>10){
 				//this.lastRenderingDelay = this.lastRenderingDelay - 10
 				this.fps--
 				console.log("cut")				
 			}			
-			else if (this.lastRenderingDelay * this.fps > 1000){
+			else if (this.lastRenderingDelay * this.fps > window.abb){
 				//this.lastRenderingDelay = this.lastRenderingDelay - 10
 				this.lastRenderingDelay = 0
 				this.fps--
