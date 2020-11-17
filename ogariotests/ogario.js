@@ -1,5 +1,5 @@
 /* Source script
-v2.902
+v2.903
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15130,10 +15130,9 @@ Game name     : ${i.displayName}<br/>
 						var a;	
 						if (drawRender.averageRenderTime && parseFloat(drawRender.averageRenderTime) < 45 - i * 10){
 							drawRender.countFps()
-							drawRender.renderFrame(i);
+							drawRender.renderFrame(true);
 							a = i
 						}
-						if (a) console.log("bubble butt"+a)
                     }
                     drawRender.render()
                 }, 0);
