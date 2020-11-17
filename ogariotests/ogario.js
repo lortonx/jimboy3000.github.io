@@ -1,5 +1,5 @@
 /* Source script
-v2.899
+v2.901
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13812,8 +13812,9 @@ Game name     : ${i.displayName}<br/>
 				this.fps--
 				console.log("cut")				
 			}			
-			else if (this.lastRenderingDelay * this.fps > 750){
-				this.lastRenderingDelay = this.lastRenderingDelay - 10
+			else if (this.lastRenderingDelay * this.fps > 1000){
+				//this.lastRenderingDelay = this.lastRenderingDelay - 10
+				this.lastRenderingDelay = 0
 				this.fps--
 				console.log("cut2")
 			}
