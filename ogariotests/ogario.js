@@ -1,5 +1,5 @@
 /* Source script
-v2.909
+v2.910
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15115,7 +15115,7 @@ Game name     : ${i.displayName}<br/>
                 setTimeout(function() {							
 					if (drawRender.lastRenderingDelay * drawRender.fps > window.abb){
 						window.requestAnimationFrame(drawRender.render);
-						drawRender.lastRenderingDelay;
+						drawRender.lastRenderingDelay =0;
 						console.log("cut2")					
 					}
 					else{
