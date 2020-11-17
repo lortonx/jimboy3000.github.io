@@ -1,5 +1,5 @@
 /* Source script
-v2.917a
+v2.917b
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15094,17 +15094,17 @@ Game name     : ${i.displayName}<br/>
 				
 				if (!window.abc) window.abc= 3
 				
-				//if (!window.abb) window.abb=10000				
+				if (!window.abb) window.abb=2000			
                 setTimeout(function() {							
 					if (drawRender.lastRenderingDelay * drawRender.fps > window.abb){
-						/*setTimeout(function() {window.requestAnimationFrame(drawRender.render);}, 4);
+						setTimeout(function() {window.requestAnimationFrame(drawRender.render);}, 4);
 						drawRender.lastRenderingDelay =0;
-						console.log("cut2")	*/				
+						//console.log("cut2")					
 					}
 					else{
 						drawRender.countFps()
 						drawRender.renderFrame();					
-						for (var i = 0; i < 4; i++) {
+						for (var i = 0; i < 3; i++) {
 							if (drawRender.lastRenderingDelay<=window.abc + window.abc*i){
 							//if (drawRender.lastRenderingDelay<=10 && drawRender.averageRenderTime && parseFloat(drawRender.averageRenderTime) < 65 - i * 10){
 								drawRender.countFps()
