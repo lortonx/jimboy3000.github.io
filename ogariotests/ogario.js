@@ -1,5 +1,5 @@
 /* Source script
-v2.920
+v2.921
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15100,7 +15100,7 @@ Game name     : ${i.displayName}<br/>
 						drawRender.countFps()
 						drawRender.renderFrame();					
 						for (var i = 0; i < 10; i++) {
-							if (drawRender.lastRenderingDelayObserver + drawRender.lastRenderingDelay<=38){ //40
+							if (drawRender.lastRenderingDelayObserver + drawRender.lastRenderingDelay<=25){ //40
 								drawRender.countFps()
 								drawRender.renderFrame();
 							}
