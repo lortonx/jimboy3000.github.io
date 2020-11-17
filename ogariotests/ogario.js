@@ -1,5 +1,5 @@
 /* Source script
-v2.907
+v2.908
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15114,8 +15114,7 @@ Game name     : ${i.displayName}<br/>
 				if (!window.abc) window.abc= 3				
                 setTimeout(function() {							
 					if (drawRender.lastRenderingDelay * drawRender.fps > window.abb){
-						//drawRender.lastRenderingDelay = drawRender.lastRenderingDelay - 10
-						drawRender.lastRenderingDelay = 0
+						window.requestAnimationFrame(drawRender.render);
 						console.log("cut2")					
 					}
 					else{
@@ -15128,8 +15127,8 @@ Game name     : ${i.displayName}<br/>
 								drawRender.renderFrame();
 							}
 						}
-					}
-                    drawRender.render()
+						drawRender.render()
+					}                    
                 }, 0);
             }			
 			else if(defaultmapsettings.unlockedFPS == "ultra2") { 
