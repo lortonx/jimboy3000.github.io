@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.65 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.66 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "11 FPS BETA"; // the version 1.1-> 1.11
 
@@ -51,7 +51,7 @@ var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var checkonlytwelvth = localStorage.getItem("checkonlytwelvth");
+var checkonlyfourtenth = localStorage.getItem("checkonlyfourtenth");
 var checkonlyeleventh = localStorage.getItem("checkonlyeleventh");
 var checkonlyrewardday1 = localStorage.getItem("checkonlyrewardday1");
 var defaultMusicUrl = "https://www.youtube.com/watch?v=nj33MArNjC8";
@@ -350,7 +350,16 @@ function loadersettings() {
                 }
             }
         }	
-        if (checkonlytwelvth != "true") {
+        if (checkonlyfourtenth != "true") {
+		toastr.info('<center><b>'+
+		'Try <font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">Unlimited FPS</font></span>:<br>'+
+		'Change  frame per sec, to <u><font color="blue">unlimited</font></u><br>'+
+		'on <u><font color="blue">settings tab</font></u'+
+		'</b></center>', '', {
+                    timeOut: 20000,
+                    extendedTimeOut: 20000
+        }).css("width", "450px");	
+		
 			//LMadvertisementMegaFFA();
         //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
         /*toastr.info('<center><b>'+
@@ -363,8 +372,8 @@ function loadersettings() {
                 }).css("width", "450px");
 */				
 				
-		checkonlytwelvth = "true";
-		localStorage.setItem("checkonlytwelvth", checkonlytwelvth);				
+		checkonlyfourtenth = "true";
+		localStorage.setItem("checkonlyfourtenth", checkonlyfourtenth);				
        // }					
 		}
 		
@@ -5045,7 +5054,7 @@ function initializeLM(modVersion) {
         placement: "bottom"
     });	
 	//$('#animation-value').parent().before("1. Type on browser: <b>chrome://settings/system</b> , ensure <i>Use hardware acceleration when available</i> checkbox, is <b>ENABLED</b>. 2. Prefer <b>Opera GX</b><br><br>");
-/*		
+		
 	$('#animation-value').parent().before(
         '<label style="float:left; padding-left:0; padding-right:0">' + textLanguage.unlockedFPS + '<select id="FrameWorkOption" class="form-control" onchange="changeFrameWork();" required="" data-original-title="" title="" style="display:inline; width: 70%; float:right;" >' +        
 		'<option value="4" data-itr="">Limited Rate + 4ms delay (suggested)</option>' +		
@@ -5063,7 +5072,7 @@ function initializeLM(modVersion) {
         title: "Type on chrome: chrome://settings/system , ensure Use hardware acceleration when available checkbox, is ENABLED",
         placement: "bottom"
     });
-*/	
+	
     $("#videoSkins").parent().parent().tooltip({    
         title: "For more info on how to use video skins visit: https://legendmod.ml/developers/ videoskins.html",
         placement: "top"
@@ -5214,7 +5223,7 @@ function initializeLM(modVersion) {
             }
         });
 */
-	//changeFrameWorkStart()
+	changeFrameWorkStart()
 	
     $("#searchInput").bind("paste", function(e) {
         if (!searching) {
