@@ -1,5 +1,5 @@
 /* Source script
-v2.911
+v2.912
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15089,34 +15089,15 @@ Game name     : ${i.displayName}<br/>
         //'renderFrame': async function() { //Sonia5
         //await this.sleep(4); //Sonia5				
         render() {
-            //'render': async function() {
-            //if (!window.fpsM) window.fpsM = 4
-            //await drawRender.sleep(window.fpsM);	
-			
-/*
-			if (drawRender.renderingDelay<666){ //750
-				drawRender.countFps();
-				drawRender.renderFrame();
-			}
-            else{			
-				//drop the frame instead of lag
-				console.log('stoped')
-				drawRender.renderingDelay =	drawRender.renderingDelay - drawRender.lastRenderingDelay
-			}
-			
-            setTimeout(function() {
-                drawRender.render()
-            }, 0);
-			*/
 			//if(defaultmapsettings.unlockedFPS==true || legendmod.integrity) { 
-			if (defaultmapsettings.unlockedFPS == true) {
+			//if (defaultmapsettings.unlockedFPS == true) {
 				if (!window.abb) window.abb=1000
 				if (!window.abc) window.abc= 3				
                 setTimeout(function() {							
 					if (drawRender.lastRenderingDelay * drawRender.fps > window.abb){
 						setTimeout(function() {window.requestAnimationFrame(drawRender.render);}, 4);
 						drawRender.lastRenderingDelay =0;
-						console.log("cut2")					
+						//console.log("cut2")					
 					}
 					else{
 						drawRender.countFps()
@@ -15131,6 +15112,7 @@ Game name     : ${i.displayName}<br/>
 						drawRender.render()
 					}                    
                 }, 0);
+			/*	
             }			
 			else if(defaultmapsettings.unlockedFPS == "ultra2") { 
 				//drawRender.render()
@@ -15169,6 +15151,7 @@ Game name     : ${i.displayName}<br/>
                     drawRender.render();
                 }, window.renderDelay);
             } 
+			*/
         },
         init() {
             this.setCanvas();
