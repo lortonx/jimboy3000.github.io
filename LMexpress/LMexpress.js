@@ -1,7 +1,7 @@
 /**************
- * Legend express v1.64 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.65 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "10"; // the version 1.1-> 1.11
+var semimodVersion = "11 FPS BETA"; // the version 1.1-> 1.11
 
 
 loadericon();
@@ -5045,7 +5045,7 @@ function initializeLM(modVersion) {
         placement: "bottom"
     });	
 	//$('#animation-value').parent().before("1. Type on browser: <b>chrome://settings/system</b> , ensure <i>Use hardware acceleration when available</i> checkbox, is <b>ENABLED</b>. 2. Prefer <b>Opera GX</b><br><br>");
-		
+/*		
 	$('#animation-value').parent().before(
         '<label style="float:left; padding-left:0; padding-right:0">' + textLanguage.unlockedFPS + '<select id="FrameWorkOption" class="form-control" onchange="changeFrameWork();" required="" data-original-title="" title="" style="display:inline; width: 70%; float:right;" >' +        
 		'<option value="4" data-itr="">Limited Rate + 4ms delay (suggested)</option>' +		
@@ -5063,7 +5063,7 @@ function initializeLM(modVersion) {
         title: "Type on chrome: chrome://settings/system , ensure Use hardware acceleration when available checkbox, is ENABLED",
         placement: "bottom"
     });
-	
+*/	
     $("#videoSkins").parent().parent().tooltip({    
         title: "For more info on how to use video skins visit: https://legendmod.ml/developers/ videoskins.html",
         placement: "top"
@@ -5214,7 +5214,7 @@ function initializeLM(modVersion) {
             }
         });
 */
-	changeFrameWorkStart()
+	//changeFrameWorkStart()
 	
     $("#searchInput").bind("paste", function(e) {
         if (!searching) {
