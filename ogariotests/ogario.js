@@ -1,5 +1,5 @@
 /* Source script
-v2.918b
+v2.917
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13403,9 +13403,7 @@ Game name     : ${i.displayName}<br/>
             //if(defaultmapsettings.clickTargeting) clickTargeting.check();
 
             //if (window.historystate && legendmod.play) {historystate();}	
-			if (defaultmapsettings.unlockedFPS == true) {
-				drawRender.render() 
-			}
+
         },
         color2Hex(number) {
             var color = number.toString(16);
@@ -13741,8 +13739,7 @@ Game name     : ${i.displayName}<br/>
         renderTime: 0,
         averageRenderTime: 0,
 		renderingDelay: 0,
-        lastRenderingDelay: 0,	
-		lastRenderingDelayObserver: 0,
+        lastRenderingDelay: 0,			
         setCanvas() {
             this.canvas = document.getElementById('canvas');
             this.ctx = this.canvas.getContext('2d');
@@ -13897,8 +13894,7 @@ Game name     : ${i.displayName}<br/>
                 }
             }
 			this.renderingDelay += (performance.now() - this.renderStarted) //* drawRender.fps
-			this.lastRenderingDelay = performance.now() - this.renderStarted
-			this.lastRenderingDelayObserver += performance.now() - this.renderStarted
+			this.lastRenderingDelay = (performance.now() - this.renderStarted)
 			//console.log(this.renderingDelay)
             drawRender.renderTime += performance.now() - this.renderStarted
             drawRender.counterTime++
@@ -15093,32 +15089,17 @@ Game name     : ${i.displayName}<br/>
         //'renderFrame': async function() { //Sonia5
         //await this.sleep(4); //Sonia5				
         render() {
+			
 			if (defaultmapsettings.unlockedFPS == true) {
-				setTimeout(function() {	
-				drawRender.lastRenderingDelayObserver = 0; 							
-						drawRender.countFps()
-						drawRender.renderFrame();					
-						for (var i = 0; i < 10; i++) {
-							if (drawRender.lastRenderingDelayObserver + drawRender.lastRenderingDelay<=38){ //40
-								drawRender.countFps()
-								drawRender.renderFrame();
-							}
-						}
-                						
-						drawRender.render()                 
-                }, 0);			
-            }				
-			else if (defaultmapsettings.unlockedFPS == "ultra3") {
-				//if (!window.abb) window.abb=10000
-				//drawRender.lastRenderingDelayObserver = 0; 
+				if (!window.abb) window.abb=10000
 				if (!window.abc) window.abc= 3				
                 setTimeout(function() {							
-					/*if (drawRender.lastRenderingDelay * drawRender.fps > window.abb){
+					if (drawRender.lastRenderingDelay * drawRender.fps > window.abb){
 						setTimeout(function() {window.requestAnimationFrame(drawRender.render);}, 4);
 						drawRender.lastRenderingDelay =0;
 						//console.log("cut2")					
 					}
-					else{*/
+					else{
 						drawRender.countFps()
 						drawRender.renderFrame();					
 						for (var i = 0; i < 3; i++) {
@@ -15129,8 +15110,9 @@ Game name     : ${i.displayName}<br/>
 							}
 						}
 						drawRender.render()
-					//}                    
-                }, 0);			
+					}                    
+                }, 0);
+				
             }	
 			else{
 			drawRender.countFps()
