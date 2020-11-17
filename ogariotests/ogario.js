@@ -1,5 +1,5 @@
 /* Source script
-v2.919
+v2.920
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13404,7 +13404,9 @@ Game name     : ${i.displayName}<br/>
 
             //if (window.historystate && legendmod.play) {historystate();}	
 			if (defaultmapsettings.unlockedFPS == true) {
-				drawRender.render() 
+				setTimeout(function() {	
+					drawRender.render() 
+				}, 0);
 			}
         },
         color2Hex(number) {
