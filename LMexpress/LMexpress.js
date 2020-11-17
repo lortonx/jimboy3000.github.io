@@ -5056,11 +5056,11 @@ function initializeLM(modVersion) {
 	//$('#animation-value').parent().before("1. Type on browser: <b>chrome://settings/system</b> , ensure <i>Use hardware acceleration when available</i> checkbox, is <b>ENABLED</b>. 2. Prefer <b>Opera GX</b><br><br>");
 		
 	$('#animation-value').parent().before(
-        '<label style="float:left; padding-left:0; padding-right:0">' + textLanguage.unlockedFPS + '<select id="FrameWorkOption" class="form-control" onchange="changeFrameWork();" required="" data-original-title="" title="" style="display:inline; width: 70%; float:right;" >' +        
-		'<option value="4" data-itr="">Limited Rate + 4ms delay (suggested)</option>' +		
+        '<label style="float:left; padding-left:0; padding-right:0">' + textLanguage.unlockedFPS + '<select id="FrameWorkOption" class="form-control" onchange="changeFrameWork();" required="" data-original-title="" title="" style="display:inline; width: 70%; float:right;" >' +        			
 		'<option value="true" data-itr="">Unlimited Rate</option>' +
 		'<option value="false" data-itr="">Limited Rate + No delay</option>' +     
-        '<option value="2" data-itr="">Limited Rate + 2ms delay</option>' +		
+        '<option value="2" data-itr="">Limited Rate + 2ms delay</option>' +	
+		'<option value="4" data-itr="">Limited Rate + 4ms delay</option>' +			
         '<option value="8" data-itr="">Limited Rate + 8ms delay</option>' +
 		'<option value="16" data-itr="">Limited Rate + 16ms delay</option>' +
 		'<option value="32" data-itr="">Limited Rate + 32ms delay</option>' +
