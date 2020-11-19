@@ -1,7 +1,7 @@
 /**************
- * Legend express v1.66 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.67 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "11 FPS BETA"; // the version 1.1-> 1.11
+var semimodVersion = "12"; // the version 1.1-> 1.11
 
 
 loadericon();
@@ -350,7 +350,7 @@ function loadersettings() {
                 }
             }
         }	
-        if (checkonlyfourtenth != "true") {
+        /*if (checkonlyfourtenth != "true") {
 		toastr.info('<center><b>'+
 		'Try <font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">Unlimited FPS</font></span>:<br>'+
 		'Change  frame per sec, to <u><font color="blue">unlimited</font></u><br>'+
@@ -362,7 +362,7 @@ function loadersettings() {
 		
 			//LMadvertisementMegaFFA();
         //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
-        /*toastr.info('<center><b>'+
+        toastr.info('<center><b>'+
 		'IF HOTKEYS <font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">NOT WORKING</font></span>:<br>'+
 		'Change theme, <u><a target="_blank" href="https://legendmod.ml/themes/"><font color="blue">click here</font></u></a><br>'+
 		'or <u><font color="green">chrome://settings/clearBrowserData </font></u>delete cookies'+
@@ -370,13 +370,13 @@ function loadersettings() {
                     timeOut: 20000,
                     extendedTimeOut: 20000
                 }).css("width", "450px");
-*/				
+				
 				
 		checkonlyfourtenth = "true";
 		localStorage.setItem("checkonlyfourtenth", checkonlyfourtenth);				
        // }					
 		}
-		
+*/		
 		else if(checkonlyrewardday1 != "true"){
 			//LMrewardDay();
 			checkonlyrewardday1 = "true";
