@@ -1,5 +1,5 @@
 /* Source script
-v2.927
+v2.928
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14554,7 +14554,7 @@ Game name     : ${i.displayName}<br/>
                 for (var length = 0; length < food.length; length++) {
 					if (!food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true
 					//ctx.beginPath();
-					var circle = new PIXI.Matrix();
+					var circle = new PIXI.Graphics();
 					if (defaultmapsettings.rainbowFood) circle.beginFill(food[length].color);
 					else circle.beginFill(defaultSettings.foodColor);								
 						circle.x = x;						
