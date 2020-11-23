@@ -1,5 +1,5 @@
 /* Source script
-v2.921
+v2.922
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13823,15 +13823,16 @@ Game name     : ${i.displayName}<br/>
             LM.compareCells();
             this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
 			this.graphicsWebGL.clear();
-			circle.x = 64;
-			circle.y = 130;
             if (defaultmapsettings.showGrid) {
                 this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
             }			
             this.ctx.save();
             
 			this.ctx.translate((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camY * this.scale ));
+			//this.renderWebGL.append(graphicsWebGL.translate((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camY * this.scale )));
             this.ctx.scale(this.scale, this.scale);
+			//this.renderWebGL.append(graphicsWebGL.scale(x, y));
+			
 			//this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
 			//this.ctx.scale(this.scale, this.scale);
             //this.ctx.translate(-this.camX, -this.camY);
