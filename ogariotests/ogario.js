@@ -1,5 +1,5 @@
 /* Source script
-v2.924
+v2.925
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13746,7 +13746,7 @@ Game name     : ${i.displayName}<br/>
             this.ctx = this.canvas.getContext('2d');
 			this.rendererWebGL = new PIXI.Application({transparent: true,antialias: true,width:window.innerWidth,height:window.innerHeight, view: document.getElementById('canvasWebGL')});		
 			this.graphicsWebGL = new PIXI.Graphics();
-			this.rendererWebGL.stage.addChild(this.graphicsWebGL);
+			//this.rendererWebGL.stage.addChild(this.graphicsWebGL);
             this.canvas.onmousemove = function(event) {
                 LM.clientX = event.clientX;
                 LM.clientY = event.clientY;
@@ -13916,6 +13916,7 @@ Game name     : ${i.displayName}<br/>
                 drawRender.renderTime = 0
 
             }
+			rendererWebGL.render(this.graphicsWebGL);
             //console.log(performance.now() - this.renderStarted, (performance.now() - this.renderStarted) * drawRender.fps)
             //window.updateCellsClock=false
 
@@ -14560,9 +14561,9 @@ Game name     : ${i.displayName}<br/>
                         var x = food[length].x;
                         var y = food[length].y;
                         ctx.moveTo(x, y);
-						
-						//circle.x = x;						
-						//circle.y = y;
+						var circle = new PIXI.Matrix();
+						circle.x = x;						
+						circle.y = y;
 						if (scale < 0.08) {
                         //if (scale < 0.16) {
                             const size = food[length].size + defaultSettings.foodSize;
@@ -14571,8 +14572,8 @@ Game name     : ${i.displayName}<br/>
                             //continue;
                         }
 						else{
-
-							this.graphicsWebGL.drawCircle(x, y, food[length].size + defaultSettings.foodSize);
+							circle.drawCircle(0, 0, food[length].size + defaultSettings.foodSize);
+							//this.graphicsWebGL.drawCircle(x, y, food[length].size + defaultSettings.foodSize);
 							
 							//ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
 						}
@@ -14586,7 +14587,9 @@ Game name     : ${i.displayName}<br/>
 				}
                 //ctx.globalAlpha = 1;
                 ctx.fill();
-				this.graphicsWebGL.endFill();	
+				
+				//this.graphicsWebGL.endFill();	
+				this.graphicsWebGL.addChild(circle);
                 }
 
             }
