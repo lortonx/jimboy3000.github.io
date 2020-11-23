@@ -1,5 +1,5 @@
 /* Source script
-v2.919
+v2.920
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9065,7 +9065,7 @@ window.MouseClicks=[];
 				this.size += (this.targetSize - this.size) * (time / 800);
 				if (this.size<0) this.size = 0 //fix
 			}
-			if (!window.test1) this.alpha = delay;
+			this.alpha = delay; //no difference on performance
 			
             if (!this.removed) {
                 this.time = LM.time;
@@ -14542,9 +14542,10 @@ Game name     : ${i.displayName}<br/>
                 }
             } 
 			else {
+				ctx.beginPath();
                 for (var length = 0; length < food.length; length++) {
 					if (!food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true
-					ctx.beginPath();
+					//here
                     if (!food[length].invisible) {				
                         var x = food[length].x;
                         var y = food[length].y;
@@ -14559,19 +14560,17 @@ Game name     : ${i.displayName}<br/>
 						else{
 							ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
 						}
-						if (defaultmapsettings.rainbowFood){ 
-							
-							ctx.fillStyle = food[length].color
-							
+						if (defaultmapsettings.rainbowFood){ 							
+							ctx.fillStyle = food[length].color							
 						}
                     }
 				if (!defaultmapsettings.rainbowFood){ 				
 					ctx.fillStyle = defaultSettings.foodColor;
 				}
                 //ctx.globalAlpha = 1;
-                ctx.fill();					
+                //here				
                 }
-
+				ctx.fill();	
             }
             if (reset) {
                 food = [];
