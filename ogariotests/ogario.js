@@ -1,5 +1,5 @@
 /* Source script
-v2.923
+v2.924
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14553,6 +14553,9 @@ Game name     : ${i.displayName}<br/>
                 for (var length = 0; length < food.length; length++) {
 					if (!food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true
 					ctx.beginPath();
+					if (defaultmapsettings.rainbowFood) this.graphicsWebGL.beginFill(food[length].color);
+					else this.graphicsWebGL.beginFill(defaultSettings.foodColor);		
+					
                     if (!food[length].invisible) {				
                         var x = food[length].x;
                         var y = food[length].y;
@@ -14568,10 +14571,9 @@ Game name     : ${i.displayName}<br/>
                             //continue;
                         }
 						else{
-							if (defaultmapsettings.rainbowFood) this.graphicsWebGL.beginFill(food[length].color);
-							else this.graphicsWebGL.beginFill(defaultSettings.foodColor);
+
 							this.graphicsWebGL.drawCircle(x, y, food[length].size + defaultSettings.foodSize);
-							this.graphicsWebGL.endFill();
+							
 							//ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
 						}
 						if (defaultmapsettings.rainbowFood){ 
@@ -14583,7 +14585,8 @@ Game name     : ${i.displayName}<br/>
 					//ctx.fillStyle = defaultSettings.foodColor;
 				}
                 //ctx.globalAlpha = 1;
-                ctx.fill();					
+                ctx.fill();
+				this.graphicsWebGL.endFill();	
                 }
 
             }
