@@ -1,5 +1,5 @@
 /* Source script
-v2.919
+v2.920
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13744,6 +13744,9 @@ Game name     : ${i.displayName}<br/>
         setCanvas() {
             this.canvas = document.getElementById('canvas');
             this.ctx = this.canvas.getContext('2d');
+			this.rendererWebGL = new PIXI.Application({transparent: true,antialias: true,width:window.innerWidth,height:window.innerHeight, view: document.getElementById('canvasWebGL')});		
+			this.graphicsWebGL = new PIXI.Graphics();
+			this.rendererWebGL.stage.addChild(this.graphicsWebGL);
             this.canvas.onmousemove = function(event) {
                 LM.clientX = event.clientX;
                 LM.clientY = event.clientY;
@@ -14561,8 +14564,7 @@ Game name     : ${i.displayName}<br/>
 						}
 						if (defaultmapsettings.rainbowFood){ 
 							
-							ctx.fillStyle = food[length].color
-							
+							ctx.fillStyle = food[length].color							
 						}
                     }
 				if (!defaultmapsettings.rainbowFood){ 				
