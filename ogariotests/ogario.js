@@ -1,5 +1,5 @@
 /* Source script
-v2.928
+v2.929
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13829,9 +13829,9 @@ Game name     : ${i.displayName}<br/>
             this.ctx.save();
             
 			this.ctx.translate((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camY * this.scale ));
-			//this.renderWebGL.append(graphicsWebGL.translate((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camY * this.scale )));
+			this.rendererWebGL.append(graphicsWebGL.translate((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camY * this.scale )));
             this.ctx.scale(this.scale, this.scale);
-			//this.renderWebGL.append(graphicsWebGL.scale(x, y));
+			this.rendererWebGL.append(graphicsWebGL.scale(x, y));
 			
 			//this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
 			//this.ctx.scale(this.scale, this.scale);
@@ -14566,8 +14566,8 @@ Game name     : ${i.displayName}<br/>
 
 						if (scale < 0.08) {
                         //if (scale < 0.16) {
-                            const size = food[length].size + defaultSettings.foodSize;
-							
+                            //const size = food[length].size + defaultSettings.foodSize;
+							circle.drawCircle(0, 0, food[length].size + defaultSettings.foodSize);
                             //ctx.rect(x - size, y - size, 2 * size, 2 * size);
                             //continue;
                         }
