@@ -1,5 +1,5 @@
 /* Source script
-v2.931
+v2.932
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13829,7 +13829,7 @@ Game name     : ${i.displayName}<br/>
             this.ctx.save();
             
 			this.ctx.translate((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camY * this.scale ));
-			this.rendererWebGL.append(this.graphicsWebGL.translate((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camY * this.scale )));
+			//this.rendererWebGL.append(this.graphicsWebGL.translate((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camY * this.scale )));
             this.ctx.scale(this.scale, this.scale);
 			this.rendererWebGL.append(this.graphicsWebGL.scale(x, y));
 			
