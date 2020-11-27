@@ -1,5 +1,5 @@
 /* Source script
-v2.923
+v2.924
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13740,8 +13740,8 @@ Game name     : ${i.displayName}<br/>
         averageRenderTime: 0,
 		renderingDelay: 0,
         lastRenderingDelay: 0,	
-		this.particleSprite = [],
-		this.particleSettings = [],
+		particleSprite = [],
+		particleSettings = [],
         setCanvas() {
             this.canvas = document.getElementById('canvas');
             this.ctx = this.canvas.getContext('2d');
