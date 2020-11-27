@@ -1,5 +1,5 @@
 /* Source script
-v2.929
+v2.930
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14590,8 +14590,8 @@ Game name     : ${i.displayName}<br/>
 							//window.drawRender.particleSprite[i].pivot.set((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camY * this.scale ));	
 							//window.drawRender.particleSprite[i].scale.x = scale
 							//window.drawRender.particleSprite[i].scale.y = scale								
-							window.drawRender.particleSprite[i].x = x
-							window.drawRender.particleSprite[i].y = y
+							window.drawRender.particleSprite[length].x = x
+							window.drawRender.particleSprite[length].y = y
 						
 							//ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
 						}
