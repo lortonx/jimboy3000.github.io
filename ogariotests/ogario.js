@@ -1,5 +1,5 @@
 /* Source script
-v2.933
+v2.934
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13753,7 +13753,7 @@ Game name     : ${i.displayName}<br/>
         },
 		setPixiCanvas(){
 			window.drawRender.pixiapp = new PIXI.Application(this.canvasWidth, this.canvasHeight, { transparent: true, resolution: 1 });
-			$('#canvasWebGL').html(pixiapp.view);
+			$('#canvasWebGL').html(window.drawRender.pixiapp.view);
 			//window.drawRender.pixiCanvas = new PIXI.Application({transparent: true,antialias: true,width:this.canvasWidth,height:this.canvasHeight, view: document.getElementById('canvasWebGL')});
 			var particleCount = 1000;
 			var particleColors = ['26a3ff', '13ce66', 'ff49db', 'af8dd1', '9162bf', 'ff7849', 'ffc82c'];
