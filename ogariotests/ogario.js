@@ -1,5 +1,5 @@
 /* Source script
-v2.932
+v2.933
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13752,7 +13752,9 @@ Game name     : ${i.displayName}<br/>
             };
         },
 		setPixiCanvas(){
-			window.drawRender.pixiCanvas = new PIXI.Application({transparent: true,antialias: true,width:this.canvasWidth,height:this.canvasHeight, view: document.getElementById('canvasWebGL')});
+			window.drawRender.pixiapp = new PIXI.Application(this.canvasWidth, this.canvasHeight, { transparent: true, resolution: 1 });
+			$('#canvasWebGL').html(pixiapp.view);
+			//window.drawRender.pixiCanvas = new PIXI.Application({transparent: true,antialias: true,width:this.canvasWidth,height:this.canvasHeight, view: document.getElementById('canvasWebGL')});
 			var particleCount = 1000;
 			var particleColors = ['26a3ff', '13ce66', 'ff49db', 'af8dd1', '9162bf', 'ff7849', 'ffc82c'];
 			var i = 0;
@@ -13778,7 +13780,7 @@ Game name     : ${i.displayName}<br/>
 			window.drawRender.particleSprite[i] = new PIXI.Sprite(texture); // create particle using texture
 			//window.particleSprite[i].pivot.set(1000, 1000);
 			// ADD SPRITE TO STAGE
-			window.drawRender.pixiCanvas.stage.addChild(window.drawRender.particleSprite[i]);
+			window.drawRender.pixiapp.stage.addChild(window.drawRender.particleSprite[i]);
 		},
         resizeCanvas() {
             this.canvasWidth = window.innerWidth;
