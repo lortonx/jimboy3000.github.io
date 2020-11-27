@@ -1,5 +1,5 @@
 /* Source script
-v2.919
+v2.920
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13779,7 +13779,7 @@ Game name     : ${i.displayName}<br/>
 			//window.particleSprite[i].pivot.set(1000, 1000);
 			// ADD SPRITE TO STAGE
 			this.pixiCanvas.stage.addChild(this.particleSprite[i]);
-		}		
+		},
         resizeCanvas() {
             this.canvasWidth = window.innerWidth;
             this.canvasHeight = window.innerHeight;
