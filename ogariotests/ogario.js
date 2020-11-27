@@ -1,5 +1,5 @@
 /* Source script
-v2.921
+v2.922
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13758,7 +13758,6 @@ Game name     : ${i.displayName}<br/>
 			for (var j = 0; j < particleColors.length; j++) { 
 				for (var i = 0; i < particleCount; i++) {
 					this.particleSettings[i] = {
-					alpha: 1,
 					color: particleColors[j] };
 					this.createParticle(this.particleSettings[i]);
 				}
@@ -13767,7 +13766,7 @@ Game name     : ${i.displayName}<br/>
 		createParticle(parSettings) {
 			// GRAPHIC
 			var graphic = new PIXI.Graphics(); // create graphic
-			graphic.beginFill('0x' + par.color);
+			graphic.beginFill('0x' + parSettings.color);
 			graphic.drawCircle(0, 0, 10); // (x, y, radius) // gets scaled as a sprite later
 			graphic.endFill();
 
