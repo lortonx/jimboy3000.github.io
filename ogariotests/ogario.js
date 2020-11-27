@@ -1,5 +1,5 @@
 /* Source script
-v2.925
+v2.926
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13752,15 +13752,15 @@ Game name     : ${i.displayName}<br/>
             };
         },
 		setPixiCanvas(){
-			this.pixiCanvas = new PIXI.Application({transparent: true,antialias: true,width:this.canvasWidth,height:this.canvasHeight, view: document.getElementById('canvasWebGL')});
+			window.drawRender.pixiCanvas = new PIXI.Application({transparent: true,antialias: true,width:this.canvasWidth,height:this.canvasHeight, view: document.getElementById('canvasWebGL')});
 			var particleCount = 1000;
 			var particleColors = ['26a3ff', '13ce66', 'ff49db', 'af8dd1', '9162bf', 'ff7849', 'ffc82c'];
 			
 			for (var j = 0; j < particleColors.length; j++) { 
 				for (var i = 0; i < particleCount; i++) {
-					this.particleSettings[i] = {
+					window.drawRender.particleSettings[i] = {
 					color: particleColors[j] };
-					this.createParticle(this.particleSettings[i]);
+					this.createParticle(window.drawRender.particleSettings[i]);
 				}
 			}			
 		},
@@ -13775,10 +13775,10 @@ Game name     : ${i.displayName}<br/>
 			var texture = graphic.generateCanvasTexture(); // create texture using graphic (scaleMode, resolution)
 			//texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST; // scale mode for pixelation
 			// SPRITE
-			this.particleSprite[i] = new PIXI.Sprite(texture); // create particle using texture
+			window.drawRender.particleSprite[i] = new PIXI.Sprite(texture); // create particle using texture
 			//window.particleSprite[i].pivot.set(1000, 1000);
 			// ADD SPRITE TO STAGE
-			this.pixiCanvas.stage.addChild(this.particleSprite[i]);
+			window.drawRender.pixiCanvas.stage.addChild(window.drawRender.particleSprite[i]);
 		},
         resizeCanvas() {
             this.canvasWidth = window.innerWidth;
@@ -14587,11 +14587,11 @@ Game name     : ${i.displayName}<br/>
                             //continue;
                         }
 						else{
-							this.particleSprite[i].pivot.set((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camY * this.scale ));	
-							this.particleSprite[i].x = x
-							this.particleSprite[i].y = y
-							this.particleSprite[i].scale.x = scale
-							this.particleSprite[i].scale.y = scale							
+							window.drawRender.particleSprite[i].pivot.set((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camY * this.scale ));	
+							window.drawRender.particleSpritee[i].x = x
+							window.drawRender.particleSprite[i].y = y
+							window.drawRender.particleSprite[i].scale.x = scale
+							window.drawRender.particleSprite[i].scale.y = scale							
 							//ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
 						}
 						if (defaultmapsettings.rainbowFood){ 
