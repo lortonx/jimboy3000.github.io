@@ -1,5 +1,5 @@
 /* Source script
-v2.933
+v2.919
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9065,8 +9065,7 @@ window.MouseClicks=[];
 				this.size += (this.targetSize - this.size) * (time / 800);
 				if (this.size<0) this.size = 0 //fix
 			}
-			this.alpha = delay; //no difference on performance
-			
+            this.alpha = delay;
             if (!this.removed) {
                 this.time = LM.time;
                 return;
@@ -13744,15 +13743,43 @@ Game name     : ${i.displayName}<br/>
         setCanvas() {
             this.canvas = document.getElementById('canvas');
             this.ctx = this.canvas.getContext('2d');
-			this.rendererWebGL = new PIXI.Application({transparent: true,antialias: true,width:window.innerWidth,height:window.innerHeight, view: document.getElementById('canvasWebGL')});		
-			this.graphicsWebGL = new PIXI.Graphics();
-			//this.rendererWebGL.stage.addChild(this.graphicsWebGL);
             this.canvas.onmousemove = function(event) {
                 LM.clientX = event.clientX;
                 LM.clientY = event.clientY;
                 LM.getCursorPosition();
             };
         },
+		setPixiCanvas(){
+			this.pixiCanvas = new PIXI.Application({transparent: true,antialias: true,width:this.canvasWidth,height:this.canvasHeight, view: document.getElementById('canvasWebGL')});
+			var particleCount = 1000;
+			var particleColors = ['26a3ff', '13ce66', 'ff49db', 'af8dd1', '9162bf', 'ff7849', 'ffc82c'];
+			thi.particleSettings= [];
+			this.particleSprite = [];
+			for (var j = 0; j < particleColors.length; j++) { 
+				for (var i = 0; i < particleCount; i++) {
+					this.particleSettings[i] = {
+					alpha: 1,
+					color: particleColors[j] };
+					this.createParticle(this.particleSettings[i]);
+				}
+			}			
+		},
+		createParticle(parSettings) {
+			// GRAPHIC
+			var graphic = new PIXI.Graphics(); // create graphic
+			graphic.beginFill('0x' + par.color);
+			graphic.drawCircle(0, 0, 10); // (x, y, radius) // gets scaled as a sprite later
+			graphic.endFill();
+
+			// TEXTURE
+			var texture = graphic.generateCanvasTexture(); // create texture using graphic (scaleMode, resolution)
+			//texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST; // scale mode for pixelation
+			// SPRITE
+			this.particleSprite[i] = new PIXI.Sprite(texture); // create particle using texture
+			//window.particleSprite[i].pivot.set(1000, 1000);
+			// ADD SPRITE TO STAGE
+			this.pixiCanvas.stage.addChild(this.particleSprite[i]);
+		}		
         resizeCanvas() {
             this.canvasWidth = window.innerWidth;
             this.canvasHeight = window.innerHeight;
@@ -13811,7 +13838,6 @@ Game name     : ${i.displayName}<br/>
         //'renderFrame': async function() { //Sonia5
         //await this.sleep(4); //Sonia5			
             //this.ctx.start2D();
-			
 			this.renderStarted = performance.now()
             LM.time = Date.now();
             for (i = 0; i < LM.cells.length; i++) {
@@ -13822,17 +13848,13 @@ Game name     : ${i.displayName}<br/>
             LM.sortCells();
             LM.compareCells();
             this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
-			//this.graphicsWebGL.clear();
             if (defaultmapsettings.showGrid) {
                 this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
             }			
             this.ctx.save();
             
 			this.ctx.translate((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camY * this.scale ));
-			//this.rendererWebGL.append(this.graphicsWebGL.translate((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camY * this.scale )));
             this.ctx.scale(this.scale, this.scale);
-			this.rendererWebGL.append(this.graphicsWebGL.scale(this.scale, this.scale));
-			
 			//this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
 			//this.ctx.scale(this.scale, this.scale);
             //this.ctx.translate(-this.camX, -this.camY);
@@ -13916,7 +13938,6 @@ Game name     : ${i.displayName}<br/>
                 drawRender.renderTime = 0
 
             }
-			this.rendererWebGL.render(this.graphicsWebGL);
             //console.log(performance.now() - this.renderStarted, (performance.now() - this.renderStarted) * drawRender.fps)
             //window.updateCellsClock=false
 
@@ -14553,43 +14574,37 @@ Game name     : ${i.displayName}<br/>
 			else {
                 for (var length = 0; length < food.length; length++) {
 					if (!food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true
-					//ctx.beginPath();
-					var circle = new PIXI.Graphics();
-					if (defaultmapsettings.rainbowFood) circle.beginFill(food[length].color);
-					else circle.beginFill(defaultSettings.foodColor);								
-						circle.x = x;						
-						circle.y = y;					
+					ctx.beginPath();
                     if (!food[length].invisible) {				
                         var x = food[length].x;
                         var y = food[length].y;
                         ctx.moveTo(x, y);
-
 						if (scale < 0.08) {
                         //if (scale < 0.16) {
-                            //const size = food[length].size + defaultSettings.foodSize;
-							circle.drawCircle(0, 0, food[length].size + defaultSettings.foodSize);
-                            //ctx.rect(x - size, y - size, 2 * size, 2 * size);
+                            const size = food[length].size + defaultSettings.foodSize;
+							
+                            ctx.rect(x - size, y - size, 2 * size, 2 * size);
                             //continue;
                         }
 						else{
-							circle.drawCircle(0, 0, food[length].size + defaultSettings.foodSize);
-							//this.graphicsWebGL.drawCircle(x, y, food[length].size + defaultSettings.foodSize);
-							
+							this.particleSprite[i].pivot.set((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camY * this.scale ));	
+							this.particleSprite[i].x = x
+							this.particleSprite[i].y = y
+							this.particleSprite[i].scale.x = scale
+							this.particleSprite[i].scale.y = scale							
 							//ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
 						}
 						if (defaultmapsettings.rainbowFood){ 
 							
-							//ctx.fillStyle = food[length].color							
+							ctx.fillStyle = food[length].color
+							
 						}
                     }
 				if (!defaultmapsettings.rainbowFood){ 				
-					//ctx.fillStyle = defaultSettings.foodColor;
+					ctx.fillStyle = defaultSettings.foodColor;
 				}
                 //ctx.globalAlpha = 1;
-                //ctx.fill();
-				
-				//this.graphicsWebGL.endFill();	
-				this.graphicsWebGL.addChild(circle);
+                ctx.fill();					
                 }
 
             }
@@ -15182,6 +15197,7 @@ Game name     : ${i.displayName}<br/>
         },
         init() {
             this.setCanvas();
+			this.setPixiCanvas();
             this.resizeCanvas();
             this.preDrawPellet();
             this.preDrawIndicator();
