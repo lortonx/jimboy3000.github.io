@@ -1,5 +1,5 @@
 /* Source script
-v2.935
+v2.936
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14577,7 +14577,7 @@ Game name     : ${i.displayName}<br/>
                 for (var length = 0; length < food.length; length++) {
 					if (!food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true
 					ctx.beginPath();
-                    if (!food[length].invisible) {				
+                    if (!food[length].invisible && window.drawRender.particleSprite[length]) {				
                         var x = food[length].x;
                         var y = food[length].y;
                         ctx.moveTo(x, y);
