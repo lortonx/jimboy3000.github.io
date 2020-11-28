@@ -1,5 +1,5 @@
 /* Source script
-v2.940
+v2.941
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13774,13 +13774,13 @@ Game name     : ${i.displayName}<br/>
 			graphic.endFill();
 
 			// TEXTURE
-			var texture = graphic.generateCanvasTexture(); // create texture using graphic (scaleMode, resolution)
+			//var texture = graphic.generateCanvasTexture(); // create texture using graphic (scaleMode, resolution)
 			//texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST; // scale mode for pixelation
 			// SPRITE
-			window.drawRender.particleSprite[i] = new PIXI.Sprite(texture); // create particle using texture
+			//window.drawRender.particleSprite[i] = new PIXI.Sprite(texture); // create particle using texture
 			//window.particleSprite[i].pivot.set(1000, 1000);
 			// ADD SPRITE TO STAGE
-			window.drawRender.pixiapp.stage.addChild(window.drawRender.particleSprite[i]);
+			window.drawRender.pixiapp.stage.addChild(graphic);
 		},
         resizeCanvas() {
             this.canvasWidth = window.innerWidth;
