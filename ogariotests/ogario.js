@@ -1,5 +1,5 @@
 /* Source script
-v2.941
+v2.918
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13739,9 +13739,7 @@ Game name     : ${i.displayName}<br/>
         renderTime: 0,
         averageRenderTime: 0,
 		renderingDelay: 0,
-        lastRenderingDelay: 0,	
-		particleSprite: [],
-		particleSettings: [],
+        lastRenderingDelay: 0,			
         setCanvas() {
             this.canvas = document.getElementById('canvas');
             this.ctx = this.canvas.getContext('2d');
@@ -13751,37 +13749,6 @@ Game name     : ${i.displayName}<br/>
                 LM.getCursorPosition();
             };
         },
-		setPixiCanvas(){
-			//window.drawRender.pixiapp = new PIXI.Application(window.innerWidth, window.innerHeight, { transparent: true, resolution: 1 });
-			//$('#canvasWebGL').html(window.drawRender.pixiapp.view);
-			window.drawRender.pixiapp = new PIXI.Application({transparent: true,antialias: true,width:window.innerWidth,height:window.innerHeight, view: document.getElementById('canvasWebGL')});
-			var particleCount = 1000;
-			var particleColors = ['26a3ff', '13ce66', 'ff49db', 'af8dd1', '9162bf', 'ff7849', 'ffc82c'];
-			var i = 0;
-			for (var j = 0; j < particleColors.length; j++) { 
-				for (; i < particleCount; i++) {
-					window.drawRender.particleSettings[i] = {
-					color: particleColors[j] };
-					this.createParticle(window.drawRender.particleSettings[i],i);
-				}
-			}			
-		},
-		createParticle(parSettings,i) {
-			// GRAPHIC
-			var graphic = new PIXI.Graphics(); // create graphic
-			graphic.beginFill('0x' + parSettings.color);
-			graphic.drawCircle(0, 0, 10); // (x, y, radius) // gets scaled as a sprite later
-			graphic.endFill();
-
-			// TEXTURE
-			//var texture = graphic.generateCanvasTexture(); // create texture using graphic (scaleMode, resolution)
-			//texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST; // scale mode for pixelation
-			// SPRITE
-			//window.drawRender.particleSprite[i] = new PIXI.Sprite(texture); // create particle using texture
-			//window.particleSprite[i].pivot.set(1000, 1000);
-			// ADD SPRITE TO STAGE
-			window.drawRender.pixiapp.stage.addChild(graphic);
-		},
         resizeCanvas() {
             this.canvasWidth = window.innerWidth;
             this.canvasHeight = window.innerHeight;
@@ -14577,26 +14544,19 @@ Game name     : ${i.displayName}<br/>
                 for (var length = 0; length < food.length; length++) {
 					if (!food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true
 					ctx.beginPath();
-                    if (!food[length].invisible && window.drawRender.particleSprite[length]) {				
+                    if (!food[length].invisible) {				
                         var x = food[length].x;
                         var y = food[length].y;
                         ctx.moveTo(x, y);
-						window.drawRender.particleSprite[length].pivot.set((this.canvasWidth / 2) - (this.camX * this.scale), (this.canvasHeight / 2) - (this.camY * this.scale ));	
-						
 						if (scale < 0.08) {
-                            //const size = food[length].size + defaultSettings.foodSize;	
-                            //ctx.rect(x - size, y - size, 2 * size, 2 * size);
-							window.drawRender.particleSprite[length].x = x
-							window.drawRender.particleSprite[length].y = y							
+                        //if (scale < 0.16) {
+                            const size = food[length].size + defaultSettings.foodSize;
+							
+                            ctx.rect(x - size, y - size, 2 * size, 2 * size);
+                            //continue;
                         }
 						else{
-							
-							//window.drawRender.particleSprite[length].scale.x = scale
-							//window.drawRender.particleSprite[length].scale.y = scale								
-							window.drawRender.particleSprite[length].x = x
-							window.drawRender.particleSprite[length].y = y
-						
-							//ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
+							ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
 						}
 						if (defaultmapsettings.rainbowFood){ 
 							
@@ -15200,9 +15160,8 @@ Game name     : ${i.displayName}<br/>
 			}			
         },
         init() {
-            this.setCanvas();			
+            this.setCanvas();
             this.resizeCanvas();
-			this.setPixiCanvas();
             this.preDrawPellet();
             this.preDrawIndicator();
 			this.preDrawHeartIndicator();
