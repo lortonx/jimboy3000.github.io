@@ -1,5 +1,5 @@
 /* Source script
-v2.918
+v2.920
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14235,6 +14235,31 @@ Game name     : ${i.displayName}<br/>
             ctx.stroke();
             ctx.globalAlpha = 1;
         },
+        drawGridCached(width, heigth, scale, camX, camY) {
+			var i = document.createElement("canvas");
+            i.width = width;
+            i.height = height;
+            const reWidth = width / scale;
+            const reHeigth = heigth / scale;
+            let x = (-camX + reWidth / 2) % 50;
+            let y = (-camY + reHeigth / 2) % 50;
+            var $ = i.getContext("2d");
+            $.beginPath();			
+            $.strokeStyle = defaultSettings.gridColor;
+            $.globalAlpha = 1 * scale;
+            $.beginPath();
+            for (; x < reWidth; x += 50) {
+                $.moveTo(x * scale - 0.5, 0);
+                $.lineTo(x * scale - 0.5, reHeigth * scale);
+            }
+            for (; y < reHeigth; y += 50) {
+                $.moveTo(0, y * scale - 0.5);
+                $.lineTo(reWidth * scale, y * scale - 0.5);
+            }
+            $.stroke();
+            this.customSkinsCache["test" + "_cached"] = new Image;
+            this.customSkinsCache["test" + "_cached"].src = i.toDataURL();			
+        },		
         drawSectors(ctx, mapOffset, x, y, minX, minY, maxX, maxY, stroke, color, width, type) {
             if (mapOffset || !type) {
                 var posX = ~~((maxX - minX) / x);
