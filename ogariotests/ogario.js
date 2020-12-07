@@ -1,5 +1,5 @@
 /* Source script
-v2.941
+v2.942
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14266,11 +14266,11 @@ Game name     : ${i.displayName}<br/>
             $.strokeStyle = defaultSettings.gridColor;
             $.globalAlpha = 1 * xx;
             $.beginPath();
-            for (; x < i.width; x += 50) {
+            for (x = 0; x < i.width; x += 50) {
                 $.moveTo(x * xx - 0.5, 0);
                 $.lineTo(x * xx - 0.5, i.height * xx);
             }
-            for (; y < i.height; y += 50) {
+            for (y = 0; y < i.height; y += 50) {
                 $.moveTo(0, y * xx - 0.5);
                 $.lineTo(i.width * xx, y * xx - 0.5);
             }
