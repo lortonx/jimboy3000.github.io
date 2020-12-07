@@ -1,5 +1,5 @@
 /* Source script
-v2.927
+v2.928
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13817,7 +13817,20 @@ Game name     : ${i.displayName}<br/>
             LM.sortCells();
             LM.compareCells();
             this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
-            if (defaultmapsettings.showGrid) {
+            if (defaultmapsettings.showOptimisedGrid) {
+				if (!this.drawedGrid){
+					this.drawGridCached(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
+					this.drawedGrid = true
+				}	
+				for (var stepScale = 1; stepScale > 0; stepScale -= 0.025){
+					stepScale = stepScale.toFixed(2);
+					if (stepScale <= this.scale){
+						this.drawCustomBackgrounds(this.scale)
+						break;
+					}
+				}							
+            }
+            else if (defaultmapsettings.showGrid) {
                 this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
             }			
             this.ctx.save();
@@ -14000,7 +14013,7 @@ Game name     : ${i.displayName}<br/>
                 LM.indexedCells[LM.selected].size,
                 0.75, '#ffffff')
         },
-        drawCustomBackgrounds() {
+        drawCustomBackgrounds(grid) {
             if (defaultSettings.customBackground && defaultSettings.customBackground != "") {
                 if (!legendmod.customMidPic) {
                     if (defaultSettings.customBackground) {
@@ -14027,7 +14040,17 @@ Game name     : ${i.displayName}<br/>
                     );
                     this.ctx.globalAlpha = this.prevctxglobalAlpha
                 }
-                if (defaultSettings.customBackground) {
+				if (grid){
+                    this.ctx.drawImage(
+                        application.customSkinsCache["test_cached"+grid],
+
+                        legendmod.mapMinX,
+                        legendmod.mapMinY,
+                        legendmod.mapMaxX - legendmod.mapMinX,
+                        legendmod.mapMaxY - legendmod.mapMinY
+                    );					
+				}
+                else if (defaultSettings.customBackground) {
                     this.prevctxglobalAlpha = this.ctx.globalAlpha;
                     this.ctx.globalAlpha = defaultSettings.backgroundAlpha
                     this.ctx.drawImage(
