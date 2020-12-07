@@ -1,5 +1,5 @@
 /* Source script
-v2.936
+v2.937
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14295,8 +14295,8 @@ Game name     : ${i.displayName}<br/>
                 $.lineTo(reWidth * xx, y * xx - 0.5);
             }
             $.stroke();
-            application.customSkinsCache["test" + "_cached" + xx] = new Image;
-            application.customSkinsCache["test" + "_cached" + xx].src = i.toDataURL();	
+            application.customSkinsCache["test" + "_cached"] = new Image;
+            application.customSkinsCache["test" + "_cached"].src = i.toDataURL();	
 			//}	
 			this.drawedGrid = true
         },		
