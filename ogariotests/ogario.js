@@ -1,5 +1,5 @@
 /* Source script
-v2.930
+v2.931
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13819,16 +13819,17 @@ Game name     : ${i.displayName}<br/>
             this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
             if (defaultmapsettings.showOptimisedGrid) {
 				if (!this.drawedGrid){
-					this.drawGridCached(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
-					this.drawedGrid = true
+					this.drawGridCached(this.canvasWidth, this.canvasHeight, this.camX, this.camY);				
 				}	
+				if (this.drawedGrid){
 				for (var stepScale = 1; stepScale > 0; stepScale -= 0.025){
 					stepScale = stepScale.toFixed(2);
 					if (stepScale <= this.scale){
 						this.drawCustomNewGrid(stepScale);
 						break;
 					}
-				}							
+				}
+				}
             }
             else if (defaultmapsettings.showGrid) {
                 this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
@@ -14290,7 +14291,8 @@ Game name     : ${i.displayName}<br/>
             $.stroke();
             application.customSkinsCache["test" + "_cached" + xx] = new Image;
             application.customSkinsCache["test" + "_cached" + xx].src = i.toDataURL();	
-			}			
+			}	
+			this.drawedGrid = true
         },		
         drawSectors(ctx, mapOffset, x, y, minX, minY, maxX, maxY, stroke, color, width, type) {
             if (mapOffset || !type) {
