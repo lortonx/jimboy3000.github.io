@@ -1,5 +1,5 @@
 /* Source script
-v2.931
+v2.932
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14017,7 +14017,7 @@ Game name     : ${i.displayName}<br/>
 		drawCustomNewGrid(grid) {	
 			if (grid){
 					console.log(grid)
-					if (application.customSkinsCache["test_cached"+grid] && application.customSkinsCache["test_cached"+grid].complete && application.customSkinsCache["test_cached"+grid].width && application.customSkinsCache["test_cached"+grid].heigth){
+					if (application.customSkinsCache["test_cached"+grid] && application.customSkinsCache["test_cached"+grid].complete && application.customSkinsCache["test_cached"+grid].width && application.customSkinsCache["test_cached"+grid].height){
                     this.ctx.drawImage(application.customSkinsCache["test_cached"+grid],
                         legendmod.mapMinX,
                         legendmod.mapMinY,
