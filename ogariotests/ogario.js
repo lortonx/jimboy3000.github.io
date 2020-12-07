@@ -1,5 +1,5 @@
 /* Source script
-v2.933
+v2.934
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13836,14 +13836,15 @@ Game name     : ${i.displayName}<br/>
 					this.drawGridCached(this.canvasWidth, this.canvasHeight, this.camX, this.camY);				
 				}	
 				if (this.drawedGrid){
-				for (var stepScale = 1; stepScale > 0; stepScale -= 0.025){
-					stepScale = stepScale.toFixed(2);
-					if (stepScale <= this.scale){
-						this.drawCustomNewGrid(stepScale);
-						break;
-					}
-				}
-				}
+				this.drawCustomNewGrid();
+				//for (var stepScale = 1; stepScale > 0; stepScale -= 0.025){
+					//stepScale = stepScale.toFixed(2);
+					//if (stepScale <= this.scale){
+						//this.drawCustomNewGrid(stepScale);
+						//break;
+					//}
+				//}
+				//}
             }			
             if (defaultmapsettings.showBgSectors) {
                 this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
@@ -14018,22 +14019,22 @@ Game name     : ${i.displayName}<br/>
                 0.75, '#ffffff')
         },
 		drawCustomNewGrid(grid) {	
-			if (grid){
-					console.log(grid)
-					if (application.customSkinsCache["test_cached"+grid] && application.customSkinsCache["test_cached"+grid].complete && application.customSkinsCache["test_cached"+grid].width && application.customSkinsCache["test_cached"+grid].height){
+			//if (grid){
+					//console.log(grid)
+					//if (application.customSkinsCache["test_cached"+grid] && application.customSkinsCache["test_cached"+grid].complete && application.customSkinsCache["test_cached"+grid].width && application.customSkinsCache["test_cached"+grid].height){
                     this.ctx.drawImage(application.customSkinsCache["test_cached"+grid],
                         legendmod.mapMinX,
                         legendmod.mapMinY,
                         legendmod.mapMaxX - legendmod.mapMinX,
                         legendmod.mapMaxY - legendmod.mapMinY
                     );
-					}
-					else{
-						console.log("test_cached"+grid + "does not exist")
-					}
-			}
+					//}
+					//else{
+						//console.log("test_cached"+grid + "does not exist")
+					//}
+			//}
 		},			
-        drawCustomBackgrounds(grid) {		
+        drawCustomBackgrounds() {		
             if (defaultSettings.customBackground && defaultSettings.customBackground != "") {			
                 if (!legendmod.customMidPic) {
                     if (defaultSettings.customBackground) {
@@ -14269,8 +14270,9 @@ Game name     : ${i.displayName}<br/>
             ctx.globalAlpha = 1;
         },
         drawGridCached(width, heigth, camX, camY) {
-			for (var xx = 1; xx > 0; xx -= 0.025){
-				xx = xx.toFixed(2);
+			//for (var xx = 1; xx > 0; xx -= 0.025){
+				//xx = xx.toFixed(2);
+			xx = 0.06
 			var i = document.createElement("canvas");
             i.width = width;
             i.height = heigth;
@@ -14294,7 +14296,7 @@ Game name     : ${i.displayName}<br/>
             $.stroke();
             application.customSkinsCache["test" + "_cached" + xx] = new Image;
             application.customSkinsCache["test" + "_cached" + xx].src = i.toDataURL();	
-			}	
+			//}	
 			this.drawedGrid = true
         },		
         drawSectors(ctx, mapOffset, x, y, minX, minY, maxX, maxY, stroke, color, width, type) {
