@@ -1,5 +1,5 @@
 /* Source script
-v2.926
+v2.927
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14237,7 +14237,7 @@ Game name     : ${i.displayName}<br/>
         },
         drawGridCached(width, heigth, camX, camY) {
 			for (var xx = 1; xx > 0; xx -= 0.025){
-				
+				xx = xx.toFixed(2);
 			var i = document.createElement("canvas");
             i.width = width;
             i.height = heigth;
