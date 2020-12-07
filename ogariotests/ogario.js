@@ -1,5 +1,5 @@
 /* Source script
-v2.935
+v2.936
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13833,7 +13833,7 @@ Game name     : ${i.displayName}<br/>
 			
             if (defaultmapsettings.showOptimisedGrid) {
 				if (!this.drawedGrid){
-					this.drawGridCached(this.canvasWidth, this.canvasHeight, this.camX, this.camY);				
+					this.drawGridCached(this.camX, this.camY);				
 				}	
 				if (this.drawedGrid){
 				this.drawCustomNewGrid();
@@ -14270,13 +14270,13 @@ Game name     : ${i.displayName}<br/>
             ctx.stroke();
             ctx.globalAlpha = 1;
         },
-        drawGridCached(width, heigth, camX, camY) {
+        drawGridCached(camX, camY) {
 			//for (var xx = 1; xx > 0; xx -= 0.025){
 				//xx = xx.toFixed(2);
 			xx = 0.06
 			var i = document.createElement("canvas");
-            i.width = width;
-            i.height = heigth;
+            i.width = LM.mapSize;
+            i.height = LM.mapSize;
             const reWidth = width / xx;
             const reHeigth = heigth / xx;
             let x = (-camX + reWidth / 2) % 50;
