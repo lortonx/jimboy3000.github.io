@@ -1,5 +1,5 @@
 /* Source script
-v2.932
+v2.933
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13818,18 +13818,7 @@ Game name     : ${i.displayName}<br/>
             LM.compareCells();
             this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
             if (defaultmapsettings.showOptimisedGrid) {
-				if (!this.drawedGrid){
-					this.drawGridCached(this.canvasWidth, this.canvasHeight, this.camX, this.camY);				
-				}	
-				if (this.drawedGrid){
-				for (var stepScale = 1; stepScale > 0; stepScale -= 0.025){
-					stepScale = stepScale.toFixed(2);
-					if (stepScale <= this.scale){
-						this.drawCustomNewGrid(stepScale);
-						break;
-					}
-				}
-				}
+				//
             }
             else if (defaultmapsettings.showGrid) {
                 this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
@@ -13842,6 +13831,20 @@ Game name     : ${i.displayName}<br/>
 			//this.ctx.scale(this.scale, this.scale);
             //this.ctx.translate(-this.camX, -this.camY);
 			
+            if (defaultmapsettings.showOptimisedGrid) {
+				if (!this.drawedGrid){
+					this.drawGridCached(this.canvasWidth, this.canvasHeight, this.camX, this.camY);				
+				}	
+				if (this.drawedGrid){
+				for (var stepScale = 1; stepScale > 0; stepScale -= 0.025){
+					stepScale = stepScale.toFixed(2);
+					if (stepScale <= this.scale){
+						this.drawCustomNewGrid(stepScale);
+						break;
+					}
+				}
+				}
+            }			
             if (defaultmapsettings.showBgSectors) {
                 this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
             }
