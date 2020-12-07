@@ -1,5 +1,5 @@
 /* Source script
-v2.942
+v2.943
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14279,6 +14279,7 @@ Game name     : ${i.displayName}<br/>
             application.customSkinsCache["test" + "_cached"].src = i.toDataURL();	
 			//}	
 			this.drawedGrid = true
+			console.log("test_grid_cached")
         },		
         drawSectors(ctx, mapOffset, x, y, minX, minY, maxX, maxY, stroke, color, width, type) {
             if (mapOffset || !type) {
