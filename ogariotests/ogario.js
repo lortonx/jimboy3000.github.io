@@ -1,5 +1,5 @@
 /* Source script
-v2.923
+v2.924
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14235,14 +14235,14 @@ Game name     : ${i.displayName}<br/>
             ctx.stroke();
             ctx.globalAlpha = 1;
         },
-        drawGridCached(width, heigth, scale, camX, camY) {
+        drawGridCached(width, heigth, camX, camY) {
 			for (var xx=1;x>0;x=x-0.025){
 				
 			var i = document.createElement("canvas");
             i.width = width;
             i.height = heigth;
-            const reWidth = width / scale;
-            const reHeigth = heigth / scale;
+            const reWidth = width / xx;
+            const reHeigth = heigth / xx;
             let x = (-camX + reWidth / 2) % 50;
             let y = (-camY + reHeigth / 2) % 50;
             var $ = i.getContext("2d");
@@ -14251,12 +14251,12 @@ Game name     : ${i.displayName}<br/>
             $.globalAlpha = 1 * scale2;
             $.beginPath();
             for (; x < reWidth; x += 50) {
-                $.moveTo(x * scale - 0.5, 0);
-                $.lineTo(x * scale - 0.5, reHeigth * scale);
+                $.moveTo(x * xx - 0.5, 0);
+                $.lineTo(x * xx - 0.5, reHeigth * xx);
             }
             for (; y < reHeigth; y += 50) {
-                $.moveTo(0, y * scale - 0.5);
-                $.lineTo(reWidth * scale, y * scale - 0.5);
+                $.moveTo(0, y * xx - 0.5);
+                $.lineTo(reWidth * xx, y * xx - 0.5);
             }
             $.stroke();
             application.customSkinsCache["test" + "_cached" + xx] = new Image;
