@@ -1,5 +1,5 @@
 /* Source script
-v2.938
+v2.939
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14261,8 +14261,8 @@ Game name     : ${i.displayName}<br/>
 			var i = document.createElement("canvas");
             i.width = LM.mapSize;
             i.height = LM.mapSize;
-            const reWidth = width / xx;
-            const reHeigth = heigth / xx;
+            const reWidth = i.width / xx;
+            const reHeigth = i.height / xx;
             let x = (-camX + reWidth / 2) % 50;
             let y = (-camY + reHeigth / 2) % 50;
             var $ = i.getContext("2d");
