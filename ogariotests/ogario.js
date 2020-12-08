@@ -1,5 +1,5 @@
 /* Source script
-v2.943
+v2.944
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14259,8 +14259,10 @@ Game name     : ${i.displayName}<br/>
 				//xx = xx.toFixed(2);
 			xx = window.xx2
 			var i = document.createElement("canvas");
-            i.width = LM.mapSize;
-            i.height = LM.mapSize;
+			i.width = window.xx3
+			i.height = window.xx4
+            //i.width = LM.mapSize;
+            //i.height = LM.mapSize;
             var $ = i.getContext("2d");
             $.beginPath();			
             $.strokeStyle = defaultSettings.gridColor;
