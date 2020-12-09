@@ -1,5 +1,5 @@
 /* Source script
-v2.948
+v2.949
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -1454,7 +1454,7 @@ var displayText = {
         virColors: 'Kolory wirusów',
         splitRange: 'Zasięg podziału',
         virusesRange: 'Zasięg wirusów',
-		showOptimisedGrid: 'Optimised Grid',
+		showOptimisedGrid: 'Icon as grid (fps increase)',
         textStroke: 'Obwódki nazw i masy',
         namesStroke: 'Obwódki nazw',
         massStroke: 'Obwódki masy',
@@ -1936,7 +1936,7 @@ var displayText = {
         qdsplitRange: 'Quick double split range', //Sonia2
         sdsplitRange: 'Slow double split range', //Sonia2
         virusesRange: 'Viruses range',
-		showOptimisedGrid: 'Optimised Grid',
+		showOptimisedGrid: 'Icon as grid (fps increase)',
         textStroke: 'Names and mass stroke',
         namesStroke: 'Names stroke',
         massStroke: 'Mass stroke',
