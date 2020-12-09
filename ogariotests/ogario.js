@@ -1,5 +1,5 @@
 /* Source script
-v2.945
+v2.946
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14019,7 +14019,7 @@ Game name     : ${i.displayName}<br/>
 		            legendmod.gridPic = new Image;
                     legendmod.gridPic.src = "https://legendmod.ml/banners/grid3.png";
 					}
-					this.ctx.drawImage(application.customSkinsCache["test_cached"],
+					//this.ctx.drawImage(application.customSkinsCache["test_cached"],
 					this.ctx.drawImage(legendmod.gridPic,			
                         legendmod.mapMinX,
                         legendmod.mapMinY,
