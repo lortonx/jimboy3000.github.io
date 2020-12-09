@@ -1,5 +1,5 @@
 /* Source script
-v2.946
+v2.947
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13835,12 +13835,13 @@ Game name     : ${i.displayName}<br/>
             //this.ctx.translate(-this.camX, -this.camY);
 			
             if (defaultmapsettings.showOptimisedGrid) {
-				if (!this.drawedGrid){
+				this.drawCustomNewGrid()
+				/*if (!this.drawedGrid){
 					this.drawGridCached();				
 				}	
 				else if (this.drawedGrid){
 					this.drawCustomNewGrid();
-				}	
+				}	*/
 			}				
             if (defaultmapsettings.showBgSectors) {
                 this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
