@@ -1,5 +1,5 @@
 /* Source script
-v2.944
+v2.945
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -1454,6 +1454,7 @@ var displayText = {
         virColors: 'Kolory wirusów',
         splitRange: 'Zasięg podziału',
         virusesRange: 'Zasięg wirusów',
+		showOptimisedGrid: 'Optimised Grid',
         textStroke: 'Obwódki nazw i masy',
         namesStroke: 'Obwódki nazw',
         massStroke: 'Obwódki masy',
@@ -1935,6 +1936,7 @@ var displayText = {
         qdsplitRange: 'Quick double split range', //Sonia2
         sdsplitRange: 'Slow double split range', //Sonia2
         virusesRange: 'Viruses range',
+		showOptimisedGrid: 'Optimised Grid',
         textStroke: 'Names and mass stroke',
         namesStroke: 'Names stroke',
         massStroke: 'Mass stroke',
@@ -3161,6 +3163,7 @@ var defaultmapsettings = {
     qdsplitRange: true, //Sonia2
     sdsplitRange: false, //Sonia2
     virusesRange: false,
+	showOptimisedGrid: true,
     textStroke: false,
     namesStroke: true,
     massStroke: true,
@@ -5646,12 +5649,12 @@ window.MouseClicks=[];
             this.addOptions(["noSkins", "customSkins", "vanillaSkins", "jellyPhisycs", "suckAnimation", "videoSkins", "videoDestorted", "videoSkinsMusic2", "videoOthersSkinSoundLevelproportion"], "skinsGroup");
             this.addOptions(["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup");
             this.addOptions(["noColors", "myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow", 'cellContours', "animatedRainbowColor"], "transparencyGroup");
-            this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
+            this.addOptions(["showGrid", "showOptimisedGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
             this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChat", "showChatMyOwn", "showChatTranslation", "coloredNicks", "hidecountry", "universalChat"], "chatGroup");
             this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup");
             //            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "reverseTrick", "showPartyBots"], "helpersGroup"); //Sonia2
             //this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
-            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo"], "helpersGroup"); //Sonia2
+			this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo"], "helpersGroup"); //Sonia2
             //this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
 			this.addOptions(["stickyCell", "mouseSplit", "mouseFeed", "mouseWheelClick", "mouseCommand4", "mouseCommand5"], "mouseGroup");
 //	
@@ -14012,7 +14015,12 @@ Game name     : ${i.displayName}<br/>
                 0.75, '#ffffff')
         },
 		drawCustomNewGrid(grid) {	
+					if (!legendmod.gridPic){
+		            legendmod.gridPic = new Image;
+                    legendmod.gridPic.src = "https://legendmod.ml/banners/grid3.png";
+					}
 					this.ctx.drawImage(application.customSkinsCache["test_cached"],
+					this.ctx.drawImage(legendmod.gridPic,			
                         legendmod.mapMinX,
                         legendmod.mapMinY,
                         legendmod.mapMaxX - legendmod.mapMinX,
@@ -14254,7 +14262,7 @@ Game name     : ${i.displayName}<br/>
             ctx.stroke();
             ctx.globalAlpha = 1;
         },
-        drawGridCached() {
+        /*drawGridCached() {
 			//for (var xx = 1; xx > 0; xx -= 0.025){
 				//xx = xx.toFixed(2);
 			xx = window.xx2
@@ -14282,7 +14290,7 @@ Game name     : ${i.displayName}<br/>
 			//}	
 			this.drawedGrid = true
 			console.log("test_grid_cached")
-        },		
+        },		*/
         drawSectors(ctx, mapOffset, x, y, minX, minY, maxX, maxY, stroke, color, width, type) {
             if (mapOffset || !type) {
                 var posX = ~~((maxX - minX) / x);
