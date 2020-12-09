@@ -1,5 +1,5 @@
 /* Source script
-v2.951
+v2.950
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13260,6 +13260,8 @@ Game name     : ${i.displayName}<br/>
                 //y = this.getY(y);	
                 //FOR COLOR
                 //if (!isVirus && !isFood && name != "" && this.gameMode != ":teams") {
+				//
+				//
                 if (!isVirus && !isFood && name != "" && this.gameMode != ":teams" && this.gameMode != ":party") { //28/6/2020
                     if (LM.cellcolors[name]) {
                         color = LM.cellcolors[name]
@@ -14598,11 +14600,9 @@ Game name     : ${i.displayName}<br/>
                 }
             } 
 			else {
-				ctx.beginPath();
                 for (var length = 0; length < food.length; length++) {
 					if (!food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true
-					//ctx.beginPath();
-					ctx.save()
+					ctx.beginPath();
                     if (!food[length].invisible) {				
                         var x = food[length].x;
                         var y = food[length].y;
@@ -14623,16 +14623,13 @@ Game name     : ${i.displayName}<br/>
 							
 						}
                     }
-					if (!defaultmapsettings.rainbowFood){ 				
-						ctx.fillStyle = defaultSettings.foodColor;
-					}
-					ctx.restore();
+				if (!defaultmapsettings.rainbowFood){ 				
+					ctx.fillStyle = defaultSettings.foodColor;
+				}
                 //ctx.globalAlpha = 1;
-                //ctx.fill();					
+                ctx.fill();					
                 }
-				ctx.fill();
-				
-				
+
             }
             if (reset) {
                 food = [];
