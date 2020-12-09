@@ -1,5 +1,5 @@
 /* Source script
-v2.949
+v2.950
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14598,9 +14598,11 @@ Game name     : ${i.displayName}<br/>
                 }
             } 
 			else {
+				ctx.beginPath();
                 for (var length = 0; length < food.length; length++) {
 					if (!food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true
-					ctx.beginPath();
+					//ctx.beginPath();
+					ctx.save()
                     if (!food[length].invisible) {				
                         var x = food[length].x;
                         var y = food[length].y;
@@ -14621,13 +14623,15 @@ Game name     : ${i.displayName}<br/>
 							
 						}
                     }
-				if (!defaultmapsettings.rainbowFood){ 				
-					ctx.fillStyle = defaultSettings.foodColor;
-				}
+					if (!defaultmapsettings.rainbowFood){ 				
+						ctx.fillStyle = defaultSettings.foodColor;
+					}
                 //ctx.globalAlpha = 1;
-                ctx.fill();					
+                //ctx.fill();					
                 }
-
+				ctx.fill();
+				ctx.restore();
+				
             }
             if (reset) {
                 food = [];
