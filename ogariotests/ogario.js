@@ -1,5 +1,5 @@
 /* Source script
-v2.947
+v2.948
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13834,7 +13834,7 @@ Game name     : ${i.displayName}<br/>
 			//this.ctx.scale(this.scale, this.scale);
             //this.ctx.translate(-this.camX, -this.camY);
 			
-            if (defaultmapsettings.showOptimisedGrid) {
+            if (defaultmapsettings.showGrid && defaultmapsettings.showOptimisedGrid) {
 				this.drawCustomNewGrid()
 				/*if (!this.drawedGrid){
 					this.drawGridCached();				
