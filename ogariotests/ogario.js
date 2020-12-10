@@ -1,5 +1,5 @@
 /* Source script
-v2.950
+v2.951
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -10158,6 +10158,7 @@ window.MouseClicks=[];
         arrowFB: [{}],
         Waves: [],
         ghostCells: [],
+		pelletColored: [];
         playerX: 0,
         playerY: 0,
         playerXMulti: 0,
@@ -14586,16 +14587,27 @@ Game name     : ${i.displayName}<br/>
             if (!food.length) {
                 return;
             }
-            if (defaultmapsettings.optimizedFood && !defaultmapsettings.rainbowFood && this.pellet) {
+            if (defaultmapsettings.optimizedFood && this.pellet) {
 
                 for (var length = 0; length < food.length; length++) {
                     //
                     if (!food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true
                     //
                     if (!food[length].invisible) {
-                        var x = food[length].x - 10 - defaultSettings.foodSize;
-                        var y = food[length].y - 10 - defaultSettings.foodSize;
-                        ctx.drawImage(this.pellet, x, y);
+						var x = food[length].x - 10 - defaultSettings.foodSize;
+						var y = food[length].y - 10 - defaultSettings.foodSize;						
+						if (!defaultmapsettings.rainbowFood){                   
+							ctx.drawImage(this.pellet, x, y);
+						}
+						else{
+							if (!this.pelletColored[color]){ 
+								this.preDrawPelletColors(food[length].color);
+							}
+							else{
+								ctx.drawImage(this.pelletColored[color], x, y);
+							}
+						}
+						
                     }
                 }
             } 
@@ -15044,7 +15056,7 @@ Game name     : ${i.displayName}<br/>
                 this.ctx.globalAlpha = 1;
                 this.ctx.shadowBlur = 0;
             }
-        },
+        },		
         preDrawPellet() {
             this.pellet = null;
             var size = 10 + defaultSettings.foodSize;
@@ -15059,6 +15071,21 @@ Game name     : ${i.displayName}<br/>
             this.pellet.src = canvas.toDataURL();
             canvas = null;
         },
+        preDrawPelletColors(color) {
+            this.pelletColored[color] = null;
+            var size = 10 + defaultSettings.foodSize;
+            var canvas = document.createElement('canvas');
+            canvas.width = 2 * size,
+                canvas.height = 2 * size;
+            var ctx = canvas.getContext('2d');
+            ctx.arc(size, size, size, 0, this.pi2, false);
+            //ctx.fillStyle = defaultSettings.foodColor;
+			ctx.fillStyle = color;
+            ctx.fill();
+            this.pelletColored[color] = new Image();
+            this.pelletColored[color].src = canvas.toDataURL();
+            canvas = null;
+        },		
         preDrawIndicator() {
             this.indicator = null;
             var canvas = document.createElement('canvas');
@@ -15221,7 +15248,7 @@ Game name     : ${i.displayName}<br/>
         init() {
             this.setCanvas();
             this.resizeCanvas();
-            this.preDrawPellet();
+            this.preDrawPellet();							
             this.preDrawIndicator();
 			this.preDrawHeartIndicator();
 			this.preDrawSmileIndicator();
