@@ -1,5 +1,5 @@
 /* Source script
-v2.959
+v2.960
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14604,8 +14604,8 @@ Game name     : ${i.displayName}<br/>
 								this.preDrawPelletColors(food[length].color);
 							}
 							else{
-								if (!window.xx5) ctx.drawImage(this.pelletColored[food[length].color], x, y);
-								if (window.xx5) ctx.drawImage(this.pelletColored[food[length].color], x, y, (10 + defaultSettings.foodSize)*2, (10 + defaultSettings.foodSize)*2);
+								//ctx.drawImage(this.pelletColored[food[length].color], x, y);
+								ctx.drawImage(this.pelletColored[food[length].color], x, y, (10 + defaultSettings.foodSize)*2, (10 + defaultSettings.foodSize)*2);
 							}
 						}
 						
