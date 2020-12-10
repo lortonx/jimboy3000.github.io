@@ -1,5 +1,5 @@
 /* Source script
-v2.953
+v2.954
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -10158,7 +10158,6 @@ window.MouseClicks=[];
         arrowFB: [{}],
         Waves: [],
         ghostCells: [],
-		pelletColored: [],
         playerX: 0,
         playerY: 0,
         playerXMulti: 0,
@@ -13745,7 +13744,8 @@ Game name     : ${i.displayName}<br/>
         renderTime: 0,
         averageRenderTime: 0,
 		renderingDelay: 0,
-        lastRenderingDelay: 0,			
+        lastRenderingDelay: 0,
+		pelletColored: [],		
         setCanvas() {
             this.canvas = document.getElementById('canvas');
             this.ctx = this.canvas.getContext('2d');
