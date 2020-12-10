@@ -1,5 +1,5 @@
 /* Source script
-v2.957a
+v2.957b
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15081,7 +15081,7 @@ Game name     : ${i.displayName}<br/>
 			canvas.width = size,
             canvas.height = size;
             var ctx = canvas.getContext('2d');
-            ctx.arc(size, size, size, 0, this.pi2, false);
+            ctx.arc(size/2, size/2, size/2, 0, this.pi2, false);
             //ctx.fillStyle = defaultSettings.foodColor;
 			ctx.fillStyle = color;
             ctx.fill();
