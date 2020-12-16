@@ -1,5 +1,5 @@
 /* Source script
-v2.961
+v2.962
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14024,12 +14024,26 @@ Game name     : ${i.displayName}<br/>
                     legendmod.gridPic.src = "https://legendmod.ml/banners/grid3.png";
 					}
 					//this.ctx.drawImage(application.customSkinsCache["test_cached"],
-					this.ctx.drawImage(legendmod.gridPic,			
+					/*this.ctx.drawImage(legendmod.gridPic,			
                         legendmod.mapMinX,
                         legendmod.mapMinY,
                         legendmod.mapMaxX - legendmod.mapMinX,
                         legendmod.mapMaxY - legendmod.mapMinY
-                    );
+                    );*/
+					this.ctx.drawImage(legendmod.gridPic,			
+						(legendmod.camMinX - legendmod.mapMinX) * legendmod.gridPic.width,
+						(legendmod.camMinY - legendmod.mapMinY) * legendmod.gridPic.height,
+						(legendmod.camMaxX - legendmod.camMinX)/(legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width,
+						(legendmod.camMaxY - legendmod.camMinY)/(legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,                    
+						legendmod.camMinX,
+						legendmod.camMinY,
+						legendmod.mapMinX,
+						legendmod.mapMinY,		
+						legendmod.camMaxX - legendmod.camMinX,
+						legendmod.camMaxY - legendmod.camMinY
+                        //legendmod.mapMaxX - legendmod.mapMinX,
+                        //legendmod.mapMaxY - legendmod.mapMinY
+                    );					
 		},			
         drawCustomBackgrounds() {		
             if (defaultSettings.customBackground && defaultSettings.customBackground != "") {			
@@ -14587,6 +14601,7 @@ Game name     : ${i.displayName}<br/>
             if (!food.length) {
                 return;
             }
+			
             if (defaultmapsettings.optimizedFood && this.pellet) {
 
                 for (var length = 0; length < food.length; length++) {
