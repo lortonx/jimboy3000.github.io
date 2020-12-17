@@ -1,5 +1,5 @@
 /* Source script
-v2.963
+v2.964
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14032,7 +14032,7 @@ Game name     : ${i.displayName}<br/>
                     );*/
 					this.ctx.drawImage(legendmod.gridPic,			
 						(legendmod.camMinX - legendmod.mapMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width,
-						(legendmod.camMinY - legendmod.mapMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height),
+						(legendmod.camMinY - legendmod.mapMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,
 						(legendmod.camMaxX - legendmod.camMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width,
 						(legendmod.camMaxY - legendmod.camMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,                    
 						legendmod.camMinX,
