@@ -13468,7 +13468,7 @@ Game name     : ${i.displayName}<br/>
                     //console.log(i); i for food is 13
                     var size = ~~(cell.size * cell.size / 100);
 
-                    if (size > 13) {
+					if (size > 13 || (LM.integrity && size > 14)) {
                         var mass
                         if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled - 1]) {
                             mass = this.selectBiggestCell ? spects[window.multiboxPlayerEnabled - 1].playerMaxMass : spects[window.multiboxPlayerEnabled - 1].playerMinMass;
