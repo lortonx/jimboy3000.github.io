@@ -1,5 +1,5 @@
 /* Source script
-v2.976
+v2.977
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9789,7 +9789,8 @@ window.MouseClicks=[];
                     )
                 }
                 style.lineTo(this.x, this.y + this.size + 3);
-            } else style.arc(this.x, this.y, y, 0, this.pi2, false);
+            } 
+			else style.arc(this.x, this.y, y, 0, this.pi2, false);
 
             style.closePath();
 			
@@ -13975,13 +13976,26 @@ Game name     : ${i.displayName}<br/>
 					//legendmod.gridPic.src = "https://legendmod.ml/banners/grid5.png";
 					}
 					//this.ctx.drawImage(application.customSkinsCache["test_cached"],
-					this.ctx.drawImage(legendmod.gridPic,			
+					/*this.ctx.drawImage(legendmod.gridPic,			
                         legendmod.mapMinX,
                         legendmod.mapMinY,
                         legendmod.mapMaxX - legendmod.mapMinX,
                         legendmod.mapMaxY - legendmod.mapMinY
+                    );*/
+					var minX = legendmod.viewX - drawRender.canvasWidth / 2 * legendmod.viewScale
+					var maxX = legendmod.viewX + drawRender.canvasWidth / 2 * legendmod.viewScale
+					var minY = legendmod.viewY - drawRender.canvasHeight / 2 * legendmod.viewScale
+					var maxY = legendmod.viewY + drawRender.canvasHeight / 2 * legendmod.viewScale					
+					this.ctx.drawImage(legendmod.gridPic,			
+						(minX - legendmod.mapMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width, 
+						(minY - legendmod.mapMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,
+						(maxX - minX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width,
+						(maxY - minY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,                    
+						minX,
+						minY,	
+						maxX - minX,
+						maxY - minY						
                     );
-
 					/*this.ctx.drawImage(legendmod.gridPic,			
 						(legendmod.viewMinX - legendmod.mapMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width, 
 						(legendmod.viewMinY - legendmod.mapMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,
