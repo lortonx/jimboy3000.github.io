@@ -14021,8 +14021,8 @@ Game name     : ${i.displayName}<br/>
 		drawCustomNewGrid(grid) {	
 					if (!legendmod.gridPic){
 		            legendmod.gridPic = new Image;
-                    //legendmod.gridPic.src = "https://legendmod.ml/banners/grid3.png";
-					legendmod.gridPic.src = "https://legendmod.ml/banners/grid5.png";
+                    legendmod.gridPic.src = "https://legendmod.ml/banners/grid3.png";
+					//legendmod.gridPic.src = "https://legendmod.ml/banners/grid5.png";
 					}
 					//this.ctx.drawImage(application.customSkinsCache["test_cached"],
 					/*this.ctx.drawImage(legendmod.gridPic,			
