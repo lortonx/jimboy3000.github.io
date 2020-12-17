@@ -1,5 +1,5 @@
 /* Source script
-v2.964
+v2.965
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14024,26 +14024,26 @@ Game name     : ${i.displayName}<br/>
                     legendmod.gridPic.src = "https://legendmod.ml/banners/grid3.png";
 					}
 					//this.ctx.drawImage(application.customSkinsCache["test_cached"],
-					this.ctx.drawImage(legendmod.gridPic,			
+					/*this.ctx.drawImage(legendmod.gridPic,			
                         legendmod.mapMinX,
                         legendmod.mapMinY,
                         legendmod.mapMaxX - legendmod.mapMinX,
                         legendmod.mapMaxY - legendmod.mapMinY
-                    );
-					/*this.ctx.drawImage(legendmod.gridPic,			
-						(legendmod.camMinX - legendmod.mapMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width,
-						(legendmod.camMinY - legendmod.mapMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,
-						(legendmod.camMaxX - legendmod.camMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width,
-						(legendmod.camMaxY - legendmod.camMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,                    
-						legendmod.camMinX,
-						legendmod.camMinY,
+                    );*/
+					this.ctx.drawImage(legendmod.gridPic,			
+						(legendmod.viewMinX - legendmod.mapMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width,
+						(legendmod.viewMinY - legendmod.mapMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,
+						(legendmod.viewMaxX - legendmod.viewMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width,
+						(legendmod.viewMaxY - legendmod.viewMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,                    
+						legendmod.viewMinX,
+						legendmod.viewMinY,
 						legendmod.mapMinX,
 						legendmod.mapMinY,		
-						legendmod.camMaxX - legendmod.camMinX,
-						legendmod.camMaxY - legendmod.camMinY
+						legendmod.viewMaxX - legendmod.viewMinX,
+						legendmod.viewMaxY - legendmod.viewMinY
                         //legendmod.mapMaxX - legendmod.mapMinX,
                         //legendmod.mapMaxY - legendmod.mapMinY
-                    );	*/				
+                    );					
 		},			
         drawCustomBackgrounds() {		
             if (defaultSettings.customBackground && defaultSettings.customBackground != "") {			
