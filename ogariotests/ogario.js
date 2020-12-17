@@ -1,5 +1,5 @@
 /* Source script
-v2.973
+v2.974
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9794,7 +9794,7 @@ window.MouseClicks=[];
             style.closePath();
 			
 			//17/12/2020
-			if (this.size <= 38 && this.nick == "" && !this.isVirus){
+			if (this.size <= 38 && this.nick == "" && !this.isVirus && !this.isPlayerCell){
                 style.fillStyle = this.color;
                 style.fill();				
 				style.restore();
@@ -14017,26 +14017,23 @@ Game name     : ${i.displayName}<br/>
 					//legendmod.gridPic.src = "https://legendmod.ml/banners/grid5.png";
 					}
 					//this.ctx.drawImage(application.customSkinsCache["test_cached"],
-					/*this.ctx.drawImage(legendmod.gridPic,			
+					this.ctx.drawImage(legendmod.gridPic,			
                         legendmod.mapMinX,
                         legendmod.mapMinY,
                         legendmod.mapMaxX - legendmod.mapMinX,
                         legendmod.mapMaxY - legendmod.mapMinY
-                    );*/
-					const reWidth = drawRender.canvasWidth / drawRender.scale;
-					const reHeigth = drawRender.canvasHeight / drawRender.scale;
-					let x = (-drawRender.camX + reWidth / 2) % 50;
-					let y = (-drawRender.camY + reHeigth / 2) % 50;
-					this.ctx.drawImage(legendmod.gridPic,			
-						(x - legendmod.mapMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width, //(legendmod.viewMinX - legendmod.mapMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width, 
-						(y - legendmod.mapMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height, //(legendmod.viewMinY - legendmod.mapMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,
-						(reWidth - x) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width, //(legendmod.viewMaxX - legendmod.viewMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width,
-						(reHeigth - y) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height, //(legendmod.viewMaxY - legendmod.viewMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,                    
-						0, //x,//legendmod.viewMinX,
-						0, //y,//legendmod.viewMinY,	
-						reWidth - x,//legendmod.viewMaxX - legendmod.viewMinX,
-						reHeigth - y//legendmod.viewMaxY - legendmod.viewMinY						
-                    );					
+                    );
+
+					/*this.ctx.drawImage(legendmod.gridPic,			
+						(legendmod.viewMinX - legendmod.mapMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width, 
+						(legendmod.viewMinY - legendmod.mapMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,
+						(legendmod.viewMaxX - legendmod.viewMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width,
+						(legendmod.viewMaxY - legendmod.viewMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,                    
+						legendmod.viewMinX,
+						legendmod.viewMinY,	
+						legendmod.viewMaxX - legendmod.viewMinX,
+						legendmod.viewMaxY - legendmod.viewMinY						
+                    );*/					
 		},			
         drawCustomBackgrounds() {		
             if (defaultSettings.customBackground && defaultSettings.customBackground != "") {			
