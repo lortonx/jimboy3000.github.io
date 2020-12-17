@@ -1,5 +1,5 @@
 /* Source script
-v2.979
+v2.980
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13468,7 +13468,7 @@ Game name     : ${i.displayName}<br/>
                     //console.log(i); i for food is 13
                     var size = ~~(cell.size * cell.size / 100);
 
-					if (size > 13 || (!LM.integrity && size > 14)) {
+					if (size > 13 || (!LM.integrity && size > 15)) {
                         var mass
                         if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled - 1]) {
                             mass = this.selectBiggestCell ? spects[window.multiboxPlayerEnabled - 1].playerMaxMass : spects[window.multiboxPlayerEnabled - 1].playerMinMass;
