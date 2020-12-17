@@ -1,5 +1,5 @@
 /* Source script
-v2.977
+v2.978
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13982,10 +13982,10 @@ Game name     : ${i.displayName}<br/>
                         legendmod.mapMaxX - legendmod.mapMinX,
                         legendmod.mapMaxY - legendmod.mapMinY
                     );*/
-					var minX = legendmod.viewX - drawRender.canvasWidth / 2 * legendmod.viewScale
-					var maxX = legendmod.viewX + drawRender.canvasWidth / 2 * legendmod.viewScale
-					var minY = legendmod.viewY - drawRender.canvasHeight / 2 * legendmod.viewScale
-					var maxY = legendmod.viewY + drawRender.canvasHeight / 2 * legendmod.viewScale					
+					var minX = legendmod.viewX - drawRender.canvasWidth / (2 * legendmod.viewScale)
+					var maxX = legendmod.viewX + drawRender.canvasWidth / (2 * legendmod.viewScale)
+					var minY = legendmod.viewY - drawRender.canvasHeight / (2 * legendmod.viewScale)
+					var maxY = legendmod.viewY + drawRender.canvasHeight / (2 * legendmod.viewScale)					
 					this.ctx.drawImage(legendmod.gridPic,			
 						(minX - legendmod.mapMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width, 
 						(minY - legendmod.mapMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,
