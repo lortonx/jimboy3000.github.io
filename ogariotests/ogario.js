@@ -1,5 +1,5 @@
 /* Source script
-v2.972
+v2.973
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14032,8 +14032,8 @@ Game name     : ${i.displayName}<br/>
 						(y - legendmod.mapMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height, //(legendmod.viewMinY - legendmod.mapMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,
 						(reWidth - x) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width, //(legendmod.viewMaxX - legendmod.viewMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width,
 						(reHeigth - y) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height, //(legendmod.viewMaxY - legendmod.viewMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,                    
-						x,//legendmod.viewMinX,
-						y,//legendmod.viewMinY,	
+						0, //x,//legendmod.viewMinX,
+						0, //y,//legendmod.viewMinY,	
 						reWidth - x,//legendmod.viewMaxX - legendmod.viewMinX,
 						reHeigth - y//legendmod.viewMaxY - legendmod.viewMinY						
                     );					
