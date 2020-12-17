@@ -14024,13 +14024,13 @@ Game name     : ${i.displayName}<br/>
                     legendmod.gridPic.src = "https://legendmod.ml/banners/grid3.png";
 					}
 					//this.ctx.drawImage(application.customSkinsCache["test_cached"],
-					/*this.ctx.drawImage(legendmod.gridPic,			
+					this.ctx.drawImage(legendmod.gridPic,			
                         legendmod.mapMinX,
                         legendmod.mapMinY,
                         legendmod.mapMaxX - legendmod.mapMinX,
                         legendmod.mapMaxY - legendmod.mapMinY
-                    );*/
-					this.ctx.drawImage(legendmod.gridPic,			
+                    );
+					/*this.ctx.drawImage(legendmod.gridPic,			
 						(legendmod.camMinX - legendmod.mapMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width,
 						(legendmod.camMinY - legendmod.mapMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,
 						(legendmod.camMaxX - legendmod.camMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width,
@@ -14043,7 +14043,7 @@ Game name     : ${i.displayName}<br/>
 						legendmod.camMaxY - legendmod.camMinY
                         //legendmod.mapMaxX - legendmod.mapMinX,
                         //legendmod.mapMaxY - legendmod.mapMinY
-                    );					
+                    );	*/				
 		},			
         drawCustomBackgrounds() {		
             if (defaultSettings.customBackground && defaultSettings.customBackground != "") {			
