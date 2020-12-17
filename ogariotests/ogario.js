@@ -1,5 +1,5 @@
 /* Source script
-v2.965
+v2.966
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14037,8 +14037,8 @@ Game name     : ${i.displayName}<br/>
 						(legendmod.viewMaxY - legendmod.viewMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,                    
 						legendmod.viewMinX,
 						legendmod.viewMinY,
-						legendmod.mapMinX,
-						legendmod.mapMinY,		
+						//legendmod.mapMinX,
+						//legendmod.mapMinY,		
 						legendmod.viewMaxX - legendmod.viewMinX,
 						legendmod.viewMaxY - legendmod.viewMinY
                         //legendmod.mapMaxX - legendmod.mapMinX,
