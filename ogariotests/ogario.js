@@ -1,5 +1,5 @@
 /* Source script
-v2.969
+v2.970
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9768,7 +9768,7 @@ window.MouseClicks=[];
             }
             //style.filter='grayscale(100%)';
             //
-			
+					
             if (defaultmapsettings.jellyPhisycs && this.points.length) {
                 var point = this.points[0];
                 style.moveTo(point.x, point.y);
@@ -9794,6 +9794,14 @@ window.MouseClicks=[];
             } else style.arc(this.x, this.y, y, 0, this.pi2, false);
 
             style.closePath();
+			
+			//17/12/2020
+			if (this.size <= 38 && this.nick == "" && !this.isVirus){
+                style.fillStyle = this.color;
+                style.fill();				
+				style.restore();
+				return
+			}				
             //if (style.arc(this.x, this.y, y, 0, this.pi2, false), style.closePath(), this.isFood) {
             //    return style.fillStyle = this.color, style.fill(), void style.restore();
             //}						
@@ -9841,22 +9849,6 @@ window.MouseClicks=[];
                     }					
 					style.restore();
                     return;
-					/*
-                    return defaultmapsettings.transparentViruses && (style.globalAlpha *= defaultSettings.virusAlpha, s = true), 
-					defaultmapsettings.virColors && LM.play ? (style.fillStyle = application.setVirusColor(y), style.strokeStyle = application.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, 
-					style.strokeStyle = this.virusStroke), 
-					style.fill(), 
-					s && (style.globalAlpha = value, s = false), 
-					style.lineWidth = defaultSettings.virusStrokeSize, 
-					defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
-                        defaultSettings.virusGlowColor) : "yeet", 
-						defaultmapsettings.virusSpikes ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, defaultSettings.virusSpikesSize)) : style.stroke(),
-						//defaultmapsettings.virusSpikes ? style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)) : style.stroke(),
-						//style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), 
-						defaultmapsettings.showMass && 
-						(this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
-                        this.setMass(this.size), this.drawMass(style), (window.ExternalScripts && !window.legendmod5.optimizedMass)), void style.restore();
-						*/
                 }
             } 
 			else {
@@ -9944,10 +9936,6 @@ window.MouseClicks=[];
                 s = false;
             }
 			
-			//17/12/2020
-			if (this.size <= 38 && this.nick == ""){
-				return
-			}			
             /*if (dyinglight1load != "yes"){
                             style.globalAlpha = 1;
                             s = false;
