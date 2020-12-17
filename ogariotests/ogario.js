@@ -1,5 +1,5 @@
 /* Source script
-v2.967
+v2.968
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14022,7 +14022,7 @@ Game name     : ${i.displayName}<br/>
 					if (!legendmod.gridPic){
 		            legendmod.gridPic = new Image;
                     //legendmod.gridPic.src = "https://legendmod.ml/banners/grid3.png";
-					legendmod.gridPic.src = "https://legendmod.ml/banners/grid4.png";
+					legendmod.gridPic.src = "https://legendmod.ml/banners/grid5.png";
 					}
 					//this.ctx.drawImage(application.customSkinsCache["test_cached"],
 					/*this.ctx.drawImage(legendmod.gridPic,			
@@ -14032,7 +14032,7 @@ Game name     : ${i.displayName}<br/>
                         legendmod.mapMaxY - legendmod.mapMinY
                     );*/
 					this.ctx.drawImage(legendmod.gridPic,			
-						(legendmod.viewMinX - legendmod.mapMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width,
+						(legendmod.viewMinX - legendmod.mapMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width, 
 						(legendmod.viewMinY - legendmod.mapMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,
 						(legendmod.viewMaxX - legendmod.viewMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width,
 						(legendmod.viewMaxY - legendmod.viewMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,                    
