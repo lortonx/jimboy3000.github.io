@@ -1,5 +1,5 @@
 /* Source script
-v2.968
+v2.969
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9905,6 +9905,7 @@ window.MouseClicks=[];
                 s = true;
             }
             var color = this.color;
+
             if (LM.play || LM.playerCellsMulti.length) {
                 if (this.isPlayerCell || this.playerCellsMulti) {
                     if (defaultmapsettings.myCustomColor && ogarcopythelb.color && LM.gameMode != ":teams") {
@@ -9942,6 +9943,11 @@ window.MouseClicks=[];
                 style.globalAlpha = value;
                 s = false;
             }
+			
+			//17/12/2020
+			if (this.size <= 38 && this.nick == ""){
+				return
+			}			
             /*if (dyinglight1load != "yes"){
                             style.globalAlpha = 1;
                             s = false;
