@@ -1,5 +1,5 @@
 /* Source script
-v2.981
+v2.982
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9883,10 +9883,18 @@ window.MouseClicks=[];
                 style.lineWidth = 20; ///
                 style.strokeStyle = this.color; ///
                 style.stroke(); ///
+            } else if (window.test1){
+				if (!this.cellsColored[color]){ 
+					this.preDrawCellsColors(color);
+				}
+				else{
+					style.drawImage(this.cellsColored[color], this.x, this.y);
+				}				
             } else {
                 style.fillStyle = color;
                 style.fill();
             }
+			
             //}
             if (s) {
                 style.globalAlpha = value;
@@ -13696,7 +13704,8 @@ Game name     : ${i.displayName}<br/>
         averageRenderTime: 0,
 		renderingDelay: 0,
         lastRenderingDelay: 0,
-		pelletColored: [],		
+		pelletColored: [],	
+		cellsColored: [],
         setCanvas() {
             this.canvas = document.getElementById('canvas');
             this.ctx = this.canvas.getContext('2d');
@@ -14582,7 +14591,8 @@ Game name     : ${i.displayName}<br/>
 								this.preDrawPelletColors(food[length].color);
 							}
 							else{
-								ctx.drawImage(this.pelletColored[food[length].color], x, y);
+								ctx.drawImage(this.pelletColored[food[length].color], 0, 0);
+								//ctx.drawImage(this.pelletColored[food[length].color], x, y);
 								//ctx.drawImage(this.pelletColored[food[length].color], x, y, (10 + defaultSettings.foodSize)*2, (10 + defaultSettings.foodSize)*2);
 							}
 						}
@@ -15066,6 +15076,20 @@ Game name     : ${i.displayName}<br/>
             ctx.fill();
             this.pelletColored[color] = new Image();
             this.pelletColored[color].src = canvas.toDataURL();
+            canvas = null;
+        },	
+        preDrawCellsColors(color) {
+            this.cellsColored[color] = null;
+            var size = 512;
+            var canvas = document.createElement('canvas');
+            canvas.width = 2 * size,
+            canvas.height = 2 * size;
+            var ctx = canvas.getContext('2d');
+			ctx.arc(size, size, size, 0, this.pi2, false);
+			ctx.fillStyle = color;
+            ctx.fill();
+            this.cellsColored[color] = new Image();
+            this.cellsColored[color].src = canvas.toDataURL();
             canvas = null;
         },		
         preDrawIndicator() {
