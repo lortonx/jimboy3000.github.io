@@ -1,5 +1,5 @@
 /* Source script
-v2.998
+v2.999
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15112,10 +15112,10 @@ Game name     : ${i.displayName}<br/>
 			iCtx = imageCanvas.getContext("2d");
            
 			// draw the image onto the canvas
-			iCtx.drawImage(this.pellet, 0, 0);
+			iCtx.drawImage(this, 0, 0);
         
 			// get the ImageData for the image.
-			var imageData = iCtx.getImageData(0, 0, this.pellet.width, this.pellet.height);
+			var imageData = iCtx.getImageData(0, 0, this.width, this.height);
 			// get the pixel component data from the image Data.
 			this.pelletPixData = imageData.data;      
 			};	
@@ -15147,10 +15147,10 @@ Game name     : ${i.displayName}<br/>
 			iCtx = imageCanvas.getContext("2d");
            
 			// draw the image onto the canvas
-			iCtx.drawImage(this.pelletColored[color], 0, 0);
+			iCtx.drawImage(this, 0, 0);
         
 			// get the ImageData for the image.
-			var imageData = iCtx.getImageData(0, 0, this.pelletColored[color].width, this.pelletColored[color].height);
+			var imageData = iCtx.getImageData(0, 0, this.width, this.height);
 			// get the pixel component data from the image Data.
 			this.pelletColoredPixData[color] = imageData.data;      
 			};	
