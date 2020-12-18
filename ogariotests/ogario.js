@@ -1,5 +1,5 @@
 /* Source script
-v3.004
+v3.005
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14601,7 +14601,7 @@ Game name     : ${i.displayName}<br/>
 							for (var w = 0; w < this.pelletColored[food[length].color].width; w++) {
 								for (var h = 0; h < this.pelletColored[food[length].color].height; h++) {
 									// make sure the edges of the image are still inside the canvas
-									if (food[length].x + w < this.pelletColored[food[length].color].width && food[length].x + w > 0 && food[length].y + h > 0 && food[length].y + h < canvasElem.height) {
+									if (food[length].x + w < canvasElem.width && food[length].x + w > 0 && food[length].y + h > 0 && food[length].y + h < canvasElem.height) {
 										// get the position pixel from the image canvas
 										var iData = (h * this.pelletColored[food[length].color].width + w) * 4;
 										// get the position of the data we will write to on our main canvas
