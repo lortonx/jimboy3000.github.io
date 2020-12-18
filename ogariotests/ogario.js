@@ -1,5 +1,5 @@
 /* Source script
-v3.006
+v3.008
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14616,9 +14616,9 @@ Game name     : ${i.displayName}<br/>
 										cData[pData + 1] = this.pelletColoredPixData[food[length].color][iData + 1];
 										cData[pData + 2] = this.pelletColoredPixData[food[length].color][iData + 2];
 										// this is where alpha blending could be applied
-										if(cData[pData + 3] < 100){
+										//if(cData[pData + 3] < 10000){
 											cData[pData + 3] = this.pelletColoredPixData[food[length].color][iData + 3];
-										}
+										//}
 									}
 								}
 							}
