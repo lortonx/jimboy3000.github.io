@@ -1,5 +1,5 @@
 /* Source script
-v2.996
+v2.997
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9768,8 +9768,11 @@ window.MouseClicks=[];
             }
             //style.filter='grayscale(100%)';
             //
-			
-			if (!window.test1) style.beginPath()		
+			var node = null
+            if (defaultmapsettings.customSkins && LM.showCustomSkins) {
+                node = application.getCustomSkin(this.targetNick, this.color);
+			}				
+			if (!node) style.beginPath()		
             if (defaultmapsettings.jellyPhisycs && this.points.length) {
                 var point = this.points[0];
                 style.moveTo(point.x, point.y);
@@ -9794,9 +9797,9 @@ window.MouseClicks=[];
                 style.lineTo(this.x, this.y + this.size + 3);
             } 
 			else {
-				if (!window.test1) style.arc(this.x, this.y, y, 0, this.pi2, false);				
+				if (!node) style.arc(this.x, this.y, y, 0, this.pi2, false);				
 			}
-            if (!window.test1) style.closePath();
+            if (!node) style.closePath();
 			
 			//17/12/2020
 			if (this.size <= 38 && this.nick == "" && !this.isVirus && !this.isPlayerCell){
@@ -9887,7 +9890,7 @@ window.MouseClicks=[];
                 style.lineWidth = 20; ///
                 style.strokeStyle = this.color; ///
                 style.stroke(); ///
-            } else if (window.test1){
+            } else if (node){
 				if (!window.drawRender.cellsColored[color]){ 
 					window.drawRender.preDrawCellsColors(color);
 				}
@@ -9909,7 +9912,7 @@ window.MouseClicks=[];
                             style.globalAlpha = 1;
                             s = false;
 						}*/
-            var node = null;
+            //var node = null;
 
 
 
@@ -9926,7 +9929,7 @@ window.MouseClicks=[];
             }
             //lylko
             if (defaultmapsettings.customSkins && LM.showCustomSkins) {
-                node = application.getCustomSkin(this.targetNick, this.color);
+                //node = application.getCustomSkin(this.targetNick, this.color);
                 if (node) {
                     //if ((defaultmapsettings.transparentSkins || LM.play && defaultmapsettings.oppColors) && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
                     if (defaultmapsettings.transparentSkins && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin && defaultSettings.skinsAlpha<0.99) {
