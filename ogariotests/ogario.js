@@ -1,5 +1,5 @@
 /* Source script
-v2.996
+v2.997
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9893,8 +9893,7 @@ window.MouseClicks=[];
                 style.stroke(); ///
             } 
 			else{
-				//var node = application.getCustomSkin(this.targetNick, this.color)
-				if (node && defaultmapsettings.customSkins && LM.showCustomSkins){
+				if (node){
 					if (!window.drawRender.cellsColored[color]){ 
 						window.drawRender.preDrawCellsColors(color);
 					}
