@@ -1,5 +1,5 @@
 /* Source script
-v2.987
+v2.988
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9743,7 +9743,9 @@ window.MouseClicks=[];
             //					
             style.save();
 
-
+			if (this.isFood){
+				console.log('isFood')
+			}
             this.redrawed++;
             if (cellMoved) {
                 this.moveCell();
@@ -9888,7 +9890,7 @@ window.MouseClicks=[];
 					window.drawRender.preDrawCellsColors(color);
 				}
 				else{
-					style.drawImage(window.drawRender.cellsColored[color], 0, 0, y, y);
+					style.drawImage(window.drawRender.cellsColored[color], 0, 0, this.size, this.size);
 					//style.drawImage(window.drawRender.cellsColored[color], this.x, this.y);
 				}				
             } else {
