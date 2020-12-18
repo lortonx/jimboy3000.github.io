@@ -1,5 +1,5 @@
 /* Source script
-v2.992
+v2.993
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9891,7 +9891,6 @@ window.MouseClicks=[];
 				}
 				else{
 					style.drawImage(window.drawRender.cellsColored[color], this.x - this.size, this.y - this.size, this.size*2, this.size*2);
-					//style.drawImage(window.drawRender.cellsColored[color], this.x, this.y);
 				}				
             } else {
                 style.fillStyle = color;
@@ -15083,8 +15082,7 @@ Game name     : ${i.displayName}<br/>
         },	
         preDrawCellsColors(color) {
             this.cellsColored[color] = null;
-            var size = 64;
-			//var size = 128;
+			var size = 128;
             var canvas = document.createElement('canvas');
             canvas.width = 2 * size,
             canvas.height = 2 * size;
