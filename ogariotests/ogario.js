@@ -1,5 +1,5 @@
 /* Source script
-v2.997
+v2.996
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9870,10 +9870,6 @@ window.MouseClicks=[];
                     }
                 }
             }
-			var node = null
-            if (defaultmapsettings.customSkins && LM.showCustomSkins) {
-                node = application.getCustomSkin(this.targetNick, this.color);
-			}				
             if (window.multiboxPlayerEnabled && this.isPlayerCellMulti && this.spectator && LM.play) {
                 style.lineWidth = 20; ///
                 style.strokeStyle = this.color; ///
@@ -9887,26 +9883,24 @@ window.MouseClicks=[];
                 style.strokeStyle = this.color; ///
                 style.stroke(); //
             }
+			
             if (defaultmapsettings.cellContours) {
                 style.lineWidth = 20; ///
                 style.strokeStyle = this.color; ///
                 style.stroke(); ///
             } 
-			else{
-				if (node){
-					if (!window.drawRender.cellsColored[color]){ 
-						window.drawRender.preDrawCellsColors(color);
-					}
-					else{
-						style.drawImage(window.drawRender.cellsColored[color], this.x - this.size, this.y - this.size, this.size*2, this.size*2);
-					}	
+			else if (defaultmapsettings.customSkins && LM.showCustomSkins && window.test1){
+				if (!window.drawRender.cellsColored[color]){ 
+					window.drawRender.preDrawCellsColors(color);
 				}
-				else {
-					style.fillStyle = color;
-					style.fill();
+				else{
+					style.drawImage(window.drawRender.cellsColored[color], this.x - this.size, this.y - this.size, this.size*2, this.size*2);
 				}				
             } 
-
+			else {
+                style.fillStyle = color;
+                style.fill();
+            }
 			
             //}
             if (s) {
@@ -9918,7 +9912,7 @@ window.MouseClicks=[];
                             style.globalAlpha = 1;
                             s = false;
 						}*/
-            //var node = null;
+            var node = null;
 
 
 
@@ -9935,7 +9929,7 @@ window.MouseClicks=[];
             }
             //lylko
             if (defaultmapsettings.customSkins && LM.showCustomSkins) {
-                //node = application.getCustomSkin(this.targetNick, this.color);
+                node = application.getCustomSkin(this.targetNick, this.color);
                 if (node) {
                     //if ((defaultmapsettings.transparentSkins || LM.play && defaultmapsettings.oppColors) && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
                     if (defaultmapsettings.transparentSkins && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin && defaultSettings.skinsAlpha<0.99) {
