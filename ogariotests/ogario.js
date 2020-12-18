@@ -1,5 +1,5 @@
 /* Source script
-v2.999
+v3.000
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14583,42 +14583,47 @@ Game name     : ${i.displayName}<br/>
                 return;
             }
 			if (window.test1){
-				var canvasData = ctx.createImageData(canvasElem.width, canvasElem.height),
-				// get the pixel data
-				cData = canvasData.data;
-				for (var length = 0; length < food.length; length++) {
-                    if (!food[length].invisible) {
-						var x = food[length].x - 10 - defaultSettings.foodSize;
-						var y = food[length].y - 10 - defaultSettings.foodSize;						
-				// for ref the entity
-
-				// now iterate over the image we stored 
-				for (var w = 0; w < this.pelletColored[food[length].color].width; w++) {
-					for (var h = 0; h < this.pelletColored[food[length].color].height; h++) {
-						// make sure the edges of the image are still inside the canvas
-						if (food[length].x + w < this.pelletColored[food[length].color].width && food[length].x + w > 0 && food[length].y + h > 0 && food[length].y + h < canvasElem.height) {
-							// get the position pixel from the image canvas
-							var iData = (h * imgToDraw.width + w) * 4;
-							// get the position of the data we will write to on our main canvas
-							var pData = (~~ (food[length].x + w) + ~~ (food[length].y + h) * canvasElem.width) * 4;
-							
-							// copy the r/g/b/ and alpha values to our main canvas from 
-							// our image canvas data.
+				if (!this.pelletColored[food[length].color]){ 
+					this.preDrawPelletColors(food[length].color);
+				}
+				else{
+					var canvasData = ctx.createImageData(canvasElem.width, canvasElem.height),
+					// get the pixel data
+					cData = canvasData.data;
+					for (var length = 0; length < food.length; length++) {
+						if (!food[length].invisible) {
+							var x = food[length].x - 10 - defaultSettings.foodSize;
+							var y = food[length].y - 10 - defaultSettings.foodSize;						
+							// for ref the entity
 	
-							cData[pData] = this.pelletColoredPixData[food[length].color][iData];
-							cData[pData + 1] = this.pelletColoredPixData[food[length].color][iData + 1];
-							cData[pData + 2] = this.pelletColoredPixData[food[length].color][iData + 2];
-							// this is where alpha blending could be applied
-							if(cData[pData + 3] < 100){
-								cData[pData + 3] = this.pelletColoredPixData[food[length].color][iData + 3];
+							// now iterate over the image we stored 
+							for (var w = 0; w < this.pelletColored[food[length].color].width; w++) {
+								for (var h = 0; h < this.pelletColored[food[length].color].height; h++) {
+									// make sure the edges of the image are still inside the canvas
+									if (food[length].x + w < this.pelletColored[food[length].color].width && food[length].x + w > 0 && food[length].y + h > 0 && food[length].y + h < canvasElem.height) {
+										// get the position pixel from the image canvas
+										var iData = (h * imgToDraw.width + w) * 4;
+										// get the position of the data we will write to on our main canvas
+										var pData = (~~ (food[length].x + w) + ~~ (food[length].y + h) * canvasElem.width) * 4;
+							
+										// copy the r/g/b/ and alpha values to our main canvas from 
+										// our image canvas data.
+	
+										cData[pData] = this.pelletColoredPixData[food[length].color][iData];
+										cData[pData + 1] = this.pelletColoredPixData[food[length].color][iData + 1];
+										cData[pData + 2] = this.pelletColoredPixData[food[length].color][iData + 2];
+										// this is where alpha blending could be applied
+										if(cData[pData + 3] < 100){
+											cData[pData + 3] = this.pelletColoredPixData[food[length].color][iData + 3];
+										}
+									}
+								}
 							}
 						}
 					}
-					}
-					}
-				}
 				// now put all of that image data we just wrote onto the actual canvas.
-				ctx.putImageData(canvasData, 0, 0);				
+				ctx.putImageData(canvasData, 0, 0);	
+				}				
 			}
             else if (defaultmapsettings.optimizedFood && this.pellet) {
 
