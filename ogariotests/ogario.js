@@ -1,5 +1,5 @@
 /* Source script
-v3.002
+v3.003
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14583,14 +14583,15 @@ Game name     : ${i.displayName}<br/>
                 return;
             }
 			if (window.test1){
-				if (!this.pelletColored[food[length].color]){ 
-					this.preDrawPelletColors(food[length].color);
-				}
-				else{
-					var canvasData = ctx.createImageData(canvasElem.width, canvasElem.height),
-					// get the pixel data
-					cData = canvasData.data;
-					for (var length = 0; length < food.length; length++) {
+				var canvasData = ctx.createImageData(canvasElem.width, canvasElem.height),
+				// get the pixel data
+				cData = canvasData.data;
+					
+				for (var length = 0; length < food.length; length++) {
+					if (!this.pelletColored[food[length].color]){ 
+						this.preDrawPelletColors(food[length].color);
+					}
+					else{						
 						if (!food[length].invisible) {
 							var x = food[length].x - 10 - defaultSettings.foodSize;
 							var y = food[length].y - 10 - defaultSettings.foodSize;						
@@ -14620,10 +14621,12 @@ Game name     : ${i.displayName}<br/>
 								}
 							}
 						}
+						}
+						
 					}
 				// now put all of that image data we just wrote onto the actual canvas.
 				ctx.putImageData(canvasData, 0, 0);	
-				}				
+								
 			}
             else if (defaultmapsettings.optimizedFood && this.pellet) {
 
