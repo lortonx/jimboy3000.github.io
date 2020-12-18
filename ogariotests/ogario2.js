@@ -1,5 +1,5 @@
 /* Source script
-v2.825
+v3.010
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -39,7 +39,7 @@ IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
 ´´´´´´¶¶´´¶¶´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´¶¶´´¶¶´´´´´´
 ´´´´´´´¶¶¶¶´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´¶¶¶¶´´´´´´´
 */
-
+window.tempH = 6
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
 //var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
@@ -1397,6 +1397,7 @@ var displayText = {
         //hideSizes: 'Hide everything with size smaller than',
         profileNumber: 'Profiles Number',
         suckAnimation: 'Cell Eat [Sucking] Animation',
+		virusSpikes: 'Virus spikes',
         virusGlow: 'Virus Glow',
         borderGlow: 'Border Glow',
         zoomSpeedValue2: 'Szybkość zoomu',
@@ -1437,6 +1438,7 @@ var displayText = {
         showMapBorders: 'Granice mapy',
         showGhostCells: 'Duchy kulek (fps drop)',
         showGhostCellsInfo: 'Ghost cells info (confusing)',
+		stickyCell: 'Sticky cells (left button, hold right button)',
         //showPartyBots: 'Party bots',
         rotateMap: 'Rotate Map',
         showMiniMap: 'Pokaż minimapę',
@@ -1452,6 +1454,7 @@ var displayText = {
         virColors: 'Kolory wirusów',
         splitRange: 'Zasięg podziału',
         virusesRange: 'Zasięg wirusów',
+		showOptimisedGrid: 'Icon as grid (fps increase)',
         textStroke: 'Obwódki nazw i masy',
         namesStroke: 'Obwódki nazw',
         massStroke: 'Obwódki masy',
@@ -1460,6 +1463,7 @@ var displayText = {
         cursorTracking: 'Śledzenie kursora',
         teammatesInd: 'Wskaźniki graczy teamu',
         FBTracking: 'Facebook bubble tracker',
+		indicators: 'Indicator',
         mouseSplit: 'Left mouse button',
         mouseFeed: 'Right mouse button',
 		mouseCommand4: 'Mouse button 4',
@@ -1667,6 +1671,8 @@ var displayText = {
         sectorsFontSize: 'Rozmiar czcionki sektorów',
         sectorsX: 'Sectors X',
         sectorsY: 'Sectors Y',
+		virusSpikesRatio: 'Virus spikes ratio',
+		virusSpikesSize: 'Virus spikes size',
         cellsAlpha: 'Przezroczystość kulek',
         skinsAlpha: 'Przezroczystość skinów',
         virusAlpha: 'Przezroczystość wirusów',
@@ -1871,6 +1877,7 @@ var displayText = {
         //hideSizes: 'Hide everything with size smaller than',
         profileNumber: 'Profiles Number',
         suckAnimation: 'Cell Eat [Sucking] Animation',
+		virusSpikes: 'Virus spikes',
         virusGlow: 'Virus Glow',
         borderGlow: 'Border Glow',
         zoomSpeedValue2: 'Zoom speed',
@@ -1911,6 +1918,7 @@ var displayText = {
         showMapBorders: 'Show map borders',
         showGhostCells: 'Ghost cells (fps drop)',
         showGhostCellsInfo: 'Ghost cells info (confusing)',
+		stickyCell: 'Sticky cells (left button, hold right button)',
         //showPartyBots: 'Party bots',
         rotateMap: 'Rotate Map',
         showMiniMap: 'Show minimap',
@@ -1928,6 +1936,7 @@ var displayText = {
         qdsplitRange: 'Quick double split range', //Sonia2
         sdsplitRange: 'Slow double split range', //Sonia2
         virusesRange: 'Viruses range',
+		showOptimisedGrid: 'Icon as grid (fps increase)',
         textStroke: 'Names and mass stroke',
         namesStroke: 'Names stroke',
         massStroke: 'Mass stroke',
@@ -1936,6 +1945,7 @@ var displayText = {
         cursorTracking: 'Cursor tracking',
         teammatesInd: 'Teammates indicators',
         FBTracking: 'Facebook bubble tracker',
+		indicators: 'Indicator',	
         mouseSplit: 'Left mouse button',
         mouseFeed: 'Right mouse button',
 		mouseCommand4: 'Mouse button 4',
@@ -2142,6 +2152,8 @@ var displayText = {
         sectorsFontSize: 'Sectors font size',
         sectorsX: 'Sectors X',
         sectorsY: 'Sectors Y',
+		virusSpikesRatio: 'Virus spikes ratio',
+		virusSpikesSize: 'Virus spikes size',
         cellsAlpha: 'Cells transparency',
         skinsAlpha: 'Skins transparency',
         virusAlpha: 'Virus transparency',
@@ -2342,8 +2354,8 @@ var themePresets = {
         bordersWidth: 40,
         sectorsWidth: 40,
         sectorsFontSize: 1200,
-        cellsAlpha: 0.99,
-        skinsAlpha: 0.99,
+        cellsAlpha: 1,
+        skinsAlpha: 1,
         virusAlpha: 0.25,
         textAlpha: 1,
         backgroundAlpha: 0.6,
@@ -2353,6 +2365,7 @@ var themePresets = {
         borderGlowSize: 14,
         menuPreset: 'legendv2',
         graphics: 'high',
+		indicators: 'normal',
         menuMainColor: '#01d9cc',
         menuBtnTextColor: '#ffffff',
         menuPanelColor: '#00243e',
@@ -2507,8 +2520,8 @@ var themePresets = {
         bordersWidth: 40,
         sectorsWidth: 40,
         sectorsFontSize: 1200,
-        cellsAlpha: 0.99,
-        skinsAlpha: 0.99,
+        cellsAlpha: 1,
+        skinsAlpha: 1,
         virusAlpha: 0.4,
         textAlpha: 1,
         backgroundAlpha: 0.6,
@@ -2746,6 +2759,17 @@ var graphicMenus = {
         name: 'Very Low'
     }
 }
+var indicatorMenus = {
+    normal: {
+        name: 'Normal'
+    },
+    heart: {
+        name: 'Heart'
+    },
+    smile: {
+        name: 'Smile'
+    }
+}
 var escapeChar = {
     '&': '&amp;',
     '<': '&lt;',
@@ -2797,6 +2821,8 @@ var defaultSettings = {
     sectorsFontWeight: 400,
     sectorsX: 5,
     sectorsY: 5,
+	virusSpikesRatio: 0.46,
+	virusSpikesSize: 6,
     namesScale: 1,
     massScale: 3,
     virMassScale: 3,
@@ -2805,8 +2831,8 @@ var defaultSettings = {
     bordersWidth: 14,
     sectorsWidth: 40,
     sectorsFontSize: 1200,
-    cellsAlpha: 0.99,
-    skinsAlpha: 0.99,
+    cellsAlpha: 1,
+    skinsAlpha: 1,
     virusAlpha: 0.6,
     textAlpha: 1,
     backgroundAlpha: 0.6,
@@ -2817,6 +2843,7 @@ var defaultSettings = {
     virusStrokeSize: 14,
     menuPreset: 'legendv2',
     graphics: 'high',
+	indicators: 'normal',
     menuMainColor: '#01d9cc',
     menuBtnTextColor: '#ffffff',
     menuPanelColor: '#00243e',
@@ -2899,46 +2926,52 @@ var defaultSettings = {
     customBackground: '',
     customCursor: 'https://legendmod.ml/cursors/cursor_02.cur'
 }
+
 cimg2 = new Image;
 cimg2.src = defaultSettings.commanderImage2;
 cimg5 = new Image;
 cimg5.src = defaultSettings.commanderImage5;
 cimg6 = new Image;
 cimg6.src = defaultSettings.commanderImage6;
-cimg7 = new Image;
-cimg7.src = 'https://legendmod.ml/banners/iconLcForCanvas.png';
-cimgSpecialSkinEffectsCrown = new Image;
-cimgSpecialSkinEffectsCrown.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsCrown.png';
-cimgSpecialSkinEffectsMask = new Image;
-cimgSpecialSkinEffectsMask.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsMask.png';
-cimgSpecialSkinEffectsHat3 = new Image;
-cimgSpecialSkinEffectsHat3.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsHat3.png';
-cimgSpecialSkinEffectsVip = new Image;
-cimgSpecialSkinEffectsVip.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsVip.png';
-cimgSpecialSkinEffectsDdev = new Image;
-cimgSpecialSkinEffectsDdev.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSunGlasses.png';
-cimgSpecialSkinEffectsSunGlasses = new Image;
-cimgSpecialSkinEffectsSunGlasses.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSunGlasses.png';
-cimgSpecialSkinEffectsYoutube = new Image;
-cimgSpecialSkinEffectsYoutube.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsYoutube.png';
-cimgSpecialSkinEffectsJellyFish = new Image;
-cimgSpecialSkinEffectsJellyFish.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsJellyFish.png';
-cimgSpecialSkinEffectsModerator = new Image;
-cimgSpecialSkinEffectsModerator.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsModerator.png';
-cimgSpecialSkinEffectsUSA = new Image;
-cimgSpecialSkinEffectsUSA.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsUSA.png';
-cimgSpecialSkinEffectsHeart = new Image;
-cimgSpecialSkinEffectsHeart.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsHeart.png';
-cimgSpecialSkinEffectsSword = new Image;
-cimgSpecialSkinEffectsSword.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSword.png';
-cimgSpecialSkinEffectsSmoke = new Image;
-cimgSpecialSkinEffectsSmoke.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSmoke.png';
-cimgSpecialSkinEffectsLegendHeroes = new Image;
-cimgSpecialSkinEffectsLegendHeroes.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsLegendclan.png';
-cimgSpecialSkinEffectsLegendHeroes2 = new Image;
-cimgSpecialSkinEffectsLegendHeroes2.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsLegendclan2.png';
-cimgSpecialSkinEffectsShiro = new Image;
-cimgSpecialSkinEffectsShiro.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsShiro.png';
+//cimg7 = new Image;
+//cimg7.src = 'https://legendmod.ml/banners/iconLcForCanvas.png';
+function loadIconSpecialSkins(val){
+	eval('window.' + val + ' = new Image');
+	eval('window.' + val + '.src = "https://legendmod.ml/banners/' + val + '.png"')
+}
+/*
+iconSpecialSkinEffectsCrown = new Image;
+iconSpecialSkinEffectsCrown.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsCrown.png';
+iconSpecialSkinEffectsMask = new Image;
+iconSpecialSkinEffectsMask.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsMask.png';
+iconSpecialSkinEffectsHat3 = new Image;
+iconSpecialSkinEffectsHat3.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsHat3.png';
+iconSpecialSkinEffectsVip = new Image;
+iconSpecialSkinEffectsVip.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsVip.png';
+iconSpecialSkinEffectsDdev = new Image;
+iconSpecialSkinEffectsDdev.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsDdev.png';
+iconSpecialSkinEffectsSunGlasses = new Image;
+iconSpecialSkinEffectsSunGlasses.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSunGlasses.png';
+iconSpecialSkinEffectsYoutube = new Image;
+iconSpecialSkinEffectsYoutube.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsYoutube.png';
+iconSpecialSkinEffectsJellyFish = new Image;
+iconSpecialSkinEffectsJellyFish.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsJellyFish.png';
+iconSpecialSkinEffectsModerator = new Image;
+iconSpecialSkinEffectsModerator.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsModerator.png';
+iconSpecialSkinEffectsUSA = new Image;
+iconSpecialSkinEffectsUSA.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsUSA.png';
+iconSpecialSkinEffectsHeart = new Image;
+iconSpecialSkinEffectsHeart.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsHeart.png';
+iconSpecialSkinEffectsSword = new Image;
+iconSpecialSkinEffectsSword.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSword.png';
+iconSpecialSkinEffectsSmoke = new Image;
+iconSpecialSkinEffectsSmoke.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSmoke.png';
+iconSpecialSkinEffectsLegendclan = new Image;
+iconSpecialSkinEffectsLegendclan.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsLegendclan.png';
+iconSpecialSkinEffectsLegendclan2 = new Image;
+iconSpecialSkinEffectsLegendclan2.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsLegendclan2.png';
+iconSpecialSkinEffectsShiro = new Image;
+iconSpecialSkinEffectsShiro.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsShiro.png';
 iconSpecialSkinEffectsBird = new Image;
 iconSpecialSkinEffectsBird.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsBird.png';
 iconSpecialSkinEffectsButterfly = new Image;
@@ -3017,6 +3050,7 @@ iconSpecialSkinEffectsTiger = new Image;
 iconSpecialSkinEffectsTiger.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsTiger.png';
 iconSpecialSkinEffectsPanicAtDisco = new Image;
 iconSpecialSkinEffectsPanicAtDisco.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsPanicAtDisco.png';
+*/
 if (dyinglight1load == "yes") {
     cimgDyingLight = new Image;
     cimgDyingLight.src = defaultSettings.commanderImageDyingLight;
@@ -3071,7 +3105,7 @@ var defaultmapsettings = {
     spawnSpecialEffects: false,
     animatedRainbowColor: false,
     autoZoom: false,
-    unlockedFPS: 4, //unlockedFPS: false,
+    unlockedFPS: true, //unlockedFPS: false,
     autoHideNames: true,
     autoHideMass: true,
     autoHideFood: false,
@@ -3111,6 +3145,7 @@ var defaultmapsettings = {
     showMapBorders: true,
     showGhostCells: false,
     showGhostCellsInfo: false,
+	stickyCell: false,
     //showPartyBots: false,
     showMiniMap: true,
     rotateMap: true,
@@ -3120,14 +3155,15 @@ var defaultmapsettings = {
     showMiniMapGhostCells: true,
     oneColoredTeammates: false,
     optimizedFood: true,
-    rainbowFood: false,
-    oppColors: true,
+    rainbowFood: true,
+    oppColors: false,
     oppRings: true,
     virColors: false,
     splitRange: false,
     qdsplitRange: true, //Sonia2
     sdsplitRange: false, //Sonia2
     virusesRange: false,
+	showOptimisedGrid: true,
     textStroke: false,
     namesStroke: true,
     massStroke: true,
@@ -3193,6 +3229,7 @@ var defaultmapsettings = {
     cameraSpeed: 7,
     commanderDelay: 1E3,
     suckAnimation: false,
+	virusSpikes: false,
     virusGlow: false,
     borderGlow: false,
     limLB: 10,
@@ -3581,16 +3618,19 @@ window.MouseClicks=[];
             this.addSliderBox('#theme-main', 'virMassScale', 1, 5, 1);
             this.addSliderBox('#theme-main', 'strokeScale', 1, 4, 0.1);
             this.addSliderBox('#theme-main', 'foodSize', 1, 50, 1, 'setFoodColor');
+			this.addSliderBox('#theme-main', 'virusSpikesRatio', 0.03, 0.8, 0.01);
+			this.addSliderBox('#theme-main', 'virusSpikesSize', 1, 60, 1);
             this.addSliderBox('#theme-main', 'virusStrokeSize', 2, 40, 1);
             this.addSliderBox('#theme-main', 'bordersWidth', 2, 200, 2);
             this.addSliderBox('#theme-main', 'borderGlowSize', 0, 40, 1);
             this.addSliderBox('#theme-main', 'virusGlowSize', 0, 40, 1);
             this.addSliderBox('#theme-main', 'sectorsWidth', 2, 200, 2);
-            this.addSliderBox('#theme-main', 'cellsAlpha', 0.01, 0.99, 0.01);
-            this.addSliderBox('#theme-main', 'skinsAlpha', 0.01, 0.99, 0.01);
+            this.addSliderBox('#theme-main', 'cellsAlpha', 0.01, 1, 0.01);
+            this.addSliderBox('#theme-main', 'skinsAlpha', 0.01, 1, 0.01);
             this.addSliderBox('#theme-main', 'virusAlpha', 0, 1, 0.01);
             this.addSliderBox('#theme-main', 'textAlpha', 0.1, 1, 0.01);
-            this.addSliderBox('#theme-main', 'ghostCellsAlpha', 0.01, 0.99, 0.01);
+            this.addSliderBox('#theme-main', 'ghostCellsAlpha', 0.01, 1, 0.01);
+			this.addPresetBox('#theme-main', 'indicators', indicatorMenus, 'indicators', 'changeIndicators');			
             this.addPresetBox('#theme-menu', 'menuPreset', themeMenus, 'menuPreset', 'changeMenuPreset');
             this.addSliderBox('#theme-menu', 'menuOpacity', 0.1, 1, 0.01, 'setMenuOpacity');
             this.addColorBox('#theme-menu', 'menuMainColor', 'setMenuMainColor');
@@ -3657,7 +3697,7 @@ window.MouseClicks=[];
             this.addSliderBox('#theme-minimap', 'miniMapMyCellSize', 4, 10, 0.5);
             this.addSliderBox('#theme-minimap', 'miniMapMyCellStrokeSize', 0, 10, 1);
             this.addSliderBox('#theme-minimap', 'miniMapTeammatesSize', 4, 10, 0.5);
-            this.addSliderBox('#theme-minimap', 'miniMapGhostCellsAlpha', 0.01, 0.99, 0.01);
+            this.addSliderBox('#theme-minimap', 'miniMapGhostCellsAlpha', 0.01, 1, 0.01);
             this.addInputBox('#theme-images', 'customBackground', 'Image URL', 'setCustomBackground');
             this.addSliderBox('#theme-images', 'backgroundAlpha', 0, 1, 0.01);
             this.addPresetBox('#theme-images', 'graphics', graphicMenus, 'graphics', 'changeGraphics');
@@ -3785,12 +3825,15 @@ window.MouseClicks=[];
             this.setMenuTextColor();
             this.setMenuButtons();
             this.setMenuBg();
-        },
+        },	
+		changeIndicators(value) {},	
         changeMenuPreset(name) {
             this.changePreset(name, themeMenus);
             this.setMenu();
         },
-        changeGraphics(value) {},
+        changeGraphics(value) {
+			
+		},
         setMenuOpacity() {
             $('#helloContainer, #hotkeys, #exp-imp').css('opacity', defaultSettings.menuOpacity);
         },
@@ -5602,18 +5645,18 @@ window.MouseClicks=[];
             this.addOptions([], "boardGroup");
             this.addOptions(["quickResp", "autoResp", "spawnSpecialEffects"], "respGroup");
             this.addOptions(["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup");
-            this.addOptions(["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound", "potionsDrinker"], "massGroup");
+            this.addOptions(["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virusSpikes", "virMassShots", "massStroke", "virusSound", "potionsDrinker"], "massGroup");
             this.addOptions(["noSkins", "customSkins", "vanillaSkins", "jellyPhisycs", "suckAnimation", "videoSkins", "videoDestorted", "videoSkinsMusic2", "videoOthersSkinSoundLevelproportion"], "skinsGroup");
             this.addOptions(["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup");
             this.addOptions(["noColors", "myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow", 'cellContours', "animatedRainbowColor"], "transparencyGroup");
-            this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
+            this.addOptions(["showGrid", "showOptimisedGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
             this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChat", "showChatMyOwn", "showChatTranslation", "coloredNicks", "hidecountry", "universalChat"], "chatGroup");
             this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup");
             //            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "reverseTrick", "showPartyBots"], "helpersGroup"); //Sonia2
             //this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
-            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo"], "helpersGroup"); //Sonia2
+			this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo"], "helpersGroup"); //Sonia2
             //this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
-			this.addOptions(["mouseSplit", "mouseFeed", "mouseWheelClick", "mouseCommand4", "mouseCommand5"], "mouseGroup");
+			this.addOptions(["stickyCell", "mouseSplit", "mouseFeed", "mouseWheelClick", "mouseCommand4", "mouseCommand5"], "mouseGroup");
 //	
 			Settings.addPresetBox3('#mouseSplit', 'mouseSplit2', hotkeysCommand, 'preset', 'changeleftCmd');
 			$("#mouseSplit2 option[value=" + defaultmapsettings.leftClick + "]").prop('selected', 'selected').change();
@@ -6901,8 +6944,6 @@ window.MouseClicks=[];
                     var fixminidaxx = u - (minidaxx / 2);
                     var fixminidayy = d - (minidayy / 2);
 
-                    //if (fixminidaxx<0){ fixminidaxx=0; }
-                    //if (fixminidayy<0){ fixminidayy=0; }
                     this.miniMapCtx.rect(fixminidaxx, fixminidayy, minidaxx, minidayy);
                     this.miniMapCtx.stroke();
 
@@ -7286,12 +7327,17 @@ window.MouseClicks=[];
                 buf.setUint8(0, 0);
                 //console.log("socket",this.socket.url)
                 //console.log("window.wsinjected",window.wsinjected)
-                if (!window.wsinjected) { //if delta socket injected
+                //if (!window.wsinjected) { //if delta socket injected
                     buf.setUint16(1, 401, true);
-                } else {
-                    buf.setUint16(1, 404, true);
-                }
+                //} else {
+                //    buf.setUint16(1, 404, true);
+                //}
                 app.sendBuffer(buf);
+
+                buf.setUint8(0, 5);
+                buf.setUint16(1, 20, true);
+                app.sendBuffer(buf);
+
                 app.sendPartyData();
             }
             this.socket.onmessage = function(buf) {
@@ -8849,7 +8895,7 @@ window.MouseClicks=[];
         this.pi2 = 2 * Math.PI;
         this.virusColor = null;
         this.virusStroke = null;
-        this.nHeight = 6;
+        //this.nHeight = 6;
 
         this.updateNumPoints = function() {
             //adjustment of the number of contacts
@@ -9182,7 +9228,7 @@ window.MouseClicks=[];
                 var temp;
                 for (var i = 0; i < application.chatHistory.length; i++) {
                     if (application.chatHistory[i].nick == this.nick && (Date.now() - application.chatHistory[i].time < 15000)) {
-                        if (!application.chatHistory[i].message.includes('<img src') && !application.chatHistory[i].message.includes('DosAttack') &&
+                        if (!application.chatHistory[i].message.includes('emoticon') && !application.chatHistory[i].message.includes('<img src') && !application.chatHistory[i].message.includes('DosAttack') &&
                             !application.chatHistory[i].message.includes('DosFight') && !application.chatHistory[i].message.includes('DosRun') &&
                             !application.chatHistory[i].message.includes('https://agar.io/sip=151.80.91.73:1511') && this.nick != "") {
                             if (application.chatHistory[i].nick == $('#nick').val() || application.chatHistory[i].nick == application.lastSentNick) {
@@ -9323,13 +9369,15 @@ window.MouseClicks=[];
                 }
             }
         };
-        this.createStrokeVirusPath = function(shadowXpos, shadowYpos, zeroSizeMax, pixelSizeTargetMax = 6) {
-            const nAngelsOfVirus = ~~(45 * zeroSizeMax / 98);
+        this.createStrokeVirusPath = function(shadowXpos, shadowYpos, zeroSizeMax, pixelSizeTargetMax) {
+            //const nAngelsOfVirus = ~~(zeroSizeMax * 45 / 98);
+			const nAngelsOfVirus = ~~(zeroSizeMax * defaultSettings.virusSpikesRatio);
             const GROUPSIZE = this.pi2 / nAngelsOfVirus;
             const degreeStep = GROUPSIZE / 2;
             const ctxfx = new Path2D;
             const radiusX = zeroSizeMax - pixelSizeTargetMax;
-            const tileHeight = radiusX + this.nHeight;
+			const tileHeight = radiusX + pixelSizeTargetMax;
+            //const tileHeight = radiusX + this.nHeight;
             const n = this.pi2 + GROUPSIZE;
             for (let i = 0, j = degreeStep; i <= n; j = (i = i + GROUPSIZE) + degreeStep) {
                 ctxfx.lineTo(~~(shadowXpos + radiusX * Math.sin(i)), ~~(shadowYpos + radiusX * Math.cos(i)));
@@ -9400,6 +9448,15 @@ window.MouseClicks=[];
 				
 			}			
 		};
+		this.drawImageSpecialSkin = function(imageSpecial,b,c,d,e,style){
+			var tempImgSp = eval('window.' + imageSpecial)	
+			if (!tempImgSp) {	
+				loadIconSpecialSkins(imageSpecial)				
+			}			
+			else{			
+				if (tempImgSp.complete) style.drawImage(tempImgSp, b, c, d, e);	
+			}				
+		};
         this.drawSpecialSkin = function(style, y) {
             if (SpecialEffectPlayers[this.targetNick] && SpecialEffectPlayers[this.targetNick].split && SpecialEffectPlayers[this.targetNick].split(';')) {
                 var temp = SpecialEffectPlayers[this.targetNick].split(';')
@@ -9413,45 +9470,59 @@ window.MouseClicks=[];
                 }*/
 
                 if (this.SpecialEffect == "Hat" || this.SpecialEffect2 == "Hat") {
-                    //style.drawImage(cimgSpecialSkinEffectsHat3, this.x - 1/4 * y, this.y - 5/4 * y, y/2, y/2); 					
-                    style.drawImage(cimgSpecialSkinEffectsHat3, this.x - 1 / 2 * y, this.y - 3 / 2 * y, y, y);
+                    this.drawImageSpecialSkin("iconSpecialSkinEffectsHat3", this.x - 1 / 2 * y, this.y - 3 / 2 * y, y, y, style); 					
+                    //style.drawImage(iconSpecialSkinEffectsHat3, this.x - 1 / 2 * y, this.y - 3 / 2 * y, y, y);
+					
                     //style.drawImage(cimg7, this.x - 1/2 * y, this.y - 1/2 * y, y, y); //center 1/2 size 
-                    //style.drawImage(cimgSpecialSkinEffectsHat3, this.x - 1/2 * y, this.y - y, y, y); //top middle 1/2 size 
+                    //style.drawImage(iconSpecialSkinEffectsHat3, this.x - 1/2 * y, this.y - y, y, y); //top middle 1/2 size 
                     // the bigger the -y, the upper it draws
                 } else if (this.SpecialEffect == "JellyFish" || this.SpecialEffect2 == "JellyFish") {
-                    style.drawImage(cimgSpecialSkinEffectsJellyFish, this.x - 1 / 3 * y, this.y - 3 / 2 * y, y, y);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsJellyFish", this.x - 1 / 3 * y, this.y - 3 / 2 * y, y, y, style); 
+                    //style.drawImage(iconSpecialSkinEffectsJellyFish, this.x - 1 / 3 * y, this.y - 3 / 2 * y, y, y);
                 } else if (this.SpecialEffect == "King" || this.SpecialEffect2 == "King") {
-                    //style.drawImage(cimgSpecialSkinEffectsCrown	, this.x - 1/4 * y, this.y - 5/4 * y, y/2, y/2); 		
-                    style.drawImage(cimgSpecialSkinEffectsCrown, this.x - 1 / 4 * y, this.y - 5.3 / 4 * y, y / 2, y / 2);
+                    //style.drawImage(iconSpecialSkinEffectsCrown	, this.x - 1/4 * y, this.y - 5/4 * y, y/2, y/2); 
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsCrown", this.x - 1 / 4 * y, this.y - 5.3 / 4 * y, y / 2, y / 2, style); 
+                    //style.drawImage(iconSpecialSkinEffectsCrown, this.x - 1 / 4 * y, this.y - 5.3 / 4 * y, y / 2, y / 2);
                 }
                 if (this.SpecialEffect == "Smoke" || this.SpecialEffect2 == "Smoke") {
-                    style.drawImage(cimgSpecialSkinEffectsSmoke, this.x - 2 / 3 * y, this.y - 4 / 3 * y, y, y);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsSmoke", this.x - 2 / 3 * y, this.y - 4 / 3 * y, y, y, style);
+                    //style.drawImage(iconSpecialSkinEffectsSmoke, this.x - 2 / 3 * y, this.y - 4 / 3 * y, y, y);
                 } else if (this.SpecialEffect == "USA" || this.SpecialEffect2 == "USA") {
-                    style.drawImage(cimgSpecialSkinEffectsUSA, this.x - 5 / 7 * y, this.y - 1 / 2 * y, y * 2, y * 2);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsUSA", this.x - 5 / 7 * y, this.y - 1 / 2 * y, y * 2, y * 2, style);
+                    //style.drawImage(iconSpecialSkinEffectsUSA, this.x - 5 / 7 * y, this.y - 1 / 2 * y, y * 2, y * 2);
                 } else if (this.SpecialEffect == "SunGlasses" || this.SpecialEffect2 == "SunGlasses") {
-                    style.drawImage(cimgSpecialSkinEffectsSunGlasses, this.x - 0.85 * y, this.y - 1.1 * y, y * 1.7, y * 1.4);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsSunGlasses", this.x - 0.85 * y, this.y - 1.1 * y, y * 1.7, y * 1.4, style);
+                    //style.drawImage(iconSpecialSkinEffectsSunGlasses, this.x - 0.85 * y, this.y - 1.1 * y, y * 1.7, y * 1.4);
                 } else if (this.SpecialEffect == "Moderator" || this.SpecialEffect2 == "Moderator") {
-                    style.drawImage(cimgSpecialSkinEffectsModerator, this.x - 0.333 * y, this.y - 1.325 * y, y / 1.5, y / 6);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsModerator", this.x - 0.333 * y, this.y - 1.325 * y, y / 1.5, y / 6, style);
+                    //style.drawImage(iconSpecialSkinEffectsModerator, this.x - 0.333 * y, this.y - 1.325 * y, y / 1.5, y / 6);
                 } else if (this.SpecialEffect == "Turtle" || this.SpecialEffect2 == "Turtle") {
-                    style.drawImage(iconSpecialSkinEffectsTurtle, this.x - 0.999 * y, this.y - 0.810 * y, y / 0.5, y / 0.5);
-                    ///style.drawImage(iconSpecialSkinEffectsTurtle, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);					                     
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsTurtle", this.x - 0.999 * y, this.y - 0.810 * y, y / 0.5, y / 0.5, style);
+                    //style.drawImage(iconSpecialSkinEffectsTurtle, this.x - 0.999 * y, this.y - 0.810 * y, y / 0.5, y / 0.5);
+                    //style.drawImage(iconSpecialSkinEffectsTurtle, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);					                     
                 } else if (this.SpecialEffect == "Shiro" || this.SpecialEffect2 == "Shiro") {
-                    style.drawImage(cimgSpecialSkinEffectsShiro, this.x + 0.05 * y, this.y - 1.2 * y, y, y);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsShiro", this.x + 0.05 * y, this.y - 1.2 * y, y, y, style);
+                    //style.drawImage(iconSpecialSkinEffectsShiro, this.x + 0.05 * y, this.y - 1.2 * y, y, y);
                 } else if (this.SpecialEffect == "Bird" || this.SpecialEffect2 == "Bird") {
-                    style.drawImage(iconSpecialSkinEffectsBird, this.x - 0 * y, this.y - 1.3 * y, y / 1, y / 1);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsBird", this.x - 0 * y, this.y - 1.3 * y, y / 1, y / 1, style);
+                    //style.drawImage(iconSpecialSkinEffectsBird, this.x - 0 * y, this.y - 1.3 * y, y / 1, y / 1);
                 } else if (this.SpecialEffect == "AbsolutVodka" || this.SpecialEffect2 == "AbsolutVodka") {
-                    style.drawImage(iconSpecialSkinEffectsAbsolutVodka, this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsAbsolutVodka", this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1, style);
+                    //style.drawImage(iconSpecialSkinEffectsAbsolutVodka, this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1);
                     //style.drawImage(iconSpecialSkinEffectsAbsolutVodka, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4;							
                     //if (!window.xx1) window.xx1 = -0.1
                     //if (!window.xx2) window.xx2= -0.15
                     //if (!window.xx3) window.xx3 = 1.5
                     //if (!window.xx4) window.xx4 = 1			
                 } else if (this.SpecialEffect == "Chemistry" || this.SpecialEffect2 == "Chemistry") {
-                    style.drawImage(iconSpecialSkinEffectsChemistry, this.x + 0.3 * y, this.y - 1.1 * y, y / 2, y / 2);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsChemistry", this.x + 0.3 * y, this.y - 1.1 * y, y / 2, y / 2, style);
+                    //style.drawImage(iconSpecialSkinEffectsChemistry, this.x + 0.3 * y, this.y - 1.1 * y, y / 2, y / 2);
                 } else if (this.SpecialEffect == "Japan" || this.SpecialEffect2 == "Japan") {
-                    style.drawImage(iconSpecialSkinEffectsJapan, this.x - 0.8 * y, this.y - 1 * y, y / 0.5, y / 0.5);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsJapan", this.x - 0.8 * y, this.y - 1 * y, y / 0.5, y / 0.5, style);
+                    //style.drawImage(iconSpecialSkinEffectsJapan, this.x - 0.8 * y, this.y - 1 * y, y / 0.5, y / 0.5);
                 } else if (this.SpecialEffect == "Japan2" || this.SpecialEffect2 == "Japan2") {
-                    style.drawImage(iconSpecialSkinEffectsJapan2, this.x - 0.5 * y, this.y + 0.47 * y, y / 1, y / 1);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsJapan2", this.x - 0.5 * y, this.y + 0.47 * y, y / 1, y / 1, style);
+                    //style.drawImage(iconSpecialSkinEffectsJapan2, this.x - 0.5 * y, this.y + 0.47 * y, y / 1, y / 1);
                     /*style.drawImage(iconSpecialSkinEffectsJapan2, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
                         if (!window.xx1) window.xx1= 0.5
                         if (!window.xx2) window.xx2= -0.47
@@ -9459,80 +9530,110 @@ window.MouseClicks=[];
                         if (!window.xx4) window.xx4 = 1							
                         */
                 } else if (this.SpecialEffect == "Byzantium" || this.SpecialEffect2 == "Byzantium") {
-                    style.drawImage(iconSpecialSkinEffectsByzantium, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsByzantium", this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsByzantium, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Close" || this.SpecialEffect2 == "Close") {
-                    style.drawImage(iconSpecialSkinEffectsClose, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsClose", this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsClose, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Earth" || this.SpecialEffect2 == "Earth") {
-                    style.drawImage(iconSpecialSkinEffectsEarth, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsEarth", this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsEarth, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "FootStep" || this.SpecialEffect2 == "FootStep") {
-                    style.drawImage(iconSpecialSkinEffectsFootStep, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsFootStep", this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsFootStep, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Forward" || this.SpecialEffect2 == "Forward") {
-                    style.drawImage(iconSpecialSkinEffectsForward, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsForward", this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsForward, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Forever" || this.SpecialEffect2 == "Forever") {
-                    style.drawImage(iconSpecialSkinEffectsFriendsForever, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsFriendsForever", this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsFriendsForever, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Forever2" || this.SpecialEffect2 == "Forever2") {
-                    style.drawImage(iconSpecialSkinEffectsFriendsForever2, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsFriendsForever2", this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsFriendsForever2, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Forever3" || this.SpecialEffect2 == "Forever3") {
-                    style.drawImage(iconSpecialSkinEffectsFriendsForever3, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsFriendsForever3", this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsFriendsForever3, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Police" || this.SpecialEffect2 == "Police") {
-                    style.drawImage(iconSpecialSkinEffectsPolice, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsPolice", this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsPolice, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Police2" || this.SpecialEffect2 == "Police2") {
-                    style.drawImage(iconSpecialSkinEffectsPolice2, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsPolice2", this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsPolice2, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Unrest" || this.SpecialEffect2 == "Unrest") {
-                    style.drawImage(iconSpecialSkinEffectsUnrest, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsUnrest", this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsUnrest, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Eagle" || this.SpecialEffect2 == "Eagle") {
-                    style.drawImage(iconSpecialSkinEffectsEagle, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsEagle", this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsEagle, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "BobMarley" || this.SpecialEffect2 == "BobMarley") {
-                    style.drawImage(iconSpecialSkinEffectsBobMarley, this.x + 0.6 * y, this.y + 0.6 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsBobMarley", this.x + 0.6 * y, this.y + 0.6 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsBobMarley, this.x + 0.6 * y, this.y + 0.6 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Einstein" || this.SpecialEffect2 == "Einstein") {
-                    style.drawImage(iconSpecialSkinEffectsEinstein, this.x + 0.65 * y, this.y + 0.65 * y, y / 2.5, y / 2.5);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsEinstein", this.x + 0.65 * y, this.y + 0.65 * y, y / 2.5, y / 2.5, style);
+                    //style.drawImage(iconSpecialSkinEffectsEinstein, this.x + 0.65 * y, this.y + 0.65 * y, y / 2.5, y / 2.5);
                 } else if (this.SpecialEffect == "DeadTable" || this.SpecialEffect2 == "DeadTable") {
-                    style.drawImage(iconSpecialSkinEffectsDeadTable, this.x + 0.7 * y, this.y + 0.7 * y, y / 3, y / 3);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsDeadTable", this.x + 0.7 * y, this.y + 0.7 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsDeadTable, this.x + 0.7 * y, this.y + 0.7 * y, y / 3, y / 3);
                 } else if (this.SpecialEffect == "Kebab" || this.SpecialEffect2 == "Kebab") {
-                    style.drawImage(iconSpecialSkinEffectsKebab, this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsKebab", this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2, style);
+                    //style.drawImage(iconSpecialSkinEffectsKebab, this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2);
                 } else if (this.SpecialEffect == "Meditation" || this.SpecialEffect2 == "Meditation") {
-                    style.drawImage(iconSpecialSkinEffectsMeditation, this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsMeditation", this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2, style);
+                    //style.drawImage(iconSpecialSkinEffectsMeditation, this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2);
                 } else if (this.SpecialEffect == "Splash" || this.SpecialEffect2 == "Splash") {
-                    style.drawImage(iconSpecialSkinEffectsSplash, this.x - 1.15 * y, this.y - 1.3 * y, y / 0.36, y / 0.36);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsSplash", this.x - 1.15 * y, this.y - 1.3 * y, y / 0.36, y / 0.36, style);
+                    //style.drawImage(iconSpecialSkinEffectsSplash, this.x - 1.15 * y, this.y - 1.3 * y, y / 0.36, y / 0.36);
                 } else if (this.SpecialEffect == "Butterfly" || this.SpecialEffect2 == "Butterfly") {
-                    style.drawImage(iconSpecialSkinEffectsButterfly, this.x - 1 * y, this.y - 0.6 * y, y / 2, y / 4);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsButterfly", this.x - 1 * y, this.y - 0.6 * y, y / 2, y / 4, style);
+                    //style.drawImage(iconSpecialSkinEffectsButterfly, this.x - 1 * y, this.y - 0.6 * y, y / 2, y / 4);
                 } else if (this.SpecialEffect == "Mouse" || this.SpecialEffect2 == "Mouse") {
-                    style.drawImage(iconSpecialSkinEffectsMouse, this.x + 0.5 * y, this.y - 0.1 * y, y / 3, y / 1);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsMouse", this.x + 0.5 * y, this.y - 0.1 * y, y / 3, y / 1, style);
+                    //style.drawImage(iconSpecialSkinEffectsMouse, this.x + 0.5 * y, this.y - 0.1 * y, y / 3, y / 1);
                 } else if (this.SpecialEffect == "Sword" || this.SpecialEffect2 == "Sword") {
-                    style.drawImage(cimgSpecialSkinEffectsSword, this.x - 0.8 * y, this.y - 3 / 5 * y, y * 1.6, y * 1.6);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsSword", this.x - 0.8 * y, this.y - 3 / 5 * y, y * 1.6, y * 1.6, style);
+                    //style.drawImage(iconSpecialSkinEffectsSword, this.x - 0.8 * y, this.y - 3 / 5 * y, y * 1.6, y * 1.6);
                 }
                 if (this.SpecialEffect == "Mask" || this.SpecialEffect2 == "Mask") {
-                    style.drawImage(cimgSpecialSkinEffectsMask, this.x - 1 / 2 * y, this.y + 1 / 4 * y, y, y);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsMask", this.x - 1 / 2 * y, this.y + 1 / 4 * y, y, y, style);
+                    //style.drawImage(iconSpecialSkinEffectsMask, this.x - 1 / 2 * y, this.y + 1 / 4 * y, y, y);
                 } else if (this.SpecialEffect == "Heart" || this.SpecialEffect2 == "Heart") {
-                    style.drawImage(cimgSpecialSkinEffectsHeart, this.x - 1 / 2 * y, this.y + 1 / 3 * y, y, y);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsHeart", this.x - 1 / 2 * y, this.y + 1 / 3 * y, y, y, style);
+                    //style.drawImage(iconSpecialSkinEffectsHeart, this.x - 1 / 2 * y, this.y + 1 / 3 * y, y, y);
                 }
                 if (this.SpecialEffect == "Vip" || this.SpecialEffect2 == "Vip") {
-                    style.drawImage(cimgSpecialSkinEffectsVip, this.x - 1 / 8 * y, this.y - 5.3 / 4 * y, y / 5, y / 5);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsVip", this.x - 1 / 8 * y, this.y - 5.3 / 4 * y, y / 5, y / 5, style);
+                    //style.drawImage(iconSpecialSkinEffectsVip, this.x - 1 / 8 * y, this.y - 5.3 / 4 * y, y / 5, y / 5);
                 } else if (this.SpecialEffect == "Ddev" || this.SpecialEffect2 == "Ddev") {
-                    style.drawImage(cimgSpecialSkinEffectsDdev, this.x - 1 / 8 * y, this.y - 4.6 / 4 * y, y / 3, y / 5);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsDdev", this.x - 1 / 8 * y, this.y - 4.6 / 4 * y, y / 3, y / 5, style);
+                    //style.drawImage(iconSpecialSkinEffectsDdev, this.x - 1 / 8 * y, this.y - 4.6 / 4 * y, y / 3, y / 5);
                 } else if (this.SpecialEffect == "Youtube" || this.SpecialEffect2 == "Youtube") {
-                    style.drawImage(cimgSpecialSkinEffectsYoutube, this.x - 1 / 6 * y, this.y - 5.3 / 4 * y, y / 3, y / 3);
-                    //style.drawImage(cimgSpecialSkinEffectsYoutube, this.x - 1/2 * y, this.y - 3/2 * y, y, y); 
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsYoutube", this.x - 1 / 6 * y, this.y - 5.3 / 4 * y, y / 3, y / 3, style);
+                    //style.drawImage(iconSpecialSkinEffectsYoutube, this.x - 1 / 6 * y, this.y - 5.3 / 4 * y, y / 3, y / 3);
+                    //style.drawImage(iconSpecialSkinEffectsYoutube, this.x - 1/2 * y, this.y - 3/2 * y, y, y); 
                 } else if (this.SpecialEffect == "LegendHeroes" || this.SpecialEffect2 == "LegendHeroes") {
-                    style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsLegendclan", this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4, style);
+                    //style.drawImage(iconSpecialSkinEffectsLegendclan, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);
 
-                    /*style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
+                    /*style.drawImage(iconSpecialSkinEffectsLegendclan, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
                     if (!window.xx1) window.xx1 = 0.95
                     if (!window.xx2) window.xx2 = 5.3/4
                     if (!window.xx3) window.xx3 = 0.5
                     if (!window.xx4) window.xx4 = 4*/
                 } else if (this.SpecialEffect == "LegendClan" || this.SpecialEffect2 == "LegendClan") {
-                    style.drawImage(cimgSpecialSkinEffectsLegendHeroes2, this.x - 1 / 3 * y, this.y - 5.3 / 4 * y, y / 1.5, y / 6);
-                    /*style.drawImage(cimgSpecialSkinEffectsLegendHeroes2, this.x - window.xx5 * y, this.y - window.xx6 * y, y/window.xx7, y/window.xx8);				
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsLegendclan2", this.x - 1 / 3 * y, this.y - 5.3 / 4 * y, y / 1.5, y / 6, style);
+                    //style.drawImage(iconSpecialSkinEffectsLegendclan2, this.x - 1 / 3 * y, this.y - 5.3 / 4 * y, y / 1.5, y / 6);
+                    /*style.drawImage(iconSpecialSkinEffectsLegendclan2, this.x - window.xx5 * y, this.y - window.xx6 * y, y/window.xx7, y/window.xx8);				
                     if (!window.xx5) window.xx5 = 1/3
                     if (!window.xx6) window.xx6 = 5.3/4
                     if (!window.xx7) window.xx7 = 1.5
                     if (!window.xx8) window.xx8 = 6*/
                 } else if (this.SpecialEffect == "BabyBoss" || this.SpecialEffect2 == "BabyBoss") {
                     if (this.mass < 3000) {
-                        style.drawImage(iconSpecialSkinEffectsBabyBoss, this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);
+						this.drawImageSpecialSkin("iconSpecialSkinEffectsBabyBoss", this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5, style);
+                        //style.drawImage(iconSpecialSkinEffectsBabyBoss, this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);
                     } else {
-                        style.drawImage(iconSpecialSkinEffectsBabyBoss1, this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);
+						this.drawImageSpecialSkin("iconSpecialSkinEffectsBabyBoss1", this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5, style);
+                        //style.drawImage(iconSpecialSkinEffectsBabyBoss1, this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);
                     }
                 } else if (this.SpecialEffect == "Gladiator" || this.SpecialEffect2 == "Gladiator") {
                     var d = new Date();
@@ -9544,9 +9645,11 @@ window.MouseClicks=[];
                     style.filter = 'contrast(1.4) sepia(' + e + ')';
                     */
                     style.filter = 'hue-rotate(-' + n / 60 + 'turn)';
-                    style.drawImage(iconSpecialSkinEffectsGladiator, this.x - 0.85 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsGladiator", this.x - 0.85 * y, this.y - 1.2 * y, y / 1.5, y / 1.5, style);
+                    //style.drawImage(iconSpecialSkinEffectsGladiator, this.x - 0.85 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);
                 } else if (this.SpecialEffect == "Hero" || this.SpecialEffect2 == "Hero") {
-                    style.drawImage(iconSpecialSkinEffectsHero, this.x - 0.35 * y, this.y - 1.35 * y, y / 1.5, y / 1.5);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsHero", this.x - 0.35 * y, this.y - 1.35 * y, y / 1.5, y / 1.5, style);
+                    //style.drawImage(iconSpecialSkinEffectsHero, this.x - 0.35 * y, this.y - 1.35 * y, y / 1.5, y / 1.5);
                 } else if (this.SpecialEffect == "Hero1" || this.SpecialEffect2 == "Hero1") {
                     var d = new Date();
                     var n = d.getSeconds();
@@ -9559,26 +9662,52 @@ window.MouseClicks=[];
                     }
                     style.save();
                     style.globalAlpha = e
-                    style.drawImage(iconSpecialSkinEffectsHero1, this.x - 0.1 * y, this.y - 1.35 * y, y / 1, y / 1);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsHero1", this.x - 0.1 * y, this.y - 1.35 * y, y / 1, y / 1, style);
+                    //style.drawImage(iconSpecialSkinEffectsHero1, this.x - 0.1 * y, this.y - 1.35 * y, y / 1, y / 1);
                     style.restore();
 
                 } else if (this.SpecialEffect == "Hero2" || this.SpecialEffect2 == "Hero2") {
-                    style.drawImage(iconSpecialSkinEffectsHero2, this.x - 0.3 * y, this.y - 1.48 * y, y / 2, y / 2);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsHero2", this.x - 0.3 * y, this.y - 1.48 * y, y / 2, y / 2, style);
+                    //style.drawImage(iconSpecialSkinEffectsHero2, this.x - 0.3 * y, this.y - 1.48 * y, y / 2, y / 2);
                 } else if (this.SpecialEffect == "Key" || this.SpecialEffect2 == "Key") {
-                    style.drawImage(iconSpecialSkinEffectsKey, this.x + 0.4 * y, this.y - 1.15 * y, y / 2, y / 2);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsKey", this.x + 0.4 * y, this.y - 1.15 * y, y / 2, y / 2, style);
+                    //style.drawImage(iconSpecialSkinEffectsKey, this.x + 0.4 * y, this.y - 1.15 * y, y / 2, y / 2);
                 } else if (this.SpecialEffect == "MetalOfHonor" || this.SpecialEffect2 == "MetalOfHonor") {
-                    style.drawImage(iconSpecialSkinEffectsMetalOfHonor, this.x - 0.25 * y, this.y + 0.8 * y, y / 2, y / 2);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsMetalOfHonor", this.x - 0.25 * y, this.y + 0.8 * y, y / 2, y / 2, style);
+                    //style.drawImage(iconSpecialSkinEffectsMetalOfHonor, this.x - 0.25 * y, this.y + 0.8 * y, y / 2, y / 2);
                 } else if (this.SpecialEffect == "PeaceMaker" || this.SpecialEffect2 == "PeaceMaker") {
-                    style.drawImage(iconSpecialSkinEffectsPeaceMaker, this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 2);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsPeaceMaker", this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 2, style);
+                    //style.drawImage(iconSpecialSkinEffectsPeaceMaker, this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 2);
                 } else if (this.SpecialEffect == "Survivor" || this.SpecialEffect2 == "Survivor") {
-                    style.drawImage(iconSpecialSkinEffectsSurvivor, this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 1.5);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsSurvivor", this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 1.5, style);
+                    //style.drawImage(iconSpecialSkinEffectsSurvivor, this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 1.5);
                 } else if (this.SpecialEffect == "Tiger" || this.SpecialEffect2 == "Tiger") {
-                    style.drawImage(iconSpecialSkinEffectsTiger, this.x - 1.1 * y, this.y - 1.3 * y, y / 1.5, y / 1.5);
-                } else if (this.targetNick.includes("The Dying Light") || this.SpecialEffect == "RedArrow" || this.SpecialEffect2 == "RedArrow") {
-                    style.drawImage(cimg5, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsTiger", this.x - 1.1 * y, this.y - 1.3 * y, y / 1.5, y / 1.5, style);
+                    //style.drawImage(iconSpecialSkinEffectsTiger, this.x - 1.1 * y, this.y - 1.3 * y, y / 1.5, y / 1.5);
                 } else if (this.SpecialEffect == "PanicAtDisco" || this.SpecialEffect2 == "PanicAtDisco") {
-                    style.drawImage(iconSpecialSkinEffectsPanicAtDisco, this.x - 1 * y, this.y - 1 * y, y/1, y/4);	
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsPanicAtDisco", this.x - 1 * y, this.y - 1 * y, y/1, y/4, style);
+                    //style.drawImage(iconSpecialSkinEffectsPanicAtDisco, this.x - 1 * y, this.y - 1 * y, y/1, y/4);	
 					this.drawSpecialSkinDancer(style, y);
+                } else if (this.targetNick.includes("The Dying Light") || this.SpecialEffect == "RedArrow" || this.SpecialEffect2 == "RedArrow") {
+                    style.drawImage(cimg5, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);	
+                } else if (this.SpecialEffect == "HappyNewYear" || this.SpecialEffect2 == "HappyNewYear") {
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsHappyNewYear", this.x + 0.2 * y, this.y + 0.3 * y, y / 1.5, y / 1, style);
+                    //style.drawImage(iconSpecialSkinEffectsHappyNewYear, this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1);
+                    //style.drawImage(iconSpecialSkinEffectsHappyNewYear, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4;							
+                    //if (!window.xx1) window.xx1 = -0.1
+                    //if (!window.xx2) window.xx2= -0.15
+                    //if (!window.xx3) window.xx3 = 1.5
+                    //if (!window.xx4) window.xx4 = 1	
+                } else if (this.SpecialEffect == "Coffee" || this.SpecialEffect2 == "Coffee") {
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsCoffee", this.x + 0.2 * y, this.y + 0.3 * y, y / 1.5, y / 1, style);					
+                } else if (this.SpecialEffect == "ThanksGivings" || this.SpecialEffect2 == "ThanksGivings") {
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsThanksGivings", this.x + 0.2 * y, this.y + 0.3 * y, y / 1.5, y / 1, style);
+                } else if (this.SpecialEffect == "ChristmasTree" || this.SpecialEffect2 == "ChristmasTree") {
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsChristmasTree", this.x + 0.4 * y, this.y + 0.2 * y, y / 1.5, y / 1, style);
+                } else if (this.SpecialEffect == "SantaHat" || this.SpecialEffect2 == "SantaHat") {
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsSantaHa", this.x - 1.05 * y, this.y + 1.5 * y, y / 1.5, y / 1, style);
+                } else if (this.SpecialEffect == "Flag4July" || this.SpecialEffect2 == "Flag4July") {
+					this.drawImageSpecialSkin("iconSpecialSkinEffectsUSAFlag4July", this.x - 0.9 * y, this.y + 1.1 * y, y / 1.5, y / 1, style);				
                 } else if (this.SpecialEffect == "WhiteArrow" || this.SpecialEffect2 == "WhiteArrow") {
                     //style.drawImage(cimg2, this.x - y * 2, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
 
@@ -9614,7 +9743,9 @@ window.MouseClicks=[];
             //					
             style.save();
 
-
+			//if (this.isFood){ //food never happens here
+				//console.log('isFood')
+			//}
             this.redrawed++;
             if (cellMoved) {
                 this.moveCell();
@@ -9625,7 +9756,7 @@ window.MouseClicks=[];
             var value = style.globalAlpha;
             var s = false;
             var y = this.isFood ? this.size + defaultSettings.foodSize : this.size;
-            style.beginPath()
+            
 
             //26/7/2020
             if (LM.ws.includes("replay") && window.replayGreyScale) {
@@ -9637,7 +9768,11 @@ window.MouseClicks=[];
             }
             //style.filter='grayscale(100%)';
             //
-			
+			var node = null
+            if (defaultmapsettings.customSkins && LM.showCustomSkins) {
+                node = application.getCustomSkin(this.targetNick, this.color);
+			}				
+			if (!node) style.beginPath()		
             if (defaultmapsettings.jellyPhisycs && this.points.length) {
                 var point = this.points[0];
                 style.moveTo(point.x, point.y);
@@ -9645,7 +9780,8 @@ window.MouseClicks=[];
                     var point = this.points[i];
                     style.lineTo(point.x, point.y);
                 }
-            } else if (defaultmapsettings.jellyPhisycs && this.isVirus) {
+            } 
+			else if (defaultmapsettings.jellyPhisycs && this.isVirus) {
                 style.lineJoin = "miter"
                 var pointCount = 120;
                 var incremental = this.pi2 / pointCount;
@@ -9659,16 +9795,22 @@ window.MouseClicks=[];
                     )
                 }
                 style.lineTo(this.x, this.y + this.size + 3);
-            } else style.arc(this.x, this.y, y, 0, this.pi2, false);
-
-            style.closePath();
-
-
-
+            } 
+			else {
+				if (!node) style.arc(this.x, this.y, y, 0, this.pi2, false);				
+			}
+            if (!node) style.closePath();
+			
+			//17/12/2020
+			if (this.size <= 38 && this.nick == "" && !this.isVirus && !this.isPlayerCell){
+                style.fillStyle = this.color;
+                style.fill();				
+				style.restore();
+				return
+			}				
             //if (style.arc(this.x, this.y, y, 0, this.pi2, false), style.closePath(), this.isFood) {
             //    return style.fillStyle = this.color, style.fill(), void style.restore();
             //}						
-            if (!defaultmapsettings.jellyPhisycs) {
                 if (this.isVirus) {
                     //console.log("is not jelly");
                     /*if (dyinglight1load == "yes") {
@@ -9676,56 +9818,50 @@ window.MouseClicks=[];
                             style.drawImage(cimgDyingLightvirus, this.x - 0.8 * this.size, this.y - 0.8 * this.size, 1.6 * this.size, 1.6 * this.size);
                         } catch (e) {}
                     }*/
-                    return defaultmapsettings.transparentViruses && (style.globalAlpha *= defaultSettings.virusAlpha, s = true), defaultmapsettings.virColors && LM.play ? (style.fillStyle = application.setVirusColor(y), style.strokeStyle = application.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = defaultSettings.virusStrokeSize, defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
-                        defaultSettings.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), defaultmapsettings.showMass && (this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
-                        this.setMass(this.size), this.drawMass(style), (window.ExternalScripts && !window.legendmod5.optimizedMass)), void style.restore();
-                }
-            } else {
-                if (this.isVirus) {
-                    //console.log("is jelly");
-                    if (defaultmapsettings.transparentViruses) {
+                    if (defaultmapsettings.transparentViruses && defaultSettings.virusAlpha < 0.99) {
                         style.globalAlpha *= defaultSettings.virusAlpha;
-                        defaultmapsettings.isAlphaChanged = true;
+                        s = true;
                     }
-                    if (defaultmapsettings.virColors && LM.play) {
-                        style.fillStyle = application.setVirusColor(y);
-                        style.strokeStyle = application.setVirusStrokeColor(y);
-                    } else {
-                        style.fillStyle = defaultSettings.virusColor;
-                        style.strokeStyle = defaultSettings.virusStrokeColor;
+					if (defaultmapsettings.virColors && LM.play) {
+						style.fillStyle = application.setVirusColor(y); 
+						style.strokeStyle = application.setVirusStrokeColor(y);
+					}
+					else{ 
+						style.fillStyle = this.virusColor 
+						style.strokeStyle = this.virusStroke	
+					}
+					style.fill()
+					if (s) {
+                        style.globalAlpha = value;
+                        s = false;
                     }
-                    style.fill();
-                    if (defaultmapsettings.isAlphaChanged) {
-                        style.globalAlpha = defaultSettings.cellsAlpha;
-                        defaultmapsettings.isAlphaChanged = false;
-                    }
-                    style.lineWidth = defaultSettings.virusStrokeSize;
-                    if (defaultmapsettings.virusGlow) {
+					style.lineWidth = defaultSettings.virusStrokeSize
+					if (defaultmapsettings.virusGlow){
                         style.shadowBlur = defaultSettings.virusGlowSize;
-                        style.shadowColor = defaultSettings.virusGlowColor;
-                    }
-                    style.stroke();
+                        style.shadowColor = defaultSettings.virusGlowColor;						
+					}
+					if (defaultmapsettings.virusSpikes){
+						style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, defaultSettings.virusSpikesSize))
+					}
+					else{
+						style.stroke()
+					}
                     if (defaultmapsettings.showMass) {
                         this.setDrawing();
                         this.setDrawingScale();
                         this.setMass(this.size);
                         this.drawMass(style);
-                        /*if (window.ExternalScripts && !window.legendmod5.optimizedMass) {
-                            this.drawMerge(style);
-                        }
-                        if (defaultmapsettings.showChat) {
-                            this.drawChat(style);
-                        }*/
-                    }
-                    style.restore();
+                    }					
+					style.restore();
                     return;
                 }
-            }
-            if (defaultmapsettings.transparentCells) {
+             
+            if (defaultmapsettings.transparentCells && defaultSettings.cellsAlpha < 0.99) {
                 style.globalAlpha *= defaultSettings.cellsAlpha;
                 s = true;
             }
             var color = this.color;
+
             if (LM.play || LM.playerCellsMulti.length) {
                 if (this.isPlayerCell || this.playerCellsMulti) {
                     if (defaultmapsettings.myCustomColor && ogarcopythelb.color && LM.gameMode != ":teams") {
@@ -9754,20 +9890,29 @@ window.MouseClicks=[];
                 style.lineWidth = 20; ///
                 style.strokeStyle = this.color; ///
                 style.stroke(); ///
+            } else if (node){
+				if (!window.drawRender.cellsColored[color]){ 
+					window.drawRender.preDrawCellsColors(color);
+				}
+				else{
+					style.drawImage(window.drawRender.cellsColored[color], this.x - this.size, this.y - this.size, this.size*2, this.size*2);
+				}				
             } else {
                 style.fillStyle = color;
                 style.fill();
             }
+			
             //}
             if (s) {
                 style.globalAlpha = value;
                 s = false;
             }
+			
             /*if (dyinglight1load != "yes"){
                             style.globalAlpha = 1;
                             s = false;
 						}*/
-            var node = null;
+            //var node = null;
 
 
 
@@ -9784,10 +9929,12 @@ window.MouseClicks=[];
             }
             //lylko
             if (defaultmapsettings.customSkins && LM.showCustomSkins) {
-                node = application.getCustomSkin(this.targetNick, this.color);
+                //node = application.getCustomSkin(this.targetNick, this.color);
                 if (node) {
-                    if ((defaultmapsettings.transparentSkins || LM.play && defaultmapsettings.oppColors) && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
-                        style.globalAlpha *= defaultSettings.skinsAlpha;
+                    //if ((defaultmapsettings.transparentSkins || LM.play && defaultmapsettings.oppColors) && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
+                    if (defaultmapsettings.transparentSkins && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin && defaultSettings.skinsAlpha<0.99) {
+                        //console.log('transparent')
+						style.globalAlpha *= defaultSettings.skinsAlpha;
                         //s = true;
                     }
                     if (legendmod.gameMode != ":teams") {
@@ -9868,12 +10015,15 @@ window.MouseClicks=[];
 
             if (defaultmapsettings.noNames && !defaultmapsettings.showMass || cellMoved) {
                 //return;
-            } else {
+            } 
+			else {
                 var recursive = false;
                 if (!(!this.isPlayerCell && (recursive = application.setAutoHideCellInfo(y)) && defaultmapsettings.autoHideNames && defaultmapsettings.autoHideMass)){
                     this.setDrawing();
                     this.setDrawingScale();
-                    style.globalAlpha *= defaultSettings.textAlpha;
+					if ( defaultSettings.textAlpha != 1 ){
+						style.globalAlpha *= defaultSettings.textAlpha;
+					}
                     if (!(defaultmapsettings.noNames || recursive && defaultmapsettings.autoHideNames || this.isPlayerCell && defaultmapsettings.hideMyName || node && defaultmapsettings.hideTeammatesNames)) {
                         if (this.setNick(this.targetNick)) {
                             this.drawNick(style);
@@ -9935,7 +10085,6 @@ window.MouseClicks=[];
         clientVersionString: master.clientVersionString,
         xsupportprotoversion: master.xsupportprotoversion,
         time: Date.now(),
-		//newServer: true,
         serverTime: 0,
         serverTimeDiff: 0,
         //loggedInTime: 0,
@@ -11223,8 +11372,9 @@ window.MouseClicks=[];
                             window.agarioUID = localStorage.getItem("agarioUID");
                             window.agarioID = localStorage.getItem("agarioID");
                         }
-                        if (window.agarioUID && UIDcontroller) {
-                            UIDfunction();
+                        if (window.agarioUID && UIDcontroller && !window.checkOneTheUID) {
+                            window.checkOneTheUID = true;
+							UIDfunction();
                         }
                         if (window.testobjects2.split('"�')[1]) {
                             window.agarioEncodedUID = window.testobjects2.split('"�')[1].split('=')[0] + "%3D";
@@ -13028,6 +13178,7 @@ Game name     : ${i.displayName}<br/>
                     var g = view.readUInt8(offset++);
                     var b = view.readUInt8(offset++);
                     color = this.rgb2Hex(~~(0.9 * r), ~~(0.9 * g), ~~(0.9 * b));
+					//console.log(color)
                 }
 
                 if (4 & flags) {
@@ -13075,6 +13226,8 @@ Game name     : ${i.displayName}<br/>
                 //y = this.getY(y);	
                 //FOR COLOR
                 //if (!isVirus && !isFood && name != "" && this.gameMode != ":teams") {
+				//
+				//
                 if (!isVirus && !isFood && name != "" && this.gameMode != ":teams" && this.gameMode != ":party") { //28/6/2020
                     if (LM.cellcolors[name]) {
                         color = LM.cellcolors[name]
@@ -13330,7 +13483,7 @@ Game name     : ${i.displayName}<br/>
                     //console.log(i); i for food is 13
                     var size = ~~(cell.size * cell.size / 100);
 
-                    if (size > 13) {
+					if ((LM.integrity && size > 13) || (!LM.integrity && size > 14)) {
                         var mass
                         if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled - 1]) {
                             mass = this.selectBiggestCell ? spects[window.multiboxPlayerEnabled - 1].playerMaxMass : spects[window.multiboxPlayerEnabled - 1].playerMinMass;
@@ -13551,25 +13704,20 @@ Game name     : ${i.displayName}<br/>
         battleAreaMapCtx: null,
         pieChart: null,
         pellet: null,
+		pelletPixData: null,
         indicator: null,
         //
         counterTime: 0,
         renderTime: 0,
         averageRenderTime: 0,
 		renderingDelay: 0,
-        			
+        lastRenderingDelay: 0,
+		pelletColored: [],	
+		pelletColoredPixData: [],
+		cellsColored: [],
         setCanvas() {
             this.canvas = document.getElementById('canvas');
-			
-			this.canvas2 = document.createElement('canvas');
-	
-			this.ctx2 = this.canvas.getContext("2d");
-			this.ctx = this.canvas2.getContext('2d');
-			
-			this.CanvasGrid = document.createElement('canvas');
-			this.ctxGrid = this.CanvasGrid.getContext("2d");			
-			//context.drawImage(m_canvas, 0, 0);
-            //this.ctx2 = this.ctx.getContext('2d');
+            this.ctx = this.canvas.getContext('2d');
             this.canvas.onmousemove = function(event) {
                 LM.clientX = event.clientX;
                 LM.clientY = event.clientY;
@@ -13583,12 +13731,6 @@ Game name     : ${i.displayName}<br/>
             this.canvas.height = this.canvasHeight;
             LM.canvasWidth = this.canvasWidth;
             LM.canvasHeight = this.canvasHeight;
-			
-			this.canvas2.width = this.canvas.width;
-			this.canvas2.height = this.canvas.height;	
-
-			this.CanvasGrid.width = this.canvas.width;
-			this.CanvasGrid.height = this.canvas.height;
             //this.renderFrame();
         },
         setView() {
@@ -13636,38 +13778,11 @@ Game name     : ${i.displayName}<br/>
         sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         },
-		//drawExisted(token, newServ){
-		drawExistedGrid(){
-			this.ctx2.drawImage(this.CanvasGrid, 0, 0)	
-			this.ctxGrid.clearRect(0, 0, this.canvasWidth, this.canvasHeight);			
-		},
-		drawExisted(){	
-			/*if (token == "showGrid" && newServ){
-				this.ctxGrid.drawImage(this.canvas2, 0, 0)
-			}
-			else if (token == "showGrid"){
-				this.ctx2.drawImage(this.CanvasGrid, 0, 0)
-				return;
-			}*/
-			
-			//this.ctx.clearRect(0, 0, LM.mapSize, LM.mapSize);
-			this.ctx2.drawImage(this.canvas2, 0, 0)
-			if (window.testRenderingParts){
-				this.canvas2Image = new Image();
-				//this.canvas2Image.src = this.canvas2.toDataURL();
-				this.canvas2Image.src = this.canvas2.toDataURL();
-			}
-			this.ctx.clearRect(LM.mapMinX-100, LM.mapMinY-100, LM.mapMinX+2*LM.mapSize, LM.mapMinY+2*LM.mapSize);
-			//this.ctx.clearRect(LM.mapMinX-100, LM.mapMinY-100, LM.mapMinX+30000, LM.mapMinY+30000);
-			//this.ctx.clearRect(0, 0, LM.mapSize, LM.mapSize);
-			//this.ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);			
-		},
         renderFrame() {
-            this.renderStarted = performance.now()
-            //'renderFrame': async function() { //Sonia5
-            //await this.sleep(4); //Sonia5			
+        //'renderFrame': async function() { //Sonia5
+        //await this.sleep(4); //Sonia5			
             //this.ctx.start2D();
-
+			this.renderStarted = performance.now()
             LM.time = Date.now();
             for (i = 0; i < LM.cells.length; i++) {
                 LM.cells[i].moveCell();
@@ -13677,20 +13792,11 @@ Game name     : ${i.displayName}<br/>
             LM.sortCells();
             LM.compareCells();
             this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
-			this.ctx2.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
-			
-			
-            if (defaultmapsettings.showGrid) {
-				//this.ctx.save(); //
-				//if (LM.newServer){
-					//this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
-					this.drawGrid(this.ctxGrid, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);					
-					//LM.newServer = false;
-				//}
-				//this.ctx.restore();
-				//var token = "showGrid"
-				this.drawExistedGrid()	
-				//this.drawExisted(token, LM.newServer);						
+            if (defaultmapsettings.showOptimisedGrid) {
+				//
+            }
+            else if (defaultmapsettings.showGrid) {
+                this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
             }			
             this.ctx.save();
             
@@ -13700,9 +13806,18 @@ Game name     : ${i.displayName}<br/>
 			//this.ctx.scale(this.scale, this.scale);
             //this.ctx.translate(-this.camX, -this.camY);
 			
+            if (defaultmapsettings.showGrid && defaultmapsettings.showOptimisedGrid) {
+				this.drawCustomNewGrid()
+				/*if (!this.drawedGrid){
+					this.drawGridCached();				
+				}	
+				else if (this.drawedGrid){
+					this.drawCustomNewGrid();
+				}	*/
+			}				
             if (defaultmapsettings.showBgSectors) {
-                this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);	          
-			}
+                this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
+            }
             if (LM.gameMode === ':battleroyale') {
                 this.drawBattleArea(this.ctx);
             }
@@ -13711,8 +13826,7 @@ Game name     : ${i.displayName}<br/>
 
                 var tempborderwidthradius = defaultSettings.bordersWidth / 2;
                 this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
-				this.drawExisted();	         
-			}
+            }
             this.drawCommander();
             this.drawCommander2();
             if (defaultmapsettings.virusesRange) {
@@ -13721,16 +13835,13 @@ Game name     : ${i.displayName}<br/>
             //if (defaultmapsettings.waves ) {
 			if (LM.Waves && LM.Waves && LM.Waves.length>0) {	
 				this.drawWaves();
-            }	
-			
+            }				
             this.drawFood();
-			this.drawExisted();
             if (LM.playerCellsMulti.length) {
                 this.calMinMaxMulti();
             }
             this.calMinMax();
             this.drawHelpers();
-			this.drawExisted();
             this.drawGhostCells();
             for (var i = 0; i < LM.removedCells.length; i++) {
                 LM.removedCells[i].draw(this.ctx, true);
@@ -13749,7 +13860,6 @@ Game name     : ${i.displayName}<br/>
                     //this.drawRing(this.ctx,LM.cells[i].x,LM.cells[i].y,LM.cells[i].size,0.75,'#ffffff')
                 }
             }
-			
             this.drawMiscRings();
             //lylko
             defaultmapsettings.jellyPhisycs && LM.updateQuadtree(LM.cells); //
@@ -13760,18 +13870,8 @@ Game name     : ${i.displayName}<br/>
             if (defaultmapsettings.debug) {
                 this.drawViewPorts(this.ctx)
             }
-			this.ctx2.drawImage(this.canvas2, 0, 0);
             //
-			//this.ctx2.save()
-            //this.canvas2Image = new Image();
-            //this.canvas2Image.src = this.canvas2.toDataURL();
-			
-            /*this.canvas2Image.onload = function() {
-				this.ctx2.drawImage(this.canvas2Image, 0, 0);
-            };	*/		
-			//this.ctx2.restore();
-			//this.ctx2 = this.ctx.getContext('2d');
-			//
+
             this.ctx.restore();
 
             //this.ctx.finish2D();
@@ -13780,7 +13880,8 @@ Game name     : ${i.displayName}<br/>
                     this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
                 }
             }
-			this.renderingDelay = (performance.now() - this.renderStarted) * drawRender.fps
+			this.renderingDelay += (performance.now() - this.renderStarted) //* drawRender.fps
+			this.lastRenderingDelay = (performance.now() - this.renderStarted)
 			//console.log(this.renderingDelay)
             drawRender.renderTime += performance.now() - this.renderStarted
             drawRender.counterTime++
@@ -13797,6 +13898,7 @@ Game name     : ${i.displayName}<br/>
             //window.updateCellsClock=false
 
             //drawRender.render();
+			
         },
         drawHelpers() {
             if (LM.play || LM.playerCellsMulti.length) {
@@ -13860,6 +13962,9 @@ Game name     : ${i.displayName}<br/>
 
                 LM.cursorX = xc + (Math.cos(ang) * distance)
                 LM.cursorY = yc + (Math.sin(ang) * distance)
+				//
+				//LM.selected = null
+				//
                 LM.sendPosition()
             }
         },
@@ -13882,8 +13987,47 @@ Game name     : ${i.displayName}<br/>
                 LM.indexedCells[LM.selected].size,
                 0.75, '#ffffff')
         },
-        drawCustomBackgrounds() {
-            if (defaultSettings.customBackground && defaultSettings.customBackground != "") {
+		drawCustomNewGrid(grid) {	
+					if (!legendmod.gridPic){
+		            legendmod.gridPic = new Image;
+                    legendmod.gridPic.src = "https://legendmod.ml/banners/grid3.png";
+					//legendmod.gridPic.src = "https://legendmod.ml/banners/grid5.png";
+					}
+					//this.ctx.drawImage(application.customSkinsCache["test_cached"],
+					/*this.ctx.drawImage(legendmod.gridPic,			
+                        legendmod.mapMinX,
+                        legendmod.mapMinY,
+                        legendmod.mapMaxX - legendmod.mapMinX,
+                        legendmod.mapMaxY - legendmod.mapMinY
+                    );*/
+					//legendmod.viewX -> drawRender.camX
+					var minX = drawRender.camX - drawRender.canvasWidth / (2 * legendmod.viewScale)
+					var maxX = drawRender.camX + drawRender.canvasWidth / (2 * legendmod.viewScale)
+					var minY = drawRender.camY - drawRender.canvasHeight / (2 * legendmod.viewScale)
+					var maxY = drawRender.camY + drawRender.canvasHeight / (2 * legendmod.viewScale)					
+					this.ctx.drawImage(legendmod.gridPic,			
+						(minX - legendmod.mapMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width, 
+						(minY - legendmod.mapMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,
+						(maxX - minX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width,
+						(maxY - minY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,                    
+						minX,
+						minY,	
+						maxX - minX,
+						maxY - minY						
+                    );
+					/*this.ctx.drawImage(legendmod.gridPic,			
+						(legendmod.viewMinX - legendmod.mapMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width, 
+						(legendmod.viewMinY - legendmod.mapMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,
+						(legendmod.viewMaxX - legendmod.viewMinX) / (legendmod.mapMaxX - legendmod.mapMinX) * legendmod.gridPic.width,
+						(legendmod.viewMaxY - legendmod.viewMinY) / (legendmod.mapMaxY - legendmod.mapMinY) * legendmod.gridPic.height,                    
+						legendmod.viewMinX,
+						legendmod.viewMinY,	
+						legendmod.viewMaxX - legendmod.viewMinX,
+						legendmod.viewMaxY - legendmod.viewMinY						
+                    );*/					
+		},			
+        drawCustomBackgrounds() {		
+            if (defaultSettings.customBackground && defaultSettings.customBackground != "") {			
                 if (!legendmod.customMidPic) {
                     if (defaultSettings.customBackground) {
                         legendmod.customMidPic = new Image;
@@ -13909,7 +14053,7 @@ Game name     : ${i.displayName}<br/>
                     );
                     this.ctx.globalAlpha = this.prevctxglobalAlpha
                 }
-                if (defaultSettings.customBackground) {
+				if (defaultSettings.customBackground) {
                     this.prevctxglobalAlpha = this.ctx.globalAlpha;
                     this.ctx.globalAlpha = defaultSettings.backgroundAlpha
                     this.ctx.drawImage(
@@ -14117,6 +14261,35 @@ Game name     : ${i.displayName}<br/>
             ctx.stroke();
             ctx.globalAlpha = 1;
         },
+        /*drawGridCached() {
+			//for (var xx = 1; xx > 0; xx -= 0.025){
+				//xx = xx.toFixed(2);
+			xx = window.xx2
+			var i = document.createElement("canvas");
+			i.width = window.xx3
+			i.height = window.xx4
+            //i.width = LM.mapSize;
+            //i.height = LM.mapSize;
+            var $ = i.getContext("2d");
+            $.beginPath();			
+            $.strokeStyle = defaultSettings.gridColor;
+            $.globalAlpha = 1 * xx;
+            $.beginPath();
+            for (x = 0; x < i.width; x += 50) {
+                $.moveTo(x * xx - 0.5, 0);
+                $.lineTo(x * xx - 0.5, i.height * xx);
+            }
+            for (y = 0; y < i.height; y += 50) {
+                $.moveTo(0, y * xx - 0.5);
+                $.lineTo(i.width * xx, y * xx - 0.5);
+            }
+            $.stroke();
+            application.customSkinsCache["test" + "_cached"] = new Image;
+            application.customSkinsCache["test" + "_cached"].src = i.toDataURL();	
+			//}	
+			this.drawedGrid = true
+			console.log("test_grid_cached")
+        },		*/
         drawSectors(ctx, mapOffset, x, y, minX, minY, maxX, maxY, stroke, color, width, type) {
             if (mapOffset || !type) {
                 var posX = ~~((maxX - minX) / x);
@@ -14393,52 +14566,127 @@ Game name     : ${i.displayName}<br/>
                 LM.foodIsHidden = true;
                 return;
             }
-            if (!defaultmapsettings.rainbowFood) {
+            //if (!defaultmapsettings.rainbowFood) {
                 this.drawCachedFood(this.ctx, LM.food, this.scale);
-                return;
-            }
-            for (let length = 0; length < LM.food.length; length++) {
+                //return;
+            //}
+            /*for (let length = 0; length < LM.food.length; length++) {
                 LM.food[length].moveCell();
                 if (!LM.food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) LM.food[length].invisible = true
                 if (!LM.food[length].invisible) {
                     LM.food[length].draw(this.ctx);
                 }
-            }
-        },
+            }*/
+        },		
         drawCachedFood(ctx, food, scale, reset) {
             if (!food.length) {
                 return;
             }
-            if (defaultmapsettings.optimizedFood && this.pellet) {
+			if (window.test1){
+				var canvasData = ctx.createImageData(canvasElem.width/drawRender.scale, canvasElem.height/drawRender.scale),
+				// get the pixel data
+				cData = canvasData.data;
+					
+				for (var length = 0; length < food.length; length++) {
+					if (!this.pelletColored[food[length].color]){ 
+						this.preDrawPelletColors(food[length].color);
+					}
+					else{						
+						if (!food[length].invisible) {
+							var x = food[length].x - 10 - defaultSettings.foodSize;
+							var y = food[length].y - 10 - defaultSettings.foodSize;		
+							//x = x * drawRender.scale;
+							//y = y * drawRender.scale;
+							// for ref the entity
+	
+							// now iterate over the image we stored 
+							for (var w = 0; w < this.pelletColored[food[length].color].width; w++) {
+								for (var h = 0; h < this.pelletColored[food[length].color].height; h++) {
+									// make sure the edges of the image are still inside the canvas
+									//if (food[length].x + w < canvasElem.width && food[length].x + w > 0 && food[length].y + h > 0 && food[length].y + h < canvasElem.height) {
+										// get the position pixel from the image canvas
+										var iData = (h * this.pelletColored[food[length].color].width + w) * 4;
+										// get the position of the data we will write to on our main canvas
+										var pData = (~~ (food[length].x + w) + ~~ (food[length].y + h) * canvasElem.width) * 4;
+							
+										// copy the r/g/b/ and alpha values to our main canvas from 
+										// our image canvas data.
+	
+										cData[pData] = this.pelletColoredPixData[food[length].color][iData];
+										cData[pData + 1] = this.pelletColoredPixData[food[length].color][iData + 1];
+										cData[pData + 2] = this.pelletColoredPixData[food[length].color][iData + 2];
+										// this is where alpha blending could be applied
+										//if(cData[pData + 3] < 10000){
+											cData[pData + 3] = this.pelletColoredPixData[food[length].color][iData + 3];
+										//}
+									//}
+								}
+							}
+						}
+						}
+						
+					}
+				// now put all of that image data we just wrote onto the actual canvas.
+				ctx.putImageData(canvasData, 0, 0);	
+								
+			}
+            else if (defaultmapsettings.optimizedFood && this.pellet) {
 
                 for (var length = 0; length < food.length; length++) {
                     //
                     if (!food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true
                     //
                     if (!food[length].invisible) {
-                        var x = food[length].x - 10 - defaultSettings.foodSize;
-                        var y = food[length].y - 10 - defaultSettings.foodSize;
-                        ctx.drawImage(this.pellet, x, y);
+						var x = food[length].x - 10 - defaultSettings.foodSize;
+						var y = food[length].y - 10 - defaultSettings.foodSize;						
+						if (!defaultmapsettings.rainbowFood){                   
+							ctx.drawImage(this.pellet, x, y);
+						}
+						else{
+							if (!this.pelletColored[food[length].color]){ 
+								this.preDrawPelletColors(food[length].color);
+							}
+							else{
+								//ctx.drawImage(this.pelletColored[food[length].color], 0, 0);
+								ctx.drawImage(this.pelletColored[food[length].color], x, y);
+								//ctx.drawImage(this.pelletColored[food[length].color], x, y, (10 + defaultSettings.foodSize)*2, (10 + defaultSettings.foodSize)*2);
+							}
+						}
+						
                     }
                 }
-            } else {
-                ctx.beginPath();
+            } 
+			else {
                 for (var length = 0; length < food.length; length++) {
-                    if (!food[length].invisible) {
+					if (!food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true
+					ctx.beginPath();
+                    if (!food[length].invisible) {				
                         var x = food[length].x;
                         var y = food[length].y;
                         ctx.moveTo(x, y);
-                        if (scale < 0.16) {
+						if (scale < 0.08) {
+                        //if (scale < 0.16) {
                             const size = food[length].size + defaultSettings.foodSize;
+							
                             ctx.rect(x - size, y - size, 2 * size, 2 * size);
-                            continue;
+                            //continue;
                         }
-                        ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
+						else{
+							ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
+						}
+						if (defaultmapsettings.rainbowFood){ 
+							
+							ctx.fillStyle = food[length].color
+							
+						}
                     }
+				if (!defaultmapsettings.rainbowFood){ 				
+					ctx.fillStyle = defaultSettings.foodColor;
+				}
+                //ctx.globalAlpha = 1;
+                ctx.fill();					
                 }
-                ctx.fillStyle = defaultSettings.foodColor;
-                ctx.globalAlpha = 1;
-                ctx.fill();
+
             }
             if (reset) {
                 food = [];
@@ -14707,10 +14955,17 @@ Game name     : ${i.displayName}<br/>
             }
         },
         drawTeammatesInd(ctx, x, y, size) {
-            //console.log("t:"+ t + " e:" + e + " i:" + i + "s:" + s);
-            if (this.indicator) {
-                ctx.drawImage(this.indicator, x - 45, y - size - 90);
-            }
+			if (this.indicator){
+				if (defaultSettings.indicators=="normal"){
+					 ctx.drawImage(this.indicator, x - 45, y - size - 90);
+				}
+				else if (defaultSettings.indicators=="heart"){
+					ctx.drawImage(this.heartIndicator, x - 25, y - size - 90);
+				}
+				else if (defaultSettings.indicators=="smile"){
+					 ctx.drawImage(this.smileIndicator, x - 55, y - size - 150);
+				}
+			}	
         },
         drawPieChart() {
             this.pieChart || (this.pieChart = document.createElement('canvas'));
@@ -14846,21 +15101,90 @@ Game name     : ${i.displayName}<br/>
                 this.ctx.globalAlpha = 1;
                 this.ctx.shadowBlur = 0;
             }
-        },
+        },		
         preDrawPellet() {
             this.pellet = null;
             var size = 10 + defaultSettings.foodSize;
             var canvas = document.createElement('canvas');
             canvas.width = 2 * size,
-                canvas.height = 2 * size;
+            canvas.height = 2 * size;
             var ctx = canvas.getContext('2d');
             ctx.arc(size, size, size, 0, this.pi2, false);
             ctx.fillStyle = defaultSettings.foodColor;
             ctx.fill();
             this.pellet = new Image();
             this.pellet.src = canvas.toDataURL();
+			//
+			this.pelletPixData = null;
+			this.pellet.onload = function () {
+			// In memory canvas
+			var imageCanvas = document.createElement("canvas"),
+			iCtx = imageCanvas.getContext("2d");
+           
+			// draw the image onto the canvas
+			iCtx.drawImage(this, 0, 0);
+        
+			// get the ImageData for the image.
+			var imageData = iCtx.getImageData(0, 0, this.width, this.height);
+			// get the pixel component data from the image Data.
+			this.pelletPixData = imageData.data;      
+			};	
+			
+			//		
             canvas = null;
         },
+        preDrawPelletColors(color) {
+            this.pelletColored[color] = null;
+            var size = 10 + defaultSettings.foodSize;
+            var canvas = document.createElement('canvas');
+            canvas.width = 2 * size,
+            canvas.height = 2 * size;
+			//canvas.width = size,
+            //canvas.height = size;
+            var ctx = canvas.getContext('2d');
+            //ctx.arc(size/2, size/2, size/2, 0, this.pi2, false);
+			ctx.arc(size, size, size, 0, this.pi2, false);
+            //ctx.fillStyle = defaultSettings.foodColor;
+			ctx.fillStyle = color;
+            ctx.fill();
+            this.pelletColored[color] = new Image();
+            this.pelletColored[color].src = canvas.toDataURL();			
+			//
+			this.pelletColoredPixData[color] = null;
+			this.pelletColored[color].onload = function () {
+			// In memory canvas
+			var imageCanvas = document.createElement("canvas"),
+			iCtx = imageCanvas.getContext("2d");
+           
+			// draw the image onto the canvas
+			iCtx.drawImage(this, 0, 0);
+        
+			// get the ImageData for the image.
+			var imageData = iCtx.getImageData(0, 0, this.width, this.height);
+			var temp = imageData.data
+			// get the pixel component data from the image Data.
+			//console.log(imageData.data)
+			drawRender.pelletColoredPixData[color] = temp;      
+			};	
+			
+			//	
+            canvas = null;
+			
+        },	
+        preDrawCellsColors(color) {
+            this.cellsColored[color] = null;
+			var size = 128;
+            var canvas = document.createElement('canvas');
+            canvas.width = 2 * size,
+            canvas.height = 2 * size;
+            var ctx = canvas.getContext('2d');
+			ctx.arc(size, size, size, 0, this.pi2, false);
+			ctx.fillStyle = color;
+            ctx.fill();
+            this.cellsColored[color] = new Image();
+            this.cellsColored[color].src = canvas.toDataURL();
+            canvas = null;
+        },		
         preDrawIndicator() {
             this.indicator = null;
             var canvas = document.createElement('canvas');
@@ -14881,6 +15205,55 @@ Game name     : ${i.displayName}<br/>
             this.indicator.src = canvas.toDataURL();
             canvas = null;
         },
+		preDrawSmileIndicator() {
+			var canvas = document.getElementById('canvas');
+			canvas.x = 90;
+			canvas.y = 90;			
+			var ctx = canvas.getContext('2d');
+			ctx.lineWidth = 2;
+			ctx.fillStyle = defaultSettings.teammatesIndColor;
+			ctx.strokeStyle = defaultSettings.teammatesIndColor;
+			ctx.beginPath();
+			
+			ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
+			ctx.moveTo(110, 75);
+			ctx.arc(75, 75, 35, 0, Math.PI, false);  // Mouth (clockwise)
+			ctx.moveTo(65, 65);
+			ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // Left eye
+			ctx.moveTo(95, 65);
+			ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // Right eye
+			ctx.stroke();
+            this.smileIndicator = new Image();
+            this.smileIndicator.src = canvas.toDataURL();							
+		},
+        preDrawHeartIndicator() {			
+            this.heartIndicator = null;
+            var canvas = document.createElement('canvas');
+            canvas.width = 50;
+            canvas.height = 50;
+            var ctx = canvas.getContext('2d');
+            ctx.lineWidth = 2;
+            ctx.fillStyle = defaultSettings.teammatesIndColor;
+            ctx.strokeStyle = '#000000';
+			var d = Math.min(canvas.width, canvas.height);
+			var k = 0;
+
+			ctx.moveTo(k, k + d / 4);
+			ctx.quadraticCurveTo(k, k, k + d / 4, k);
+			ctx.quadraticCurveTo(k + d / 2, k, k + d / 2, k + d / 4);
+			ctx.quadraticCurveTo(k + d / 2, k, k + d * 3/4, k);
+			ctx.quadraticCurveTo(k + d, k, k + d, k + d / 4);
+			ctx.quadraticCurveTo(k + d, k + d / 2, k + d * 3/4, k + d * 3/4);
+			ctx.lineTo(k + d / 2, k + d);
+			ctx.lineTo(k + d / 4, k + d * 3/4);
+			ctx.quadraticCurveTo(k, k + d / 2, k, k + d / 4);
+
+			ctx.fill();
+			ctx.stroke();
+            this.heartIndicator = new Image();
+            this.heartIndicator.src = canvas.toDataURL();
+            canvas = null;
+        },		
         countFps(fake) {
             if (defaultmapsettings.showStatsFPS) {
                 var Time = Date.now();
@@ -14890,39 +15263,55 @@ Game name     : ${i.displayName}<br/>
                 if (Time - this.fpsLastRequest >= 1000) {
                     this.fps = this.renderedFrames;
                     this.renderedFrames = 0;
+					//
+					this.renderingDelay = 0
+					//
                     this.fpsLastRequest = Time;
                 }
                 this.renderedFrames++;
 
             }
         },
-        sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        },
         //'renderFrame': async function() { //Sonia5
         //await this.sleep(4); //Sonia5				
         render() {
-            //'render': async function() {
-            //if (!window.fpsM) window.fpsM = 4
-            //await drawRender.sleep(window.fpsM);	
 			
-
-			if (drawRender.renderingDelay<750){
-				drawRender.countFps();
-				drawRender.renderFrame();
-			}
-            else{			
-				//drop the frame instead of lag
-				//console.log('stoped')
-				drawRender.renderingDelay =	drawRender.renderingDelay - 750
-			}
-			/*
-            setTimeout(function() {
-                drawRender.render()
-            }, 0);
-			*/
-			
-            if (!defaultmapsettings.unlockedFPS) {
+			if (defaultmapsettings.unlockedFPS == true) {
+				
+				if (!window.abc) window.abc= 3
+				
+				if (!window.abb) window.abb=2000			
+                setTimeout(function() {							
+					if (drawRender.lastRenderingDelay * drawRender.fps > window.abb){
+						setTimeout(function() {window.requestAnimationFrame(drawRender.render);}, 4);
+						drawRender.lastRenderingDelay =0;
+						//console.log("cut2")					
+					}
+					else{
+						drawRender.countFps()
+						drawRender.renderFrame();					
+						for (var i = 0; i < 3; i++) {
+							if (drawRender.lastRenderingDelay<=window.abc + window.abc*i){
+							//if (drawRender.lastRenderingDelay<=10 && drawRender.averageRenderTime && parseFloat(drawRender.averageRenderTime) < 65 - i * 10){
+								drawRender.countFps()
+								drawRender.renderFrame();
+							}
+						}
+						drawRender.render()
+					}                    
+                }, 0);
+				
+            }	
+			else{
+			drawRender.countFps()
+			drawRender.renderFrame();
+			if(defaultmapsettings.unlockedFPS == "ultra2") { //old unlimited
+				//drawRender.render()
+                setTimeout(function() {
+                    drawRender.render()
+                }, 0);			
+			}			
+            else if (!defaultmapsettings.unlockedFPS) {
                 window.requestAnimationFrame(drawRender.render);
             } 
 			else if (defaultmapsettings.unlockedFPS == 2 || defaultmapsettings.unlockedFPS == 4 || defaultmapsettings.unlockedFPS == 8 || defaultmapsettings.unlockedFPS == 16 || defaultmapsettings.unlockedFPS == 32 || defaultmapsettings.unlockedFPS == 64) {
@@ -14933,12 +15322,13 @@ Game name     : ${i.displayName}<br/>
 			else if (defaultmapsettings.unlockedFPS == "ultra") {
                 setTimeout(function() {
                     for (var i = 0; i < 9; i++) {
+						
                         drawRender.countFps()
                         drawRender.renderFrame();
                     }
                     drawRender.render()
                 }, 0);
-            }
+            }				
             else if (defaultmapsettings.unlockedFPS == "sophisticated") {
                 if (!drawRender.averageRenderTime) {
                     window.renderDelay = 0;
@@ -14951,23 +15341,16 @@ Game name     : ${i.displayName}<br/>
                     //window.requestAnimationFrame(drawRender.render);
                     drawRender.render();
                 }, window.renderDelay);
-            } else {
-				
-                setTimeout(function() {
-                    drawRender.render()
-                }, 0);
             }
-			
-            //drawRender.render()
-            //}, 1000/window.fps);
-            //}, 0.1);
-            //window.requestAnimationFrame(drawRender.render);
+			}			
         },
         init() {
             this.setCanvas();
             this.resizeCanvas();
-            this.preDrawPellet();
+            this.preDrawPellet();							
             this.preDrawIndicator();
+			this.preDrawHeartIndicator();
+			this.preDrawSmileIndicator();
             window.requestAnimationFrame(drawRender.render);
         }
 
@@ -15316,8 +15699,7 @@ Game name     : ${i.displayName}<br/>
 			//console.log(event.which)
             if (2 == event.which) {
                 event.preventDefault();
-                if (application) {
-                    if (defaultmapsettings.mouseWheelClick) {
+                    if (application && defaultmapsettings.mouseWheelClick) {
 						if (!defaultmapsettings.middleClick){
 							application.multiboxswap()
 						}						
@@ -15328,8 +15710,9 @@ Game name     : ${i.displayName}<br/>
 					else {						
                         //application.sendCommand(10);
                     }
-                }
-
+					if (defaultmapsettings.stickyCell){
+						LM.selected=null
+					}
             } 
 			else if (defaultmapsettings.stickyCell) {
                 if (1 == event.which) {
@@ -15403,7 +15786,13 @@ Game name     : ${i.displayName}<br/>
 					if (hotkeysCommand[defaultmapsettings.mouse5Click].keyUp) hotkeysCommand[defaultmapsettings.mouse5Click].keyUp()
 				}					
 				else {
-					event.which == 1 ? (drawRender.LMB = false) : (drawRender.RMB = false)
+					//1=leftclick, 3=rightclick, 2=wheelclick
+					if (event.which == 1){ //for reversetrick or stickycell
+						drawRender.LMB = false						
+					}
+					else{
+						drawRender.RMB = false
+					}
 				}
     };
     window.onbeforeunload = function(event) {
@@ -16039,7 +16428,20 @@ function PreLcCelebration() {
         checkdate = date.yyyymmdd();
         if (checkdate == "11/12") {
             LcCelebration();
+			window.celebrationDay="LcDay"
         }
+		else if (checkdate == "12/31" || checkdate == "1/1"){
+			window.celebrationDay="NewYear"
+		}
+		else if (checkdate == "11/26"){
+			window.celebrationDay="ThanksGiving"
+		}
+		else if (checkdate == "12/25" || checkdate == "12/24"){
+			window.celebrationDay="Christmas"
+		}	
+		else if (checkdate == "7/4"){
+			window.celebrationDay="4July"
+		}		
     }
 }
 
@@ -16481,17 +16883,31 @@ var reverseTrick = {
             var xc = legendmod.playerCells[index].targetX //.x
             var yc = legendmod.playerCells[index].targetY //.y
 
-            /*var x = legendmod.indexedCells[legendmod.selected].targetX//.x
-            var y = legendmod.indexedCells[legendmod.selected].targetY//.y
+
+			var selectedToUse = reverseTrick.smallerEnemy;
+            var x = legendmod.indexedCells[selectedToUse].targetX//.x
+            var y = legendmod.indexedCells[selectedToUse].targetY//.y
             
             var a = xc - x
             var b = yc - y
-            var distance = Math.sqrt( a*a + b*b ) - (legendmod.indexedCells[legendmod.selected].size+legendmod.playerCells[index].size)
+            var distance = Math.sqrt( a*a + b*b ) - (legendmod.indexedCells[selectedToUse].size+legendmod.playerCells[index].size)
 
             var ang = Math.atan2(y - yc, x - xc);
             legendmod.cursorX= xc +(Math.cos(ang)*distance)
             legendmod.cursorY= yc +(Math.sin(ang)*distance)
-            legendmod.sendPosition()*/
+            legendmod.sendPosition()
+			//
+			//legendmod.sendSplit()
+			//legendmod.selected = null
+			//
+ 		
+			$('#pause-hud').text("Avoiding reverse split...");
+			$('#pause-hud').show()
+           setTimeout(function() {
+			$('#pause-hud').text(textLanguage.pause);
+			$('#pause-hud').hide()	
+            }, 500)				
+			
             console.log(reverseTrick)
         }
     }
