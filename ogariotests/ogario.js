@@ -1,5 +1,5 @@
 /* Source script
-v2.991
+v2.992
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15083,7 +15083,8 @@ Game name     : ${i.displayName}<br/>
         },	
         preDrawCellsColors(color) {
             this.cellsColored[color] = null;
-            var size = 128;
+            var size = 64;
+			//var size = 128;
             var canvas = document.createElement('canvas');
             canvas.width = 2 * size,
             canvas.height = 2 * size;
