@@ -1,5 +1,5 @@
 /* Source script
-v3.010
+v3.011
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14627,7 +14627,8 @@ Game name     : ${i.displayName}<br/>
 						
 					}
 				// now put all of that image data we just wrote onto the actual canvas.
-				ctx.putImageData(canvasData, 0, 0);	
+				ctx.drawImage(canvasData, 0, 0);
+				//ctx.putImageData(canvasData, 0, 0);	
 								
 			}
             else if (defaultmapsettings.optimizedFood && this.pellet) {
