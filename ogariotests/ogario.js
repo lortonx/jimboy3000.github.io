@@ -1,5 +1,5 @@
 /* Source script
-v3.000
+v3.001
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15157,6 +15157,7 @@ Game name     : ${i.displayName}<br/>
 			// get the ImageData for the image.
 			var imageData = iCtx.getImageData(0, 0, this.width, this.height);
 			// get the pixel component data from the image Data.
+			console.log(imageData.data)
 			this.pelletColoredPixData[color] = imageData.data;      
 			};	
 			
