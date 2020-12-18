@@ -1,5 +1,5 @@
 /* Source script
-v3.009
+v3.010
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14583,7 +14583,7 @@ Game name     : ${i.displayName}<br/>
                 return;
             }
 			if (window.test1){
-				var canvasData = ctx.createImageData(canvasElem.width, canvasElem.height),
+				var canvasData = ctx.createImageData(canvasElem.width/drawRender.scale, canvasElem.height/drawRender.scale),
 				// get the pixel data
 				cData = canvasData.data;
 					
@@ -14595,15 +14595,15 @@ Game name     : ${i.displayName}<br/>
 						if (!food[length].invisible) {
 							var x = food[length].x - 10 - defaultSettings.foodSize;
 							var y = food[length].y - 10 - defaultSettings.foodSize;		
-							x = x * drawRender.scale;
-							y = y * drawRender.scale;
+							//x = x * drawRender.scale;
+							//y = y * drawRender.scale;
 							// for ref the entity
 	
 							// now iterate over the image we stored 
 							for (var w = 0; w < this.pelletColored[food[length].color].width; w++) {
 								for (var h = 0; h < this.pelletColored[food[length].color].height; h++) {
 									// make sure the edges of the image are still inside the canvas
-									if (food[length].x + w < canvasElem.width && food[length].x + w > 0 && food[length].y + h > 0 && food[length].y + h < canvasElem.height) {
+									//if (food[length].x + w < canvasElem.width && food[length].x + w > 0 && food[length].y + h > 0 && food[length].y + h < canvasElem.height) {
 										// get the position pixel from the image canvas
 										var iData = (h * this.pelletColored[food[length].color].width + w) * 4;
 										// get the position of the data we will write to on our main canvas
@@ -14619,7 +14619,7 @@ Game name     : ${i.displayName}<br/>
 										//if(cData[pData + 3] < 10000){
 											cData[pData + 3] = this.pelletColoredPixData[food[length].color][iData + 3];
 										//}
-									}
+									//}
 								}
 							}
 						}
