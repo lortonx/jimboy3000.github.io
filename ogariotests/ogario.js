@@ -1,5 +1,5 @@
 /* Source script
-v3.010
+v2.997
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13704,7 +13704,6 @@ Game name     : ${i.displayName}<br/>
         battleAreaMapCtx: null,
         pieChart: null,
         pellet: null,
-		pelletPixData: null,
         indicator: null,
         //
         counterTime: 0,
@@ -13713,7 +13712,6 @@ Game name     : ${i.displayName}<br/>
 		renderingDelay: 0,
         lastRenderingDelay: 0,
 		pelletColored: [],	
-		pelletColoredPixData: [],
 		cellsColored: [],
         setCanvas() {
             this.canvas = document.getElementById('canvas');
@@ -14577,60 +14575,13 @@ Game name     : ${i.displayName}<br/>
                     LM.food[length].draw(this.ctx);
                 }
             }*/
-        },		
+        },
         drawCachedFood(ctx, food, scale, reset) {
             if (!food.length) {
                 return;
             }
-			if (window.test1){
-				var canvasData = ctx.createImageData(canvasElem.width/drawRender.scale, canvasElem.height/drawRender.scale),
-				// get the pixel data
-				cData = canvasData.data;
-					
-				for (var length = 0; length < food.length; length++) {
-					if (!this.pelletColored[food[length].color]){ 
-						this.preDrawPelletColors(food[length].color);
-					}
-					else{						
-						if (!food[length].invisible) {
-							var x = food[length].x - 10 - defaultSettings.foodSize;
-							var y = food[length].y - 10 - defaultSettings.foodSize;		
-							//x = x * drawRender.scale;
-							//y = y * drawRender.scale;
-							// for ref the entity
-	
-							// now iterate over the image we stored 
-							for (var w = 0; w < this.pelletColored[food[length].color].width; w++) {
-								for (var h = 0; h < this.pelletColored[food[length].color].height; h++) {
-									// make sure the edges of the image are still inside the canvas
-									//if (food[length].x + w < canvasElem.width && food[length].x + w > 0 && food[length].y + h > 0 && food[length].y + h < canvasElem.height) {
-										// get the position pixel from the image canvas
-										var iData = (h * this.pelletColored[food[length].color].width + w) * 4;
-										// get the position of the data we will write to on our main canvas
-										var pData = (~~ (food[length].x + w) + ~~ (food[length].y + h) * canvasElem.width) * 4;
-							
-										// copy the r/g/b/ and alpha values to our main canvas from 
-										// our image canvas data.
-	
-										cData[pData] = this.pelletColoredPixData[food[length].color][iData];
-										cData[pData + 1] = this.pelletColoredPixData[food[length].color][iData + 1];
-										cData[pData + 2] = this.pelletColoredPixData[food[length].color][iData + 2];
-										// this is where alpha blending could be applied
-										//if(cData[pData + 3] < 10000){
-											cData[pData + 3] = this.pelletColoredPixData[food[length].color][iData + 3];
-										//}
-									//}
-								}
-							}
-						}
-						}
-						
-					}
-				// now put all of that image data we just wrote onto the actual canvas.
-				ctx.putImageData(canvasData, 0, 0);	
-								
-			}
-            else if (defaultmapsettings.optimizedFood && this.pellet) {
+			
+            if (defaultmapsettings.optimizedFood && this.pellet) {
 
                 for (var length = 0; length < food.length; length++) {
                     //
@@ -15114,23 +15065,6 @@ Game name     : ${i.displayName}<br/>
             ctx.fill();
             this.pellet = new Image();
             this.pellet.src = canvas.toDataURL();
-			//
-			this.pelletPixData = null;
-			this.pellet.onload = function () {
-			// In memory canvas
-			var imageCanvas = document.createElement("canvas"),
-			iCtx = imageCanvas.getContext("2d");
-           
-			// draw the image onto the canvas
-			iCtx.drawImage(this, 0, 0);
-        
-			// get the ImageData for the image.
-			var imageData = iCtx.getImageData(0, 0, this.width, this.height);
-			// get the pixel component data from the image Data.
-			this.pelletPixData = imageData.data;      
-			};	
-			
-			//		
             canvas = null;
         },
         preDrawPelletColors(color) {
@@ -15148,28 +15082,8 @@ Game name     : ${i.displayName}<br/>
 			ctx.fillStyle = color;
             ctx.fill();
             this.pelletColored[color] = new Image();
-            this.pelletColored[color].src = canvas.toDataURL();			
-			//
-			this.pelletColoredPixData[color] = null;
-			this.pelletColored[color].onload = function () {
-			// In memory canvas
-			var imageCanvas = document.createElement("canvas"),
-			iCtx = imageCanvas.getContext("2d");
-           
-			// draw the image onto the canvas
-			iCtx.drawImage(this, 0, 0);
-        
-			// get the ImageData for the image.
-			var imageData = iCtx.getImageData(0, 0, this.width, this.height);
-			var temp = imageData.data
-			// get the pixel component data from the image Data.
-			//console.log(imageData.data)
-			drawRender.pelletColoredPixData[color] = temp;      
-			};	
-			
-			//	
+            this.pelletColored[color].src = canvas.toDataURL();
             canvas = null;
-			
         },	
         preDrawCellsColors(color) {
             this.cellsColored[color] = null;
