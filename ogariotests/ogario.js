@@ -1,5 +1,5 @@
 /* Source script
-v2.997
+v2.998
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13853,7 +13853,10 @@ Game name     : ${i.displayName}<br/>
 
                 LM.cells[i].draw(this.ctx);
 
-                if (drawRender.LMB && this.pointInCircle(LM.cursorX, LM.cursorY, LM.cells[i].x, LM.cells[i].y, LM.cells[i].size)) {
+                if (drawRender.LMB && this.pointInCircle(LM.cursorX, LM.cursorY, LM.cells[i].x, LM.cells[i].y, LM.cells[i].size)) 
+					//
+					console.log("LM.selected") 
+					//
                     LM.selected = LM.cells[i].id
                     //this.drawRing(this.ctx,LM.cells[i].x,LM.cells[i].y,LM.cells[i].size,0.75,'#ffffff')
                 }
@@ -15631,7 +15634,8 @@ Game name     : ${i.displayName}<br/>
 			else if (defaultmapsettings.stickyCell) {
                 if (1 == event.which) {
                     drawRender.LMB = true
-                } else {
+                } 
+				else {
                     drawRender.RMB = true
                 }
             } 
