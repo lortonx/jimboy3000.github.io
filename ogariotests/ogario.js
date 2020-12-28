@@ -1,5 +1,5 @@
 /* Source script
-v2.999
+v3.000
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13855,7 +13855,7 @@ Game name     : ${i.displayName}<br/>
 
                 if (drawRender.LMB && this.pointInCircle(LM.cursorX, LM.cursorY, LM.cells[i].x, LM.cells[i].y, LM.cells[i].size)) 
 					//
-					console.log("LM.selected") 
+					//console.log("LM.selected") 
 					//
                     LM.selected = LM.cells[i].id
                     //this.drawRing(this.ctx,LM.cells[i].x,LM.cells[i].y,LM.cells[i].size,0.75,'#ffffff')
@@ -13982,11 +13982,14 @@ Game name     : ${i.displayName}<br/>
                     LM.indexedCells[reverseTrick.smallerEnemy].size,
                     0.75, 'blue');
             }
-            LM.indexedCells[LM.selected] && this.drawRing(this.ctx,
+            if (LM.indexedCells[LM.selected]){
+				console.log("LM.indexedCells[LM.selected]")
+				this.drawRing(this.ctx,
                 LM.indexedCells[LM.selected].x,
                 LM.indexedCells[LM.selected].y,
                 LM.indexedCells[LM.selected].size,
                 0.75, '#ffffff')
+			}
         },
 		drawCustomNewGrid(grid) {	
 					if (!legendmod.gridPic){
