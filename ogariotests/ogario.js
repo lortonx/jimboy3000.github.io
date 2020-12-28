@@ -1,5 +1,5 @@
 /* Source script
-v3.000
+v3.001
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13983,7 +13983,7 @@ Game name     : ${i.displayName}<br/>
                     0.75, 'blue');
             }
             if (LM.indexedCells[LM.selected]){
-				console.log("LM.indexedCells[LM.selected]")
+				//console.log("LM.indexedCells[LM.selected]")
 				this.drawRing(this.ctx,
                 LM.indexedCells[LM.selected].x,
                 LM.indexedCells[LM.selected].y,
