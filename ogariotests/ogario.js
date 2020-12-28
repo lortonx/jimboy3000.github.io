@@ -1,5 +1,5 @@
 /* Source script
-v2.998
+v2.999
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13859,8 +13859,8 @@ Game name     : ${i.displayName}<br/>
 					//
                     LM.selected = LM.cells[i].id
                     //this.drawRing(this.ctx,LM.cells[i].x,LM.cells[i].y,LM.cells[i].size,0.75,'#ffffff')
-                }
             }
+            //}
             this.drawMiscRings();
             //lylko
             defaultmapsettings.jellyPhisycs && LM.updateQuadtree(LM.cells); //
