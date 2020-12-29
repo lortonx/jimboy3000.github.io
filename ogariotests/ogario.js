@@ -1,5 +1,5 @@
 /* Source script
-v3.008
+v3.009
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -16909,7 +16909,8 @@ function playReplayLM(temp) {
         legendmod.playingReplayServer = temp
         legendmod.playingReplayRewind = false
         legendmod.playingReplayRewindNow = false
-        if (parseInt(window.replayTiming) < 0) {
+        //if (parseInt(window.replayTiming) < 0) {
+		if (parseFloat(window.replayTiming) < 0) {	
             toastr.warning("<b>[SERVER]:</b> When time traveling, wierd things happens...").css("width", "350px");
             legendmod.playingReplayRewind = true
         }
@@ -16953,7 +16954,8 @@ function intervalPlayingRecord() {
             $('#pause-hud').text(textLanguage.pause);
             $('#pause-hud').hide()
         }
-        window.replayTiming2 = Math.abs(parseInt(window.replayTiming))
+		window.replayTiming2 = Math.abs(parseFloat(window.replayTiming))
+        //window.replayTiming2 = Math.abs(parseInt(window.replayTiming))
 
     } else {
         if (window.replayTiming2 != 0) {
@@ -16987,7 +16989,8 @@ function intervalPlayingRecord() {
 
             if (legendmod.playingReplayRecord < window.RecordedProtocol[tempo].length - 1 && legendmod.playingReplayRecord >= 0) {
                 if (legendmod.playingReplayRecord < window.RecordedProtocol[tempo].length - 2) intervalPlayingRecord();
-                if (parseInt(window.replayTiming) >= 0 || !legendmod.playingReplayRewindNow) {
+                if (parseFloat(window.replayTiming) >= 0 || !legendmod.playingReplayRewindNow) {
+				//if (parseInt(window.replayTiming) >= 0 || !legendmod.playingReplayRewindNow) {
                     legendmod.playingReplayRecord++
                 } else {
                     legendmod.playingReplayRecord--
