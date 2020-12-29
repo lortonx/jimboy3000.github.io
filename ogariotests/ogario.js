@@ -1,5 +1,5 @@
 /* Source script
-v3.010
+v3.011
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -12929,7 +12929,7 @@ Game name     : ${i.displayName}<br/>
             //if (!legendmod.integrity || (right - left) > 14000 && (bottom - top) > 14000) { //2020 jimboy3100
 
             //if (!LM.integrity && !this.mapOffsetFixed){ 
-			if (!this.mapOffsetFixed){ 
+			//if (!this.mapOffsetFixed){ 
 				var temp, temp2;
 				if ($("#server-token").val().includes("replay^")){
 					temp = $("#server-token").val().replace('replay^','').split('(')[0].split('.lm')[0];					
@@ -12945,7 +12945,7 @@ Game name     : ${i.displayName}<br/>
                 this.mapSize = Math.abs((left - right));
                 this.mapOffset = 0
             } 		
-
+			if (!this.mapOffsetFixed){ 
             if (!this.integrity || (right - left) > (this.mapSize - 142) && (bottom - top) > (this.mapSize - 142)) { //2020 jimboy3100
 				//if (this.integrity || this.ws.includes("replay")) {
 				if (this.integrity || temp2) {
@@ -12965,6 +12965,7 @@ Game name     : ${i.displayName}<br/>
                     this.mapMaxY = bottom
                 }
 				}
+			}
                 this.mapMidX = (this.mapMaxX + this.mapMinX) / 2; //Sonia3 -> this.mapMidX = -legendmod.mapOffsetX
                 this.mapMidY = (this.mapMaxY + this.mapMinY) / 2; //Sonia3 -> this.mapMidY = -legendmod.mapOffsetY				
 				this.mapOffsetFixed || (this.viewX = (right + left) / 2, this.viewY = (bottom + top) / 2);
