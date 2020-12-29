@@ -1,5 +1,5 @@
 /* Source script
-v3.004
+v3.005
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -12929,13 +12929,14 @@ Game name     : ${i.displayName}<br/>
             //if (!legendmod.integrity || (right - left) > 14000 && (bottom - top) > 14000) { //2020 jimboy3100
 
             //if (!LM.integrity && !this.mapOffsetFixed){ 
-            if (!this.integrity) {
-                this.mapSize = Math.abs((left - right));
-                this.mapOffset = 0
-            } else if (this.integrity || this.ws.includes("replay")) {
+			if (this.integrity || this.ws.includes("replay")) {
                 this.mapSize = 14142 //14142.13562
                 this.mapOffset = this.mapSize / 2
             }
+            else if (!this.integrity) {
+                this.mapSize = Math.abs((left - right));
+                this.mapOffset = 0
+            } 		
 
             if (!this.integrity || (right - left) > (this.mapSize - 142) && (bottom - top) > (this.mapSize - 142)) { //2020 jimboy3100
 
