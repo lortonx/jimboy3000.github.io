@@ -1,9 +1,8 @@
 /* Source script
-v3.001
+v3.002
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
-
 
 ´´´´´´´´´´´´´´´´´´´ ¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶´´´´´´´´´´´´´´´´´´´`
 ´´´´´´´´´´´´´´´´´¶¶¶¶¶¶´´´´´´´´´´´´´¶¶¶¶¶¶¶´´´´´´´´´´´´´´´´
@@ -12940,7 +12939,7 @@ Game name     : ${i.displayName}<br/>
 
             if (!this.integrity || (right - left) > (this.mapSize - 142) && (bottom - top) > (this.mapSize - 142)) { //2020 jimboy3100
 
-                if (this.integrity) {
+				if (this.integrity || LM.ws.includes("replay")) {
                     this.mapOffsetX = this.mapOffset - right;
                     this.mapOffsetY = this.mapOffset - bottom;
                     this.mapMinX = ~~(-this.mapOffset - this.mapOffsetX);
@@ -12957,7 +12956,11 @@ Game name     : ${i.displayName}<br/>
                 }
                 this.mapMidX = (this.mapMaxX + this.mapMinX) / 2; //Sonia3 -> this.mapMidX = -legendmod.mapOffsetX
                 this.mapMidY = (this.mapMaxY + this.mapMinY) / 2; //Sonia3 -> this.mapMidY = -legendmod.mapOffsetY					
-                this.mapOffsetFixed || (this.viewX = (right + left) / 2, this.viewY = (bottom + top) / 2);
+                if (!this.mapOffsetFixed){
+					this.viewX = (right + left) / 2; 
+					this.viewY = (bottom + top) / 2
+				}
+				//this.mapOffsetFixed || (this.viewX = (right + left) / 2, this.viewY = (bottom + top) / 2);
                 //console.log(left, top, right, bottom)
                 this.mapOffsetFixed = true;
                 //for SPECT
