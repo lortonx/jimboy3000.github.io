@@ -1,5 +1,5 @@
 /* Source script
-v3.006
+v3.007
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -12929,6 +12929,7 @@ Game name     : ${i.displayName}<br/>
             //if (!legendmod.integrity || (right - left) > 14000 && (bottom - top) > 14000) { //2020 jimboy3100
 
             //if (!LM.integrity && !this.mapOffsetFixed){ 
+			if (!this.mapOffsetFixed){ 
 			if (this.integrity || this.ws.includes("replay")) {
                 this.mapSize = 14142 //14142.13562
                 this.mapOffset = this.mapSize / 2
@@ -12957,8 +12958,9 @@ Game name     : ${i.displayName}<br/>
                     this.mapMaxX = right
                     this.mapMaxY = bottom
                 }
+				}
                 this.mapMidX = (this.mapMaxX + this.mapMinX) / 2; //Sonia3 -> this.mapMidX = -legendmod.mapOffsetX
-                this.mapMidY = (this.mapMaxY + this.mapMinY) / 2; //Sonia3 -> this.mapMidY = -legendmod.mapOffsetY					
+                this.mapMidY = (this.mapMaxY + this.mapMinY) / 2; //Sonia3 -> this.mapMidY = -legendmod.mapOffsetY				
 				this.mapOffsetFixed || (this.viewX = (right + left) / 2, this.viewY = (bottom + top) / 2);
                 //console.log(left, top, right, bottom)
                 this.mapOffsetFixed = true;
