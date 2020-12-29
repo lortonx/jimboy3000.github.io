@@ -1,5 +1,5 @@
 /* Source script
-v3.013
+v3.014
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -16978,10 +16978,12 @@ function intervalPlayingRecord() {
                         legendmod.handleMessage(window.RecordedProtocol[tempo][legendmod.playingReplayRecord])
                         legendmod.playingReplayRecord++
                     }
-                } else */if (window.replaySkippedLoops > 9 && legendmod.playingReplayRecord + 10 < window.RecordedProtocol[tempo].length - 1) {
+                } else */ if (window.replaySkippedLoops > 9 && legendmod.playingReplayRecord + 10 < window.RecordedProtocol[tempo].length - 1) {
                     for (var i = 0; i < 9; i++) { // 10 times more
-                        legendmod.handleMessage(window.RecordedProtocol[tempo][legendmod.playingReplayRecord])
-                        legendmod.playingReplayRecord++
+						setTimeout(function() {
+							legendmod.handleMessage(window.RecordedProtocol[tempo][legendmod.playingReplayRecord])
+							legendmod.playingReplayRecord++
+						}, 0);
                     }
                 }
             }
