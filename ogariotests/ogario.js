@@ -1,5 +1,5 @@
 /* Source script
-v3.019
+v3.020
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13846,13 +13846,13 @@ Game name     : ${i.displayName}<br/>
 			if (LM.Waves && LM.Waves && LM.Waves.length>0) {	
 				this.drawWaves();
             }	
-			this.drawHelpers();			
+				
             this.drawFood();
             if (LM.playerCellsMulti.length) {
                 this.calMinMaxMulti();
             }
             this.calMinMax();
-            
+            this.drawHelpers();		
             this.drawGhostCells();
             for (var i = 0; i < LM.removedCells.length; i++) {
                 LM.removedCells[i].draw(this.ctx, true);
@@ -14600,7 +14600,7 @@ Game name     : ${i.displayName}<br/>
             if (!food.length) {
                 return;
             }
-			
+			ctx.save();
             if (defaultmapsettings.optimizedFood && this.pellet) {
 
                 for (var length = 0; length < food.length; length++) {
@@ -14659,6 +14659,7 @@ Game name     : ${i.displayName}<br/>
                 }
 
             }
+			ctx.reset()
             if (reset) {
                 food = [];
             }
