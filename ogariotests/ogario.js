@@ -1,5 +1,5 @@
 /* Source script
-v3.025
+v3.026
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13999,7 +13999,7 @@ Game name     : ${i.displayName}<br/>
                     0.75, 'blue');
             }
             if (LM.indexedCells[LM.selected]){
-				//console.log("LM.indexedCells[LM.selected]")
+				console.log("LM.indexedCells[LM.selected]")
 				this.drawRing(this.ctx,
                 LM.indexedCells[LM.selected].x,
                 LM.indexedCells[LM.selected].y,
@@ -14630,7 +14630,7 @@ Game name     : ${i.displayName}<br/>
                 }
             } 
 			else if (this.pellet){
-				var temp = ctx.fillStyle
+				//var temp = ctx.fillStyle
                 for (var length = 0; length < food.length; length++) {
 					if (!food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true
 					ctx.beginPath();
@@ -14660,7 +14660,7 @@ Game name     : ${i.displayName}<br/>
                 //ctx.globalAlpha = 1;
                 ctx.fill();					
                 }
-				ctx.fillStyle = temp
+				//ctx.fillStyle = temp
             }
 			ctx.restore()
             if (reset) {
