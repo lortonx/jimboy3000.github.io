@@ -13999,7 +13999,7 @@ Game name     : ${i.displayName}<br/>
                     0.75, 'blue');
             }
             if (LM.indexedCells[LM.selected]){
-				console.log("LM.indexedCells[LM.selected]")
+				//console.log("LM.indexedCells[LM.selected]")
 				this.drawRing(this.ctx,
                 LM.indexedCells[LM.selected].x,
                 LM.indexedCells[LM.selected].y,
