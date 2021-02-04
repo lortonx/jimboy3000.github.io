@@ -1,5 +1,5 @@
 /* Source script
-v3.040
+v3.041
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9809,9 +9809,6 @@ window.MouseClicks=[];
 				if (!node){
 					if (!this.isVirus){
 						this.drawCircle(style, this.x, this.y, y, this.color)
-						style.fill();				
-						style.restore();
-						return
 					}
 					else{
 						style.arc(this.x, this.y, y, 0, this.pi2, false);
