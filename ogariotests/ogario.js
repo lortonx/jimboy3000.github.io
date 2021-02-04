@@ -1,5 +1,5 @@
 /* Source script
-v3.027
+v3.028
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14646,7 +14646,8 @@ Game name     : ${i.displayName}<br/>
                             //continue;
                         }
 						else{
-							ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
+							this.drawCircle(ctx, x, y, food[length].size + defaultSettings.foodSize)
+							//ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
 						}
 						if (defaultmapsettings.rainbowFood){ 
 							
@@ -14667,6 +14668,14 @@ Game name     : ${i.displayName}<br/>
                 food = [];
             }
         },
+		drawCircle = function(ctx, x, y, radius) {
+			ctx.lineWidth = radius * 2;
+			ctx.lineCap = 'round';
+			ctx.beginPath();
+			ctx.moveTo(x, y);
+			ctx.lineTo(x, y);
+			ctx.stroke();
+		},
         /*drawCachedFood(t, e, i, s) {
             if (e.length) {
                 if (defaultmapsettings.optimizedFood && this.pellet)
