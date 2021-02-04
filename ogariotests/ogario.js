@@ -1,5 +1,5 @@
 /* Source script
-v3.031
+v3.032
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14633,13 +14633,14 @@ Game name     : ${i.displayName}<br/>
                 for (var length = 0; length < food.length; length++) {
 					if (!food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true
 					ctx.beginPath();
-                    if (!food[length].invisible) {
+                    if (!food[length].invisible) { 
 						if (defaultmapsettings.rainbowFood){ 							
 							ctx.fillStyle = food[length].color							
 						}
 						else if (!defaultmapsettings.rainbowFood){ 				
 							ctx.fillStyle = defaultSettings.foodColor;
-						}						
+						}
+						
                         var x = food[length].x;
                         var y = food[length].y;
                         ctx.moveTo(x, y);
@@ -14651,7 +14652,7 @@ Game name     : ${i.displayName}<br/>
                             //continue;
                         }
 						else{
-							this.drawCircle(ctx, x, y, food[length].size + defaultSettings.foodSize, food[length].color)
+							this.drawCircle(ctx, x, y, food[length].size + defaultSettings.foodSize, ctx.fillStyle)
 							//ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
 						}
 
@@ -14672,6 +14673,7 @@ Game name     : ${i.displayName}<br/>
 			ctx.moveTo(x, y);
 			ctx.lineTo(x, y);
 			ctx.lineTo(x, y);
+			ctx.fillStyle = color
 			ctx.stroke();
 		},
         /*drawCachedFood(t, e, i, s) {
