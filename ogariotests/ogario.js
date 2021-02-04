@@ -1,5 +1,5 @@
 /* Source script
-v3.033
+v3.034
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14634,31 +14634,32 @@ Game name     : ${i.displayName}<br/>
 					if (!food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true
 					ctx.beginPath();
                     if (!food[length].invisible) { 
+						var temp;
 						if (defaultmapsettings.rainbowFood){ 							
-							ctx.fillStyle = food[length].color							
+							ctx.fillStyle = food[length].color	
+							temp = food[length].color 
 						}
 						else if (!defaultmapsettings.rainbowFood){ 				
 							ctx.fillStyle = defaultSettings.foodColor;
+							temp = defaultSettings.foodColor;
 						}
 						
                         var x = food[length].x;
                         var y = food[length].y;
-                        ctx.moveTo(x, y);
+                        /*ctx.moveTo(x, y);
 						if (scale < 0.08) {
-                        //if (scale < 0.16) {
                             const size = food[length].size + defaultSettings.foodSize;
 							
                             ctx.rect(x - size, y - size, 2 * size, 2 * size);
                             //continue;
                         }
-						else{
-							this.drawCircle(ctx, x, y, food[length].size + defaultSettings.foodSize, ctx.fillStyle)
+						else{*/
+							this.drawCircle(ctx, x, y, food[length].size + defaultSettings.foodSize, temp)
 							//ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
-						}
-
+						//}
                     }
 
-                ctx.fill();					
+                //ctx.fill();					
                 }
             }
 			ctx.restore()
