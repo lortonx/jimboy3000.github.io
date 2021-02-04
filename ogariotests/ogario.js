@@ -1,5 +1,5 @@
 /* Source script
-v3.043
+v3.044
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9740,7 +9740,7 @@ window.MouseClicks=[];
 			ctx.lineWidth = radius * 2;
 			ctx.lineCap = 'round';
 			ctx.beginPath();
-			ctx.moveTo(x, y);
+			//ctx.moveTo(x, y);
 			ctx.lineTo(x, y);
 			ctx.strokeStyle = color;
 			ctx.stroke();
@@ -9915,7 +9915,8 @@ window.MouseClicks=[];
 				else{
 					style.drawImage(window.drawRender.cellsColored[color], this.x - this.size, this.y - this.size, this.size*2, this.size*2);
 				}				
-            } else{			
+            //} else{		
+			} else{
                 //style.fillStyle = color;
                 //style.fill();
 				
@@ -14690,9 +14691,8 @@ Game name     : ${i.displayName}<br/>
 			ctx.lineWidth = radius * 2;
 			ctx.lineCap = 'round';
 			ctx.beginPath();
-			ctx.moveTo(x, y);
+			//ctx.moveTo(x, y);
 			ctx.lineTo(x, y);
-			//ctx.lineTo(x, y);
 			ctx.strokeStyle = color;
 			ctx.stroke();
 		},
