@@ -1,5 +1,5 @@
 /* Source script
-v3.028
+v3.029
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14668,7 +14668,7 @@ Game name     : ${i.displayName}<br/>
                 food = [];
             }
         },
-		drawCircle = function(ctx, x, y, radius) {
+		drawCircle(ctx, x, y, radius) {
 			ctx.lineWidth = radius * 2;
 			ctx.lineCap = 'round';
 			ctx.beginPath();
