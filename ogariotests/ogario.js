@@ -1,5 +1,5 @@
 /* Source script
-v3.041
+v3.038
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9781,7 +9781,7 @@ window.MouseClicks=[];
             if (defaultmapsettings.customSkins && LM.showCustomSkins) {
                 node = application.getCustomSkin(this.targetNick, this.color);
 			}				
-			//if (!node) style.beginPath()		
+			if (!node) style.beginPath()		
             if (defaultmapsettings.jellyPhisycs && this.points.length) {
                 var point = this.points[0];
                 style.moveTo(point.x, point.y);
@@ -9807,13 +9807,9 @@ window.MouseClicks=[];
             } 
 			else {
 				if (!node){
-					/*if (!this.isVirus){
-						this.drawCircle(style, this.x, this.y, y, this.color)
-					}
-					else{*/
-						style.arc(this.x, this.y, y, 0, this.pi2, false);
-						style.closePath();
-					//}					
+					//this.drawCircle(style, this.x, this.y, y, this.color)
+					style.arc(this.x, this.y, y, 0, this.pi2, false);
+					style.closePath();					
 				}					
 			} 
 			
