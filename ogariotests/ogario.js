@@ -1,5 +1,5 @@
 /* Source script
-v3.039
+v3.040
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9808,9 +9808,9 @@ window.MouseClicks=[];
 			else {
 				if (!node){
 					//this.drawCircle(style, this.x, this.y, y, this.color)
-					if (this.isVirus){
-					style.arc(this.x, this.y, y, 0, this.pi2, false);
-					style.closePath();	
+					if (this.isVirus){ //this is the normal function
+						style.arc(this.x, this.y, y, 0, this.pi2, false);
+						style.closePath();	
 					}	
 					else{
 						this.drawCircle(style, this.x, this.y, y, this.color)
@@ -9819,9 +9819,9 @@ window.MouseClicks=[];
 			} 
 			
 			//17/12/2020
-			if (this.size <= 38 && this.nick == "" && !this.isVirus && !this.isPlayerCell){
-                style.fillStyle = this.color;
-                style.fill();				
+			if (!node && this.size <= 38 && this.nick == "" && !this.isVirus && !this.isPlayerCell){
+                //style.fillStyle = this.color;
+                //style.fill();				
 				style.restore();
 				return
 			}				
