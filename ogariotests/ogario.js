@@ -1,5 +1,5 @@
 /* Source script
-v3.034
+v3.035
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14632,7 +14632,7 @@ Game name     : ${i.displayName}<br/>
 			else /* (this.pellet)*/{
                 for (var length = 0; length < food.length; length++) {
 					if (!food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true
-					ctx.beginPath();
+					//ctx.beginPath();
                     if (!food[length].invisible) { 
 						var temp;
 						if (defaultmapsettings.rainbowFood){ 							
@@ -14673,7 +14673,7 @@ Game name     : ${i.displayName}<br/>
 			ctx.beginPath();
 			ctx.moveTo(x, y);
 			ctx.lineTo(x, y);
-			ctx.lineTo(x, y);
+			//ctx.lineTo(x, y);
 			ctx.strokeStyle = color;
 			ctx.stroke();
 		},
