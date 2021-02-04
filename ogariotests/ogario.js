@@ -9807,13 +9807,13 @@ window.MouseClicks=[];
             } 
 			else {
 				if (!node){
-					if (!this.isVirus){
+					/*if (!this.isVirus){
 						this.drawCircle(style, this.x, this.y, y, this.color)
 					}
-					else{
+					else{*/
 						style.arc(this.x, this.y, y, 0, this.pi2, false);
 						style.closePath();
-					}					
+					//}					
 				}					
 			} 
 			
