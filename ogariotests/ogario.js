@@ -1,5 +1,5 @@
 /* Source script
-v3.048
+v3.049
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14653,7 +14653,7 @@ Game name     : ${i.displayName}<br/>
 			//else{
 				ctx.lineCap = 'round';
 				if (LM.integrity && food[0].size){
-					ctx.lineWidth = food[0].size + defaultSettings.foodSize
+					ctx.lineWidth = (food[0].size + defaultSettings.foodSize) * 2
 				}
 				if (!defaultmapsettings.rainbowFood){ 
 				ctx.beginPath();
