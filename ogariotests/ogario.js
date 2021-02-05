@@ -1,5 +1,5 @@
 /* Source script
-v3.060
+v3.061
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9781,7 +9781,11 @@ window.MouseClicks=[];
 			var node = null
             if (defaultmapsettings.customSkins && LM.showCustomSkins) {
                 node = application.getCustomSkin(this.targetNick, this.color);
-			}				
+			}	
+            if (defaultmapsettings.transparentCells && defaultSettings.cellsAlpha < 0.99) {
+                style.globalAlpha *= defaultSettings.cellsAlpha;
+                s = true;
+            }			
 			if (!node) style.beginPath();		
             if (defaultmapsettings.jellyPhisycs && this.points.length) {
                 var point = this.points[0];
@@ -9878,10 +9882,7 @@ window.MouseClicks=[];
                     return;
                 }
              
-            if (defaultmapsettings.transparentCells && defaultSettings.cellsAlpha < 0.99) {
-                style.globalAlpha *= defaultSettings.cellsAlpha;
-                s = true;
-            }
+
             var color = this.color;
 
             if (LM.play || LM.playerCellsMulti.length) {
