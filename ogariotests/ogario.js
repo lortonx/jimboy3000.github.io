@@ -1,5 +1,5 @@
 /* Source script
-v3.045
+v3.046
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14651,6 +14651,12 @@ Game name     : ${i.displayName}<br/>
                 }
             }*/ 
 			//else{
+				if (!defaultmapsettings.rainbowFood){ 
+				ctx.beginPath();
+				ctx.lineWidth = radius * 2;
+				ctx.lineCap = 'round';	
+				ctx.strokeStyle = defaultSettings.foodColor;
+				}
                 for (var length = 0; length < food.length; length++) {
 					if (!food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true
 					//ctx.beginPath();
@@ -14667,6 +14673,7 @@ Game name     : ${i.displayName}<br/>
 						
                         var x = food[length].x;
                         var y = food[length].y;
+						this.drawCircle(ctx, x, y, food[length].size + defaultSettings.foodSize, temp);
                         /*ctx.moveTo(x, y);
 						if (scale < 0.08) {
                             const size = food[length].size + defaultSettings.foodSize;
@@ -14675,13 +14682,14 @@ Game name     : ${i.displayName}<br/>
                             //continue;
                         }
 						else{*/
-							this.drawCircle(ctx, x, y, food[length].size + defaultSettings.foodSize, temp)
+							
 							//ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
 						//}
                     }
 
                 //ctx.fill();					
                 }
+				if (!defaultmapsettings.rainbowFood) ctx.stroke();
 			//}
 			ctx.restore()
             if (reset) {
@@ -14697,6 +14705,15 @@ Game name     : ${i.displayName}<br/>
 			ctx.strokeStyle = color;
 			ctx.stroke();
 		},
+		drawCircle2(ctx, x, y, radius, color) {
+			//ctx.lineWidth = radius * 2;
+			//ctx.lineCap = 'round';
+			//ctx.beginPath();
+			ctx.moveTo(x, y);
+			ctx.lineTo(x, y);
+			//ctx.strokeStyle = color;
+			//ctx.stroke();
+		},		
         /*drawCachedFood(t, e, i, s) {
             if (e.length) {
                 if (defaultmapsettings.optimizedFood && this.pellet)
