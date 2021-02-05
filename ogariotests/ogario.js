@@ -1,5 +1,5 @@
 /* Source script
-v3.046
+v3.047
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14653,7 +14653,6 @@ Game name     : ${i.displayName}<br/>
 			//else{
 				if (!defaultmapsettings.rainbowFood){ 
 				ctx.beginPath();
-				ctx.lineWidth = radius * 2;
 				ctx.lineCap = 'round';	
 				ctx.strokeStyle = defaultSettings.foodColor;
 				}
@@ -14673,7 +14672,8 @@ Game name     : ${i.displayName}<br/>
 						
                         var x = food[length].x;
                         var y = food[length].y;
-						this.drawCircle(ctx, x, y, food[length].size + defaultSettings.foodSize, temp);
+						if (defaultmapsettings.rainbowFood) this.drawCircle(ctx, x, y, food[length].size + defaultSettings.foodSize, temp);
+						else if (!defaultmapsettings.rainbowFood) this.drawCircle2(ctx, x, y, food[length].size + defaultSettings.foodSize, temp);
                         /*ctx.moveTo(x, y);
 						if (scale < 0.08) {
                             const size = food[length].size + defaultSettings.foodSize;
@@ -14706,7 +14706,7 @@ Game name     : ${i.displayName}<br/>
 			ctx.stroke();
 		},
 		drawCircle2(ctx, x, y, radius, color) {
-			//ctx.lineWidth = radius * 2;
+			ctx.lineWidth = radius * 2;
 			//ctx.lineCap = 'round';
 			//ctx.beginPath();
 			ctx.moveTo(x, y);
