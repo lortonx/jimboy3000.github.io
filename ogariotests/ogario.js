@@ -1,5 +1,5 @@
 /* Source script
-v3.063
+v3.064
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9849,13 +9849,15 @@ window.MouseClicks=[];
                         s = true;
                     }
 					if (defaultmapsettings.virColors && LM.play) {
+						
 						style.fillStyle = application.setVirusColor(y); 
 						style.strokeStyle = application.setVirusStrokeColor(y);
+						console.log(style.fillStyle,style.strokeStyle)
 					}
 					else{ 
 						style.fillStyle = this.virusColor 
 						style.strokeStyle = this.virusStroke	
-						console.log(this.virusStroke)
+						
 					}
 					style.fill()
 					if (s) {
