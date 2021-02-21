@@ -1,5 +1,5 @@
 /* Source script
-v3.067
+v3.068
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -892,6 +892,13 @@ window.buffers = {
         writer.writeInt32(y)
         return writer.dataView.buffer
     },	
+    nonPartyOffset(x, y) {
+        const writer = new Writer(9)
+        writer.writeUint8(16)
+        writer.writeInt32(x)
+        writer.writeInt32(y)
+        return writer.dataView.buffer
+    },		
     captchabots(x) {
         const writer = new Writer(4 + x.length)
         writer.writeUint8(8)
@@ -10790,7 +10797,9 @@ window.MouseClicks=[];
                 this.sendMessage(view);
             }
             if (window.userBots.startedBots) {
-				window.connectionBots.send(window.buffers.ghostPosition(application.getghostX(), application.getghostY()))
+				if (legendmod.gameMode == ":ffa" || legendmod.gameMode == ":experimental") {
+					window.connectionBots.send(window.buffers.ghostPosition(application.getghostX(), application.getghostY()))
+				}
 				if (window.userBots.isAlive) {
 					window.userBots.mouseX = this.cursorX - window.userBots.offsetX;
 					window.userBots.mouseY = this.cursorY - window.userBots.offsetY;
@@ -16087,19 +16096,26 @@ function setGUIEvents() {
     })
     document.getElementById('startBots').addEventListener('click', () => {
         if (legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots) {
-            if (legendmod.gameMode == ":party" || $("#nick").val().includes('℄') && $("#clantag").val() == window.atob(window.clanTagLc) || window.AdminRights == 1 || window.IamNeo == true) {
+            //if (legendmod.gameMode == ":party" || $("#nick").val().includes('℄') && $("#clantag").val() == window.atob(window.clanTagLc) || window.AdminRights == 1 || window.IamNeo == true) {	
                 if (window.bots.amount) {
                     if (window.bots.amount + legendmod.leaderboard.length > 197) window.bots.amount = 197 - legendmod.leaderboard.length;
                     //if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') {
                     //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
-                    window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
-
-                    if (legendmod.gameMode != ":party") window.connectionBots.send(window.buffers.sendMode(window.unescape(window.encodeURIComponent(ogarcopythelb.nick))))
+                    if (legendmod.gameMode == ":party") {
+						window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
+					}
+					if (legendmod.gameMode == ":ffa" || legendmod.gameMode == ":experimental") {
+						window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
+						window.connectionBots.send(window.buffers.nonPartyOffset(legendmod.mapOffsetX, legendmod.mapOffsetY)
+					}					
+                    else if (!legendmod.integrity){ 
+						window.connectionBots.send(window.buffers.sendMode(window.unescape(window.encodeURIComponent(ogarcopythelb.nick))))
+					}
                     //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.botsSpawncode[window.botsSpawncodeNum], window.bots.amount))                     					
                 } else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots amount required (max 190)')
-            } else {
+            /*} else {
                 toastr.info('<b>[' + Premadeletter123 + ']:</b> Party bots only available for Party mode')
-            }
+            }*/
         }
     })
     document.getElementById('stopBots').addEventListener('click', () => {
