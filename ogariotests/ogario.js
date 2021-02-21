@@ -1,5 +1,5 @@
 /* Source script
-v3.074
+v3.075
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -10804,8 +10804,8 @@ window.MouseClicks=[];
 					window.connectionBots.send(window.buffers.ghostPosition(application.getghostX(), application.getghostY()))
 				}
 				if (window.userBots.isAlive) {
-					window.userBots.mouseX = this.cursorX// - window.userBots.offsetX;
-					window.userBots.mouseY = this.cursorY// - window.userBots.offsetY;
+					window.userBots.mouseX = this.cursorX - window.userBots.offsetX;
+					window.userBots.mouseY = this.cursorY - window.userBots.offsetY;
 					window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))
 				}
             }
@@ -12782,10 +12782,10 @@ Game name     : ${i.displayName}<br/>
                     this.setMapOffset(this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY); //left,top,right,bottom
 
                     if (~~(this.viewMaxX - this.viewMinX) === LM.mapSize && ~~(this.viewMaxY - this.viewMinY) === LM.mapSize) {						
-						window.userBots.offsetX = 7071 - this.viewMaxX;
-                        window.userBots.offsetY = 7071 - this.viewMaxY;	
-                        //window.userBots.offsetX = (this.viewMinX + this.viewMaxX) / 2;
-                        //window.userBots.offsetY = (this.viewMinY + this.viewMaxY) / 2;
+						//window.userBots.offsetX = 7071 - this.viewMaxX;
+                        //window.userBots.offsetY = 7071 - this.viewMaxY;	
+                        window.userBots.offsetX = (this.viewMinX + this.viewMaxX) / 2;
+						window.userBots.offsetY = (this.viewMinY + this.viewMaxY) / 2;
                     }
                     break;
                 default:
