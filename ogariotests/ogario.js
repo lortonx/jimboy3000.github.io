@@ -1,5 +1,5 @@
 /* Source script
-v3.071
+v3.072
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -988,6 +988,17 @@ window.connectionBots = {
             legendmod.sendTimeOutTokenForBots();
         }
     },
+	stopBots() {
+                document.getElementById('botsAI').style.color = '#DA0A00'
+                document.getElementById('botsAI').innerText = 'Disabled'
+                document.getElementById('startBots').disabled = false
+                document.getElementById('stopBots').disabled = true
+                document.getElementById('startBots').style.display = 'inline'
+                document.getElementById('stopBots').style.display = 'none'
+                document.getElementById('stopBots').innerText = 'Stop Bots'
+                window.userBots.startedBots = false
+                window.bots.ai = false		
+	},	
     onmessage(message) {
         const dataView = new DataView(message.data)
         switch (dataView.getUint8(0)) {
@@ -1004,15 +1015,7 @@ window.connectionBots = {
                 document.getElementById('stopBots').innerText = 'Stopping Bots...'
                 break
             case 2:
-                document.getElementById('botsAI').style.color = '#DA0A00'
-                document.getElementById('botsAI').innerText = 'Disabled'
-                document.getElementById('startBots').disabled = false
-                document.getElementById('stopBots').disabled = true
-                document.getElementById('startBots').style.display = 'inline'
-                document.getElementById('stopBots').style.display = 'none'
-                document.getElementById('stopBots').innerText = 'Stop Bots'
-                window.userBots.startedBots = false
-                window.bots.ai = false
+				this.stopBots()
                 break
             case 3:
                 toastr.info('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
@@ -12776,9 +12779,12 @@ Game name     : ${i.displayName}<br/>
                     this.viewMaxX = message.readDoubleLE(e);
                     e += 8;
                     this.viewMaxY = message.readDoubleLE(e);
-                    this.setMapOffset(this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY);
+                    this.setMapOffset(this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY); //left,top,right,bottom
 
                     if (~~(this.viewMaxX - this.viewMinX) === LM.mapSize && ~~(this.viewMaxY - this.viewMinY) === LM.mapSize) {
+						this.aa2 = 7071
+						this.mapOffsetX = this.aa2 - this.viewMaxX;
+						this.mapOffsetY = this.aa2 - this.viewMaxY;						
 						window.userBots.offsetX = LM.mapOffsetX;
                         window.userBots.offsetY = LM.mapOffsetY;	
                         //window.userBots.offsetX = (this.viewMinX + this.viewMaxX) / 2;
@@ -15907,6 +15913,7 @@ Game name     : ${i.displayName}<br/>
     window.core = {
         //'connect': function(url) {
         connect(url) {
+			if (window.userBots.startedBots) window.connectionBots.stopBots()
             LM.connect(url);
             //LM.connect(url); //for multibox with new Protocol and Client
         },
