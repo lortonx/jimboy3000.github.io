@@ -1,5 +1,5 @@
 /* Source script
-v3.073
+v3.074
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -10804,8 +10804,8 @@ window.MouseClicks=[];
 					window.connectionBots.send(window.buffers.ghostPosition(application.getghostX(), application.getghostY()))
 				}
 				if (window.userBots.isAlive) {
-					window.userBots.mouseX = this.cursorX - window.userBots.offsetX;
-					window.userBots.mouseY = this.cursorY - window.userBots.offsetY;
+					window.userBots.mouseX = this.cursorX// - window.userBots.offsetX;
+					window.userBots.mouseY = this.cursorY// - window.userBots.offsetY;
 					window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))
 				}
             }
@@ -12781,12 +12781,9 @@ Game name     : ${i.displayName}<br/>
                     this.viewMaxY = message.readDoubleLE(e);
                     this.setMapOffset(this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY); //left,top,right,bottom
 
-                    if (~~(this.viewMaxX - this.viewMinX) === LM.mapSize && ~~(this.viewMaxY - this.viewMinY) === LM.mapSize) {
-						this.aa2 = 7071
-						this.mapOffsetX = this.aa2 - this.viewMaxX;
-						this.mapOffsetY = this.aa2 - this.viewMaxY;						
-						window.userBots.offsetX = this.mapOffsetX;
-                        window.userBots.offsetY = this.mapOffsetY;	
+                    if (~~(this.viewMaxX - this.viewMinX) === LM.mapSize && ~~(this.viewMaxY - this.viewMinY) === LM.mapSize) {						
+						window.userBots.offsetX = 7071 - this.viewMaxX;
+                        window.userBots.offsetY = 7071 - this.viewMaxY;	
                         //window.userBots.offsetX = (this.viewMinX + this.viewMaxX) / 2;
                         //window.userBots.offsetY = (this.viewMinY + this.viewMaxY) / 2;
                     }
@@ -16110,16 +16107,17 @@ function setGUIEvents() {
                     if (window.bots.amount + legendmod.leaderboard.length > 197) window.bots.amount = 197 - legendmod.leaderboard.length;
                     //if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') {
                     //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
-                    if (legendmod.gameMode == ":party") {
-						window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
-					}
-					if (legendmod.gameMode == ":ffa" || legendmod.gameMode == ":experimental") {
+                    
+					//if (legendmod.gameMode == ":party") {
+						//window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
+					//}
+					//if (legendmod.gameMode == ":ffa" || legendmod.gameMode == ":experimental") {
 						window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
 						window.connectionBots.send(window.buffers.nonPartyOffset(legendmod.mapOffsetX, legendmod.mapOffsetY))
-					}					
-                    else if (!legendmod.integrity){ 
-						window.connectionBots.send(window.buffers.sendMode(window.unescape(window.encodeURIComponent(ogarcopythelb.nick))))
-					}
+					//}					
+                    //else if (!legendmod.integrity){ 
+						//window.connectionBots.send(window.buffers.sendMode(window.unescape(window.encodeURIComponent(ogarcopythelb.nick))))
+					//}
                     //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.botsSpawncode[window.botsSpawncodeNum], window.bots.amount))                     					
                 } else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots amount required (max 190)')
             /*} else {
