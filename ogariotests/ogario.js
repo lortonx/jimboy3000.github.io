@@ -1,5 +1,5 @@
 /* Source script
-v3.066
+v3.067
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -885,6 +885,13 @@ window.buffers = {
         writer.writeInt32(y)
         return writer.dataView.buffer
     },
+    ghostPosition(x, y) {
+        const writer = new Writer(9)
+        writer.writeUint8(15)
+        writer.writeInt32(x)
+        writer.writeInt32(y)
+        return writer.dataView.buffer
+    },	
     captchabots(x) {
         const writer = new Writer(4 + x.length)
         writer.writeUint8(8)
@@ -10782,10 +10789,13 @@ window.MouseClicks=[];
                 view.setUint32(9, this.protocolKey, true);
                 this.sendMessage(view);
             }
-            if (window.userBots.startedBots && window.userBots.isAlive) {
-                window.userBots.mouseX = this.cursorX - window.userBots.offsetX;
-                window.userBots.mouseY = this.cursorY - window.userBots.offsetY;
-                window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))
+            if (window.userBots.startedBots) {
+				window.connectionBots.send(window.buffers.ghostPosition(application.getghostX(), application.getghostY()))
+				if (window.userBots.isAlive) {
+					window.userBots.mouseX = this.cursorX - window.userBots.offsetX;
+					window.userBots.mouseY = this.cursorY - window.userBots.offsetY;
+					window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))
+				}
             }
         },
         /*            sendAccessToken(t, e, i) {
