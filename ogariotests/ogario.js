@@ -1,5 +1,5 @@
 /* Source script
-v3.068
+v3.069
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -16106,7 +16106,7 @@ function setGUIEvents() {
 					}
 					if (legendmod.gameMode == ":ffa" || legendmod.gameMode == ":experimental") {
 						window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
-						window.connectionBots.send(window.buffers.nonPartyOffset(legendmod.mapOffsetX, legendmod.mapOffsetY)
+						window.connectionBots.send(window.buffers.nonPartyOffset(legendmod.mapOffsetX, legendmod.mapOffsetY))
 					}					
                     else if (!legendmod.integrity){ 
 						window.connectionBots.send(window.buffers.sendMode(window.unescape(window.encodeURIComponent(ogarcopythelb.nick))))
