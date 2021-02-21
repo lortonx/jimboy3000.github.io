@@ -1,5 +1,5 @@
 /* Source script
-v3.075
+v3.076
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -15910,7 +15910,7 @@ Game name     : ${i.displayName}<br/>
     window.core = {
         //'connect': function(url) {
         connect(url) {
-			if (window.userBots.startedBots) window.connectionBots.stopBots()
+			if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
             LM.connect(url);
             //LM.connect(url); //for multibox with new Protocol and Client
         },
