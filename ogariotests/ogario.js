@@ -1,5 +1,5 @@
 /* Source script
-v3.078
+v3.080
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -12781,12 +12781,12 @@ Game name     : ${i.displayName}<br/>
                     this.viewMaxY = message.readDoubleLE(e);
                     this.setMapOffset(this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY); //left,top,right,bottom
 
-                    if (~~(this.viewMaxX - this.viewMinX) === LM.mapSize && ~~(this.viewMaxY - this.viewMinY) === LM.mapSize) {						
-						//window.userBots.offsetX = 7071 - this.viewMaxX;
-                        //window.userBots.offsetY = 7071 - this.viewMaxY;	
-                        window.userBots.offsetX = (this.viewMinX + this.viewMaxX) / 2;
-						window.userBots.offsetY = (this.viewMinY + this.viewMaxY) / 2;
-                    }
+                   // if (~~(this.viewMaxX - this.viewMinX) === LM.mapSize && ~~(this.viewMaxY - this.viewMinY) === LM.mapSize) {						
+						window.userBots.offsetX = 7071 - this.viewMaxX;
+                        window.userBots.offsetY = 7071 - this.viewMaxY;	
+                        //window.userBots.offsetX = (this.viewMinX + this.viewMaxX) / 2;
+						//window.userBots.offsetY = (this.viewMinY + this.viewMaxY) / 2;
+                    //}
                     break;
                 default:
                     console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Unknown sub opcode:', message.readUInt8(0));
