@@ -1,5 +1,5 @@
 /* Source script
-v3.077
+v3.078
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -10804,8 +10804,8 @@ window.MouseClicks=[];
 					window.connectionBots.send(window.buffers.ghostPosition(application.getghostX(), application.getghostY()))
 				}
 				if (window.userBots.isAlive) {
-					window.userBots.mouseX = this.cursorX// - window.userBots.offsetX;
-					window.userBots.mouseY = this.cursorY// - window.userBots.offsetY;
+					window.userBots.mouseX = this.cursorX - window.userBots.offsetX;
+					window.userBots.mouseY = this.cursorY - window.userBots.offsetY;
 					window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))
 				}
             }
