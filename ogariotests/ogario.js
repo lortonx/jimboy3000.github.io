@@ -1,5 +1,5 @@
 /* Source script
-v3.071
+v3.066
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -1092,6 +1092,7 @@ function checkVideos(a, b) {
 }
 
 function checkVideos2(a, b) {
+    //console.log(b)
     for (var i = 0; i < application.top5.length; i++) {
         //if (i.nick == b) {
         //application.setTarget(i.id);
@@ -1100,9 +1101,9 @@ function checkVideos2(a, b) {
                 window.videoSkinPlayerflag2[b] = false;
                 //if (application.calculateMapSector(application.top5[i].x, application.top5[i].y) == application.currentSector && application.currentSector == "C3") {
                 if (checkIfPlayerIsInView(b, null)) {
-                    console.log("volume 0, stage 0");						
+                    //console.log("volume 0, stage 0");						
                     var temple = null;
-                    console.log("a",b,a)						
+                    //console.log("a",b,a)						
                     if (defaultmapsettings.videoOthersSkinSoundLevelproportion && application.top5[i].mass) {
                         //console.log("b",application.top5[i].mass)
                         if (application.top5[i].mass >= 24000) {
@@ -1116,13 +1117,13 @@ function checkVideos2(a, b) {
                     }
                     window.videoSkinPlayerflag2[b] = true;
                 } else {
-                    console.log("volume 0, stage 1");
+                    //console.log("volume 0, stage 1");
                     //if (window.videoSkinPlayer[a].volume>=0.1) window.videoSkinPlayer[a].volume = window.videoSkinPlayer[a].volume - 0.1
                     //else window.videoSkinPlayer[a].volume = 0;
                     //window.videoSkinPlayer[a].volume = 0;
                 }
             } else {
-                console.log("volume 0, stage 2");
+                //console.log("volume 0, stage 2");
                 window.videoSkinPlayer[a].volume = 0;
             }
         }
@@ -10023,7 +10024,6 @@ window.MouseClicks=[];
                                         var temp = window.videoSkinPlayer[node2].videoWidth / window.videoSkinPlayer[node2].videoHeight;
                                         style.drawImage(window.videoSkinPlayer[node2], this.x - y, this.y - y * temp, 2 * y, 2 * y * temp);
                                     } else {
-										console.log(window.videoSkinPlayer[node2])
                                         style.drawImage(window.videoSkinPlayer[node2], this.x - y, this.y - y, 2 * y, 2 * y);
                                     }
                                     style.restore();
