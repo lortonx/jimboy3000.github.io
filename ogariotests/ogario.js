@@ -1,5 +1,5 @@
 /* Source script
-v3.067
+v3.068
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -1092,7 +1092,6 @@ function checkVideos(a, b) {
 }
 
 function checkVideos2(a, b) {
-    console.log(b)
     for (var i = 0; i < application.top5.length; i++) {
         //if (i.nick == b) {
         //application.setTarget(i.id);
@@ -10020,6 +10019,7 @@ window.MouseClicks=[];
                                 try {
                                     style.save();
                                     style.clip();
+									console.log('1')
                                     if (defaultmapsettings.videoDestorted) {
                                         var temp = window.videoSkinPlayer[node2].videoWidth / window.videoSkinPlayer[node2].videoHeight;
                                         style.drawImage(window.videoSkinPlayer[node2], this.x - y, this.y - y * temp, 2 * y, 2 * y * temp);
