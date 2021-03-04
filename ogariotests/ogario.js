@@ -1,5 +1,5 @@
 /* Source script
-v3.066
+v3.067
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9802,7 +9802,7 @@ window.MouseClicks=[];
                     }
                 }
             }		
-            var color = this.color;			
+            //var color = this.color;			
 			if (!node) style.beginPath();		
             if (defaultmapsettings.jellyPhisycs && this.points.length) {
                 var point = this.points[0];
@@ -9920,11 +9920,11 @@ window.MouseClicks=[];
                 style.stroke(); ///
             } 		
 			else if (node){
-				if (!window.drawRender.cellsColored[color]){ 
-					window.drawRender.preDrawCellsColors(color);
+				if (!window.drawRender.cellsColored[this.color]){ 
+					window.drawRender.preDrawCellsColors(this.color);
 				}
 				else{
-					style.drawImage(window.drawRender.cellsColored[color], this.x - this.size, this.y - this.size, this.size*2, this.size*2);
+					style.drawImage(window.drawRender.cellsColored[this.color], this.x - this.size, this.y - this.size, this.size*2, this.size*2);
 				}				
             //} else{		
 			} 
@@ -9981,7 +9981,7 @@ window.MouseClicks=[];
                             style.globalCompositeOperation = 'luminosity';
 
                             style.lineWidth = lineWidth
-                            style.strokeStyle = color;
+                            style.strokeStyle = this.color;
                             style.stroke();
                             style.globalCompositeOperation = '';
                             style.restore();
