@@ -1,5 +1,5 @@
 /* Source script
-v3.087
+v3.088
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9937,7 +9937,7 @@ window.MouseClicks=[];
 				}					
 			}
 			//else if (defaultmapsettings.jellyPhisycs && this.points.length){	
-			else if (defaultmapsettings.jellyPhisycs && !this.isVirus){
+			else if (!this.isVirus){
 			//else{			
                 style.fillStyle = color2;
                 style.fill();		
@@ -14890,7 +14890,7 @@ Game name     : ${i.displayName}<br/>
         },
         drawCursorTracking(ctx, players, cursorX, cursorY) {
             ctx.lineWidth = 4,
-                ctx.globalAlpha = defaultSettings.darkTheme ? 0.75 : 0.35;
+            ctx.globalAlpha = defaultSettings.darkTheme ? 0.75 : 0.35;
             ctx.strokeStyle = defaultSettings.cursorTrackingColor;
             ctx.beginPath();
             for (var o = 0; o < players.length; o++) ctx.moveTo(players[o].x, players[o].y), ctx.lineTo(cursorX, cursorY);
