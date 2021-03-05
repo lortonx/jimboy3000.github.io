@@ -1,5 +1,5 @@
 /* Source script
-v3.068
+v3.069
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9811,6 +9811,7 @@ window.MouseClicks=[];
                     var point = this.points[i];
                     style.lineTo(point.x, point.y);
                 }
+			   style.arc(this.x, this.y, y, 0, this.pi2, false);
                style.fillStyle = this.color;
                style.fill();				
             } 
@@ -9827,9 +9828,7 @@ window.MouseClicks=[];
                         this.y + dist * Math.cos(angle)
                     )
                 }
-                style.lineTo(this.x, this.y + this.size + 3);
-               style.fillStyle = this.color;
-               style.fill();					
+                style.lineTo(this.x, this.y + this.size + 3);				
             } 
 			else {
 				if (!node){
