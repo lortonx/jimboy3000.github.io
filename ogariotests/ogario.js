@@ -1,5 +1,5 @@
 /* Source script
-v3.084
+v3.085
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9739,6 +9739,7 @@ window.MouseClicks=[];
             }
         }
 		this.drawCircle = function(ctx, x, y, radius, color) {
+			ctx.save();
 			ctx.lineWidth = radius * 2;
 			ctx.lineCap = 'round';
 			ctx.beginPath();
@@ -9746,6 +9747,7 @@ window.MouseClicks=[];
 			ctx.lineTo(x, y);
 			ctx.strokeStyle = color;
 			ctx.stroke();
+			ctx.restore()'
 			//ctx.closePath();
 		},		
         this.draw = function(style, cellMoved) { //this function draws each cell/virus/food 1 time only
