@@ -1,5 +1,5 @@
 /* Source script
-v3.079
+v3.080
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9841,7 +9841,7 @@ window.MouseClicks=[];
 					//this.drawCircle(style, this.x, this.y, y, this.color)
 					if (this.isVirus || !(node2 && (node2.includes(".mp4") || node2.includes(".webm") || node2.includes(".ogv"))) || defaultmapsettings.cellContours || defaultmapsettings.transparentCells || defaultmapsettings.transparentSkins || ((this.isPlayerCell || this.playerCellsMulti) && defaultmapsettings.myTransparentSkin)){ //this is the normal function
 						style.arc(this.x, this.y, y, 0, this.pi2, false);
-						if (!this.isVirus && !defaultmapsettings.cellContours){
+						if (!this.isVirus && !defaultmapsettings.cellContours && !(node2 && (node2.includes(".mp4") || node2.includes(".webm") || node2.includes(".ogv")))){
 							style.fillStyle = this.color;
 							style.fill();
 						}
