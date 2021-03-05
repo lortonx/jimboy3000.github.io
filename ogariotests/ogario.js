@@ -1,5 +1,5 @@
 /* Source script
-v3.070
+v3.067
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9802,7 +9802,7 @@ window.MouseClicks=[];
                     }
                 }
             }		
-            //var color = this.color;			
+            var color = this.color;			
 			if (!node) style.beginPath();		
             if (defaultmapsettings.jellyPhisycs && this.points.length) {
                 var point = this.points[0];
@@ -9810,7 +9810,7 @@ window.MouseClicks=[];
                 for (var i = 0; i < this.points.length; ++i) {
                     var point = this.points[i];
                     style.lineTo(point.x, point.y);
-                }				
+                }
             } 
 			else if (defaultmapsettings.jellyPhisycs && this.isVirus) {
                 style.lineJoin = "miter"
@@ -9827,7 +9827,7 @@ window.MouseClicks=[];
                 }
                 style.lineTo(this.x, this.y + this.size + 3);
             } 
-			if ((!defaultmapsettings.jellyPhisycs || this.points.length) && !defaultmapsettings.cellContours) {
+			else {
 				if (!node){
 					//this.drawCircle(style, this.x, this.y, y, this.color)
 					if (this.isVirus || defaultmapsettings.cellContours || defaultmapsettings.transparentCells || defaultmapsettings.transparentSkins || ((this.isPlayerCell || this.playerCellsMulti) && defaultmapsettings.myTransparentSkin)){ //this is the normal function
@@ -9920,17 +9920,17 @@ window.MouseClicks=[];
                 style.stroke(); ///
             } 		
 			else if (node){
-				if (!window.drawRender.cellsColored[this.color]){ 
-					window.drawRender.preDrawCellsColors(this.color);
+				if (!window.drawRender.cellsColored[color]){ 
+					window.drawRender.preDrawCellsColors(color);
 				}
 				else{
-					style.drawImage(window.drawRender.cellsColored[this.color], this.x - this.size, this.y - this.size, this.size*2, this.size*2);
+					style.drawImage(window.drawRender.cellsColored[color], this.x - this.size, this.y - this.size, this.size*2, this.size*2);
 				}				
             //} else{		
 			} 
 			else {
-                //style.fillStyle = color;
-                //style.fill();
+                style.fillStyle = color;
+                style.fill();
 				
             }
 			
@@ -9981,7 +9981,7 @@ window.MouseClicks=[];
                             style.globalCompositeOperation = 'luminosity';
 
                             style.lineWidth = lineWidth
-                            style.strokeStyle = this.color;
+                            style.strokeStyle = color;
                             style.stroke();
                             style.globalCompositeOperation = '';
                             style.restore();
