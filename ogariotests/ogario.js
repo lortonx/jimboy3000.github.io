@@ -1,5 +1,5 @@
 /* Source script
-v3.083
+v3.084
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9798,7 +9798,7 @@ window.MouseClicks=[];
                 s = true;
             }	
 
-			var color = this.color;	
+			var color2 = this.color;	
             if (LM.play || LM.playerCellsMulti.length) {
                 if (this.isPlayerCell || this.playerCellsMulti) {
                     if (defaultmapsettings.myCustomColor && ogarcopythelb.color && LM.gameMode != ":teams") {
@@ -9842,12 +9842,12 @@ window.MouseClicks=[];
 					if (this.isVirus || (node2 && (node2.includes(".mp4") || node2.includes(".webm") || node2.includes(".ogv"))) || defaultmapsettings.cellContours || defaultmapsettings.transparentCells || defaultmapsettings.transparentSkins || ((this.isPlayerCell || this.playerCellsMulti) && defaultmapsettings.myTransparentSkin)){ //this is the normal function
 						style.arc(this.x, this.y, y, 0, this.pi2, false);
 						if (!this.isVirus && !defaultmapsettings.cellContours && !(node2 && (node2.includes(".mp4") || node2.includes(".webm") || node2.includes(".ogv")))){
-							style.fillStyle = color;
+							style.fillStyle = color2;
 							style.fill();
 						}
 					}	
 					else{
-						this.drawCircle(style, this.x, this.y, y, color)
+						this.drawCircle(style, this.x, this.y, y, color2)
 					}					
 				}					
 			} 
@@ -9925,20 +9925,20 @@ window.MouseClicks=[];
             }*/
             if (defaultmapsettings.cellContours) {
                 style.lineWidth = 20; ///
-                style.strokeStyle = color; ///
+                style.strokeStyle = color2; ///
                 style.stroke(); ///
             } 		
 			else if (node){
-				if (!window.drawRender.cellsColored[color]){ 
-					window.drawRender.preDrawCellsColors(color);
+				if (!window.drawRender.cellsColored[color2]){ 
+					window.drawRender.preDrawCellsColors(color2);
 				}
 				else{
-					style.drawImage(window.drawRender.cellsColored[color], this.x - this.size, this.y - this.size, this.size*2, this.size*2);
+					style.drawImage(window.drawRender.cellsColored[color2], this.x - this.size, this.y - this.size, this.size*2, this.size*2);
 				}					
 			}
 			else if (defaultmapsettings.jellyPhisycs && this.points.length){	
 			//else{			
-                style.fillStyle = color;
+                style.fillStyle = color2;
                 style.fill();		
             }
             //}
@@ -9988,7 +9988,7 @@ window.MouseClicks=[];
                             style.globalCompositeOperation = 'luminosity';
 
                             style.lineWidth = lineWidth
-                            style.strokeStyle = color;
+                            style.strokeStyle = color2;
                             style.stroke();
                             style.globalCompositeOperation = '';
                             style.restore();
