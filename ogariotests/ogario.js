@@ -1,5 +1,5 @@
 /* Source script
-v3.076
+v3.077
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -9785,7 +9785,7 @@ window.MouseClicks=[];
                 node = application.getCustomSkin(this.targetNick, this.color);
 			}
 			var node2;
-            if (!node && defaultmapsettings.videoSkins) {
+            if (defaultmapsettings.videoSkins) {
 				if (LM.gameMode !=":party"){
 					node2 = application.customSkinsMap[this.targetNick];
 				}
