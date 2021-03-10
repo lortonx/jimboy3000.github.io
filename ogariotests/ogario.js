@@ -1,5 +1,5 @@
 /* Source script
-v3.105
+v3.106
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -12991,6 +12991,8 @@ Game name     : ${i.displayName}<br/>
 					this.stretchX = this.mapSize - right + left
 					this.stretchY = this.mapSize - bottom + top
 					console.log("stretch", this.stretchX, this.stretchY)
+					right += this.stretchX
+					bottom += this.stretchY
 					//right = 
 					//
                     this.mapOffsetX = this.mapOffset - right;
