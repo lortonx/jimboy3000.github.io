@@ -1,5 +1,5 @@
 /* Source script
-v3.104
+v3.105
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -12988,8 +12988,8 @@ Game name     : ${i.displayName}<br/>
 				//if (this.integrity || this.ws.includes("replay")) {
 				if (this.integrity || temp2) {
 					//
-					this.stretchX = this.mapSize - right - left
-					this.stretchY = this.mapSize - bottom - top
+					this.stretchX = this.mapSize - right + left
+					this.stretchY = this.mapSize - bottom + top
 					console.log("stretch", this.stretchX, this.stretchY)
 					//right = 
 					//
