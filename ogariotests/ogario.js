@@ -1,5 +1,5 @@
 /* Source script
-v3.092
+v3.093
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -12987,10 +12987,15 @@ Game name     : ${i.displayName}<br/>
 				if (this.integrity || temp2) {
                     this.mapOffsetX = this.mapOffset - right;
                     this.mapOffsetY = this.mapOffset - bottom;
-                    this.mapMinX = ~~(-this.mapOffset - this.mapOffsetX);
+                    this.mapMinX = -this.mapOffset - this.mapOffsetX;
+                    this.mapMinY = -this.mapOffset - this.mapOffsetY;
+                    this.mapMaxX = this.mapOffset - this.mapOffsetX;
+                    this.mapMaxY = this.mapOffset - this.mapOffsetY;
+					
+                    /*this.mapMinX = ~~(-this.mapOffset - this.mapOffsetX);
                     this.mapMinY = ~~(-this.mapOffset - this.mapOffsetY);
                     this.mapMaxX = ~~(this.mapOffset - this.mapOffsetX);
-                    this.mapMaxY = ~~(this.mapOffset - this.mapOffsetY);
+                    this.mapMaxY = ~~(this.mapOffset - this.mapOffsetY);*/
                 } 
 				else {
                     this.mapOffsetX = this.mapSize / 2
