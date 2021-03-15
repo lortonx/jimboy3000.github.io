@@ -1,5 +1,5 @@
 /* Source script
-v3.109
+v3.110
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -11979,6 +11979,7 @@ window.MouseClicks=[];
                     toastr.info(temp);
                     break;
                 case 226:
+					console.log("pong")
                     window.testobjectsOpcode226 = data;
                     var extraOptions = data.getUint16(1, !![]);
                     data = this.createView(3);
@@ -15979,7 +15980,7 @@ Game name     : ${i.displayName}<br/>
         },
         setClientVersion(version, strVersion) {
             LM.setClientVersion(version, strVersion);
-        },
+        },		
         proxyMobileData(arr = []) {
             if (!Array.isArray(arr)) {
                 console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " ProxyMobileData ERROR: Array data required.");
