@@ -1,5 +1,5 @@
 /* Source script
-v3.116
+v3.117
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -14473,7 +14473,8 @@ Game name     : ${i.displayName}<br/>
             LM.cAngle1 -= .006 * (60/drawRender.fps);
             LM.cAngle2 += .003 * (60/drawRender.fps);
             if (2025 <= LM.cRadius) {
-                LM.cAlpha *= .95;
+                LM.cAlpha *= 1- ( 1 * (60/drawRender.fps) / 20) ;
+				//LM.cAlpha *= .95;
             }
             if (0.05 >= LM.cAlpha) {
                 this.resetCommander();
