@@ -1,5 +1,5 @@
 /* Source script
-v3.110
+v3.111
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -11979,7 +11979,7 @@ window.MouseClicks=[];
                     toastr.info(temp);
                     break;
                 case 226:
-					console.log("pong")
+					//console.log("pong")
                     window.testobjectsOpcode226 = data;
                     var extraOptions = data.getUint16(1, !![]);
                     data = this.createView(3);
@@ -13890,8 +13890,8 @@ Game name     : ${i.displayName}<br/>
                 var tempborderwidthradius = defaultSettings.bordersWidth / 2;
                 this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
             }
-            this.drawCommander();
-            this.drawCommander2();
+            this.drawCommander(this.ctx);
+            this.drawCommander2(this.ctx);
             if (defaultmapsettings.virusesRange) {
                 this.drawVirusesRange(this.ctx, LM.viruses);
             }
@@ -14402,10 +14402,11 @@ Game name     : ${i.displayName}<br/>
                 }
             }
         },
-        drawCommander() {
+        drawCommander(ctx) {
             //console.log('Special effects stage 2');
             if (LM.drawCommander) {
-                var pickerAxes = this.ctx;
+                //var pickerAxes = this.ctx;
+				var pickerAxes = ctx;
                 cimg = new Image;
                 cimg.src = defaultSettings.commanderImage;
                 cimg1 = new Image;
@@ -14434,10 +14435,11 @@ Game name     : ${i.displayName}<br/>
                 this.updateCommander();
             }
         },
-        drawCommander2() {
+        drawCommander2(ctx) {
             //console.log('Special effects stage 2');
             if (LM.drawCommander2) {
-                var pickerAxes = this.ctx;
+                //var pickerAxes = this.ctx;
+				var pickerAxes = ctx;
                 cimg = new Image;
                 cimg.src = defaultSettings.commanderImage3;
                 cimg1 = new Image;
