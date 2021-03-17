@@ -1,5 +1,5 @@
 /* Source script
-v3.115
+v3.116
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -12983,7 +12983,7 @@ Game name     : ${i.displayName}<br/>
                 this.mapOffset = 0
             } 		
 			if (!this.mapOffsetFixed){ 
-			console.log(right - left, bottom - top)
+			//console.log(right - left, bottom - top)
             if (!this.integrity || (right - left) > (this.mapSize - 142) && (bottom - top) > (this.mapSize - 142)) { //2020 jimboy3100
 			//console.log("ok", right - left, bottom - top);
 				//if (this.integrity || this.ws.includes("replay")) {
@@ -13890,7 +13890,8 @@ Game name     : ${i.displayName}<br/>
                 var tempborderwidthradius = defaultSettings.bordersWidth / 2;
                 this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
             }
-
+            this.drawCommander(this.ctx);
+            this.drawCommander2(this.ctx);
             if (defaultmapsettings.virusesRange) {
                 this.drawVirusesRange(this.ctx, LM.viruses);
             }
@@ -13939,8 +13940,7 @@ Game name     : ${i.displayName}<br/>
                 this.drawViewPorts(this.ctx)
             }
             //
-            this.drawCommander(this.ctx);
-            this.drawCommander2(this.ctx);	
+	
             this.ctx.restore();
 
             //this.ctx.finish2D();
