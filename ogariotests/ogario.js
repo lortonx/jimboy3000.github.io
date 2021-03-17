@@ -1,5 +1,5 @@
 /* Source script
-v3.111
+v3.112
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -13890,8 +13890,7 @@ Game name     : ${i.displayName}<br/>
                 var tempborderwidthradius = defaultSettings.bordersWidth / 2;
                 this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
             }
-            this.drawCommander(this.ctx);
-            this.drawCommander2(this.ctx);
+
             if (defaultmapsettings.virusesRange) {
                 this.drawVirusesRange(this.ctx, LM.viruses);
             }
@@ -13928,7 +13927,8 @@ Game name     : ${i.displayName}<br/>
                     //this.drawRing(this.ctx,LM.cells[i].x,LM.cells[i].y,LM.cells[i].size,0.75,'#ffffff')
 				}
             }
-			
+            this.drawCommander(this.ctx);
+            this.drawCommander2(this.ctx);			
             //}
             this.drawMiscRings();
             //lylko
