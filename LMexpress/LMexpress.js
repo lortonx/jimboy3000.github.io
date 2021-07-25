@@ -2077,8 +2077,10 @@ function universalchat() {
         "tool_symbol": ""
     };
     'use strict';
+	window.lalala = 5
     var stat = {
-        "AgarToolVersion": 5,
+        "AgarToolVersion": window.lalala,
+		
         //"AgarToolServer": "wss://minimap.agartool.io:9000",
 		"AgarToolServer": "wss://minimap.agartool.io",
 		//"AgarToolServer": "wss://minimap.agartool.io:443",
