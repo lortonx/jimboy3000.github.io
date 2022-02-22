@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.71 without universal by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.72 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "12"; // the version 1.1-> 1.11
 
@@ -2025,7 +2025,7 @@ function MsgServCommandsreturner() {
 }
 
 
-
+function universalchat(){}
 
 function Universalchatfix() {	
     if ($("#ao2t-capture").hasClass("connected")) {
