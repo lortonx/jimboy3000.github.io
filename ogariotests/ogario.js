@@ -1,5 +1,5 @@
 /* Source script
-v3.119
+v3.125
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -42,7 +42,7 @@ window.tempH = 6
 //window.testobjects = {};
 var consoleMsgLM = "[Client] ";
 //var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
-window.clanTagLc = "TUFU";
+window.clanTagLc = "ZZX";
 appendLMhiFbPs()
 window.externalScriptMassBar = []
 window.capthaWindow = []
@@ -84,12 +84,12 @@ function deleteGamemode(temp) {
             text: 'Delta FFA',
             value: 4001
         },
-	{
+	/*{
             text: 'Delta Party',
             value: 4002
-        },
+        },*/
 	{
-            text: 'FFA PowerUp',
+            text: 'FeelForeverAlone',
             value: 34
         }, {
             text: 'Arctida',
@@ -147,20 +147,20 @@ function deleteGamemode(temp) {
             text: 'Crazy NA',
             value: 54
         }*/
-		, {			
+		, /*{			
             text: 'Instant Merging',
             value: 16
-        }, {			
+        },*/ {			
             text: 'Party MegaSplit',
             value: 19
         }, {
             text: 'Party Mode',
             value: 20
         }, {
-            text: 'Party Selfeed',
+            text: 'EatCells FFA 1',
             value: 21
         }, {
-            text: 'Crazy Selfeed',
+            text: 'EatCells FFA 2',
             value: 22
         }, {
             text: '1vs1 FFA #1',
@@ -190,17 +190,11 @@ function deleteGamemode(temp) {
             text: 'Beta Party #1',
             value: 14
         }, {
-            text: 'Beta Party #2',
-            value: 15
-        }, {
             text: 'Beta Party v2 #1',
             value: 17
         }, {
             text: 'Beta Party v2 #2',
             value: 18
-        }, {
-            text: 'Beta 1v1 Scrims',
-            value: 32
         }, {
             text: 'Bots',
             value: 33
@@ -213,10 +207,7 @@ function deleteGamemode(temp) {
         }, {
             text: 'MK Bots WIP',
             value: 39
-        }, {			
-            text: 'Ogar Eat-cells',
-            value: 40
-        }, {				
+        }, 							
 
             /*
         text: 'MK Disturb Furry',
@@ -243,7 +234,7 @@ function deleteGamemode(temp) {
         text: 'Cellz ultra split',
         value: 40		
     }, {
-*/
+*/		{
             text: 'FPS Test',
             value: 12
         }, 
@@ -324,9 +315,9 @@ function deleteGamemode(temp) {
         } else if ($('#gamemode').val() == 20) {
             core.connect('wss://imsolo.pro:4101');
         } else if ($('#gamemode').val() == 21) {
-            core.connect('wss://imsolo.pro:4107');
+            core.connect('wss://eatcells.com/api/~');
         } else if ($('#gamemode').val() == 22) {
-            core.connect('wss://imsolo.pro:4108');
+            core.connect('wss://ogar.eatcells.com/api/~');
         } else if ($('#gamemode').val() == 23) {
             core.connect('wss://imsolo.pro:4102');
         } else if ($('#gamemode').val() == 24) {
@@ -364,8 +355,6 @@ function deleteGamemode(temp) {
             }, 500)
         } else if ($('#gamemode').val() == 39) {
             core.connect('wss://mkserv-bots.herokuapp.com/');
-        } else if ($('#gamemode').val() == 40) {
-            core.connect('wss://ogar.eatcells.com/api/');	
         } else if ($('#gamemode').val() == 42) {
 			core.connect('wss://eatcells.com/api/');			
         } else if ($('#gamemode').val() == 41) {
@@ -401,11 +390,14 @@ function deleteGamemode(temp) {
 			core.connect('ws://na.agarios.org:443/');
         }
 	else if ($('#gamemode').val() == 4001) {
-			core.connect('wss://delta-ffa.fly.dev');
+			core.connect('wss://delta-ffa.glitch.me');
         }
 	else if ($('#gamemode').val() == 4002) {
 			core.connect('wss://delta-server.fly.dev');
         }
+
+//wss://eatcells.com/api/~ EatCells FFA 1
+//wss://ogar.eatcells.com/api/~ wss://ogar.eatcells.com/api/~
 
         /*
 		else if ($('#gamemode').val() == 42) {
@@ -1532,7 +1524,8 @@ var displayText = {
         'hk-inst-keys': 'Możliwe kombinacje skrótów klawiszowych z użyciem klawiszy CTRL oraz ALT.',
         'hk-bots-split': 'Bots split',
         'hk-bots-feed': 'Bots feed',
-        'hk-bots-ai': 'Bots AI toggle',
+		'hk-bots-macrofeed': 'Bots Macro feed',
+        //'hk-bots-ai': 'Bots AI toggle',
         'hk-feed': 'Feed',
         'hk-macroFeed': 'Szybki feed',
 		'hk-macroFeedPerm': 'Permanent feed',
@@ -2013,7 +2006,8 @@ var displayText = {
         'hk-inst-keys': 'Possible key combinations with the CTRL and ALT keys.',
         'hk-bots-split': 'Bots split',
         'hk-bots-feed': 'Bots feed',
-        'hk-bots-ai': 'Bots AI toggle',
+		'hk-bots-macrofeed': 'Bots Macro feed',				
+        //'hk-bots-ai': 'Bots AI toggle',
         'hk-feed': 'Feed',
         'hk-macroFeed': 'Macro feed',
 		'hk-macroFeedPerm': 'Permanent feed',
@@ -4172,6 +4166,19 @@ window.MouseClicks=[];
                     app.feed();
                 }, defaultmapsettings.macroFeeding);
             } 
+        },
+        macrobotFeed(on) {
+            if (on) {
+                if (this.feedInterval) return;
+                var app = this;
+                this.Botseject();
+                this.feedInterval = setInterval(function() {
+                    app.Botseject();
+                }, defaultmapsettings.macroFeeding);
+            } else if (this.feedInterval) {
+                clearInterval(this.feedInterval);
+                this.feedInterval = null
+            };
         },		
         macroFeed(on) {
             if (on) {
@@ -4200,6 +4207,10 @@ window.MouseClicks=[];
         Botseject() {
             if (window.core && window.core.Botseject) window.core.Botseject();
         },
+        /*Botsmacroeject() {
+            if (window.core && window.core.Botsmacroeject) window.core.Botsmacroeject();
+        },*/		
+		
         doubleBotSplit() {
             var app = this;
             app.Botsplit();
@@ -5665,7 +5676,8 @@ window.MouseClicks=[];
 			this.addOptions(["autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup");
             this.addOptions(["noColors", "myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow", 'cellContours', "animatedRainbowColor"], "transparencyGroup");
             this.addOptions(["showGrid", "showOptimisedGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
-            this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChat", "showChatMyOwn", "showChatTranslation", "coloredNicks", "hidecountry", "universalChat"], "chatGroup");
+			this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChat", "showChatMyOwn", "showChatTranslation", "coloredNicks", "hidecountry"], "chatGroup");
+            //this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChat", "showChatMyOwn", "showChatTranslation", "coloredNicks", "hidecountry", "universalChat"], "chatGroup");
             this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup");
             //            this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "reverseTrick", "showPartyBots"], "helpersGroup"); //Sonia2
             //this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
@@ -10488,7 +10500,7 @@ window.MouseClicks=[];
         sendBotEject() {
             //this.sendPosition();
             this.sendAction(23);
-        },
+        },	
         sendBotSplit() {
             //this.sendPosition();
             this.sendAction(22);
@@ -13060,7 +13072,7 @@ Game name     : ${i.displayName}<br/>
             
         },
         addSpect() {
-            if (($("#nick").val().includes('℄') && $("#clantag").val() == window.atob(window.clanTagLc)) || window.proLicenceUID) {
+            if (($("#nick").val().includes('℄') && $("#clantag").val() == window.clanTagLc) || window.proLicenceUID) {
                 $('#set-fullSpectator').show();
                 $('#set-ingameSpectator').show();
                 if (window.fullSpectator && spects.length == 0) {
@@ -15956,6 +15968,13 @@ Game name     : ${i.displayName}<br/>
                 LM.sendBotEject();
             }
         },
+        /*Botsmacroeject() {
+            if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled - 1]) {
+                spects[window.multiboxPlayerEnabled - 1].sendBotEject()
+            } else {
+                LM.sendBotEject();
+            }
+        },	*/	
         Botsplit() {
             if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled - 1]) {
                 spects[window.multiboxPlayerEnabled - 1].sendBotSplit()
@@ -16130,7 +16149,7 @@ function setGUIEvents() {
     })
     document.getElementById('startBots').addEventListener('click', () => {
         if (legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots) {
-            if (legendmod.gameMode == ":party" || $("#nick").val().includes('℄') && $("#clantag").val() == window.atob(window.clanTagLc) || window.AdminRights == 1 || window.IamNeo == true) {
+            if (legendmod.gameMode == ":party" || $("#nick").val().includes('℄') && $("#clantag").val() == window.clanTagLc || window.AdminRights == 1 || window.IamNeo == true) {
                 if (window.bots.amount) {
                     if (window.bots.amount + legendmod.leaderboard.length > 197) window.bots.amount = 197 - legendmod.leaderboard.length;
                     //if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') {
@@ -16744,7 +16763,7 @@ function repeatSendingSpecialSkins() {
     temp = localStorage.getItem("isActualUsingSpecialEffectsSkin")
     //var temp= temp.split(';')
 
-    if (temp && temp != "null" && (($("#nick").val().includes('℄') && $("#clantag").val() == window.atob(window.clanTagLc)) || window.proLicenceUID || temp == "Byzantium" || window.tempAnimatedCoolArray.includes(temp))) {
+    if (temp && temp != "null" && (($("#nick").val().includes('℄') && $("#clantag").val() == window.clanTagLc) || window.proLicenceUID || temp == "Byzantium" || window.tempAnimatedCoolArray.includes(temp))) {
         if (application.lastSentNick == "") application.lastSentNick = $("#nick").val()
         SpecialEffectPlayers[application.lastSentNick] = temp
         //
