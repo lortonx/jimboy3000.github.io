@@ -1,5 +1,5 @@
 /* Source script
-v3.128
+v3.129
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -60,7 +60,9 @@ window.renderDelay = 0;
 window.chatLimit = 15;
 
 //inject gamepad libraries if Mobile
-var isMobile = window.orientation > -1; //false for PC, true for mobile 
+//var isMobile = window.orientation > -1; //false for PC, true for mobile 
+var isMobile = jQuery.browser.mobile;
+
 
 function changeregion() {
     if ($('#region').val() == "Private") {
@@ -12926,7 +12928,7 @@ Game name     : ${i.displayName}<br/>
 						howmanytypesofbots++;
 					}
 				});
-				var totalRealPlayers = ArrayLeaderboardCount.length  - howmanytypesofbots;
+				var totalRealPlayers = ArrayLeaderboardCount.length - howmanytypesofbots;
 				if (counterNicks>0){
 					teamText += '<span class="me">' + Languageletter313 + ': ' + totalRealPlayers + ' Bots: ' + counterNicks + '</span>';
 				}
