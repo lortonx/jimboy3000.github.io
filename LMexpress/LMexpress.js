@@ -1,7 +1,7 @@
 /**************
- * Legend express v1.72 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.74 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "12"; // the version 1.1-> 1.11
+var semimodVersion = "13"; // the version 1.1-> 1.11
 
 
 loadericon();
@@ -308,7 +308,7 @@ function startLM(modVersion) {
 			toastr.info('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.8</b></font>. <br>visit: <a target="_blank" href="https://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 		}
 		//$("#ogario-party").wrap('<div style="display: none;" id="hidendivtoken"></div>');
-		universalchat();
+		//universalchat();
 		adminstuff();
 		return initializeLM(modVersion);
 	}
@@ -2025,7 +2025,928 @@ function MsgServCommandsreturner() {
 }
 
 
-function universalchat(){}
+function universalchat() {
+    setTimeout(function() {		
+		if (application) application.setUniversalChat()
+    }, 2000);
+
+    var legbgpic = $("#menuBg").val();
+    var legbgcolor = $("#menuPanelColor").val();
+
+
+	window.authenticAgartoolId=[];
+    var global = window;
+    var my = {
+        "name": "<i class='fa fa-universal-access' aria-hidden='true'></i>",
+        //        "log": function(msg){ console.log(this.name + ":"+ msg); },
+        //		"log": function(msg){ toastr["success"](this.name + ":"+ msg); },		
+        "log": function(msg) {
+            if (($('#chat-box').is(":visible") == false)) {
+                //console.log(".....");
+                /*
+                window.teammatelegendmodnicks.forEach(function(a){
+                	if (~msg.indexOf(a)+":") {	
+                		msg="[Universal chat]:";
+                	}
+                	}); */
+                if (~msg.indexOf("Received a command with an unknown name")) {
+                    if (~msg.indexOf("Received a command with an unknown name: customSkins")) {} else {
+                        toastr["success"]('<div class="toast-message"><span class="message-nick">' + this.name + ': </span><span class="message-text">' + msg + '</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+                    }
+                } else if (~msg.indexOf(Premadeletter109b + " socket.io")) {
+                    toastr.warning('<div class="toast-message"><span class="message-nick">' + this.name + ': </span><span class="message-text">' + msg + '</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+                    //playSound($('#commandSound').val());
+                } else if (~msg.indexOf("minimap server")) {
+                    toastr.warning('<div class="toast-message"><span class="message-nick">' + this.name + ': </span><span class="message-text">' + msg + '</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+                } else if (~msg.indexOf($('#nick').val() + ':')) {
+                    if (window.noOgarioSocket) {
+                        toastr["success"]('<div class="toast-message"><span class="message-nick">' + this.name + ': </span><span class="message-text">' + msg + '</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+                        playSound($('#messageSound').val());
+                    } else {}
+                } else if (~msg.indexOf('[Universal chat]:')) {} else if (~msg.indexOf('@')) {
+                    msg.slice(1);
+                    toastr.warning('<div class="toast-message"><span class="message-nick">' + this.name + ': </span><span class="message-text">' + msg + '</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+                    playSound($('#commandSound').val());
+                } else {
+                    toastr["success"]('<div class="toast-message"><span class="message-nick">' + this.name + ': </span><span class="message-text">' + msg + '</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+                    playSound($('#messageSound').val());
+                }
+            }
+        },
+        //        "tool_symbol": "Send text Universaly"
+        "tool_symbol": ""
+    };
+    'use strict';
+	window.lalala = 5
+    var stat = {
+        "AgarToolVersion": window.lalala,
+		
+        //"AgarToolServer": "wss://minimap.agartool.io:9000",
+		//"AgarToolServer": "wss://minimap.agartool.io",
+		"AgarToolServer": "wss://minimap.agartool.io:443",
+        minimapBalls: {},
+        "socketIoURL": "https://legendmod.ml/ExampleScripts/socket-io.min.js",
+        "minimapNickFont": "700 11px Ubuntu",
+        "minimapNickColor": "#ffffff",
+        "minimapNickStrokeColor": "#000000",
+        "minimapNickStrokeSize": 2,
+        "minimapTop": 24,
+        "minimapTeammatesSize": 5.5,
+        "minimapOffsetX": 71,
+        "mapSize": 14142,
+        "mapOffset": 7071,
+        "pi2": 2 * Math.PI,
+        "messageBoxBottom": ["82px", "40%"],
+        "keyCodeEnter": 13,
+        "keyCodeA": 65,
+        "keyCodeR": 82
+    };
+    var cfg = {};
+    var cfg_org = {
+        "user_show": true,
+        "minimap_show": true,
+        "tgar_prefix": "O",
+        "tgar_color": "#8C81C7",
+        "update_interval": 1000,
+        "ogar_user": true,
+        "ogar_prefix": "L.M",
+        "lmsa_teamtop": false,
+        "lmsa_chat": false,
+        "chat_close": false,
+        "chat_unpause": true,
+        "chat_vcenter": false,
+        "chat_alt": true,
+        "chat_ctrlalt": true,
+        "chat_ctrl": true,
+        "skin_toggle_auto": false,
+        "skin_toggle_interval": 10000
+    };
+
+    function pre_loop() {
+        // At this point jQuery can not be used
+        if (!document.getElementById("top5-hud")) {
+            my.pre_loop_timeout = (my.pre_loop_timeout || 1000) + 1000;
+            setTimeout(pre_loop, my.pre_loop_timeout);
+            my.log("wait for mod to load");
+            return;
+        }
+        // Just to be sure, another 1 sec wait
+        setTimeout(initialize, 1000);
+    }
+    pre_loop();
+
+    function initialize() {
+        //      $.extend(cfg, cfg_org, JSON.parse(GM_getValue("config", '{}')));
+        $.extend(cfg, cfg_org, JSON.parse(my.storage_getValue("config", '{}')));
+        global.ao2t = {
+            my: my,
+            stat: stat,
+            cfg: cfg
+        };
+        var local_style = '';
+        local_style += '#ao2t-hud {';
+        local_style += ' font-size: 80%; pointer-events: auto;';
+        local_style += '}';
+        local_style += '#ao2t-hud * {';
+        local_style += ' user-select: auto!important;';
+        local_style += '}';
+        local_style += '#ao2t-cfg-dlg {';
+        local_style += ' border-radius:0; font-size: 80%; padding: 2px 10px; position: fixed;';
+        local_style += ' pointer-events: auto; background-image: url(' + legbgpic + '); background-color: ' + legbgcolor + ' ; color: #ffffff;';
+        local_style += ' overflow: hidden;';
+        local_style += '}';
+        local_style += '#ao2t-cfg-dlg * {';
+        local_style += ' width: auto; user-select: auto!important; pointer-events: auto;';
+        local_style += ' position: relative; float: initial;';
+        //local_style +=     ' display: run-in;'; // NG
+        local_style += '}';
+        local_style += '#ao2t-cfg-dlg input {';
+        local_style += ' background-color: rgba(0,0,0,0.4); color: #ffffff;';
+        local_style += '}';
+        $("head").append('<style>\n' + local_style + '\n</style>');
+        $("#top5-hud").append('' +
+            '<div id="ao2t-hud"><span class="hud-main-color">Universal:' +
+            ' <span id="ao2t-capture"><i class="fa fa-universal-access" aria-hidden="true"></i></span>' +
+            ' <span id="ao2t-config"><i class="fa fa-wrench" aria-hidden="true"></i></span></span>' +
+            //                 '<div id="ao2t-top5" style="padding-left: 1em;"></div>'+
+            '<div id="ao2t-top5" style="font-size: 14px;"></div>' +
+            '</div>');
+        $("#ao2t-capture").click(function(event) {
+            //            my.log("capture_click");
+            stat.capture = !stat.capture;
+            if (stat.capture) {
+                if (global.ogario) {
+                    $("#ao2t-capture").removeClass("disconnected").addClass("connected");
+                    //$("#ao2t-capture").text('??');
+                    $("#ao2t-capture").html('<i class="fa fa-times" aria-hidden="true"></i>');
+                } else {
+                    $("#ao2t-capture").removeClass("disconnected").addClass("connected");
+                    $("#ao2t-capture").html('<i class="fa fa-times" aria-hidden="true"></i>');
+
+                }
+                my.capture_start();
+            } else {
+                $("#ao2t-capture").removeClass("connected").addClass("disconnected");
+                $("#ao2t-capture").html('<i class="fa fa-universal-access" aria-hidden="true"></i>');
+                my.capture_end();
+            }
+        });
+        $('#ao2t-capture').mouseenter(function() {
+            $('#ao2t-capture').css('color', $("#hudTextColor").val());
+            return clickedname = "YES";
+        }).mouseleave(function() {
+            $('#ao2t-capture').css('color', '');
+        });
+        $('#ao2t-config').mouseenter(function() {
+            $('#ao2t-config').css('color', $("#hudTextColor").val());
+            return clickedname = "YES";
+        }).mouseleave(function() {
+            $('#ao2t-config').css('color', '');
+        });
+
+        $("#ao2t-config").click(my.config);
+        // LMB-Mouse split correction (Do not separate by left click on button)
+        if (cfg.lmsa_teamtop) {
+            //$(".team-top-menu").mousedown(function(){return false;});
+            $("#top5-hud").mousedown(function() {
+                return false;
+            });
+        } else {
+            $("#ao2t-hud").mousedown(function(event) {
+                return false;
+            });
+        }
+        if (cfg.lmsa_chat) {
+            $("#message-box").mousedown(function() {
+                return false;
+            });
+        }
+        // --- chat close ---
+        if (cfg.chat_close) {
+            $("#message-menu").append('<a href="#" id="ao2t-chat-close" style="float:right;">X</a>');
+            $("#ao2t-chat-close").click(function() {
+                my.chatClose();
+            });
+        }
+        if (cfg.chat_vcenter) {
+            $("#message-box").css("bottom", stat.messageBoxBottom[1]);
+        }
+        $("#message").keydown(function(event) {
+            var modify = (event.altKey ? "a" : "") +
+                (event.ctrlKey ? "c" : "") +
+                (event.metaKey ? "m" : "") +
+                (event.shiftKey ? "s" : "");
+            if (event.keyCode === stat.keyCodeEnter) {
+                if (modify === "a" && cfg.chat_alt) {
+                    my.chatSend();
+                    return false;
+                } else if (modify === "ac" && cfg.chat_ctrlalt) {
+                    my.chatSend({
+                        "ogar": true
+                    });
+                    return false;
+                } else if (modify === "c" && cfg.chat_ctrl) {
+                    my.chatClose();
+                    return false;
+                }
+            }
+        });
+        // --- skin toggle ---
+        my.skinToggle_start();
+		$("#ao2t-cfg-dlg").draggable()
+    }
+    my.capture_start = function() {
+        // If not, add chat submit button
+        if ($("#ao2t-message").length) {
+            $("#ao2t-message").show(); // .prop('disabled', false);
+            $("#ao2t-minimap").show();
+        } else {
+            my.capture_init();
+        }
+        // Connection
+        stat.tag = $('#clantag').val();
+        stat.nick = $('#nick').val();
+        stat.token = $('#server-token').val();
+        stat.ws = 'wss://live-arena-' + stat.token + '.agar.io:80';
+        my.connect();
+        stat.update_timerid = setInterval(my.update, cfg.update_interval);
+    };
+    my.capture_end = function() {
+        $("#ao2t-message").hide(); // .prop('disabled', true);
+        $('#ao2t-top5').html('');
+        $("#ao2t-minimap").hide();
+        my.disconnect();
+        clearInterval(stat.update_timerid);
+        stat.update_timerid = null;
+    };
+    my.capture_init = function() {
+        //        $("#message-menu").append('<a href="#" id="ao2t-message" style="float:right;">'+ my.tool_symbol +'</a>');
+        $("#message-menu").prepend('<a href="#" id="ao2t-message" style="float:left;">' + my.tool_symbol + '</a>');
+        //	  	$(".show-chat-emoticons.ogicon-smile").after('<a href="#" id="ao2t-message" style="float:right;">'+ my.tool_symbol +'</a>');
+
+        $("#ao2t-message").click(my.chatSend);
+        // minimap
+        var minimap = $("#minimap");
+        var minimapWidth = minimap.attr('width');
+        var minimapHeight = minimap.attr('height');
+        minimap.before('<canvas id="ao2t-minimap"' +
+            ' style="position: absolute;"' +
+            ' width="' + minimapWidth + '" height="' + minimapHeight + '">');
+        //stat.minimapOffsetX = stat.minimapOffsetY + minimapHeight - minimapWidth;
+    };
+    my.chatSend = function(flg_) {
+        var flg = flg_ || {};
+        if (!stat.connected) {
+            if ($("#ao2t-capture").hasClass("connected")) {
+                global.toastr.error("L.M:->A.T: not connected");
+                return;
+            }
+        }
+
+        var msg = '[Universal chat]:' + $("#message").val();
+        var msgLM = $("#message").val();
+        if (msgLM.indexOf('[url]') == -1 && msgLM.indexOf('[yut]') == -1 && msgLM.indexOf('[skype]') == -1 && msgLM.indexOf('[discord]') == -1 && msgLM.indexOf('[srv]') == -1 && msgLM.indexOf('[tag]') == -1 && msgLM.indexOf('Legend.Mod') == -1 && msgLM.indexOf('https://agar.io/sip=151.80.91.73:1511') == -1) {
+            if (msgLM.length) {
+                my.sendMinimapServerCommand({
+                    name: "chat",
+                    //                nick: "LM: " + stat.nick,
+                    //				nick: stat.nick,
+                    nick: $('#nick').val(),
+                    message: "LM:" + msg
+                });
+                if (flg.ogar) {
+                    $(document).trigger(jQuery.Event('keydown', {
+                        keyCode: stat.keyCodeEnter,
+                        which: stat.keyCodeEnter
+                    }));
+                } else {
+                    //               $("#message-box").hide();
+                }
+            }
+        } else {
+            console.log("Message included Script command, thus it is not sent to agar tool");
+        }
+    };
+    my.chatClose = function() {
+        $("#message-box").css("display", "none");
+        if (cfg.chat_unpause && $("#pause-hud").css("display") == "block") { // Release during PAUSE
+            $(document).trigger(jQuery.Event('keydown', {
+                keyCode: stat.keyCodeR,
+                which: stat.keyCodeR
+            }));
+            $(document).trigger(jQuery.Event('keyup', {
+                keyCode: stat.keyCodeR,
+                which: stat.keyCodeR
+            }));
+        }
+    };
+    my.update = function() {
+        var ogarAlive = my.ogarIsAlive();
+        if (ogarAlive != stat.alive) {
+            my.tgarAlive(ogarAlive);
+        }
+        if (stat.alive) {
+            my.tgarReposition();
+        }
+        my.ogarMinimapUpdate();
+    };
+
+    // -----  Configuration  -----
+    my.config = function() {
+        //        my.log("config_click2");
+        if (!($('#ao2t-cfg-dlg').length)) {
+            my.config_init();
+        }
+        my.cfg_load(cfg);
+        $("#ao2t-cfg-dlg").show();
+        $("#overlays").show();
+    };
+    my.config_init = function() {
+        $("#overlays").append('<div id="ao2t-cfg-dlg"' +
+            '  style="width:400px; height:480px; top:150px; left:300px; display: none;' +
+            '">' +
+            'Agar Tool/Legend Mod tools' +
+            '<div style="overflow: scroll; ' +
+            'position: relative; top:1.5em; left:0.5em; right:0.5em; bottom:1.5em;">' +
+            '<div id="ao2t-cfg-base">' +
+            '</div>' +
+            '</div><br><br>' +
+            '&nbsp;<span id="ao2t-cfg-default" class="btn btn-primary">' + Languageletter309.toUpperCase() + '</span>' +
+            '&nbsp;<span id="ao2t-cfg-ok" class="btn btn-success">' + Languageletter171 + '</span>' +
+            '&nbsp;<span id="ao2t-cfg-cancel" class="btn btn-danger">' + Languageletter283 + '</span>' +
+            '</div>');
+        $('#ao2t-cfg-base').append('' +
+            '&nbsp;&nbsp;&nbsp;Update frequency [milliseconds]:<input type="text" data-ao2t-config="update_interval" style="width:6em;"/>' +
+            '<br/>Agar Tool Obtained from' +
+            '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="user_show"/>user list</label>' +
+            '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="minimap_show"/>minimap</label>' +
+            '&nbsp;Prefix:<input type="text" data-ao2t-config="tgar_prefix" style="width:4em;"/>' +
+            '&nbsp;&nbsp;color:<input type="text" data-ao2t-config="tgar_color" style="width:6em;"/>' +
+            //    '<span class="input-group-addon"><i id="tgar_color" style="background-color: rgb(0, 0, 0);"></i></span>'+
+            '<br/>Send to Agar Tool' +
+            '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="ogar_user"/>user info</label>' +
+            '&nbsp;Prefix:<input type="text" data-ao2t-config="ogar_prefix" style="width:4em;"/>' +
+            '<br/>LMB-Mouse split correction' +
+            '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="lmsa_teamtop"/>Teamboard</label>' +
+            '&nbsp;<label><input type="checkbox" data-ao2t-config="lmsa_chat"/>chat</label>' +
+            '<br/>Chat option' +
+            '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="chat_close"/>close</label>' +
+            '&nbsp;<label><input type="checkbox" data-ao2t-config="chat_unpause"/>unpause</label>' +
+            '&nbsp;<label><input type="checkbox" data-ao2t-config="chat_vcenter"/>vcenter</label>' +
+            '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="chat_alt"/>Alt>T</label>' +
+            '&nbsp;<label><input type="checkbox" data-ao2t-config="chat_ctrlalt"/>Ctrl+Alt>O+T</label>' +
+            '&nbsp;<label><input type="checkbox" data-ao2t-config="chat_ctrl"/>Ctrl>Close</label>' +
+            '<br/>Other' +
+            '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="skin_toggle_auto"/>skin auto toggle</label>' +
+            '&nbsp;&nbsp;&nbsp;Frequency [milliseconds]:<input type="text" data-ao2t-config="skin_toggle_interval" style="width:6em;"/>' +
+            '<br/>&nbsp;&nbsp;* Changes will be reflected after restart' +
+            '');
+        $("#ao2t-cfg-default").click(function() {
+            my.cfg_load(cfg_org);
+        });
+        $("#ao2t-cfg-ok").click(function() {
+            if ($("#helloContainer").is(":visible")) {
+                showMenu2();
+            }
+            cfg = my.cfg_save();
+            //            GM_setValue("config", JSON.stringify(cfg));
+            my.storage_setValue("config", JSON.stringify(cfg));
+            my.config_cancel();
+            $("#message-box").css("bottom", stat.messageBoxBottom[cfg.chat_vcenter ? 1 : 0]);
+            my.skinToggle_start();
+
+        });
+        $("#ao2t-cfg-cancel").click(function() {
+            if ($("#helloContainer").is(":visible")) {
+                showMenu2();
+            }
+            my.config_cancel();
+        });
+        my.config_cancel = function() {
+            //$("#overlays").hide();
+            $("#ao2t-cfg-dlg").hide();
+        };
+    };
+    // -----  skin toggle  -----
+    my.skinToggle_start = function() {
+        if (stat.skinToggle_timerid) {
+            clearInterval(stat.skinToggle_timerid);
+            delete stat.skinToggle_timerid;
+        }
+        if (cfg.skin_toggle_auto && cfg.skin_toggle_interval > 0) {
+            stat.skinToggle_timerid = setInterval(my.skinToggle_update, cfg.skin_toggle_interval);
+        }
+    };
+    my.skinToggle_update = function() {
+        //my.log("skinToggle_update in");
+        // --- check Legend Mod.v3 mode ---
+        if (global.ogario && global.ogario.customSkins && global.ogario.vanillaSkins) {
+            //my.log("skinToggle_update hasBoth");
+            stat.skinToggle_hasBoth = true;
+        }
+        my.skinToggle_update_sub();
+        if (stat.skinToggle_hasBoth && global.ogario.customSkins && !global.ogario.vanillaSkins) {
+            //my.log("skinToggle_update retry");
+            my.skinToggle_update_sub();
+        }
+    };
+    my.skinToggle_update_sub = function() {
+        $(document).trigger(jQuery.Event('keydown', {
+            keyCode: stat.keyCodeA,
+            which: stat.keyCodeA
+        }));
+        $(document).trigger(jQuery.Event('keyup', {
+            keyCode: stat.keyCodeA,
+            which: stat.keyCodeA
+        }));
+    };
+    // =====  Agar Tool Communication processing / connection  =====
+    my.connect = function() {
+        my.disconnect();
+        if (!global.io) {
+            //my.log(Premadeletter109b + " socket.io");
+            return loadScript(stat.socketIoURL, my.connect);
+        }
+        var grab_opt = {
+            query: "version=" + encodeURIComponent(stat.AgarToolVersion) +
+                "&server=" + encodeURIComponent(stat.ws)
+        };
+        stat.grab_socket = io.connect(stat.AgarToolServer, grab_opt);
+        stat.grab_socket.on("info", function(minimap_info) {
+            stat.minimap_info = minimap_info;
+            my.minimap_connect();
+        });
+    };
+    my.disconnect = function() {
+        if (stat.connected && stat.alive) {
+            my.tgarAlive(false);
+        }
+        stat.connected = false;
+        stat.alive = false;
+        var save_grab_socket = stat.grab_socket;
+        var save_minimap_socket = stat.minimap_socket;
+        stat.grab_socket = null;
+        stat.minimap_socket = null;
+        if (save_grab_socket) {
+            save_grab_socket.disconnect();
+        }
+        if (save_minimap_socket) {
+            save_minimap_socket.disconnect();
+        }
+    };
+    my.minimap_connect = function() {
+        if ($("#ao2t-hud").hasClass("OnceUsed") == false) {
+            //		toastr.warning('<b>[SERVER]: </b>Legend Mod and Agar Tool successfully connected. <br>Use {Send Text Universaly} button on chat box to send to Agar.io Tool');
+            $("#ao2t-hud").addClass("OnceUsed");
+        }
+        my.log(Languageletter82a + " " + Premadeletter123.toLowerCase() + "=" + stat.minimap_info.minimapServer);
+        my.resetMinimap();
+        var minimap_opt = {
+            reconnection: !1,
+            query: "server=" + encodeURIComponent(stat.minimap_info.agarServer) +
+                "&tag=" + encodeURIComponent(stat.tag)
+        };
+        stat.minimap_socket = io.connect(stat.minimap_info.minimapServer, minimap_opt);
+        stat.minimap_socket.on("command", my.minimap_command);
+        stat.minimap_socket.on("connect", function() {
+            stat.connected = true;
+            //if(stat.alive){
+            //    my.sendMinimapServerCommand({
+            //        name: "alive",
+            //        playerName: stat.nick
+            //    });
+            //}
+        });
+        stat.minimap_socket.on("disconnect", function() {
+            stat.minimap_socket = null;
+            my.minimap_disconnect();
+        });
+        stat.minimap_socket.on("connect_error", function() {
+            stat.minimap_socket = null;
+            my.minimap_disconnect();
+        });
+    };
+    my.minimap_disconnect = function() {
+        stat.connected = false;
+        var save_grab_socket = stat.grab_socket;
+        var save_minimap_socket = stat.minimap_socket;
+        stat.grab_socket = null;
+        stat.minimap_socket = null;
+        if (save_grab_socket) {
+            save_grab_socket.disconnect();
+        }
+        if (save_minimap_socket) {
+            save_minimap_socket.disconnect();
+        }
+    };
+    // =====  Agar Tool Communication processing / processing  =====
+    my.minimap_command = function(cmd) {
+        if (void 0 === cmd.name) {
+            return;
+        }
+        //my.log("cmd="+ cmd.name);
+        switch (cmd.name) {
+            case "add":
+				if(window.teammatelegendmodnicks && window.teammatelegendmodnicks.includes(cmd.playerName) || cmd.playerName.includes('L.M')){					
+				}				             
+				else{
+					if (!cmd.playerName) {
+						cmd.playerName = "An unnamed cell";
+					}
+					my.addBallToMinimap(!1, cmd.socketID, cmd.playerName, cmd.x, cmd.y, cfg.tgar_color, !0);
+				}
+				//my.addBallToMinimap(!1, cmd.socketID, cmd.playerName, cmd.x, cmd.y, defaultSettings.miniMapTeammatesColor, !0);
+                break;
+            case "remove":
+                my.removeBallFromMinimap(cmd.socketID);
+                break;
+            case "position":
+                my.moveBallOnMinimap(cmd.socketID, cmd.x, cmd.y);
+                break;
+            case "customSkins":
+				if (!window.agtoolball || !isEquivalent(window.agtoolball, cmd.customs)){
+                    window.agtoolball = cmd.customs;
+                    if (legendmod.showCustomSkins) {
+                        Object.keys(window.agtoolball).forEach(function(key) {
+                            //console.log("Custom skin from agar tool added: " + key.split("%")[0] + "  " + window.agtoolball[key]);
+                            if (key.split("%")[0] != 0) {
+                                core.registerSkin(key.split("%")[0], null, window.agtoolball[key], 1, null)
+                            }
+                        });
+                    }
+                }
+                break;
+            case "reset":
+                my.resetMinimap();
+                break;
+            case "chat":
+				if(window.teammatelegendmodnicks && window.teammatelegendmodnicks.includes(cmd.playerName) || cmd.playerName.includes('L.M')){					
+				}			
+                else{
+				//console.log(cmd);
+                if (!cmd.playerName) {
+                    cmd.playerName = "An unnamed cell";
+                }
+                //                my.log("chat:"+ cmd.playerName +":"+ cmd.message);
+                my.log("" + cmd.playerName + ": " + cmd.message);
+                my.ogarChatAdd(cmd.playerName, cmd.message);
+				}
+                break;
+            case "command":
+				if(window.teammatelegendmodnicks && window.teammatelegendmodnicks.includes(cmd.playerName) || cmd.playerName.includes('L.M')){					
+				}	
+				else{
+                //console.log(cmd);
+                if (!cmd.playerName) {
+                    cmd.playerName = "An unnamed cell";
+                }
+                //                my.log("chat:"+ cmd.playerName +":"+ cmd.message);
+                my.log("@" + cmd.playerName + ": " + cmd.message);
+                my.ogarChatAdd(cmd.playerName, cmd.message);
+				}
+                break;
+            case "ls":
+                console.log("Unknown command ls: " + cmd.message);
+                break;
+            case "hc":
+                console.log("Unknown command ls: " + cmd.message);
+                break;
+            default:
+                my.log("Received a command with an unknown name: " + cmd.name);
+        }
+    };
+    my.sendMinimapServerCommand = function(e) {
+        if (stat.minimap_socket && stat.minimap_socket.connected) {
+            stat.minimap_socket.emit("command", e);
+            return true;
+        }
+        return false;
+    };
+    my.resetMinimap = function() {
+        //$("#messageTableTemp").empty(), $("#messageTableComplete").empty();
+		window.authenticAgartoolId=[];
+        for (var e in stat.minimapBalls) {
+            if (!stat.minimapBalls[e].isDefault) {
+                delete stat.minimapBalls[e];
+            }
+        }
+        // test
+        //my.addBallToMinimap(true, "a", "0x0", 0, 0, "#FF0000", !0);
+        //my.addBallToMinimap(true, "b", "UL3000", -3000, -3000, "#FF0000", !0);
+        //my.addBallToMinimap(true, "c", "UR3000", -3000,  3000, "#FF0000", !0);
+        //my.addBallToMinimap(true, "d", "DR3000",  3000,  3000, "#FF0000", !0);
+        //my.addBallToMinimap(true, "e", "DL3000",  3000, -3000, "#FF0000", !0);
+        //my.addBallToMinimap(true, "f", "TL", -7000,  -7000, "#FF0000", !0);
+        //my.addBallToMinimap(true, "g", "BR",  7000,   7000, "#FF0000", !0);
+    };
+    my.addBallToMinimap = function(isDefault, id, name, x, y, color, visible) {
+        //if (stat.minimapBalls[id] == null){ //
+		window.authenticAgartoolId[id]=name;
+		stat.minimapBalls[id] = new MinimapBall(isDefault, name, x, y, color, visible);
+		//} //
+    };
+    my.removeBallFromMinimap = function(id) {
+		window.authenticAgartoolId[id]=null;
+        if (stat.minimapBalls[id]) {
+            delete stat.minimapBalls[id];
+        }
+    };
+    my.moveBallOnMinimap = function(id, x, y) {
+        if (stat.minimapBalls[id]) {
+            stat.minimapBalls[id].x = x;
+            stat.minimapBalls[id].y = y;
+        }
+    };
+
+    function MinimapBall(isDefault, name, x, y, color, visible) {
+        this.isDefault = isDefault;
+        this.name = name;
+        this.x = x;
+        this.y = y;
+        this.lastX = x;
+        this.lastY = y;
+        this.color = color;
+        this.visible = visible;
+    }
+    my.tgarAlive = function(alive) {
+        stat.alive = alive;
+        if (cfg.ogar_user) {
+            //my.log("alive -> "+ stat.alive +" name="+ cfg.ogar_prefix + stat.nick);
+            if (stat.alive) {
+                stat.alive = my.sendMinimapServerCommand({
+                    name: "alive",
+                    playerName: cfg.ogar_prefix + stat.nick,
+                    customSkins: $("#skin").val()
+                });
+                //my.log("alive >>"+ stat.alive);
+            } else {
+                my.sendMinimapServerCommand({
+                    name: "dead"
+                });
+            }
+        }
+    };
+    my.tgarReposition = function() {
+        if (cfg.ogar_user && global.ogario) {
+            my.sendMinimapServerCommand({
+                name: "position",
+                x: ogario.playerX + ogario.mapOffsetX,
+                y: ogario.playerY + ogario.mapOffsetY
+            });
+        }
+    };
+
+    // =====  Process Legend Mod  ======
+    my.ogarChatAdd = function(nick, msg) {
+        //if ((~msg.indexOf('LM:'))==false) {
+        //console.log("...")
+        var time_txt = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
+        var user_icon = my.tool_symbol;
+        var chat_html = '<div class="message">' +
+            '<span class="message-time">[' + time_txt + '] </span>' +
+            //user_icon +
+            //'<span class="message-nick">'+ escapeHtml(nick) +': </span>'+
+            //'<span style="color:' + cfg.tgar_color + '; font-weight:700;">' +
+			
+			'<span style="color:' + defaultSettings.messageTextColor + '; font-weight:700;">' +
+            user_icon + ' ' + escapeHtml(nick) + '</span>: ' +
+            '<span class="message-text">' + escapeHtml(msg) + '</span>' +
+            '</div>';
+        $("#chat-box").append(chat_html);
+        $("#chat-box").perfectScrollbar('update');
+        $('#chat-box').animate({
+            'scrollTop': $("#chat-box").prop("scrollHeight")
+        }, 	500);
+    }
+    //};
+    my.ogarMinimapUpdate = function() {
+        window.agartoolteammatenicks = [];
+        var minimap_elem = document.getElementById("ao2t-minimap");
+        var minimapWidth = minimap_elem.width;
+        var minimapHeight = minimap_elem.height;
+        var minimapMulti = (minimapWidth - 18) / my.ogarGetMapSize();
+        var mapOffset = my.ogarGetMapOffset();
+        //var mapOffsetX = ogario.mapOffset - ogario.mapOffsetX;
+        //var mapOffsetY = ogario.mapOffset - ogario.mapOffsetY;
+        stat.minimapOffsetX = 18 / 2;
+        stat.minimapOffsetY = stat.minimapOffsetX + (minimapHeight - minimapWidth);
+        var mapOffsetX = stat.minimapOffsetX;
+        var mapOffsetY = stat.minimapOffsetY;
+        var mapOffsetT = -(2 * stat.minimapTeammatesSize + 2);
+        var ctx = minimap_elem.getContext('2d');
+        ctx.clearRect(0, 0, minimapWidth, minimapHeight);
+        ctx.font = stat.minimapNickFont;
+        var user_txt = '';
+        //var sep = '1. ';
+		var sep=  "";
+		if (!defaultmapsettings.top5skins){
+			sep = '1. ';
+		}
+        var keys = Object.keys(stat.minimapBalls).sort();
+		window.agartoolminimapBalls = stat.minimapBalls;
+		//
+		window.predictedGhostCellsArray=[];
+		for(var z = 0; z < window.predictedGhostCells.length; z++){         			
+			window.predictedGhostCellsArray[z]=window.predictedGhostCells[z].nick;
+		}
+		for(var i = 0; i < keys.length; i++){    
+			
+			for (var n = 1; n <= i; n++){
+				if (i - n >= 0 && stat.minimapBalls[keys[i]].name == stat.minimapBalls[keys[i-n]].name){
+					if (window.authenticAgartoolId[keys[i]]!=stat.minimapBalls[keys[i]].name){
+						//console.log(stat.minimapBalls[keys[i]].name, window.authenticAgartoolId[keys[i]]);
+						stat.minimapBalls[keys[i]].name = window.authenticAgartoolId[keys[i]];
+					}
+					else if (window.authenticAgartoolId[keys[i-n]]!=stat.minimapBalls[keys[i-n]].name){
+						stat.minimapBalls[keys[i-n]].name = window.authenticAgartoolId[keys[i-n]];
+						//console.log(stat.minimapBalls[keys[i-n]].name, window.authenticAgartoolId[keys[i-n]]);
+					}
+				}
+				
+		}
+		for (var e = 0; e < legendmod.leaderboard.length; e++) {
+		if (legendmod.leaderboard[e] && stat.minimapBalls[keys[i]] && escapeHtml(stat.minimapBalls[keys[i]].name) == legendmod.leaderboard[e].nick){
+			stat.minimapBalls[keys[i]].leaderboardpos=e;
+			
+			//for (var n = 1; n <= i; n++){
+				
+			if (i - 1 >= 0 && stat.minimapBalls[keys[i]].leaderboardpos < stat.minimapBalls[keys[i-1]].leaderboardpos){
+				var x=stat.minimapBalls[keys[i]];			
+				if (x!= stat.minimapBalls[keys[i-1]] && x!= stat.minimapBalls[keys[i-2]] && x!= stat.minimapBalls[keys[i-3]] && x!= stat.minimapBalls[keys[i-4]] && x!= stat.minimapBalls[keys[i-5]]
+					&& window.predictedGhostCellsArray.includes(stat.minimapBalls[keys[i]].name) && stat.minimapBalls[keys[i]].name != stat.minimapBalls[keys[i-1]].name && stat.minimapBalls[keys[i]] && stat.minimapBalls[keys[i-1]] ){
+				//console.log(stat.minimapBalls[keys[i]].name + ' ' + stat.minimapBalls[keys[i]].leaderboardpos + ' position changed with ' + stat.minimapBalls[keys[i-1]].name + ' ' + stat.minimapBalls[keys[i-1]].leaderboardpos )
+				var temp = stat.minimapBalls[keys[i]];		
+				
+				stat.minimapBalls[keys[i]] = stat.minimapBalls[keys[i-1]]
+				stat.minimapBalls[keys[i-1]] = temp;
+				}
+
+			}
+		
+			//}
+			
+		}
+		}
+		}
+		//var keys = Object.keys(stat.minimapBalls).sort(function(a, b){return a - b});
+		//
+        if (keys.length === 0) {
+            //user_txt = "No agar tool user";
+        }
+        var count = 2;
+		var count2 = 0;
+        for (var key;
+            (key = keys.shift());) {
+
+            var ball = stat.minimapBalls[key];
+
+            ///////Public Array for agar tool teammates 
+            window.agartoolteammatenicks.push(escapeHtml(ball.name));
+            //user_txt += sep + escapeHtml(ball.name);
+			
+			//
+			var flag=false;
+				if (defaultmapsettings.top5skins){
+				//sep = sep + ('<a href="#" id="pos-skin" class= "set-target" data-user-id="' + key + '"style="background-color: ' + ball.color + '; width: 30px; height:40px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;" src = ' + (application.customSkinsMap[ball.name] ? application.customSkinsMap[ball.name] : "https://legendmod.ml/banners/iconagariotool.png") + ' alt=""> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
+				if (application.customSkinsMap[ball.name] && application.customSkinsCache[application.customSkinsMap[ball.name] + "_cached2"]){
+					sep = sep + ('<a href="#" id="pos-skin" class= "set-target" data-user-id="' + key + '"style="background-color: ' + ball.color + '; width: 30px; height:40px; display: inline-block;"><span style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;" alt="">' + application.customSkinsCache[application.customSkinsMap[ball.name] + "_cached2"].outerHTML + '</span> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');					
+				}
+				else{
+					sep = sep + ('<a href="#" id="pos-skin" class= "set-target" data-user-id="' + key + '"style="background-color: ' + ball.color + '; width: 30px; height:40px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;" src = "https://legendmod.ml/banners/iconagariotool.png" alt=""> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
+				}
+				}			
+			for (var e = 0; e < legendmod.ghostCells.length; e++){ 				
+			if (legendmod.leaderboard[e] && escapeHtml(ball.name)==legendmod.leaderboard[e].nick){
+				if ( flag==false ){
+				sep = sep + ('<span class="hud-main-color">[' + application.calculateMapSector(window.predictedGhostCells[e].x, window.predictedGhostCells[e].y) + "]</span>");
+				sep = sep + ('<span class="top5-mass-color">[' + application.shortMassFormat(window.predictedGhostCells[e].mass) + "]</span> ");	
+				flag=true;
+				}
+				}
+			}
+			if ( flag==false ){
+				if (application.calculateMapSector(ball.x, ball.y) == "C3" || legendmod.gameMode == ":party"){
+				sep = sep + ('<span class="hud-main-color">[' + application.calculateMapSector(ball.x, ball.y) + ']</span> ');
+				}
+			}
+			count2++;
+			
+			user_txt += sep + escapeHtml(ball.name);
+			sep = '</div>';
+			//
+           	//		user_txt += count + ": ";
+			if (!defaultmapsettings.top5skins){
+            sep = '<br/>' + count + ". ";
+			count++;
+			}
+			//sep = '<br/> ';
+			
+            //			user_txt += count + ": ";
+            
+
+            if (cfg.minimap_show) {
+                var name = ball.name + '[' + cfg.tgar_prefix + ']';
+                var mapX = (ball.x + mapOffset) * minimapMulti + mapOffsetX;
+                var mapY = (ball.y + mapOffset) * minimapMulti + mapOffsetY;
+                ctx.textAlign = 'center';
+                ctx.lineWidth = stat.minimapNickStrokeSize;
+                ctx.strokeStyle = stat.minimapNickStrokeColor;
+                ctx.strokeText(name, mapX, mapY + mapOffsetT);
+                ctx.fillStyle = cfg.tgar_color; // stat.minimapNickColor
+				//ctx.fillStyle = defaultSettings.miniMapNickColor;
+				
+                ctx.fillText(name, mapX, mapY + mapOffsetT);
+                ctx.beginPath();
+                ctx.arc(mapX, mapY, stat.minimapTeammatesSize, 0, stat.pi2, !1);
+                ctx.closePath();
+                ctx.fillStyle = ball.color;
+                ctx.fill();
+            }
+        }
+        if (cfg.user_show) {
+			if (!defaultmapsettings.top5skins){
+            user_txt += '<br/>';		
+			}			
+			user_txt += '</div><span style = "margin-top: 30px;" class="hud-main-color ogicon-users"></span> : <span id="top5-total-players" class="top5-mass-color">' + count2 + '</span>'; 
+            $('#ao2t-top5').html(user_txt);
+        }
+    };
+    // --- for Legend Mod Express ----
+    my.ogarIsAlive = function() {
+        return global.ogario ? global.ogario.play : false;
+    };
+    my.ogarGetMapSize = function() {
+        return global.ogario ? global.ogario.mapSize : stat.mapSize;
+    };
+    my.ogarGetMapOffset = function() {
+        return global.ogario ? global.ogario.mapOffset : stat.mapOffset;
+    };
+
+    // =====  Other processing ======
+    my.cfg_save = function() {
+        var cfg_new = {};
+        $('[data-ao2t-config]').each(function() {
+            var elem = $(this);
+            var type = elem.prop('type');
+            var name = elem.attr('data-ao2t-config');
+            var value;
+            if (type === "checkbox") {
+                value = elem.prop('checked');
+            } else {
+                value = $(this).val();
+            }
+            cfg_new[name] = value;
+        });
+        return cfg_new;
+    };
+    my.cfg_load = function(cfg_new) {
+        $('[data-ao2t-config]').each(function() {
+            var elem = $(this);
+            var type = elem.prop('type');
+            var name = elem.attr('data-ao2t-config');
+            if (cfg_new.hasOwnProperty(name)) {
+                var value = cfg_new[name];
+                if (type === "checkbox") {
+                    elem.prop('checked', value);
+                } else {
+                    $(this).val(value);
+                }
+            }
+        });
+    };
+    my.storage_getValue = function(name, defval_) {
+        return global.localStorage[my.name + "_" + name] || defval_;
+    };
+    my.storage_setValue = function(name, value) {
+        global.localStorage[my.name + "_" + name] = value;
+    };
+
+    function loadScript(url, callback) {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = url;
+        if (typeof callback !== 'undefined') {
+            script.onload = callback;
+        }
+        document.head.appendChild(script);
+    }
+
+    function escapeHtml(e) {
+        return e.replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+	
+
+	
+    $('#message').keydown(function(e) {
+        if (e.keyCode === 13) { // If Enter key pressed
+            $('#ao2t-message').click();	
+        }
+    });
+}
 
 function Universalchatfix() {	
     if ($("#ao2t-capture").hasClass("connected")) {
@@ -4139,15 +5060,15 @@ function initializeLM(modVersion) {
 	//$('#animation-value').parent().before("1. Type on browser: <b>chrome://settings/system</b> , ensure <i>Use hardware acceleration when available</i> checkbox, is <b>ENABLED</b>. 2. Prefer <b>Opera GX</b><br><br>");
 		
 	$('#animation-value').parent().before(
-        '<label style="float:left; padding-left:0; padding-right:0">' + textLanguage.unlockedFPS + '<select id="FrameWorkOption" class="form-control" onchange="changeFrameWork();" required="" data-original-title="" title="" style="display:inline; width: 70%; float:right;" >' +        			
-		'<option value="true" data-itr="">Unlimited Rate</option>' +
+        '<label style="float:left; padding-left:0; padding-right:0">' + textLanguage.unlockedFPS + '<select id="FrameWorkOption" class="form-control" onchange="changeFrameWork();" required="" data-original-title="" title="" style="display:inline; width: 70%; float:right;" >' +        				
 		'<option value="false" data-itr="">Limited Rate + No delay</option>' +     
         '<option value="2" data-itr="">Limited Rate + 2ms delay</option>' +	
 		'<option value="4" data-itr="">Limited Rate + 4ms delay</option>' +			
         '<option value="8" data-itr="">Limited Rate + 8ms delay</option>' +
 		'<option value="16" data-itr="">Limited Rate + 16ms delay</option>' +
 		'<option value="32" data-itr="">Limited Rate + 32ms delay</option>' +
-		'<option value="64" data-itr="">Limited Rate + 64ms delay</option>' +				
+		'<option value="64" data-itr="">Limited Rate + 64ms delay</option>' +	
+		'<option value="notgood" data-itr="">Unlimited Rate (not suggested)</option>' +
 		'<option value="ultra" data-itr="">Ultra (not suggested - test)</option>' +
 		//'<option value="sophisticated" data-itr="">Sophisticated (not suggested - test)</option>' +
         '</select></label>');
@@ -5616,7 +6537,7 @@ function changeFrameWork(){
 	if ($('#FrameWorkOption').val()=="false"){
 		defaultmapsettings.unlockedFPS=false
 	} 
-	else if ($('#FrameWorkOption').val()=="true"){
+	if ($('#FrameWorkOption').val()=="true" || $('#FrameWorkOption').val()=="false"){
 		defaultmapsettings.unlockedFPS=true
 	} 
 	else if ($('#FrameWorkOption').val()==2){
@@ -5642,7 +6563,10 @@ function changeFrameWork(){
 	} 	
 	else if ($('#FrameWorkOption').val()=="sophisticated"){
 		defaultmapsettings.unlockedFPS="sophisticated"
-	} 		
+	}
+	else if ($('#FrameWorkOption').val()=="notgood"){
+		defaultmapsettings.unlockedFPS=false
+	} 	
 	application.saveSettings(defaultmapsettings, "ogarioSettings");
 }	
 
