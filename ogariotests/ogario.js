@@ -1,5 +1,5 @@
 /* Source script
-v3.130
+v3.131
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
 IF YOU A NORMAL PERSON AND CARE ABOUT YOUR HEALTH, DON'T READ THIS SCRIPT
@@ -12027,6 +12027,7 @@ window.MouseClicks=[];
 					//console.log("pong")
                     window.testobjectsOpcode226 = data;
                     var extraOptions = data.getUint16(1, !![]);
+					console.log(extraOptions);
                     data = this.createView(3);
                     data.setUint8(0, 227);
                     data.setUint16(1, extraOptions);
