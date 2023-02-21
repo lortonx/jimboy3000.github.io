@@ -1,4 +1,4 @@
-window.OgVer=3.131;
+window.OgVer=3.132;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -12027,7 +12027,11 @@ window.MouseClicks=[];
 					//console.log("pong")
                     window.testobjectsOpcode226 = data;
                     var extraOptions = data.getUint16(1, !![]);
-					console.log(extraOptions);
+					var extraOptions2 = data.getUint8(1, !![]);
+					var extraOptions3 = data.getUint16(s);
+					console.log(extraOptions,1);
+					console.log(extraOptions2,2);
+					console.log(extraOptions3,3);
                     data = this.createView(3);
                     data.setUint8(0, 227);
                     data.setUint16(1, extraOptions);
