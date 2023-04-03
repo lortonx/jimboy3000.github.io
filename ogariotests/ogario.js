@@ -1,4 +1,4 @@
-window.OgVer=3.148;
+window.OgVer=3.149;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -12049,7 +12049,7 @@ window.MouseClicks=[];
                     temp += '<br>' + 'Your rank: <font color="yellow"><b>' + legendmod.battleRoyale.playerRank + '</b></font>';
                     toastr.info(temp);
                     break;
-                case 226:
+                /*case 226: //227
 					//console.log("pong")
                     window.testobjectsOpcode226 = data;
                     var extraOptions = data.getUint16(1, !![]);
@@ -12062,7 +12062,7 @@ window.MouseClicks=[];
                     data.setUint8(0, 227);
                     data.setUint16(1, extraOptions);
                     this.sendMessage(data);
-                    break;
+                    break;*/
                 case 241:
                     window.testobjectsOpcode241 = data;
                     this.protocolKey = data.getUint32(s, true);
