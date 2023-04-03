@@ -1,4 +1,4 @@
-window.OgVer=3.132;
+window.OgVer=3.133;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -3993,6 +3993,7 @@ window.MouseClicks=[];
     var application = window.application = {
         name: 'LM express',
         version: 'v1',
+		pingInterval = null,
         privateMode: false,
         protocolMode: true,
         publicIP: 'wss://wss.ogario.eu:3443',
@@ -10374,7 +10375,10 @@ window.MouseClicks=[];
             } //protocol 6 and 5
             else {
                 view.setUint32(1, this.clientVersion, true);
-                window.gameBots.clientVersion = this.clientVersion
+                window.gameBots.clientVersion = this.clientVersion;
+				//new
+				this.pingInterval = setInterval(this.sendPing.bind(this), 3000);
+				this.sendPing();				
             } 
 			
 			//
@@ -10703,7 +10707,19 @@ window.MouseClicks=[];
             for (var length = 0; length < nick.length; length++) view.setUint8(length + 1, nick.charCodeAt(length));
             this.sendMessage(view);
         },
-
+		sendPing(){
+			this.pingTime = Date.now();
+			const w = new Writer();
+			w.writeUInt8(226);
+			w.writeUInt16(this.pingId = this.pingId ++ % 65536);
+			this.sendMessage(w);
+		},
+		sendPong(pingId = 0){
+			const w = new Writer();
+			w.writeUInt8(227);
+			w.writeUInt16(pingId);
+			this.sendMessage(w);
+		},
         sendPosition(cell, target2, specialcommand) {
             var cursorX, cursorY;
             if (this.isSocketOpen() && this.connectionOpened && (this.clientKey || !legendmod.integrity)) {
