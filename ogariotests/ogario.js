@@ -1,4 +1,4 @@
-window.OgVer=3.133;
+window.OgVer=3.134;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -3993,7 +3993,7 @@ window.MouseClicks=[];
     var application = window.application = {
         name: 'LM express',
         version: 'v1',
-		pingInterval = null,
+		pingInterval : null,
         privateMode: false,
         protocolMode: true,
         publicIP: 'wss://wss.ogario.eu:3443',
