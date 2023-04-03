@@ -1,4 +1,4 @@
-window.OgVer=3.151;
+window.OgVer=3.152;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -10378,8 +10378,8 @@ window.MouseClicks=[];
                 view.setUint32(1, this.clientVersion, true);
                 window.gameBots.clientVersion = this.clientVersion;
 				//new
-				this.pingInterval = setInterval(this.sendPong.bind(this), 3000);
-				this.sendPong();				
+				//this.pingInterval = setInterval(this.sendPong.bind(this), 3000);
+				//this.sendPong();				
             } 
 			
 			//
@@ -10410,7 +10410,7 @@ window.MouseClicks=[];
         onClose(t) {
             console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket close');
             this.flushCellsData();
-			clearInterval(this.pingInterval);
+			//clearInterval(this.pingInterval);
             if (window.master && window.master.onDisconnect) {
                 window.master.onDisconnect();
             }
@@ -12053,11 +12053,11 @@ window.MouseClicks=[];
 					//console.log("pong")
                     window.testobjectsOpcode226 = data;
                     var extraOptions = data.getUint16(1, !![]);
-					var extraOptions2 = data.getUint8(1, !![]);
+					/*var extraOptions2 = data.getUint8(1, !![]);
 					var extraOptions3 = data.getUint16(s);
 					console.log(extraOptions,1);
 					console.log(extraOptions2,2);
-					console.log(extraOptions3,3);
+					console.log(extraOptions3,3);*/
                     data = this.createView(3);
                     data.setUint8(0, 227);
                     data.setUint16(1, extraOptions);
