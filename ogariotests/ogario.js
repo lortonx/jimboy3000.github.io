@@ -1,4 +1,4 @@
-window.OgVer=3.140;
+window.OgVer=3.141;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -3993,7 +3993,6 @@ window.MouseClicks=[];
     var application = window.application = {
         name: 'LM express',
         version: 'v1',
-		pingInterval : null,
         privateMode: false,
         protocolMode: true,
         publicIP: 'wss://wss.ogario.eu:3443',
@@ -10122,6 +10121,8 @@ window.MouseClicks=[];
         master.protocolVersion = localStorage.getItem("ogarioProtocolVersion");
     }
     var LM = {
+		pingId: 0,
+		pingInterval : null,
         integrity: true,
         quadtree: null,
         updateQuadtree: function(cells) {
