@@ -1,4 +1,4 @@
-window.OgVer=3.134;
+window.OgVer=3.135;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -10710,14 +10710,14 @@ window.MouseClicks=[];
 		sendPing(){
 			this.pingTime = Date.now();
 			const w = new Writer();
-			w.writeUInt8(226);
-			w.writeUInt16(this.pingId = this.pingId ++ % 65536);
+			w.setUInt8(226);
+			w.setUInt16(this.pingId = this.pingId ++ % 65536);
 			this.sendMessage(w);
 		},
 		sendPong(pingId = 0){
 			const w = new Writer();
-			w.writeUInt8(227);
-			w.writeUInt16(pingId);
+			w.setUInt8(227);
+			w.setUInt16(pingId);
 			this.sendMessage(w);
 		},
         sendPosition(cell, target2, specialcommand) {
