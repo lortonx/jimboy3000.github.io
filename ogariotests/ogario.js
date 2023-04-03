@@ -1,4 +1,4 @@
-window.OgVer=3.144;
+window.OgVer=3.145;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -10410,6 +10410,7 @@ window.MouseClicks=[];
         onClose(t) {
             console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket close');
             this.flushCellsData();
+			clearInterval(this.pingInterval);
             if (window.master && window.master.onDisconnect) {
                 window.master.onDisconnect();
             }
@@ -10717,6 +10718,7 @@ window.MouseClicks=[];
 			this.pingId = this.pingId ++;
 			this.pingId = this.pingId % 65536;
 			view.setUint16(1, this.pingId, true);
+			console.log("pind id:",pingId);
 			this.sendMessage(view);
 		},
 		sendPong(pingId = 0){		
