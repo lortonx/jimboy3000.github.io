@@ -1,4 +1,4 @@
-window.OgVer=3.137;
+window.OgVer=3.138;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -10711,16 +10711,18 @@ window.MouseClicks=[];
 			this.pingTime = Date.now();
 			var view = this.createView(1024);
 			//const w = new Writer();
-			view.setUInt8(226);
-			view.setUInt16(this.pingId = this.pingId ++ % 65536);
-			this.sendMessage(w);
+			view.setUint8(0, 226);
+			//view.setUInt8(226);
+			view.setUInt16(1, this.pingId = this.pingId ++ % 65536);
+			this.sendMessage(view);
 		},
 		sendPong(pingId = 0){		
 			var view = this.createView(1024);
 			//const w = new Writer();
-			w.setUInt8(227);
-			w.setUInt16(pingId);
-			this.sendMessage(w);
+			view.setUint8(0, 227);
+			//w.setUInt8(227);
+			view.setUInt16(1, pingId);
+			this.sendMessage(view);
 		},
         sendPosition(cell, target2, specialcommand) {
             var cursorX, cursorY;
