@@ -1,4 +1,4 @@
-window.OgVer=3.147;
+window.OgVer=3.148;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -10715,7 +10715,7 @@ window.MouseClicks=[];
 			//const w = new Writer();
 			view.setUint8(0, 226);
 			//view.setUInt8(226);
-			this.pingId = this.pingId ++;
+			this.pingId++;
 			if (this.pingId == 65536) this.pingId = 0;
 			view.setUint16(1, this.pingId, true);
 			console.log("ping id:",this.pingId);
