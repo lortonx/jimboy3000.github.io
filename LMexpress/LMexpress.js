@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.78 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.79 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "14"; // the version 1.1-> 1.11
 
@@ -5648,7 +5648,7 @@ function initializeLM(modVersion) {
     });*/
     //	$('#region').unbind('mouseenter');
     //	$('#gamemode').unbind('mouseenter');
-    $('#region').mouseenter(function() {
+    /*$('#region').mouseenter(function() {
         $('#region').css('background-color', '#003300');
     }).mouseleave(function() {
         $('#region').css('background-color', '');
@@ -5657,7 +5657,7 @@ function initializeLM(modVersion) {
         $('#gamemode').css('background-color', '#003300');
     }).mouseleave(function() {
         $('#gamemode').css('background-color', '');
-    });
+    });*/
 
     $(".btn.btn-block.btn-success.btn-export").click(function() {
         setTimeout(function() {
