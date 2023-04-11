@@ -1,4 +1,4 @@
-window.OgVer=3.157;
+window.OgVer=3.158;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -641,7 +641,7 @@ var root = protobuf.parse(proto, { keepCase: true }).root;
 window.mesega = root.lookupType("Data");
 var compressed = root.lookupType("uncompressedData");
 function decodeMobileData(data){
-		return message.decode(data)
+		return window.mesega.decode(data)
 }
 function ReqPing(){
 		const pingId = ~~(Math.random()*1000)
