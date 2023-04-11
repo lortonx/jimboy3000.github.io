@@ -1,4 +1,4 @@
-window.OgVer=3.156;
+window.OgVer=3.157;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -636,29 +636,35 @@ window.changeSkin = function(productID) {
     application.loadSkin(application.customSkinsCache, legendmod.getLink(productID)[0]);
     window.core.proxyMobileData(bytes);
 }
+
+var root = protobuf.parse(proto, { keepCase: true }).root;
+window.mesega = root.lookupType("Data");
+var compressed = root.lookupType("uncompressedData");
+function decodeMobileData(data){
+		return message.decode(data)
+}
 function ReqPing(){
-	const pingId = ~~(Math.random()*1000)
-	const ping = Date.now()
-	const buffer = mesega.encode({
-        contentType: 1,
-        uncompressedData: {
-            type: 30,
-            pingField: {
-                pingId:pingId,
-                previousRoundtrip: 1
+		const pingId = ~~(Math.random()*1000)
+		const ping = Date.now()
+		/*const buffer = mesega.encode({
+            contentType: 1,
+            uncompressedData: {
+                type: 30,
+                pingField: {
+                    pingId:pingId,
+                    previousRoundtrip: 1
+                }
             }
-        }
-	}).finish()
-
-	window.core.proxyMobileData(buffer);
+		}).finish()*/
+		console.log(buffer);
+		window.core.proxyMobileData(buffer);
 		//console.time(`[${pingId}] My ping`)
-	/*window.core('pongField',(pongField)=>{
-		const pong = Date.now()
-		window.core.ping = pong - ping
-		window.core.emit('ping')
+		/*this.once('pongField',(pongField)=>{
+			const pong = Date.now()
+			window.core.ping = pong - ping
+			window.core.emit('ping')
 			//console.timeEnd(`[${pongField.pingId}] My ping`)
-	})*/
-
+		})	*/
 }
 
 function buyBoost(req) {
@@ -16123,8 +16129,8 @@ Game name     : ${i.displayName}<br/>
         },		
         proxyMobileData(arr = []) {
             if (!Array.isArray(arr)) {
-                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " ProxyMobileData ERROR: Array data required.");
-                return;
+                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " ProxyMobileData ERROR: Array data required.: ",arr);
+                //return;
             }
             if (arr[0] == 8) {
                 arr.unshift(102);
