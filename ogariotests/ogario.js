@@ -859,11 +859,11 @@ function resetLevelProgressBar() {
     //$('.progress-bar.progress-bar-striped').css('width', '100%');
     $('.progress-bar.progress-bar-striped').css({
         "transition": "5s",
-        "width": "100%"
+        "width": "0%"
     });
     $('.progress-bar.progress-bar-striped2').css({
         "transition": "5s",
-        "width": "100%"
+        "width": "0%"
     });	
 }
 /*
