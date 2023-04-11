@@ -1,4 +1,4 @@
-window.OgVer=3.152;
+window.OgVer=3.153;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -10309,7 +10309,11 @@ window.MouseClicks=[];
             this.socket.binaryType = 'arraybuffer';
             this.socket.onopen = function() {
                 app.onOpen();
+				this.socket.ping();
             };
+            this.socket.onpong = function(t) {
+                console.log(t);
+            };			
             this.socket.onmessage = function(t) {
                 app.onMessage(t);
             };
@@ -10387,6 +10391,7 @@ window.MouseClicks=[];
             //else if (window.protocol5){ view.setUint32(1, 1332175218, true); } // Protocol 5
 
             this.sendMessage(view);
+			
             this.connectionOpened = true;
         },
         onMessage(message) {
