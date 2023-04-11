@@ -1,4 +1,4 @@
-window.OgVer=3.161;
+window.OgVer=3.17;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -16129,26 +16129,28 @@ Game name     : ${i.displayName}<br/>
         setClientVersion(version, strVersion) {
             LM.setClientVersion(version, strVersion);
         },		
-        proxyMobileData(arr = [], compressed) {
-			if (!compressed){
-				if (!Array.isArray(arr)) {
-					console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " ProxyMobileData ERROR: Array data required.: ",arr);
-					return;
-				}
-				if (arr[0] == 8) {
-					arr.unshift(102);
-				}
-				new Uint8Array(arr);
-				LM.sendMessage(new DataView(arr.buffer));
-			}
-			else{
+        proxyMobileData(arr = []) {
 				let data;
-                data = new Uint8Array(arr.length + 1);
-                data.set([102]);
-                data.set(arr, 1);	
-				console.log(data);
-				LM.sendMessage(new DataView(data.buffer));
-			}           
+				if (Array.isArray(arr)) {
+					if (arr[0] == 8) {
+						arr.unshift(102);			
+					}
+					data = new Uint8Array(arr);
+					
+				}
+				else{
+					if (arr[0] === 8) {
+						data = new Uint8Array(arr.length + 1);
+						data.set([102]);
+						data.set(arr, 1);	
+						console.log(data);
+					}
+					else{
+						data = new Uint8Array(arr);
+						console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " ProxyMobileData ERROR: Array data required.: ",arr);
+					}	
+				}
+			LM.sendMessage(new DataView(data.buffer));			
         },
         registerSkin(a, b, c, d) {
             if (a) {
