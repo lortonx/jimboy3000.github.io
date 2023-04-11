@@ -1,4 +1,4 @@
-window.OgVer=3.17;
+window.OgVer=3.19;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -849,6 +849,10 @@ function setLevelProgressBar() {
         "transition": "5s",
         "width": window.agarioLEVEL + "%"
     });
+    $('.progress-bar.progress-bar-striped2').css({
+        "transition": "5s",
+        "width": window.agarioLEVEL + "%"
+    });	
 }
 
 function resetLevelProgressBar() {
@@ -857,6 +861,10 @@ function resetLevelProgressBar() {
         "transition": "5s",
         "width": "100%"
     });
+    $('.progress-bar.progress-bar-striped2').css({
+        "transition": "5s",
+        "width": "100%"
+    });	
 }
 /*
 const standardDeviation = (arr, usePopulation = false) => {
@@ -5594,7 +5602,9 @@ window.MouseClicks=[];
         setMenu() {
             const app = this;
             document.title = this.name;
-            $("#mainPanel").before('<div id="exp-bar" class="agario-panel"><span class="ogicon-user"></span><div class="agario-exp-bar progress"><span class="progress-bar-text"></span><div class="progress-bar progress-bar-striped" style="width: 0%;"></div></div><div class="progress-bar-star"></div></div><div id="main-menu" class="agario-panel"><ul class="menu-tabs"><li class="start-tab active"><a href="#main-panel" class="active ogicon-home" data-toggle="tab-tooltip" title="' +
+            $("#mainPanel").before('<div id="exp-bar" class="agario-panel"><span class="ogicon-user"></span><div class="agario-exp-bar progress"><span class="progress-bar-text">agar.io level</span><div class="progress-bar progress-bar-striped" style="width: 0%;"></div></div><div class="progress-bar-star"></div></div>'+
+			'<div id="exp-bar" class="agario-panel"><span class="ogicon-user"></span><div class="agario-exp-bar progress"><span class="progress-bar-text">LM level</span><div class="progress-bar progress-bar-striped2" style="width: 0%;"></div></div><div class="progress-bar-star2"></div></div>'+
+			'<div id="main-menu" class="agario-panel"><ul class="menu-tabs"><li class="start-tab active"><a href="#main-panel" class="active ogicon-home" data-toggle="tab-tooltip" title="' +
                 textLanguage.start + '"></a></li><li class="settings-tab"><a href="#og-settings" class="ogicon-cog" data-toggle="tab-tooltip" title="' + textLanguage.settings + '"></a></li><li class="theme-tab"><a href="#theme" class="ogicon-droplet" data-toggle="tab-tooltip" title="' + textLanguage.theme + '"></a></li><li class="hotkeys-tab"><a href="#" class="hotkeys-link ogicon-keyboard" data-toggle="tab-tooltip" title="' +
                 textLanguage.hotkeys + '"></a></li><li class="music-tab"><a href="#music" class="ogicon-music" data-toggle="tab-tooltip" title="' + textLanguage.sounds + '"></a></li><li class="profile-tab"><a href="#profile" class="ogicon-user" data-toggle="tab-tooltip" title="' + textLanguage.profile + '"></a></li></ul><div id="main-panel" class="menu-panel"></div><div id="profile" class="menu-panel"></div><div id="og-settings" class="menu-panel"><div class="submenu-panel"></div></div><div id="theme" class="menu-panel"></div><div id="music" class="menu-panel"></div></div>');
             $("#main-panel").append('<a href="#" class="quick quick-menu ogicon-menu"></a><a href="#" class="quick quick-bots ogicon-trophy" style="display: none;"></a>' +
@@ -12247,7 +12257,9 @@ window.MouseClicks=[];
                         i = u.xpLevelUpdates[0];
                     if (i.finalLevel != 100) exp = ~~(i.finalXpForLevel * 100 / this.agarExp(i.finalLevel));
                     $('.progress-bar-striped').width(exp + '%');
+					$('.progress-bar-striped2').width(exp + '%');
                     $('.progress-bar-star').text(i.finalLevel);
+					$('.progress-bar-star2').text(i.finalLevel);
                     this.updateProducts(u.productUpdates);
                     if (u.potionInfo && u.potionInfo.newUserPotion) {
                         this.newPotion(u.potionInfo.newUserPotion);
@@ -12839,7 +12851,9 @@ Most cells eaten   : ${s.mostCellsEaten}
             var exp = 100;
             if (i.level != 100) exp = ~~(i.xp * 100 / this.agarExp(i.level));
             $('.progress-bar-striped').width(exp + '%');
+			$('.progress-bar-striped2').width(exp + '%');
             $('.progress-bar-star').text(i.level);
+			$('.progress-bar-star2').text(i.finalLevel);
             this.user.actionCounters = i.actionCounters;
             $("#user-info").html(`
 Account age     : ${~~(i.accountAge/3600/24)}D<br/>
