@@ -1,4 +1,4 @@
-window.OgVer=3.235;
+window.OgVer=3.236;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -12839,7 +12839,7 @@ window.MouseClicks=[];
         },
         displayStats(s) {
 			window.LMscore = s.allTimeScore/2000000;
-			$('.progress-bar-striped2').width(window.LMscore + '%'););
+			$('.progress-bar-striped2').width(window.LMscore + '%');
 			$('.progress-bar-star2').text(i.finalLevel);			
             $("#stats-content").html(`
 All time score     : ${s.allTimeScore}<br/>
