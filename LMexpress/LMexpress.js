@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.76 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.78 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "14"; // the version 1.1-> 1.11
 
@@ -5539,12 +5539,12 @@ function initializeLM(modVersion) {
         $("#searchInput").focus().select();
     });
 
-    $('#nick').mouseenter(function() {
+    /*$('#nick').mouseenter(function() {
         $('#nick').css('background-color', '#000066');
         return clickedname = "YES"
     }).mouseleave(function() {
         $('#nick').css('background-color', '');
-    });
+    });*/
     $('#nick').blur(function() {
         previousnickname = $("#nick").val();
         localStorage.setItem("previousnickname", previousnickname);
@@ -5641,11 +5641,11 @@ function initializeLM(modVersion) {
 
     $('#clantag').css("width", "95.5px");
     $('#nick').css("width", "171px");
-    $('#clantag').mouseenter(function() {
+    /*$('#clantag').mouseenter(function() {
         $('#clantag').css('background-color', '#000066');
     }).mouseleave(function() {
         $('#clantag').css('background-color', '');
-    });
+    });*/
     //	$('#region').unbind('mouseenter');
     //	$('#gamemode').unbind('mouseenter');
     $('#region').mouseenter(function() {
@@ -5929,7 +5929,7 @@ function initializeLM(modVersion) {
 	$("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="https://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Website" data-placement="left">v' + modVersion + semimodVersion + 
 	//' </a> <img align="right" src="https://legendmod.ml/banners/iconsaynotoffabots.png"></span>' +
 	
-        '</a></span><span style="float: left;  margin-left: 15%; font-size: 13px;"><a id="MorefpsText" href="https://legendmod.ml/?nav=FPS" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a></span>'+
+        '</a></span><span style="float: left;  margin-left: 25%; font-size: 13px;"><a id="MorefpsText" href="https://legendmod.ml/?nav=FPS" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a></span>'+
 		'<a style="float: right;  margin-top: -2px" target="_blank" href="https://www.buymeacoffee.com/legendmod">🍺</a>');
     $("#shortcuts-hud").hide();
     $("#exp-bar").hide();
