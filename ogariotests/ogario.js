@@ -1,4 +1,4 @@
-window.OgVer=3.237;
+window.OgVer=3.238;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -851,7 +851,7 @@ function setLevelProgressBar() {
     });
     $('.progress-bar.progress-bar-striped2').css({
         "transition": "5s",
-        "width": window.agarioLEVEL + "%"
+        "width": window.LMscore + "%"
     });	
 }
 
@@ -12838,9 +12838,9 @@ window.MouseClicks=[];
             }
         },
         displayStats(s) {
-			window.LMscore = s.allTimeScore/2000000;
+			window.LMscore = Math.trunc(s.allTimeScore/2000000);
 			$('.progress-bar-striped2').width(window.LMscore + '%');
-			$('.progress-bar-star2').text(Math.trunc(window.LMscore));			
+			$('.progress-bar-star2').text(window.LMscore);			
             $("#stats-content").html(`
 All time score     : ${s.allTimeScore}<br/>
 Games played      : ${s.gamesPlayed}<br/>
