@@ -1,4 +1,4 @@
-window.OgVer=3.153;
+window.OgVer=3.154;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -635,6 +635,30 @@ window.changeSkin = function(productID) {
     application.customSkinsMap[profiles[application.selectedProfile].nick] = legendmod.getLink(productID)[0];
     application.loadSkin(application.customSkinsCache, legendmod.getLink(productID)[0]);
     window.core.proxyMobileData(bytes);
+}
+function ReqPing(){
+	const pingId = ~~(Math.random()*1000)
+	const ping = Date.now()
+	const buffer = mesega.encode({
+        contentType: 1,
+        uncompressedData: {
+            type: 30,
+            pingField: {
+                pingId:pingId,
+                previousRoundtrip: 1
+            }
+        }
+	}).finish()
+
+	window.core.proxyMobileData(buffer);
+		//console.time(`[${pingId}] My ping`)
+	/*window.core('pongField',(pongField)=>{
+		const pong = Date.now()
+		window.core.ping = pong - ping
+		window.core.emit('ping')
+			//console.timeEnd(`[${pongField.pingId}] My ping`)
+	})*/
+
 }
 
 function buyBoost(req) {
@@ -10309,11 +10333,11 @@ window.MouseClicks=[];
             this.socket.binaryType = 'arraybuffer';
             this.socket.onopen = function() {
                 app.onOpen();
-				this.socket.ping();
+				//this.socket.ping();
             };
-            this.socket.onpong = function(t) {
+            /*this.socket.onpong = function(t) {
                 console.log(t);
-            };			
+            };	*/		
             this.socket.onmessage = function(t) {
                 app.onMessage(t);
             };
@@ -12142,7 +12166,7 @@ window.MouseClicks=[];
                 return
             }
             const response = window.decodeMobileData(msg);
-            //console.log(response); //ALL LOGIN AND PROFILE RESPONSE INFO
+            console.log(response); //ALL LOGIN AND PROFILE RESPONSE INFO
             this.unpackageMessage(response);
         },
         unpackageMessage: function(r) {
