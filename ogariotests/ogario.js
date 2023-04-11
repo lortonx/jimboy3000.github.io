@@ -1,4 +1,4 @@
-window.OgVer=3.158;
+window.OgVer=3.159;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -636,17 +636,18 @@ window.changeSkin = function(productID) {
     application.loadSkin(application.customSkinsCache, legendmod.getLink(productID)[0]);
     window.core.proxyMobileData(bytes);
 }
-
+/*
 var root = protobuf.parse(proto, { keepCase: true }).root;
 window.mesega = root.lookupType("Data");
 var compressed = root.lookupType("uncompressedData");
 function decodeMobileData(data){
 		return window.mesega.decode(data)
-}
+}*/
 function ReqPing(){
 		const pingId = ~~(Math.random()*1000)
 		const ping = Date.now()
-		/*const buffer = mesega.encode({
+
+		const buffer = mesega.encode({
             contentType: 1,
             uncompressedData: {
                 type: 30,
@@ -655,9 +656,10 @@ function ReqPing(){
                     previousRoundtrip: 1
                 }
             }
-		}).finish()*/
-		console.log(buffer);
-		window.core.proxyMobileData(buffer);
+		}).finish()
+		
+		console.log(bytes);
+		window.core.proxyMobileData(bytes, true);
 		//console.time(`[${pingId}] My ping`)
 		/*this.once('pongField',(pongField)=>{
 			const pong = Date.now()
@@ -10929,7 +10931,7 @@ window.MouseClicks=[];
             for (; prev < curr; prev++) {
                 data.push(shapes.charCodeAt(prev));
             }
-			console.log(data); 
+			//console.log(data); 
             data = new Uint8Array(data);
             var raw_basefont = new DataView(data.buffer);
             this.sendMessage(raw_basefont);
@@ -16127,7 +16129,7 @@ Game name     : ${i.displayName}<br/>
         setClientVersion(version, strVersion) {
             LM.setClientVersion(version, strVersion);
         },		
-        proxyMobileData(arr = []) {
+        proxyMobileData(arr = [], compressed) {
             if (!Array.isArray(arr)) {
                 console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " ProxyMobileData ERROR: Array data required.: ",arr);
                 //return;
@@ -16135,7 +16137,7 @@ Game name     : ${i.displayName}<br/>
             if (arr[0] == 8) {
                 arr.unshift(102);
             }
-            arr = new Uint8Array(arr);
+			if (!compressed) arr = new Uint8Array(arr);
             LM.sendMessage(new DataView(arr.buffer));
         },
         registerSkin(a, b, c, d) {
