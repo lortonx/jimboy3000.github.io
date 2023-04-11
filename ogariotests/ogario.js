@@ -1,4 +1,4 @@
-window.OgVer=3.160;
+window.OgVer=3.161;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -16146,6 +16146,7 @@ Game name     : ${i.displayName}<br/>
                 data = new Uint8Array(arr.length + 1);
                 data.set([102]);
                 data.set(arr, 1);	
+				console.log(data);
 				LM.sendMessage(new DataView(data.buffer));
 			}           
         },
