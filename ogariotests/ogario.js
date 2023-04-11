@@ -1,4 +1,4 @@
-window.OgVer=3.234;
+window.OgVer=3.235;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -58,7 +58,7 @@ window.replaySkippedLoops = 100 //100 times more frames from timing 0 replays
 window.renderDelay = 0;
 //window.specificRecordedProtocol = []
 window.chatLimit = 15;
-
+window.LMscore=0;
 //inject gamepad libraries if Mobile
 //var isMobile = window.orientation > -1; //false for PC, true for mobile 
 var isMobile = false;
@@ -12257,9 +12257,9 @@ window.MouseClicks=[];
                         i = u.xpLevelUpdates[0];
                     if (i.finalLevel != 100) exp = ~~(i.finalXpForLevel * 100 / this.agarExp(i.finalLevel));
                     $('.progress-bar-striped').width(exp + '%');
-					$('.progress-bar-striped2').width(exp + '%');
+					//$('.progress-bar-striped2').width(exp + '%');
                     $('.progress-bar-star3').text(i.finalLevel);
-					$('.progress-bar-star2').text(i.finalLevel);
+					//$('.progress-bar-star2').text(i.finalLevel);
                     this.updateProducts(u.productUpdates);
                     if (u.potionInfo && u.potionInfo.newUserPotion) {
                         this.newPotion(u.potionInfo.newUserPotion);
@@ -12838,6 +12838,9 @@ window.MouseClicks=[];
             }
         },
         displayStats(s) {
+			window.LMscore = s.allTimeScore/2000000;
+			$('.progress-bar-striped2').width(window.LMscore + '%'););
+			$('.progress-bar-star2').text(i.finalLevel);			
             $("#stats-content").html(`
 All time score     : ${s.allTimeScore}<br/>
 Games played      : ${s.gamesPlayed}<br/>
@@ -12851,9 +12854,9 @@ Most cells eaten   : ${s.mostCellsEaten}
             var exp = 100;
             if (i.level != 100) exp = ~~(i.xp * 100 / this.agarExp(i.level));
             $('.progress-bar-striped').width(exp + '%');
-			$('.progress-bar-striped2').width(exp + '%');
+			//$('.progress-bar-striped2').width(exp + '%');
             $('.progress-bar-star3').text(i.level);
-			$('.progress-bar-star2').text(i.finalLevel);
+			//$('.progress-bar-star2').text(i.finalLevel);
             this.user.actionCounters = i.actionCounters;
             $("#user-info").html(`
 Account age     : ${~~(i.accountAge/3600/24)}D<br/>
