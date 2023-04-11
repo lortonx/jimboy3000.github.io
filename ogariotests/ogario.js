@@ -1,4 +1,4 @@
-window.OgVer=3.154;
+window.OgVer=3.155;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -10921,6 +10921,7 @@ window.MouseClicks=[];
             for (; prev < curr; prev++) {
                 data.push(shapes.charCodeAt(prev));
             }
+			console.log(data); 
             data = new Uint8Array(data);
             var raw_basefont = new DataView(data.buffer);
             this.sendMessage(raw_basefont);
@@ -12171,28 +12172,8 @@ window.MouseClicks=[];
         },
         unpackageMessage: function(r) {
             //var returnMessage = r;
-
             var type = r.uncompressedData.type;
             switch (type) {
-                case 71:
-                    console.log("returnMessage = r.get_softPurchaseResponseField();");
-                    break;
-                case 74:
-                    console.log("returnMessage = r.get_inappPurchaseResponseField();");
-                    break;
-                case 20:
-                    var u = r.uncompressedData.disconnectField;
-                    this.disconnectMessage(u.reason);
-
-                    this.loggedIn = false;
-                    window.logout && window.logout();
-
-                    break;
-                case 113:
-                    var u = r.uncompressedData.activateBoostResponseField;
-                    this.updateWalletInfo([u.productUpdates[0].userWalletItem]);
-                    this.displayActiveBoosts([u.userBoostItem]);
-                    break;
                 case 11:
                     this.user = {
                         coins: 0,
@@ -12233,19 +12214,21 @@ window.MouseClicks=[];
                     this.updateUserInfo(u.userInfo)
 
                     this.updatePotions(u.userPotions)
-                    break;
-                case 81:
-                    var u = r.uncompressedData.updateUserSettingsResponseField;
-                    this.updateUserSettings(u.updatedUserSettings)
-                    break;
-                case 111:
-                    var u = r.uncompressedData.activateTimedEventResponseField;
-                    this.updateProducts(u.productUpdates);
-                    this.updateEvents([u.userTimedEvent])
-                    break;
-                case 76:
-                    console.log("returnMessage = r.get_purchaseWalletUpdatesField();");
-                    break;
+                    break;	
+                case 20:
+                    var u = r.uncompressedData.disconnectField;
+                    this.disconnectMessage(u.reason);
+
+                    this.loggedIn = false;
+                    window.logout && window.logout();
+                    break;	
+                case 22:
+                    console.log("returnMessage = r.get_noProperResponseField();");
+                    break;	
+				//ping 30 pong 31
+                case 33:
+                    console.log("returnMessage = r.get_configurationChangeField();");
+                    break;					
                 case 62:
                     var u = r.uncompressedData.gameOverField;
                     this.displayStats(u.userStats);
@@ -12261,33 +12244,59 @@ window.MouseClicks=[];
                     if (defaultmapsettings.gameOverStats) {
                         this.showSessionStats(u.gameSessionStats);
                     }
+                    break;					
+                case 71:
+                    console.log("returnMessage = r.get_softPurchaseResponseField();");
+                    break;
+                case 74:
+                    console.log("returnMessage = r.get_inappPurchaseResponseField();");
                     break;
                 case 75:
                     console.log("returnMessage = r.get_walletUpdatesField();");
-                    break;
-                case 116:
-                    console.log("returnMessage = r.get_userTimedEventUpdatesField();");
-                    break;
-                case 33:
-                    console.log("returnMessage = r.get_configurationChangeField();");
+                    break;					
+                case 76:
+                    console.log("returnMessage = r.get_purchaseWalletUpdatesField();");
+                    break;	
+                case 78:
+                    console.log("returnMessage = r.get_offerBundleResponseField();");
+                    break;					
+                case 81:
+                    var u = r.uncompressedData.updateUserSettingsResponseField;
+                    this.updateUserSettings(u.updatedUserSettings)
+                    break;	
+                case 83:
+                    console.log("returnMessage = r.get_userStatsResponseField();");
                     break;
                 case 101:
                     console.log("returnMessage = r.get_claimGiftsResponseField();");
+                    break;						
+                case 105:
+                    console.log("returnMessage = r.get_facebookInvitationRewardUpdatesField();");
+                    break;				
+                case 111:
+                    var u = r.uncompressedData.activateTimedEventResponseField;
+                    this.updateProducts(u.productUpdates);
+                    this.updateEvents([u.userTimedEvent])
+                    break;					
+                case 113:
+                    var u = r.uncompressedData.activateBoostResponseField;
+                    this.updateWalletInfo([u.productUpdates[0].userWalletItem]);
+                    this.displayActiveBoosts([u.userBoostItem]);
                     break;
                 case 115:
                     var u = r.uncompressedData.activateQuestResponseField;
                     this.updateProducts(u.productUpdates);
                     this.displayActiveQuests([u.userQuest])
+                    break;					
+                case 116:
+                    console.log("returnMessage = r.get_userTimedEventUpdatesField();");
                     break;
-                case 78:
-                    console.log("returnMessage = r.get_offerBundleResponseField();");
+                case 121:
+                    console.log("returnMessage = r.get_openPotionForProductResponseField();");
                     break;
                 case 123:
                     var u = r.uncompressedData.brewPotionForSlotResponseField;
                     this.updatePotions(u.userPotions)
-                    break;
-                case 121:
-                    console.log("returnMessage = r.get_openPotionForProductResponseField();");
                     break;
                 case 125:
                     var u = r.uncompressedData.openPotionForSlotResponseField;
@@ -12301,31 +12310,23 @@ window.MouseClicks=[];
                 case 132:
                     console.log("returnMessage = r.get_userLeaguesPassUpdateField();");
                     break;
-                case 83:
-                    console.log("returnMessage = r.get_userStatsResponseField();");
-                    break;
-                case 105:
-                    console.log("returnMessage = r.get_facebookInvitationRewardUpdatesField();");
-                    break;
-                case 22:
-                    console.log("returnMessage = r.get_noProperResponseField();");
-                    break;
-                case 184:
-                    console.log("returnMessage = r.get_activateRewardLinkResponseField();");
-                    break;
-                case 186:
-                    console.log("returnMessage = r.get_genericVideoAdRewardTokenResponseField();");
-                    break;
                 case 151:
                     console.log("returnMessage = r.get_userSkinsCreateResponseField();");
-                    break;
+                    break;	
                 case 170:
                     var u = r.uncompressedData.actionCountersUpdateField,
                         prev = this.user.actionCounters;
                     if (u.potionsObtained > prev.potionsObtained) toastr.info('<b>[' + Premadeletter123 + ']:</b> New potion');
                     if (u.questsCompleted > prev.questsCompleted) toastr.info('<b>[' + Premadeletter123 + ']:</b> Quest completed');
                     if (u.skinsCreated > prev.skinsCreated) toastr.info('<b>[' + Premadeletter123 + ']:</b> Skin created');
+                    break;					
+                case 184:
+                    console.log("returnMessage = r.get_activateRewardLinkResponseField();");
                     break;
+                case 186:
+                    console.log("returnMessage = r.get_genericVideoAdRewardTokenResponseField();");
+                    break;
+
                 default:
                     //null
                     console.log("unknown type", type)
