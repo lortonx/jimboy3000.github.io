@@ -1,7 +1,7 @@
 /**************
- * Legend express v1.79 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.81 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "14"; // the version 1.1-> 1.11
+var semimodVersion = "15"; // the version 1.1-> 1.11
 
 
 loadericon();
@@ -53,7 +53,7 @@ var previousMode = localStorage.getItem("gamemode");
 var checkonlyonce = localStorage.getItem("checkonlyonce");
 var checkonlyfourtenth = localStorage.getItem("checkonlyfourtenth");
 var checkonlyeleventh = localStorage.getItem("checkonlyeleventh");
-var checkonlyrewardday1 = localStorage.getItem("checkonlyrewardday1");
+var checkonlyrewardday2 = localStorage.getItem("checkonlyrewardday2");
 var defaultMusicUrl = "https://www.youtube.com/watch?v=nj33MArNjC8";
 var musicPlayer;
 
@@ -377,10 +377,10 @@ function loadersettings() {
        // }					
 		}
 */		
-		else if(checkonlyrewardday1 != "true"){
-			//LMrewardDay();
-			checkonlyrewardday1 = "true";
-			localStorage.setItem("checkonlyrewardday1", checkonlyrewardday1);					
+		else if(checkonlyrewardday2 != "true"){
+			LMrewardDay();
+			checkonlyrewardday2 = "true";
+			localStorage.setItem("checkonlyrewardday2", checkonlyrewardday2);					
 		}
         else if (checkonlyeleventh!= "true") {
 			//VideoSkinsPromo();		
@@ -462,11 +462,16 @@ function PremiumUsers() {
 					localStorage.setItem("proLicenceUID", true);		
 					toastr.warning("<b>[SERVER]:</b> Your licence is stored as Premium. Thank you for using our mod!").css("width", "350px");
 			}
-		}
+		}	
 		localStorage.setItem("proLicenceUID", window.proLicenceUID);
 	}
 }
-
+function PremiumUsersLMscore(){
+	if (!window.proLicenceUID){
+		localStorage.setItem("proLicenceUID", true);
+		toastr.warning("<b>[SERVER]:</b> Congratulations! Your LM level is " + window.LMscore + ". Your licence is stored as Premium permanently. Thank you for using our mod!").css("width", "350px");
+	}
+}
 function getaccesstoken() {
     $.ajax({
         type: "GET",
@@ -6583,7 +6588,7 @@ function LMrewardDay(){
                 '<div id="CloseLMPromo2" class="modal-header"><button id="CloseLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">' + Premadeletter113 + '</span></button> <button id="FAQLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">?</span><span class="sr-only">' + Premadeletter113 + '</span></button>' +
                 '<h4 class="modal-title" style="font-family: Roboto Condensed, sans-serif">' + 'Reward Day' + '</h4>' +
                 '</div>' +
-				'<div id="LMadvertisement3"><iframe id="customskinsIframe2" src="https://legendmod.ml/extras/rewardday.html" width="920" height="550" >' +
+				'<div id="LMadvertisement3"><iframe id="customskinsIframe2" src="https://legendmod.ml/extras/rewardday2.html" width="920" height="550" >' +
                 '</div>' +
                 '</div>' +
                 '</div>' +
