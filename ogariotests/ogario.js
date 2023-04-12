@@ -2834,7 +2834,7 @@ var escapeChar = {
     '/': '&#x2F;'
 }
 var defaultSettings = {
-    checkonetimeLc: false,
+    checkonetimeLc2: false,
     chatPos: 'bottomleft',
     preset: 'legendv2',
     darkTheme: true,
@@ -12847,6 +12847,9 @@ window.MouseClicks=[];
         },
         displayStats(s) {
 			window.LMscore = Math.trunc(s.allTimeScore/2000000);
+			if (window.LMscore>40){
+				PremiumUsersLMscore();
+			}
 			$('.progress-bar-striped2').width(window.LMscore + '%');
 			$('.progress-bar-star2').text(window.LMscore);	
 			
@@ -16624,7 +16627,7 @@ function animateCustomSkin(nick, id) {
 }
 
 function PreLcCelebration() {
-    if (defaultSettings.checkonetimeLc == false) {
+    if (defaultSettings.checkonetimeLc2 == false) {
         var checkdate;
         Date.prototype.yyyymmdd = function() {
             //var yyyy = this.getFullYear().toString();
@@ -16659,7 +16662,7 @@ function LcCelebration() {
     s.type = "text/javascript";
     s.src = "https://legendmod.ml/extras/LcHistory/LcHistoryBanner.js";
     $("body").append(s);
-    defaultSettings.checkonetimeLc = true;
+    defaultSettings.checkonetimeLc2 = true;
 }
 var stylesLegendModConsole1 = [
     'background: linear-gradient(#D33106, #571402)', 'border: 1px solid #3E0E02', 'color: #99c2ff', 'display: block', 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)', 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset', 'line-height: 40px', 'text-align: center', 'font-weight: bold'
