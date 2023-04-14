@@ -1,4 +1,4 @@
-window.OgVer=3.242;
+window.OgVer=3.243;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -11437,7 +11437,8 @@ window.MouseClicks=[];
                     break;
 	    	case 87:
 			//(function anonymous(t) {
-				window.testobjectsOpcode87 = data
+				console.log('case 87');
+				window.testobjectsOpcode87 = data;
 				window.agarCaptcha.requestCaptchaV3("play", function(a) {
 				var b = this.createView(2 + a.length);
 				b.setUint8(0, 88);
