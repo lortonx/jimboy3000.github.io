@@ -1,4 +1,4 @@
-window.OgVer=3.244;
+window.OgVer=3.245;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -11547,8 +11547,8 @@ window.MouseClicks=[];
                         var option = node.readUint32();
                         var response = node.readFlag();
                         var response_2 = node.readUint32();
-                        switch (option) {
-							console.log(node); //see dis
+						console.log(node); //see dis
+                        switch (option) {						
                             case 1:
                                 window.testobjects1021 = node;
                                 //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Type", option, response);
