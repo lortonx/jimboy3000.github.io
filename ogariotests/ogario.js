@@ -1,4 +1,4 @@
-window.OgVer=3.243;
+window.OgVer=3.244;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -647,28 +647,11 @@ function ReqPing(){
 		const pingId = ~~(Math.random()*1000)
 		const ping = Date.now()
 
-		const buffer = mesega.encode({
-            contentType: 1,
-            uncompressedData: {
-                type: 30,
-                pingField: {
-                    pingId:pingId,
-                    previousRoundtrip: 1
-                }
-            }
-		}).finish()
-		
-		console.log(buffer);
-		window.core.proxyMobileData(buffer, true);
-		//console.time(`[${pingId}] My ping`)
-		/*this.once('pongField',(pongField)=>{
-			const pong = Date.now()
-			window.core.ping = pong - ping
-			window.core.emit('ping')
-			//console.timeEnd(`[${pongField.pingId}] My ping`)
-		})	*/
-}
+		var view = application.createView(1);
+        view.setUint8(0, 254);
 
+        legendmod.sendMessage(view);
+}
 function buyBoost(req) {
     console.log("buy boost", req)
 
@@ -11565,6 +11548,7 @@ window.MouseClicks=[];
                         var response = node.readFlag();
                         var response_2 = node.readUint32();
                         switch (option) {
+							console.log(node); //see dis
                             case 1:
                                 window.testobjects1021 = node;
                                 //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Type", option, response);
