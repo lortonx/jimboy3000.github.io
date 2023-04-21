@@ -1,4 +1,4 @@
-window.OgVer=3.247;
+window.OgVer=3.249;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -4821,6 +4821,8 @@ window.MouseClicks=[];
                 }
                 if (defaultmapsettings.showStatsFPS) {
                     t += 'FPS: ' + drawRender.fps;
+					if (legendmod.integrity)
+					t += ' | PING: ' +  drawRender.ping;
 
                 }
                 /*if (defaultmapsettings.showStatsPPS) {
@@ -10425,7 +10427,7 @@ window.MouseClicks=[];
                 view.setUint32(1, this.clientVersion, true);
                 window.gameBots.clientVersion = this.clientVersion;
 				//new
-				this.pingInterval = setInterval(autocoins(), 5000);
+				this.pingInterval = setInterval(autocoins, 5000);
 				//this.sendPong();				
             } 
 			
@@ -12281,7 +12283,7 @@ window.MouseClicks=[];
                     console.log("returnMessage = r.get_facebookInvitationRewardUpdatesField();");
                     break;				
                 case 111:
-					drawRender.ping = window.agarpingstarted-Date.now();
+					drawRender.ping = Date.now()-window.agarpingstarted;
                     var u = r.uncompressedData.activateTimedEventResponseField;
                     this.updateProducts(u.productUpdates);
                     this.updateEvents([u.userTimedEvent])
