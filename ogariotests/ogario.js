@@ -1,4 +1,4 @@
-window.OgVer=3.255;
+window.OgVer=3.256;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -655,6 +655,27 @@ window.mesega = root.lookupType("Data");
 var compressed = root.lookupType("uncompressedData");
 function decodeMobileData(data){
 		return window.mesega.decode(data)
+}
+function ReqPing(){
+		const pingId = ~~(Math.random()*1000)
+		const ping = Date.now()
+		const buffer = mesega.encode({
+            contentType: 1,
+            uncompressedData: {
+                type: 30,
+                pingField: {
+                    pingId:pingId,
+                    previousRoundtrip: 1
+                }
+            }
+		}).finish()
+
+		window.core.proxyMobileData(buffer);
+		/*this.once('pongField',(pongField)=>{
+			const pong = Date.now()
+			this.client.ping = pong - ping
+			this.client.emit('ping')
+		})*/	
 }
 function openPotionForSlotRequest(slot) {
         console.log('Trying to open potion for slot' + slot);
@@ -1549,6 +1570,7 @@ var displayText = {
         showTop5: 'Pokaż top 5 teamu',
         showTargeting: 'Pokaż namierzanie',
         showTime: 'Pokaż aktualny czas',
+		showDevConsole:'Show Developer console',
         showLbData: 'Pokaż masę w topce',
         //normalLb: 'Nagłówek \"Topka\"',
         centeredLb: 'Wyśrodkowana topka',
@@ -1556,6 +1578,7 @@ var displayText = {
         tweenMaxEffect: 'Tween max effect',
         top5skins: 'Skins on teamboard',
         showStats: 'Pokaż statystyki',
+		
         showStatsMass: 'Statystyki: Masa',
         //showStatsSTE: 'Statystyki: Przedziały Masy',
         showStatsESTE: 'BSTE: Enemy\'s minimal mass to splt & eat',
@@ -1593,6 +1616,7 @@ var displayText = {
         'hk-dance': 'Dance',
 		'hk-limitposition': 'Macro position to limits',
         'hk-showTime': 'Pokaż/ukryj aktualny czas',
+		'hk-showDevConsole': 'Show Developer console',
         'hk-showSplitRange': 'Pokaż/ukryj zasięg podziału',
         'hk-showSplitInd': 'Pokaż/ukryj zasięg podziału z ringami',
         'hk-showTeammatesInd': 'Pokaż/ukryj wskaźniki graczy teamu',
@@ -2032,6 +2056,7 @@ var displayText = {
         showTop5: 'Show teamboard',
         showTargeting: 'Show targeting',
         showTime: 'Show current time',
+		showDevConsole: 'Show Developer console',
         showLbData: 'Show leaderboard mass',
         //normalLb: '\"Leaderboard\" header',
         centeredLb: 'Centered leaderboard',
@@ -2075,6 +2100,7 @@ var displayText = {
         'hk-dance': 'Dance',
 		'hk-limitposition': 'Macro position to limits',
         'hk-showTime': 'Show/hide current time',
+		'hk-showDevConsole': 'Show Developer console',
         'hk-showSplitRange': 'Show/hide split range',
         'hk-showSplitInd': 'Show/hide split indicators',
         'hk-showTeammatesInd': 'Show/hide teammates indicators',
@@ -3254,6 +3280,7 @@ var defaultmapsettings = {
     showTargeting: true,
     showLbData: true,
     showTime: false,
+	showDevConsole: false,
     //normalLb: true,
     centeredLb: true,
     fpsAtTop: true,
@@ -5752,7 +5779,7 @@ window.MouseClicks=[];
 //
             //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
             this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
-            this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "showStatsRender", "gameOverStats", "showTime"], "statsGroup");
+            this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "showStatsRender", "gameOverStats", "showTime", "showDevConsole"], "statsGroup");
             this.addOptions(["oneColoredSpectator", "multiBoxShadow", "multiKeepMoving", "middleMultiViewWhenClose", "middleMultiView"], "multiBox");
             this.addOptions([], "macroGroup");
             this.addOptions([], "profiles");
@@ -11546,7 +11573,7 @@ window.MouseClicks=[];
                         var option = node.readUint32();
                         var response = node.readFlag();
                         var response_2 = node.readUint32();
-						//console.log(option, response, response_2); //see dis
+						if (defaultmapsettings.showDevConsole) console.log(option, response, response_2); //see dis
 						for (var ai=0; ai<data.length;ai++) console.log(data.getUint8(ai));
                         switch (option) {						
                             case 1:
