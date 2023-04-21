@@ -1,4 +1,4 @@
-window.OgVer=3.259;
+window.OgVer=3.260;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -10471,7 +10471,7 @@ window.MouseClicks=[];
                 view.setUint32(1, this.clientVersion, true);
                 window.gameBots.clientVersion = this.clientVersion;
 				//new
-				this.pingInterval = setInterval(ReqPing, 5000);
+				if (!this.pingInterval) this.pingInterval = setInterval(ReqPing, 5000);
 				//this.sendPong();				
             } 
 			
