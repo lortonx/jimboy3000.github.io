@@ -1,4 +1,4 @@
-window.OgVer=3.262;
+window.OgVer=3.263;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -659,14 +659,14 @@ function decodeMobileData(data){
 }*/
 function ReqPing(){
 	if (legendmod.integrity){
-		//console.log('ping');
-		const pingId = ~~(Math.random()*127);
-		const pingId3 = ~~(Math.random()*999999);
-		var bytes = [8, 1, 18, 10, 8, 30, 242, 1, 5, 8, pingId3, 7, 16, pingId]; 
-		//var bytes = [8, 1, 18, 10, 8, 30, 242, 1, 5, 8, 169, 7, 16, 1];
+		if (defaultmapsettings.showDevConsole) console.log('ping');
+		//const pingId = ~~(Math.random()*127);
+		//const pingId3 = ~~(Math.random()*999999);
+		//var bytes = [8, 1, 18, 10, 8, 30, 242, 1, 5, 8, pingId3, 7, 16, pingId]; 
+		var bytes = [8, 1, 18, 10, 8, 30, 242, 1, 5, 8, 169, 7, 16, 1];
 		window.agarpingstarted = Date.now();
 		window.core.proxyMobileData(bytes);
-		
+		window.agarpingstarted = Date.now();
 	
 		/*const pingId = ~~(Math.random()*1000);const ping = Date.now();
 		const buffer = mesega.encode({
@@ -10473,7 +10473,7 @@ window.MouseClicks=[];
                 view.setUint32(1, this.clientVersion, true);
                 window.gameBots.clientVersion = this.clientVersion;
 				//new
-				if (!this.pingInterval) this.pingInterval = setInterval(ReqPing, 5000);
+				if (!this.pingInterval) this.pingInterval = setInterval(ReqPing, 5000); //stable interval
 				//this.sendPong();				
             } 
 			
