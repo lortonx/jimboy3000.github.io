@@ -1,4 +1,4 @@
-window.OgVer=3.258;
+window.OgVer=3.259;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -683,7 +683,8 @@ function ReqPing(){
 			const pong = Date.now()
 			this.client.ping = pong - ping
 			this.client.emit('ping')
-		})*/	
+		})*/
+	}		
 }
 function openPotionForSlotRequest(slot) {
         console.log('Trying to open potion for slot' + slot);
