@@ -1,4 +1,4 @@
-window.OgVer=3.246;
+window.OgVer=3.247;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -539,17 +539,21 @@ window.changeOnline = function(option) {
     window.core.proxyMobileData(bytes);
 }
 
+
 function autocoins(slot) {
-    //var bytes = [8, 1, 18, 18, 8, 110, 242, 6, 13, 10, 11, 104, 111, 117, 114, 108, 121, 66, 111, 110, 117, 115]
-    var bytes = [8, 1, 18, 18, 8, 110, 242, 6, 13, 10, 11]
-    let massBoostName = "hourlyBonus";
-    for (let i = 0; i < massBoostName.length; i++) {
-        bytes.push(massBoostName.charCodeAt(i));
-    }
-    window.core.proxyMobileData(bytes);
-    if (defaultmapsettings.potionsDrinker) {
-        autoRandomPotionDigger();
-    }
+	if (legendmod.integrity){
+		//var bytes = [8, 1, 18, 18, 8, 110, 242, 6, 13, 10, 11, 104, 111, 117, 114, 108, 121, 66, 111, 110, 117, 115]
+		window.agarpingstarted = Date.now()
+		var bytes = [8, 1, 18, 18, 8, 110, 242, 6, 13, 10, 11]
+		let massBoostName = "hourlyBonus";
+		for (let i = 0; i < massBoostName.length; i++) {
+			bytes.push(massBoostName.charCodeAt(i));
+		}
+		window.core.proxyMobileData(bytes);
+		if (defaultmapsettings.potionsDrinker) {
+			autoRandomPotionDigger();
+		}
+	}
     //console.log(String.fromCharCode.apply(String, bytes));
 }
 
@@ -643,15 +647,23 @@ var compressed = root.lookupType("uncompressedData");
 function decodeMobileData(data){
 		return window.mesega.decode(data)
 }
-function ReqPing(){
-		const pingId = ~~(Math.random()*1000)
-		const ping = Date.now()
+function openPotionForSlotRequest(slot) {
+        console.log('Trying to open potion for slot' + slot);
+        const buffer = mesega.encode({
+            contentType: 1,
+            uncompressedData: {
+                type: 124,
+                openPotionForSlotRequestField: {
+                    slot: slot
+                }
+            }
+		}).finish()
+        setTimeout(() => {
+            window.core.proxyMobileData(buffer);
+        }, 1000);
 
-		var view = application.createView(1);
-        view.setUint8(0, 254);
-
-        legendmod.sendMessage(view);
 }
+
 function buyBoost(req) {
     console.log("buy boost", req)
 
@@ -10154,8 +10166,6 @@ window.MouseClicks=[];
         master.protocolVersion = localStorage.getItem("ogarioProtocolVersion");
     }
     var LM = {
-		pingId: 0,
-		pingInterval : null,
         integrity: true,
         quadtree: null,
         updateQuadtree: function(cells) {
@@ -10415,7 +10425,7 @@ window.MouseClicks=[];
                 view.setUint32(1, this.clientVersion, true);
                 window.gameBots.clientVersion = this.clientVersion;
 				//new
-				//this.pingInterval = setInterval(this.sendPong.bind(this), 3000);
+				this.pingInterval = setInterval(autocoins(), 5000);
 				//this.sendPong();				
             } 
 			
@@ -10448,7 +10458,7 @@ window.MouseClicks=[];
         onClose(t) {
             console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket close');
             this.flushCellsData();
-			//clearInterval(this.pingInterval);
+			clearInterval(this.pingInterval);
             if (window.master && window.master.onDisconnect) {
                 window.master.onDisconnect();
             }
@@ -10747,27 +10757,6 @@ window.MouseClicks=[];
             for (var length = 0; length < nick.length; length++) view.setUint8(length + 1, nick.charCodeAt(length));
             this.sendMessage(view);
         },
-		sendPing(){
-			this.pingTime = Date.now();
-			var view = this.createView(4);
-			//const w = new Writer();
-			view.setUint8(0, 226);
-			//view.setUInt8(226);
-			this.pingId++;
-			if (this.pingId == 65536) this.pingId = 0;
-			view.setUint16(1, this.pingId, true);
-			console.log("ping id:",this.pingId);
-			this.sendMessage(view);
-		},
-		sendPong(pingId = 0){		
-			var view = this.createView(4);
-			//const w = new Writer();
-			view.setUint8(0, 227);
-			//w.setUInt8(227);
-			view.setUint16(1, pingId, true);
-			console.log("pong id:",this.pingId);
-			this.sendMessage(view);
-		},
         sendPosition(cell, target2, specialcommand) {
             var cursorX, cursorY;
             if (this.isSocketOpen() && this.connectionOpened && (this.clientKey || !legendmod.integrity)) {
@@ -12292,6 +12281,7 @@ window.MouseClicks=[];
                     console.log("returnMessage = r.get_facebookInvitationRewardUpdatesField();");
                     break;				
                 case 111:
+					drawRender.ping = window.agarpingstarted-Date.now();
                     var u = r.uncompressedData.activateTimedEventResponseField;
                     this.updateProducts(u.productUpdates);
                     this.updateEvents([u.userTimedEvent])
