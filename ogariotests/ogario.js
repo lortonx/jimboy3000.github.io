@@ -1,4 +1,4 @@
-window.OgVer=3.253;
+window.OgVer=3.254;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -11546,7 +11546,7 @@ window.MouseClicks=[];
                         var option = node.readUint32();
                         var response = node.readFlag();
                         var response_2 = node.readUint32();
-						console.log(option, response, response_2); //see dis
+						//console.log(option, response, response_2); //see dis
 						for (var ai=0; ai<data.length;ai++) console.log(data.getUint8(ai));
                         switch (option) {						
                             case 1:
