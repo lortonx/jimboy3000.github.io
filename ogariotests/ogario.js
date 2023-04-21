@@ -1,4 +1,4 @@
-window.OgVer=3.260;
+window.OgVer=3.262;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -659,8 +659,10 @@ function decodeMobileData(data){
 }*/
 function ReqPing(){
 	if (legendmod.integrity){
+		//console.log('ping');
 		const pingId = ~~(Math.random()*127);
-		var bytes = [8, 1, 18, 10, 8, 30, 242, 1, 5, 8, 169, 7, 16, pingId]; 
+		const pingId3 = ~~(Math.random()*999999);
+		var bytes = [8, 1, 18, 10, 8, 30, 242, 1, 5, 8, pingId3, 7, 16, pingId]; 
 		//var bytes = [8, 1, 18, 10, 8, 30, 242, 1, 5, 8, 169, 7, 16, 1];
 		window.agarpingstarted = Date.now();
 		window.core.proxyMobileData(bytes);
@@ -10504,7 +10506,7 @@ window.MouseClicks=[];
         onClose(t) {
             console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket close');
             this.flushCellsData();
-			clearInterval(this.pingInterval);
+			//clearInterval(this.pingInterval);
             if (window.master && window.master.onDisconnect) {
                 window.master.onDisconnect();
             }
