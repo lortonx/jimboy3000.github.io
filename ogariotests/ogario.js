@@ -1,4 +1,4 @@
-window.OgVer=3.256;
+window.OgVer=3.257;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -1570,7 +1570,7 @@ var displayText = {
         showTop5: 'Pokaż top 5 teamu',
         showTargeting: 'Pokaż namierzanie',
         showTime: 'Pokaż aktualny czas',
-		showDevConsole:'Show Developer console',
+		showDevConsole:'Show developer console',
         showLbData: 'Pokaż masę w topce',
         //normalLb: 'Nagłówek \"Topka\"',
         centeredLb: 'Wyśrodkowana topka',
@@ -1616,7 +1616,7 @@ var displayText = {
         'hk-dance': 'Dance',
 		'hk-limitposition': 'Macro position to limits',
         'hk-showTime': 'Pokaż/ukryj aktualny czas',
-		'hk-showDevConsole': 'Show Developer console',
+		'hk-showDevConsole': 'Show developer console',
         'hk-showSplitRange': 'Pokaż/ukryj zasięg podziału',
         'hk-showSplitInd': 'Pokaż/ukryj zasięg podziału z ringami',
         'hk-showTeammatesInd': 'Pokaż/ukryj wskaźniki graczy teamu',
@@ -2056,7 +2056,7 @@ var displayText = {
         showTop5: 'Show teamboard',
         showTargeting: 'Show targeting',
         showTime: 'Show current time',
-		showDevConsole: 'Show Developer console',
+		showDevConsole: 'Show developer console',
         showLbData: 'Show leaderboard mass',
         //normalLb: '\"Leaderboard\" header',
         centeredLb: 'Centered leaderboard',
@@ -2100,7 +2100,7 @@ var displayText = {
         'hk-dance': 'Dance',
 		'hk-limitposition': 'Macro position to limits',
         'hk-showTime': 'Show/hide current time',
-		'hk-showDevConsole': 'Show Developer console',
+		'hk-showDevConsole': 'Show developer console',
         'hk-showSplitRange': 'Show/hide split range',
         'hk-showSplitInd': 'Show/hide split indicators',
         'hk-showTeammatesInd': 'Show/hide teammates indicators',
@@ -11573,7 +11573,7 @@ window.MouseClicks=[];
                         var option = node.readUint32();
                         var response = node.readFlag();
                         var response_2 = node.readUint32();
-						if (defaultmapsettings.showDevConsole) console.log(option, response, response_2); //see dis
+						//if (defaultmapsettings.showDevConsole) console.log(option, response, response_2); //see dis
 						for (var ai=0; ai<data.length;ai++) console.log(data.getUint8(ai));
                         switch (option) {						
                             case 1:
@@ -12214,7 +12214,7 @@ window.MouseClicks=[];
         unpackageMessage: function(r) {
             //var returnMessage = r;
             var type = r.uncompressedData.type;
-			//console.log(r);
+			if (defaultmapsettings.showDevConsole) console.log(r);
             switch (type) {
                 case 11:
                     this.user = {
