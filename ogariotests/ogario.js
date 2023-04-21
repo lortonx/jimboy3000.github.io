@@ -1,4 +1,4 @@
-window.OgVer=3.249;
+window.OgVer=3.250;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -539,11 +539,20 @@ window.changeOnline = function(option) {
     window.core.proxyMobileData(bytes);
 }
 
-
-function autocoins(slot) {
-	if (legendmod.integrity){
-		//var bytes = [8, 1, 18, 18, 8, 110, 242, 6, 13, 10, 11, 104, 111, 117, 114, 108, 121, 66, 111, 110, 117, 115]
+function autocoinsAsPing(slot) {
+	if (legendmod.integrity && window.loggedIn){
 		window.agarpingstarted = Date.now()
+		var bytes = [8, 1, 18, 18, 8, 110, 242, 6, 13, 10, 11]
+		let massBoostName = "hourlyBonus";
+		for (let i = 0; i < massBoostName.length; i++) {
+			bytes.push(massBoostName.charCodeAt(i));
+		}
+		window.core.proxyMobileData(bytes);
+	}
+}
+function autocoins(slot) {
+	if (legendmod.integrity && window.loggedIn){
+		//var bytes = [8, 1, 18, 18, 8, 110, 242, 6, 13, 10, 11, 104, 111, 117, 114, 108, 121, 66, 111, 110, 117, 115]
 		var bytes = [8, 1, 18, 18, 8, 110, 242, 6, 13, 10, 11]
 		let massBoostName = "hourlyBonus";
 		for (let i = 0; i < massBoostName.length; i++) {
@@ -796,6 +805,7 @@ function massx324hour(slot) {
     }, 100); 		
 }
 */
+
 function callEveryFullHourCoinDigger() {
     autocoins();
     var now = new Date();
@@ -10427,7 +10437,7 @@ window.MouseClicks=[];
                 view.setUint32(1, this.clientVersion, true);
                 window.gameBots.clientVersion = this.clientVersion;
 				//new
-				this.pingInterval = setInterval(autocoins, 5000);
+				this.pingInterval = setInterval(autocoinsAsPing, 5000);
 				//this.sendPong();				
             } 
 			
@@ -12226,7 +12236,7 @@ window.MouseClicks=[];
                     var u = r.uncompressedData.disconnectField;
                     this.disconnectMessage(u.reason);
 
-                    this.loggedIn = false;
+                    window.loggedIn=false;
                     window.logout && window.logout();
                     break;	
                 case 22:
