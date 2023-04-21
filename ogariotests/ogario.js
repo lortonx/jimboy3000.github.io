@@ -1,4 +1,4 @@
-window.OgVer=3.257;
+window.OgVer=3.258;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -539,17 +539,7 @@ window.changeOnline = function(option) {
     window.core.proxyMobileData(bytes);
 }
 
-function autocoinsAsPing(slot) {
-	if (false && legendmod.integrity && window.loggedIn){
-		window.agarpingstarted = Date.now()
-		var bytes = [8, 1, 18, 18, 8, 110, 242, 6, 13, 10, 11]
-		let massBoostName = "hourlyBonus";
-		for (let i = 0; i < massBoostName.length; i++) {
-			bytes.push(massBoostName.charCodeAt(i));
-		}
-		window.core.proxyMobileData(bytes);
-	}
-}
+
 function autocoins(slot) {
 	if (legendmod.integrity && window.loggedIn){
 		//var bytes = [8, 1, 18, 18, 8, 110, 242, 6, 13, 10, 11, 104, 111, 117, 114, 108, 121, 66, 111, 110, 117, 115]
@@ -656,9 +646,27 @@ var compressed = root.lookupType("uncompressedData");
 function decodeMobileData(data){
 		return window.mesega.decode(data)
 }
+/*function autocoinsAsPing(slot) {
+	if (false && legendmod.integrity && window.loggedIn){
+		window.agarpingstarted = Date.now()
+		var bytes = [8, 1, 18, 18, 8, 110, 242, 6, 13, 10, 11]
+		let massBoostName = "hourlyBonus";
+		for (let i = 0; i < massBoostName.length; i++) {
+			bytes.push(massBoostName.charCodeAt(i));
+		}
+		window.core.proxyMobileData(bytes);
+	}
+}*/
 function ReqPing(){
-		const pingId = ~~(Math.random()*1000)
-		const ping = Date.now()
+	if (legendmod.integrity){
+		const pingId = ~~(Math.random()*127);
+		var bytes = [8, 1, 18, 10, 8, 30, 242, 1, 5, 8, 169, 7, 16, pingId]; 
+		//var bytes = [8, 1, 18, 10, 8, 30, 242, 1, 5, 8, 169, 7, 16, 1];
+		window.agarpingstarted = Date.now();
+		window.core.proxyMobileData(bytes);
+		
+	
+		/*const pingId = ~~(Math.random()*1000);const ping = Date.now();
 		const buffer = mesega.encode({
             contentType: 1,
             uncompressedData: {
@@ -671,7 +679,7 @@ function ReqPing(){
 		}).finish()
 
 		window.core.proxyMobileData(buffer);
-		/*this.once('pongField',(pongField)=>{
+		this.once('pongField',(pongField)=>{
 			const pong = Date.now()
 			this.client.ping = pong - ping
 			this.client.emit('ping')
@@ -4858,7 +4866,7 @@ window.MouseClicks=[];
                 }
                 if (defaultmapsettings.showStatsFPS) {
                     t += 'FPS: ' + drawRender.fps;
-					if (legendmod.integrity && window.loggedIn && drawRender.ping) t += ' | PING: ' +  drawRender.ping;
+					if (legendmod.integrity && drawRender.ping) t += ' | PING: ' +  drawRender.ping;
                 }
                 /*if (defaultmapsettings.showStatsPPS) {
                 	if (defaultmapsettings.showStatsFPS || ogario.play ) t += ` | `;
@@ -10462,7 +10470,7 @@ window.MouseClicks=[];
                 view.setUint32(1, this.clientVersion, true);
                 window.gameBots.clientVersion = this.clientVersion;
 				//new
-				this.pingInterval = setInterval(autocoinsAsPing, 5000);
+				this.pingInterval = setInterval(ReqPing, 5000);
 				//this.sendPong();				
             } 
 			
@@ -12267,6 +12275,9 @@ window.MouseClicks=[];
                 case 22:
                     console.log("returnMessage = r.get_noProperResponseField();");
                     break;	
+				case 31:
+					if (window.agarpingstarted) drawRender.ping = Date.now()-window.agarpingstarted;
+					break;
 				//ping 30 pong 31
                 case 33:
                     console.log("returnMessage = r.get_configurationChangeField();");
@@ -12318,7 +12329,6 @@ window.MouseClicks=[];
                     console.log("returnMessage = r.get_facebookInvitationRewardUpdatesField();");
                     break;				
                 case 111:
-					if (window.agarpingstarted) drawRender.ping = Date.now()-window.agarpingstarted;
                     var u = r.uncompressedData.activateTimedEventResponseField;
                     this.updateProducts(u.productUpdates);
                     this.updateEvents([u.userTimedEvent])
