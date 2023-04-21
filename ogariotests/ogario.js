@@ -1,4 +1,4 @@
-window.OgVer=3.252;
+window.OgVer=3.253;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -4831,7 +4831,7 @@ window.MouseClicks=[];
                 }
                 if (defaultmapsettings.showStatsFPS) {
                     t += 'FPS: ' + drawRender.fps;
-					if (legendmod.integrity && window.loggedIn) t += ' | PING: ' +  drawRender.ping;
+					if (legendmod.integrity && window.loggedIn && drawRender.ping) t += ' | PING: ' +  drawRender.ping;
                 }
                 /*if (defaultmapsettings.showStatsPPS) {
                 	if (defaultmapsettings.showStatsFPS || ogario.play ) t += ` | `;
