@@ -1,4 +1,4 @@
-window.OgVer=3.263;
+window.OgVer=3.264;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -659,7 +659,7 @@ function decodeMobileData(data){
 }*/
 function ReqPing(){
 	if (legendmod.integrity){
-		if (defaultmapsettings.showDevConsole) console.log('ping');
+		//if (defaultmapsettings.showDevConsole) console.log('ping');
 		//const pingId = ~~(Math.random()*127);
 		//const pingId3 = ~~(Math.random()*999999);
 		//var bytes = [8, 1, 18, 10, 8, 30, 242, 1, 5, 8, pingId3, 7, 16, pingId]; 
@@ -4745,7 +4745,7 @@ window.MouseClicks=[];
         displayPartyBots() {
             setTimeout(function() {
                 //if (defaultmapsettings.showPartyBots) {                   
-                $(".quick.quick-bots.ogicon-trophy").show();
+                //$(".quick.quick-bots.ogicon-trophy").show();
                 /*} else {
                     $(".quick.quick-bots.ogicon-trophy").hide();
                 }*/
@@ -10779,7 +10779,7 @@ window.MouseClicks=[];
 			setTimeout(function() {*/
             for (var i = 0; i < window.captchaOpenedWindow; i++) {
                 if (legendmod.integrity && window.capthaWindow[i] && !window.capthaWindow[i].closed) {
-                    window.capthaWindow[i].ProcessParentMessage('doCaptcha');
+                    window.capthaWindow[i].ProcessParentMessage('doCaptcha'); // see dis
                 } else if (legendmod.integrity && window.capthaWindow[i] && window.capthaWindow[i].closed) {
                     createCaptchaWindow(i)
                 }
