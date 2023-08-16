@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         Legend Express Agar.io Extension
-// @namespace    Legend Express Agario Mod
+// @name         Legend Express Agar.io Extension Tester
+// @namespace    Legend Express Agario Mod Tester
 // @version      1.8
 // @description  Agario Mod - Legend,Ogario,Kitty,Old Skins,Animated Skins,Language Packs,Manual User Scripts,Chat,60++ Macros/Hotkeys(Tricksplit,Doublesplit,Quick Feeding,Popsplit,Auto Coins,Freeze Cell Macro,Auto respawn)
 // @homepage     https://www.legendmod.ml
