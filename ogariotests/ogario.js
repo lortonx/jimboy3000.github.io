@@ -1,4 +1,4 @@
-window.OgVer=3.262;
+window.OgVer=3.2622;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -4745,7 +4745,7 @@ window.MouseClicks=[];
         displayPartyBots() {
             setTimeout(function() {
                 //if (defaultmapsettings.showPartyBots) {                   
-                $(".quick.quick-bots.ogicon-trophy").show();
+                $(".quick.quick-bots.ogicon-trophy").hide();
                 /*} else {
                     $(".quick.quick-bots.ogicon-trophy").hide();
                 }*/
@@ -14934,7 +14934,8 @@ Game name     : ${i.displayName}<br/>
 			if (!LM.integrity) ctx.lineWidth = radius * 2;
 			//ctx.lineCap = 'round';
 			ctx.beginPath();
-			//ctx.moveTo(x, y);
+			ctx.moveTo(x, y);
+			//ctx.moveTo(x, y); -----!!!
 			ctx.lineTo(x, y);
 			ctx.strokeStyle = color;
 			ctx.stroke();
