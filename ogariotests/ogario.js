@@ -1,4 +1,4 @@
-window.OgVer=3.2622;
+window.OgVer=3.2623;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -14930,11 +14930,11 @@ Game name     : ${i.displayName}<br/>
                 food = [];
             }
         },
+		
 		drawCircle(ctx, x, y, radius, color) {
 			if (!LM.integrity) ctx.lineWidth = radius * 2;
-			//ctx.lineCap = 'round';
+			ctx.lineCap = 'round';
 			ctx.beginPath();
-			ctx.moveTo(x, y);
 			//ctx.moveTo(x, y); -----!!!
 			ctx.lineTo(x, y);
 			ctx.strokeStyle = color;
