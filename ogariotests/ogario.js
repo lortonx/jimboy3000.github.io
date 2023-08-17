@@ -1,4 +1,4 @@
-window.OgVer=3.2623;
+window.OgVer=3.2624;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -14906,7 +14906,7 @@ Game name     : ${i.displayName}<br/>
 						
                         var x = food[length].x;
                         var y = food[length].y;
-						if (defaultmapsettings.rainbowFood) this.drawCircle(ctx, x, y, food[length].size + defaultSettings.foodSize, temp);
+						if (defaultmapsettings.rainbowFood) this.drawCircle2(ctx, x, y, food[length].size + defaultSettings.foodSize, temp);
 						else if (!defaultmapsettings.rainbowFood) this.drawCircle2(ctx, x, y, food[length].size + defaultSettings.foodSize, temp);
                         /*ctx.moveTo(x, y);
 						if (scale < 0.08) {
@@ -14933,7 +14933,7 @@ Game name     : ${i.displayName}<br/>
 		
 		drawCircle(ctx, x, y, radius, color) {
 			if (!LM.integrity) ctx.lineWidth = radius * 2;
-			ctx.lineCap = 'round';
+			//ctx.lineCap = 'round';
 			ctx.beginPath();
 			//ctx.moveTo(x, y); -----!!!
 			ctx.lineTo(x, y);
