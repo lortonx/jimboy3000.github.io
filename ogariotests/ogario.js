@@ -1,4 +1,4 @@
-window.OgVer=3.2628;
+window.OgVer=3.2629;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -9869,7 +9869,7 @@ window.MouseClicks=[];
 			ctx.moveTo(x, y);
 			ctx.lineTo(x, y);
 			ctx.strokeStyle = color;
-			ctx.closePath();
+			//ctx.closePath();
 			ctx.stroke();
 			
 		},		
@@ -14934,13 +14934,13 @@ Game name     : ${i.displayName}<br/>
 		
 		drawCircle(ctx, x, y, radius, color) {
 			if (!LM.integrity) ctx.lineWidth = radius * 2;
-			ctx.fillStyle = defaultSettings.color;
+			ctx.fillStyle = color;
 			//ctx.lineCap = 'round';
 			ctx.beginPath();
 			//ctx.moveTo(x, y); -----!!!
 			ctx.lineTo(x, y);
 			//ctx.strokeStyle = color;
-			style.fill();
+			ctx.fill();
 			//ctx.stroke();
 		},
 		drawCircle2(ctx, x, y, radius, color) {
