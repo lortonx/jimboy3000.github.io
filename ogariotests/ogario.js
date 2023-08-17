@@ -1,4 +1,4 @@
-window.OgVer=3.2630;
+window.OgVer=3.2631;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -14939,7 +14939,7 @@ Game name     : ${i.displayName}<br/>
 			ctx.beginPath();
 			//ctx.moveTo(x, y); -----!!!
 			//ctx.lineTo(x, y);
-			ctx.arc(x, y, radius * 2, 0, 2 * Math.PI);
+			ctx.arc(x, y, radius, 0, 2 * Math.PI);
 			//ctx.strokeStyle = color;
 			ctx.fill();
 			//ctx.stroke();
