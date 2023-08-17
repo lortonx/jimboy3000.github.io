@@ -1,4 +1,4 @@
-window.OgVer=3.2624;
+window.OgVer=3.2625;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -9862,7 +9862,7 @@ window.MouseClicks=[];
                 }
             }
         }
-		this.drawCircle = function(ctx, x, y, radius, color) {
+		/*this.drawCircle = function(ctx, x, y, radius, color) {
 			ctx.lineWidth = radius * 2;
 			ctx.lineCap = 'round';
 			ctx.beginPath();
@@ -9871,7 +9871,7 @@ window.MouseClicks=[];
 			ctx.strokeStyle = color;
 			ctx.stroke();
 			//ctx.closePath();
-		},		
+		},	*/	
         this.draw = function(style, cellMoved) { //this function draws each cell/virus/food 1 time only
             if ((LM.hideSmallBots && this.size <= 36) || this.invisible == true) {
                 return;
@@ -14906,7 +14906,7 @@ Game name     : ${i.displayName}<br/>
 						
                         var x = food[length].x;
                         var y = food[length].y;
-						if (defaultmapsettings.rainbowFood) this.drawCircle2(ctx, x, y, food[length].size + defaultSettings.foodSize, temp);
+						if (defaultmapsettings.rainbowFood) this.drawCircle(ctx, x, y, food[length].size + defaultSettings.foodSize, temp);
 						else if (!defaultmapsettings.rainbowFood) this.drawCircle2(ctx, x, y, food[length].size + defaultSettings.foodSize, temp);
                         /*ctx.moveTo(x, y);
 						if (scale < 0.08) {
@@ -14938,6 +14938,7 @@ Game name     : ${i.displayName}<br/>
 			//ctx.moveTo(x, y); -----!!!
 			ctx.lineTo(x, y);
 			ctx.strokeStyle = color;
+			ctx.closePath();
 			ctx.stroke();
 		},
 		drawCircle2(ctx, x, y, radius, color) {
