@@ -1,4 +1,4 @@
-window.OgVer=3.2626;
+window.OgVer=3.2627;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -9866,7 +9866,7 @@ window.MouseClicks=[];
 			ctx.lineWidth = radius * 2;
 			ctx.lineCap = 'round';
 			ctx.beginPath();
-			//ctx.moveTo(x, y);
+			ctx.moveTo(x, y);
 			ctx.lineTo(x, y);
 			ctx.strokeStyle = color;
 			ctx.closePath();
@@ -14936,6 +14936,7 @@ Game name     : ${i.displayName}<br/>
 			if (!LM.integrity) ctx.lineWidth = radius * 2;
 			//ctx.lineCap = 'round';
 			ctx.beginPath();
+			ctx.moveTo(x, y);
 			//ctx.moveTo(x, y); -----!!!
 			ctx.lineTo(x, y);
 			ctx.strokeStyle = color;
