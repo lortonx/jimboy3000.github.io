@@ -1,4 +1,4 @@
-window.OgVer=3.2621;
+window.OgVer=3.262;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -4745,7 +4745,7 @@ window.MouseClicks=[];
         displayPartyBots() {
             setTimeout(function() {
                 //if (defaultmapsettings.showPartyBots) {                   
-                $(".quick.quick-bots.ogicon-trophy").hide();
+                $(".quick.quick-bots.ogicon-trophy").show();
                 /*} else {
                     $(".quick.quick-bots.ogicon-trophy").hide();
                 }*/
