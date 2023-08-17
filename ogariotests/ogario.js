@@ -1,4 +1,4 @@
-window.OgVer=3.2631;
+window.OgVer=3.2632;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -9862,15 +9862,30 @@ window.MouseClicks=[];
                 }
             }
         }
-		this.drawCircle = function(ctx, x, y, radius, color) {
-			ctx.lineWidth = radius * 2;
-			ctx.lineCap = 'round';
+				drawCircle(ctx, x, y, radius, color) {
+			//if (!LM.integrity) ctx.lineWidth = radius * 2;
+			ctx.fillStyle = color;
+			//ctx.lineCap = 'round';
 			ctx.beginPath();
-			ctx.moveTo(x, y);
-			ctx.lineTo(x, y);
-			ctx.strokeStyle = color;
+			//ctx.moveTo(x, y); -----!!!
+			//ctx.lineTo(x, y);
+			ctx.arc(x, y, radius, 0, 2 * Math.PI);
+			//ctx.strokeStyle = color;
+			ctx.fill();
+			//ctx.stroke();
+		},
+		this.drawCircle = function(ctx, x, y, radius, color) {
+			//ctx.lineWidth = radius * 2;
+			//ctx.lineCap = 'round';
+			ctx.beginPath();
+			//ctx.moveTo(x, y);
+			//ctx.lineTo(x, y);
+			//ctx.strokeStyle = color;
+			ctx.fillStyle = color;
+			ctx.arc(x, y, radius, 0, 2 * Math.PI);
+			ctx.fill();
 			//ctx.closePath();
-			ctx.stroke();
+			//ctx.stroke();
 			
 		},		
         this.draw = function(style, cellMoved) { //this function draws each cell/virus/food 1 time only
