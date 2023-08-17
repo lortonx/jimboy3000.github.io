@@ -1,4 +1,4 @@
-window.OgVer=3.2625;
+window.OgVer=3.2626;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -9862,16 +9862,17 @@ window.MouseClicks=[];
                 }
             }
         }
-		/*this.drawCircle = function(ctx, x, y, radius, color) {
+		this.drawCircle = function(ctx, x, y, radius, color) {
 			ctx.lineWidth = radius * 2;
 			ctx.lineCap = 'round';
 			ctx.beginPath();
 			//ctx.moveTo(x, y);
 			ctx.lineTo(x, y);
 			ctx.strokeStyle = color;
+			ctx.closePath();
 			ctx.stroke();
-			//ctx.closePath();
-		},	*/	
+			
+		},		
         this.draw = function(style, cellMoved) { //this function draws each cell/virus/food 1 time only
             if ((LM.hideSmallBots && this.size <= 36) || this.invisible == true) {
                 return;
