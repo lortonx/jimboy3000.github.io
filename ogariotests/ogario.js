@@ -1,4 +1,4 @@
-window.OgVer=3.275;
+window.OgVer=3.276;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -13070,10 +13070,7 @@ Game name     : ${i.displayName}<br/>
 				});
 				var totalRealPlayers = ArrayLeaderboardCount.length - howmanytypesofbots;
 				if (counterNicks>0){
-					teamText += '<span class="me" onclick="window.legendmod.showBotNicks()">' + Languageletter313 + ': ' + totalRealPlayers + ' Bots: ' + counterNicks + '</span>';
-					$("#botNicks").tooltip({
-						title: "The region to play",
-						placement: "left"});
+					teamText += '<span class="me" onclick="window.legendmod.showBotNicks();">' + Languageletter313 + ': ' + totalRealPlayers + ' Bots: ' + counterNicks + '</span>';
 				}
 				else {
 					teamText += '<span class="me">' + Premadeletter130 + ': ' + this.leaderboard.length + '</span>';
