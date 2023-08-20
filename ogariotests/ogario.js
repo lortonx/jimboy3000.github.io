@@ -1,4 +1,4 @@
-window.OgVer=3.2634;
+window.OgVer=3.265;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -13050,6 +13050,8 @@ Game name     : ${i.displayName}<br/>
             //if (legendmod.gameMode != ":battleroyale" && LM.ws && !LM.ws.includes("imsolo.pro")) {
             if (legendmod.gameMode != ":battleroyale" && LM.ws && LM.integrity) {
                 //if (legendmod.gameMode != ":battleroyale" && LM.ws) {	
+				window.botNicks=[];
+				let counter=0;
                 let key = "nick"; 
 				let counterNicks = 0;
 				var botcounter = 0;
@@ -13058,9 +13060,11 @@ Game name     : ${i.displayName}<br/>
 				ArrayLeaderboardCount.forEach((element) => { 
 					
 					botcounter = element.occurrence; 
-					if (botcounter >3){
+					if (botcounter >2){
 						counterNicks += botcounter;
-						howmanytypesofbots++;
+						howmanytypesofbots++;	
+						window.botNicks[counter]=={element.nick:botcounter}
+						counter++;
 					}
 				});
 				var totalRealPlayers = ArrayLeaderboardCount.length - howmanytypesofbots;
