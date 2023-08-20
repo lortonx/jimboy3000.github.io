@@ -1,4 +1,4 @@
-window.OgVer=3.270;
+window.OgVer=3.271;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -10304,7 +10304,7 @@ window.MouseClicks=[];
         playerPosition: 0,
         //playerPositionMulti: null,
         leaderboard: [],
-		botNicks: [];
+		botNicks: [],
         biggerSTEDCellsCache: [], //Sonia
         biggerSTECellsCache: [],
         biggerCellsCache: [],
