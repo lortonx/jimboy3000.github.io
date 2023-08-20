@@ -1,4 +1,4 @@
-window.OgVer=3.268;
+window.OgVer=3.269;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -13064,7 +13064,7 @@ Game name     : ${i.displayName}<br/>
 						counterNicks += botcounter;
 						howmanytypesofbots++;	
 						//window.botNicks[counter]={element.nick:botcounter}
-						window.botNicks[counter]={element.nick}
+						window.botNicks[counter]=element;
 						
 						counter++;
 					}
