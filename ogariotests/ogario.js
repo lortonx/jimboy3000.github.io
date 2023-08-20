@@ -1,4 +1,4 @@
-window.OgVer=3.266;
+window.OgVer=3.267;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -13060,10 +13060,12 @@ Game name     : ${i.displayName}<br/>
 				ArrayLeaderboardCount.forEach((element) => { 
 					
 					botcounter = element.occurrence; 
+					console.log(element);
+					console.log(element.occurrence);
 					if (botcounter >2){
 						counterNicks += botcounter;
 						howmanytypesofbots++;	
-						window.botNicks[counter]={element.nick:botcounter}
+						//window.botNicks[counter]={element.nick:botcounter}
 						counter++;
 					}
 				});
