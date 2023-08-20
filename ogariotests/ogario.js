@@ -1,4 +1,4 @@
-window.OgVer=3.274;
+window.OgVer=3.275;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -13070,7 +13070,7 @@ Game name     : ${i.displayName}<br/>
 				});
 				var totalRealPlayers = ArrayLeaderboardCount.length - howmanytypesofbots;
 				if (counterNicks>0){
-					teamText += '<span class="me">' + Languageletter313 + ': ' + totalRealPlayers + ' Bots: <div id="botNicks">' + counterNicks + '</div></span>';
+					teamText += '<span class="me" onclick="window.legendmod.showBotNicks()">' + Languageletter313 + ': ' + totalRealPlayers + ' Bots: ' + counterNicks + '</span>';
 					$("#botNicks").tooltip({
 						title: "The region to play",
 						placement: "left"});
@@ -13143,6 +13143,9 @@ Game name     : ${i.displayName}<br/>
             window.targetingLeadY = legendmod.ghostCells[o].y;
             legendmod.drawCommander2 = true;
         },
+		showBotNicks(){
+			console.log(legendmod.botNicks);
+		},
         flushCellsData() {
             this.indexedCells = {};
             this.cells = [];
