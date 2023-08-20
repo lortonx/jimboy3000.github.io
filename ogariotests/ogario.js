@@ -1,4 +1,4 @@
-window.OgVer=3.269;
+window.OgVer=3.270;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -10304,6 +10304,7 @@ window.MouseClicks=[];
         playerPosition: 0,
         //playerPositionMulti: null,
         leaderboard: [],
+		botNicks: [];
         biggerSTEDCellsCache: [], //Sonia
         biggerSTECellsCache: [],
         biggerCellsCache: [],
@@ -13050,7 +13051,6 @@ Game name     : ${i.displayName}<br/>
             //if (legendmod.gameMode != ":battleroyale" && LM.ws && !LM.ws.includes("imsolo.pro")) {
             if (legendmod.gameMode != ":battleroyale" && LM.ws && LM.integrity) {
                 //if (legendmod.gameMode != ":battleroyale" && LM.ws) {	
-				window.botNicks=[];
 				let counter=0;
                 let key = "nick"; 
 				let counterNicks = 0;
@@ -13064,8 +13064,7 @@ Game name     : ${i.displayName}<br/>
 						counterNicks += botcounter;
 						howmanytypesofbots++;	
 						//window.botNicks[counter]={element.nick:botcounter}
-						window.botNicks[counter]=element;
-						
+						legendmod.botNicks[counter]=element;		
 						counter++;
 					}
 				});
