@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.92 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.93 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "16"; // the version 1.1-> 1.11
 
@@ -2978,6 +2978,7 @@ function hideMenu() {
 }
 
 function showSearchHud() {
+	hideBotNameHud();
 	if (!document.URL.includes('legendmod.ml')){
 		getInfo();
 	}	
@@ -2988,7 +2989,7 @@ function showSearchHud() {
     $("#searchLog").fadeIn();
 }
 
-function hideSearchHud() {
+function hideSearchHud() {	
     $("#searchHud").fadeOut();
     $("#backgroundFade").fadeOut();
     $("#notes").fadeOut();
@@ -2996,7 +2997,12 @@ function hideSearchHud() {
     $("#searchLog").fadeOut();
 }
 
-function showBotNameHud() { 
+function showBotNameHud() {
+	hideSearchHud();
+	for (var i=0;i<legendmod.botNicks.length;i++){
+		//appendLog2("<span class='main-color'><span id='playerinfo'>" + temporaryserver3.trim() + "</span> <span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span>" + " (<span id='tokeninfo'>" + temporaryserver2 + "</span>)", temporaryserver2);
+		appendLog2("<span class='main-color'><span id='playerBots'>" + legendmod.botNicks[i].nick + "</span></span>" + " <span id='botNamesCount'>" + legendmod.botNicks[i].occurrence + "</span><span> (" + legendmod.ws + "</span>)");		
+	}
     $("#backgroundFade").fadeIn();   
     $("#searchLog").fadeIn();
 	$("#botNames").fadeIn();
@@ -5116,6 +5122,13 @@ function initializeLM(modVersion) {
     $("#notes").append('<button id="closeBtn" class="btn btn-danger" style="margin-top: 20px;" data-itr="page_login_and_play" data-original-title="" title="">Close</button>');
 
     $("#statsInfo").before('<div id="botNames" class="main-color" style="display:none;font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 147px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 400px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;background-color: rgba(0, 0, 0, 0.2);"><h5 id="botNameNote" class="main-color text-center" style="margin-top: 0px;">Count bots per name for this server</h5>' +
+        '<input id="note1" class="form-control main-color note" style="background: transparent;color: lightgrey;  width: 25%;float:left; border: none; border-bottom: 1px solid; border-color: darkgrey; margin-right: 7px; text-align: center;">' +
+        '<input id="note2" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 24%; float: left; border: none; border-bottom: 1px solid; margin-left: 0px; margin-right: 7px; text-align: center; border-color: darkgrey;">' +
+        '<input id="note3" class="form-control main-color note" style="background: transparent; width: 49%; border: none; border-bottom: 1px solid; margin-left: 10px; text-align: center; border-color: darkgrey;">' +
+        '<input id="note4" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 25%; float: left; border: none; border-bottom: 1px solid; margin-right: 7px; text-align: center; border-color: darkgrey;">' +
+        '<input id="note5" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 24%; float: left; border: none; border-bottom: 1px solid; margin-left: 0px; margin-right: 7px; text-align: center; border-color: darkgrey;">' +
+        '<input id="note6" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 49%; border: none; border-bottom: 1px solid; margin-left: 10px; text-align: center; border-color: darkgrey;">' +
+        '<input id="note7" class="form-control main-color note" style="background: transparent; color: lightgrey; border: none; border-bottom: 1px solid; text-align: center; border-color: darkgrey;">' +
         '</div>');
     $("#botNames").append('<button id="closeBtnBotNames" class="btn btn-danger" style="margin-top: 20px;" data-itr="page_login_and_play" data-original-title="" title="">Close</button>');
 
