@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.93d by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.93e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "16"; // the version 1.1-> 1.11
 
@@ -2978,7 +2978,7 @@ function hideMenu() {
 }
 
 function showSearchHud() {
-	hideBotNameHud();
+	//hideBotNameHud();
 	if (!document.URL.includes('legendmod.ml')){
 		getInfo();
 	}	
@@ -2998,7 +2998,7 @@ function hideSearchHud() {
 }
 
 function showBotNameHud() {
-	hideSearchHud();
+	$("#searchHud").fadeOut();
 	if (legendmod.botNicks.length==0){ 
 		appendLog2("<span class='main-color'><span id='playerBots'>No bots found</span></span> (" + legendmod.ws + "</span>)");
 	}
