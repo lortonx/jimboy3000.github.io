@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.90 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.91 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "16"; // the version 1.1-> 1.11
 
@@ -2996,10 +2996,9 @@ function hideSearchHud() {
     $("#searchLog").fadeOut();
 }
 function showBotNameHud() { 
-    $("#backgroundFade").fadeIn();
-    $("#botNames").fadeIn();
-    $("#statsInfo").fadeIn();
-    $("#searchHud").fadeIn();
+    $("#backgroundFade").fadeIn();   
+    $("#searchLog").fadeIn();
+	$("#botNames").fadeIn();
 }
 function hideBotNameHud() {
     $("#searchHud").fadeOut();
@@ -5116,7 +5115,6 @@ function initializeLM(modVersion) {
     $("#notes").append('<button id="closeBtn" class="btn btn-danger" style="margin-top: 20px;" data-itr="page_login_and_play" data-original-title="" title="">Close</button>');
 
     $("#statsInfo").before('<div id="botNames" class="main-color" style="display:none;font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 147px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 400px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;background-color: rgba(0, 0, 0, 0.2);"><h5 id="botNameNote" class="main-color text-center" style="margin-top: 0px;">Count bots per name for this server</h5>' +
-        '<input id="note7" class="form-control main-color note" style="background: transparent; color: lightgrey; border: none; border-bottom: 1px solid; text-align: center; border-color: darkgrey;">' +
         '</div>');
     $("#botNames").append('<button id="closeBtn" class="btn btn-danger" style="margin-top: 20px;" data-itr="page_login_and_play" data-original-title="" title="">Close</button>');
 
