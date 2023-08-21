@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.93 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.93a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "16"; // the version 1.1-> 1.11
 
@@ -2999,9 +2999,13 @@ function hideSearchHud() {
 
 function showBotNameHud() {
 	hideSearchHud();
-	for (var i=0;i<legendmod.botNicks.length;i++){
-		//appendLog2("<span class='main-color'><span id='playerinfo'>" + temporaryserver3.trim() + "</span> <span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span>" + " (<span id='tokeninfo'>" + temporaryserver2 + "</span>)", temporaryserver2);
-		appendLog2("<span class='main-color'><span id='playerBots'>" + legendmod.botNicks[i].nick + "</span></span>" + " <span id='botNamesCount'>" + legendmod.botNicks[i].occurrence + "</span><span> (" + legendmod.ws + "</span>)");		
+	if (legendmod.botNicks.length==0 ){ 
+		appendLog2("<span class='main-color'><span id='playerBots'>No bots found</span></span> (" + legendmod.ws + "</span>)");
+	}
+	else{
+		for (var i=0;i<legendmod.botNicks.length;i++){
+			appendLog2("<span class='main-color'><span id='playerBots'>" + legendmod.botNicks[i].nick + "</span></span>" + " <span id='botNamesCount'>" + legendmod.botNicks[i].occurrence + "</span><span> (" + legendmod.ws + "</span>)");		
+		}
 	}
     $("#backgroundFade").fadeIn();   
     $("#searchLog").fadeIn();
