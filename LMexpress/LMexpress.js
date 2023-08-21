@@ -1,5 +1,5 @@
 /**************
- * Legend express v1.93c by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v1.93d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "16"; // the version 1.1-> 1.11
 
@@ -5126,8 +5126,6 @@ function initializeLM(modVersion) {
         '</div>');
     $("#notes").append('<button id="closeBtn" class="btn btn-danger" style="margin-top: 20px;" data-itr="page_login_and_play" data-original-title="" title="">Close</button>');
 
-    $("#statsInfo").append('<button id="closeBtnBotNames" class="btn btn-danger" style="margin-top: 20px;" data-itr="page_login_and_play" data-original-title="" title="">Close</button>');
-
     $("#minimap-hud").prepend('<div id="timertools-hud" class="hud" align="center" style="width: 50%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -90px; display: block;">' +
         '<button id="playtimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: block;" onclick="startTimer();" data-toggle="tooltip" data-original-title="Start Timer"" ><i id="playtime" class="fa fa-play-circle" style="padding-left: 0px;"></i></button>' +
         '<button id="stoptimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: none;" onclick="stopTimer();" data-toggle="tooltip" data-original-title="Pause Timer""><i id="pausetime" class="fa fa-pause-circle" style="padding-left: 0px;"></i></button>' +
@@ -5565,10 +5563,7 @@ function initializeLM(modVersion) {
         hideSearchHud();
         showMenu2();
     });
-    $("#closeBtnBotNames").click(function() {
-        hideBotNameHud();
-        showMenu2();
-    });	
+	
     $("#searchShortcut").mouseenter(function() {
         $("#dropDown").hide();
         $("#dropDown3").show(100);
