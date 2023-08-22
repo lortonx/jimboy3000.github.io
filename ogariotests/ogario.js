@@ -1,4 +1,4 @@
-window.OgVer=3.287;
+window.OgVer=3.288;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -5484,8 +5484,8 @@ window.MouseClicks=[];
                     o = new Video();
                     o.crossOrigin = 'anonymous';
                     o.src = t;
-					o.style.width = $('#' + e).width();
-					o.style.height = $('#' + e).height();
+					o.style.width = "100%";
+					o.style.height = "100%";
 					this.marqueeSkins(e);
                     // o = new Image();
 					
