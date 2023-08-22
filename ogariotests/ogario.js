@@ -1,4 +1,4 @@
-window.OgVer=3.288;
+window.OgVer=3.289;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -5445,8 +5445,7 @@ window.MouseClicks=[];
                 //console.log(e,e.src);
 
                 if (e.src.includes(".mp4") || e.src.includes(".webm") || e.src.includes(".ogg")) { //console.log("stage 3a videos");
-					e.style.width=$("#skin-preview").width();
-					e.style.height=$("#skin-preview").height();
+
                     $("#skin-preview").children().remove();
                     $("#skin-preview").removeClass("default");
                     $("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + e.src + "' width='350'>\"></a>");
@@ -5464,6 +5463,8 @@ window.MouseClicks=[];
                 $("#skin-popover").popover();
             } else {
                 if (e.src.includes(".mp4") || e.src.includes(".webm") || e.src.includes(".ogg")) { //console.log("stage 3b videos");
+					e.style.width=$("#skin-preview").width();
+					e.style.height=$("#skin-preview").height();				
                     $("#" + t).removeClass("default");
                     $("#" + t).append($(e).fadeIn(1000));
 
