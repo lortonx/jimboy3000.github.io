@@ -1,4 +1,4 @@
-window.OgVer=3.281;
+window.OgVer=3.282;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -5414,39 +5414,7 @@ window.MouseClicks=[];
                 ogarcopythelb.color = profiles[this.selectedProfile].color;
             }
         },
-        changeSkinPreview(e, t) {
-            //console.log(e,t);
-            if (!t || !e) {
-                return;
-            }
-            if ("skin-preview" === t) { //or if ("skin-preview" === e)
-                //console.log(e,e.src);
-
-                if (e.src.includes(".mp4") || e.src.includes(".webm") || e.src.includes(".ogg")) { //console.log("stage 3a videos");
-                    $("#skin-preview").children().remove();
-                    $("#skin-preview").removeClass("default");
-                    $("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + e.src + "' width='350'>\"></a>");
-                    $("#skin-popover").append('<video id="videoskinpreview" src=\'' + e.src + "' width='350' controls>\"></video>");
-                    //						$("#skin-popover").popover();
-
-                    //$("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
-                } else {
-                    //console.log("default settings for images on changeSkinPreview")
-                    $("#skin-preview").removeClass("default");
-                    $("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<img src=\'' + e.src + "' width='500'>\"></a>");
-                }
-                $("#skin-popover").append($(e).fadeIn(1000));
-                $("#skin-popover").popover();
-            } else {
-                if (e.src.includes(".mp4") || e.src.includes(".webm") || e.src.includes(".ogg")) { //console.log("stage 3b videos");
-                    $("#" + t).removeClass("default");
-                    $("#" + t).append($(e).fadeIn(1000));
-
-                } else {
-                    $("#" + t).removeClass("default");
-                    $("#" + t).append($(e).fadeIn(1000));
-                }
-            }
+		marqueeSkins(t) {
 			var scrollingText = document.createElement('div');
 			scrollingText.className = 'scrolling-text'; // Add a class to prevent duplication
 			scrollingText.style.position = 'absolute';
@@ -5467,7 +5435,39 @@ window.MouseClicks=[];
 
 			// Append the scrolling text to the anchor element
 			$("#" + t).append(scrollingText);
+		}			
+        changeSkinPreview(e, t) {
+            //console.log(e,t);
+            if (!t || !e) {
+                return;
+            }
+            if ("skin-preview" === t) { //or if ("skin-preview" === e)
+                //console.log(e,e.src);
 
+                if (e.src.includes(".mp4") || e.src.includes(".webm") || e.src.includes(".ogg")) { //console.log("stage 3a videos");
+                    $("#skin-preview").children().remove();
+                    $("#skin-preview").removeClass("default");
+                    $("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + e.src + "' width='350'>\"></a>");
+                    $("#skin-popover").append('<video id="videoskinpreview" src=\'' + e.src + "' width='350' controls>\"></video>");
+                    //						$("#skin-popover").popover();
+                    //$("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
+                } else {
+                    //console.log("default settings for images on changeSkinPreview")
+                    $("#skin-preview").removeClass("default");
+                    $("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<img src=\'' + e.src + "' width='500'>\"></a>");
+                }
+                $("#skin-popover").append($(e).fadeIn(1000));
+                $("#skin-popover").popover();
+            } else {
+                if (e.src.includes(".mp4") || e.src.includes(".webm") || e.src.includes(".ogg")) { //console.log("stage 3b videos");
+                    $("#" + t).removeClass("default");
+                    $("#" + t).append($(e).fadeIn(1000));
+
+                } else {
+                    $("#" + t).removeClass("default");
+                    $("#" + t).append($(e).fadeIn(1000));
+                }
+            }
         },
         setSkinPreview(t, e) {
             if (t.includes && (t.includes(".mp4") || t.includes(".webm") || t.includes(".ogg"))) {
@@ -5480,6 +5480,7 @@ window.MouseClicks=[];
                     o = new Video();
                     o.crossOrigin = 'anonymous';
                     o.src = t;
+					this.marqueeSkins(e);
                     // o = new Image();
 
                     //o.style.borderRadius = "25px";
