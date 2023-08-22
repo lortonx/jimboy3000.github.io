@@ -1,4 +1,4 @@
-window.OgVer=3.279;
+window.OgVer=3.280;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -5447,6 +5447,26 @@ window.MouseClicks=[];
                     $("#" + t).append($(e).fadeIn(1000));
                 }
             }
+			var scrollingText = document.createElement('div');
+			scrollingText.className = 'scrolling-text'; // Add a class to prevent duplication
+			scrollingText.style.position = 'absolute';
+			scrollingText.style.top = '50%'; // Center vertically
+			scrollingText.style.width = '100%';
+			scrollingText.style.textAlign = 'center';
+			scrollingText.style.fontSize = '8px';
+			scrollingText.style.whiteSpace = 'nowrap';
+			scrollingText.style.overflow = 'hidden';
+			scrollingText.style.color = 'white'; // White font color
+			scrollingText.style.textShadow = '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black'; // Black outline
+
+			// Create a marquee element for scrolling from right to left
+			var marquee = document.createElement('marquee');
+			marquee.direction = 'left';
+			marquee.innerText = 'MP4, video skin';
+			scrollingText.appendChild(marquee);
+
+			// Append the scrolling text to the anchor element
+			e.appendChild(scrollingText);
 
         },
         setSkinPreview(t, e) {
