@@ -1,4 +1,4 @@
-window.OgVer=3.282;
+window.OgVer=3.283;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -5435,7 +5435,7 @@ window.MouseClicks=[];
 
 			// Append the scrolling text to the anchor element
 			$("#" + t).append(scrollingText);
-		}			
+		},			
         changeSkinPreview(e, t) {
             //console.log(e,t);
             if (!t || !e) {
