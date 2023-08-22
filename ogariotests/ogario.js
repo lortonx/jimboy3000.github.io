@@ -1,4 +1,4 @@
-window.OgVer=3.286;
+window.OgVer=3.287;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -5445,6 +5445,8 @@ window.MouseClicks=[];
                 //console.log(e,e.src);
 
                 if (e.src.includes(".mp4") || e.src.includes(".webm") || e.src.includes(".ogg")) { //console.log("stage 3a videos");
+					e.style.width=$("#skin-preview").width();
+					e.style.height=$("#skin-preview").height();
                     $("#skin-preview").children().remove();
                     $("#skin-preview").removeClass("default");
                     $("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + e.src + "' width='350'>\"></a>");
@@ -5456,6 +5458,8 @@ window.MouseClicks=[];
                     $("#skin-preview").removeClass("default");
                     $("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<img src=\'' + e.src + "' width='500'>\"></a>");
                 }
+				e.style.width = $("#skin-popover").width();
+				e.style.height = $("#skin-popover").height();
                 $("#skin-popover").append($(e).fadeIn(1000));
                 $("#skin-popover").popover();
             } else {
@@ -5480,11 +5484,11 @@ window.MouseClicks=[];
                     o = new Video();
                     o.crossOrigin = 'anonymous';
                     o.src = t;
-					o.style.width="100%";
-					o.style.height="100%";
+					o.style.width = $('#' + e).width();
+					o.style.height = $('#' + e).height();
 					this.marqueeSkins(e);
                     // o = new Image();
-
+					
                     //o.style.borderRadius = "25px";
                     setTimeout(function() {
                         //newo.onload = function() {
