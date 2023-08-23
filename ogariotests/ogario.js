@@ -1,4 +1,4 @@
-window.OgVer=3.289;
+window.OgVer=3.290;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -5457,14 +5457,14 @@ window.MouseClicks=[];
                     $("#skin-preview").removeClass("default");
                     $("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<img src=\'' + e.src + "' width='500'>\"></a>");
                 }
-				e.style.width = $("#skin-popover").width();
-				e.style.height = $("#skin-popover").height();
+				//e.style.width = $("#skin-popover").width();
+				//e.style.height = $("#skin-popover").height();
                 $("#skin-popover").append($(e).fadeIn(1000));
                 $("#skin-popover").popover();
             } else {
                 if (e.src.includes(".mp4") || e.src.includes(".webm") || e.src.includes(".ogg")) { //console.log("stage 3b videos");
-					e.style.width=$("#skin-preview").width();
-					e.style.height=$("#skin-preview").height();				
+					//e.style.width=$("#skin-preview").width();
+					//e.style.height=$("#skin-preview").height();				
                     $("#" + t).removeClass("default");
                     $("#" + t).append($(e).fadeIn(1000));
 
@@ -5487,7 +5487,7 @@ window.MouseClicks=[];
                     o.src = t;
 					o.style.width = "100%";
 					o.style.height = "100%";
-					this.marqueeSkins(e);
+					//this.marqueeSkins(e);
                     // o = new Image();
 					
                     //o.style.borderRadius = "25px";
