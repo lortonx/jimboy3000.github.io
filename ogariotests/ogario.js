@@ -1,4 +1,4 @@
-window.OgVer=3.290;
+window.OgVer=3.291;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -5463,6 +5463,9 @@ window.MouseClicks=[];
                 $("#skin-popover").popover();
             } else {
                 if (e.src.includes(".mp4") || e.src.includes(".webm") || e.src.includes(".ogg")) { //console.log("stage 3b videos");
+					if (/^https://i.imgur.com/.*.mp4$/i.test(e.src)) {
+						console.log('contains imgur');
+					}
 					//e.style.width=$("#skin-preview").width();
 					//e.style.height=$("#skin-preview").height();				
                     $("#" + t).removeClass("default");
