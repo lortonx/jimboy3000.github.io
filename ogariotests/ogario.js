@@ -1,4 +1,4 @@
-window.OgVer=3.292;
+window.OgVer=3.293;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -5463,6 +5463,10 @@ window.MouseClicks=[];
                 $("#skin-popover").popover();
             } else {
                 if (e.src.includes(".mp4") || e.src.includes(".webm") || e.src.includes(".ogg")) { //console.log("stage 3b videos");
+					/*if ((e.src).startsWith('https://i.imgur.com/') && (e.src).endsWith('.mp4')){
+						e.style.width = "180px" 
+						e.style.height = "180px";
+					}*/
 					/*if (/^https://i.imgur.com/.*.mp4$/i.test(e.src)) {
 						console.log('contains imgur');
 						e.src = e.src.replace('.mp4', '.gif');
@@ -5489,8 +5493,8 @@ window.MouseClicks=[];
                     o = new Video();
                     o.crossOrigin = 'anonymous';
                     o.src = t;
-					o.style.width = "100%";
-					o.style.height = "100%";
+					//o.style.width = "100%";
+					//o.style.height = "100%";
 					//this.marqueeSkins(e);
                     // o = new Image();
 					
