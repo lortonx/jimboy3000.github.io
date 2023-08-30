@@ -5853,7 +5853,7 @@ window.MouseClicks=[];
             $("body").append('<div id="chat-box"></div>');
             $("#chat-emoticons").disMojiPicker()
 			$("#chat-emoticons").picker(emoji => document.getElementById("message").value += emoji);
-			var twemoji; if (twemoji) twemoji.parse(document.getElementsByClassName("emoji-content")[0]);
+			//var twemoji; if (twemoji) twemoji.parse(document.getElementsByClassName("emoji-content")[0]); this needs on the end 
 			//var twemoji; if (twemoji) twemoji.parse(document.body);
 			/*
 			for (const emoji in emoticonicons) {
