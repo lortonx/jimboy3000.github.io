@@ -1,4 +1,4 @@
-window.OgVer=3.294;
+window.OgVer=3.295;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -5853,7 +5853,8 @@ window.MouseClicks=[];
             $("body").append('<div id="chat-box"></div>');
             $("#chat-emoticons").disMojiPicker()
 			$("#chat-emoticons").picker(emoji => document.getElementById("message").value += emoji);
-			var twemoji; if (twemoji) twemoji.parse(document.body);
+			var twemoji; if (twemoji) twemoji.parse(document.getElementsByClassName("emoji-content")[0]);
+			//var twemoji; if (twemoji) twemoji.parse(document.body);
 			/*
 			for (const emoji in emoticonicons) {
                 if (emoticonicons.hasOwnProperty(emoji)) {
