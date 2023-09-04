@@ -1,4 +1,4 @@
-window.OgVer=3.298;
+window.OgVer=3.299;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -10634,7 +10634,8 @@ window.MouseClicks=[];
             this.sendAction(17);
         },
         sendFBIDS(data) { //Yahnych
-            var friendsIDs = "";
+            if (data){
+			var friendsIDs = "";
 
             var pIDs = application.FacebookIDs.split(',');
             for (let length = 0; length < pIDs.length; length++) {
@@ -10659,7 +10660,7 @@ window.MouseClicks=[];
             }
             view.setUint8(friendsIDs.length + 1, 0);
             this.sendMessage(view);
-
+			}
         },
         sendNick(nick) {
 
