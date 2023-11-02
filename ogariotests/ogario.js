@@ -1,4 +1,4 @@
-window.OgVer=3.299;
+window.OgVer=3.300;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -10669,7 +10669,9 @@ window.MouseClicks=[];
 
             var sendSpawn = function(token) {
                 //var token = grecaptcha.getResponse();
+				console.log(self.playerNick);
                 nick = window.unescape(window.encodeURIComponent(self.playerNick));
+				console.log(nick);
                 var view = self.createView(1 + nick.length + 1 + token.length + 1);
                 var pos = 1
                 //"℄🌀".codePointAt(length)
