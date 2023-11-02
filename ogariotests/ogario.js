@@ -1,4 +1,4 @@
-window.OgVer=3.300;
+window.OgVer=3.301;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -7346,6 +7346,7 @@ window.MouseClicks=[];
                 //text = 'wss://live-arena-' + token + '.tech.agar.io:80';
                 //text = 'wss://live-arena-' + token + '.agar.io:80';
                 text = 'wss://live-arena-' + token + '.agar.io:443'
+				console.log("!text && /^[a-z0-9]{5,}$/.test(token)" + token);
             } else if (!token.includes("s://")) {
                 this.tokenNeedToBtoa = true
                 text = 'wss://' + token; //private servers
@@ -10668,11 +10669,13 @@ window.MouseClicks=[];
             this.playerNick = nick;
 
             var sendSpawn = function(token) {
+				console.log(token);
                 //var token = grecaptcha.getResponse();
-				console.log(self.playerNick);
+				//console.log(self.playerNick);
                 nick = window.unescape(window.encodeURIComponent(self.playerNick));
-				console.log(nick);
+				//console.log(nick);
                 var view = self.createView(1 + nick.length + 1 + token.length + 1);
+				
                 var pos = 1
                 //"℄🌀".codePointAt(length)
                 for (let length = 0; length < nick.length; length++, pos++) view.setUint8(pos, nick.codePointAt(length))
