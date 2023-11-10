@@ -1,4 +1,4 @@
-window.OgVer=3.301;
+window.OgVer=3.302;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -7346,7 +7346,7 @@ window.MouseClicks=[];
                 //text = 'wss://live-arena-' + token + '.tech.agar.io:80';
                 //text = 'wss://live-arena-' + token + '.agar.io:80';
                 text = 'wss://live-arena-' + token + '.agar.io:443'
-				console.log("!text && /^[a-z0-9]{5,}$/.test(token)" + token);
+				//console.log("!text && /^[a-z0-9]{5,}$/.test(token)" + token);
             } else if (!token.includes("s://")) {
                 this.tokenNeedToBtoa = true
                 text = 'wss://' + token; //private servers
@@ -7354,6 +7354,7 @@ window.MouseClicks=[];
                 this.tokenNeedToBtoa = true
                 text = token; //private servers
             }
+			console.log(text);
             return text;
         },
         createServerToken() {
