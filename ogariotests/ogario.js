@@ -1,4 +1,4 @@
-window.OgVer=3.317;
+window.OgVer=3.319;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -7830,8 +7830,7 @@ window.MouseClicks=[];
             this.sendPlayerData(15, 'lastSentPartyToken', this.partyToken);
         },
         /*sendServerToken() {
-            //var serverToken = this.tokenNeedToBtoa ? btoa(this.serverToken) : this.serverToken
-			var serverToken = this.tokenNeedToBtoa ? btoa(this.serverToken) : this.serverToken.match(/-([a-z]+-[a-z]+-\d)./)[1];
+            var serverToken = this.tokenNeedToBtoa ? btoa(this.serverToken) : this.serverToken
             this.sendPlayerData(16, 'lastSentServerToken', serverToken);
         },*/
 		sendServerToken() {
@@ -7843,14 +7842,14 @@ window.MouseClicks=[];
 			if (match) {
 				serverToken = match[1];
 			} else {
-            // Handle case where regex does not match
-            serverToken = this.serverToken;
+				// Handle case where regex does not match
+				serverToken = this.serverToken;
 			}
 		} else {
 			serverToken = this.serverToken;
 			}
 			this.sendPlayerData(16, 'lastSentServerToken', serverToken);
-		}
+		},
         sendServerJoin() {
             this.sendServerToken();
             this.sendPlayerJoin();
@@ -11102,9 +11101,10 @@ window.MouseClicks=[];
             var x = null;
             var suggestedValue = 1540483477;
             //var ipCheck = ip.match(/(ws+:\/\/)([^:]*)(:\d+)/)[2];
-			
+			var parsedUrl = new URL(ip);
+			var ipCheck = parsedUrl.hostname + parsedUrl.pathname.replace(/\/$/g, '');
     // Fix here: manually extract the hostname
-			var ipCheck;
+			/*var ipCheck;
 			try {
 				// Remove protocol prefix
 				ipCheck = ip.replace(/^(ws+:\/\/|wss+:\/\/)/, ''); // Handles both ws:// and wss://
@@ -11116,7 +11116,7 @@ window.MouseClicks=[];
 				} catch (e) {
 				console.error("Invalid IP format", e);
 				return null;
-			}
+			}*/
 			// End of new code
 			
             var newLength = ipCheck.length + options.byteLength;
