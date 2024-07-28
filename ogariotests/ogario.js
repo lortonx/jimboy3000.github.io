@@ -1,4 +1,4 @@
-window.OgVer=3.304;
+window.OgVer=3.316;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -33,7 +33,7 @@ if (jQuery && jQuery.browser && jQuery.browser.mobile) isMobile = true;
 
 
 function changeregion() {
-    if ($('#region').val() == "Private") {
+    if ($('#region').val() === "Private") {
         deleteGamemode(true);
     } else {
         if (window.gamemodeBackup) {
@@ -451,7 +451,7 @@ wss://myagar.pro:1445/ crazy
         }
 		*/
     });
-    if (temp == true) {
+    if (temp === true) {
         $('#gamemode option[value=34]').prop('selected', 'selected').change();
     }
 }
@@ -460,7 +460,7 @@ wss://myagar.pro:1445/ crazy
 
 
 function logoutPSArenas() {
-    if (master.context == "facebook") {
+    if (master.context === "facebook") {
         logout();
         toastr.warning("<b>[" + Premadeletter123 + "]:</b> Facebook login NOT allowed on this private server!").css("width", "250px");
     }
@@ -489,10 +489,10 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
 
 function Video(src, append) {
     var v = document.createElement("video");
-    if (src != "") {
+    if (src !== "") {
         defaultmapsettings.src = src;
     }
-    if (append == true) {
+    if (append === true) {
         document.body.appendChild(v);
     }
     return v;
@@ -528,12 +528,12 @@ function autoRandomPotionDigger() {
     setTimeout(function() {
         window.autoRandomPotion++;
         //if (window.autoRandomPotion==7) window.autoRandomPotion=1
-        if (window.autoRandomPotion == 1) brewPotion(1)
-        if (window.autoRandomPotion == 2) brewPotion(2)
-        if (window.autoRandomPotion == 3) brewPotion(3)
-        if (window.autoRandomPotion == 4) openPotion(1)
-        if (window.autoRandomPotion == 5) openPotion(2)
-        if (window.autoRandomPotion == 6) openPotion(3)
+        if (window.autoRandomPotion === 1) brewPotion(1)
+        if (window.autoRandomPotion === 2) brewPotion(2)
+        if (window.autoRandomPotion === 3) brewPotion(3)
+        if (window.autoRandomPotion === 4) openPotion(1)
+        if (window.autoRandomPotion === 5) openPotion(2)
+        if (window.autoRandomPotion === 6) openPotion(3)
         if (window.autoRandomPotion <= 6) {
             autoRandomPotionDigger()
         }
@@ -966,8 +966,8 @@ function createCaptchaWindow(i) {
     window.capthaWindow[i].style.width = "0px";
     window.capthaWindow[i].style.height = "0px";
     document.body.appendChild(window.capthaWindow[i]);	*/
-    if (window.LMVersion == "1.7") {
-        toastr.info('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + '	Your version is outdated for bts. Download ' + ' <font color="yellow"><b>v1.8</b></font>. <br>visit: <a target="_blank" href="https://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+    if (window.LMVersion === "1.7") {
+        toastr.info('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + '	Your version is outdated for bts. Download ' + ' <font color="yellow"><b>v1.8</b></font>. <br>visit: <a target="_blank" href="https://www.jimboy3100.github.io"><font color="yellow"><b><u>www.jimboy3100.github.io</u></b></font></a>');
     }
     window.capthaWindow[i] = window.open("https://agar.io/captcha");
 }
@@ -1248,10 +1248,10 @@ function checkVideos1(a) {
 };
 
 function checkVideos3(o) {
-    if (o.readyState > 0 && o.src == $("#skin").val()) {
+    if (o.readyState > 0 && o.src === $("#skin").val()) {
 
-        var minutes = parseInt(o.duration / 60, 10);
-        var seconds = o.duration % 60;
+        const minutes = parseInt(o.duration / 60, 10);
+        const seconds = o.duration % 60;
         if (o.videoWidth > 1080 || minutes > 4) {
             toastr.error("<b>[" + Premadeletter123 + "]:</b> " + "Please use smaller videos than <font color='blue'><b>5 minutes</b></font>, <font color='blue'><b>low quality</b></font> and width until <font color='blue'><b>1080</b></font>, next time.");
 
@@ -1288,7 +1288,7 @@ function LegendModSpawn() {};
 
 function LegendModDeath() {
     localStorage.setItem("totalPlayerMass", legendmod.totalPlayerMass);
-};
+}
 //window.Bufferdata;
 //window.generatedClientKey;
 //window.generatedProtocolKey
@@ -1296,14 +1296,14 @@ function LegendModDeath() {
 //window.disableIntegrity=false;
 window.lastejected = false;
 
-function calcTarget() {};
+function calcTarget() {}
 
-function CellTimerTrigger() {};
+function CellTimerTrigger() {}
 
 //function historystate(){};
 
 setTimeout(function() {
-    if (window.LMGameConfiguration != undefined) {
+    if (window.LMGameConfiguration !== undefined) {
         window.LMAgarGameConfiguration = window.LMGameConfiguration;
         window.EquippableSkins = LMAgarGameConfiguration.gameConfig["Gameplay - Equippable Skins"];
 
@@ -2443,7 +2443,7 @@ var themePresets = {
         btn3Color2: '#814ee3',
         btn4Color: '#bf00aa',
         btn4Color2: '#a80096',
-        menuBg: 'https://legendmod.ml/banners/static/img/pattern.png',
+        menuBg: 'https://jimboy3100.github.io/banners/static/img/pattern.png',
         menuOpacity: 0.96,
         hudMainColor: '#01d9cc',
         hudColor: 'rgba(0,0,0,0.4)',
@@ -2486,7 +2486,7 @@ var themePresets = {
         miniMapMyCellStrokeSize: 4,
         miniMapTeammatesSize: 5.5,
         customBackground: '',
-        customCursor: 'https://legendmod.ml/cursors/cursor_02.cur'
+        customCursor: 'https://jimboy3100.github.io/cursors/cursor_02.cur'
     },
     legendv1: {
         name: 'Legend v1',
@@ -2608,7 +2608,7 @@ var themePresets = {
         btn3Color2: '#80063b',
         btn4Color: '#aa084e',
         btn4Color2: '#8a063f',
-        menuBg: 'https://legendmod.ml/banners/static/img/pattern.png',
+        menuBg: 'https://jimboy3100.github.io/banners/static/img/pattern.png',
         menuOpacity: 1,
         hudMainColor: '#5974ff',
         hudColor: 'rgba(36,36,36,0.49)',
@@ -2647,7 +2647,7 @@ var themePresets = {
         miniMapMyCellStrokeSize: 0,
         miniMapTeammatesSize: 5,
         customBackground: '',
-        customCursor: 'https://legendmod.ml/cursors/cursor_01.cur'
+        customCursor: 'https://jimboy3100.github.io/cursors/cursor_01.cur'
     },
     crazystyle: {
         name: 'Crazy Style 1',
@@ -2769,7 +2769,7 @@ var themeMenus = {
         btn3Color2: '#814ee3',
         btn4Color: '#f300d8',
         btn4Color2: '#df00c6',
-        menuBg: 'https://legendmod.ml/banners/static/img/pattern.png'
+        menuBg: 'https://jimboy3100.github.io/banners/static/img/pattern.png'
     },
     legendv1: {
         name: 'Legend v1',
@@ -2921,7 +2921,7 @@ var defaultSettings = {
     btn3Color2: '#814ee3',
     btn4Color: '#bf00aa',
     btn4Color2: '#a80096',
-    menuBg: 'https://legendmod.ml/banners/static/img/pattern.png',
+    menuBg: 'https://jimboy3100.github.io/banners/static/img/pattern.png',
     menuOpacity: 0.96,
     hudMainColor: '#01d9cc',
     hudColor: 'rgba(0,0,0,0.4)',
@@ -2959,16 +2959,16 @@ var defaultSettings = {
     ////
     color: "#fff",
     //commanderImage : "https://i.imgur.com/wQKUDB3.png",
-    //customServerImage1: "https://legendmod.ml/banners/IconCustomServer1.png",
-    commanderImage: "https://legendmod.ml/banners/drawCommander.png",
-    commanderImage1: "https://legendmod.ml/banners/drawCommander1.png",
-    commanderImage2: "https://legendmod.ml/banners/drawCommander2.png",
-    commanderImage3: "https://legendmod.ml/banners/drawCommander3.png",
-    commanderImage4: "https://legendmod.ml/banners/drawCommander4.png",
-    commanderImage5: "https://legendmod.ml/banners/drawCommander5.png",
-    commanderImage6: "https://legendmod.ml/banners/iconJustWatchPro.png",
-    commanderImageDyingLight: "https://legendmod.ml/banners/icondyinglightzombie.png",
-    commanderImageDyingLightvirus: "https://legendmod.ml/banners/icondyinglightvirus.png",
+    //customServerImage1: "https://jimboy3100.github.io/banners/IconCustomServer1.png",
+    commanderImage: "https://jimboy3100.github.io/banners/drawCommander.png",
+    commanderImage1: "https://jimboy3100.github.io/banners/drawCommander1.png",
+    commanderImage2: "https://jimboy3100.github.io/banners/drawCommander2.png",
+    commanderImage3: "https://jimboy3100.github.io/banners/drawCommander3.png",
+    commanderImage4: "https://jimboy3100.github.io/banners/drawCommander4.png",
+    commanderImage5: "https://jimboy3100.github.io/banners/drawCommander5.png",
+    commanderImage6: "https://jimboy3100.github.io/banners/iconJustWatchPro.png",
+    commanderImageDyingLight: "https://jimboy3100.github.io/banners/icondyinglightzombie.png",
+    commanderImageDyingLightvirus: "https://jimboy3100.github.io/banners/icondyinglightvirus.png",
 
     ////
     miniMapFont: 'ubuntu-bold',
@@ -2987,7 +2987,7 @@ var defaultSettings = {
     miniMapTeammatesSize: 5.5,
     miniMapGhostCellsAlpha: 0.15,
     customBackground: '',
-    customCursor: 'https://legendmod.ml/cursors/cursor_02.cur'
+    customCursor: 'https://jimboy3100.github.io/cursors/cursor_02.cur'
 }
 
 cimg2 = new Image;
@@ -2997,124 +2997,124 @@ cimg5.src = defaultSettings.commanderImage5;
 cimg6 = new Image;
 cimg6.src = defaultSettings.commanderImage6;
 //cimg7 = new Image;
-//cimg7.src = 'https://legendmod.ml/banners/iconLcForCanvas.png';
+//cimg7.src = 'https://jimboy3100.github.io/banners/iconLcForCanvas.png';
 function loadIconSpecialSkins(val){
 	eval('window.' + val + ' = new Image');
-	eval('window.' + val + '.src = "https://legendmod.ml/banners/' + val + '.png"')
+	eval('window.' + val + '.src = "https://jimboy3100.github.io/banners/' + val + '.png"')
 }
 /*
 iconSpecialSkinEffectsCrown = new Image;
-iconSpecialSkinEffectsCrown.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsCrown.png';
+iconSpecialSkinEffectsCrown.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsCrown.png';
 iconSpecialSkinEffectsMask = new Image;
-iconSpecialSkinEffectsMask.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsMask.png';
+iconSpecialSkinEffectsMask.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsMask.png';
 iconSpecialSkinEffectsHat3 = new Image;
-iconSpecialSkinEffectsHat3.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsHat3.png';
+iconSpecialSkinEffectsHat3.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsHat3.png';
 iconSpecialSkinEffectsVip = new Image;
-iconSpecialSkinEffectsVip.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsVip.png';
+iconSpecialSkinEffectsVip.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsVip.png';
 iconSpecialSkinEffectsDdev = new Image;
-iconSpecialSkinEffectsDdev.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsDdev.png';
+iconSpecialSkinEffectsDdev.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsDdev.png';
 iconSpecialSkinEffectsSunGlasses = new Image;
-iconSpecialSkinEffectsSunGlasses.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSunGlasses.png';
+iconSpecialSkinEffectsSunGlasses.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsSunGlasses.png';
 iconSpecialSkinEffectsYoutube = new Image;
-iconSpecialSkinEffectsYoutube.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsYoutube.png';
+iconSpecialSkinEffectsYoutube.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsYoutube.png';
 iconSpecialSkinEffectsJellyFish = new Image;
-iconSpecialSkinEffectsJellyFish.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsJellyFish.png';
+iconSpecialSkinEffectsJellyFish.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsJellyFish.png';
 iconSpecialSkinEffectsModerator = new Image;
-iconSpecialSkinEffectsModerator.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsModerator.png';
+iconSpecialSkinEffectsModerator.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsModerator.png';
 iconSpecialSkinEffectsUSA = new Image;
-iconSpecialSkinEffectsUSA.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsUSA.png';
+iconSpecialSkinEffectsUSA.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsUSA.png';
 iconSpecialSkinEffectsHeart = new Image;
-iconSpecialSkinEffectsHeart.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsHeart.png';
+iconSpecialSkinEffectsHeart.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsHeart.png';
 iconSpecialSkinEffectsSword = new Image;
-iconSpecialSkinEffectsSword.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSword.png';
+iconSpecialSkinEffectsSword.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsSword.png';
 iconSpecialSkinEffectsSmoke = new Image;
-iconSpecialSkinEffectsSmoke.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSmoke.png';
+iconSpecialSkinEffectsSmoke.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsSmoke.png';
 iconSpecialSkinEffectsLegendclan = new Image;
-iconSpecialSkinEffectsLegendclan.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsLegendclan.png';
+iconSpecialSkinEffectsLegendclan.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsLegendclan.png';
 iconSpecialSkinEffectsLegendclan2 = new Image;
-iconSpecialSkinEffectsLegendclan2.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsLegendclan2.png';
+iconSpecialSkinEffectsLegendclan2.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsLegendclan2.png';
 iconSpecialSkinEffectsShiro = new Image;
-iconSpecialSkinEffectsShiro.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsShiro.png';
+iconSpecialSkinEffectsShiro.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsShiro.png';
 iconSpecialSkinEffectsBird = new Image;
-iconSpecialSkinEffectsBird.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsBird.png';
+iconSpecialSkinEffectsBird.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsBird.png';
 iconSpecialSkinEffectsButterfly = new Image;
-iconSpecialSkinEffectsButterfly.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsButterfly.png';
+iconSpecialSkinEffectsButterfly.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsButterfly.png';
 iconSpecialSkinEffectsMouse = new Image;
-iconSpecialSkinEffectsMouse.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsMouse.png';
+iconSpecialSkinEffectsMouse.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsMouse.png';
 iconSpecialSkinEffectsTurtle = new Image;
-iconSpecialSkinEffectsTurtle.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsTurtle.png';
+iconSpecialSkinEffectsTurtle.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsTurtle.png';
 iconSpecialSkinEffectsAbsolutVodka = new Image;
-iconSpecialSkinEffectsAbsolutVodka.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsAbsolutVodka.png';
+iconSpecialSkinEffectsAbsolutVodka.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsAbsolutVodka.png';
 iconSpecialSkinEffectsChemistry = new Image;
-iconSpecialSkinEffectsChemistry.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsChemistry.png';
+iconSpecialSkinEffectsChemistry.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsChemistry.png';
 iconSpecialSkinEffectsJapan = new Image;
-iconSpecialSkinEffectsJapan.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsJapan.png';
+iconSpecialSkinEffectsJapan.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsJapan.png';
 iconSpecialSkinEffectsJapan2 = new Image;
-iconSpecialSkinEffectsJapan2.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsJapan2.png';
+iconSpecialSkinEffectsJapan2.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsJapan2.png';
 iconSpecialSkinEffectsKebab = new Image;
-iconSpecialSkinEffectsKebab.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsKebab.png';
+iconSpecialSkinEffectsKebab.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsKebab.png';
 iconSpecialSkinEffectsMeditation = new Image;
-iconSpecialSkinEffectsMeditation.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsMeditation.png';
+iconSpecialSkinEffectsMeditation.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsMeditation.png';
 iconSpecialSkinEffectsSplash = new Image;
-iconSpecialSkinEffectsSplash.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSplash.png';
+iconSpecialSkinEffectsSplash.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsSplash.png';
 iconSpecialSkinEffectsByzantium = new Image;
-iconSpecialSkinEffectsByzantium.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsByzantium.png';
+iconSpecialSkinEffectsByzantium.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsByzantium.png';
 iconSpecialSkinEffectsClose = new Image;
-iconSpecialSkinEffectsClose.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsClose.png';
+iconSpecialSkinEffectsClose.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsClose.png';
 iconSpecialSkinEffectsEarth = new Image;
-iconSpecialSkinEffectsEarth.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsEarth.png';
+iconSpecialSkinEffectsEarth.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsEarth.png';
 iconSpecialSkinEffectsFootStep = new Image;
-iconSpecialSkinEffectsFootStep.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsFootStep.png';
+iconSpecialSkinEffectsFootStep.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsFootStep.png';
 iconSpecialSkinEffectsForward = new Image;
-iconSpecialSkinEffectsForward.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsForward.png';
+iconSpecialSkinEffectsForward.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsForward.png';
 iconSpecialSkinEffectsFriendsForever = new Image;
-iconSpecialSkinEffectsFriendsForever.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsFriendsForever.png';
+iconSpecialSkinEffectsFriendsForever.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsFriendsForever.png';
 iconSpecialSkinEffectsFriendsForever2 = new Image;
-iconSpecialSkinEffectsFriendsForever2.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsFriendsForever2.png';
+iconSpecialSkinEffectsFriendsForever2.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsFriendsForever2.png';
 iconSpecialSkinEffectsFriendsForever3 = new Image;
-iconSpecialSkinEffectsFriendsForever3.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsFriendsForever3.png';
+iconSpecialSkinEffectsFriendsForever3.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsFriendsForever3.png';
 iconSpecialSkinEffectsPolice = new Image;
-iconSpecialSkinEffectsPolice.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsPolice.png';
+iconSpecialSkinEffectsPolice.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsPolice.png';
 iconSpecialSkinEffectsPolice2 = new Image;
-iconSpecialSkinEffectsPolice2.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsPolice2.png';
+iconSpecialSkinEffectsPolice2.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsPolice2.png';
 iconSpecialSkinEffectsUnrest = new Image;
-iconSpecialSkinEffectsUnrest.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsUnrest.png';
+iconSpecialSkinEffectsUnrest.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsUnrest.png';
 iconSpecialSkinEffectsEagle = new Image;
-iconSpecialSkinEffectsEagle.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsEagle.png';
+iconSpecialSkinEffectsEagle.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsEagle.png';
 iconSpecialSkinEffectsBobMarley = new Image;
-iconSpecialSkinEffectsBobMarley.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsBobMarley.png';
+iconSpecialSkinEffectsBobMarley.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsBobMarley.png';
 iconSpecialSkinEffectsEinstein = new Image;
-iconSpecialSkinEffectsEinstein.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsEinstein.png';
+iconSpecialSkinEffectsEinstein.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsEinstein.png';
 iconSpecialSkinEffectsDeadTable = new Image;
-iconSpecialSkinEffectsDeadTable.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsDeadTable.png';
+iconSpecialSkinEffectsDeadTable.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsDeadTable.png';
 
 
 iconSpecialSkinEffectsBabyBoss = new Image;
-iconSpecialSkinEffectsBabyBoss.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsBabyBoss.png';
+iconSpecialSkinEffectsBabyBoss.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsBabyBoss.png';
 iconSpecialSkinEffectsBabyBoss1 = new Image;
-iconSpecialSkinEffectsBabyBoss1.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsBabyBoss1.png';
+iconSpecialSkinEffectsBabyBoss1.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsBabyBoss1.png';
 iconSpecialSkinEffectsGladiator = new Image;
-iconSpecialSkinEffectsGladiator.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsGladiator.png';
+iconSpecialSkinEffectsGladiator.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsGladiator.png';
 iconSpecialSkinEffectsHero = new Image;
-iconSpecialSkinEffectsHero.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsHero.png';
+iconSpecialSkinEffectsHero.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsHero.png';
 iconSpecialSkinEffectsHero1 = new Image;
-iconSpecialSkinEffectsHero1.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsHero1.png';
+iconSpecialSkinEffectsHero1.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsHero1.png';
 iconSpecialSkinEffectsHero2 = new Image;
-iconSpecialSkinEffectsHero2.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsHero2.png';
+iconSpecialSkinEffectsHero2.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsHero2.png';
 iconSpecialSkinEffectsKey = new Image;
-iconSpecialSkinEffectsKey.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsKey.png';
+iconSpecialSkinEffectsKey.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsKey.png';
 iconSpecialSkinEffectsMetalOfHonor = new Image;
-iconSpecialSkinEffectsMetalOfHonor.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsMetalOfHonor.png';
+iconSpecialSkinEffectsMetalOfHonor.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsMetalOfHonor.png';
 iconSpecialSkinEffectsPeaceMaker = new Image;
-iconSpecialSkinEffectsPeaceMaker.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsPeaceMaker.png';
+iconSpecialSkinEffectsPeaceMaker.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsPeaceMaker.png';
 iconSpecialSkinEffectsSurvivor = new Image;
-iconSpecialSkinEffectsSurvivor.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSurvivor.png';
+iconSpecialSkinEffectsSurvivor.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsSurvivor.png';
 iconSpecialSkinEffectsTiger = new Image;
-iconSpecialSkinEffectsTiger.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsTiger.png';
+iconSpecialSkinEffectsTiger.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsTiger.png';
 iconSpecialSkinEffectsPanicAtDisco = new Image;
-iconSpecialSkinEffectsPanicAtDisco.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsPanicAtDisco.png';
+iconSpecialSkinEffectsPanicAtDisco.src = 'https://jimboy3100.github.io/banners/iconSpecialSkinEffectsPanicAtDisco.png';
 */
-if (dyinglight1load == "yes") {
+if (dyinglight1load === "yes") {
     cimgDyingLight = new Image;
     cimgDyingLight.src = defaultSettings.commanderImageDyingLight;
     //cimgDyingLightvirus = new Image;
@@ -3122,17 +3122,17 @@ if (dyinglight1load == "yes") {
 }
 /*
                 cimgDyingLight1 = new Image;
-                cimgDyingLight1.src = 'https://legendmod.ml/banners/icondyinglightzombie2.png';
+                cimgDyingLight1.src = 'https://jimboy3100.github.io/banners/icondyinglightzombie2.png';
                 cimgDyingLight2 = new Image;
-                cimgDyingLight2.src = 'https://legendmod.ml/banners/icondyinglightzombie3.png';
+                cimgDyingLight2.src = 'https://jimboy3100.github.io/banners/icondyinglightzombie3.png';
                 cimgDyingLight3 = new Image;
-                cimgDyingLight3.src = 'https://legendmod.ml/banners/icondyinglightzombie4.png';
+                cimgDyingLight3.src = 'https://jimboy3100.github.io/banners/icondyinglightzombie4.png';
                 cimgDyingLight4 = new Image;
-                cimgDyingLight4.src = 'https://legendmod.ml/banners/icondyinglightzombie5.png';
+                cimgDyingLight4.src = 'https://jimboy3100.github.io/banners/icondyinglightzombie5.png';
                 cimgDyingLight5 = new Image;
-                cimgDyingLight5.src = 'https://legendmod.ml/banners/icondyinglightzombiebig.png';
+                cimgDyingLight5.src = 'https://jimboy3100.github.io/banners/icondyinglightzombiebig.png';
                 cimgDyingLight6 = new Image;
-                cimgDyingLight6.src = 'https://legendmod.ml/banners/icondyinglightvolaltile.png';
+                cimgDyingLight6.src = 'https://jimboy3100.github.io/banners/icondyinglightvolaltile.png';
 				*/
 
 
@@ -3304,10 +3304,10 @@ var defaultmapsettings = {
     videoSkinSoundLevel: 1,
     leaderboardlimit: 20,
     teamboardlimit: 20,
-    messageSound: 'https://legendmod.ml/sounds/notification_01.mp3',
-    //                commandSound: 'https://legendmod.ml/sounds/notification_02.mp3'
-    commandSound: 'https://legendmod.ml/sounds/chat-message.mp3',
-    virusSoundurl: 'https://legendmod.ml/sounds/sound-gunshot.mp3',
+    messageSound: 'https://jimboy3100.github.io/sounds/notification_01.mp3',
+    //                commandSound: 'https://jimboy3100.github.io/sounds/notification_02.mp3'
+    commandSound: 'https://jimboy3100.github.io/sounds/chat-message.mp3',
+    virusSoundurl: 'https://jimboy3100.github.io/sounds/sound-gunshot.mp3',
     soundSplit: 'https://www.myinstants.com/media/sounds/quack_5.mp3',
 	//
 	leftClick: 'hk-macroFeed',
@@ -3606,14 +3606,14 @@ window.MouseClicks=[];
         },
         setFontFamily(name) {
             var tempFont;
-            if (name.indexOf('roboto') == 0) {
+            if (name.indexOf('roboto') === 0) {
                 tempFont = 'Roboto';
-            } else if (name.indexOf('oswald') == 0) {
+            } else if (name.indexOf('oswald') === 0) {
                 tempFont = 'Oswald';
-            } else if (name.indexOf('shojumaru') == 0) {
+            } else if (name.indexOf('shojumaru') === 0) {
                 //console.log('font: shojumaru');
                 tempFont = 'Shojumaru';
-            } else if (name.indexOf('allura') == 0) {
+            } else if (name.indexOf('allura') === 0) {
                 //console.log('font: allura');
                 tempFont = 'Allura';
             }
@@ -3767,7 +3767,7 @@ window.MouseClicks=[];
             this.addPresetBox('#theme-images', 'graphics', graphicMenus, 'graphics', 'changeGraphics');
             this.addInputBox('#theme-images', 'customCursor', 'Cursor image URL', 'setCustomCursor');
             /*this.addInputBox('.facebook-panel', 'FacebookIDs', `e.g. 123456789012345:John K,543210987654321:Jimbo`, `setFBIDs`);*/
-            for (var e = 'https://legendmod.ml/cursors/cursor_', i = 0; i < 42; i++) i < 9 ? this.addCursorBox('#theme-images', e + '0' + (i + 1) + '.cur') : this.addCursorBox('#theme-images', e + '' + (i + 1) + '.cur');
+            for (var e = 'https://jimboy3100.github.io/cursors/cursor_', i = 0; i < 42; i++) i < 9 ? this.addCursorBox('#theme-images', e + '0' + (i + 1) + '.cur') : this.addCursorBox('#theme-images', e + '' + (i + 1) + '.cur');
             $(document).on('click', '#theme-images .cursor-box a', function(e) {
                     e.preventDefault();
                     var i = $('img', this).attr('src');
@@ -3988,7 +3988,7 @@ window.MouseClicks=[];
             this.setMiniMapSectorsOpacity();
         },
         switchOnlineStatus() {
-            if (defaultmapsettings.onlineStatus == true) {
+            if (defaultmapsettings.onlineStatus === true) {
                 window.changeOnline(1);
             } else {
                 window.changeOnline(0);
@@ -4189,7 +4189,7 @@ window.MouseClicks=[];
         },
         //for SPECT
         getghostX() {
-            if (legendmod.playerPosition == 1 || legendmod.ghostCells.length == 0) { //Yahnych координати призраков или игрока если он топ1
+            if (legendmod.playerPosition === 1 || legendmod.ghostCells.length === 0) { //Yahnych координати призраков или игрока если он топ1
                 this.ghostX = legendmod.playerX + legendmod.mapOffsetX;
             } else { //Yahnych
                 this.ghostX = legendmod.ghostCells[0].x + legendmod.mapOffsetX;
@@ -4197,7 +4197,7 @@ window.MouseClicks=[];
             return this.ghostX;
         },
         getghostY() {
-            if (legendmod.playerPosition == 1 || legendmod.ghostCells.length == 0) { //Yahnych координати призраков или игрока если он топ1
+            if (legendmod.playerPosition === 1 || legendmod.ghostCells.length === 0) { //Yahnych координати призраков или игрока если он топ1
                 this.ghostY = legendmod.playerY + legendmod.mapOffsetY;
             } else { //Yahnych
                 this.ghostY = legendmod.ghostCells[0].y + legendmod.mapOffsetY;
@@ -4397,7 +4397,7 @@ window.MouseClicks=[];
             ogario.splitRange = defaultmapsettings.splitRange;
         },
         setShowGhostCellsInfo() {
-            if (defaultmapsettings.showGhostCells == false || defaultmapsettings.showGhostCellsInfo == false) {
+            if (defaultmapsettings.showGhostCells === false || defaultmapsettings.showGhostCellsInfo === false) {
                 defaultmapsettings.showGhostCellsInfo = true;
                 defaultmapsettings.showGhostCells = true;
             } else {
@@ -4410,7 +4410,7 @@ window.MouseClicks=[];
             if (legendmod.pause) {
                 application && application.setPause()
             };
-            if (window.autoPlay == false) {
+            if (window.autoPlay === false) {
                 window.autoPlay = true;
                 $('#pause-hud').text("AI (Striker & Jimboy3100) SkyNet v0.06");
                 $('#pause-hud').show();
@@ -4547,7 +4547,7 @@ window.MouseClicks=[];
             }
         },
         tryResp() {
-            if (ogario.play || this.retryResp == 20) {
+            if (ogario.play || this.retryResp === 20) {
                 this.retryResp = 0;
                 return;
             }
@@ -4609,7 +4609,7 @@ window.MouseClicks=[];
         changeSpectatorMode() {
             this.spectatorFollow = !this.spectatorFollow;
             ogario.spectatorFollow = this.spectatorFollow;
-            if (this.spectatorFollow && spects.length > 0 && spects[0].staticX == null && spects[0].isSpectateEnabled == true /*&& spects[0].isFreeSpectateEnabled==false*/ ) {
+            if (this.spectatorFollow && spects.length > 0 && spects[0].staticX ==null && spects[0].isSpectateEnabled === true /*&& spects[0].isFreeSpectateEnabled===false*/ ) {
                 spects[0].sendFreeSpectate();
             } else {
                 void(0);
@@ -4897,7 +4897,7 @@ window.MouseClicks=[];
                     for (; entityType < PL$29; entityType++) {
                       bufferString = bufferString + this.top5[entityType].mass;
                       if (!(entityType >= defaultmapsettings["limTP"])) {
-                        pix_color = pix_color + ('<li id="player"><span id="pos-skin" style="background-color: ' + this.top5[entityType].color + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this.top5[entityType]["skin"] ? this.top5[entityType]["skin"] : "https://legendmod.ml/banners/icon32croped.ico.gif") + '" alt=""> ' +
+                        pix_color = pix_color + ('<li id="player"><span id="pos-skin" style="background-color: ' + this.top5[entityType].color + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this.top5[entityType]["skin"] ? this.top5[entityType]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + '" alt=""> ' +
         				'<span class=\"top5-mass-color\">[' + this.shortMassFormat(this.top5[entityType].mass) + ']</span> ' + this.escapeHTML(this.top5[entityType].nick) + '</span><span class=\"hud-main-color\">[' + this.calculateMapSector(this.top5[entityType].x, this.top5[entityType].y) +']</span><span id= "top5mass" class=""> ' +
                         this.shortMassFormat(this.top5[entityType].mass) + '</span></li>');
                       }
@@ -4932,8 +4932,8 @@ window.MouseClicks=[];
                             //
                             var flag = false;
                             for (var et = 0; et < legendmod.ghostCells.length; et++) {
-                                if (legendmod.leaderboard[et] && this.top5[o].nick == legendmod.leaderboard[et].nick) {
-                                    if (flag == false && window.predictedGhostCells[et]) {
+                                if (legendmod.leaderboard[et] && this.top5[o].nick === legendmod.leaderboard[et].nick) {
+                                    if (flag === false && window.predictedGhostCells[et]) {
                                         //
                                         var w = window.predictedGhostCells[et].x;
                                         var u = window.predictedGhostCells[et].y;
@@ -4949,15 +4949,15 @@ window.MouseClicks=[];
                                 }
                             }                            //t += '<span class=\"hud-main-color\">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) + ']</span>';
 							
-                            if (flag == false && (this.top5[o].lbgpi >= 0) || !LM.integrity) {
+                            if (flag === false && (this.top5[o].lbgpi >= 0) || !LM.integrity) {
                                 t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) + "]</span>");
                             } 
-							else if (flag == false && (this.calculateMapSector(this.top5[o].x, this.top5[o].y) == "C3" || legendmod.gameMode == ":party")) {
+							else if (flag === false && (this.calculateMapSector(this.top5[o].x, this.top5[o].y) === "C3" || legendmod.gameMode === ":party")) {
                                 t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) + "]</span>");
                             }
                             //temporary socket 3
-                            else if (flag == false && this.top5[o].lbgpi == -2) {
-                                if (this.top5[o].temp == true) {
+                            else if (flag === false && this.top5[o].lbgpi === -2) {
+                                if (this.top5[o].temp === true) {
                                     t = t + ('<span class="hud-main-color">[' + 'Temp. Socket' + "]</span>");
                                 } else {
                                     t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) + "]</span>");
@@ -4977,7 +4977,7 @@ window.MouseClicks=[];
                     //temp
                     var tempTime = new Date().getTime();
                     Object.getOwnPropertyNames(application.teamPlayers).forEach(function(element) {
-                        if (application.teamPlayers && application.teamPlayers[element] && application.teamPlayers[element].lbgpi == -2 && application.teamPlayers[element].mass > 1) {
+                        if (application.teamPlayers && application.teamPlayers[element] && application.teamPlayers[element].lbgpi === -2 && application.teamPlayers[element].mass > 1) {
                             //console.log(application.teamPlayers[element].lastUpdatedTime, tempTime);
                             if (application.teamPlayers[element].lastUpdatedTime && ((application.teamPlayers[element].lastUpdatedTime) - tempTime < 6000)) {
                                 application.teamPlayers[element].mass = 1;
@@ -4999,16 +4999,16 @@ window.MouseClicks=[];
                             /*
                                 t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this.top5[o].id + '"style="background-color: ' + this.top5[o].color + 
 								'; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' 
-								+ (this.top5[o]["skin"] ? this.top5[o]["skin"] : "https://legendmod.ml/banners/icon32croped.ico.gif") + ' alt=""> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');*/
+								+ (this.top5[o]["skin"] ? this.top5[o]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + ' alt=""> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');*/
                             var teamboardskin = this.customSkinsCache[this.top5[o].skin + "_cached2"];
-                            if (teamboardskin == null) {
+                            if (!teamboardskin) {
                                 teamboardskin = new Image();
                                 teamboardskin.crossOrigin = 'anonymous';
-                                teamboardskin.src = "https://legendmod.ml/banners/icon32croped.ico.gif";
+                                teamboardskin.src = "https://jimboy3100.github.io/banners/icon32croped.ico.gif";
                             }
-                            t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this.top5[o].id + '"style="background-color: ' + this.top5[o].color +
-                                '; width: 30px; height:30px; display: inline-block;"><span style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;" alt="">' +
-                                teamboardskin.outerHTML + '</span>' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
+							t = t + ('<li><a href="#" id="pos-skin" class="set-target" data-user-id="' + this.top5[o].id + '" style="background-color: ' + this.top5[o].color +
+							'; width: 30px; height:30px; display: inline-block;"><span style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;" alt="">' +
+							(teamboardskin.outerHTML || '<img src="' + teamboardskin.src + '" alt=""/>') + '</span></a><div style="margin-top: -30px; margin-left: 32px;">');
                             // t = t + ('<div><img src=' + teamboardskin.src + 'class="player-skin" style="border: solid 3px' + this.top5[o].color + '">' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
 
                             /* if (defaultmapsettings["showTargeting"]) {
@@ -5016,8 +5016,8 @@ window.MouseClicks=[];
                             } */
                             var flag = false;
                             for (var et = 0; et < legendmod.ghostCells.length; et++) {
-                                if (legendmod.leaderboard[et] && this.top5[o].nick == legendmod.leaderboard[et].nick) {
-                                    if (flag == false && window.predictedGhostCells[et]) {
+                                if (legendmod.leaderboard[et] && this.top5[o].nick === legendmod.leaderboard[et].nick) {
+                                    if (flag === false && window.predictedGhostCells[et]) {
                                         //
                                         var w = window.predictedGhostCells[et].x;
                                         var u = window.predictedGhostCells[et].y;
@@ -5032,15 +5032,15 @@ window.MouseClicks=[];
                                     }
                                 }
                             }
-                            if (flag == false && (this.top5[o].lbgpi >= 0) || !LM.integrity) {
+                            if (flag === false && (this.top5[o].lbgpi >= 0) || !LM.integrity) {
                                 t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) + "]</span>");
                             } 
-							else if (flag == false && (this.calculateMapSector(this.top5[o].x, this.top5[o].y) == "C3" || legendmod.gameMode == ":party")) {
+							else if (flag === false && (this.calculateMapSector(this.top5[o].x, this.top5[o].y) === "C3" || legendmod.gameMode === ":party")) {
                                 t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) + "]</span>");
                             }
                             //temporary socket 3
-                            else if (flag == false && this.top5[o].lbgpi == -2) {
-                                if (this.top5[o].temp == true) {
+                            else if (flag === false && this.top5[o].lbgpi === -2) {
+                                if (this.top5[o].temp === true) {
                                     t = t + ('<span class="hud-main-color">[' + 'Temp. Socket' + "]</span>");
                                 } else {
                                     t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) + "]</span>");
@@ -5143,8 +5143,8 @@ window.MouseClicks=[];
                 if (value.length) {
 
                     //
-                    //if (LM.ws.includes("imsolo.pro") && $("#clantag").val() == ""){
-                    if (!LM.integrity && $("#clantag").val() == "") {
+                    //if (LM.ws.includes("imsolo.pro") && $("#clantag").val() === ""){
+                    if (!LM.integrity && $("#clantag").val() === "") {
                         var view = application.createView(4 + 2 * value.length);
                         view.setUint8(0, 99);
                         view.setUint8(1, 0);
@@ -5416,8 +5416,8 @@ window.MouseClicks=[];
             }
         },
 		marqueeSkins(t) {
-			var scrollingText = document.createElement('div');
-			scrollingText.className = 'scrolling-text'; // Add a class to prevent duplication
+            const scrollingText = document.createElement('div');
+            scrollingText.className = 'scrolling-text'; // Add a class to prevent duplication
 			scrollingText.style.position = 'absolute';
 			scrollingText.style.top = '50%'; // Center vertically
 			scrollingText.style.width = '100%';
@@ -5488,7 +5488,7 @@ window.MouseClicks=[];
                 //if (t.includes(".mp4") || t.includes(".webm") || t.includes(".ogg")) {
                 //console.log("stage 1 videos");
 
-                if ($('#' + e).empty().addClass('default'), t && 0 != t.length) {
+                if ($('#' + e).empty().addClass('default'), t && 0 !== t.length) {
                     //console.log("stage 1 images/videos: " + t);
                     var app = this;
                     o = new Video();
@@ -5513,7 +5513,7 @@ window.MouseClicks=[];
 
                 //console.log("stage 1 images");
 
-                if ($('#' + e).empty().addClass('default'), t && 0 != t.length) {
+                if ($('#' + e).empty().addClass('default'), t && 0 !== t.length) {
                     //console.log("stage 1 images/videos: " + t);
                     var app = this,
                         o = checktypeImgVid;
@@ -5690,7 +5690,7 @@ window.MouseClicks=[];
             $("#statsContinue").attr("id", "statsContinue2");
             $("#mainPanel").empty().remove();
             $(".center-container").addClass("ogario-menu");
-            $(".center-container").append('<div id="menu-footer" class="menu-main-color"> <a href="https://legendmod.ml" target="_blank">legendmod.ml</a> | ' + this.version + ' <a href="https://legendmod.ml" class="release ogicon-info" target="_blank"></a></div>');
+            $(".center-container").append('<div id="menu-footer" class="menu-main-color"> <a href="https://jimboy3100.github.io" target="_blank">jimboy3100.github.io</a> | ' + this.version + ' <a href="https://jimboy3100.github.io" class="release ogicon-info" target="_blank"></a></div>');
             $("#leftPanel, #rightPanel").addClass("ogario-menu").removeAttr("id");
             $(".agario-profile-panel, .agario-panel-freecoins, .agario-panel-gifting, .agario-shop-panel, #dailyquests-panel").appendTo($("#profile")).removeClass("agario-side-panel");
             $(".agario-profile-panel").after('<div id="block-warn">' + textLanguage.blockWarn + '<br><a href="#" id="unblock-popups">' + textLanguage.unblockPopups + "</a></div>");
@@ -5700,9 +5700,9 @@ window.MouseClicks=[];
             $("#tags-container").appendTo($("#profile"));
             //$('.btn.btn-warning.btn-spectate.btn-needs-server').after('<button id="logoutbtn" onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="page_logout">Logout</button>');
             //$(".btn-logout").appendTo($("#profile"));
-            $(".left-container").append('<div id="quick-menu" class="agario-panel agario-side-panel"><a href="https://legendmod.ml/skins/" class="quick-more-skins ogicon-grin" target="_blank" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.skins + '"></a>' +
+            $(".left-container").append('<div id="quick-menu" class="agario-panel agario-side-panel"><a href="https://jimboy3100.github.io/skins/" class="quick-more-skins ogicon-grin" target="_blank" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.skins + '"></a>' +
                 //'<a href="https://www.youtube.com/watch?v=CnIfNSpCf70" class="quick-yt ogicon-youtube2" id="legendid" target="_blank" data-toggle="tab-tooltip" data-placement="left" title="Legend Promo Video"></a>' +
-                '<a id= "themesBtn" target="_blank" href="https://legendmod.ml/themes/" class="fa fa-tint" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Themes"></a>' +
+                '<a id= "themesBtn" target="_blank" href="https://jimboy3100.github.io/themes/" class="fa fa-tint" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Themes"></a>' +
                 //'<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>' +
                 '<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>' +
                 '<a id= "ModReward" class="fa fa-gift " data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Reward day" onclick="LMrewardDay();return false;"></a>');
@@ -5748,7 +5748,7 @@ window.MouseClicks=[];
             $(".agario-party-6").appendTo($(".agario-party")).addClass("agario-panel agario-side-panel");
             $(".agario-party h4, #cancel-party-btn").remove();
             $(".agario-party .btn").addClass("btn-sm");
-            $(".right-container").append('<div id="skins-panel" class="agario-panel agario-side-panel"><div id="skins"></div><a href="https://legendmod.ml/skins/" id="more-skins" class="btn btn-block btn-success" target="_blank">' + textLanguage.moreSkins + "</a></div>");
+            $(".right-container").append('<div id="skins-panel" class="agario-panel agario-side-panel"><div id="skins"></div><a href="https://jimboy3100.github.io/skins/" id="more-skins" class="btn btn-block btn-success" target="_blank">' + textLanguage.moreSkins + "</a></div>");
             $(".btn-settings, .text-muted, .tosBox, .agario-promo, #agario-web-incentive, span[data-itr='page_option_dark_theme'], #options #darkTheme").remove();
             $("#advertisement, #adbg, #a320x250, #g320x250, #s320x250, #adsBottom").css("display", "none");
             $("#advertisement").removeClass("agario-panel"), $("#adsBottom").css({
@@ -5834,8 +5834,8 @@ window.MouseClicks=[];
             $("body").append('<div id="overlays-hud" data-gamemode=":ffa"><div id="stats-hud" class="hud stats-hud-color"></div> <div id="top5-hud" class="hud"><h5 class="hud-main-color" style="font-size: 19px">Team<span class="team-top"></span></h5><ol id="top5-pos"></ol><div id="top5-total"><span class="hud-main-color ogicon-users"></span> ' + //<div class="hud-main-color team-top-menu"><a href="#" data-limit="5" class="team-top-limit active">5</a> | <a href="#" data-limit="10" class="team-top-limit">10</a> | <a href="#" data-limit="100" class="team-top-limit">100</a></div><ol id="top5-pos"></ol><div id="top5-total"><span class="hud-main-color ogicon-users"></span> ' +
                 textLanguage.totalPartyPlayers + ': <span id="top5-total-players" class="top5-mass-color">0</span>   <span class="hud-main-color ogicon-pacman"></span> ' +
                 textLanguage.totalPartyMass + ': <span id="top5-total-mass" class="top5-mass-color">0</span></div></div> <div id="time-hud" class="hud time-hud-color"></div> <div id="pause-hud" class="hud">' +
-                //textLanguage.pause + '</div> <div id="leaderboard-hud" class="hud-b"><h5 class="hud-main-color">legendmod.ml</h5><div id="leaderboard-data"></div><div id="leaderboard-positions"></div></div> <div id="btl-leaderboard-hud"><div class="hud hud-c"><span id="btl-players-status">Players ready</span>: <span id="btl-players-count">0</span></div></div> <div id="minimap-hud" class="hud-b"><canvas id="minimap-sectors"></canvas><canvas id="minimap"></canvas></div><div id="target-hud" class="hud"><div id="target-player"><span id="target-skin"><img src="https://legendmod.ml/banners/static/img/blank.png" alt=""> </span><span id="target-nick"></span><span id="target-status" class="hud-main-color">' + //class="hud-main-color">[' +
-                textLanguage.pause + '</div> <div id="leaderboard-hud" class="hud-b"><h5 class="hud-main-color">' + textLanguage.leaderboard + '</h5><div id="leaderboard-data"></div><div id="leaderboard-positions"></div></div> <div id="btl-leaderboard-hud"><div class="hud hud-c"></div></div> <div id="minimap-hud" class="hud-b"><canvas id="minimap-sectors"></canvas><canvas id="minimap"></canvas></div><div id="target-hud" class="hud"><div id="target-player"><span id="target-skin"><img src="https://legendmod.ml/banners/static/img/blank.png" alt=""> </span><span id="target-nick"></span><span id="target-status" class="hud-main-color">' + //class="hud-main-color">[' +
+                //textLanguage.pause + '</div> <div id="leaderboard-hud" class="hud-b"><h5 class="hud-main-color">jimboy3100.github.io</h5><div id="leaderboard-data"></div><div id="leaderboard-positions"></div></div> <div id="btl-leaderboard-hud"><div class="hud hud-c"><span id="btl-players-status">Players ready</span>: <span id="btl-players-count">0</span></div></div> <div id="minimap-hud" class="hud-b"><canvas id="minimap-sectors"></canvas><canvas id="minimap"></canvas></div><div id="target-hud" class="hud"><div id="target-player"><span id="target-skin"><img src="https://jimboy3100.github.io/banners/static/img/blank.png" alt=""> </span><span id="target-nick"></span><span id="target-status" class="hud-main-color">' + //class="hud-main-color">[' +
+                textLanguage.pause + '</div> <div id="leaderboard-hud" class="hud-b"><h5 class="hud-main-color">' + textLanguage.leaderboard + '</h5><div id="leaderboard-data"></div><div id="leaderboard-positions"></div></div> <div id="btl-leaderboard-hud"><div class="hud hud-c"></div></div> <div id="minimap-hud" class="hud-b"><canvas id="minimap-sectors"></canvas><canvas id="minimap"></canvas></div><div id="target-hud" class="hud"><div id="target-player"><span id="target-skin"><img src="https://jimboy3100.github.io/banners/static/img/blank.png" alt=""> </span><span id="target-nick"></span><span id="target-status" class="hud-main-color">' + //class="hud-main-color">[' +
                 textLanguage.targetNotSet + '</span></div><div id="target-summary"></div></div><div id="target-panel-hud" class="hud">' +
                 '<a href="#" id="set-debug" class="ogicon-location"></a>' +
                 '<a href="#" id="set-fullSpectator" class="ogicon-eye"  style="display: none"></a>' +
@@ -5868,7 +5868,7 @@ window.MouseClicks=[];
 			/*
 			for (const emoji in emoticonicons) {
                 if (emoticonicons.hasOwnProperty(emoji)) {
-                    $("#chat-emoticons").append('<img src="https://legendmod.ml/banners/emoticons/' + emoticonicons[emoji] + '" alt="' + emoji + '" class="emoticon">');
+                    $("#chat-emoticons").append('<img src="https://jimboy3100.github.io/banners/emoticons/' + emoticonicons[emoji] + '" alt="' + emoji + '" class="emoticon">');
                 }
             }*/
             $("body").append('<div id="exp-imp"><div id="exp-imp-menu"><button id="close-exp-imp" class="btn btn-danger">' + textLanguage.close + '</button></div><div id="exp-imp-settings"></div></div>');
@@ -5893,7 +5893,7 @@ window.MouseClicks=[];
             for (; e < profiles.length; e++) {
                 $("#skins").append('<div class="skin-box"><a href="#profile-' + e + '" id="profile-' + e + '" data-profile="' + e + '"></a></div>');
                 this.setSkinPreview(profiles[e].skinURL, "profile-" + e);
-                if (e == this.selectedProfile) {
+                if (e === this.selectedProfile) {
                     $("#profile-" + e).addClass("selected");
                 }
             }
@@ -5968,9 +5968,9 @@ window.MouseClicks=[];
                 var id = event.target.parentNode.id;
                 if (id && LM.user.potionsStatus.hasOwnProperty(id)) {
                     var potion = LM.user.potionsStatus[id];
-                    if (potion.status == 1) {
+                    if (potion.status === 1) {
                         window.brewPotion(potion.slot);
-                    } else if (potion.status == 3 || (potion.status == 2 && potion.expires - Date.now() < 0)) {
+                    } else if (potion.status === 3 || (potion.status === 2 && potion.expires - Date.now() < 0)) {
                         window.openPotion(potion.slot);
                     }
                 }
@@ -6493,7 +6493,7 @@ window.MouseClicks=[];
                         y: application.getPlayerY(),
                         mass: application.getMass()
                     };
-                    if (Socket3 && Socket3.readyState == 1) {
+                    if (Socket3 && Socket3.readyState === 1) {
                         Socket3.send(JSON.stringify({
                             //"toH": "legendmod",
                             "toH": $("#server-token").val() + "3",
@@ -6617,11 +6617,12 @@ window.MouseClicks=[];
 
         },
         findOwnedVanillaSkin() {
+            let player;
             if (legendflags.includes(LowerCase(ogarcopythelb.nick))) {
-                core.registerSkin(ogarcopythelb.nick, null, "https://legendmod.ml/agario/live/flags/" + LowerCase(ogarcopythelb.nick) + ".png", null);
+                core.registerSkin(ogarcopythelb.nick, null, "https://jimboy3100.github.io/agario/live/flags/" + LowerCase(ogarcopythelb.nick) + ".png", null);
             } else if (window.FreskinsMap && window.FreskinsMap.includes(LowerCase(ogarcopythelb.nick))) {
-                for (var player = 0; player < window.FreeSkins.length; player++) {
-                    if (LowerCase(ogarcopythelb.nick) == window.FreeSkins[player].id) {
+                for (player = 0; player < window.FreeSkins.length; player++) {
+                    if (LowerCase(ogarcopythelb.nick) === window.FreeSkins[player].id) {
                         core.registerSkin(ogarcopythelb.nick, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image, null);
                     }
                 }
@@ -6633,8 +6634,8 @@ window.MouseClicks=[];
                     //core.registerSkin(ogarcopythelb.nick, null, window.UserVanillaSkin, null);
                     //window.UserVanillaSkin=null;
                 } else {
-                    for (var player = 0; player < window.EquippableSkins.length; player++) {
-                        if (window.EquippableSkins[player].productId == "skin_" + window.UserVanillaSkin && window.EquippableSkins[player].image != "uses_spine") {
+                    for (player = 0; player < window.EquippableSkins.length; player++) {
+                        if (window.EquippableSkins[player].productId === "skin_" + window.UserVanillaSkin && window.EquippableSkins[player].image !== "uses_spine") {
                             //console.log("2. " + window.EquippableSkins[player].image);	
                             window.lastusednameforskin = ogarcopythelb.nick;
                             application.customSkinsMap[ogarcopythelb.nick] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image;
@@ -6665,7 +6666,7 @@ window.MouseClicks=[];
             ogarcopythelb.clanTag = tag.trim();
             //ogarcopythelb.clanTag = tag.trim() + "@";
             ogarcopythelb.skinURL = this.checkSkinURL(skin.trim());
-            if (7 == color.length) {
+            if (7 === color.length) {
                 ogarcopythelb.color = color;
             }
             if (ogarcopythelb.clanTag.length > 0) {
@@ -6700,21 +6701,21 @@ window.MouseClicks=[];
                             this.height <= 2000 && this.height > 0) {
 
 
-                            if (animated == "animatedSkins") {
+                            if (animated === "animatedSkins") {
                                 app.cacheQueueSkinAnimated.push(url);
-                                if (1 == app.cacheQueueSkinAnimated.length) app.cacheSkinAnimated(app.customSkinsCache, animated)
+                                if (1 === app.cacheQueueSkinAnimated.length) app.cacheSkinAnimated(app.customSkinsCache, animated)
                                 app.cacheQueue2.push(url)
-                                if (1 == app.cacheQueue2.length) app.cacheSkin2(app.customSkinsCache)
-                            } else if (animated != "fbSkin") {
+                                if (1 === app.cacheQueue2.length) app.cacheSkin2(app.customSkinsCache)
+                            } else if (animated !== "fbSkin") {
                                 app.cacheQueue.push(url);
-                                if (1 == app.cacheQueue.length) app.cacheSkin(app.customSkinsCache, animated)
+                                if (1 === app.cacheQueue.length) app.cacheSkin(app.customSkinsCache, animated)
                                 app.cacheQueue2.push(url)
-                                if (1 == app.cacheQueue2.length) app.cacheSkin2(app.customSkinsCache)
-                                if (animated == true) app.cacheQueue3.push(url)
-                                if (1 == app.cacheQueue3.length) app.cacheSkin3(app.customSkinsCache)
-                            } else if (animated == "fbSkin") {
+                                if (1 === app.cacheQueue2.length) app.cacheSkin2(app.customSkinsCache)
+                                if (animated === true) app.cacheQueue3.push(url)
+                                if (1 === app.cacheQueue3.length) app.cacheSkin3(app.customSkinsCache)
+                            } else if (animated === "fbSkin") {
                                 app.cacheQueue4.push(url)
-                                if (1 == app.cacheQueue4.length) app.cacheSkin4(app.customSkinsCache)
+                                if (1 === app.cacheQueue4.length) app.cacheSkin4(app.customSkinsCache)
                             }
 
                             //26/6/2020
@@ -6743,14 +6744,14 @@ window.MouseClicks=[];
                     img[url].onerror = function() {
                         //console.log("error loading image: "+ url);
                         if (url && url.includes(window.EnvConfig.config_url)) {
-                            url = "https://legendmod.ml/vanillaskins/" + url.split('/').pop(); //if CORS policy on miniclip images, use other source
+                            url = "https://jimboy3100.github.io/vanillaskins/" + url.split('/').pop(); //if CORS policy on miniclip images, use other source
                             //console.log("new destination is: " + url);
                             application.customSkinsMap[window.lastusednameforskin] = url;
                             application.loadSkin(img, url);
                             return url;
 
-                        } else if (url && url.includes("https://legendmod.ml/vanillaskins/")) {
-                            url = "https://legendmod.ml/nextvanillaskins/" + url.split('/').pop(); //if CORS policy on miniclip images, use other source
+                        } else if (url && url.includes("https://jimboy3100.github.io/vanillaskins/")) {
+                            url = "https://jimboy3100.github.io/nextvanillaskins/" + url.split('/').pop(); //if CORS policy on miniclip images, use other source
                             //console.log("new destination is: " + url);
                             application.customSkinsMap[window.lastusednameforskin] = url;
                             application.loadSkin(img, url);
@@ -6762,19 +6763,19 @@ window.MouseClicks=[];
             }
         },
         checkgraphics() {
-            if (defaultSettings.graphics == "high") {
+            if (defaultSettings.graphics === "high") {
                 application.graphics = 1
-            } else if (defaultSettings.graphics == "medium") {
+            } else if (defaultSettings.graphics === "medium") {
                 application.graphics = 2
-            } else if (defaultSettings.graphics == "low") {
+            } else if (defaultSettings.graphics === "low") {
                 application.graphics = 4
-            } else if (defaultSettings.graphics == "very_low") {
+            } else if (defaultSettings.graphics === "very_low") {
                 application.graphics = 8
             }
         },
         cacheSkin(skinCache, animated) {
             //console.log(skinCache);  //////// return the image src
-            if (0 != this.cacheQueue.length) {
+            if (0 !== this.cacheQueue.length) {
                 var e = this.cacheQueue.shift();
                 if (e && !this.customSkinsCache[e + "_cached"]) {
                     var depth = 512;
@@ -6805,14 +6806,14 @@ window.MouseClicks=[];
             }
         },
         cacheSkin2(skinCache) {
-            if (0 != this.cacheQueue2.length) {
+            if (0 !== this.cacheQueue2.length) {
                 var e = this.cacheQueue2.shift();
                 if (e && !this.customSkinsCache[e + "_cached2"]) {
-                    var depth = 64;
-                    var i = document.createElement("canvas");
+                    const depth = 64;
+                    let i = document.createElement("canvas");
                     i.width = depth;
                     i.height = depth;
-                    var $ = i.getContext("2d");
+                    const $ = i.getContext("2d");
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -6829,18 +6830,18 @@ window.MouseClicks=[];
         },
         cacheSkin3(skinCache) {
             //console.log(skinCache);  //////// return the image src
-            if (0 != this.cacheQueue3.length) {
-                var e = this.cacheQueue3.shift();
+            if (0 !== this.cacheQueue3.length) {
+                const e = this.cacheQueue3.shift();
                 if (e && !this.customSkinsCache[e + "_cached3"]) {
-                    var depth = 512;
+                    let depth = 512;
                     this.checkgraphics();
                     if (application.graphics) {
                         depth = depth / application.graphics;
                     }
-                    var i = document.createElement("canvas");
+                    let i = document.createElement("canvas");
                     i.width = depth;
                     i.height = depth;
-                    var $ = i.getContext("2d");
+                    const $ = i.getContext("2d");
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -6856,18 +6857,18 @@ window.MouseClicks=[];
         },
         cacheSkin4(skinCache) {
             //console.log(skinCache);  //////// return the image src
-            if (0 != this.cacheQueue4.length) {
+            if (0 !== this.cacheQueue4.length) {
                 var e = this.cacheQueue4.shift();
                 if (e && !this.customSkinsCache[e + "_cached4"]) {
-                    var depth = 512;
+                    let depth = 512;
                     this.checkgraphics();
                     if (application.graphics) {
                         depth = depth / application.graphics;
                     }
-                    var i = document.createElement("canvas");
+                    let i = document.createElement("canvas");
                     i.width = depth;
                     i.height = depth;
-                    var $ = i.getContext("2d");
+                    const $ = i.getContext("2d");
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -6883,18 +6884,18 @@ window.MouseClicks=[];
         },
         cacheSkinAnimated(skinCache, animated) {
             //console.log(skinCache);  //////// return the image src
-            if (0 != this.cacheQueueSkinAnimated.length) {
-                var e = this.cacheQueueSkinAnimated.shift();
+            if (0 !== this.cacheQueueSkinAnimated.length) {
+                const e = this.cacheQueueSkinAnimated.shift();
                 if (e && !this.customSkinsCache[e + "_cached" + skinCache]) {
-                    var depth = 512;
+                    let depth = 512;
                     this.checkgraphics();
                     if (application.graphics) {
                         depth = depth / application.graphics;
                     }
-                    var i = document.createElement("canvas");
+                    let i = document.createElement("canvas");
                     i.width = depth;
                     i.height = depth;
-                    var $ = i.getContext("2d");
+                    const $ = i.getContext("2d");
                     $.beginPath();
                     $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
                     $.clip();
@@ -6910,7 +6911,7 @@ window.MouseClicks=[];
         },
         getCachedSkin(skinCache, skinMap) {
             if (skinCache[skinMap + '_cached3']) {
-                var today = new Date();
+                const today = new Date();
                 if (today.getSeconds() < 30) { //vanilla animated skins
                     return skinCache[skinMap + '_cached'] && skinCache[skinMap + '_cached'].complete && skinCache[skinMap + '_cached'].width ? skinCache[skinMap + '_cached'] : null;
                 } else if (today.getSeconds() >= 30) {
@@ -6922,7 +6923,7 @@ window.MouseClicks=[];
         },
         cacheCustomSkin(nick, color, skinUrl) {
             if (skinUrl) {
-                var s = ':party' === this.gameMode ? nick + color : nick;
+                const s = ':party' === this.gameMode ? nick + color : nick;
                 //console.log("nick= " + nick);
                 //console.log("color= " + color);
                 if (s && (this.customSkinsMap[s] = skinUrl), this.customSkinsCache.hasOwnProperty(skinUrl)) return;
@@ -6930,7 +6931,7 @@ window.MouseClicks=[];
             }
         },
         checkSkinsMap(nick, color) {
-            var mode = ':party' === this.gameMode ? nick + color : nick;
+            const mode = ':party' === this.gameMode ? nick + color : nick;
             //console.log(.customSkinsMap.hasOwnProperty(mode));
             return !!this.customSkinsMap.hasOwnProperty(mode);
         },
@@ -6962,11 +6963,11 @@ window.MouseClicks=[];
             }*/
             //var GearType = i.mapOffsetX + i.mapOffset;
             //var closingExpr = i.mapOffsetY + i.mapOffset;				
-            var GearType = closeExpr ? ogario.mapOffsetX + LM.mapOffset : LM.mapOffset;
-            var closingExpr = closeExpr ? ogario.mapOffsetY + LM.mapOffset : LM.mapOffset;
+            const GearType = closeExpr ? ogario.mapOffsetX + LM.mapOffset : LM.mapOffset;
+            const closingExpr = closeExpr ? ogario.mapOffsetY + LM.mapOffset : LM.mapOffset;
             //var n = Math.floor((xgh2 + closingExpr) / (ogario.mapSize / defaultSettings.sectorsY));
-            var n = Math.floor((xgh2 + closingExpr) / (LM.mapSize / defaultSettings.sectorsY));
-            var r = Math.floor((t + GearType) / (LM.mapSize / defaultSettings.sectorsX));
+            let n = Math.floor((xgh2 + closingExpr) / (LM.mapSize / defaultSettings.sectorsY));
+            let r = Math.floor((t + GearType) / (LM.mapSize / defaultSettings.sectorsX));
             //var r = Math.floor((t + GearType) / (ogario.mapSize / defaultSettings.sectorsX));
             window.calculateMapSector = n < 0 ? 0 : n >= defaultSettings.sectorsY ? defaultSettings.sectorsY - 1 : n;
             r = r < 0 ? 0 : r >= defaultSettings.sectorsX ? defaultSettings.sectorsX - 1 : r;
@@ -6990,11 +6991,11 @@ window.MouseClicks=[];
         },
         drawMiniMap() {
             if (ogario.mapOffsetFixed) {
-                var t = defaultSettings.miniMapWidth;
-                var e = defaultSettings.miniMapTop;
-                var s = t + e;
-                var o = t - 18;
-                var a = e + 9.5;
+                const t = defaultSettings.miniMapWidth;
+                const e = defaultSettings.miniMapTop;
+                const s = t + e;
+                const o = t - 18;
+                const a = e + 9.5;
                 if (this.miniMap) {
                     this.miniMapCtx.clearRect(0, 0, t, s);
                 } else {
@@ -7004,14 +7005,14 @@ window.MouseClicks=[];
                     this.miniMap.width = t;
                     this.miniMap.height = s;
                 }
-                if (this.miniMap.width != t) {
+                if (this.miniMap.width !== t) {
                     this.miniMap.width = t;
                     this.miniMap.height = s;
                 }
                 //var n = o / ogario.mapSize;
-                var n = o / LM.mapSize;
-                var r = ogario.mapOffsetX + LM.mapOffset;
-                var l = ogario.mapOffsetY + LM.mapOffset;
+                const n = o / LM.mapSize;
+                const r = ogario.mapOffsetX + LM.mapOffset;
+                const l = ogario.mapOffsetY + LM.mapOffset;
                 if (this.drawSelectedCell(this.miniMapCtx),
                     //
                     this.w = ogario.playerX,
@@ -7092,7 +7093,7 @@ window.MouseClicks=[];
                 //
                 if (application.top5) {
                     for (var temp = 0; temp < application.top5.length; temp++) {
-                        if (application.top5[temp].nick == LM.arrowFB[0].nick) {
+                        if (application.top5[temp].nick === LM.arrowFB[0].nick) {
                             LM.arrowFB[0].isIncluded = true
                         }
                     }
@@ -7143,7 +7144,7 @@ window.MouseClicks=[];
                     d = Math.round((this.deathLocations[this.lastDeath].y + LM.mapOffset) * n);
                     var f = Math.max(defaultSettings.miniMapMyCellSize - 2, 4);
                     this.miniMapCtx.lineWidth = 1;
-                    this.miniMapCtx.strokeStyle = this.deathLocations.length - 1 == this.lastDeath ? defaultSettings.miniMapDeathLocationColor : "#FFFFFF";
+                    this.miniMapCtx.strokeStyle = this.deathLocations.length - 1 === this.lastDeath ? defaultSettings.miniMapDeathLocationColor : "#FFFFFF";
                     this.miniMapCtx.beginPath();
                     this.miniMapCtx.moveTo(u - f, d);
                     this.miniMapCtx.lineTo(u + f, d);
@@ -7214,7 +7215,7 @@ window.MouseClicks=[];
             return defaultSettings.virusColor;
         },
         setVirusStrokeColor(size) {
-            if (ogario.play && ogario.playerMaxMass != 0) {
+            if (ogario.play && ogario.playerMaxMass !== 0) {
                 const floor = Math.floor(size * size / 100);
                 const biggestCell = floor / (this.selectBiggestCell ? ogario.playerMaxMass : ogario.playerMinMass);
                 if (biggestCell > 0.76) {
@@ -7235,7 +7236,7 @@ window.MouseClicks=[];
                 return;
             }
             let newValue = value;
-            if (value.indexOf('#') != -1) {
+            if (value.indexOf('#') !== -1) {
                 value = value.split('#');
                 newValue = value[1];
             }
@@ -7304,7 +7305,8 @@ window.MouseClicks=[];
                 this.ws = ws;
                 this.createServerToken();
                 this.updateServerInfo();
-                if (-1 == this.ws.indexOf('agar.io')) {
+                //if (-1 === this.ws.indexOf('agar.io')) {
+				if (-1 === this.ws.indexOf('agario.miniclippt')) { //2024
                     // fix disconnect?
                     //this.closeConnection();
                 }
@@ -7339,7 +7341,7 @@ window.MouseClicks=[];
                 var atobToken = token;
 
                 //ccse
-                if (!text && atobToken.search(/agar\.io/) == -1) {
+                if (!text && atobToken.search(/agar\.io/) === -1) {
                     text = 'wss://' + atobToken;
                     //console.log("recreateWS case 1:" + text);
                     return text;
@@ -7382,7 +7384,7 @@ window.MouseClicks=[];
                 }
             }
             //ccse
-            if (this.ws.search(/wss?:\/\//) > -1 && this.ws.search(/agar\.io/) == -1) {
+            if (this.ws.search(/wss?:\/\//) > -1 && this.ws.search(/agar\.io/) === -1) {
                 text = this.ws.match(/wss?:\/\/(.+)/)[1]
                 this.tokenNeedToBtoa = true
                 this.serverIP = text;
@@ -7407,7 +7409,7 @@ window.MouseClicks=[];
                     this.flushCells();
                 }
                 this.partyToken = '';
-                var matchPartyId = this.ws.match(/party_id=([A-Z0-9]{6})/);
+                const matchPartyId = this.ws.match(/party_id=([A-Z0-9]{6})/);
                 if (matchPartyId) {
                     this.partyToken = matchPartyId[1];
                     changeUrl('/#' + window.encodeURIComponent(this.partyToken));
@@ -7648,7 +7650,7 @@ window.MouseClicks=[];
         },
         writeUint32(data, value) {
             for (; !![];) {
-                if ((value & -128) == 0) {
+                if ((value & -128) === 0) {
                     data.push(value);
                     return;
                 } else {
@@ -7731,7 +7733,7 @@ window.MouseClicks=[];
         //Sonia4
         SLGHandler(message) {
             var packet = this.unpackSLG(message);
-            if (packet == null) return;
+            if (packet ==null) return;
             switch (message.charAt(0)) {
                 case "R":
                     this.getSuperLegendSDATA(packet);
@@ -7741,15 +7743,15 @@ window.MouseClicks=[];
                     break;
             }
         },
-        SLGSimpleHandler(message) {
-            //console.log("recieve", message);
+        SLGSimpleHandler(message ) {
+            //console.log("SLGSimpleHandler recieve", message);
             if (message == null) {
                 return;
             } else {
-                var ids = window.decodeURIComponent(escape(message.t));
+                const ids = window.decodeURIComponent(escape(message.t));
                 //console.log(ids)
                 //var id = this.checkPlayerID(ids);
-                var id = this.checkPlayerNick(ids);
+                const id = this.checkPlayerNick(ids);
                 if (null != id) {
                     //console.log("id found", id, s) ;
 
@@ -7927,7 +7929,7 @@ window.MouseClicks=[];
         },
         packInt(x, m) {
             var s = "";
-            if (m == 2) {
+            if (m === 2) {
                 s += String.fromCharCode(x)
             } else {
                 var p = x / Math.pow(2, 16);
@@ -7938,7 +7940,7 @@ window.MouseClicks=[];
             return s;
         },
         packFloat(x, m) {
-            if (m == 2) {
+            if (m === 2) {
                 x = Math.floor(x * 100000);
             } else {
                 x = Math.floor(x * 1000000000);
@@ -7947,7 +7949,7 @@ window.MouseClicks=[];
         },
         unpackInt(s) {
             var x = 0;
-            if (s.length == 1) {
+            if (s.length === 1) {
                 x += s.charCodeAt(0);
             } else {
                 x += s.charCodeAt(0) * Math.pow(2, 16);
@@ -7956,8 +7958,8 @@ window.MouseClicks=[];
             return x;
         },
         unpackFloat(s) {
-            var x = this.unpackInt(s);
-            if (s.length == 1) {
+            let x = this.unpackInt(s);
+            if (s.length === 1) {
                 x = x / 100000;
             } else {
                 x = x / 1000000000;
@@ -7966,21 +7968,23 @@ window.MouseClicks=[];
         },
         getrel(x, axis) {
             var v = window.legendmod;
-            if (axis == 0) return x / (v.mapMaxX - v.mapMinX);
+            if (axis === 0) return x / (v.mapMaxX - v.mapMinX);
             else return x / (v.mapMaxY - v.mapMinY);
         },
         getreal(x, axis) {
             var v = window.legendmod;
-            if (axis == 0) return x * (v.mapMaxX - v.mapMinX) + v.mapMinX;
+            if (axis === 0) return x * (v.mapMaxX - v.mapMinX) + v.mapMinX;
             else return x * (v.mapMaxY - v.mapMinY) + v.mapMinY;
         },
         sendSLGQinfo() {
-            //return;
+            let z;
+            let i;
+//return;
             var msg = "";
             var vlen = window.legendmod.viruses.length;
             msg += this.packInt(vlen, 2);
-            for (var i = 0; i < vlen; i++) {
-                var z = window.legendmod.viruses[i];
+            for (i = 0; i < vlen; i++) {
+                z = window.legendmod.viruses[i];
                 msg += this.packInt(z.id, 4);
                 msg += this.packFloat(this.getrel(z.x, 0), 4);
                 msg += this.packFloat(this.getrel(z.y, 1), 4);
@@ -7989,8 +7993,8 @@ window.MouseClicks=[];
             var cmsg = "";
             var clen = 0;
             var cells = window.legendmod.cells;
-            for (var i = 0; i < cells.length; i++) {
-                var z = cells[i];
+            for (i = 0; i < cells.length; i++) {
+                z = cells[i];
                 if (!z.isVirus) {
                     cmsg += this.packInt(z.id, 4);
                     cmsg += this.packFloat(this.getrel(z.x, 0), 4);
@@ -8011,25 +8015,32 @@ window.MouseClicks=[];
             //console.log("Package Sent:",time)
         },
         getSLGQinfo(t) {
-            //return ;
+            let di;
+            let fx;
+            let fy;
+            let ds;
+            let x;
+            let y;
+            let cellUpdateSLGCells;
+//return ;
             var ids = this.getSLGID(t);
             var id = this.checkPlayerID(ids);
             console.log(t);
             if (null == id) return;
-            var msg = this.getSLGVal(t);
+            let msg = this.getSLGVal(t);
             //Get viruses
-            var vlen = this.unpackInt(msg.slice(0, 1));
+            const vlen = this.unpackInt(msg.slice(0, 1));
             msg = msg.slice(1);
-            var temp = [];
+            const temp = [];
             for (var i = 0; i < vlen; i++) {
-                var di = this.unpackInt(msg.slice(0, 2));
-                var fx = this.unpackFloat(msg.slice(2, 4));
-                var fy = this.unpackFloat(msg.slice(4, 6));
-                var ds = this.unpackInt(msg.slice(6, 7));
+                di = this.unpackInt(msg.slice(0, 2));
+                fx = this.unpackFloat(msg.slice(2, 4));
+                fy = this.unpackFloat(msg.slice(4, 6));
+                ds = this.unpackInt(msg.slice(6, 7));
                 msg = msg.slice(7);
-                var x = this.getreal(fx, 0);
-                var y = this.getreal(fy, 1);
-                var cellUpdateSLGCells = new ogarbasicassembly(di, x, y, ds, null, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
+                x = this.getreal(fx, 0);
+                y = this.getreal(fy, 1);
+                cellUpdateSLGCells = new ogarbasicassembly(di, x, y, ds, null, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
                 cellUpdateSLGCells.time = this.time;
                 cellUpdateSLGCells.isVirus = true;
                 temp.push(cellUpdateSLGCells);
@@ -8051,14 +8062,14 @@ window.MouseClicks=[];
             var tempx = [];
             var cells = window.legendmod.cells;
             for (var i = 0; i < clen; i++) {
-                var di = this.unpackInt(msg.slice(0, 2));
-                var fx = this.unpackFloat(msg.slice(2, 4));
-                var fy = this.unpackFloat(msg.slice(4, 6));
-                var ds = this.unpackInt(msg.slice(6, 7));
+                di = this.unpackInt(msg.slice(0, 2));
+                fx = this.unpackFloat(msg.slice(2, 4));
+                fy = this.unpackFloat(msg.slice(4, 6));
+                ds = this.unpackInt(msg.slice(6, 7));
                 msg = msg.slice(7);
-                var x = this.getreal(fx, 0);
-                var y = this.getreal(fy, 1);
-                var cellUpdateSLGCells = new ogarbasicassembly(di, x, y, ds, null, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
+                x = this.getreal(fx, 0);
+                y = this.getreal(fy, 1);
+                cellUpdateSLGCells = new ogarbasicassembly(di, x, y, ds, null, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
                 cellUpdateSLGCells.isVirus = false;
                 temp.push(cellUpdateSLGCells);
                 if (!cellUpdateSLGCells.isInView()) {
@@ -8079,7 +8090,7 @@ window.MouseClicks=[];
             //Here should be food part
         },
         sendSocket3Info(type, message) {
-            if (Socket3 && Socket3.readyState == 1) {
+            if (Socket3 && Socket3.readyState === 1) {
                 var temp = {
                     com: "info",
                     com2: type,
@@ -8093,7 +8104,7 @@ window.MouseClicks=[];
             }
         },
         sendSocket3Position() {
-            if (ogario.play && window.noOgarioSocket && Socket3 && Socket3.readyState == 1) {
+            if (ogario.play && window.noOgarioSocket && Socket3 && Socket3.readyState === 1) {
                 var temp = {
                     com: "pos",
                     //id: customLMID,
@@ -8124,7 +8135,7 @@ window.MouseClicks=[];
                 var t = window.unescape(window.encodeURIComponent(application.lastSentNick));
                 var s = window.legendmod.bgpi;
                 if (this.isSLGSocketOpen()) {
-                    if (ogarcopythelb.clanTag != this.roomc) {
+                    if (ogarcopythelb.clanTag !== this.roomc) {
                         console.log("Sending failed. Reconnecting required..")
                         //this.SLGconnect(window.legendmod.ws);
                         if (window.SLGsocket) {
@@ -8138,7 +8149,7 @@ window.MouseClicks=[];
                             "s": s
                         }
                         //console.log("send", temp)
-                        if (SLGsocket && SLGsocket.readyState == 1) {
+                        if (SLGsocket && SLGsocket.readyState === 1) {
                             SLGsocket.send(JSON.stringify({
                                 //"toH": "legendmod2",
                                 "toH": $("#server-token").val(),
@@ -8166,7 +8177,7 @@ window.MouseClicks=[];
         checkPlayerID(id) {
             if (id) {
                 for (let length = 0; length < this.teamPlayers.length; length++) {
-                    if (this.teamPlayers[length].id == id) {
+                    if (this.teamPlayers[length].id === id) {
                         return length;
                     }
                 }
@@ -8176,13 +8187,13 @@ window.MouseClicks=[];
         checkPlayerNick(nick) {
             if (nick)
                 for (var length = 0; length < this.teamPlayers.length; length++)
-                    if (this.teamPlayers[length].nick == nick) return length;
+                    if (this.teamPlayers[length].nick === nick) return length;
             return null;
         },
         checkPlayerChat(message) {
             if (message)
                 for (var length = 0; length < this.teamPlayers.length; length++)
-                    if (this.teamPlayers[length].id == message) return length;
+                    if (this.teamPlayers[length].id === message) return length;
             return null;
         },
         updateTeamPlayer(message) {
@@ -8190,7 +8201,7 @@ window.MouseClicks=[];
                 var text = "";
                 for (;;) {
                     var string = message.getUint16(offset, true);
-                    if (0 == string) {
+                    if (0 === string) {
                         break;
                     }
                     text = text + String.fromCharCode(string);
@@ -8238,7 +8249,7 @@ window.MouseClicks=[];
                     n.mass = a,
                     n.alive = true,
                     n.updateTime = Date.now(),
-                    this.targeting && this.targetID && e == this.targetID && this.updateTarget(n.nick, n.skinURL, s, o, n.mass, n.color, n.lbgpi);
+                    this.targeting && this.targetID && e === this.targetID && this.updateTarget(n.nick, n.skinURL, s, o, n.mass, n.color, n.lbgpi);
             }
         },
         //Sonia3 Added 3 fuctions below
@@ -8250,26 +8261,26 @@ window.MouseClicks=[];
             window.legendmod.rotcnt = 0;
             var mat = window.legendmod.vector[window.legendmod.vnr];
             //window.legendmod.prevvnr = window.legendmod.vnr; //jimboy31001
-            if ((b == 0 || b == 3) && (window.legendmod.bgpi == 1 || window.legendmod.bgpi == 2)) mat[0] = !mat[0];
-            if ((b == 1 || b == 2) && (window.legendmod.bgpi == 0 || window.legendmod.bgpi == 3)) mat[0] = !mat[0];
-            if ((b == 0 || b == 1) && (window.legendmod.bgpi == 2 || window.legendmod.bgpi == 3)) mat[1] = !mat[1];
-            if ((b == 2 || b == 3) && (window.legendmod.bgpi == 1 || window.legendmod.bgpi == 0)) mat[1] = !mat[1];
+            if ((b === 0 || b === 3) && (window.legendmod.bgpi === 1 || window.legendmod.bgpi === 2)) mat[0] = !mat[0];
+            if ((b === 1 || b === 2) && (window.legendmod.bgpi === 0 || window.legendmod.bgpi === 3)) mat[0] = !mat[0];
+            if ((b === 0 || b === 1) && (window.legendmod.bgpi === 2 || window.legendmod.bgpi === 3)) mat[1] = !mat[1];
+            if ((b === 2 || b === 3) && (window.legendmod.bgpi === 1 || window.legendmod.bgpi === 0)) mat[1] = !mat[1];
             window.legendmod.vnr = this.dematrix(mat);
         },
         settechvnr(b) { //jimboy3100's 5/5/2020
-            if (b == 0) {
+            if (b === 0) {
                 window.legendmod.vector[window.legendmod.vnr][1] = 0;
                 window.legendmod.vector[window.legendmod.vnr][0] = 0;
             }
-            if (b == 1) {
+            if (b === 1) {
                 window.legendmod.vector[window.legendmod.vnr][1] = 0;
                 window.legendmod.vector[window.legendmod.vnr][0] = 1;
             }
-            if (b == 2) {
+            if (b === 2) {
                 window.legendmod.vector[window.legendmod.vnr][1] = 1;
                 window.legendmod.vector[window.legendmod.vnr][0] = 0;
             }
-            if (b == 3) {
+            if (b === 3) {
                 window.legendmod.vector[window.legendmod.vnr][1] = 1;
                 window.legendmod.vector[window.legendmod.vnr][0] = 1;
             }
@@ -8286,7 +8297,7 @@ window.MouseClicks=[];
                     }
                 }
             }
-            if (window.legendmod.gameMode != ":party" && mm > 0 && (!window.legendmod.play || mm > window.legendmod.playerMass) && max <= 3 && window.legendmod.bgpi <= 3 && !window.legendmod.setrot) {
+            if (window.legendmod.gameMode !== ":party" && mm > 0 && (!window.legendmod.play || mm > window.legendmod.playerMass) && max <= 3 && window.legendmod.bgpi <= 3 && !window.legendmod.setrot) {
                 if (!spects.length) {
                     //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " VMR UPDATE:", window.legendmod.vnr, mm, window.legendmod.playerMass, max, window.legendmod.bgpi);
                     this.setvnr(max);
@@ -8315,9 +8326,9 @@ window.MouseClicks=[];
             var t = 0;
             for (; t < this.teamPlayers.length; t++) {
                 var e = this.teamPlayers[t];
-                if (e.alive && Date.now() - e.updateTime >= 2000 || 0 == e.mass) {
+                if (e.alive && Date.now() - e.updateTime >= 2000 || 0 === e.mass) {
                     e.alive = false;
-                    if (this.targeting && this.targetID && e.id == this.targetID) {
+                    if (this.targeting && this.targetID && e.id === this.targetID) {
                         this.setTargetStatus(2);
                     }
                 }
@@ -8348,7 +8359,7 @@ window.MouseClicks=[];
             for (var e = t.getUint8(1), i = 2, s = 0; s < e; s++) {
                 for (var o = '';;) {
                     var a = t.getUint16(i, true);
-                    if (0 == a) break;
+                    if (0 === a) break;
                     o += String.fromCharCode(a), i += 2;
                 }
                 i += 2, this.parties.push(o);
@@ -8360,10 +8371,10 @@ window.MouseClicks=[];
                 var caseof = t.getUint8(1); //caseof 101 or 102
                 var plId = t.getUint32(2, true);
                 var o = t.getUint32(6, true);
-                if (!(this.isChatUserMuted(plId) || 0 != o && o != this.playerID && plId != this.playerID)) { //not for those
+                if (!(this.isChatUserMuted(plId) || 0 !== o && o !== this.playerID && plId !== this.playerID)) { //not for those
                     for (var msg = '', n = 10; n < t.byteLength; n += 2) {
                         var r = t.getUint16(n, true);
-                        if (0 == r) break;
+                        if (0 === r) break;
                         msg += String.fromCharCode(r);
                     }
                     var pattern = /.*s[^a-z]*e[^a-z]*n[^a-z]*p[^a-z]*a.*/i;
@@ -8378,7 +8389,7 @@ window.MouseClicks=[];
                             this.displayChatMessage(time, caseof, plId, msg);
                         }
                         //else if (!legendmod.integrity && application.chatHistory[application.chatHistory.length-1].message != msg.split(': ')[1]){
-                        else if (!legendmod.integrity && $("#clantag").val() != "") {
+                        else if (!legendmod.integrity && $("#clantag").val() !== "") {
                             this.displayChatMessage(time, caseof, plId, msg);
                         }
                     } else {
@@ -8389,7 +8400,7 @@ window.MouseClicks=[];
         },
         sendChatMessage(type, message) {
             //console.log(type);console.log(message);
-            if (!(Date.now() - this.lastMessageSentTime < 500 || 0 == message.length || 0 == ogarcopythelb.nick.length) && this.isSocketOpen()) {
+            if (!(Date.now() - this.lastMessageSentTime < 500 || 0 === message.length || 0 === ogarcopythelb.nick.length) && this.isSocketOpen()) {
                 message = ogarcopythelb.nick + ': ' + message;
                 var view = this.createView(10 + 2 * message.length);
                 view.setUint8(0, 100),
@@ -8410,7 +8421,7 @@ window.MouseClicks=[];
 
             //		
             //if (LM.ws.includes("imsolo.pro") && $("#clantag").val() == ""){
-            if (!LM.integrity && $("#clantag").val() == "") {
+            if (!LM.integrity && $("#clantag").val() === "") {
 
                 var view = application.createView(4 + 2 * prepareCommand.length);
                 view.setUint8(0, 99);
@@ -8450,7 +8461,7 @@ window.MouseClicks=[];
             }
         },
         isChatUserMuted(id) {
-            if (this.chatMutedUserIDs.indexOf(id) != -1) {
+            if (this.chatMutedUserIDs.indexOf(id) !== -1) {
                 return true;
             }
             return false;
@@ -8468,12 +8479,12 @@ window.MouseClicks=[];
         },
         parseEmoticons(string) {
             /*return String(string).replace(/\&lt\;3/g, '<3').replace(/(O\:\)|3\:\)|8\=\)|\:\)|\;\)|\=\)|\:D|X\-D|\=D|\:\(|\;\(|\:P|\;P|\:\*|\$\)|\<3|\:o|\(\:\||\:\||\:\\|\:\@|\|\-\)|\^\_\^|\-\_\-|\$\_\$|\(poop\)|\(fuck\)|\(clap\)|\(ok\)|\(victory\)|\(y\)|\(n\))/g, function(string) {
-                return '<img src=\"https://legendmod.ml/banners/emoticons/' + d[string] + '\" alt=\"' + string + '\" class=\"emoticon\">';
+                return '<img src=\"https://jimboy3100.github.io/banners/emoticons/' + d[string] + '\" alt=\"' + string + '\" class=\"emoticon\">';
             });*/
             //return String(string).replace(/\&lt\;3/g, '<3').replace(/℄/g, '℄ Legend Clan').replace(/(O\:\)|3\:\)|8\=\)|\:\)|\;\)|\=\)|\:D|X\-D|\=D|\:\(|\;\(|\:P|\;P|\:\*|\$\)|\<3|\:o|\(\:\||\:\||\:\\|\:\@|\|\-\)|\^\_\^|\-\_\-|\$\_\$|\(poop\)|\(fuck\)|\(clap\)|\(ok\)|\(victory\)|\(y\)|\(n\)|\(angry\)|\(clown\)|\(crazy\)|\(devil\)|\(devil2\)|\(fb\)|\(google\)|\(ghost\)|\(heel\)|\(kiss\)|\(lipstick\)|\(rage\)|\(teacher\)|\(together\)|\(toothy\)|\(evil\)|\(baby\)|\(wow\))/g, function(string) {
             return String(string).replace(/\&lt\;3/g, '<3').replace(/(O\:\)|3\:\)|8\=\)|\:\)|\;\)|\=\)|\:D|X\-D|\=D|\:\(|\;\(|\:P|\;P|\:\*|\$\)|\<3|\:o|\(\:\||\:\||\:\\|\:\@|\|\-\)|\^\_\^|\-\_\-|\$\_\$|\(poop\)|\(fuck\)|\(clap\)|\(ok\)|\(victory\)|\(y\)|\(n\)|\(angry\)|\(clown\)|\(crazy\)|\(devil\)|\(devil2\)|\(fb\)|\(google\)|\(ghost\)|\(heel\)|\(kiss\)|\(lipstick\)|\(rage\)|\(teacher\)|\(together\)|\(toothy\)|\(evil\)|\(baby\)|\(wow\))/g, function(string) {
                 //console.log(d[string]);
-                return '<img src=\"https://legendmod.ml/banners/emoticons/' + emoticonicons[string] + '\" alt=\"' + string + '\" class=\"emoticon\">';
+                return '<img src=\"https://jimboy3100.github.io/banners/emoticons/' + emoticonicons[string] + '\" alt=\"' + string + '\" class=\"emoticon\">';
             });
 
         },
@@ -8481,7 +8492,7 @@ window.MouseClicks=[];
             var mcolor = ""
 
             //mcolor = "blue";
-            if (0 != msg.length) {
+            if (0 !== msg.length) {
                 //console.log(msg);
                 var a = msg.split(': ', 1).toString();
                 n = this.parseMessage(msg.replace(a + ': ', ''));
@@ -8491,17 +8502,17 @@ window.MouseClicks=[];
                         mcolor = legendmod.cellcolors[a]
                     } else {
                         application.teamPlayers.forEach((found) => {
-                            if (found.nick == a) {
+                            if (found.nick === a) {
                                 mcolor = found.color
                             }
                         })
                     }
                 }
                 //
-                if (!(0 == a.length || fancyCount2(a) > 15 || 0 == n.length)) {
+                if (!(0 === a.length || fancyCount2(a) > 15 || 0 === n.length)) {
                     //if (!(0 == a.length || a.length > 15 || 0 == n.length)) {
                     var r = '';
-                    if (0 != plId && plId != this.playerID && (this.addChatUser(plId, a), r = '<a href=\"#\" data-user-id=\"' + plId + '\" class=\"mute-user ogicon-user-minus\"></a> '), a = this.escapeHTML(a), 101 == caseof) {
+                    if (0 != plId && plId != this.playerID && (this.addChatUser(plId, a), r = '<a href=\"#\" data-user-id=\"' + plId + '\" class=\"mute-user ogicon-user-minus\"></a> '), a = this.escapeHTML(a), 101 === caseof) {
 
                         if (defaultmapsettings.showChatBox) return $('#chat-box').append('<div class=\"message\"><span class=\"message-time\">[' + time + '] </span>' + r + '<span class=\"message-nick\" style = "color:' + mcolor + '">' + a + ': </span><span class=\"message-text\">' + n + '</span></div>'),
                             $('#chat-box').perfectScrollbar('update'),
@@ -8520,7 +8531,7 @@ window.MouseClicks=[];
                             }),
 							this.chatHistory.length > window.chatLimit && this.chatHistory.shift();
                            // this.chatHistory.length > 15 && this.chatHistory.shift();
-                    } else if (102 == caseof) {
+                    } else if (102 === caseof) {
                         if (defaultmapsettings.showChatBox) return $('#chat-box').append('<div class=\"message command\"><span class=\"command-time\">[' + time + '] </span>' + r + '<span class=\"command-nick\" style = "color:' + mcolor + '">' + a + ': </span><span class=\"command-text\">' + n + '</span></div>'),
                             $('#chat-box').perfectScrollbar('update'),
                             $('#chat-box').animate({
@@ -8754,7 +8765,7 @@ window.MouseClicks=[];
                         $('#target-skin img').css('border', '2px solid' + color);
                         this.targetSkinURL = skinUrl;
                     } else {
-                        $('#target-skin img').attr('src', 'https://legendmod.ml/banners/static/img/blank.png')
+                        $('#target-skin img').attr('src', 'https://jimboy3100.github.io/banners/static/img/blank.png')
                     }
                 }
             }
@@ -8764,19 +8775,19 @@ window.MouseClicks=[];
             html = textLanguage.targetDistance + ': <span class=\"hud-main-color\">' + ogario.targetDistance + ' [' + l + ']</span>';
             var flag = false;
             for (var j = 0; j < legendmod.ghostCells.length; j++) {
-                if (legendmod.leaderboard[j] && this.targetNick == legendmod.leaderboard[j].nick) {
+                if (legendmod.leaderboard[j] && this.targetNick === legendmod.leaderboard[j].nick) {
 
-                    if (flag == false) {
+                    if (flag === false) {
                         text = application.calculateMapSector(window.predictedGhostCells[j].x + legendmod.mapOffsetX, window.predictedGhostCells[j].y + legendmod.mapOffsetY)
                         flag = true;
                     }
                 }
             };
-            if (flag == false && f >= 0) {
+            if (flag === false && f >= 0) {
                 text = this.calculateMapSector(x, y);
-            } else if (flag == false && (this.calculateMapSector(x, y) == "C3" || legendmod.gameMode == ":party")) {
+            } else if (flag === false && (this.calculateMapSector(x, y) === "C3" || legendmod.gameMode === ":party")) {
                 text = this.calculateMapSector(x, y);
-            } else if (flag == false) {
+            } else if (flag === false) {
                 text = "Unknown";
             };
             html = Languageletter367 + ': <span class=\"hud-main-color\">' + ogario.targetDistance + ' [' + text + ']</span>';
@@ -8883,7 +8894,7 @@ window.MouseClicks=[];
                     this.redraw = true);
             },
             this.setStrokeWidth = function(ogariostrokewidthsetter) {
-                this.stroke && this.strokeWidth != ogariostrokewidthsetter && (this.strokeWidth = ogariostrokewidthsetter,
+                this.stroke && this.strokeWidth !== ogariostrokewidthsetter && (this.strokeWidth = ogariostrokewidthsetter,
                     this.redraw = true,
                     this.remeasure = true);
             },
@@ -8903,7 +8914,7 @@ window.MouseClicks=[];
                 }
             },
             this.setFontWeight = function(ogariofontweightsetter) {
-                if (this.fontWeight != ogariofontweightsetter) {
+                if (this.fontWeight !== ogariofontweightsetter) {
                     this.fontWeight = ogariofontweightsetter;
                     this.setFont();
                     this.redraw = true;
@@ -8911,7 +8922,7 @@ window.MouseClicks=[];
                 }
             },
             this.setFontSize = function(ogariofontsizesetter) {
-                if (this.fontSize != ogariofontsizesetter) {
+                if (this.fontSize !== ogariofontsizesetter) {
                     this.fontSize = ogariofontsizesetter;
                     this.margin = ~~(0.2 * ogariofontsizesetter);
                     this.setFont();
@@ -8919,7 +8930,7 @@ window.MouseClicks=[];
                 }
             },
             this.setScale = function(ogarioscalesetter) {
-                if (this.scale != ogarioscalesetter) {
+                if (this.scale !== ogarioscalesetter) {
                     this.scale = ogarioscalesetter;
                     this.redraw = true;
                 }
@@ -9051,7 +9062,7 @@ window.MouseClicks=[];
                 this.points.splice(i, 1);
                 this.pointsVel.splice(i, 1);
             }
-            if (this.points.length == 0 && numPoints != 0) {
+            if (this.points.length === 0 && numPoints != 0) {
                 this.points.push({
                     x: this.x,
                     y: this.y,
@@ -9137,7 +9148,7 @@ window.MouseClicks=[];
                 var angle = 2 * Math.PI * i / len;
                 var rl = curP.rl;
                 if (rl > this.maxPointRad) this.maxPointRad = rl
-                if (this.isVirus && i % 2 == 0) {
+                if (this.isVirus && i % 2 === 0) {
                     rl += 5;
                 }
 
@@ -9157,32 +9168,32 @@ window.MouseClicks=[];
         this.removeCell = function() {
             this.removed = true;
             var cells = LM.cells.indexOf(this);
-            if (cells != -1) {
+            if (cells !== -1) {
                 LM.cells.splice(cells, 1);
                 if (defaultmapsettings.virusesRange) {
                     cells = LM.viruses.indexOf(this);
-                    if (cells != -1) {
+                    if (cells !== -1) {
                         LM.viruses.splice(cells, 1);
                     }
                 }
             } else {
                 cells = LM.food.indexOf(this);
-                if (cells != -1) {
+                if (cells !== -1) {
                     LM.food.splice(cells, 1);
                 }
             }
             //cells = LM.playerCellsMulti.indexOf(this);
             cells = LM.foodMulti.indexOf(this);
-            if (cells != -1) {
+            if (cells !== -1) {
                 LM.foodMulti.splice(cells, 1);
             }
             cells = LM.playerCells.indexOf(this);
-            if (cells != -1) {
+            if (cells !== -1) {
                 LM.removePlayerCell = true;
                 LM.playerCells.splice(cells, 1);
                 //LM.playerCellsMulti.splice(cells, 1);
                 cells = LM.playerCellIDs.indexOf(this.id);
-                if (cells != -1) {
+                if (cells !== -1) {
                     LM.playerCellIDs.splice(cells, 1);
                 }
             }
@@ -9214,9 +9225,9 @@ window.MouseClicks=[];
                 this.time = LM.time;
                 return;
             }
-            if (delay == 1) {
+            if (delay === 1) {
                 var removedCells = LM.removedCells.indexOf(this);
-                if (removedCells != -1) {
+                if (removedCells !== -1) {
                     LM.removedCells.splice(removedCells, 1);
                 }
             }
@@ -9372,11 +9383,11 @@ window.MouseClicks=[];
                 var customTxt;
                 var temp;
                 for (var i = 0; i < application.chatHistory.length; i++) {
-                    if (application.chatHistory[i].nick == this.nick && (Date.now() - application.chatHistory[i].time < 15000)) {
+                    if (application.chatHistory[i].nick === this.nick && (Date.now() - application.chatHistory[i].time < 15000)) {
                         if (!application.chatHistory[i].message.includes('emoticon') && !application.chatHistory[i].message.includes('<img src') && !application.chatHistory[i].message.includes('DosAttack') &&
                             !application.chatHistory[i].message.includes('DosFight') && !application.chatHistory[i].message.includes('DosRun') &&
                             !application.chatHistory[i].message.includes('https://agar.io/sip=151.80.91.73:1511') && this.nick != "") {
-                            if (application.chatHistory[i].nick == $('#nick').val() || application.chatHistory[i].nick == application.lastSentNick) {
+                            if (application.chatHistory[i].nick === $('#nick').val() || application.chatHistory[i].nick === application.lastSentNick) {
                                 if (application.chatHistory[i].message.split('&')[1] && application.chatHistory[i].message.split('&')[1].split(';')[0]) {
                                     application.chatHistory[i].message.replace(application.chatHistory[i].message.split('&')[1].split(';')[0], "").replace("&;", "").replace("/", "").replace("'", "").replace("!", "").replace("%", "").replace("(", "").replace(")", "");
                                 }
@@ -9393,9 +9404,9 @@ window.MouseClicks=[];
                     }
                 }
                 for (var i = 0; i < application.commandHistory.length; i++) {
-                    if (application.commandHistory[i].nick == this.nick && (Date.now() - application.commandHistory[i].time < 15000)) {
+                    if (application.commandHistory[i].nick === this.nick && (Date.now() - application.commandHistory[i].time < 15000)) {
                         if (this.nick != "") {
-                            if (application.commandHistory[i].nick == $('#nick').val() || application.commandHistory[i].nick == application.lastSentNick) {
+                            if (application.commandHistory[i].nick === $('#nick').val() || application.commandHistory[i].nick === application.lastSentNick) {
 
                                 if (defaultmapsettings.showChatMyOwn) {
                                     if (temp > (Date.now() - application.commandHistory[i].time) || !temp) {
@@ -9445,7 +9456,7 @@ window.MouseClicks=[];
 
                 if (window.ExternalScripts && !defaultmapsettings.optimizedMass && window.playerCellsId && this.isPlayerCell && !this.isVirus) {
                     CellTimerTrigger();
-                    if (window.playerCellsId[this.id] == undefined) {
+                    if (window.playerCellsId[this.id] === undefined) {
                         window.playerCellsId[this.id] = {};
                         window.playerCellsId[this.id].historyMass = [];
                         window.playerCellsId[this.id].historyX = [];
@@ -9531,11 +9542,12 @@ window.MouseClicks=[];
             return ctxfx;
         };
 		this.drawSpecialSkinDancer = function(style, y) {
-			if (LM.gameMode !=":party"){
-				if (defaultmapsettings.videoSkins && application.customSkinsMap[this.targetNick] != "https://dkyriak.github.io/VideoFloRidaLow.mp4"){				
+			let tempcolor;
+            if (LM.gameMode !==":party"){
+				if (defaultmapsettings.videoSkins && application.customSkinsMap[this.targetNick] !== "https://dkyriak.github.io/VideoFloRidaLow.mp4"){
 					application.customSkinsMap[this.targetNick] = "https://dkyriak.github.io/VideoFloRidaLow.mp4"
 				node2 = application.customSkinsMap[this.targetNick]	
-				if (ogarcopythelb.nick == this.targetNick) {
+				if (ogarcopythelb.nick === this.targetNick) {
 					ogarcopythelb.skinURL = node2
 				}				
 				
@@ -9543,10 +9555,10 @@ window.MouseClicks=[];
 				}				
 			}
 			else{
-				if (defaultmapsettings.videoSkins && application.customSkinsMap[this.targetNick + this.color] != "https://dkyriak.github.io/VideoFloRidaLow.mp4"){				
+				if (defaultmapsettings.videoSkins && application.customSkinsMap[this.targetNick + this.color] !== "https://dkyriak.github.io/VideoFloRidaLow.mp4"){
 					application.customSkinsMap[this.targetNick + this.color] = "https://dkyriak.github.io/VideoFloRidaLow.mp4"
 				node2 = application.customSkinsMap[this.targetNick + this.color]	
-				if (ogarcopythelb.nick == this.targetNick) {
+				if (ogarcopythelb.nick === this.targetNick) {
 					ogarcopythelb.skinURL = node2
 				}				
 				
@@ -9564,24 +9576,24 @@ window.MouseClicks=[];
 				startWaves = true
 			}
 			
-			if (LM.Waves && LM.Waves.length == 0 && startWaves) {
-                    var tempcolor = this.color
+			if (LM.Waves && LM.Waves.length === 0 && startWaves) {
+                    tempcolor = this.color;
 					if (application.teamPlayers.length>0) {
 						c = 0;
 						for (; c < application.teamPlayers.length; c++) {
-							if (application.teamPlayers[c].nick == this.targetNick) tempcolor = application.teamPlayers[c].color		
+							if (application.teamPlayers[c].nick === this.targetNick) tempcolor = application.teamPlayers[c].color
 						}
 					}				
 				LM.sendWaves(this.x, this.y, tempcolor, this.size + 760, this.targetNick, true)
 				//application.teamPlayers[0].color
 			}
 			else if (LM.Waves && LM.Waves.length > 0){
-				
-                    var tempcolor = this.color
-					if (application.teamPlayers.length>0) {
+
+                tempcolor = this.color;
+                if (application.teamPlayers.length>0) {
 						c = 0;
 						for (; c < application.teamPlayers.length; c++) {
-							if (application.teamPlayers[c].nick == this.targetNick) tempcolor = application.teamPlayers[c].color		
+							if (application.teamPlayers[c].nick === this.targetNick) tempcolor = application.teamPlayers[c].color
 						}
 					}
 				if (this.mass && this.mass >= 1560 && defaultmapsettings.qdsplitRange){
@@ -9607,51 +9619,51 @@ window.MouseClicks=[];
                 var temp = SpecialEffectPlayers[this.targetNick].split(';')
                 for (var i = 0; i < temp.length; i++) {
                     if (!this.SpecialEffect) this.SpecialEffect = temp[i];
-                    else if (this.SpecialEffect != temp[i]) this.SpecialEffect2 = temp[i];
+                    else if (this.SpecialEffect !== temp[i]) this.SpecialEffect2 = temp[i];
                 }
                 /*if (!window.eud){
                 	console.log('draw',this.targetNick,this.SpecialEffect)
                 	window.eud=true
                 }*/
 
-                if (this.SpecialEffect == "Hat" || this.SpecialEffect2 == "Hat") {
+                if (this.SpecialEffect === "Hat" || this.SpecialEffect2 === "Hat") {
                     this.drawImageSpecialSkin("iconSpecialSkinEffectsHat3", this.x - 1 / 2 * y, this.y - 3 / 2 * y, y, y, style); 					
                     //style.drawImage(iconSpecialSkinEffectsHat3, this.x - 1 / 2 * y, this.y - 3 / 2 * y, y, y);
 					
                     //style.drawImage(cimg7, this.x - 1/2 * y, this.y - 1/2 * y, y, y); //center 1/2 size 
                     //style.drawImage(iconSpecialSkinEffectsHat3, this.x - 1/2 * y, this.y - y, y, y); //top middle 1/2 size 
                     // the bigger the -y, the upper it draws
-                } else if (this.SpecialEffect == "JellyFish" || this.SpecialEffect2 == "JellyFish") {
+                } else if (this.SpecialEffect === "JellyFish" || this.SpecialEffect2 === "JellyFish") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsJellyFish", this.x - 1 / 3 * y, this.y - 3 / 2 * y, y, y, style); 
                     //style.drawImage(iconSpecialSkinEffectsJellyFish, this.x - 1 / 3 * y, this.y - 3 / 2 * y, y, y);
-                } else if (this.SpecialEffect == "King" || this.SpecialEffect2 == "King") {
+                } else if (this.SpecialEffect === "King" || this.SpecialEffect2 === "King") {
                     //style.drawImage(iconSpecialSkinEffectsCrown	, this.x - 1/4 * y, this.y - 5/4 * y, y/2, y/2); 
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsCrown", this.x - 1 / 4 * y, this.y - 5.3 / 4 * y, y / 2, y / 2, style); 
                     //style.drawImage(iconSpecialSkinEffectsCrown, this.x - 1 / 4 * y, this.y - 5.3 / 4 * y, y / 2, y / 2);
                 }
-                if (this.SpecialEffect == "Smoke" || this.SpecialEffect2 == "Smoke") {
+                if (this.SpecialEffect === "Smoke" || this.SpecialEffect2 === "Smoke") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsSmoke", this.x - 2 / 3 * y, this.y - 4 / 3 * y, y, y, style);
                     //style.drawImage(iconSpecialSkinEffectsSmoke, this.x - 2 / 3 * y, this.y - 4 / 3 * y, y, y);
-                } else if (this.SpecialEffect == "USA" || this.SpecialEffect2 == "USA") {
+                } else if (this.SpecialEffect === "USA" || this.SpecialEffect2 === "USA") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsUSA", this.x - 5 / 7 * y, this.y - 1 / 2 * y, y * 2, y * 2, style);
                     //style.drawImage(iconSpecialSkinEffectsUSA, this.x - 5 / 7 * y, this.y - 1 / 2 * y, y * 2, y * 2);
-                } else if (this.SpecialEffect == "SunGlasses" || this.SpecialEffect2 == "SunGlasses") {
+                } else if (this.SpecialEffect === "SunGlasses" || this.SpecialEffect2 === "SunGlasses") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsSunGlasses", this.x - 0.85 * y, this.y - 1.1 * y, y * 1.7, y * 1.4, style);
                     //style.drawImage(iconSpecialSkinEffectsSunGlasses, this.x - 0.85 * y, this.y - 1.1 * y, y * 1.7, y * 1.4);
-                } else if (this.SpecialEffect == "Moderator" || this.SpecialEffect2 == "Moderator") {
+                } else if (this.SpecialEffect === "Moderator" || this.SpecialEffect2 === "Moderator") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsModerator", this.x - 0.333 * y, this.y - 1.325 * y, y / 1.5, y / 6, style);
                     //style.drawImage(iconSpecialSkinEffectsModerator, this.x - 0.333 * y, this.y - 1.325 * y, y / 1.5, y / 6);
-                } else if (this.SpecialEffect == "Turtle" || this.SpecialEffect2 == "Turtle") {
+                } else if (this.SpecialEffect === "Turtle" || this.SpecialEffect2 === "Turtle") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsTurtle", this.x - 0.999 * y, this.y - 0.810 * y, y / 0.5, y / 0.5, style);
                     //style.drawImage(iconSpecialSkinEffectsTurtle, this.x - 0.999 * y, this.y - 0.810 * y, y / 0.5, y / 0.5);
                     //style.drawImage(iconSpecialSkinEffectsTurtle, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);					                     
-                } else if (this.SpecialEffect == "Shiro" || this.SpecialEffect2 == "Shiro") {
+                } else if (this.SpecialEffect === "Shiro" || this.SpecialEffect2 === "Shiro") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsShiro", this.x + 0.05 * y, this.y - 1.2 * y, y, y, style);
                     //style.drawImage(iconSpecialSkinEffectsShiro, this.x + 0.05 * y, this.y - 1.2 * y, y, y);
-                } else if (this.SpecialEffect == "Bird" || this.SpecialEffect2 == "Bird") {
+                } else if (this.SpecialEffect === "Bird" || this.SpecialEffect2 === "Bird") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsBird", this.x - 0 * y, this.y - 1.3 * y, y / 1, y / 1, style);
                     //style.drawImage(iconSpecialSkinEffectsBird, this.x - 0 * y, this.y - 1.3 * y, y / 1, y / 1);
-                } else if (this.SpecialEffect == "AbsolutVodka" || this.SpecialEffect2 == "AbsolutVodka") {
+                } else if (this.SpecialEffect === "AbsolutVodka" || this.SpecialEffect2 === "AbsolutVodka") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsAbsolutVodka", this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1, style);
                     //style.drawImage(iconSpecialSkinEffectsAbsolutVodka, this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1);
                     //style.drawImage(iconSpecialSkinEffectsAbsolutVodka, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4;							
@@ -9659,13 +9671,13 @@ window.MouseClicks=[];
                     //if (!window.xx2) window.xx2= -0.15
                     //if (!window.xx3) window.xx3 = 1.5
                     //if (!window.xx4) window.xx4 = 1			
-                } else if (this.SpecialEffect == "Chemistry" || this.SpecialEffect2 == "Chemistry") {
+                } else if (this.SpecialEffect === "Chemistry" || this.SpecialEffect2 === "Chemistry") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsChemistry", this.x + 0.3 * y, this.y - 1.1 * y, y / 2, y / 2, style);
                     //style.drawImage(iconSpecialSkinEffectsChemistry, this.x + 0.3 * y, this.y - 1.1 * y, y / 2, y / 2);
-                } else if (this.SpecialEffect == "Japan" || this.SpecialEffect2 == "Japan") {
+                } else if (this.SpecialEffect === "Japan" || this.SpecialEffect2 === "Japan") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsJapan", this.x - 0.8 * y, this.y - 1 * y, y / 0.5, y / 0.5, style);
                     //style.drawImage(iconSpecialSkinEffectsJapan, this.x - 0.8 * y, this.y - 1 * y, y / 0.5, y / 0.5);
-                } else if (this.SpecialEffect == "Japan2" || this.SpecialEffect2 == "Japan2") {
+                } else if (this.SpecialEffect === "Japan2" || this.SpecialEffect2 === "Japan2") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsJapan2", this.x - 0.5 * y, this.y + 0.47 * y, y / 1, y / 1, style);
                     //style.drawImage(iconSpecialSkinEffectsJapan2, this.x - 0.5 * y, this.y + 0.47 * y, y / 1, y / 1);
                     /*style.drawImage(iconSpecialSkinEffectsJapan2, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
@@ -9674,88 +9686,88 @@ window.MouseClicks=[];
                         if (!window.xx3) window.xx3 = 1
                         if (!window.xx4) window.xx4 = 1							
                         */
-                } else if (this.SpecialEffect == "Byzantium" || this.SpecialEffect2 == "Byzantium") {
+                } else if (this.SpecialEffect === "Byzantium" || this.SpecialEffect2 === "Byzantium") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsByzantium", this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3, style);
                     //style.drawImage(iconSpecialSkinEffectsByzantium, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
-                } else if (this.SpecialEffect == "Close" || this.SpecialEffect2 == "Close") {
+                } else if (this.SpecialEffect === "Close" || this.SpecialEffect2 === "Close") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsClose", this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3, style);
                     //style.drawImage(iconSpecialSkinEffectsClose, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
-                } else if (this.SpecialEffect == "Earth" || this.SpecialEffect2 == "Earth") {
+                } else if (this.SpecialEffect === "Earth" || this.SpecialEffect2 === "Earth") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsEarth", this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
                     //style.drawImage(iconSpecialSkinEffectsEarth, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
-                } else if (this.SpecialEffect == "FootStep" || this.SpecialEffect2 == "FootStep") {
+                } else if (this.SpecialEffect === "FootStep" || this.SpecialEffect2 === "FootStep") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsFootStep", this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3, style);
                     //style.drawImage(iconSpecialSkinEffectsFootStep, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
-                } else if (this.SpecialEffect == "Forward" || this.SpecialEffect2 == "Forward") {
+                } else if (this.SpecialEffect === "Forward" || this.SpecialEffect2 === "Forward") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsForward", this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
                     //style.drawImage(iconSpecialSkinEffectsForward, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
-                } else if (this.SpecialEffect == "Forever" || this.SpecialEffect2 == "Forever") {
+                } else if (this.SpecialEffect === "Forever" || this.SpecialEffect2 === "Forever") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsFriendsForever", this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
                     //style.drawImage(iconSpecialSkinEffectsFriendsForever, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
-                } else if (this.SpecialEffect == "Forever2" || this.SpecialEffect2 == "Forever2") {
+                } else if (this.SpecialEffect === "Forever2" || this.SpecialEffect2 === "Forever2") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsFriendsForever2", this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3, style);
                     //style.drawImage(iconSpecialSkinEffectsFriendsForever2, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);
-                } else if (this.SpecialEffect == "Forever3" || this.SpecialEffect2 == "Forever3") {
+                } else if (this.SpecialEffect === "Forever3" || this.SpecialEffect2 === "Forever3") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsFriendsForever3", this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
                     //style.drawImage(iconSpecialSkinEffectsFriendsForever3, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
-                } else if (this.SpecialEffect == "Police" || this.SpecialEffect2 == "Police") {
+                } else if (this.SpecialEffect === "Police" || this.SpecialEffect2 === "Police") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsPolice", this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
                     //style.drawImage(iconSpecialSkinEffectsPolice, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
-                } else if (this.SpecialEffect == "Police2" || this.SpecialEffect2 == "Police2") {
+                } else if (this.SpecialEffect === "Police2" || this.SpecialEffect2 === "Police2") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsPolice2", this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
                     //style.drawImage(iconSpecialSkinEffectsPolice2, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
-                } else if (this.SpecialEffect == "Unrest" || this.SpecialEffect2 == "Unrest") {
+                } else if (this.SpecialEffect === "Unrest" || this.SpecialEffect2 === "Unrest") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsUnrest", this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
                     //style.drawImage(iconSpecialSkinEffectsUnrest, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
-                } else if (this.SpecialEffect == "Eagle" || this.SpecialEffect2 == "Eagle") {
+                } else if (this.SpecialEffect === "Eagle" || this.SpecialEffect2 === "Eagle") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsEagle", this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3, style);
                     //style.drawImage(iconSpecialSkinEffectsEagle, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);
-                } else if (this.SpecialEffect == "BobMarley" || this.SpecialEffect2 == "BobMarley") {
+                } else if (this.SpecialEffect === "BobMarley" || this.SpecialEffect2 === "BobMarley") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsBobMarley", this.x + 0.6 * y, this.y + 0.6 * y, y / 3, y / 3, style);
                     //style.drawImage(iconSpecialSkinEffectsBobMarley, this.x + 0.6 * y, this.y + 0.6 * y, y / 3, y / 3);
-                } else if (this.SpecialEffect == "Einstein" || this.SpecialEffect2 == "Einstein") {
+                } else if (this.SpecialEffect === "Einstein" || this.SpecialEffect2 === "Einstein") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsEinstein", this.x + 0.65 * y, this.y + 0.65 * y, y / 2.5, y / 2.5, style);
                     //style.drawImage(iconSpecialSkinEffectsEinstein, this.x + 0.65 * y, this.y + 0.65 * y, y / 2.5, y / 2.5);
-                } else if (this.SpecialEffect == "DeadTable" || this.SpecialEffect2 == "DeadTable") {
+                } else if (this.SpecialEffect === "DeadTable" || this.SpecialEffect2 === "DeadTable") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsDeadTable", this.x + 0.7 * y, this.y + 0.7 * y, y / 3, y / 3, style);
                     //style.drawImage(iconSpecialSkinEffectsDeadTable, this.x + 0.7 * y, this.y + 0.7 * y, y / 3, y / 3);
-                } else if (this.SpecialEffect == "Kebab" || this.SpecialEffect2 == "Kebab") {
+                } else if (this.SpecialEffect === "Kebab" || this.SpecialEffect2 === "Kebab") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsKebab", this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2, style);
                     //style.drawImage(iconSpecialSkinEffectsKebab, this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2);
-                } else if (this.SpecialEffect == "Meditation" || this.SpecialEffect2 == "Meditation") {
+                } else if (this.SpecialEffect === "Meditation" || this.SpecialEffect2 === "Meditation") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsMeditation", this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2, style);
                     //style.drawImage(iconSpecialSkinEffectsMeditation, this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2);
-                } else if (this.SpecialEffect == "Splash" || this.SpecialEffect2 == "Splash") {
+                } else if (this.SpecialEffect === "Splash" || this.SpecialEffect2 === "Splash") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsSplash", this.x - 1.15 * y, this.y - 1.3 * y, y / 0.36, y / 0.36, style);
                     //style.drawImage(iconSpecialSkinEffectsSplash, this.x - 1.15 * y, this.y - 1.3 * y, y / 0.36, y / 0.36);
-                } else if (this.SpecialEffect == "Butterfly" || this.SpecialEffect2 == "Butterfly") {
+                } else if (this.SpecialEffect === "Butterfly" || this.SpecialEffect2 === "Butterfly") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsButterfly", this.x - 1 * y, this.y - 0.6 * y, y / 2, y / 4, style);
                     //style.drawImage(iconSpecialSkinEffectsButterfly, this.x - 1 * y, this.y - 0.6 * y, y / 2, y / 4);
-                } else if (this.SpecialEffect == "Mouse" || this.SpecialEffect2 == "Mouse") {
+                } else if (this.SpecialEffect === "Mouse" || this.SpecialEffect2 === "Mouse") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsMouse", this.x + 0.5 * y, this.y - 0.1 * y, y / 3, y / 1, style);
                     //style.drawImage(iconSpecialSkinEffectsMouse, this.x + 0.5 * y, this.y - 0.1 * y, y / 3, y / 1);
-                } else if (this.SpecialEffect == "Sword" || this.SpecialEffect2 == "Sword") {
+                } else if (this.SpecialEffect === "Sword" || this.SpecialEffect2 === "Sword") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsSword", this.x - 0.8 * y, this.y - 3 / 5 * y, y * 1.6, y * 1.6, style);
                     //style.drawImage(iconSpecialSkinEffectsSword, this.x - 0.8 * y, this.y - 3 / 5 * y, y * 1.6, y * 1.6);
                 }
-                if (this.SpecialEffect == "Mask" || this.SpecialEffect2 == "Mask") {
+                if (this.SpecialEffect === "Mask" || this.SpecialEffect2 === "Mask") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsMask", this.x - 1 / 2 * y, this.y + 1 / 4 * y, y, y, style);
                     //style.drawImage(iconSpecialSkinEffectsMask, this.x - 1 / 2 * y, this.y + 1 / 4 * y, y, y);
-                } else if (this.SpecialEffect == "Heart" || this.SpecialEffect2 == "Heart") {
+                } else if (this.SpecialEffect === "Heart" || this.SpecialEffect2 === "Heart") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsHeart", this.x - 1 / 2 * y, this.y + 1 / 3 * y, y, y, style);
                     //style.drawImage(iconSpecialSkinEffectsHeart, this.x - 1 / 2 * y, this.y + 1 / 3 * y, y, y);
                 }
-                if (this.SpecialEffect == "Vip" || this.SpecialEffect2 == "Vip") {
+                if (this.SpecialEffect === "Vip" || this.SpecialEffect2 === "Vip") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsVip", this.x - 1 / 8 * y, this.y - 5.3 / 4 * y, y / 5, y / 5, style);
                     //style.drawImage(iconSpecialSkinEffectsVip, this.x - 1 / 8 * y, this.y - 5.3 / 4 * y, y / 5, y / 5);
-                } else if (this.SpecialEffect == "Ddev" || this.SpecialEffect2 == "Ddev") {
+                } else if (this.SpecialEffect === "Ddev" || this.SpecialEffect2 === "Ddev") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsDdev", this.x - 1 / 8 * y, this.y - 4.6 / 4 * y, y / 3, y / 5, style);
                     //style.drawImage(iconSpecialSkinEffectsDdev, this.x - 1 / 8 * y, this.y - 4.6 / 4 * y, y / 3, y / 5);
-                } else if (this.SpecialEffect == "Youtube" || this.SpecialEffect2 == "Youtube") {
+                } else if (this.SpecialEffect === "Youtube" || this.SpecialEffect2 === "Youtube") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsYoutube", this.x - 1 / 6 * y, this.y - 5.3 / 4 * y, y / 3, y / 3, style);
                     //style.drawImage(iconSpecialSkinEffectsYoutube, this.x - 1 / 6 * y, this.y - 5.3 / 4 * y, y / 3, y / 3);
                     //style.drawImage(iconSpecialSkinEffectsYoutube, this.x - 1/2 * y, this.y - 3/2 * y, y, y); 
-                } else if (this.SpecialEffect == "LegendHeroes" || this.SpecialEffect2 == "LegendHeroes") {
+                } else if (this.SpecialEffect === "LegendHeroes" || this.SpecialEffect2 === "LegendHeroes") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsLegendclan", this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4, style);
                     //style.drawImage(iconSpecialSkinEffectsLegendclan, this.x - 0.95 * y, this.y - 5.3 / 4 * y, y / 0.5, y / 4);
 
@@ -9764,7 +9776,7 @@ window.MouseClicks=[];
                     if (!window.xx2) window.xx2 = 5.3/4
                     if (!window.xx3) window.xx3 = 0.5
                     if (!window.xx4) window.xx4 = 4*/
-                } else if (this.SpecialEffect == "LegendClan" || this.SpecialEffect2 == "LegendClan") {
+                } else if (this.SpecialEffect === "LegendClan" || this.SpecialEffect2 === "LegendClan") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsLegendclan2", this.x - 1 / 3 * y, this.y - 5.3 / 4 * y, y / 1.5, y / 6, style);
                     //style.drawImage(iconSpecialSkinEffectsLegendclan2, this.x - 1 / 3 * y, this.y - 5.3 / 4 * y, y / 1.5, y / 6);
                     /*style.drawImage(iconSpecialSkinEffectsLegendclan2, this.x - window.xx5 * y, this.y - window.xx6 * y, y/window.xx7, y/window.xx8);				
@@ -9772,7 +9784,7 @@ window.MouseClicks=[];
                     if (!window.xx6) window.xx6 = 5.3/4
                     if (!window.xx7) window.xx7 = 1.5
                     if (!window.xx8) window.xx8 = 6*/
-                } else if (this.SpecialEffect == "BabyBoss" || this.SpecialEffect2 == "BabyBoss") {
+                } else if (this.SpecialEffect === "BabyBoss" || this.SpecialEffect2 === "BabyBoss") {
                     if (this.mass < 3000) {
 						this.drawImageSpecialSkin("iconSpecialSkinEffectsBabyBoss", this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5, style);
                         //style.drawImage(iconSpecialSkinEffectsBabyBoss, this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);
@@ -9780,7 +9792,7 @@ window.MouseClicks=[];
 						this.drawImageSpecialSkin("iconSpecialSkinEffectsBabyBoss1", this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5, style);
                         //style.drawImage(iconSpecialSkinEffectsBabyBoss1, this.x - 0.95 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);
                     }
-                } else if (this.SpecialEffect == "Gladiator" || this.SpecialEffect2 == "Gladiator") {
+                } else if (this.SpecialEffect === "Gladiator" || this.SpecialEffect2 === "Gladiator") {
                     var d = new Date();
                     var n = d.getSeconds();
                     /*
@@ -9792,10 +9804,10 @@ window.MouseClicks=[];
                     style.filter = 'hue-rotate(-' + n / 60 + 'turn)';
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsGladiator", this.x - 0.85 * y, this.y - 1.2 * y, y / 1.5, y / 1.5, style);
                     //style.drawImage(iconSpecialSkinEffectsGladiator, this.x - 0.85 * y, this.y - 1.2 * y, y / 1.5, y / 1.5);
-                } else if (this.SpecialEffect == "Hero" || this.SpecialEffect2 == "Hero") {
+                } else if (this.SpecialEffect === "Hero" || this.SpecialEffect2 === "Hero") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsHero", this.x - 0.35 * y, this.y - 1.35 * y, y / 1.5, y / 1.5, style);
                     //style.drawImage(iconSpecialSkinEffectsHero, this.x - 0.35 * y, this.y - 1.35 * y, y / 1.5, y / 1.5);
-                } else if (this.SpecialEffect == "Hero1" || this.SpecialEffect2 == "Hero1") {
+                } else if (this.SpecialEffect === "Hero1" || this.SpecialEffect2 === "Hero1") {
                     var d = new Date();
                     var n = d.getSeconds();
                     var e;
@@ -9811,31 +9823,31 @@ window.MouseClicks=[];
                     //style.drawImage(iconSpecialSkinEffectsHero1, this.x - 0.1 * y, this.y - 1.35 * y, y / 1, y / 1);
                     style.restore();
 
-                } else if (this.SpecialEffect == "Hero2" || this.SpecialEffect2 == "Hero2") {
+                } else if (this.SpecialEffect === "Hero2" || this.SpecialEffect2 === "Hero2") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsHero2", this.x - 0.3 * y, this.y - 1.48 * y, y / 2, y / 2, style);
                     //style.drawImage(iconSpecialSkinEffectsHero2, this.x - 0.3 * y, this.y - 1.48 * y, y / 2, y / 2);
-                } else if (this.SpecialEffect == "Key" || this.SpecialEffect2 == "Key") {
+                } else if (this.SpecialEffect === "Key" || this.SpecialEffect2 === "Key") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsKey", this.x + 0.4 * y, this.y - 1.15 * y, y / 2, y / 2, style);
                     //style.drawImage(iconSpecialSkinEffectsKey, this.x + 0.4 * y, this.y - 1.15 * y, y / 2, y / 2);
-                } else if (this.SpecialEffect == "MetalOfHonor" || this.SpecialEffect2 == "MetalOfHonor") {
+                } else if (this.SpecialEffect === "MetalOfHonor" || this.SpecialEffect2 === "MetalOfHonor") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsMetalOfHonor", this.x - 0.25 * y, this.y + 0.8 * y, y / 2, y / 2, style);
                     //style.drawImage(iconSpecialSkinEffectsMetalOfHonor, this.x - 0.25 * y, this.y + 0.8 * y, y / 2, y / 2);
-                } else if (this.SpecialEffect == "PeaceMaker" || this.SpecialEffect2 == "PeaceMaker") {
+                } else if (this.SpecialEffect === "PeaceMaker" || this.SpecialEffect2 === "PeaceMaker") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsPeaceMaker", this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 2, style);
                     //style.drawImage(iconSpecialSkinEffectsPeaceMaker, this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 2);
-                } else if (this.SpecialEffect == "Survivor" || this.SpecialEffect2 == "Survivor") {
+                } else if (this.SpecialEffect === "Survivor" || this.SpecialEffect2 === "Survivor") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsSurvivor", this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 1.5, style);
                     //style.drawImage(iconSpecialSkinEffectsSurvivor, this.x - 0.6 * y, this.y - 1.2 * y, y / 2, y / 1.5);
-                } else if (this.SpecialEffect == "Tiger" || this.SpecialEffect2 == "Tiger") {
+                } else if (this.SpecialEffect === "Tiger" || this.SpecialEffect2 === "Tiger") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsTiger", this.x - 1.1 * y, this.y - 1.3 * y, y / 1.5, y / 1.5, style);
                     //style.drawImage(iconSpecialSkinEffectsTiger, this.x - 1.1 * y, this.y - 1.3 * y, y / 1.5, y / 1.5);
-                } else if (this.SpecialEffect == "PanicAtDisco" || this.SpecialEffect2 == "PanicAtDisco") {
+                } else if (this.SpecialEffect === "PanicAtDisco" || this.SpecialEffect2 === "PanicAtDisco") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsPanicAtDisco", this.x - 1 * y, this.y - 1 * y, y/1, y/4, style);
                     //style.drawImage(iconSpecialSkinEffectsPanicAtDisco, this.x - 1 * y, this.y - 1 * y, y/1, y/4);	
 					this.drawSpecialSkinDancer(style, y);
-                } else if (this.targetNick.includes("The Dying Light") || this.SpecialEffect == "RedArrow" || this.SpecialEffect2 == "RedArrow") {
+                } else if (this.targetNick.includes("The Dying Light") || this.SpecialEffect === "RedArrow" || this.SpecialEffect2 === "RedArrow") {
                     style.drawImage(cimg5, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);	
-                } else if (this.SpecialEffect == "HappyNewYear" || this.SpecialEffect2 == "HappyNewYear") {
+                } else if (this.SpecialEffect === "HappyNewYear" || this.SpecialEffect2 === "HappyNewYear") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsHappyNewYear", this.x + 0.2 * y, this.y + 0.3 * y, y / 1.5, y / 1, style);
                     //style.drawImage(iconSpecialSkinEffectsHappyNewYear, this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1);
                     //style.drawImage(iconSpecialSkinEffectsHappyNewYear, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4;							
@@ -9843,17 +9855,17 @@ window.MouseClicks=[];
                     //if (!window.xx2) window.xx2= -0.15
                     //if (!window.xx3) window.xx3 = 1.5
                     //if (!window.xx4) window.xx4 = 1	
-                } else if (this.SpecialEffect == "Coffee" || this.SpecialEffect2 == "Coffee") {
+                } else if (this.SpecialEffect === "Coffee" || this.SpecialEffect2 === "Coffee") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsCoffee", this.x + 0.2 * y, this.y + 0.3 * y, y / 1.5, y / 1, style);					
-                } else if (this.SpecialEffect == "ThanksGivings" || this.SpecialEffect2 == "ThanksGivings") {
+                } else if (this.SpecialEffect === "ThanksGivings" || this.SpecialEffect2 === "ThanksGivings") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsThanksGivings", this.x + 0.2 * y, this.y + 0.3 * y, y / 1.5, y / 1, style);
-                } else if (this.SpecialEffect == "ChristmasTree" || this.SpecialEffect2 == "ChristmasTree") {
+                } else if (this.SpecialEffect === "ChristmasTree" || this.SpecialEffect2 === "ChristmasTree") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsChristmasTree", this.x + 0.4 * y, this.y + 0.2 * y, y / 1.5, y / 1, style);
-                } else if (this.SpecialEffect == "SantaHat" || this.SpecialEffect2 == "SantaHat") {
+                } else if (this.SpecialEffect === "SantaHat" || this.SpecialEffect2 === "SantaHat") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsSantaHa", this.x - 1.05 * y, this.y + 1.5 * y, y / 1.5, y / 1, style);
-                } else if (this.SpecialEffect == "Flag4July" || this.SpecialEffect2 == "Flag4July") {
+                } else if (this.SpecialEffect === "Flag4July" || this.SpecialEffect2 === "Flag4July") {
 					this.drawImageSpecialSkin("iconSpecialSkinEffectsUSAFlag4July", this.x - 0.9 * y, this.y + 1.1 * y, y / 1.5, y / 1, style);				
-                } else if (this.SpecialEffect == "WhiteArrow" || this.SpecialEffect2 == "WhiteArrow") {
+                } else if (this.SpecialEffect === "WhiteArrow" || this.SpecialEffect2 === "WhiteArrow") {
                     //style.drawImage(cimg2, this.x - y * 2, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
 
                     var today = new Date();
@@ -9868,7 +9880,7 @@ window.MouseClicks=[];
                                     window.abah = today.getHours()
                                 }
                                 ab = ab - window.abam;
-                                if (today.getHours() == window.abah && ab < 5) {
+                                if (today.getHours() === window.abah && ab < 5) {
                                     style.drawImage(cimg5, this.x - (1.5 + 2 * ab) * y, this.y - (1.5 + 2 * ab) * y, (1.5 + 2 * ab) * 2 * y, (1.5 + 2 * ab) * 2 * y);
                                 } else {
                                     window.testAnimatCells = true;
@@ -9896,7 +9908,7 @@ window.MouseClicks=[];
 			
 		},		
         this.draw = function(style, cellMoved) { //this function draws each cell/virus/food 1 time only
-            if ((LM.hideSmallBots && this.size <= 36) || this.invisible == true) {
+            if ((LM.hideSmallBots && this.size <= 36) || this.invisible === true) {
                 return;
             }
             //					
@@ -10005,7 +10017,7 @@ window.MouseClicks=[];
 			} 
 			if (!node) style.closePath();
 			//17/12/2020
-			if (!node && this.size <= 38 && this.nick == "" && !this.isVirus && !this.isPlayerCell){
+			if (!node && this.size <= 38 && this.nick === "" && !this.isVirus && !this.isPlayerCell){
 				if (defaultmapsettings.jellyPhisycs){
 					style.fillStyle = this.color;
 					style.fill();	
@@ -10018,7 +10030,7 @@ window.MouseClicks=[];
             //}						
                 if (this.isVirus) {
                     //console.log("is not jelly");
-                    /*if (dyinglight1load == "yes") {
+                    /*if (dyinglight1load === "yes") {
                         try {
                             style.drawImage(cimgDyingLightvirus, this.x - 0.8 * this.size, this.y - 0.8 * this.size, 1.6 * this.size, 1.6 * this.size);
                         } catch (e) {}
@@ -10071,7 +10083,7 @@ window.MouseClicks=[];
                 style.lineWidth = 20; ///
                 style.strokeStyle = this.color; ///
                 style.stroke(); //
-            } else if (!window.multiboxPlayerEnabled && this.spectator && !this.isPlayerCellMulti && this.nick != "" && this.nick == profiles[application.selectedProfile].nick && LM.play) {
+            } else if (!window.multiboxPlayerEnabled && this.spectator && !this.isPlayerCellMulti && this.nick != "" && this.nick === profiles[application.selectedProfile].nick && LM.play) {
                 style.lineWidth = 20; ///
                 style.strokeStyle = this.color; ///
                 style.stroke(); //
@@ -10105,12 +10117,12 @@ window.MouseClicks=[];
 
 
 
-            if (defaultmapsettings.multiBoxShadow && this.targetNick != null && (this.targetNick == profiles[application.selectedOldProfile].nick || this.targetNick == profiles[application.selectedProfile].nick) && LM.playerCellsMulti && legendmod.playerCellsMulti.length) {
+            if (defaultmapsettings.multiBoxShadow && this.targetNick != null && (this.targetNick === profiles[application.selectedOldProfile].nick || this.targetNick === profiles[application.selectedProfile].nick) && LM.playerCellsMulti && legendmod.playerCellsMulti.length) {
                 if (legendmod.play && legendmod.playerCellsMulti) {
-                    if (this.targetNick == profiles[application.selectedOldProfile].nick) {
+                    if (this.targetNick === profiles[application.selectedOldProfile].nick) {
                         style.shadowBlur = 40;
                         style.shadowColor = profiles[application.selectedOldProfile].color;
-                    } else if (this.targetNick == profiles[application.selectedProfile].nick) {
+                    } else if (this.targetNick === profiles[application.selectedProfile].nick) {
                         style.shadowBlur = 40;
                         style.shadowColor = profiles[application.selectedProfile].color;
                     }
@@ -10181,7 +10193,7 @@ window.MouseClicks=[];
                             }
                         }
                     }
-                    if (dyinglight1load == "yes" && node == null && this.targetNick.includes(LM.playerNick) == false && !this.isFood && this.mass > 12) {
+                    if (dyinglight1load === "yes" && node == null && this.targetNick.includes(LM.playerNick) === false && !this.isFood && this.mass > 12) {
                         try {
                             style.drawImage(cimgDyingLight, this.x - y, this.y - y, 2 * y, 2 * y);
                         } catch (e) {}
@@ -10416,7 +10428,8 @@ window.MouseClicks=[];
             this.mapOffsetFixed = false;
             this.leaderboard = [];
             this.ws = t;
-            this.integrity = this.ws.indexOf('agar.io') > -1; // 2020 JIMBOY3100 
+            //this.integrity = this.ws.indexOf('agar.io') > -1; // 2020 JIMBOY3100 
+			this.integrity = this.ws.indexOf('agario.miniclippt') > -1; // 2024 JIMBOY3100 
             if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
             window.userBots.isAlive = false
             window.userBots.macroFeedInterval = null
@@ -10453,10 +10466,10 @@ window.MouseClicks=[];
             this.play = false //fix
 
             this.totalPlayerMass = parseInt(localStorage.getItem("totalPlayerMass"));
-            if (this.totalPlayerMass == "NaN" || !this.totalPlayerMass) this.totalPlayerMass = 0 //fix
+            if (this.totalPlayerMass === "NaN" || !this.totalPlayerMass) this.totalPlayerMass = 0 //fix
             if (this.ws.includes("imsolo.pro:2102")) { //4 times bigger 600 users limit
                 this.totalPlayerMassBigFFA = parseInt(localStorage.getItem("totalPlayerMassBigFFA"));
-                if (this.totalPlayerMassBigFFA == "NaN" || !this.totalPlayerMassBigFFA) this.totalPlayerMassBigFFA = 0 //fix
+                if (this.totalPlayerMassBigFFA === "NaN" || !this.totalPlayerMassBigFFA) this.totalPlayerMassBigFFA = 0 //fix
             }
             this.replayfunctions();
 
@@ -10541,7 +10554,7 @@ window.MouseClicks=[];
                     clearTimeout(window.replayTimeOuts[i])
                 }
                 window.replayTimeOuts = []
-            } else if (!this.ws.includes("replay") && $('#pause-hud').text() == "Loading...") {
+            } else if (!this.ws.includes("replay") && $('#pause-hud').text() === "Loading...") {
                 $('#pause-hud').text(textLanguage.pause);
                 $('#pause-hud').hide()
             }
@@ -10649,14 +10662,14 @@ window.MouseClicks=[];
 
             var pIDs = application.FacebookIDs.split(',');
             for (let length = 0; length < pIDs.length; length++) {
-                if (friendsIDs.length == 0) {
+                if (friendsIDs.length === 0) {
                     friendsIDs += pIDs[length].split(':')[0];
                 } else {
                     friendsIDs += "|" + pIDs[length].split(':')[0];
                 }
             }
             for (let length = 0; length < data.length; length++) {
-                if (friendsIDs.length == 0) {
+                if (friendsIDs.length === 0) {
                     friendsIDs += data[length].id
                 } else {
                     friendsIDs += "|" + data[length].id
@@ -10750,7 +10763,7 @@ window.MouseClicks=[];
         },
         sendTimeOutTokenForBots() {
             //window.sendTimeOutTokenBots=false;
-            if (document.getElementById('userStatus').innerText == 'Connected' && window.RequestedTokens > 1) {
+            if (document.getElementById('userStatus').innerText === 'Connected' && window.RequestedTokens > 1) {
                 setTimeout(function() {
                     legendmod.sendTimeOutTokenForBots();
                     //console.log('sendTimeOutTokenForBots triggered')
@@ -10783,7 +10796,7 @@ window.MouseClicks=[];
             window.botsSpawncodeNum++;
             window.botsSpawncode[window.botsSpawncodeNum] = token;
 
-            if (document.getElementById('userStatus').innerText == 'Connected' && window.RequestedTokens > 1) {
+            if (document.getElementById('userStatus').innerText === 'Connected' && window.RequestedTokens > 1) {
                 window.RequestedTokens--;
                 $('#captchatokens').html(parseInt($('#captchatokens').html()) + 1);
                 //setTimeout(function() {
@@ -11070,7 +11083,25 @@ window.MouseClicks=[];
             }
             var x = null;
             var suggestedValue = 1540483477;
-            var ipCheck = ip.match(/(ws+:\/\/)([^:]*)(:\d+)/)[2];
+            //var ipCheck = ip.match(/(ws+:\/\/)([^:]*)(:\d+)/)[2];
+			var parsedUrl = new URL(ip);
+			var ipCheck = parsedUrl.hostname + parsedUrl.pathname.replace(/\/$/g, '');
+    // Fix here: manually extract the hostname
+			/*var ipCheck;
+			try {
+				// Remove protocol prefix
+				ipCheck = ip.replace(/^(ws+:\/\/|wss+:\/\/)/, ''); // Handles both ws:// and wss://
+
+				// Remove path suffix if present
+				ipCheck = ipCheck.split('/')[0];
+				console.log("ipCheck:", ipCheck);
+				console.log("server version2:", options);
+				} catch (e) {
+				console.error("Invalid IP format", e);
+				return null;
+			}*/
+			// End of new code
+			
             var newLength = ipCheck.length + options.byteLength;
             var uint8Arr = new Uint8Array(newLength);
             var value = 0;
@@ -11171,7 +11202,7 @@ window.MouseClicks=[];
             this.pingTime = Date.now();
             this.pingUsed++;
             this.pingArray.push(this.ping);
-            if (this.pingUsed == 99) {
+            if (this.pingUsed === 99) {
                 //console.log('standardDeviation - usePopulation', standardDeviation(this.pingArray, true));
                 console.log('standardDeviation', this.pingArray.stDev());
                 this.pingArray = [];
@@ -11210,14 +11241,14 @@ window.MouseClicks=[];
             var encode = function() {
                 for (var text = '';;) {
                     var i = data.getUint8(s++);
-                    if (0 == i) break;
+                    if (0 === i) break;
                     text += String.fromCharCode(i);
                 }
                 return text;
             };
             var s = 0;
             var opcode = data.getUint8(s++);
-            switch (54 == opcode && (opcode = 53), opcode) {
+            switch (54 === opcode && (opcode = 53), opcode) {
 
 
 
@@ -11234,7 +11265,7 @@ window.MouseClicks=[];
                         user.fbId = window.decodeURIComponent(window.escape(encode()));
 
                         for (i = 0; i <= this.leaderboard.length - 1; i++) {
-                            if (this.leaderboard[i].id == user.id) {
+                            if (this.leaderboard[i].id === user.id) {
                                 user.nick = this.leaderboard[i].nick
                             }
                         }
@@ -11310,7 +11341,7 @@ window.MouseClicks=[];
                     this.friends = this.fbOnline.length;
 
                     this.playerPosition = 0;
-                    if (data.getUint8(0) == 54) {
+                    if (data.getUint8(0) === 54) {
                         const pos = data.getUint16(s, true);
                         s += 2;
                         //console.log('Friends:', pos)
@@ -11339,7 +11370,7 @@ window.MouseClicks=[];
                             this.friends++;
                         }
                         let friend = LM.fbOnline.find(element => {
-                            return element.id == id;
+                            return element.id === id;
                         });
                         friend != undefined ? isFBFriend = friend.fbId : isFBFriend = false;
                         this.leaderboard.push({
@@ -11383,7 +11414,7 @@ window.MouseClicks=[];
                     this.handleLeaderboard();
                     break;
                     /*    
-                        if (this.leaderboard = [], this.playerPosition = 0, 54 == data.getUint8(0)) {
+                        if (this.leaderboard = [], this.playerPosition = 0, 54 === data.getUint8(0)) {
                             data.getUint16(s, true);
                             s += 2;
                         }
@@ -11512,13 +11543,13 @@ window.MouseClicks=[];
                         mod = !!(flag & 32);
 
                     if (server && name !== "SERVER") name = "[SERVER] " + name;
-                    if (name == "SERVER") name = "[SERVER]"
+                    if (name === "SERVER") name = "[SERVER]"
                     if (admin) name = "[ADMIN] " + name;
                     if (mod) name = "[MOD] " + name;
                     //var wait = Math.max(3000, 1000 + message.length * 150);
                     var time = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
                     var caseof = 101
-                    if (name == "SERVER") {
+                    if (name === "SERVER") {
                         caseof = 102
                     }
                     if (name.includes('}')) {
@@ -11528,7 +11559,7 @@ window.MouseClicks=[];
                         message = "For bot commands look at Hotkeys"
                     }
                     this.chatableServer = true;
-                    if (message != "WWW.IMSOLO.PRO " && message != "WWW.IMSOLO.PRO" && $("#clantag").val() == "") {
+                    if (message != "WWW.IMSOLO.PRO " && message != "WWW.IMSOLO.PRO" && $("#clantag").val() === "") {
                         application.displayChatMessage(time, caseof, 1000, name + ": " + message); //this.displayChatMessage(time, caseof, plId, msg);	
                     }
                     break;
@@ -11601,15 +11632,15 @@ window.MouseClicks=[];
                     const node = new Node(data, s);
 
                     var key_or_value = node.readFlag();
-                    if (key_or_value == 1) {
+                    if (key_or_value === 1) {
                         node.setContentType();
                     }
                     key_or_value = node.readFlag();
-                    if (key_or_value == 2) {
+                    if (key_or_value === 2) {
                         node.setUncompressedSize();
                     }
                     key_or_value = node.readFlag();
-                    if (key_or_value == 1) {
+                    if (key_or_value === 1) {
                         var option = node.readUint32();
                         var response = node.readFlag();
                         var response_2 = node.readUint32();
@@ -11651,7 +11682,7 @@ window.MouseClicks=[];
                             case 20:
                                 window.testobjects10220 = node;
                                 //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Disconnect", option, response);
-                                if (response == 20) {
+                                if (response === 20) {
                                     //toastr.error('<b>[SERVER]:</b> You have been disconnected because your User ID logged in from another place');
                                 }
                                 break;
@@ -12030,7 +12061,7 @@ window.MouseClicks=[];
                     window.testobjectsOpcode103 = data;
                     //LM["accessTokenSent"] = !![];
                     this.accessTokenSent = true;
-                    if (window.master.context == 'facebook') { //Yahnych
+                    if (window.master.context === 'facebook') { //Yahnych
                         this.sendFBIDS(window.master.fbUsers);
                     }
                     break;
@@ -12177,10 +12208,12 @@ window.MouseClicks=[];
                 case 241:
                     window.testobjectsOpcode241 = data;
                     this.protocolKey = data.getUint32(s, true);
+					
                     //window.testobjectsOpcode241.getUint32(1, true);
-                    //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Received protocol key:', this.protocolKey);
+                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Received protocol key:', this.protocolKey);
                     window.generatedProtocolKey = this.protocolKey;
                     var key = new Uint8Array(data.buffer, s += 4);
+					//console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Received Server version:', key);
                     this.clientKey = this.generateClientKey(this.ws, key);
                     //legendmod.generateClientKey("wss://live-arena-19y1u3v.agar.io:443",new Uint8Array(window.testobjectsOpcode241['buffer'], 5))
                     if (window.master && window.master.login) {
@@ -12618,7 +12651,7 @@ window.MouseClicks=[];
                 '<b class="message-nick">Viruses eaten:</b> ' + u.virusesEaten)
         },
         updateEvents(event) {
-            if (event.length == 0) window.questActivationReq()
+            if (event.length === 0) window.questActivationReq()
             for (var i = 0; i < event.length; i++) {
                 var e = event[i],
                     type = e.eventId,
@@ -12662,8 +12695,8 @@ window.MouseClicks=[];
                 expires: time,
                 slot: s.slot
             };
-            $(`#${potion} img`).attr('src', `https://legendmod.ml/banners/${t}.png`);
-            if (s.status == 1) {
+            $(`#${potion} img`).attr('src', `https://jimboy3100.github.io/banners/${t}.png`);
+            if (s.status === 1) {
                 if (defaultmapsettings.autobrewing && this.user.brewingEnd < Date.now()) window.brewPotion(s.slot);
                 $(`#${potion} img`).css("border-color", "red");
                 $(`#${potion} div`).css("border-color", "red");
@@ -12694,12 +12727,12 @@ window.MouseClicks=[];
                     expires: time,
                     slot: s.slot
                 };
-                $(`#${potion} img`).attr('src', `https://legendmod.ml/banners/${t}.png`);
-                if (s.status == 1) {
+                $(`#${potion} img`).attr('src', `https://jimboy3100.github.io/banners/${t}.png`);
+                if (s.status === 1) {
                     $(`#${potion} img`).css("border-color", "red");
                     $(`#${potion} div`).css("border-color", "red");
                     $(`#${potion} div`).text('brew');
-                } else if (s.status == 2) {
+                } else if (s.status === 2) {
                     this.user.brewingEnd = time;
                     if (window.autobrewTimer) clearTimeout(window.autobrewTimer);
                     window.autobrewTimer = setTimeout(() => {
@@ -12708,7 +12741,7 @@ window.MouseClicks=[];
                     $(`#${potion} img`).css("border-color", "yellow");
                     $(`#${potion} div`).css("border-color", "yellow");
                     $(`#${potion} div`).text(expire);
-                } else if (s.status == 3) {
+                } else if (s.status === 3) {
                     this.user.brewedSlots++;
                     $(`#${potion} img`).css("border-color", "green");
                     $(`#${potion} div`).css("border-color", "green");
@@ -12717,16 +12750,16 @@ window.MouseClicks=[];
             }
             this.user.emptySlots = empty.length;
             empty.forEach((potion) => {
-                $(`#${potion} img`).attr('src', `https://legendmod.ml/banners/potion_empty.png`);
+                $(`#${potion} img`).attr('src', `https://jimboy3100.github.io/banners/potion_empty.png`);
                 $(`#${potion} img`).css("border-color", "grey");
                 $(`#${potion} div`).css("border-color", "grey");
                 $(`#${potion} div`).text('empty');
             })
         },
         autobrew() {
-            if (defaultmapsettings.autobrewing && (window.master.context == "facebook" || window.master.context == "google")) {
+            if (defaultmapsettings.autobrewing && (window.master.context === "facebook" || window.master.context === "google")) {
                 for (var potion of Object.values(LM.user.potionsStatus)) {
-                    if (potion.status == 1) {
+                    if (potion.status === 1) {
                         window.brewPotion(potion.slot);
                         break;
                     }
@@ -12734,9 +12767,9 @@ window.MouseClicks=[];
             }
         },
         getPotionForOpen() {
-            if ((window.master.context == "facebook" || window.master.context == "google")) {
+            if ((window.master.context === "facebook" || window.master.context === "google")) {
                 for (var potion of Object.values(LM.user.potionsStatus)) {
-                    if (potion.status == 3 || (potion.status == 2 && this.user.brewingEnd < Date.now())) {
+                    if (potion.status === 3 || (potion.status === 2 && this.user.brewingEnd < Date.now())) {
                         window.openPotion(potion.slot);
                         break;
                     }
@@ -12810,14 +12843,14 @@ window.MouseClicks=[];
             img.onerror = function() {
                 //console.log("error loading image: "+ url);
                 if (url.includes('configs-web.agario.miniclippt')) {
-                    var newURL = "https://legendmod.ml/vanillaskins/" + url.split('/').pop();
+                    var newURL = "https://jimboy3100.github.io/vanillaskins/" + url.split('/').pop();
                     app.urlReplaces[url] = newURL;
                     //console.log("new destination is: " + newURL);
                     app.user.skins[url].url = newURL;
                     app.getImg(newURL, name, callback);
                     return newURL;
 
-                } else if (url.includes('legendmod.ml/vanillaskins/"')) {
+                } else if (url.includes('jimboy3100.github.io/vanillaskins/"')) {
                     if (!application.brokenSkins.hasOwnProperty(url)) {
                         application.brokenSkins[url] = 1;
                         application.messageToDiscord('Unknown skin: ', url);
@@ -12843,7 +12876,7 @@ window.MouseClicks=[];
                     return ["https://configs-web.agario.miniclippt.com/live/" + window.agarversion + link1 + ".png", type];
                 } else if (window.LMAgarGameConfiguration != undefined) {
                     for (var player = 0; player < window.EquippableSkins.length; player++) {
-                        if (window.EquippableSkins[player].productId == link && window.EquippableSkins[player].image != "uses_spine") {
+                        if (window.EquippableSkins[player].productId === link && window.EquippableSkins[player].image != "uses_spine") {
                             return ["https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image, type];
                         }
                     }
@@ -12865,15 +12898,15 @@ window.MouseClicks=[];
         displayActiveBoosts(items) {
             for (var i = 0; i < items.length; i++) {
                 var item = items[i];
-                if (item.productId[0] == "x") {
+                if (item.productId[0] === "x") {
                     $("#xp-active").html(`${application.boostsInfo[item.productId].name} expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
-                } else if (item.productId[0] == "m") {
+                } else if (item.productId[0] === "m") {
                     $("#mass-active").html(`${application.boostsInfo[item.productId].name} expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
                 }
             }
         },
         displayActiveQuests(items) {
-            if (items.length == 0) window.questActivationReq()
+            if (items.length === 0) window.questActivationReq()
             for (var i = 0; i < items.length; i++) {
                 var item = items[i],
                     type = item.type;
@@ -12945,7 +12978,7 @@ Game name     : ${i.displayName}<br/>
             }
             exp -= 500;
             if (q <= 4) {
-                exp = q == 1 ? 50 : q == 2 ? 125 : q == 3 ? 250 : 500;
+                exp = q === 1 ? 50 : q === 2 ? 125 : q === 3 ? 250 : 500;
             }
             return exp
         },
@@ -13027,7 +13060,7 @@ Game name     : ${i.displayName}<br/>
                 var html = '<span>';
                 if (this.leaderboard[temp].id === 'isPlayer') {
                     html = '<span class=\"me\">';
-                } else if (LM.multiBoxPlayerExists && this.leaderboard[temp].nick == profiles[application.selectedOldProfile].nick && this.leaderboard[temp].nick != "") {
+                } else if (LM.multiBoxPlayerExists && this.leaderboard[temp].nick === profiles[application.selectedOldProfile].nick && this.leaderboard[temp].nick != "") {
                     html = '<span class=\"me\">';
                 } else {
                     if (ogarcopythelb.clanTag.length && 0 != window.teammatenicks.includes(this.leaderboard[temp].nick)) {
@@ -13042,7 +13075,7 @@ Game name     : ${i.displayName}<br/>
             //
             if (LM.multiBoxPlayerExists) {
                 for (var temp = 0; temp < this.leaderboard.length; temp++) {
-                    if (this.leaderboard[temp].nick == profiles[application.selectedOldProfile].nick && profiles[application.selectedOldProfile].nick != profiles[application.selectedProfile].nick && this.leaderboard[temp].nick != "") {
+                    if (this.leaderboard[temp].nick === profiles[application.selectedOldProfile].nick && profiles[application.selectedOldProfile].nick != profiles[application.selectedProfile].nick && this.leaderboard[temp].nick != "") {
                         this.playerPositionMulti = temp;
                     }
                 }
@@ -13066,7 +13099,7 @@ Game name     : ${i.displayName}<br/>
                 } else if (this.playerPositionMulti && (this.playerPositionMulti + 1) < this.playerPosition) {
                     teamText += tempPositionText
                     teamText += tempPositionText2
-                } else if (this.playerPositionMulti && (this.playerPositionMulti + 1) == this.playerPosition) { //bug
+                } else if (this.playerPositionMulti && (this.playerPositionMulti + 1) === this.playerPosition) { //bug
                     teamText += tempPositionText2
                 }
             }
@@ -13092,7 +13125,7 @@ Game name     : ${i.displayName}<br/>
 						counter++;
 					}
 				});
-				if (botcounter == 0) legendmod.botNicks=[];
+				if (botcounter === 0) legendmod.botNicks=[];
 				var totalRealPlayers = ArrayLeaderboardCount.length - howmanytypesofbots;
 				if (counterNicks>0){
 					teamText += '<span class="me">' + Languageletter313 + ': ' + totalRealPlayers + ' Bots: ' + counterNicks + '</span>';
@@ -13106,7 +13139,7 @@ Game name     : ${i.displayName}<br/>
                     teamText += '<span class="teammate">' + 'Friends' + ': ' + legendmod.friends + '</span>';
                 }
                 //t += '<span class="teammate">' + 'Friends' + ': ' + legendmod.friends + '</span>';
-            } else if (legendmod.gameMode == ":battleroyale") {
+            } else if (legendmod.gameMode === ":battleroyale") {
                 teamText = '<span>';
                 if (legendmod.battleRoyale.shrinkTime - Date.now() / 1000 > 0) {
                     teamText += '<span>Shrink time: ' + legendmod.battleRoyale.timeLeft + '</span>';
@@ -13137,13 +13170,13 @@ Game name     : ${i.displayName}<br/>
 
 
             ///////////////// establish core.registerSkin
-            if (defaultmapsettings.vanillaSkins == true && window.customskinsname != null && application.customSkinsMap[window.customskinsname] == null && window.customskinsarray[window.customskinsname] && window.customskinsarray[window.customskinsname].customskinsurl != null) {
+            if (defaultmapsettings.vanillaSkins === true && window.customskinsname != null && application.customSkinsMap[window.customskinsname] ==null && window.customskinsarray[window.customskinsname] && window.customskinsarray[window.customskinsname].customskinsurl != null) {
                 for (i = 0; i <= this.leaderboard.length - 1; i++) {
-                    if (this.leaderboard[i].nick == window.customskinsname) {
+                    if (this.leaderboard[i].nick === window.customskinsname) {
                         application.customSkinsMap[window.customskinsname] = window.customskinsarray[window.customskinsname].customskinsurl;
                         application.loadSkin(application.customSkinsCache, window.customskinsarray[window.customskinsname].customskinsurl, window.customskinsarray[window.customskinsname].customskinanimated);
                         window.customskinsname = null;
-                        window.customskinsarray[window.customskinsname] == null
+                        window.customskinsarray[window.customskinsname] ==null
                     }
                 }
             }
@@ -13202,7 +13235,7 @@ Game name     : ${i.displayName}<br/>
 				var temp, temp2;
 				if ($("#server-token").val().includes("replay^")){
 					temp = $("#server-token").val().replace('replay^','').split('(')[0].split('.lm')[0];					
-					if (temp.length == 7){
+					if (temp.length === 7){
 						temp2 = true
 					}
 				}			
@@ -13263,12 +13296,12 @@ Game name     : ${i.displayName}<br/>
             
         },
         addSpect() {
-            if (($("#nick").val().includes('℄') && $("#clantag").val() == window.clanTagLc) || window.proLicenceUID) {
+            if (($("#nick").val().includes('℄') && $("#clantag").val() === window.clanTagLc) || window.proLicenceUID) {
                 $('#set-fullSpectator').show();
                 $('#set-ingameSpectator').show();
-                if (window.fullSpectator && spects.length == 0) {
+                if (window.fullSpectator && spects.length === 0) {
                     addFullSpectator();
-                } else if (window.ingameSpectator && spects.length == 0) {
+                } else if (window.ingameSpectator && spects.length === 0) {
                     addSpectator();
                 }
             } else {
@@ -13288,16 +13321,16 @@ Game name     : ${i.displayName}<br/>
             //return !(x + size < this.viewX - x2s || y + size < this.viewY - y2s || x - size > this.viewX + x2s || y - size > this.viewY + y2s);
         },
         vanillaskins(y, g) {
-            if (application.customSkinsMap[y] == undefined) {
-                if (LM.gameMode == ":party") {
+            if (application.customSkinsMap[y] === undefined) {
+                if (LM.gameMode === ":party") {
                     y = y + "#000000";
                 }
                 //console.log(g)		
                 if (legendflags.includes(LowerCase(y))) {
-                    core.registerSkin(y, null, "https://legendmod.ml/agario/live/flags/" + LowerCase(y) + ".png", null);
+                    core.registerSkin(y, null, "https://jimboy3100.github.io/agario/live/flags/" + LowerCase(y) + ".png", null);
                 } else if (window.FreskinsMap && window.FreskinsMap.includes(LowerCase(y))) {
                     for (var player = 0; player < window.FreeSkins.length; player++) {
-                        if (LowerCase(y) == window.FreeSkins[player].id) {
+                        if (LowerCase(y) === window.FreeSkins[player].id) {
                             core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image, null);
                             //console.log("https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image)
                         }
@@ -13313,9 +13346,9 @@ Game name     : ${i.displayName}<br/>
                     g1 = makeUpperCaseAfterUnderline(g1);
                     var customskinanimated = true;
                     core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", customskinanimated);
-                } else if (g != null && defaultmapsettings.vanillaSkins == true && window.LMAgarGameConfiguration != undefined) {
+                } else if (g != null && defaultmapsettings.vanillaSkins === true && window.LMAgarGameConfiguration != undefined) {
                     for (var player = 0; player < window.EquippableSkins.length; player++) {
-                        if (window.EquippableSkins[player].productId == "skin_" + g.replace('%', '') && window.EquippableSkins[player].image != "uses_spine") {
+                        if (window.EquippableSkins[player].productId === "skin_" + g.replace('%', '') && window.EquippableSkins[player].image != "uses_spine") {
                             //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);                                
                             window.lastusednameforskin = y;
                             //core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image, null);
@@ -13346,7 +13379,7 @@ Game name     : ${i.displayName}<br/>
             //var ofs = 1;
             var calc = (x < this.mapMidX + ofs && x > this.mapMidX - ofs) || (y < this.mapMidY + ofs && y > this.mapMidY - ofs) ? 4 : x >= this.mapMidX && y < this.mapMidY ? 0 : x < this.mapMidX && y < this.mapMidY ? 1 : x < this.mapMidX && y >= this.mapMidY ? 2 : 3;
             //var calc = (x < this.mapOffsetX + ofs && x > this.mapOffsetX - ofs) || (y < this.mapOffsetY + ofs && y > this.mapOffsetY - ofs) ? 4 : x >= this.mapOffsetX && y < this.mapOffsetY ? 0 : x < this.mapOffsetX && y < this.mapOffsetY ? 1 : x < this.mapOffsetX && y >= this.mapOffsetY ? 2 : 3;
-            if ((window.legendmod.lbgpi == 4 || calc == 4 || window.legendmod.lbgpi == calc) && window.legendmod.delstate < 0) {
+            if ((window.legendmod.lbgpi === 4 || calc === 4 || window.legendmod.lbgpi === calc) && window.legendmod.delstate < 0) {
                 window.legendmod.lbgpi = calc;
                 return calc;
             } else if (window.legendmod.lbgpi != calc) {
@@ -13391,7 +13424,7 @@ Game name     : ${i.displayName}<br/>
                         //tempdateNow2 = "last day"
                     }
                     tempdateNow2 += "th";
-                    toastr.warning("<b>[" + Premadeletter123 + "]:</b> <span style='text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);'>Congratulations</span> for your score on FFA PowerUp.<br>  Your licence is stored as Giveaway Premium until <font color='blue'><b>" + tempdateNow2 + "</font></b> of this month. Thank you for using our mod!").css("width", "350px");
+                    toastr.warning("<b>[" + Premadeletter123 + "]:</b> <span style='text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);'>Congratulations</span> for your score on FFA PowerUp.<br>  Your licence is stored as Giveaway Premium until <font color='blue'><b>" + tempdateNow2 + "</font></b> of this month. Thank you for using our mod!").css("width", "350px");
                 }
                 localStorage.setItem("totalPlayerMassBigFFA", this.totalPlayerMassBigFFA);
             }
@@ -13409,7 +13442,7 @@ Game name     : ${i.displayName}<br/>
           this.Waves.push(wave)			
 		},	
 		changeWaves(x1, y1, color1, length, sender, moreAnimation) {
-			if (this.Waves && this.Waves[0] && this.Waves[0].sender == sender){
+			if (this.Waves && this.Waves[0] && this.Waves[0].sender === sender){
 				this.Waves[0].x = x1
 				this.Waves[0].y = y1
 				this.Waves[0].color = color1;
@@ -13426,7 +13459,7 @@ Game name     : ${i.displayName}<br/>
             var encode = function() {
                 for (var text = '';;) {
                     var string = view.readUInt8(offset++);
-                    if (0 == string) break;
+                    if (0 === string) break;
                     text += String.fromCharCode(string);
                 }
                 return text;
@@ -13450,7 +13483,7 @@ Game name     : ${i.displayName}<br/>
             for (length = 0;;) {
                 //extendedFlags = false;
                 var id = view.readUInt32LE(offset);
-                if (offset += 4, 0 == id) break;
+                if (offset += 4, 0 === id) break;
                 var x = view.readInt32LE(offset);
                 if (window.legendmod.vector[window.legendmod.vnr][0]) x = this.translateX(x); //Sonia3
                 offset += 4;
@@ -13530,7 +13563,7 @@ Game name     : ${i.displayName}<br/>
                         color = LM.cellcolors[name]
                     } else {
                         application.teamPlayers.forEach((found) => {
-                            if (found.nick == name && found.nick != profiles[application.selectedProfile].nick) {
+                            if (found.nick === name && found.nick != profiles[application.selectedProfile].nick) {
                                 color = found.color
                             }
                         })
@@ -13560,9 +13593,9 @@ Game name     : ${i.displayName}<br/>
                         }
                         //this.cells.push(cellUpdateCells);
                         this.cells.push(cellUpdateCells);
-                        if (this.playerCellIDs.indexOf(id) != -1 && this.playerCells.indexOf(cellUpdateCells) == -1) {
+                        if (this.playerCellIDs.indexOf(id) != -1 && this.playerCells.indexOf(cellUpdateCells) === -1) {
                             cellUpdateCells.isPlayerCell = true;
-                            if (this.gameMode == ":teams") {
+                            if (this.gameMode === ":teams") {
                                 this.playerColor = color;
                             } else {
                                 if (profiles[application.selectedProfile].color && defaultmapsettings.myCustomColor && profiles[application.selectedProfile].color) {
@@ -13590,9 +13623,9 @@ Game name     : ${i.displayName}<br/>
                     cellUpdateCells.targetNick = name;
                 }
                 //15/7/2020
-                if (name == "℄🌀JustWatchPro" || name == "℄🌀Ꭵᑎᖴᗝᖇᗰᗩ丅Ꭵᗝᑎ") {
-                    if (name == "℄🌀JustWatchPro") cellUpdateCells.targetNick = "℄🌀Let\'s fight for glory. Let\'s fight for our kids";
-                    if (name == "℄🌀Ꭵᑎᖴᗝᖇᗰᗩ丅Ꭵᗝᑎ") cellUpdateCells.targetNick = "℄🌀Avoid (Anti ,Corners, Random)";
+                if (name === "℄🌀JustWatchPro" || name === "℄🌀Ꭵᑎᖴᗝᖇᗰᗩ丅Ꭵᗝᑎ") {
+                    if (name === "℄🌀JustWatchPro") cellUpdateCells.targetNick = "℄🌀Let\'s fight for glory. Let\'s fight for our kids";
+                    if (name === "℄🌀Ꭵᑎᖴᗝᖇᗰᗩ丅Ꭵᗝᑎ") cellUpdateCells.targetNick = "℄🌀Avoid (Anti ,Corners, Random)";
                     if (!application.customSkinsMap[cellUpdateCells.targetNick] && application.customSkinsMap[name]) {
                         application.customSkinsMap[cellUpdateCells.targetNick] = application.customSkinsMap[name];
                         application.loadSkin(application.customSkinsCache, application.customSkinsMap[name]);
@@ -13612,7 +13645,7 @@ Game name     : ${i.displayName}<br/>
                     offset += 4;
                     cellUpdateCells.accID = accountID;
                     let friend = LM.fbOnline.find(element => {
-                        return element.id == accountID
+                        return element.id === accountID
                     });
                     friend != undefined ? cellUpdateCells.fbID = friend.fbId : void(0);
                 }
@@ -13675,14 +13708,14 @@ Game name     : ${i.displayName}<br/>
         },
         color2Hex(number) {
             var color = number.toString(16);
-            return 1 == color.length ? '0' + color : color;
+            return 1 === color.length ? '0' + color : color;
         },
         rgb2Hex(r, g, b) {
             return '#' + this.color2Hex(r) + this.color2Hex(g) + this.color2Hex(b);
         },
         sortCells() {
             this.cells.sort(function(row, conf) {
-                return row.size == conf.size ? row.id - conf.id : row.size - conf.size;
+                return row.size === conf.size ? row.id - conf.id : row.size - conf.size;
             });
         },
         calculatePlayerMassAndPosition() {
@@ -13718,7 +13751,7 @@ Game name     : ${i.displayName}<br/>
                 var cells = this.playerCells;
                 var CellLength = cells.length;
                 cells.sort(function(cells, CellLength) {
-                    return cells.size == CellLength.size ? cells.id - CellLength.id : cells.size - CellLength.size;
+                    return cells.size === CellLength.size ? cells.id - CellLength.id : cells.size - CellLength.size;
                 });
                 this.playerMinMass = ~~(cells[0].size * cells[0].size / 100);
                 this.playerMaxMass = ~~(cells[CellLength - 1].size * cells[CellLength - 1].size / 100);
@@ -14248,7 +14281,7 @@ Game name     : ${i.displayName}<br/>
             if (drawRender.RMB && LM.indexedCells[LM.selected] && LM.playerCellIDs.length) {
                 var index = LM.selectBiggestCell ? LM.playerCells.length - 1 : 0;
                 //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 760, 0, this.pi2, false);
-                if (LM.playerCells[index] == undefined) return;
+                if (LM.playerCells[index] === undefined) return;
                 var xc = LM.playerCells[index].targetX //.x
                 var yc = LM.playerCells[index].targetY //.y
 
@@ -14294,8 +14327,8 @@ Game name     : ${i.displayName}<br/>
 		drawCustomNewGrid(grid) {	
 					if (!legendmod.gridPic){
 		            legendmod.gridPic = new Image;
-                    legendmod.gridPic.src = "https://legendmod.ml/banners/grid3.png";
-					//legendmod.gridPic.src = "https://legendmod.ml/banners/grid5.png";
+                    legendmod.gridPic.src = "https://jimboy3100.github.io/banners/grid3.png";
+					//legendmod.gridPic.src = "https://jimboy3100.github.io/banners/grid5.png";
 					}
 					//this.ctx.drawImage(application.customSkinsCache["test_cached"],
 					/*this.ctx.drawImage(legendmod.gridPic,			
@@ -14345,7 +14378,7 @@ Game name     : ${i.displayName}<br/>
                     legendmod.customMidPic = new Image;
                     legendmod.customMidPic.src = defaultSettings.customBackground;
                 }
-                if (dyinglight1load == "yes") {
+                if (dyinglight1load === "yes") {
                     this.prevctxglobalAlpha = this.ctx.globalAlpha;
                     this.ctx.globalAlpha = defaultSettings.backgroundAlpha
                     this.ctx.drawImage(
@@ -14495,10 +14528,10 @@ Game name     : ${i.displayName}<br/>
             if (cells.length > 0) {
                 for (var im = 0; cells.length > im; im++)
                     size += cells[im].size
-            } else if (isFreeSpectate == false && isSpectateEnabled == true) {
+            } else if (isFreeSpectate === false && isSpectateEnabled === true) {
                 for (var i = 0; leaderboard.length > i; i++) {
                     for (var im = 0; cells.length > im; im++)
-                        if (cells[im].nick == leaderboard[i].nick)
+                        if (cells[im].nick === leaderboard[i].nick)
                             size += cells[im].size
                     break
                 }
@@ -14605,14 +14638,14 @@ Game name     : ${i.displayName}<br/>
                     var length = 0;
                     for (; length < x + 1; length++) {
                         rePosX = minX + posX * length;
-                        ctx.moveTo(length == x ? maxX : rePosX, minY);
-                        ctx.lineTo(length == x ? maxX : rePosX, maxY);
+                        ctx.moveTo(length === x ? maxX : rePosX, minY);
+                        ctx.lineTo(length === x ? maxX : rePosX, maxY);
                     }
                     length = 0;
                     for (; length < y + 1; length++) {
                         rePosY = minY + posY * length;
-                        ctx.moveTo(minX - width / 2, length == y ? maxY : rePosY);
-                        ctx.lineTo(maxX + width / 2, length == y ? maxY : rePosY);
+                        ctx.moveTo(minX - width / 2, length === y ? maxY : rePosY);
+                        ctx.lineTo(maxX + width / 2, length === y ? maxY : rePosY);
                     }
                     ctx.stroke();
                 } else {
@@ -14851,7 +14884,7 @@ Game name     : ${i.displayName}<br/>
             LM.camMinX = tempX
             LM.camMinY = tempY
             for (var length = 0; length < LM.food.length; length++) {
-                if (LM.food[length].spectator == false) {
+                if (LM.food[length].spectator === false) {
                     var x = LM.food[length].x - 10 - defaultSettings.foodSize;
                     var y = LM.food[length].y - 10 - defaultSettings.foodSize;
                     if (x > LM.camMaxX) LM.camMaxX = x
@@ -15096,7 +15129,7 @@ Game name     : ${i.displayName}<br/>
         drawBCursorTracking(ctx, players, cursorX, cursorY) { //Yahnych
             for (let length = 0; length < players.length; length++) {
                 let t = LM.playerCells[length];
-                if (LM.playerCells[length].angle == undefined) {
+                if (LM.playerCells[length].angle === undefined) {
                     LM.playerCells[length].angle = 0
                 }
                 let r = t.size / 3;
@@ -15253,13 +15286,13 @@ Game name     : ${i.displayName}<br/>
         },
         drawTeammatesInd(ctx, x, y, size) {
 			if (this.indicator){
-				if (defaultSettings.indicators=="normal"){
+				if (defaultSettings.indicators==="normal"){
 					 ctx.drawImage(this.indicator, x - 45, y - size - 90);
 				}
-				else if (defaultSettings.indicators=="heart"){
+				else if (defaultSettings.indicators==="heart"){
 					ctx.drawImage(this.heartIndicator, x - 25, y - size - 90);
 				}
-				else if (defaultSettings.indicators=="smile"){
+				else if (defaultSettings.indicators==="smile"){
 					 ctx.drawImage(this.smileIndicator, x - 55, y - size - 150);
 				}
 			}	
@@ -15311,7 +15344,7 @@ Game name     : ${i.displayName}<br/>
             }
         },
         drawDangerArea(ctx, x, y, radius, minX, minY, maxX, maxY, color, aplha) {
-            if (!(LM.battleRoyale.radius == LM.battleRoyale.maxRadius || radius <= 0)) {
+            if (!(LM.battleRoyale.radius === LM.battleRoyale.maxRadius || radius <= 0)) {
                 ctx.save();
                 ctx.globalAlpha = aplha;
                 ctx.fillStyle = color;
@@ -15536,7 +15569,7 @@ Game name     : ${i.displayName}<br/>
         //await this.sleep(4); //Sonia5				
         render() {
 			
-			if (defaultmapsettings.unlockedFPS == true) {
+			if (defaultmapsettings.unlockedFPS === true) {
 				
 				if (!window.abc) window.abc= 3
 				
@@ -15565,7 +15598,7 @@ Game name     : ${i.displayName}<br/>
 			else{
 			drawRender.countFps()
 			drawRender.renderFrame();
-			if(defaultmapsettings.unlockedFPS == "ultra2") { //old unlimited
+			if(defaultmapsettings.unlockedFPS === "ultra2") { //old unlimited
 				//drawRender.render()
                 setTimeout(function() {
                     drawRender.render()
@@ -15574,12 +15607,12 @@ Game name     : ${i.displayName}<br/>
             else if (!defaultmapsettings.unlockedFPS) {
                 window.requestAnimationFrame(drawRender.render);
             } 
-			else if (defaultmapsettings.unlockedFPS == 2 || defaultmapsettings.unlockedFPS == 4 || defaultmapsettings.unlockedFPS == 8 || defaultmapsettings.unlockedFPS == 16 || defaultmapsettings.unlockedFPS == 32 || defaultmapsettings.unlockedFPS == 64) {
+			else if (defaultmapsettings.unlockedFPS === 2 || defaultmapsettings.unlockedFPS === 4 || defaultmapsettings.unlockedFPS === 8 || defaultmapsettings.unlockedFPS === 16 || defaultmapsettings.unlockedFPS === 32 || defaultmapsettings.unlockedFPS === 64) {
                 setTimeout(function() {
                     window.requestAnimationFrame(drawRender.render);
                 }, defaultmapsettings.unlockedFPS);
             } 
-			else if (defaultmapsettings.unlockedFPS == "ultra") {
+			else if (defaultmapsettings.unlockedFPS === "ultra") {
                 setTimeout(function() {
                     for (var i = 0; i < 9; i++) {
 						
@@ -15589,7 +15622,7 @@ Game name     : ${i.displayName}<br/>
                     drawRender.render()
                 }, 0);
             }				
-            else if (defaultmapsettings.unlockedFPS == "sophisticated") {
+            else if (defaultmapsettings.unlockedFPS === "sophisticated") {
                 if (!drawRender.averageRenderTime) {
                     window.renderDelay = 0;
                 } else if (drawRender.averageRenderTime < 30 && window.renderDelay > 0) {
@@ -15706,9 +15739,9 @@ Game name     : ${i.displayName}<br/>
         getPressedKey(key) {
             var specialKey = '';
             var normalKey = '';
-            if (key.ctrlKey || key.keyCode == 17) {
+            if (key.ctrlKey || key.keyCode === 17) {
                 specialKey = 'CTRL';
-            } else if (key.altKey || key.keyCode == 18) {
+            } else if (key.altKey || key.keyCode === 18) {
                 specialKey = 'ALT';
             }
             switch (key.keyCode) {
@@ -15811,7 +15844,7 @@ Game name     : ${i.displayName}<br/>
 
     function spectateBlind() {
         window.onkeydown = function(event) {
-            if (81 == event.keyCode && window.core.specialOn) {
+            if (81 === event.keyCode && window.core.specialOn) {
                 window.core.specialOn();
             }
         }
@@ -15957,7 +15990,7 @@ Game name     : ${i.displayName}<br/>
     window.onmousedown = function(event) {
         if (!$("#overlays").is(":visible")) {
 			//console.log(event.which)
-            if (2 == event.which) {
+            if (2 === event.which) {
                 event.preventDefault();
                     if (application && defaultmapsettings.mouseWheelClick) {
 						if (!defaultmapsettings.middleClick){
@@ -15975,7 +16008,7 @@ Game name     : ${i.displayName}<br/>
 					}
             } 
 			else if (defaultmapsettings.stickyCell) {
-                if (1 == event.which) {
+                if (1 === event.which) {
                     drawRender.LMB = true
                 } 
 				else {
@@ -15986,8 +16019,8 @@ Game name     : ${i.displayName}<br/>
                 reverseTrick.pointInCircle(legendmod.cursorX, legendmod.cursorY, event.which);
             } 
 			else {
-                //if (defaultmapsettings.mouseSplit && (1 == event.which && !defaultmapsettings.mouseInvert || 3 == event.which && defaultmapsettings.mouseInvert)) {
-				if (defaultmapsettings.mouseSplit && (1 == event.which)) {							
+                //if (defaultmapsettings.mouseSplit && (1 === event.which && !defaultmapsettings.mouseInvert || 3 === event.which && defaultmapsettings.mouseInvert)) {
+				if (defaultmapsettings.mouseSplit && (1 === event.which)) {
                     event.preventDefault();
                     if (application) {
 						if (!defaultmapsettings.leftClick){
@@ -15998,8 +16031,8 @@ Game name     : ${i.displayName}<br/>
 						}
                     }
                 }
-                //if (defaultmapsettings.mouseFeed && (3 == event.which && !defaultmapsettings.mouseInvert || 1 == event.which && defaultmapsettings.mouseInvert)) {
-				if (defaultmapsettings.mouseFeed && (3 == event.which)) {
+                //if (defaultmapsettings.mouseFeed && (3 === event.which && !defaultmapsettings.mouseInvert || 1 === event.which && defaultmapsettings.mouseInvert)) {
+				if (defaultmapsettings.mouseFeed && (3 === event.which)) {
                     event.preventDefault();			
                     if (application) {
 						if (!defaultmapsettings.rightClick){
@@ -16010,13 +16043,13 @@ Game name     : ${i.displayName}<br/>
 						}
                     }
                 }
-                if (defaultmapsettings.mouseCommand4 && (4 == event.which)) {
+                if (defaultmapsettings.mouseCommand4 && (4 === event.which)) {
                     event.preventDefault();			
                     if (application) {
 							hotkeysCommand[defaultmapsettings.mouse4Click].keyDown()					
                     }
                 }
-                if (defaultmapsettings.mouseCommand5 && (5 == event.which)) {
+                if (defaultmapsettings.mouseCommand5 && (5 === event.which)) {
                     event.preventDefault();			
                     if (application) {
 							hotkeysCommand[defaultmapsettings.mouse4Click].keyDown()					
@@ -16027,28 +16060,28 @@ Game name     : ${i.displayName}<br/>
     }
     window.onmouseup = function(event) {
         //if (defaultmapsettings.mouseFeed) {
-			//if (1 == event.which && hotkeysCommand[defaultmapsettings.leftClick]==textLanguage['hk-macroFeed'] || 2 == event.which && hotkeysCommand[defaultmapsettings.middleClick]==textLanguage['hk-macroFeed'] || 3 == event.which && hotkeysCommand[defaultmapsettings.rightClick]==textLanguage['hk-macroFeed'] || 4 == event.which && hotkeysCommand[defaultmapsettings.mouse4Click]==textLanguage['hk-macroFeed'] || 5 == event.which && hotkeysCommand[defaultmapsettings.mouse5Click]==textLanguage['hk-macroFeed']) {
-            //if (3 == event.which && !defaultmapsettings.mouseInvert || 1 == event.which && defaultmapsettings.mouseInvert) {  
+			//if (1 === event.which && hotkeysCommand[defaultmapsettings.leftClick]===textLanguage['hk-macroFeed'] || 2 === event.which && hotkeysCommand[defaultmapsettings.middleClick]===textLanguage['hk-macroFeed'] || 3 === event.which && hotkeysCommand[defaultmapsettings.rightClick]===textLanguage['hk-macroFeed'] || 4 === event.which && hotkeysCommand[defaultmapsettings.mouse4Click]===textLanguage['hk-macroFeed'] || 5 === event.which && hotkeysCommand[defaultmapsettings.mouse5Click]===textLanguage['hk-macroFeed']) {
+            //if (3 === event.which && !defaultmapsettings.mouseInvert || 1 === event.which && defaultmapsettings.mouseInvert) {
 				//application && application.macroFeed(false);
             //}
-				if (defaultmapsettings.mouseSplit && (1 == event.which) && defaultmapsettings.leftClick) {	
+				if (defaultmapsettings.mouseSplit && (1 === event.which) && defaultmapsettings.leftClick) {
 					if (hotkeysCommand[defaultmapsettings.leftClick].keyUp) hotkeysCommand[defaultmapsettings.leftClick].keyUp()
 				}
-				else if (defaultmapsettings.mouseWheelClick && (2 == event.which) && defaultmapsettings.middleClick) {	
+				else if (defaultmapsettings.mouseWheelClick && (2 === event.which) && defaultmapsettings.middleClick) {
 					if (hotkeysCommand[defaultmapsettings.middleClick].keyUp) hotkeysCommand[defaultmapsettings.middleClick].keyUp()
 				}
-				else if (defaultmapsettings.mouseFeed && (3 == event.which) && defaultmapsettings.rightClick) {	
+				else if (defaultmapsettings.mouseFeed && (3 === event.which) && defaultmapsettings.rightClick) {
 					if (hotkeysCommand[defaultmapsettings.rightClick].keyUp) hotkeysCommand[defaultmapsettings.rightClick].keyUp()
 				}	
-				else if (defaultmapsettings.mouseCommand4 && (4 == event.which) && defaultmapsettings.mouse4Click) {	
+				else if (defaultmapsettings.mouseCommand4 && (4 === event.which) && defaultmapsettings.mouse4Click) {
 					if (hotkeysCommand[defaultmapsettings.mouse4Click].keyUp) hotkeysCommand[defaultmapsettings.mouse4Click].keyUp()
 				}		
-				else if (defaultmapsettings.mouseCommand5 && (5 == event.which) && defaultmapsettings.mouse5Click) {	
+				else if (defaultmapsettings.mouseCommand5 && (5 === event.which) && defaultmapsettings.mouse5Click) {
 					if (hotkeysCommand[defaultmapsettings.mouse5Click].keyUp) hotkeysCommand[defaultmapsettings.mouse5Click].keyUp()
 				}					
 				else {
 					//1=leftclick, 3=rightclick, 2=wheelclick
-					if (event.which == 1){ //for reversetrick or stickycell
+					if (event.which === 1){ //for reversetrick or stickycell
 						drawRender.LMB = false						
 					}
 					else{
@@ -16205,7 +16238,7 @@ Game name     : ${i.displayName}<br/>
             LM.sendGplusToken(token);
         },
         recaptchaHandlerResponse(token) {
-            if (window.botscaptcha == true) {
+            if (window.botscaptcha === true) {
                 setTimeout(function() {
                     core.recaptchaBotResponse(token);
                 }, 100);
@@ -16230,7 +16263,7 @@ Game name     : ${i.displayName}<br/>
         proxyMobileData(arr = []) {
 				let data;
 				if (Array.isArray(arr)) {
-					if (arr[0] == 8) {
+					if (arr[0] === 8) {
 						arr.unshift(102);			
 					}
 					data = new Uint8Array(arr);
@@ -16269,7 +16302,7 @@ Game name     : ${i.displayName}<br/>
                 console.log('Proxy ERROR: Array data required.');
                 return;
             }
-            if (data[0] == 8) {
+            if (data[0] === 8) {
                 data.unshift(102);
             }
             data = new Uint8Array(data);
@@ -16305,12 +16338,12 @@ function setGUIEvents() {
         e.preventDefault()
     })
     var storedbotsRemoteIP = localStorage.getItem("localstoredBotsRemoteIP");
-    if (storedbotsRemoteIP == null || storedbotsRemoteIP == "") {
+    if (storedbotsRemoteIP ==null || storedbotsRemoteIP === "") {
         storedbotsRemoteIP = "ws://localhost:1337";
     }
     window.captchaOpenedWindow = 1;
     /*var captchaSpeed = localStorage.getItem("captchaSpeed2");
-	if (captchaSpeed == null || captchaSpeed == "null" || captchaSpeed == ""){ 
+	if (captchaSpeed ==null || captchaSpeed === "null" || captchaSpeed === ""){
 		window.captchaOpenedWindow = 1
 	}
 	else{	
@@ -16321,13 +16354,13 @@ function setGUIEvents() {
     window.SERVER_HOST = storedbotsRemoteIP;
     $('#botsRemoteIP').val(storedbotsRemoteIP)
     var storedbotsname = localStorage.getItem("localStoredBotsName");
-    if (storedbotsname == null || storedbotsname == "") {
+    if (storedbotsname ==null || storedbotsname === "") {
         storedbotsname = "Legendmod|ml";
     }
     window.bots.nameLM = storedbotsname;
     $('#botsNameLM').val(storedbotsname)
     var storedbotsamount = localStorage.getItem("localStoredBotsAmount");
-    if (storedbotsamount == null || storedbotsamount == "") {
+    if (storedbotsamount ==null || storedbotsamount === "") {
         storedbotsamount = 50;
 
     }
@@ -16356,7 +16389,7 @@ function setGUIEvents() {
     })
     document.getElementById('startBots').addEventListener('click', () => {
         if (legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots) {
-            if (legendmod.gameMode == ":party" || $("#nick").val().includes('℄') && $("#clantag").val() == window.clanTagLc || window.AdminRights == 1 || window.IamNeo == true) {
+            if (legendmod.gameMode === ":party" || $("#nick").val().includes('℄') && $("#clantag").val() === window.clanTagLc || window.AdminRights === 1 || window.IamNeo === true) {
                 if (window.bots.amount) {
                     if (window.bots.amount + legendmod.leaderboard.length > 197) window.bots.amount = 197 - legendmod.leaderboard.length;
                     //if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') {
@@ -16396,7 +16429,7 @@ function minimapCell(envId, cb, i, s) {
     this.pi2 = 2 * Math.PI;
     this.setColor = function(i, inRevIdx) {
         this.color = i;
-        if (7 == inRevIdx.length) {
+        if (7 === inRevIdx.length) {
             this.customColor = inRevIdx;
         }
     };
@@ -16406,14 +16439,14 @@ function minimapCell(envId, cb, i, s) {
             var isPositionOK=false;
             var flag=false;
             for (var e = 0; e < legendmod.ghostCells.length; e++){ 				
-            	if (window.predictedGhostCells[e] && legendmod.leaderboard[e] && this.nick == legendmod.leaderboard[e].nick){
+            	if (window.predictedGhostCells[e] && legendmod.leaderboard[e] && this.nick === legendmod.leaderboard[e].nick){
             		flag=true;	
             		this.lastX = window.predictedGhostCells[e].x;
             		this.lastY = window.predictedGhostCells[e].y;
             		isPositionOK = true;
             	}
             }
-            if ( (flag==false && this.lbgpi >= 0) || legendmod.gameMode == ":party"){
+            if ( (flag===false && this.lbgpi >= 0) || legendmod.gameMode === ":party"){
             	isPositionOK = true;									
             }	
             
@@ -16564,7 +16597,7 @@ function leftClickRun() {
 }
 
 function openContextMenu(evt) {
-    if (legendmod.play && !$("#overlays:hover").length && !defaultmapsettings.mouseSplit && !defaultmapsettings.mouseFeed && (legendmod.gameMode == ":party" || !legendmod.integrity)) {
+    if (legendmod.play && !$("#overlays:hover").length && !defaultmapsettings.mouseSplit && !defaultmapsettings.mouseFeed && (legendmod.gameMode === ":party" || !legendmod.integrity)) {
         evt.preventDefault();
         const time = menuLeft.isOpen() ? 100 : 0;
         menuLeft.hide();
@@ -16634,14 +16667,15 @@ function hideContextMenu4(evt) {
 function animateSkincheck() {
     //for (i = 0; i < 10; i++) {
     //SpecialEffectPlayers[	
-    for (i = 0; i < 1; i++) {
-        for (animatedi = 0; animatedi < legendmod.leaderboard.length; animatedi++) {
-            for (animatedkey in animatedskins) {
-                if (animatedkey == legendmod.leaderboard[animatedi].nick) {
+    let verifiednames;
+    for (let i = 0; i < 1; i++) {
+        for (let animatedi = 0; animatedi < legendmod.leaderboard.length; animatedi++) {
+            for (let animatedkey in animatedskins) {
+                if (animatedkey === legendmod.leaderboard[animatedi].nick) {
                     if (animatedskins[animatedkey] && animatedskins[animatedkey].frames) {
                         e = animatedskins[animatedkey].frames.length - 1;
                         window.anual = 0;
-                        for (animateda = 0; animateda <= animatedskins[animatedkey].frames.length - 1; animateda++) {
+                        for (let animateda = 0; animateda <= animatedskins[animatedkey].frames.length - 1; animateda++) {
                             b = animateda;
                             verifiednames = animatedkey;
                             window.anual = window.anual + animatedskins[verifiednames].frames[b].delay * 1000;
@@ -16666,13 +16700,13 @@ function animateSkincheck() {
 
 function animateSkin(b, verifiednames, d, e, i) {
     setTimeout(function() {
-        //if (verifiednames==legendmod.leaderboard[d].nick){
+        //if (verifiednames===legendmod.leaderboard[d].nick){
         application.cacheCustomSkin(verifiednames, animatedskins[verifiednames].color, "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");
-        //if (b == e) {
-        //if (i == 9) {
-        //if (i == 0) {	
+        //if (b === e) {
+        //if (i === 9) {
+        //if (i === 0) {
         //window.anual = 0;
-        //if (animatedserverchanged == false) {}
+        //if (animatedserverchanged === false) {}
         //}
         //}
     }, window.anual);
@@ -16685,7 +16719,7 @@ function animateSkinsStop() {
 function animateCustomSkin(nick, id) {
 
     Object.keys(animatedskins).forEach(function(key) {
-        if (animatedskins[key] && animatedskins[key].id == id) {
+        if (animatedskins[key] && animatedskins[key].id === id) {
             //console.log(key, animatedskins[key]);
             animatedskins[nick] = animatedskins[key];
             //animatedskins[key] = null
@@ -16695,7 +16729,7 @@ function animateCustomSkin(nick, id) {
 }
 
 function PreLcCelebration() {
-    if (defaultSettings.checkonetimeLc2 == false) {
+    if (defaultSettings.checkonetimeLc2 === false) {
         var checkdate;
         Date.prototype.yyyymmdd = function() {
             //var yyyy = this.getFullYear().toString();
@@ -16706,20 +16740,20 @@ function PreLcCelebration() {
         };
         var date = new Date();
         checkdate = date.yyyymmdd();
-        if (checkdate == "11/12") {
+        if (checkdate === "11/12") {
             LcCelebration();
 			window.celebrationDay="LcDay"
         }
-		else if (checkdate == "12/31" || checkdate == "1/1"){
+		else if (checkdate === "12/31" || checkdate === "1/1"){
 			window.celebrationDay="NewYear"
 		}
-		else if (checkdate == "11/26"){
+		else if (checkdate === "11/26"){
 			window.celebrationDay="ThanksGiving"
 		}
-		else if (checkdate == "12/25" || checkdate == "12/24"){
+		else if (checkdate === "12/25" || checkdate === "12/24"){
 			window.celebrationDay="Christmas"
 		}	
-		else if (checkdate == "7/4"){
+		else if (checkdate === "7/4"){
 			window.celebrationDay="4July"
 		}		
     }
@@ -16728,7 +16762,7 @@ function PreLcCelebration() {
 function LcCelebration() {
     var s = document.createElement("script");
     s.type = "text/javascript";
-    s.src = "https://legendmod.ml/extras/LcHistory/LcHistoryBanner.js";
+    s.src = "https://jimboy3100.github.io/extras/LcHistory/LcHistoryBanner.js";
     $("body").append(s);
     defaultSettings.checkonetimeLc2 = true;
 }
@@ -16740,7 +16774,7 @@ var stylesLegendModConsole2 = [
 ].join(';');
 
 function consoleNotice() {
-    console.groupCollapsed('%cLegend express%c  %chttp://www.legendmod.ml', stylesLegendModConsole1, 'font-size: 48px; background: url(https://legendmod.ml/banners/icon48.png) no-repeat', stylesLegendModConsole1);
+    console.groupCollapsed('%cLegend express%c  %chttp://www.jimboy3100.github.io', stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat', stylesLegendModConsole1);
     console.groupCollapsed("Part of");
     console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
     console.groupEnd();
@@ -16970,8 +17004,8 @@ function repeatSendingSpecialSkins() {
     temp = localStorage.getItem("isActualUsingSpecialEffectsSkin")
     //var temp= temp.split(';')
 
-    if (temp && temp != "null" && (($("#nick").val().includes('℄') && $("#clantag").val() == window.clanTagLc) || window.proLicenceUID || temp == "Byzantium" || window.tempAnimatedCoolArray.includes(temp))) {
-        if (application.lastSentNick == "") application.lastSentNick = $("#nick").val()
+    if (temp && temp != "null" && (($("#nick").val().includes('℄') && $("#clantag").val() === window.clanTagLc) || window.proLicenceUID || temp === "Byzantium" || window.tempAnimatedCoolArray.includes(temp))) {
+        if (application.lastSentNick === "") application.lastSentNick = $("#nick").val()
         SpecialEffectPlayers[application.lastSentNick] = temp
         //
         animateCustomSkin($("#nick").val(), temp)
@@ -16983,28 +17017,28 @@ function repeatSendingSpecialSkins() {
 function preUserLeaguesInfoRequest() {
     var s = document.createElement("script");
     s.type = "text/javascript";
-    s.src = "https://legendmod.ml/LMexpress/userLeaguesInfoRequest.js";
+    s.src = "https://jimboy3100.github.io/LMexpress/userLeaguesInfoRequest.js";
     $("body").append(s);
 }
 
 function openhelper() {
     var s = document.createElement("script");
     s.type = "text/javascript";
-    s.src = "https://legendmod.ml/legendhelper.js";
+    s.src = "https://jimboy3100.github.io/legendhelper.js";
     $("body").append(s);
 }
 
 function opennamechars() {
     var s = document.createElement("script");
     s.type = "text/javascript";
-    s.src = "https://legendmod.ml/nicks/nicknamechars.js";
+    s.src = "https://jimboy3100.github.io/nicks/nicknamechars.js";
     $("body").append(s);
 }
 
 function legendformIframe() {
     var s = document.createElement("script");
     s.type = "text/javascript";
-    s.src = "https://legendmod.ml/legendformIframe.js";
+    s.src = "https://jimboy3100.github.io/legendformIframe.js";
     $("body").append(s);
 }
 
@@ -17123,11 +17157,11 @@ var reverseTrick = {
         for (length = 0; length < legendmod.cells.length; length++) {
             var distancesquared = (x - legendmod.cells[length].x) * (x - legendmod.cells[length].x) + (y - legendmod.cells[length].y) * (y - legendmod.cells[length].y);
 
-            if (type == 1 && distancesquared <= legendmod.cells[length].size * legendmod.cells[length].size) {
+            if (type === 1 && distancesquared <= legendmod.cells[length].size * legendmod.cells[length].size) {
                 reverseTrick.biggerEnemy = legendmod.cells[length].id;
                 reverseTrick.biggerEnemyAcc = legendmod.cells[length].accID;
                 reverseTrick.biggerSize = ~~(legendmod.cells[length].size * legendmod.cells[length].size / 100);
-            } else if (type == 3 && distancesquared <= legendmod.cells[length].size * legendmod.cells[length].size) {
+            } else if (type === 3 && distancesquared <= legendmod.cells[length].size * legendmod.cells[length].size) {
                 reverseTrick.smallerEnemy = legendmod.cells[length].id;
                 reverseTrick.smallerEnemyAcc = legendmod.cells[length].accID;
                 reverseTrick.smallerSize = ~~(legendmod.cells[length].size * legendmod.cells[length].size / 100);
@@ -17151,7 +17185,7 @@ var reverseTrick = {
 
             var index = legendmod.selectBiggestCell ? legendmod.playerCells.length - 0x1 : 0x0;
             var p = legendmod.playerCells[index];
-            if (legendmod.playerCells[index] == undefined) return;
+            if (legendmod.playerCells[index] === undefined) return;
 
             var small = legendmod.indexedCells[this.smallerEnemy],
                 distToP = this.getDistance(p.targetX, p.targetY, small.targetX, small.targetY);
@@ -17201,7 +17235,7 @@ function LMadvertisement2020() {
         '<div id="CloseLMPromo2" class="modal-header"><button id="CloseLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">' + Premadeletter113 + '</span></button> <button id="FAQLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">?</span><span class="sr-only">' + Premadeletter113 + '</span></button>' +
         '<h4 class="modal-title" style="font-family: Roboto Condensed, sans-serif">' + '2020 development' + '</h4>' +
         '</div>' +
-        '<div id="LMadvertisement3"><iframe id="customskinsIframe2" src="https://legendmod.ml/extras/banneranimatedLegendmod2020.html" width="620" height="490" >' +
+        '<div id="LMadvertisement3"><iframe id="customskinsIframe2" src="https://jimboy3100.github.io/extras/banneranimatedLegendmod2020.html" width="620" height="490" >' +
         '</div>' +
         '</div>' +
         '</div>' +
@@ -17211,7 +17245,7 @@ function LMadvertisement2020() {
         $("#LMPromo").remove();
     });
     $("#FAQLMPromo").click(function() {
-        window.open('https://legendmod.ml/', '_blank');
+        window.open('https://jimboy3100.github.io/', '_blank');
     });
 }
 
@@ -17280,13 +17314,13 @@ function playReplayLM(temp) {
 
 function intervalPlayingRecord() {
     if ($("#greyScale").length) {
-        window.replayGreyScale = $("#greyScale").prop("checked") == true
+        window.replayGreyScale = $("#greyScale").prop("checked") === true
     }
     if ($("#sepia").length) {
-        window.replaySepia = $("#sepia").prop("checked") == true
+        window.replaySepia = $("#sepia").prop("checked") === true
     }
     if ($("#hueRotate").length) {
-        window.replayHueRotate = $("#hueRotate").prop("checked") == true
+        window.replayHueRotate = $("#hueRotate").prop("checked") === true
     }
     var temp1 = parseInt(window.startReplayTime)
     var temp2 = parseInt(window.endReplayTime)
@@ -17299,7 +17333,7 @@ function intervalPlayingRecord() {
         $('#pause-hud').show()
     } else if (legendmod.playingReplayRecord >= temp1 && legendmod.playingReplayRecord <= temp2) {
 
-        if (window.replayTiming2 == 0) {
+        if (window.replayTiming2 === 0) {
             $('#pause-hud').text(textLanguage.pause);
             $('#pause-hud').hide()
         }
@@ -17320,7 +17354,7 @@ function intervalPlayingRecord() {
 
             legendmod.handleMessage(window.RecordedProtocol[tempo][legendmod.playingReplayRecord]) //main fuction for replay
             //
-            if (!legendmod.playingReplayRewind && window.replayTiming2 == 0) {
+            if (!legendmod.playingReplayRewind && window.replayTiming2 === 0) {
                 /*if (window.replaySkippedLoops > 99 && legendmod.playingReplayRecord + 100 < window.RecordedProtocol[tempo].length - 1) {
                     for (var i = 0; i < window.replaySkippedLoops - 1; i++) { // 100 times more
                         legendmod.handleMessage(window.RecordedProtocol[tempo][legendmod.playingReplayRecord])
@@ -17404,7 +17438,7 @@ function findOcc(arr, key){
            
         // Checking if there is any object in arr2
         // which contains the key value
-         if(arr2.some((val)=>{ return val[key] == x[key] })){
+         if(arr2.some((val)=>{ return val[key] === x[key] })){
              
            // If yes! then increase the occurrence by 1
            arr2.forEach((k)=>{
