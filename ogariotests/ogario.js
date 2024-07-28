@@ -1,4 +1,4 @@
-window.OgVer=3.320;
+window.OgVer=3.321;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -7835,7 +7835,7 @@ window.MouseClicks=[];
         },*/
 		sendServerToken() {
 			let serverToken;
-			if (this.tokenNeedToBtoa) {
+			if (this.tokenNeedToBtoa && !this.serverToken.includes('agario.miniclippt.com')) {
 				serverToken = btoa(this.serverToken);
 			} 
 			else if (this.serverToken.includes('agario.miniclippt.com')) {
