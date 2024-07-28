@@ -1,4 +1,4 @@
-window.OgVer=3.319;
+window.OgVer=3.320;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -7837,17 +7837,21 @@ window.MouseClicks=[];
 			let serverToken;
 			if (this.tokenNeedToBtoa) {
 				serverToken = btoa(this.serverToken);
-			} else if (this.serverToken.includes('agario.miniclippt.com')) {
+			} 
+			else if (this.serverToken.includes('agario.miniclippt.com')) {
 			const match = this.serverToken.match(/-([a-z]+-[a-z]+-\d)\./);
 			if (match) {
 				serverToken = match[1];
-			} else {
+			} 
+			else {
 				// Handle case where regex does not match
 				serverToken = this.serverToken;
+				}
+			} 
+			else {
+				serverToken = this.serverToken;
 			}
-		} else {
-			serverToken = this.serverToken;
-			}
+			console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Chat serverToken: ", serverToken);
 			this.sendPlayerData(16, 'lastSentServerToken', serverToken);
 		},
         sendServerJoin() {
