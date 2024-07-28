@@ -1,4 +1,4 @@
-window.OgVer=3.316;
+window.OgVer=3.317;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -7829,11 +7829,28 @@ window.MouseClicks=[];
             this.setParty();
             this.sendPlayerData(15, 'lastSentPartyToken', this.partyToken);
         },
-        sendServerToken() {
+        /*sendServerToken() {
             //var serverToken = this.tokenNeedToBtoa ? btoa(this.serverToken) : this.serverToken
 			var serverToken = this.tokenNeedToBtoa ? btoa(this.serverToken) : this.serverToken.match(/-([a-z]+-[a-z]+-\d)./)[1];
             this.sendPlayerData(16, 'lastSentServerToken', serverToken);
-        },
+        },*/
+		sendServerToken() {
+			let serverToken;
+			if (this.tokenNeedToBtoa) {
+				serverToken = btoa(this.serverToken);
+			} else if (this.serverToken.includes('agario.miniclippt.com')) {
+			const match = this.serverToken.match(/-([a-z]+-[a-z]+-\d)\./);
+			if (match) {
+				serverToken = match[1];
+			} else {
+            // Handle case where regex does not match
+            serverToken = this.serverToken;
+			}
+		} else {
+			serverToken = this.serverToken;
+			}
+			this.sendPlayerData(16, 'lastSentServerToken', serverToken);
+		}
         sendServerJoin() {
             this.sendServerToken();
             this.sendPlayerJoin();
