@@ -1,4 +1,4 @@
-window.OgVer=3.321;
+window.OgVer=3.322;
 /* Source script
 Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 This is part of the Legend mod project
@@ -30,32 +30,38 @@ window.LMscore=0;
 var isMobile = false;
 if (jQuery && jQuery.browser && jQuery.browser.mobile) isMobile = true;
 
+const ranges = [10, 255, 255, 255, 255];
 function toLong(ip) {
-    const c_precision = 256.0;
-    const c_precisionp1 = c_precision + 1.0;
-
     let result = 0;
-    for (let i = 0; i < 5; i++) {
-        result += ~~((ip[i] / 255) * c_precision + 0.5) * Math.pow(c_precisionp1, i);
+    for (let i = 0; i < ip.length; i++) {
+        const value = ip[i];
+        let temp = 1;
+        for (let j = 0; j < i; j++) temp *= ranges[j] + 2;
+        result += Math.floor((value / ranges[i]) * (ranges[i] + 1) + 0.5) * temp;
     }
     return result;
 }
-
 function fromLong(packed) {
-    const c_precision = 256.0;
-    const c_precisionp1 = c_precision + 1.0;
-    const arr = new Array(5).fill(0);
-    for (let i = arr.length; i--; ) {
-        const ip = Math.floor(packed / Math.pow(c_precisionp1, i));
-        packed -= ip * Math.pow(c_precisionp1, i);
-        arr[i] = Math.round((ip / c_precision) * 255);
+    const arr = new Array(ranges.length).fill(0);
+    for (let i = ranges.length; i--; ) {
+        let divisor = 1;
+        for (let j = 0; j < i; j++) divisor *= ranges[j] + 2;
+        const value = Math.floor(packed / divisor);
+        packed -= value * divisor;
+        arr[i] = Math.round((value / (ranges[i] + 1)) * ranges[i]);
     }
     return arr;
 }
 
-const regions = [
-    'us-east-2',
+const awsRegions = [
     'us-east-1',
+    'sa-east-1',
+    'eu-west-2',
+    'eu-central-1',
+    'ap-northeast-1',
+    'ap-southeast-1',
+
+    'us-east-2',
     'us-west-1',
     'us-west-2',
     'af-south-1',
@@ -66,14 +72,10 @@ const regions = [
     'ap-south-1',
     'ap-northeast-3',
     'ap-northeast-2',
-    'ap-southeast-1',
     'ap-southeast-2',
-    'ap-northeast-1',
     'ca-central-1',
     'ca-west-1',
-    'eu-central-1',
     'eu-west-1',
-    'eu-west-2',
     'eu-south-1',
     'eu-west-3',
     'eu-south-2',
@@ -81,8 +83,7 @@ const regions = [
     'eu-central-2',
     'il-central-1',
     'me-south-1',
-    'me-central-1',
-    'sa-east-1'
+    'me-central-1'
 ];
 
 function changeregion() {
@@ -7409,9 +7410,9 @@ window.MouseClicks=[];
             } 
 			else if (!text && /^[a-z0-9]{5,}$/.test(token)) {
                 // text = 'wss://live-arena-' + token + '.agar.io:443'
-				const parts = fromLong(parseInt(token, 16));
-	            const server = parts.slice(0, 4).join('-');
-	            const region = regions[parts[4]];
+				const parts = fromLong(parseInt(token, 36));
+	            const server = parts.slice(1, 5).join('-');
+	            const region = awsRegions[parts[0]];
 	            text = `wss://web-arenas-live-v25-0-${region}.agario.miniclippt.com/${server}`;
             } else if (!token.includes("s://")) {
                 this.tokenNeedToBtoa = true
@@ -7450,11 +7451,8 @@ window.MouseClicks=[];
             }
 			if (!text && serverFormat30072024) {
 				const [, region, ip] = serverFormat30072024;
-	            const arr = ip
-	                .split('-')
-	                .map((n) => parseInt(n))
-	                .concat(regions.indexOf(region));
-	            this.serverArena = toLong(arr).toString(16);
+	            const arr = [awsRegions.indexOf(region)].concat(ip.split('-').map((n) => parseInt(n)));
+	            this.serverArena = toLong(arr).toString(36).padStart(7, '0');
 				//HERE I THINK
                 text = this.serverArena;
                 //console.log("createServerToken case 2:" + text);
@@ -11717,8 +11715,8 @@ window.MouseClicks=[];
                             window.checkOneTheUID = true;
 							UIDfunction();
                         }
-                        if (window.testobjects2.split('"�')[1]) {
-                            window.agarioEncodedUID = window.testobjects2.split('"�')[1].split('=')[0] + "%3D";
+                        if (window.testobjects2.split('" ')[1]) {
+                            window.agarioEncodedUID = window.testobjects2.split('" ')[1].split('=')[0] + "%3D";
                         }
                     }
 
@@ -12059,7 +12057,7 @@ window.MouseClicks=[];
                                     if (matchNew[i].split("")[1] && matchNew[i].split("")[1].split('')[1]) window.RecordPlayers[i].level = matchNew[i].split("")[1].split('')[1].split('\"')[0] //level
                                     if (matchNew[i].split("")[1] && matchNew[i].split("")[1].split('\"')[1]) window.RecordPlayers[i].country = matchNew[i].split("")[1].split('\"')[1].split('\(')[0].replace('', ""); //country
                                     if (matchNew[i].split("")[1]) window.RecordPlayers[i].socialid = matchNew[i].split("")[1].split('')[0] //social id						
-                                    if (matchNew[i].split("�")[1]) window.RecordPlayers[i].icon = matchNew[i].split("�")[1].split('')[0].split('%')[0].split('"')[0] //icon	
+                                    if (matchNew[i].split(" ")[1]) window.RecordPlayers[i].icon = matchNew[i].split(" ")[1].split('')[0].split('%')[0].split('"')[0] //icon	
                                     else if (matchNew[i].split("")[1]) window.RecordPlayers[i].icon = matchNew[i].split("")[1].split('')[0].substr(1).split('"')[0];
                                 }
                                 userLeaguesInfoResponse();
